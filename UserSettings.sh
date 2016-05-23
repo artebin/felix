@@ -119,16 +119,19 @@ setupWallpaper(){
   nitrogen --restore	
 }
 
-setupBash
-setupVim
-additionalFonts
-setupOpenbox
-setupTint2
-setupDmenu
-setupHtop
-setupMateCaja
-setupMateTerminal
-setupXFCE4PowerManager
-copyOpenboxAndGtkThemes
-setupGtk
-setupWallpaper
+if [ -f output ]; then
+  renameFileForBackup output
+fi
+setupBash >>output 2>>output
+setupVim >>output 2>>output
+additionalFonts >>output 2>>output
+setupOpenbox >>output 2>>output
+setupTint2 >>output 2>>output
+setupDmenu >>output 2>>output
+setupHtop >>output 2>>output
+setupMateCaja >>output 2>>output
+setupMateTerminal >>output 2>>output
+setupXFCE4PowerManager >>output 2>>output
+copyOpenboxAndGtkThemes >>output 2>>output
+setupGtk >>output 2>>output
+setupWallpaper >>output 2>>output
