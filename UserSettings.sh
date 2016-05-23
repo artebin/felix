@@ -17,6 +17,14 @@ setupBash(){
   cp bashrc ~/.bashrc
 }
 
+setupVim(){
+  cd ${BASEDIR}/vim
+  if [ -f ~/.vimrc ]; then
+    renameFileForBackup ~/.vimrc
+  fi
+  cp vimrc ~/.vimrc
+}
+
 additionalFonts(){
   cd ${BASEDIR}/fonts
   sudo cp *.ttf /usr/local/share/fonts/
@@ -111,38 +119,16 @@ setupWallpaper(){
   nitrogen --restore	
 }
 
-# Bash
 setupBash
-
-# Additional fonts
+setupVim
 additionalFonts
-
-# Openbox
 setupOpenbox
-
-# Tint2
 setupTint2
-
-# dmenu
 setupDmenu
-
-# htop
 setupHtop
-
-# MATE Caja
 setupMateCaja
-
-# MATE Terminal
 setupMateTerminal
-
-# XFCE4 Power Manager
 setupXFCE4PowerManager
-
-# Copy Openbox and gtk themes
 copyOpenboxAndGtkThemes
-
-# GTK settings
 setupGtk
-
-# Wallpaper
 setupWallpaper

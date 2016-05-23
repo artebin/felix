@@ -115,3 +115,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+alias bc='bc -l'
+
+#export JAVA_HOME=/opt/jdk1.7.0_51/jre
+#export JDK_HOME=/opt/jdk1.7.0_51
+#export PATH=${JDK_HOME}/bin:/opt/apache-ant-1.9.4/bin:${PATH}
