@@ -2,104 +2,147 @@
 
 SCRIPT_PATH=$(readlink -f "$0")
 BASEDIR=$(dirname ${SCRIPT_PATH})
+WALLPAPER_FILE_NAME=pattern_154.gif
 
 renameFileForBackup(){
   SUFFIX=.bak.$(date +"%y%m%d-%H%M%S")
   mv "$1" "$1"${SUFFIX}
 }
 
-# bash
-cd ${BASEDIR}/bash
-if [ -f ~/.bashrc ]; then
-  renameFileForBackup ~/.bashrc
-fi
-cp bashrc ~/.bashrc
+setupBash(){
+  cd ${BASEDIR}/bash
+  if [ -f ~/.bashrc ]; then
+    renameFileForBackup ~/.bashrc
+  fi
+  cp bashrc ~/.bashrc
+}
 
-# lightdm greeter openbox badge
-cd ${BASEDIR}/lightdm-greeter-badge
-sudo cp openbox_badge-symbolic#1.svg /usr/share/icons/hicolor/scalable/places/openbox_badge-symbolic.svg
-sudo gtk-update-icon-cache /usr/share/icons/hicolor
+additionalFonts(){
+  cd ${BASEDIR}/fonts
+  sudo cp *.ttf /usr/local/share/fonts/
+  sudo fc-cache -f -v
+}
 
-# some additional fonts
-cd ${BASEDIR}/fonts
-sudo cp *.ttf /usr/local/share/fonts/
-sudo fc-cache -f -v
+setupOpenbox(){
+  cd ${BASEDIR}
+  if [ -d ~/.config/openbox ]; then
+    renameFileForBackup ~/.config/openbox
+  fi
+  cp -r ./openbox ~/.config/
+}
 
-# openbox
-cd ${BASEDIR}
-if [ -d ~/.config/openbox ]; then
-  renameFileForBackup ~/.config/openbox
-fi
-cp -r ./openbox ~/.config/
+setupTint2(){
+  cd ${BASEDIR}
+  if [ -d ~/.config/tint2 ]; then
+    renameFileForBackup ~/.config/tint2
+  fi
+  cp -r ./tint2 ~/.config/
+}
 
-# tint2
-cd ${BASEDIR}
-if [ -d ~/.config/tint2 ]; then
-  renameFileForBackup ~/.config/tint2
-fi
-cp -r ./tint2 ~/.config/
+setupDmenu(){
+  cd ${BASEDIR}
+  if [ -d ~/.config/dmenu ]; then
+    renameFileForBackup ~/.config/dmenu
+  fi
+  cp -r ./dmenu ~/.config/
+  chmod +x ~/.config/dmenu/dmenu-bind.sh
+}
 
-# dmenu
-cd ${BASEDIR}
-if [ -d ~/.config/dmenu ]; then
-  renameFileForBackup ~/.config/dmenu
-fi
-cp -r ./dmenu ~/.config/
-chmod +x ~/.config/dmenu/dmenu-bind.sh
+setupHtop(){
+  cd ${BASEDIR}/htop
+  cp htoprc ~/.htoprc
+}
 
-# htop
-cd ${BASEDIR}/htop
-cp htoprc ~/.htoprc
+setupMateCaja(){
+  cd ${BASEDIR}/dconf
+  dconf load /org/mate/caja/ < org.mate.caja.dump
+}
 
-# mate caja
-cd ${BASEDIR}/dconf
-dconf load /org/mate/caja/ < org.mate.caja.dump
+setupMateTerminal(){
+  cd ${BASEDIR}/dconf
+  dconf load /org/mate/terminal/ < org.mate.terminal.dump
+}
 
-# mate terminal
-cd ${BASEDIR}/dconf
-dconf load /org/mate/terminal/ < org.mate.terminal.dump
+setupXFCE4PowerManager(){
+  xfconf-query --create -t int -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s 1
+}
 
-# Show xfce4-power-manager icon tray
-xfconf-query --create -t int -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s 1
+copyOpenboxAndGtkThemes(){
+  cd ${BASEDIR}/themes
+  unzip -q Themes-master.zip
+  for i in Themes-master/*; do if [ -d "$i" ]; then mv "$i" ~/.themes/; fi; done
+  rm -fr ./Themes-master
+  tar xzf Erthe-njames.tar.gz
+  mv Erthe-njames ~/.themes
+}
 
-# themes
-cd ${BASEDIR}/themes
-unzip -q Themes-master.zip
-for i in Themes-master/*; do if [ -d "$i" ]; then mv "$i" ~/.themes/; fi; done
-rm -fr ./Themes-master
-tar xzf Erthe-njames.tar.gz
-mv Erthe-njames ~/.themes
-
-# gtk widget theme and icon theme
-cd ${BASEDIR}/themes
-if [ -f ~/.gtkrc-2.0  ]; then
-  sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=\"Greybird\"/' ~/.gtkrc-2.0
-  sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' ~/.gtkrc-2.0
-else
-  cp gtkrc-2.0 ~/.gtkrc-2.0
-fi
-if [ -d ~/.config/gtk-3.0 ]; then  
-  if [ -f ~/.config/gtk-3.0/settings.ini ]; then
-    sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=Greybird/' ~/.config/gtk-3.0/settings.ini
+setupGtk(){
+  cd ${BASEDIR}/themes
+  if [ -f ~/.gtkrc-2.0  ]; then
+    sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=\"Greybird\"/' ~/.gtkrc-2.0
     sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' ~/.gtkrc-2.0
   else
+    cp gtkrc-2.0 ~/.gtkrc-2.0
+  fi
+  if [ -d ~/.config/gtk-3.0 ]; then  
+    if [ -f ~/.config/gtk-3.0/settings.ini ]; then
+      sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=Greybird/' ~/.config/gtk-3.0/settings.ini
+      sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' ~/.gtkrc-2.0
+    else
+      cp gtkrc-3.0 ~/.config/gtk-3.0/settings.ini
+    fi
+  else
+    mkdir ~/.config/gtk-3.0
     cp gtkrc-3.0 ~/.config/gtk-3.0/settings.ini
   fi
-else
-  mkdir ~/.config/gtk-3.0
-  cp gtkrc-3.0 ~/.config/gtk-3.0/settings.ini
-fi
+}
 
-# wallpapers
-WALLPAPER_FILE_NAME=pattern_154.gif
-cp ${BASEDIR}/pictures/${WALLPAPER_FILE_NAME} ~/Pictures
-cd ${BASEDIR}/nitrogen
-if [ ! -d ~/.config/nitrogen ]; then
-  mkdir ~/.config/nitrogen
-fi
-if [ ! -f ~/.config/nitrogen/bg-saved.cfg ]; then
-  cp bg-saved.cfg ~/.config/nitrogen
-fi
-ESCHAPED_PATH=$(echo ${HOME}/Pictures/${WALLPAPER_FILE_NAME} | sed 's/\//\\\//g')
-sed -i "/^file=/s/.*/file=${ESCHAPED_PATH}/" ~/.config/nitrogen/bg-saved.cfg
-nitrogen --restore
+setupWallpaper(){
+  cp ${BASEDIR}/pictures/${WALLPAPER_FILE_NAME} ~/Pictures
+  cd ${BASEDIR}/nitrogen
+  if [ ! -d ~/.config/nitrogen ]; then
+    mkdir ~/.config/nitrogen
+  fi
+  if [ ! -f ~/.config/nitrogen/bg-saved.cfg ]; then
+    cp bg-saved.cfg ~/.config/nitrogen
+  fi
+  ESCHAPED_PATH=$(echo ${HOME}/Pictures/${WALLPAPER_FILE_NAME} | sed 's/\//\\\//g')
+  sed -i "/^file=/s/.*/file=${ESCHAPED_PATH}/" ~/.config/nitrogen/bg-saved.cfg
+  nitrogen --restore	
+}
+
+# Bash
+setupBash
+
+# Additional fonts
+additionalFonts
+
+# Openbox
+setupOpenbox
+
+# Tint2
+setupTint2
+
+# dmenu
+setupDmenu
+
+# htop
+setupHtop
+
+# MATE Caja
+setupMateCaja
+
+# MATE Terminal
+setupMateTerminal
+
+# XFCE4 Power Manager
+setupXFCE4PowerManager
+
+# Copy Openbox and gtk themes
+copyOpenboxAndGtkThemes
+
+# GTK settings
+setupGtk
+
+# Wallpaper
+setupWallpaper
