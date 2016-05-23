@@ -4,12 +4,19 @@ SCRIPT_PATH=$(readlink -f "$0")
 BASEDIR=$(dirname ${SCRIPT_PATH})
 WALLPAPER_FILE_NAME=pattern_154.gif
 
+getFileNameForBackup(){
+  SUFFIX=${1}.bak.$(date +"%y%m%d-%H%M%S")
+  echo ${SUFFIX}
+}
+
 renameFileForBackup(){
-  SUFFIX=.bak.$(date +"%y%m%d-%H%M%S")
-  mv "$1" "$1"${SUFFIX}
+  BACKUP_FILE=$(getFileNameForBackup "$1")
+  echo "Renamed existing file ${1} to ${BACKUP_FILE}"
+  mv "$1" ${BACKUP_FILE}
 }
 
 setupBash(){
+  echo "Configuring bash ..."
   cd ${BASEDIR}/bash
   if [ -f ~/.bashrc ]; then
     renameFileForBackup ~/.bashrc
@@ -18,6 +25,7 @@ setupBash(){
 }
 
 setupVim(){
+  echo "Configuring vim ..."
   cd ${BASEDIR}/vim
   if [ -f ~/.vimrc ]; then
     renameFileForBackup ~/.vimrc
@@ -26,12 +34,15 @@ setupVim(){
 }
 
 additionalFonts(){
+  echo "Copying fonts ..."
   cd ${BASEDIR}/fonts
   sudo cp *.ttf /usr/local/share/fonts/
-  sudo fc-cache -f -v
+  echo "Updating font cache ..."
+  sudo fc-cache -f -v 1>/dev/null
 }
 
 setupOpenbox(){
+  echo "Configuration openbox ..."
   cd ${BASEDIR}
   if [ -d ~/.config/openbox ]; then
     renameFileForBackup ~/.config/openbox
@@ -40,6 +51,7 @@ setupOpenbox(){
 }
 
 setupTint2(){
+  echo "Configuration tint2 ..."
   cd ${BASEDIR}
   if [ -d ~/.config/tint2 ]; then
     renameFileForBackup ~/.config/tint2
@@ -48,6 +60,7 @@ setupTint2(){
 }
 
 setupDmenu(){
+  echo "Configuration dmenu ..."
   cd ${BASEDIR}
   if [ -d ~/.config/dmenu ]; then
     renameFileForBackup ~/.config/dmenu
@@ -57,25 +70,30 @@ setupDmenu(){
 }
 
 setupHtop(){
+  echo "Configuration htop ..."
   cd ${BASEDIR}/htop
   cp htoprc ~/.htoprc
 }
 
 setupMateCaja(){
+  echo "Configuration MATE Caja ..."
   cd ${BASEDIR}/dconf
   dconf load /org/mate/caja/ < org.mate.caja.dump
 }
 
 setupMateTerminal(){
+  echo "Configuring MATE Terminal ..."
   cd ${BASEDIR}/dconf
   dconf load /org/mate/terminal/ < org.mate.terminal.dump
 }
 
 setupXFCE4PowerManager(){
+  echo "Configuring XFCE4-Power-Manager ..."
   xfconf-query --create -t int -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s 1
 }
 
 copyOpenboxAndGtkThemes(){
+  echo "Copy Openbox and Gtk themes ..."
   cd ${BASEDIR}/themes
   unzip -q Themes-master.zip
   for i in Themes-master/*; do if [ -d "$i" ]; then mv "$i" ~/.themes/; fi; done
@@ -85,6 +103,7 @@ copyOpenboxAndGtkThemes(){
 }
 
 setupGtk(){
+  echo "Configuring Gtk ..."
   cd ${BASEDIR}/themes
   if [ -f ~/.gtkrc-2.0  ]; then
     sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=\"Greybird\"/' ~/.gtkrc-2.0
@@ -106,6 +125,7 @@ setupGtk(){
 }
 
 setupWallpaper(){
+  echo "Setting wallpaper ..."
   cp ${BASEDIR}/pictures/${WALLPAPER_FILE_NAME} ~/Pictures
   cd ${BASEDIR}/nitrogen
   if [ ! -d ~/.config/nitrogen ]; then
@@ -119,19 +139,19 @@ setupWallpaper(){
   nitrogen --restore	
 }
 
-if [ -f output ]; then
-  renameFileForBackup output
+if [ -f StdOutErr.log ]; then
+  renameFileForBackup StdOutErr.log
 fi
-setupBash >>output 2>>output
-setupVim >>output 2>>output
-additionalFonts >>output 2>>output
-setupOpenbox >>output 2>>output
-setupTint2 >>output 2>>output
-setupDmenu >>output 2>>output
-setupHtop >>output 2>>output
-setupMateCaja >>output 2>>output
-setupMateTerminal >>output 2>>output
-setupXFCE4PowerManager >>output 2>>output
-copyOpenboxAndGtkThemes >>output 2>>output
-setupGtk >>output 2>>output
-setupWallpaper >>output 2>>output
+setupBash 2>&1 | tee -a StdOutErr.log
+setupVim 2>&1 | tee -a StdOutErr.log
+additionalFonts 2>&1 | tee -a StdOutErr.log
+setupOpenbox 2>&1 | tee -a StdOutErr.log
+setupTint2 2>&1 | tee -a StdOutErr.log
+setupDmenu 2>&1 | tee -a StdOutErr.log
+setupHtop 2>&1 | tee -a StdOutErr.log
+setupMateCaja 2>&1 | tee -a StdOutErr.log
+setupMateTerminal 2>&1 | tee -a StdOutErr.log
+setupXFCE4PowerManager 2>&1 | tee -a StdOutErr.log
+copyOpenboxAndGtkThemes 2>&1 | tee -a StdOutErr.log
+setupGtk 2>&1 | tee -a StdOutErr.log
+setupWallpaper 2>&1 | tee -a StdOutErr.log

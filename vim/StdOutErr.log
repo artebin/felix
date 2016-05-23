@@ -1,0 +1,57 @@
+Copying fonts ...
+/usr/share/fonts: caching, new cache contents: 0 fonts, 5 dirs
+/usr/share/fonts/X11: caching, new cache contents: 0 fonts, 4 dirs
+/usr/share/fonts/X11/Type1: caching, new cache contents: 8 fonts, 0 dirs
+/usr/share/fonts/X11/encodings: caching, new cache contents: 0 fonts, 1 dirs
+/usr/share/fonts/X11/encodings/large: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/X11/misc: caching, new cache contents: 59 fonts, 0 dirs
+/usr/share/fonts/X11/util: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap: caching, new cache contents: 0 fonts, 5 dirs
+/usr/share/fonts/cmap/adobe-cns1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-gb1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-japan1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-japan2: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/cmap/adobe-korea1: caching, new cache contents: 0 fonts, 0 dirs
+/usr/share/fonts/opentype: caching, new cache contents: 0 fonts, 4 dirs
+/usr/share/fonts/opentype/mathjax: caching, new cache contents: 22 fonts, 0 dirs
+/usr/share/fonts/opentype/noto: caching, new cache contents: 36 fonts, 0 dirs
+/usr/share/fonts/opentype/stix: caching, new cache contents: 29 fonts, 0 dirs
+/usr/share/fonts/opentype/stix-word: caching, new cache contents: 5 fonts, 0 dirs
+/usr/share/fonts/truetype: caching, new cache contents: 1 fonts, 21 dirs
+/usr/share/fonts/truetype/abyssinica: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/ancient-scripts: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/dejavu: caching, new cache contents: 6 fonts, 0 dirs
+/usr/share/fonts/truetype/fonts-guru-extra: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/freefont: caching, new cache contents: 12 fonts, 0 dirs
+/usr/share/fonts/truetype/kacst: caching, new cache contents: 15 fonts, 0 dirs
+/usr/share/fonts/truetype/kacst-one: caching, new cache contents: 2 fonts, 0 dirs
+/usr/share/fonts/truetype/lao: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/lato: caching, new cache contents: 18 fonts, 0 dirs
+/usr/share/fonts/truetype/liberation: caching, new cache contents: 16 fonts, 0 dirs
+/usr/share/fonts/truetype/lohit-punjabi: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/nanum: caching, new cache contents: 6 fonts, 0 dirs
+/usr/share/fonts/truetype/noto: caching, new cache contents: 108 fonts, 0 dirs
+/usr/share/fonts/truetype/openoffice: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/padauk: caching, new cache contents: 4 fonts, 0 dirs
+/usr/share/fonts/truetype/sinhala: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/takao-gothic: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/tibetan-machine: caching, new cache contents: 1 fonts, 0 dirs
+/usr/share/fonts/truetype/tlwg: caching, new cache contents: 58 fonts, 0 dirs
+/usr/share/fonts/truetype/ttf-khmeros-core: caching, new cache contents: 2 fonts, 0 dirs
+/usr/share/fonts/truetype/ubuntu-font-family: caching, new cache contents: 13 fonts, 0 dirs
+/usr/share/fonts/type1: caching, new cache contents: 0 fonts, 1 dirs
+/usr/share/fonts/type1/gsfonts: caching, new cache contents: 35 fonts, 0 dirs
+/usr/local/share/fonts: caching, new cache contents: 8 fonts, 0 dirs
+/home/njames/.local/share/fonts: skipping, no such directory
+/home/njames/.fonts: skipping, no such directory
+Re-scanning /usr/share/fonts: caching, new cache contents: 0 fonts, 5 dirs
+Re-scanning /usr/share/fonts/X11: caching, new cache contents: 0 fonts, 4 dirs
+Re-scanning /usr/share/fonts/X11/encodings: caching, new cache contents: 0 fonts, 1 dirs
+Re-scanning /usr/share/fonts/cmap: caching, new cache contents: 0 fonts, 5 dirs
+Re-scanning /usr/share/fonts/opentype: caching, new cache contents: 0 fonts, 4 dirs
+Re-scanning /usr/share/fonts/truetype: caching, new cache contents: 1 fonts, 21 dirs
+Re-scanning /usr/share/fonts/type1: caching, new cache contents: 0 fonts, 1 dirs
+/var/cache/fontconfig: cleaning cache directory
+/home/njames/.cache/fontconfig: cleaning cache directory
+/home/njames/.fontconfig: not cleaning non-existent cache directory
+fc-cache: succeeded
