@@ -15,7 +15,7 @@ renameFileForBackup(){
   mv "$1" ${BACKUP_FILE}
 }
 
-setupBash(){
+configure_bash(){
   echo "Configuring bash ..."
   cd ${BASEDIR}/bash
   if [ -f ~/.bashrc ]; then
@@ -24,7 +24,7 @@ setupBash(){
   cp bashrc ~/.bashrc
 }
 
-setupVim(){
+configure_vim(){
   echo "Configuring vim ..."
   cd ${BASEDIR}/vim
   if [ -f ~/.vimrc ]; then
@@ -33,7 +33,7 @@ setupVim(){
   cp vimrc ~/.vimrc
 }
 
-additionalFonts(){
+copy_additional_fonts(){
   echo "Copying fonts ..."
   cd ${BASEDIR}/fonts
   sudo cp *.ttf /usr/local/share/fonts/
@@ -41,7 +41,7 @@ additionalFonts(){
   sudo fc-cache -f -v 1>/dev/null
 }
 
-setupOpenbox(){
+configure_openbox(){
   echo "Configuration openbox ..."
   cd ${BASEDIR}
   if [ -d ~/.config/openbox ]; then
@@ -50,7 +50,7 @@ setupOpenbox(){
   cp -r ./openbox ~/.config/
 }
 
-setupTint2(){
+configure_tint2(){
   echo "Configuration tint2 ..."
   cd ${BASEDIR}
   if [ -d ~/.config/tint2 ]; then
@@ -59,7 +59,7 @@ setupTint2(){
   cp -r ./tint2 ~/.config/
 }
 
-setupDmenu(){
+configure_dmenu(){
   echo "Configuration dmenu ..."
   cd ${BASEDIR}
   if [ -d ~/.config/dmenu ]; then
@@ -69,30 +69,30 @@ setupDmenu(){
   chmod +x ~/.config/dmenu/dmenu-bind.sh
 }
 
-setupHtop(){
+configure_htop(){
   echo "Configuration htop ..."
   cd ${BASEDIR}/htop
   cp htoprc ~/.htoprc
 }
 
-setupMateCaja(){
+configure_mate_caja(){
   echo "Configuration MATE Caja ..."
   cd ${BASEDIR}/dconf
   dconf load /org/mate/caja/ < org.mate.caja.dump
 }
 
-setupMateTerminal(){
+configure_mate_terminal(){
   echo "Configuring MATE Terminal ..."
   cd ${BASEDIR}/dconf
   dconf load /org/mate/terminal/ < org.mate.terminal.dump
 }
 
-setupXFCE4PowerManager(){
+configure_xfce4_power_manager(){
   echo "Configuring XFCE4-Power-Manager ..."
   xfconf-query --create -t int -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s 1
 }
 
-copyOpenboxAndGtkThemes(){
+copy_themes(){
   echo "Copy Openbox and Gtk themes ..."
   cd ${BASEDIR}/themes
   unzip -q Themes-master.zip
@@ -102,19 +102,22 @@ copyOpenboxAndGtkThemes(){
   mv Erthe-njames ~/.themes
 }
 
-setupGtk(){
-  echo "Configuring GTK+ ..."
+configure_gtk(){
   cd ${BASEDIR}/themes
+  
+  # GTK+ 2.0
   if [ -f ~/.gtkrc-2.0  ]; then
     sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=\"Greybird\"/' ~/.gtkrc-2.0
     sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' ~/.gtkrc-2.0
   else
     cp gtkrc-2.0 ~/.gtkrc-2.0
   fi
+
+  # GTK+ 3.0
   if [ -d ~/.config/gtk-3.0 ]; then  
     if [ -f ~/.config/gtk-3.0/settings.ini ]; then
       sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=Greybird/' ~/.config/gtk-3.0/settings.ini
-      sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' ~/.gtkrc-2.0
+      sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' ~/.config/gtk-3.0/settings.ini
     else
       cp gtkrc-3.0 ~/.config/gtk-3.0/settings.ini
     fi
@@ -125,14 +128,10 @@ setupGtk(){
   
   # Disable the scrollbar overlay introduced in GTK+ 3.15
   # Cannot find a property in gtkrc-3.0 for that...
-  if [ -f ~/.xinitrc ]; then
-    sed -i '/^GTK_OVERLAY_SCROLLING=/s/.*/GTK_OVERLAY_SCROLLING=0/' ~/.xinitrc
-  else
-    echo "GTK_OVERLAY_SCROLLING=0" > ~/.xinitrc
-  fi
+  sudo echo "export LIBOVERLAY_SCROLLBAR=0" > /etc/X11/Xsession.d/80overlayscrollbars
 }
 
-setupWallpaper(){
+set_wallpaper(){
   echo "Setting wallpaper ..."
   cp ${BASEDIR}/pictures/${WALLPAPER_FILE_NAME} ~/Pictures
   cd ${BASEDIR}/nitrogen
@@ -150,16 +149,17 @@ setupWallpaper(){
 if [ -f StdOutErr.log ]; then
   renameFileForBackup StdOutErr.log
 fi
-setupBash 2>&1 | tee -a StdOutErr.log
-setupVim 2>&1 | tee -a StdOutErr.log
-additionalFonts 2>&1 | tee -a StdOutErr.log
-setupOpenbox 2>&1 | tee -a StdOutErr.log
-setupTint2 2>&1 | tee -a StdOutErr.log
-setupDmenu 2>&1 | tee -a StdOutErr.log
-setupHtop 2>&1 | tee -a StdOutErr.log
-setupMateCaja 2>&1 | tee -a StdOutErr.log
-setupMateTerminal 2>&1 | tee -a StdOutErr.log
-setupXFCE4PowerManager 2>&1 | tee -a StdOutErr.log
-copyOpenboxAndGtkThemes 2>&1 | tee -a StdOutErr.log
-setupGtk 2>&1 | tee -a StdOutErr.log
-setupWallpaper 2>&1 | tee -a StdOutErr.log
+
+configure_bash 2>&1 | tee -a StdOutErr.log
+configure_vim 2>&1 | tee -a StdOutErr.log
+copy_additional_fonts 2>&1 | tee -a StdOutErr.log
+configure_openbox 2>&1 | tee -a StdOutErr.log
+configure_tint2 2>&1 | tee -a StdOutErr.log
+configure_dmenu 2>&1 | tee -a StdOutErr.log
+configure_htop 2>&1 | tee -a StdOutErr.log
+configure_mate_caja 2>&1 | tee -a StdOutErr.log
+configure_mate_terminal 2>&1 | tee -a StdOutErr.log
+configure_xfce4_power_manager 2>&1 | tee -a StdOutErr.log
+copy_themes 2>&1 | tee -a StdOutErr.log
+configure_gtk 2>&1 | tee -a StdOutErr.log
+set_wallpaper 2>&1 | tee -a StdOutErr.log

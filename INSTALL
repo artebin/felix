@@ -1,7 +1,7 @@
 Log in into Xubuntu
 Open a Terminal
 xfce4-settings-manager
-Check AdditionalDrivers 
+Choose AdditionalDrivers 
   => install any missing drivers
 Choose LanguageSupport 
   => install missing language support
@@ -12,6 +12,7 @@ Choose LanguageSupport
      several official languages and you do not speak the "default" 
      official language). Another weird thing is the default currency 
      based on the country, i.e. currency cannot be set.
+Choose Notifications: select theme "Numix"
 sudo apt-get install git
 git clone http://github.com/artebin/felix
 cd felix
