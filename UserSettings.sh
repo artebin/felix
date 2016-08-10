@@ -103,7 +103,7 @@ copyOpenboxAndGtkThemes(){
 }
 
 setupGtk(){
-  echo "Configuring Gtk ..."
+  echo "Configuring GTK+ ..."
   cd ${BASEDIR}/themes
   if [ -f ~/.gtkrc-2.0  ]; then
     sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=\"Greybird\"/' ~/.gtkrc-2.0
@@ -121,6 +121,14 @@ setupGtk(){
   else
     mkdir ~/.config/gtk-3.0
     cp gtkrc-3.0 ~/.config/gtk-3.0/settings.ini
+  fi
+  
+  # Disable the scrollbar overlay introduced in GTK+ 3.15
+  # Cannot find a property in gtkrc-3.0 for that...
+  if [ -f ~/.xinitrc ]; then
+    sed -i '/^GTK_OVERLAY_SCROLLING=/s/.*/GTK_OVERLAY_SCROLLING=0/' ~/.xinitrc
+  else
+    echo "GTK_OVERLAY_SCROLLING=0" > ~/.xinitrc
   fi
 }
 
