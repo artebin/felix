@@ -17,7 +17,7 @@ addLightdmGreeterOpenboxBadge(){
 # Grub
 # => Remove hidden timeout 0
 # => Remove boot option "quiet" and "splash"
-sudo sed -i '/^GRUB_HIDDEN_TIMEOUT/s/#GRUB_HIDDEN_TIMEOUT=0/' /etc/default/grub
+sudo sed -i '/^GRUB_HIDDEN_TIMEOUT/s/.*/#GRUB_HIDDEN_TIMEOUT=0/' /etc/default/grub
 sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub
 sudo update-grub
 
