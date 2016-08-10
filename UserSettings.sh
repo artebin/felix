@@ -128,7 +128,7 @@ configure_gtk(){
   
   # Disable the scrollbar overlay introduced in GTK+ 3.15
   # Cannot find a property in gtkrc-3.0 for that...
-  sudo echo "export LIBOVERLAY_SCROLLBAR=0" > /etc/X11/Xsession.d/80overlayscrollbars
+  echo "export GTK_OVERLAY_SCROLLING=0" | sudo tee /etc/X11/Xsession.d/80overlayscrollbars
 }
 
 set_wallpaper(){
