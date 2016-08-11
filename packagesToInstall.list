@@ -5,6 +5,7 @@ vim
 vim-gtk
 geany
 geany-plugins
+htop
 caja
 caja-actions
 caja-extensions-common
@@ -12,6 +13,8 @@ caja-open-terminal
 mate-icon-theme
 mate-icon-theme-faenza
 faenza-icon-theme
+gimp
+gimp-data-extras
 gsimplecal
 obconf
 obmenu
@@ -58,3 +61,12 @@ bless
 kdiff3
 mono-mcs
 galternatives
+xcfe4-goodies
+xchat-gnome
+empathy
+abiword
+galgulator
+python-wxgtk3.0
+python-wxtools
+wx3.0-i18n
+python-xlib

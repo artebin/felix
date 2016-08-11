@@ -15,6 +15,10 @@ add_lightdm_greeter_badges(){
   sudo gtk-update-icon-cache /usr/share/icons/hicolor
 }
 
+configure_alternatives(){
+  sudo update_alternatives set x-terminal-emulator /usr/bin/mate-terminal.wrapper
+}
+
 configure_gtk(){
   cd ${BASEDIR}/themes
 
