@@ -44,7 +44,10 @@ configure_gtk(){
 
   # Disable the scrollbar overlay introduced in GTK+ 3.15
   # Cannot find a property in gtkrc-3.0 for that...
-  echo "export GTK_OVERLAY_SCROLLING=0" | sudo tee /etc/X11/Xsession.d/80overlayscrollbars
+  echo "export GTK_OVERLAY_SCROLLING=0" | sudo tee /etc/X11/Xsession.d/80gtk-overlay-scrolling
+
+  # Disable SWT_GTK3 (use GTK+ 2.0 for SWT)
+  echo "export SWT_GTK3=0" | sudo tee /etc/X11/Xsession.d/80swt-gtk
 }
 
 configure_grub(){

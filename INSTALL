@@ -32,3 +32,9 @@ If you are using Xubuntu 16.04 then you maybe experience the bug #1568604 "Mouse
 https://bugs.launchpad.net/ubuntu/+source/xserver-xorg-video-intel/+bug/1568604
 You can reinstall the intel driver, version 2:2.99.917+git20160706-1ubuntu1
 https://launchpad.net/ubuntu/yakkety/+package/xserver-xorg-video-intel
+
+Java => change PATH in /etc/profile
+
+Eclipse => force usage of GTK+ 2.0 with export SWT_GTK3=0
+
+
