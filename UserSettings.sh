@@ -114,21 +114,15 @@ configure_gtk(){
   fi
 
   # GTK+ 3.0
-  if [ -d ~/.config/gtk-3.0 ]; then  
-    if [ -f ~/.config/gtk-3.0/settings.ini ]; then
-      sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=Greybird/' ~/.config/gtk-3.0/settings.ini
-      sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' ~/.config/gtk-3.0/settings.ini
-    else
-      cp gtkrc-3.0 ~/.config/gtk-3.0/settings.ini
-    fi
-  else
+  if [ ! -d ~/.config/gtk-3.0 ]; then
     mkdir ~/.config/gtk-3.0
-    cp gtkrc-3.0 ~/.config/gtk-3.0/settings.ini
   fi
-  
-  # Disable the scrollbar overlay introduced in GTK+ 3.15
-  # Cannot find a property in gtkrc-3.0 for that...
-  echo "export GTK_OVERLAY_SCROLLING=0" | sudo tee /etc/X11/Xsession.d/80overlayscrollbars
+  if [ ! -f ~/.config/gtk-3.0/settings.ini ]; then
+    cp gtkrc-3.0 ~/.config/gtk-3.0/settings.ini
+  else
+    sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=Greybird/' ~/.config/gtk-3.0/settings.ini
+    sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' ~/.config/gtk-3.0/settings.ini
+  fi
 }
 
 set_wallpaper(){

@@ -21,6 +21,7 @@ configure_gtk(){
   # Copy theme
   tar xzf Erthe-njames.tar.gz
   sudo cp -R Erthe-njames /usr/share/themes
+  sudo chmod -R 755 /usr/share/themes
   rm -fr Erthe-njames
 
   # GTK+ 2.0
@@ -29,11 +30,17 @@ configure_gtk(){
     sudo sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' ~/.gtkrc-2.0
   else
     sudo cp gtkrc-2.0 /etc/gtk-2.0/gtkrc
+    sudo chmod 755 /etc/gtk-2.0/gtkrc
   fi
 
   # GTK+ 3.0
-  sudo sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=Greybird/' /etc/gtk-3.0/settings.ini
-  sudo sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' /etc/gtk-3.0/settings.ini
+  if [ -f /etc/gtk-3.0/settings.ini ]; then
+    sudo sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=Greybird/' /etc/gtk-3.0/settings.ini
+    sudo sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' /etc/gtk-3.0/settings.ini
+  else
+    sudo cp gtkrc-3.0 /etc/gtk-3.0/settings.ini
+    sudo chmod 755 /etc/gtk-3.0/settings.ini
+  fi
 }
 
 configure_grub(){
@@ -46,5 +53,5 @@ configure_grub(){
 
 disable_apport
 add_lightdm_greeter_badges
-configure_gtk /root
+configure_gtk
 configure_grub
