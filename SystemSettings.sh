@@ -26,10 +26,10 @@ configure_gtk(){
 
   # GTK+ 2.0
   if [ -f /etc/gtk-2.0/gtkrc  ]; then
-    sudo sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=\"Greybird\"/' ~/.gtkrc-2.0
-    sudo sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' ~/.gtkrc-2.0
+    sudo sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=\"Greybird\"/' /etc/gtk-2.0/gtkrc
+    sudo sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' /etc/gtk-2.0/gtkrc
   else
-    sudo cp gtkrc-2.0 /etc/gtk-2.0/gtkrc
+    sudo cp system.gtkrc-2.0 /etc/gtk-2.0/gtkrc
     sudo chmod 755 /etc/gtk-2.0/gtkrc
   fi
 
@@ -38,7 +38,7 @@ configure_gtk(){
     sudo sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=Greybird/' /etc/gtk-3.0/settings.ini
     sudo sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' /etc/gtk-3.0/settings.ini
   else
-    sudo cp gtkrc-3.0 /etc/gtk-3.0/settings.ini
+    sudo cp system.gtkrc-3.0 /etc/gtk-3.0/settings.ini
     sudo chmod 755 /etc/gtk-3.0/settings.ini
   fi
 
