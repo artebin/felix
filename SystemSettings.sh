@@ -41,6 +41,10 @@ configure_gtk(){
     sudo cp gtkrc-3.0 /etc/gtk-3.0/settings.ini
     sudo chmod 755 /etc/gtk-3.0/settings.ini
   fi
+
+  # Disable the scrollbar overlay introduced in GTK+ 3.15
+  # Cannot find a property in gtkrc-3.0 for that...
+  echo "export GTK_OVERLAY_SCROLLING=0" | sudo tee /etc/X11/Xsession.d/80overlayscrollbars
 }
 
 configure_grub(){
