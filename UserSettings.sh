@@ -110,7 +110,7 @@ configure_gtk(){
     sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=\"Greybird\"/' ~/.gtkrc-2.0
     sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' ~/.gtkrc-2.0
   else
-    cp gtkrc-2.0 ~/.gtkrc-2.0
+    cp user.gtkrc-2.0 ~/.gtkrc-2.0
   fi
 
   # GTK+ 3.0
@@ -118,7 +118,7 @@ configure_gtk(){
     mkdir ~/.config/gtk-3.0
   fi
   if [ ! -f ~/.config/gtk-3.0/settings.ini ]; then
-    cp gtkrc-3.0 ~/.config/gtk-3.0/settings.ini
+    cp user.gtkrc-3.0 ~/.config/gtk-3.0/settings.ini
   else
     sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=Greybird/' ~/.config/gtk-3.0/settings.ini
     sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' ~/.config/gtk-3.0/settings.ini
