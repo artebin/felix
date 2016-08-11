@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
+<openbox_menu xmlns="http://openbox.org/" 
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+              xsi:schemaLocation="http://openbox.org/          
+              file:///usr/share/openbox/menu.xsd">
 	<menu id="root-menu" label="Openbox 3.5">
 		<item label="Terminal">
 			<action name="Execute">
@@ -13,7 +16,7 @@
 		</item>
 		<item label="Text Editor">
 			<action name="Execute">
-				<command>sensible-editor</command>
+				<command>geany</command>
 			</action>
 		</item>
 		<item label="Web Browser">
@@ -23,41 +26,24 @@
 		</item>
 		<item label="Mail Client">
 			<action name="Execute">
-				<command>thundebird</command>
+				<command>thunderbird</command>
 			</action>
 		</item>
 		<item label="Media Player">
 			<action name="Execute">
-				<command>vlc</command>
+				<command>smplayer</command>
 			</action>
 		</item>
 		<separator/>
 		<menu id="accessories" label="Accessories">
-			<item label="GVim">
+			<item label="kdiff3">
 				<action name="Execute">
-					<command>gvim</command>
-				</action>
-			</item>
-			<item label="Geany Text Editor">
-				<action name="Execute">
-					<command>
-						geany
-					</command>
-				</action>
-			</item>
-			<item label="Meld">
-				<action name="Execute">
-					<command>Meld</command>
-				</action>
-			</item>
-			<item label="File Manager (caja)">
-				<action name="Execute">
-					<execute>caja</execute>
+					<command>kdiff3</command>
 				</action>
 			</item>
 			<item label="Task Manager (htop)">
 				<action name="Execute">
-					<command>terminator --command=&quot;htop&quot;</command>
+					<command>mate-terminal --command=&quot;htop&quot;</command>
 				</action>
 			</item>
 		</menu>
@@ -74,53 +60,29 @@
 					</command>
 				</action>
 			</item>
-			<item label="Viewnior Image Viewer">
+			<item label="Image Viewer (EoM)">
 				<action name="Execute">
 					<command>
 						viewnior
 					</command>
 				</action>
 			</item>
-			<menu id="graphicsScreenshots" label="Take Screenshot">
-				<item label="Screenshooter">
-					<action name="Execute">
-						<command>
-							xfce4-screenshooter
-						</command>
-					</action>
-				</item>
-				<separator label="scrot"/>
-				<item label="Now">
-					<action name="Execute">
-						<command>
-							scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; viewnior ~/images/$f'
-						</command>
-					</action>
-				</item>
-				<item label="In 5 Seconds...">
-					<action name="Execute">
-						<command>
-							scrot -d 5 '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; viewnior ~/images/$f'
-						</command>
-					</action>
-				</item>
-				<item label="In 10 Seconds...">
-					<action name="Execute">
-						<command>
-							scrot -d 10 '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; viewnior ~/images/$f'
-						</command>
-					</action>
-				</item>
-				<item label="Selected Area... (click &amp; drag mouse)">
-					<action name="Execute">
-						<command>
-							scrot -s '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; viewnior ~/images/$f'
-						</command>
-					</action>
-				</item>
-			</menu>
+			<item label="Screenshooter">
+				<action name="Execute">
+					<command>
+						xfce4-screenshooter
+					</command>
+				</action>
+			</item>
 		</menu>
 		<menu id="multimedia" label="Multimedia">
+		  <item label="SMPlayer">
+        <action name="Execute">
+          <command>
+            smplayer
+          </command>
+        </action>
+      </item>
 			<item label="VLC">
 				<action name="Execute">
 					<command>
@@ -145,6 +107,18 @@
 		</menu>
 		<menu id="network" label="Network">
 			<menu execute="cb-x-www-browser-pipemenu" id="wwwbrowsers" label="WWW Browsers"/>
+			<menu id="wwwbrowsers" label="WWW Browsers">
+			  <item label="Firefox">
+          <action name="Execute">
+            <execute>firefox</execute>
+          </action>
+        </item>
+        <item label="Chromium">
+          <action name="Execute">
+            <execute>chromium</execute>
+          </action>
+        </item>
+			</menu>
 			<item label="Thunderbird">
 				<action name="Execute">
 					<execute>thunderbird</execute>
@@ -153,14 +127,14 @@
 			<item label="BareFTP">
 				<action name="Execute">
 					<command>
-						gftp
+						bareftp
 					</command>
 				</action>
 			</item>
-			<item label="Transmission BitTorrent Client">
+			<item label="Deluge BitTorrent Client">
 				<action name="Execute">
 					<command>
-						transmission-gtk
+						deluge
 					</command>
 				</action>
 			</item>
@@ -178,13 +152,6 @@
 					</command>
 				</action>
 			</item>
-			<menu execute="cb-remote-desktop-pipemenu" id="remotedesktop" label="Remote Desktop"/>
-			<menu execute="cb-sshconfig-pipemenu" id="sshconfig" label="SSH"/>
-			<item label="Pidgin">
-				<action name="Execute">
-					<command>pidgin</command>
-				</action>
-			</item>
 			<item label="Empathy">
 				<action name="Execute">
 					<command>empathy</command>
@@ -195,12 +162,10 @@
 					<command>skype</command>
 				</action>
 			</item>
-			<separator label="Services"/>
-			<menu execute="cb-dropbox-pipemenu" id="dropbox" label="Dropbox"/>
 		</menu>
 		<menu id="office" label="Office">
 			<menu execute="~/.config/openbox/cb-pipemenus/cb-libreoffice-pipemenu" id="libreoffice" label="LibreOffice"/>
-			<item label="Google Docs">
+			<item label="Google Drive">
 				<action name="Execute">
 					<command>
 						x-www-browser https://drive.google.com/
@@ -228,10 +193,10 @@
 					</command>
 				</action>
 			</item>
-			<item label="Atril PDF Viewer">
+			<item label="PDF Viewer (Atril)">
 				<action name="Execute">
 					<command>
-						evince
+						atril
 					</command>
 				</action>
 			</item>
@@ -309,7 +274,7 @@
 				<item label="man page">
 					<action name="Execute">
 						<command>
-							terminator --command=&quot;man tint2&quot;
+							mate-terminal --command=&quot;man tint2&quot;
 						</command>
 					</action>
 				</item>
@@ -333,7 +298,7 @@
 				<item label="man xrandr">
 					<action name="Execute">
 						<command>
-						    terminator --command=&quot;man xrandr&quot;
+						    mate-terminal --command=&quot;man xrandr&quot;
 					    </command>
 					</action>
 				</item>
@@ -341,7 +306,7 @@
 			<item label="Edit Default Applications">
 				<action name="Execute">
 					<command>
-						terminator --command=&quot;sudo update-alternatives --all&quot;
+						mate-terminal --command=&quot;sudo update-alternatives --all&quot;
 					</command>
 				</action>
 			</item>
@@ -368,7 +333,13 @@
 			</item>
 		</menu>
 		<menu id="system" label="System">
-			<menu execute="~/.config/openbox/cb-pipemenus/cb-printing-pipemenu" id="PrintingPipeMenu" label="Printers"/>
+			<item label="Configure Printers">
+        <action name="Execute">
+          <command>
+            system-config-printer
+          </command>
+        </action>
+      </item>
 			<item label="GParted">
 				<action name="Execute">
 					<command>
