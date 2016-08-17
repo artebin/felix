@@ -16,6 +16,9 @@ deluge_deamon(){
   echo "njames:password:10" >> ~/.config/deluge/auth
   deluge-console "config -s allow_remote True"
   deluge-console "config allow_remote"
+  mkdir deluge.tmp
+  mkdir deluge.completed
+  mkdir deluge.torrent
 }
 
 install_server_packages
