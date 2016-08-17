@@ -6,7 +6,7 @@ BASEDIR=$(dirname ${SCRIPT_PATH})
 sudo apt-get update
 sudo apt-get -y upgrade
 
-xargs sudo apt-get -y remove < ./packagesToRemove.list
+xargs sudo apt-get -y remove < ./packages.desktop.remove.list
 sudo apt-get -y autoremove
 
-xargs sudo apt-get -y install < ./packagesToInstall.list
+xargs sudo apt-get -y install < ./packages.desktop.install.list

@@ -5,10 +5,12 @@ BASEDIR=$(dirname ${SCRIPT_PATH})
 LIGHTDM_GREETER_OPENBOX_BADGE_FILE_NAME=openbox_badge-symbolic#1.svg
 
 disable_apport(){
+  echo "Disabling apport ..."
   sudo sed -i '/^enabled=/s/.*/enabled=0/' /etc/default/apport
 }
 
 add_lightdm_greeter_badges(){
+  echo "Adding lighdm greeter badges ..."
   # Greeter badge for Openbox
   cd ${BASEDIR}/lightdm-greeter-badge
   sudo cp ${LIGHTDM_GREETER_OPENBOX_BADGE_FILE_NAME} /usr/share/icons/hicolor/scalable/places/openbox_badge-symbolic.svg
@@ -16,10 +18,12 @@ add_lightdm_greeter_badges(){
 }
 
 configure_alternatives(){
+  echo "Setting mate-terminal as default x-terminal-emulator ..."
   sudo update_alternatives set x-terminal-emulator /usr/bin/mate-terminal.wrapper
 }
 
 configure_gtk(){
+  echo "Configuring gtk ..."
   cd ${BASEDIR}/themes
 
   # Copy theme
@@ -55,6 +59,7 @@ configure_gtk(){
 }
 
 configure_grub(){
+  echo "Configuring grub ..."
   # Remove hidden timeout 0 => show grub
   sudo sed -i '/^GRUB_HIDDEN_TIMEOUT/s/.*/#GRUB_HIDDEN_TIMEOUT=0/' /etc/default/grub
   # Remove boot option "quiet" and "splash"
@@ -62,7 +67,17 @@ configure_grub(){
   sudo update-grub
 }
 
+configure_bash_for_root(){
+  echo "Configuring bash for root ..."
+  cd ${BASEDIR}/bash
+  if [ -f /root/.bashrc ]; then
+    renameFileForBackup /root/.bashrc
+  fi
+  cp bashrc /root/.bashrc  
+}
+
 disable_apport
 add_lightdm_greeter_badges
 configure_gtk
 configure_grub
+configure_bash_for_root
