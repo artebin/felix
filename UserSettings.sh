@@ -42,7 +42,7 @@ configure_openbox(){
 }
 
 configure_tint2(){
-  echo "Configuration tint2 ..."
+  echo "Configuring tint2 ..."
   cd ${BASEDIR}
   if [ -d ~/.config/tint2 ]; then
     renameFileForBackup ~/.config/tint2
@@ -51,7 +51,7 @@ configure_tint2(){
 }
 
 configure_dmenu(){
-  echo "Configuration dmenu ..."
+  echo "Configuring dmenu ..."
   cd ${BASEDIR}
   if [ -d ~/.config/dmenu ]; then
     renameFileForBackup ~/.config/dmenu
@@ -67,7 +67,7 @@ configure_htop(){
 }
 
 configure_mate_caja(){
-  echo "Configurating mate-caja ..."
+  echo "Configuring mate-caja ..."
   cd ${BASEDIR}/dconf
   dconf load /org/mate/caja/ < org.mate.caja.dump
 }
@@ -84,7 +84,7 @@ configure_xfce4_power_manager(){
 }
 
 copy_themes(){
-  echo "Copy themes ..."
+  echo "Copying themes ..."
   cd ${BASEDIR}/themes
   unzip -q Themes-master.zip
   for i in Themes-master/*; do if [ -d "$i" ]; then mv "$i" ~/.themes/; fi; done
@@ -94,6 +94,7 @@ copy_themes(){
 }
 
 configure_gtk(){
+  echo "Configuring gtk ..."
   cd ${BASEDIR}/themes
   
   # GTK+ 2.0
