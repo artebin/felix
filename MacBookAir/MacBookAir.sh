@@ -1,38 +1,48 @@
 #!/bin/sh
 
+. ../common.sh
+
 SCRIPT_PATH=$(readlink -f "$0")
 BASEDIR=$(dirname ${SCRIPT_PATH})
 
-renameFileForBackup(){
-  SUFFIX=.bak.$(date +"%y%m%d-%H%M%S")
-  mv "$1" "$1"${SUFFIX}
+clean(){
+  echo "Cleaning ..."
+  cd ${BASEDIR}
+  rm -fr mba6x_bl
+  rm -f xserver-xorg-video-intel_2.99.917+git20160706-1ubuntu1_amd64.deb
 }
 
-retrieveMacBookAirProductName(){
+retrieve_mac_book_air_product_name(){
+  echo "Retrieving MacBook Air product name..."
   sudo dmidecode -s system-product-name
 }
 
-useFnKeyForSpecialFunctionKeys(){
+configure_apple_hid(){
+  echo "Configuring apple hid (use fn key for special functions keys) ..."
   echo options hid_apple fnmode=2 | sudo tee -a /etc/modprobe.d/hid_apple.conf
   sudo update-initramfs -u -k all
 }	
 
-setupXmodmaprcFileForBacktickAndTildeKeys(){
+configure_xmodmap(){
+  echo "Configuring xmodmap (.xmodmaprc includes fix for backtick and tilde keys) ..."
   cd ${BASEDIR}
   if [ -f ~/.xmodmaprc ]; then
     renameFileForBackup ~/.xmodmaprc
   fi
   cp xmodmaprc ~/.xmodmaprc
+  echo "Configuring openbox for xmodmap autostart ..."
   echo "xmodmap ~/.xmodmaprc &" | tee -a ~/.config/openbox/autostart
 }	
 
-tunePowersaveFunctions(){
+tune_power_save_functions(){
+  echo "Tuning power save functions ..."
   sudo apt-get install -y powertop
   sudo apt-get install -y tlp tlp-rdw
 }	
 
-fixSuspendBacklight(){
-  cd ${BASEDIR}/MacBookAir
+fix_suspend_resume_backlight_issue(){
+  echo "Fixing suspend/resume backlight issue ..."
+  cd ${BASEDIR}
   git clone git://github.com/patjak/mba6x_bl
   cd mba6x_bl
   make
@@ -41,17 +51,21 @@ fixSuspendBacklight(){
   sudo modprobe mba6x_bl
 }
 
-# Retrieve MacBook Air product name
-retrieveMacBookAirProductName
+# If you are using Xubuntu 16.04 then you maybe experience the bug #1568604 "Mouse cursor lost when unlocking with Intel graphics". 
+# https://bugs.launchpad.net/ubuntu/+source/xserver-xorg-video-intel/+bug/1568604 
+#You can reinstall the intel driver version 2:2.99.917+git20160706-1ubuntu1 https://launchpad.net/ubuntu/yakkety/+package/xserver-xorg-video-intel
+fix_bug_1568604(){
+  echo "Fixing bug #1568604 ..."
+  cd ${BASEDIR}
+  sudo dpkg -P xserver-xorg-video-intel
+  wget http://launchpadlibrarian.net/271461135/xserver-xorg-video-intel_2.99.917+git20160706-1ubuntu1_amd64.deb
+  sudo dpkg -i xserver-xorg-video-intel_2.99.917+git20160706-1ubuntu1_amd64.deb
+} 
 
-# Function keys (fn+Fkeys for special function keys)
-useFnKeyForSpecialFunctionKeys
-
-# Backtick and tilde keys via xmodmap
-setupXmodmaprcFileForBacktickAndTildeKeys
-
-# Finetuning powersave functions
-tunePowersaveFunctions
-
-# Suspend/resume backlight issue
-fixSuspendBacklight
+retrieve_mac_book_air_product_name
+configure_apple_hids
+configure_xmodmap
+tune_power_save_functions
+fix_suspend_resume_backlight_issue
+fix_bug_1568604
+cleaning
