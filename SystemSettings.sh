@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. ./common.sh
+
 SCRIPT_PATH=$(readlink -f "$0")
 BASEDIR=$(dirname ${SCRIPT_PATH})
 LIGHTDM_GREETER_OPENBOX_BADGE_FILE_NAME=openbox_badge-symbolic#1.svg
@@ -22,15 +24,18 @@ configure_alternatives(){
   sudo update_alternatives set x-terminal-emulator /usr/bin/mate-terminal.wrapper
 }
 
-configure_gtk(){
-  echo "Configuring gtk ..."
+copy_themes(){
+  echo "Copying themes ..."
   cd ${BASEDIR}/themes
-
-  # Copy theme
   tar xzf Erthe-njames.tar.gz
   sudo cp -R Erthe-njames /usr/share/themes
   sudo chmod -R 755 /usr/share/themes
   rm -fr Erthe-njames
+}
+
+configure_gtk(){
+  echo "Configuring gtk ..."
+  cd ${BASEDIR}/themes
 
   # GTK+ 2.0
   if [ -f /etc/gtk-2.0/gtkrc  ]; then
@@ -70,14 +75,13 @@ configure_grub(){
 configure_bash_for_root(){
   echo "Configuring bash for root ..."
   cd ${BASEDIR}/bash
-  if [ -f /root/.bashrc ]; then
-    renameFileForBackup /root/.bashrc
-  fi
-  cp bashrc /root/.bashrc  
+  sudo renameFileForBackup /root/.bashrc
+  sudo cp bashrc /root/.bashrc
 }
 
 disable_apport
 add_lightdm_greeter_badges
+copy_themes
 configure_gtk
 configure_grub
 configure_bash_for_root

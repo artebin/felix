@@ -25,7 +25,7 @@ configure_vim(){
 }
 
 copy_additional_fonts(){
-  echo "Copying fonts ..."
+  echo "Copying additonal fonts ..."
   cd ${BASEDIR}/fonts
   sudo cp *.ttf /usr/local/share/fonts/
   echo "Updating font cache ..."
@@ -33,7 +33,7 @@ copy_additional_fonts(){
 }
 
 configure_openbox(){
-  echo "Configuration openbox ..."
+  echo "Configuring openbox ..."
   cd ${BASEDIR}
   if [ -d ~/.config/openbox ]; then
     renameFileForBackup ~/.config/openbox
@@ -61,30 +61,30 @@ configure_dmenu(){
 }
 
 configure_htop(){
-  echo "Configuration htop ..."
+  echo "Configuring htop ..."
   cd ${BASEDIR}/htop
   cp htoprc ~/.htoprc
 }
 
 configure_mate_caja(){
-  echo "Configuration MATE Caja ..."
+  echo "Configurating mate-caja ..."
   cd ${BASEDIR}/dconf
   dconf load /org/mate/caja/ < org.mate.caja.dump
 }
 
 configure_mate_terminal(){
-  echo "Configuring MATE Terminal ..."
+  echo "Configuring mate-terminal ..."
   cd ${BASEDIR}/dconf
   dconf load /org/mate/terminal/ < org.mate.terminal.dump
 }
 
 configure_xfce4_power_manager(){
-  echo "Configuring XFCE4-Power-Manager ..."
+  echo "Configuring xfce4-Power-Manager ..."
   xfconf-query --create -t int -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s 1
 }
 
 copy_themes(){
-  echo "Copy Openbox and Gtk themes ..."
+  echo "Copy themes ..."
   cd ${BASEDIR}/themes
   unzip -q Themes-master.zip
   for i in Themes-master/*; do if [ -d "$i" ]; then mv "$i" ~/.themes/; fi; done
@@ -128,7 +128,7 @@ set_wallpaper(){
   fi
   ESCHAPED_PATH=$(echo ${HOME}/Pictures/${WALLPAPER_FILE_NAME} | sed 's/\//\\\//g')
   sed -i "/^file=/s/.*/file=${ESCHAPED_PATH}/" ~/.config/nitrogen/bg-saved.cfg
-  nitrogen --restore	
+  nitrogen --restore
 }
 
 if [ -f StdOutErr.log ]; then
