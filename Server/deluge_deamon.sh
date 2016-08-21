@@ -11,7 +11,7 @@ install_packages(){
 # For using server and client on the same machine but started by different users: copy local creditential from server auth file into the auth file of the user which start the client.
 configure_deluge_deamon(){
   echo "Configuring deluge deamon ..."
-  sudo useradd deluge --base-dir /home/deluge
+  sudo useradd deluge --create-home
   sudo runuser -l deluge -c 'cd /home/deluge;\
                              deluged -c /home/deluge/.config/deluge;\
                              deluge-console "config -s allow_remote True";\
@@ -22,5 +22,5 @@ configure_deluge_deamon(){
                              killall deluged'
 }
 
-#install_packages
+install_packages
 configure_deluge_deamon

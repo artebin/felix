@@ -7,8 +7,5 @@ install_packages(){
   xargs sudo apt-get -y install < ./packages.ampache.list
 }
 
-configure_ampache(){
-}
-
 install_packages
-configure_ampache
+x-www-browser http://localhost/ampache/
