@@ -25,8 +25,8 @@ configure_apple_hid(){
 
 # Trackpad is too sentitive: after releasing the pad for a scrolling, a tap is issued.
 configure_trackpad(){
-  echo "Configure trackpad sensitivity ..."
-  synclient FingerLow=110 FingerHigh=120
+  echo "Configuring trackpad sensitivity ..."
+  echo "synclient FingerLow=110 FingerHigh=120" | tee -a ~/.config/openbox/autostart
 }
 
 configure_xmodmap(){
@@ -75,4 +75,4 @@ configure_xmodmap
 tune_power_save_functions
 fix_suspend_resume_backlight_issue
 fix_bug_1568604
-cleaning
+clean
