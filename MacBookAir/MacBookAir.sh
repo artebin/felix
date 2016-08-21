@@ -23,6 +23,12 @@ configure_apple_hid(){
   sudo update-initramfs -u -k all
 }	
 
+# Trackpad is too sentitive: after releasing the pad for a scrolling, a tap is issued.
+configure_trackpad(){
+  echo "Configure trackpad sensitivity ..."
+  synclient FingerLow=110 FingerHigh=120
+}
+
 configure_xmodmap(){
   echo "Configuring xmodmap (.xmodmaprc includes fix for backtick and tilde keys) ..."
   cd ${BASEDIR}
@@ -63,7 +69,8 @@ fix_bug_1568604(){
 } 
 
 retrieve_mac_book_air_product_name
-configure_apple_hids
+configure_apple_hid
+configure_trackpad
 configure_xmodmap
 tune_power_save_functions
 fix_suspend_resume_backlight_issue
