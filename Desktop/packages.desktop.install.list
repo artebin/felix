@@ -54,6 +54,7 @@ hatari
 tomboy
 aspell-fr
 hamster-applet
+mplayer
 smplayer
 smtube
 deluge-gtk
@@ -72,3 +73,4 @@ wx3.0-i18n
 python-xlib
 shotwell
 curl
+
