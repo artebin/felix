@@ -88,6 +88,7 @@ install_facetimehd(){
   sudo modprobe facetimehd
   sudo modprobe -r bdc_pci
   echo "blacklist bdc_pci" | sudo tee /etc/modprobe.d/blacklist.conf
+  echo "You can test your configuration with \'mplayer tv://\'"
 }
 
 retrieve_mac_book_air_product_name
