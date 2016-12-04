@@ -13,3 +13,8 @@ xargs sudo apt-get -y install < ./packages.desktop.install.list
 
 # Remarquable
 https://remarkableapp.github.io/files/remarkable_1.87_all.deb
+
+# Skype
+sudo dpkg --add-architecture i386
+sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+sudo apt-get update && sudo apt-get install skype
