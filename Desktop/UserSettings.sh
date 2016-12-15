@@ -117,21 +117,6 @@ configure_gtk(){
   fi
 }
 
-set_wallpaper(){
-  echo "Setting wallpaper ..."
-  cp ${BASEDIR}/pictures/${WALLPAPER_FILE_NAME} ~/Pictures
-  cd ${BASEDIR}/nitrogen
-  if [ ! -d ~/.config/nitrogen ]; then
-    mkdir ~/.config/nitrogen
-  fi
-  if [ ! -f ~/.config/nitrogen/bg-saved.cfg ]; then
-    cp bg-saved.cfg ~/.config/nitrogen
-  fi
-  ESCHAPED_PATH=$(echo ${HOME}/Pictures/${WALLPAPER_FILE_NAME} | sed 's/\//\\\//g')
-  sed -i "/^file=/s/.*/file=${ESCHAPED_PATH}/" ~/.config/nitrogen/bg-saved.cfg
-  nitrogen --restore
-}
-
 if [ -f StdOutErr.log ]; then
   renameFileForBackup StdOutErr.log
 fi
@@ -148,4 +133,3 @@ configure_mate_terminal 2>&1 | tee -a StdOutErr.log
 configure_xfce4_power_manager 2>&1 | tee -a StdOutErr.log
 copy_themes 2>&1 | tee -a StdOutErr.log
 configure_gtk 2>&1 | tee -a StdOutErr.log
-set_wallpaper 2>&1 | tee -a StdOutErr.log
