@@ -84,9 +84,16 @@ configure_bash_for_root(){
   cp bashrc /root/.bashrc
 }
 
+enable_hibernation(){
+  echo "Enabling hibernation ..."
+  cd ${BASEDIR}
+  cat com.ubuntu.enable-hibernate.pkla | sudo tee /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
+}
+
 disable_apport
 add_lightdm_greeter_badges
 copy_themes
 configure_gtk
 configure_grub
 configure_bash_for_root
+enable_hibernation
