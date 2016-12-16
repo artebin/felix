@@ -7,8 +7,6 @@ fi
 
 . ./common.sh
 
-SCRIPT_PATH=$(readlink -f "$0")
-BASEDIR=$(dirname ${SCRIPT_PATH})
 LIGHTDM_GREETER_OPENBOX_BADGE_FILE_NAME=openbox_badge-symbolic#1.svg
 
 disable_apport(){

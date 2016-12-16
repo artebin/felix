@@ -2,10 +2,6 @@
 
 . ./common.sh
 
-SCRIPT_PATH=$(readlink -f "$0")
-BASEDIR=$(dirname ${SCRIPT_PATH})
-WALLPAPER_FILE_NAME=pattern_154.gif
-
 configure_bash(){
   echo "Configuring bash ..."
   cd ${BASEDIR}/bash

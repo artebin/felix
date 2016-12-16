@@ -11,3 +11,5 @@ renameFileForBackup(){
   mv "$1" ${BACKUP_FILE}
 }
 
+SCRIPT_PATH=$(readlink -f "$0")
+BASEDIR=$(dirname ${SCRIPT_PATH})

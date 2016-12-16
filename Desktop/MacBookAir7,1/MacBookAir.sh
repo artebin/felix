@@ -1,9 +1,6 @@
 #!/bin/sh
 
-. ../common.sh
-
-SCRIPT_PATH=$(readlink -f "$0")
-BASEDIR=$(dirname ${SCRIPT_PATH})
+. ../Common/common.sh
 
 clean(){
   echo "Cleaning ..."
