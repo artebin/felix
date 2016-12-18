@@ -113,6 +113,10 @@ configure_gtk(){
   fi
 }
 
+make_default_applications(){
+  xdg-mime default caja.desktop inode/directory
+}
+
 if [ -f StdOutErr.log ]; then
   renameFileForBackup StdOutErr.log
 fi
@@ -129,3 +133,4 @@ configure_mate_terminal 2>&1 | tee -a StdOutErr.log
 configure_xfce4_power_manager 2>&1 | tee -a StdOutErr.log
 copy_themes 2>&1 | tee -a StdOutErr.log
 configure_gtk 2>&1 | tee -a StdOutErr.log
+make_default_applications 2>&1 | tee -a StdOutErr.log
