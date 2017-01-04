@@ -11,7 +11,7 @@ sudo apt-get install google-chrome-stable
 }
 
 install_remarquable(){
-https://remarkableapp.github.io/files/remarkable_1.87_all.deb
+wget https://remarkableapp.github.io/files/remarkable_1.87_all.deb
 }
 
 install_skype(){
@@ -29,5 +29,5 @@ sudo apt-get -y autoremove
 xargs sudo apt-get -y install < ./packages.desktop.install.list
 
 install_chrome
-install_remarquable
+#install_remarquable
 install_skype
