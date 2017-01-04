@@ -11,5 +11,17 @@ renameFileForBackup(){
   mv "$1" ${BACKUP_FILE}
 }
 
+printSectionHeading(){
+  echo "###############################################################################################"
+  echo "# ${1}"
+  echo "###############################################################################################"
+}
+
+printSectionEnding(){
+  echo ""
+  echo ""
+  echo ""
+}
+
 SCRIPT_PATH=$(readlink -f "$0")
 BASEDIR=$(dirname ${SCRIPT_PATH})
