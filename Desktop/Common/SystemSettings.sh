@@ -24,7 +24,9 @@ add_lightdm_greeter_badges(){
 
 configure_alternatives(){
   echo "Setting mate-terminal as default x-terminal-emulator ..."
-  update_alternatives set x-terminal-emulator /usr/bin/mate-terminal.wrapper
+  # better to use galternatives
+  #update_alternatives set x-terminal-emulator /usr/bin/mate-terminal.wrapper
+  #update_alternatives set x-www-browser /usr/bin/firefox
 }
 
 copy_themes(){

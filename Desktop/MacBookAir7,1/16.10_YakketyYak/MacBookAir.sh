@@ -65,10 +65,12 @@ install_facetimehd(){
   printSectionEnding
 }
 
-#retrieve_mac_book_air_product_name 2>&1 | tee -a StdOutErr.log
-#configure_apple_hid 2>&1 | tee -a StdOutErr.log
-#configure_trackpad 2>&1 | tee -a StdOutErr.log
-#configure_xmodmap 2>&1 | tee -a StdOutErr.log
-#tune_power_save_functions 2>&1 | tee -a StdOutErr.log
-install_facetimehd 2>&1 | tee -a StdOutErr.log
+retrieve_mac_book_air_product_name 2>&1 | tee -a StdOutErr.log
+configure_apple_hid 2>&1 | tee -a StdOutErr.log
+configure_trackpad 2>&1 | tee -a StdOutErr.log
+configure_xmodmap 2>&1 | tee -a StdOutErr.log
+tune_power_save_functions 2>&1 | tee -a StdOutErr.log
+
+# bcwc_pcie: The driver will not compile for 4.5 and later kernels [[https://github.com/patjak/bcwc_pcie]]
+#install_facetimehd 2>&1 | tee -a StdOutErr.log
 
