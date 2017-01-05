@@ -8,4 +8,4 @@ nitrogen --restore &
 #thunar --daemon &
 #~/apps/pasystray/pasystray-master/src/pasystray &
 #conky -q &
-pasystray &
+#pasystray &
