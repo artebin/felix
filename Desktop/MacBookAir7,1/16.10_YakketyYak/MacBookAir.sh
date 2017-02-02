@@ -4,12 +4,14 @@
 
 retrieve_mac_book_air_product_name(){
   printSectionHeading "Retrieving MacBook Air product name ..."
+  cd ${BASEDIR}
   sudo dmidecode -s system-product-name
   printSectionEnding
 }
 
 configure_apple_hid(){
   printSectionHeading "Configuring apple hid (use fn key for special functions keys) ..."
+  cd ${BASEDIR}
   echo options hid_apple fnmode=2 | sudo tee -a /etc/modprobe.d/hid_apple.conf
   sudo update-initramfs -u -k all
   printSectionEnding
@@ -29,19 +31,24 @@ configure_xmodmap(){
 
 tune_power_save_functions(){
   printSectionHeading "Tuning power save functions ..."
+  cd ${BASEDIR}
   sudo apt-get install -y powertop
   sudo apt-get install -y tlp tlp-rdw
   printSectionEnding
 }	
 
-mba6x_bl(){
-  printSectionHeading "Fixing backlight by installing mba6x_bl from Patrik Jakobsson ..."
+fix_suspend_resume_backlight_issue(){
+  printSectionHeading "Fixing suspend/resume backlight issue by installing mba6x_bl from Patrik Jakobsson ..."
   echo "See [[https://help.ubuntu.com/community/MacBookAir6-2/Trusty]]"
+  echo "See [[https://github.com/patjak/mba6x_bl]]"
+  cd ${BASEDIR}
   #git clone http://github.com/patjak/mba6x_bl
   unzip mba6x_bl-master.zip
   cd mba6x_bl-master
   make
   sudo make install
+  sudo depmod -a
+  sudo modprobe mba6x_bl
   printSectionEnding
 }
 
@@ -73,6 +80,7 @@ retrieve_mac_book_air_product_name 2>&1 | tee -a StdOutErr.log
 configure_apple_hid 2>&1 | tee -a StdOutErr.log
 configure_xmodmap 2>&1 | tee -a StdOutErr.log
 tune_power_save_functions 2>&1 | tee -a StdOutErr.log
+fix_suspend_resume_backlight_issue 2>&1 | tee -a StdOutErr.log
 
 # bcwc_pcie: The driver will not compile for 4.5 and later kernels [[https://github.com/patjak/bcwc_pcie]]
 #install_facetimehd 2>&1 | tee -a StdOutErr.log
