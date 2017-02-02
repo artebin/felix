@@ -1,7 +1,11 @@
 #!/bin/sh
 
-SCRIPT_PATH=$(readlink -f "$0")
-BASEDIR=$(dirname ${SCRIPT_PATH})
+if [ $(id -u) -ne 0 ]; then
+  echo "Please run with root privileges"
+  exit
+fi
+
+. ./common.sh
 
 install_chrome(){
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
