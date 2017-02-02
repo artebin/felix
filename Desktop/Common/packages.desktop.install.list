@@ -71,3 +71,9 @@ shotwell
 curl
 libreoffice
 fonts-font-awesome
+gir1.2-gtksource-3.0
+python3-markdown
+gir1.2-webkit-3.0
+wkhtmltopdf
+gir1.2-javascriptcoregtk-3.0
+python-gtkspellcheck

@@ -7,6 +7,20 @@ fi
 
 . ./common.sh
 
+upgrade_system(){
+sudo apt-get update
+sudo apt-get -y upgrade
+}
+
+process_package_remove_list(){
+xargs sudo apt-get -y remove < ./packages.desktop.remove.list
+sudo apt-get -y autoremove
+}
+
+process_package_install_list(){
+xargs sudo apt-get -y install < ./packages.desktop.install.list
+}
+
 install_chrome(){
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
@@ -16,6 +30,8 @@ sudo apt-get install google-chrome-stable
 
 install_remarquable(){
 wget https://remarkableapp.github.io/files/remarkable_1.87_all.deb
+dpkg -i remarkable_1.87_all.deb
+rm -f remarkable_1.87_all.deb
 }
 
 install_skype(){
@@ -24,14 +40,9 @@ sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) pa
 sudo apt-get update && sudo apt-get install skype
 }
 
-sudo apt-get update
-sudo apt-get -y upgrade
-
-xargs sudo apt-get -y remove < ./packages.desktop.remove.list
-sudo apt-get -y autoremove
-
-xargs sudo apt-get -y install < ./packages.desktop.install.list
-
+upgrade_system
+process_package_remove_list
+process_package_install_list
 install_chrome
-#install_remarquable
+install_remarquable
 install_skype
