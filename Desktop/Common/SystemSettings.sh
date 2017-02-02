@@ -62,7 +62,7 @@ configure_gtk(){
     chmod 755 /etc/gtk-3.0/settings.ini
   fi
 
-  # Disable the scrollbar overlay introduced in GTK+ 3.15
+  # Disable the scrollbar overlay introduced in GTK+ 3.16
   # Cannot find a property in gtkrc-3.0 for that...
   echo "export GTK_OVERLAY_SCROLLING=0" | sudo tee /etc/X11/Xsession.d/80gtk-overlay-scrolling
 
@@ -92,10 +92,10 @@ enable_hibernation(){
   cat com.ubuntu.enable-hibernate.pkla | sudo tee /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
 }
 
-#disable_apport
-#add_lightdm_greeter_badges
+disable_apport
+add_lightdm_greeter_badges
 copy_themes
-#configure_gtk
-#configure_grub
-#configure_bash_for_root
-#enable_hibernation
+configure_gtk
+configure_grub
+configure_bash_for_root
+enable_hibernation
