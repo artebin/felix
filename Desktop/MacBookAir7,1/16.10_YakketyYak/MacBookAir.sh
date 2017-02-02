@@ -34,6 +34,17 @@ tune_power_save_functions(){
   printSectionEnding
 }	
 
+mba6x_bl(){
+  printSectionHeading "Fixing backlight by installing mba6x_bl from Patrik Jakobsson ..."
+  echo "See [[https://help.ubuntu.com/community/MacBookAir6-2/Trusty]]"
+  #git clone http://github.com/patjak/mba6x_bl
+  unzip mba6x_bl-master.zip
+  cd mba6x_bl-master
+  make
+  sudo make install
+  printSectionEnding
+}
+
 install_facetimehd(){
   printSectionHeading "Installing FacetimeHD ..."
   cd ${BASEDIR}
