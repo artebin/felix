@@ -63,7 +63,7 @@
 			<item label="Image Viewer (EoM)">
 				<action name="Execute">
 					<command>
-						viewnior
+						eom
 					</command>
 				</action>
 			</item>
