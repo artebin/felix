@@ -75,7 +75,7 @@ configure_mate_terminal(){
 }
 
 configure_xfce4_power_manager(){
-  echo "Configuring xfce4-Power-Manager ..."
+  echo "Configuring xfce4-power-manager ..."
   xfconf-query --create -t int -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s 1
 }
 
@@ -113,7 +113,9 @@ configure_gtk(){
   fi
 }
 
-make_default_applications(){
+configure_default_applications(){
+  echo "Configuring mate-caja as default file browser ..."
+  mkdir -p ~/.local/share/applications
   xdg-mime default caja.desktop inode/directory
 }
 
@@ -133,4 +135,4 @@ configure_mate_terminal 2>&1 | tee -a StdOutErr.log
 configure_xfce4_power_manager 2>&1 | tee -a StdOutErr.log
 copy_themes 2>&1 | tee -a StdOutErr.log
 configure_gtk 2>&1 | tee -a StdOutErr.log
-make_default_applications 2>&1 | tee -a StdOutErr.log
+configure_default_applications 2>&1 | tee -a StdOutErr.log
