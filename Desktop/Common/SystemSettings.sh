@@ -16,7 +16,6 @@ disable_apport(){
 
 add_lightdm_greeter_badges(){
   echo "Adding lighdm greeter badges ..."
-  # Greeter badge for Openbox
   cd ${BASEDIR}/lightdm-greeter-badge
   cp ${LIGHTDM_GREETER_OPENBOX_BADGE_FILE_NAME} /usr/share/icons/hicolor/scalable/places/openbox_badge-symbolic.svg
   gtk-update-icon-cache /usr/share/icons/hicolor
@@ -34,7 +33,10 @@ copy_themes(){
   cd ${BASEDIR}/themes
   tar xzf Erthe-njames.tar.gz
   cp -R Erthe-njames /usr/share/themes
-  chmod -R 755 /usr/share/themes/Erthe-njames
+  cd /usr/share/themes
+  chmod -R go+r ./Erthe-njames
+  find ./Erthe-njames -type d | xargs chmod go+x
+  cd ${BASEDIR}/themes
   rm -fr Erthe-njames
 }
 
@@ -90,10 +92,10 @@ enable_hibernation(){
   cat com.ubuntu.enable-hibernate.pkla | sudo tee /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
 }
 
-disable_apport
-add_lightdm_greeter_badges
+#disable_apport
+#add_lightdm_greeter_badges
 copy_themes
-configure_gtk
-configure_grub
-configure_bash_for_root
-enable_hibernation
+#configure_gtk
+#configure_grub
+#configure_bash_for_root
+#enable_hibernation
