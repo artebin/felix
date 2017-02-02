@@ -23,9 +23,8 @@ add_lightdm_greeter_badges(){
 
 configure_alternatives(){
   echo "Setting mate-terminal as default x-terminal-emulator ..."
-  # better to use galternatives
-  #update_alternatives set x-terminal-emulator /usr/bin/mate-terminal.wrapper
-  #update_alternatives set x-www-browser /usr/bin/firefox
+  update-alternatives --set x-terminal-emulator /usr/bin/mate-terminal.wrapper
+  update-alternatives --set x-www-browser /usr/bin/firefox
 }
 
 copy_themes(){
@@ -96,10 +95,10 @@ enable_hibernation(){
   cat com.ubuntu.enable-hibernate.pkla | sudo tee /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
 }
 
-#disable_apport
-#add_lightdm_greeter_badges
-#copy_themes
+disable_apport
+add_lightdm_greeter_badges
+copy_themes
 configure_gtk
-#configure_grub
-#configure_bash_for_root
-#enable_hibernation
+configure_grub
+configure_bash_for_root
+enable_hibernation
