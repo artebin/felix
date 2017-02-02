@@ -57,9 +57,9 @@ border_color = #6a5acd 100
 panel_monitor = all
 panel_position = top center horizontal
 panel_items = TSC
-panel_size = 100% 30
-panel_margin = 0 -1
-panel_padding = 0 0
+panel_size = 100% 34
+panel_margin = 0 0 0 0
+panel_padding = 0 0 0 0
 panel_dock = 0
 wm_menu = 1
 panel_layer = bottom
@@ -110,19 +110,6 @@ task_urgent_font_color = #FFFFFF 100
 task_iconified_font_color = #d8d8d8 60
 font_shadow = 0
 
-# Launcher
-launcher_padding = 8 4 4
-launcher_background_id = 0
-launcher_icon_size = 16
-# Specify icon theme names with launcher_icon_theme. 
-# if you have an XSETTINGS manager running (like xfsettingsd), tint2 will follow your current theme.
-launcher_icon_theme = elementary-xfce-dark
-# Each launcher_item_app must be a full path to a .desktop file
-launcher_item_app = /usr/share/applications/terminator.desktop
-launcher_item_app = /usr/share/applications/xfce4-file-manager.desktop
-launcher_item_app = /usr/share/applications/gedit.desktop
-launcher_item_app = /usr/share/applications/iceweasel.desktop
-
 # System Tray
 systray = 1
 systray_padding = 4 2 3
@@ -157,16 +144,5 @@ mouse_middle = none
 mouse_right = toggle
 mouse_scroll_up = toggle
 mouse_scroll_down = iconify
-
-# Battery
-battery = 1
-battery_low_status = 20
-battery_low_cmd = notify-send "battery low"
-battery_hide = 96
-bat1_font = Liberation Mono 8
-bat2_font = Liberation Mono 8
-battery_font_color = #b5b5b5 100
-battery_padding = 2 0
-battery_background_id = 0
 
 # End of config
