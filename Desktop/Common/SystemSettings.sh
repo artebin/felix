@@ -97,6 +97,7 @@ enable_hibernation(){
 
 disable_apport
 add_lightdm_greeter_badges
+configure_alternatives
 copy_themes
 configure_gtk
 configure_grub
