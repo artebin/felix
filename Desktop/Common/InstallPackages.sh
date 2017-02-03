@@ -40,9 +40,16 @@ sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) pa
 sudo apt-get update && sudo apt-get install skype
 }
 
+install_mate_1_17(){
+sudo add-apt-repository ppa:jonathonf/mate-1.17
+sudo apt-get update
+sudo apt-get upgrade
+}
+
 upgrade_system
 process_package_remove_list
 process_package_install_list
 install_chrome
 install_remarquable
 install_skype
+#install_mate_1_17

@@ -39,6 +39,20 @@ copy_themes(){
   rm -fr Erthe-njames
 }
 
+install_bunsen_faenza(){
+  echo "Installing bunsen-faenza ..."
+  cd ${BASEDIR}/themes
+  git clone https://github.com/BunsenLabs/bunsen-faenza-icon-theme
+  cd bunsen-faenza-icon-theme
+  tar xzf bunsen-faenza-icon-theme.tar.gz
+  sudo cp -r ./Faenza-Bunsen /usr/share/icons/
+  sudo cp -r ./Faenza-Bunsen-common /usr/share/icons
+  sudo cp -r ./Faenza-Dark-Bunsen /usr/share/icons
+  sudo update-icons-cache /usr/share/icons
+  cd ${BASEDIR}/themes
+  rm -fr bunsen-faenza-icon-theme
+}
+
 configure_gtk(){
   echo "Configuring gtk ..."
   cd ${BASEDIR}/themes
@@ -99,6 +113,7 @@ disable_apport
 add_lightdm_greeter_badges
 configure_alternatives
 copy_themes
+install_bunzen_faenza
 configure_gtk
 configure_grub
 configure_bash_for_root
