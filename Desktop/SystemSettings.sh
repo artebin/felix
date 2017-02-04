@@ -5,9 +5,11 @@ if [ $(id -u) -ne 0 ]; then
   exit
 fi
 
-. ./common.sh
+. ../common.sh
 
-LIGHTDM_GREETER_OPENBOX_BADGE_FILE_NAME=openbox_badge-symbolic#1.svg
+LIGHTDM_GREETER_OPENBOX_BADGE_FILE_NAME="openbox_badge-symbolic#1.svg"
+GTK_ICON_THEME_NAME="Faenza-Bunzen"
+GTK_THEME_NAME="Greybird"
 
 disable_apport(){
   echo "Disabling apport ..."
@@ -18,12 +20,13 @@ add_lightdm_greeter_badges(){
   echo "Adding lighdm greeter badges ..."
   cd ${BASEDIR}/lightdm-greeter-badge
   cp ${LIGHTDM_GREETER_OPENBOX_BADGE_FILE_NAME} /usr/share/icons/hicolor/scalable/places/openbox_badge-symbolic.svg
-  gtk-update-icon-cache /usr/share/icons/hicolor
+  update-icon-cache /usr/share/icons/hicolor
 }
 
 configure_alternatives(){
-  echo "Setting mate-terminal as default x-terminal-emulator ..."
+  echo "Setting mate-terminal as x-terminal-emulator ..."
   update-alternatives --set x-terminal-emulator /usr/bin/mate-terminal.wrapper
+  echo "Setting firefox as x-www-browser ..."
   update-alternatives --set x-www-browser /usr/bin/firefox
 }
 
@@ -40,27 +43,27 @@ copy_themes(){
 }
 
 install_bunsen_faenza(){
-  echo "Installing bunsen-faenza ..."
+  echo "Installing bunsen-faenza-icon-theme ..."
   cd ${BASEDIR}/themes
   git clone https://github.com/BunsenLabs/bunsen-faenza-icon-theme
   cd bunsen-faenza-icon-theme
   tar xzf bunsen-faenza-icon-theme.tar.gz
-  sudo cp -r ./Faenza-Bunsen /usr/share/icons/
-  sudo cp -r ./Faenza-Bunsen-common /usr/share/icons
-  sudo cp -r ./Faenza-Dark-Bunsen /usr/share/icons
-  sudo update-icons-cache /usr/share/icons
+  cp -r ./Faenza-Bunsen /usr/share/icons/
+  cp -r ./Faenza-Bunsen-common /usr/share/icons
+  cp -r ./Faenza-Dark-Bunsen /usr/share/icons
+  update-icons-cache /usr/share/icons
   cd ${BASEDIR}/themes
   rm -fr bunsen-faenza-icon-theme
 }
 
 configure_gtk(){
-  echo "Configuring gtk ..."
+  echo "Configuring GTK+ ..."
   cd ${BASEDIR}/themes
 
   # GTK+ 2.0
   if [ -f /etc/gtk-2.0/gtkrc  ]; then
-    sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=\"Greybird\"/' /etc/gtk-2.0/gtkrc
-    sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' /etc/gtk-2.0/gtkrc
+    sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=\"${GTK_THEME_NAME}\"/' /etc/gtk-2.0/gtkrc
+    sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"${GTK_ICON_THEME_NAME}\"/' /etc/gtk-2.0/gtkrc
   else
     cp system.gtkrc-2.0 /etc/gtk-2.0/gtkrc
     chmod 755 /etc/gtk-2.0/gtkrc
@@ -68,8 +71,8 @@ configure_gtk(){
 
   # GTK+ 3.0
   if [ -f /etc/gtk-3.0/settings.ini ]; then
-    sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=Greybird/' /etc/gtk-3.0/settings.ini
-    sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"Faenza-Dark\"/' /etc/gtk-3.0/settings.ini
+    sed -i '/^gtk-theme-name/s/.*/gtk-theme-name=${GTK_THEME_NAME}/' /etc/gtk-3.0/settings.ini
+    sed -i '/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=${GTK_ICON_THEME_NAME}/' /etc/gtk-3.0/settings.ini
   else
     cp system.gtkrc-3.0 /etc/gtk-3.0/settings.ini
     chmod 755 /etc/gtk-3.0/settings.ini
@@ -82,7 +85,7 @@ configure_gtk(){
   echo "SWT_GTK3=0" | sudo tee -a /etc/environment
   
   # It would be better to put the 2 env. variables above in Xsession.d as it will be less likely to conflict 
-  # with updates made by the packaging system, but root will not have them.
+  # with updates made by the packaging system but root could not have them.
   #echo "export GTK_OVERLAY_SCROLLING=0" | sudo tee /etc/X11/Xsession.d/80gtk-overlay-scrolling
   #echo "export SWT_GTK3=0" | sudo tee /etc/X11/Xsession.d/80swt-gtk
 }

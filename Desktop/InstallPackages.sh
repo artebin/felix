@@ -5,7 +5,7 @@ if [ $(id -u) -ne 0 ]; then
   exit
 fi
 
-. ./common.sh
+. ../common.sh
 
 upgrade_system(){
 sudo apt-get update

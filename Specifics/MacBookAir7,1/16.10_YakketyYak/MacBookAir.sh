@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ../../Common/common.sh
+. ../../../Common/common.sh
 
 retrieve_mac_book_air_product_name(){
   printSectionHeading "Retrieving MacBook Air product name ..."
@@ -42,9 +42,9 @@ fix_suspend_resume_backlight_issue(){
   echo "See [[https://help.ubuntu.com/community/MacBookAir6-2/Trusty]]"
   echo "See [[https://github.com/patjak/mba6x_bl]]"
   cd ${BASEDIR}
-  #git clone http://github.com/patjak/mba6x_bl
-  unzip mba6x_bl-master.zip
-  cd mba6x_bl-master
+  git clone http://github.com/patjak/mba6x_bl
+  #unzip mba6x_bl-master.zip
+  cd mba6x_bl
   make
   sudo make install
   sudo depmod -a

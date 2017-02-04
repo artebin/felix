@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. ../Common/common.sh
+. ../../../Common/common.sh
 
 clean(){
   echo "Cleaning ..."
