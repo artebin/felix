@@ -326,6 +326,7 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
+    <!--
     <keybind key="A-F2">
       <action name="Execute">
         <startupnotify>
@@ -335,6 +336,7 @@
         <command>gmrun</command>
       </action>
     </keybind>
+    -->
     <keybind key="A-F3">
       <action name="Execute">
         <startupnotify>
@@ -348,9 +350,9 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>caja</name>
+          <name>File Manager</name>
         </startupnotify>
-        <command>caja</command>
+        <command>xdg-open .</command>
       </action>
     </keybind>
     <keybind key="W-s">
@@ -368,7 +370,7 @@
           <enabled>true</enabled>
           <name>Terminal</name>
         </startupnotify>
-        <command>mate-terminal --geometry=80x24</command>
+        <command>x-terminal-emulator</command>
       </action>
     </keybind>
     <keybind key="W-w">
@@ -380,6 +382,7 @@
         <command>x-www-browser</command>
       </action>
     </keybind>
+    <!--
     <keybind key="W-l">
       <action name="Execute">
         <startupnotify>
@@ -389,11 +392,12 @@
         <command>xscreensaver-command -lock</command>
       </action>
     </keybind>
+    -->
     <keybind key="W-e">
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>Editor</name>
+          <name>Text Editor</name>
         </startupnotify>
         <command>geany</command>
       </action>
@@ -402,7 +406,7 @@
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>Mediaplayer</name>
+          <name>Media Player</name>
         </startupnotify>
         <command>vlc</command>
       </action>
@@ -425,6 +429,7 @@
         <command>pavucontrol</command>
       </action>
     </keybind>
+    <!--
     <keybind key="W-x">
       <action name="Execute">
         <startupnotify>
@@ -434,6 +439,7 @@
         <command>cb-exit</command>
       </action>
     </keybind>
+    -->
     <keybind key="W-Tab">
       <action name="ShowMenu">
         <menu>client-list-combined-menu</menu>
