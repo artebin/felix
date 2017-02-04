@@ -345,32 +345,32 @@
 		<menu id="exit" label="Exit">
 			<item label="Log Out">
 				<action name="Execute">
-					<execute>openbox --exit</execute>
+					<execute>sh ~/.config/openbox/dialog_command.sh "Log out?" "openbox --exit"</execute>
 				</action>
 			</item>
 			<item label="Switch User">
 				<action name="Execute">
-					<execute>dm-tool switch-to-greeter</execute>
+					<execute>sh ~/.config/openbox/dialog_command.sh "Switch user?" "dm-tool switch-to-greeter"</execute>
 				</action>
 			</item>
 			<item label="Suspend">
 				<action name="Execute">
-					<execute>systemctl suspend</execute>
+					<execute>sh ~/.config/openbox/dialog_command.sh "Suspend?" "systemctl suspend"</execute>
 				</action>
 			</item>
 			<item label="Hibernate">
 				<action name="Execute">
-					<execute>systemctl hibernate</execute>
+					<execute>sh ~/.config/openbox/dialog_command.sh "Hibernate?" "systemctl hibernate"</execute>
 				</action>
 			</item>
 			<item label="Reboot">
 				<action name="Execute">
-					<execute>systemctl reboot</execute>
+					<execute>sh ~/.config/openbox/dialog_command.sh "Reboot?" "systemctl reboot"</execute>
 				</action>
 			</item>
 			<item label="Shutdown">
 				<action name="Execute">
-					<execute>systemctl poweroff</execute>
+					<execute>sh ~/.config/openbox/dialog_command.sh "Power off?" "systemctl poweroff"</execute>
 				</action>
 			</item>
 		</menu>
