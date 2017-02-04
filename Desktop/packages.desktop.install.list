@@ -41,6 +41,7 @@ dconf-cli
 dconf-editor
 dconf-tools
 mate-utils
+pasystray
 paman
 pavucontrol
 pavumeter
