@@ -77,6 +77,13 @@ configure_mate_terminal(){
   dconf load /org/mate/terminal/ < org.mate.terminal.dump
 }
 
+configure_xfce4_thunar(){
+  echo "Configuring xfce4-thunar ..."
+  cd ${BASEDIR}/xfce4
+  renameFileForBackup ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
+  cp thunar.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
+}
+
 configure_xfce4_power_manager(){
   echo "Configuring xfce4-power-manager ..."
   xfconf-query --create -t int -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s 1
@@ -130,16 +137,17 @@ if [ -f StdOutErr.log ]; then
   renameFileForBackup StdOutErr.log
 fi
 
-configure_bash 2>&1 | tee -a StdOutErr.log
-configure_vim 2>&1 | tee -a StdOutErr.log
-copy_additional_fonts 2>&1 | tee -a StdOutErr.log
-configure_openbox 2>&1 | tee -a StdOutErr.log
-configure_tint2 2>&1 | tee -a StdOutErr.log
-configure_dmenu 2>&1 | tee -a StdOutErr.log
-configure_htop 2>&1 | tee -a StdOutErr.log
-configure_mate_caja 2>&1 | tee -a StdOutErr.log
-configure_mate_terminal 2>&1 | tee -a StdOutErr.log
-configure_xfce4_power_manager 2>&1 | tee -a StdOutErr.log
-copy_themes 2>&1 | tee -a StdOutErr.log
-configure_gtk 2>&1 | tee -a StdOutErr.log
-configure_default_applications 2>&1 | tee -a StdOutErr.log
+#configure_bash 2>&1 | tee -a StdOutErr.log
+#configure_vim 2>&1 | tee -a StdOutErr.log
+#copy_additional_fonts 2>&1 | tee -a StdOutErr.log
+#configure_openbox 2>&1 | tee -a StdOutErr.log
+#configure_tint2 2>&1 | tee -a StdOutErr.log
+#configure_dmenu 2>&1 | tee -a StdOutErr.log
+#configure_htop 2>&1 | tee -a StdOutErr.log
+#configure_mate_caja 2>&1 | tee -a StdOutErr.log
+#configure_mate_terminal 2>&1 | tee -a StdOutErr.log
+configure_xfce4_thunar 2>&1 | tee -a StdOutErr.log
+#configure_xfce4_power_manager 2>&1 | tee -a StdOutErr.log
+#copy_themes 2>&1 | tee -a StdOutErr.log
+#configure_gtk 2>&1 | tee -a StdOutErr.log
+#configure_default_applications 2>&1 | tee -a StdOutErr.log

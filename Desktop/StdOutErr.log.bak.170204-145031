@@ -1,0 +1,3 @@
+Configuring xfce4-thunar ...
+Renamed existing file /home/njames/.config/xfce4/xfconf/thunar.xml to /home/njames/.config/xfce4/xfconf/thunar.xml.bak.170204-144935
+mv: cannot stat '/home/njames/.config/xfce4/xfconf/thunar.xml': No such file or directory
