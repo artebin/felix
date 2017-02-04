@@ -315,28 +315,28 @@
 			<item label="GParted">
 				<action name="Execute">
 					<command>
-						gksudo gparted
+						gksudo --preserve-env gparted
 					</command>
 				</action>
 			</item>
 			<item label="GAlternatives">
 				<action name="Execute">
 					<command>
-						gksudo galternatives
+						gksudo --preserve-env galternatives
 					</command>
 				</action>
 			</item>
 			<item label="Synaptic Package Manager">
 				<action name="Execute">
 					<command>
-						gksudo synaptic
+						gksudo --preserve-env synaptic
 					</command>
 				</action>
 			</item>
 			<item label="User Login Settings">
 				<action name="Execute">
 					<command>
-						gksudo lightdm-gtk-greeter-settings
+						gksudo --preserve-env lightdm-gtk-greeter-settings
 					</command>
 				</action>
 			</item>
