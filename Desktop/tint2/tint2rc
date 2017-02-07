@@ -14,8 +14,8 @@ border_color = #000000 0
 # ID 3 - taskbar active
 rounded = 0
 border_width = 0
-background_color = #d8d8d8 32
-border_color = #d8d8d8 0
+background_color = #000000 0
+border_color = #000000 0
 
 # ID 4 - taskbar name
 rounded = 0
@@ -26,8 +26,8 @@ border_color = #000000 0
 # ID 5 - taskbar name active 
 rounded = 0
 border_width = 0
-background_color = #000000 0
-border_color = #000000 0
+background_color = #fffff0 64
+border_color = #d8d8d8 30
 
 # ID 6 - task
 rounded = 0
@@ -92,10 +92,11 @@ strut_policy = follow_size
 
 # Taskbar
 taskbar_mode = multi_desktop
-taskbar_padding = 6 0 6
+taskbar_padding = 0 0 0 0
 taskbar_background_id = 2
 taskbar_active_background_id = 3
 taskbar_name = 1
+taskbar_name_padding = 6 0 6 0
 taskbar_name_background_id = 4
 taskbar_name_active_background_id = 5
 taskbar_name_font = Droid Sans Mono Bold 10
