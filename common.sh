@@ -6,9 +6,11 @@ getFileNameForBackup(){
 }
 
 renameFileForBackup(){
+  if [ -f ${1} ]; then
   BACKUP_FILE=$(getFileNameForBackup "$1")
   echo "Renamed existing file ${1} to ${BACKUP_FILE}"
   mv "$1" ${BACKUP_FILE}
+  fi
 }
 
 printSectionHeading(){

@@ -20,7 +20,7 @@ add_lightdm_greeter_badges(){
   echo "Adding lighdm greeter badges ..."
   cd ${BASEDIR}/lightdm-greeter-badge
   cp ${LIGHTDM_GREETER_OPENBOX_BADGE_FILE_NAME} /usr/share/icons/hicolor/scalable/places/openbox_badge-symbolic.svg
-  update-icon-cache /usr/share/icons/hicolor
+  update-icon-caches /usr/share/icons/hicolor
 }
 
 configure_alternatives(){
@@ -117,12 +117,15 @@ enable_hibernation(){
   cat com.ubuntu.enable-hibernate.pkla | sudo tee /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
 }
 
-disable_apport
-add_lightdm_greeter_badges
-configure_alternatives
-copy_themes
-install_bunzen_faenza
-configure_gtk
-configure_grub
-configure_bash_for_root
-enable_hibernation
+LOGFILE="SystemSettings.StdOutErr.log"
+renameFileForBackup ${LOGFILE}
+
+disable_apport 2>&1 | tee -a ${LOGFILE}
+add_lightdm_greeter_badges 2>&1 | tee -a ${LOGFILE}
+configure_alternatives 2>&1 | tee -a ${LOGFILE}
+copy_themes 2>&1 | tee -a ${LOGFILE}
+install_bunzen_faenza 2>&1 | tee -a ${LOGFILE}
+configure_gtk 2>&1 | tee -a ${LOGFILE}
+configure_grub 2>&1 | tee -a ${LOGFILE}
+configure_bash_for_root 2>&1 | tee -a ${LOGFILE}
+enable_hibernation 2>&1 | tee -a ${LOGFILE}

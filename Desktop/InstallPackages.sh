@@ -20,18 +20,6 @@ process_package_install_list(){
 xargs sudo apt-get -y install < ./packages.desktop.install.list
 }
 
-install_pasystray(){
-cd ${BASEDIR}
-git clone https://github.com/christophgysin/pasystray
-cd pasystray
-./bootstrap
-./configure
-make
-make install
-cd ${BASEDIR}
-rm -fr pasystray
-}
-
 install_chrome(){
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
@@ -53,19 +41,38 @@ sudo apt-get update
 sudo apt-get install skype -y
 }
 
+install_pasystray(){
+cd ${BASEDIR}
+git clone https://github.com/christophgysin/pasystray
+cd pasystray
+./bootstrap
+./configure
+make
+make install
+cd ${BASEDIR}
+rm -fr pasystray
+}
+
 install_mate_1_17(){
 sudo add-apt-repository ppa:jonathonf/mate-1.17
 sudo apt-get update
 sudo apt-get upgrade
 }
 
-upgrade_system
-process_package_remove_list
-process_package_install_list
-install_chrome
-install_remarquable
-install_skype
-#install_pasystray
-#install_mate_1_17
+clean(){
+  sudo apt-get -y autoremove
+}
 
-sudo apt-get -y autoremove
+LOGFILE="InstallPackages.StdOutErr.log"
+renameFileForBackup ${LOGFILE}
+
+upgrade_system 2>&1 | tee -a ${LOGFILE}
+process_package_remove_list 2>&1 | tee -a ${LOGFILE}
+process_package_install_list 2>&1 | tee -a ${LOGFILE}
+install_chrome 2>&1 | tee -a ${LOGFILE}
+install_remarquable 2>&1 | tee -a ${LOGFILE}
+install_skype 2>&1 | tee -a ${LOGFILE}
+#install_pasystray 2>&1 | tee -a ${LOGFILE}
+#install_mate_1_17 2>&1 | tee -a ${LOGFILE}
+
+clean 2>&1 | tee -a ${LOGFILE}
