@@ -14,7 +14,6 @@ sudo apt-get -y upgrade
 
 process_package_remove_list(){
 xargs sudo apt-get -y remove < ./packages.desktop.remove.list
-sudo apt-get -y autoremove
 }
 
 process_package_install_list(){
@@ -22,13 +21,11 @@ xargs sudo apt-get -y install < ./packages.desktop.install.list
 }
 
 install_pasystray(){
-#apt-get install pasystray -y
-apt-get install libpulse-dev
 cd ${BASEDIR}
 git clone https://github.com/christophgysin/pasystray
 cd pasystray
-bootstrap
-configure
+./bootstrap
+./configure
 make
 make install
 cd ${BASEDIR}
@@ -38,8 +35,8 @@ rm -fr pasystray
 install_chrome(){
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-sudo apt-get update 
-sudo apt-get install google-chrome-stable
+sudo apt-get update
+sudo apt-get install google-chrome-stable -y
 }
 
 install_remarquable(){
@@ -52,7 +49,8 @@ rm -f remarkable_1.87_all.deb
 install_skype(){
 sudo dpkg --add-architecture i386
 sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
-sudo apt-get update && sudo apt-get install skype
+sudo apt-get update 
+sudo apt-get install skype -y
 }
 
 install_mate_1_17(){
@@ -64,8 +62,10 @@ sudo apt-get upgrade
 upgrade_system
 process_package_remove_list
 process_package_install_list
-install_pasystray
 install_chrome
 install_remarquable
 install_skype
+#install_pasystray
 #install_mate_1_17
+
+sudo apt-get -y autoremove
