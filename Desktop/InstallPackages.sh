@@ -43,9 +43,9 @@ sudo apt-get install skype -y
 
 install_pasystray(){
 cd ${BASEDIR}
-git clone https://github.com/christophgysin/pasystray
+git clone http://github.com/christophgysin/pasystray
 cd pasystray
-./bootstrap
+./bootstrap.sh
 ./configure
 make
 make install
@@ -77,7 +77,7 @@ process_package_install_list 2>&1 | tee -a ${LOGFILE}
 install_chrome 2>&1 | tee -a ${LOGFILE}
 install_remarquable 2>&1 | tee -a ${LOGFILE}
 install_skype 2>&1 | tee -a ${LOGFILE}
-#install_pasystray 2>&1 | tee -a ${LOGFILE}
+install_pasystray 2>&1 | tee -a ${LOGFILE}
 #install_mate_1_17 2>&1 | tee -a ${LOGFILE}
 
 clean 2>&1 | tee -a ${LOGFILE}

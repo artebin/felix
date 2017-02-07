@@ -42,7 +42,6 @@ dconf-editor
 dconf-tools
 mate-utils
 libpulse-dev
-pasystray
 paman
 pavucontrol
 pavumeter

@@ -125,12 +125,12 @@ enable_hibernation(){
 LOGFILE="SystemSettings.StdOutErr.log"
 renameFileForBackup ${LOGFILE}
 
-#disable_apport 2>&1 | tee -a ${LOGFILE}
-#add_lightdm_greeter_badges 2>&1 | tee -a ${LOGFILE}
-#configure_alternatives 2>&1 | tee -a ${LOGFILE}
-#copy_themes 2>&1 | tee -a ${LOGFILE}
+disable_apport 2>&1 | tee -a ${LOGFILE}
+add_lightdm_greeter_badges 2>&1 | tee -a ${LOGFILE}
+configure_alternatives 2>&1 | tee -a ${LOGFILE}
+copy_themes 2>&1 | tee -a ${LOGFILE}
 install_bunsen_faenza 2>&1 | tee -a ${LOGFILE}
-#configure_gtk 2>&1 | tee -a ${LOGFILE}
-#configure_grub 2>&1 | tee -a ${LOGFILE}
-#configure_bash_for_root 2>&1 | tee -a ${LOGFILE}
-#enable_hibernation 2>&1 | tee -a ${LOGFILE}
+configure_gtk 2>&1 | tee -a ${LOGFILE}
+configure_grub 2>&1 | tee -a ${LOGFILE}
+configure_bash_for_root 2>&1 | tee -a ${LOGFILE}
+enable_hibernation 2>&1 | tee -a ${LOGFILE}
