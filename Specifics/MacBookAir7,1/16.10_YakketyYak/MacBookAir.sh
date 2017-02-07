@@ -1,11 +1,20 @@
 #!/bin/sh
 
-. ../../../Common/common.sh
+. ../../../common.sh
 
 retrieve_mac_book_air_product_name(){
-  printSectionHeading "Retrieving MacBook Air product name ..."
+  printSectionHeading "Retrieving MacBook Air model identifier ..."
   cd ${BASEDIR}
   sudo dmidecode -s system-product-name
+  printSectionEnding
+}
+
+configure_grub(){
+  printSectionHeading "Configure grub ..."
+  echo "- fix sporadic freezing issue"
+  echo "- backlight controls"
+  sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub
+  sudo update-grub
   printSectionEnding
 }
 
@@ -20,9 +29,7 @@ configure_apple_hid(){
 configure_xmodmap(){
   printSectionHeading "Configuring xmodmap (.xmodmaprc includes fix for backtick and tilde keys) ..."
   cd ${BASEDIR}
-  if [ -f ~/.xmodmaprc ]; then
-    renameFileForBackup ~/.xmodmaprc
-  fi
+  renameFileForBackup ~/.xmodmaprc
   cp xmodmaprc ~/.xmodmaprc
   echo "Configuring openbox for xmodmap autostart ..."
   echo "xmodmap ~/.xmodmaprc &" | tee -a ~/.config/openbox/autostart
@@ -32,8 +39,8 @@ configure_xmodmap(){
 tune_power_save_functions(){
   printSectionHeading "Tuning power save functions ..."
   cd ${BASEDIR}
-  sudo apt-get install -y powertop
-  sudo apt-get install -y tlp tlp-rdw
+  sudo apt-get install -y powertop cpufrequtils laptop-mode-tools
+  sudo powertop --auto-tune
   printSectionEnding
 }	
 
@@ -76,12 +83,18 @@ install_facetimehd(){
   printSectionEnding
 }
 
+LOGFILE="MacBookAir.StdOutErr.log"
+renameFileForBackup ${LOGFILE}
+
 retrieve_mac_book_air_product_name 2>&1 | tee -a StdOutErr.log
+configure_grub 2>&1 | tee -a StdOutErr.log
 configure_apple_hid 2>&1 | tee -a StdOutErr.log
 configure_xmodmap 2>&1 | tee -a StdOutErr.log
 tune_power_save_functions 2>&1 | tee -a StdOutErr.log
-fix_suspend_resume_backlight_issue 2>&1 | tee -a StdOutErr.log
 
-# bcwc_pcie: The driver will not compile for 4.5 and later kernels [[https://github.com/patjak/bcwc_pcie]]
+# mba6x_bl does not compile with 4.8 kernels
+# fix_suspend_resume_backlight_issue 2>&1 | tee -a StdOutErr.log
+
+# bcwc_pcie does not compile with 4.5 and later kernels [[https://github.com/patjak/bcwc_pcie]]
 #install_facetimehd 2>&1 | tee -a StdOutErr.log
 

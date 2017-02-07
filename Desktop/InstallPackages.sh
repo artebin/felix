@@ -59,6 +59,11 @@ sudo apt-get update
 sudo apt-get upgrade
 }
 
+# For dokuwiki
+# apt-get install apache2 php php-mbstring -y
+# enable mod userdir
+# allow php in userdir by editing /etc/apache2/mods-available/php7.0.conf
+
 clean(){
   sudo apt-get -y autoremove
 }

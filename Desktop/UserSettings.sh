@@ -88,6 +88,7 @@ copy_themes(){
   rm -fr ./Themes-master
   tar xzf Erthe-njames.tar.gz
   mv Erthe-njames ~/.themes
+  rm -fr Erthe-njames
 }
 
 configure_gtk(){
