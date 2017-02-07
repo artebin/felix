@@ -51,9 +51,14 @@ install_bunsen_faenza(){
   cp -r ./Faenza-Bunsen /usr/share/icons/
   cp -r ./Faenza-Bunsen-common /usr/share/icons
   cp -r ./Faenza-Dark-Bunsen /usr/share/icons
-  update-icons-cache /usr/share/icons
   cd ${BASEDIR}/themes
   rm -fr bunsen-faenza-icon-theme
+  
+  # Custumization: status icons are black but we want have them gray (tint2)
+  rm -fr /usr/share/icon/Faenza-Bunsen/status
+  cp -r /usr/share/icon/Faenza-Dark/state /usr/share/icons/Faenza-Bunsen
+  
+  update-icon-caches /usr/share/icons
 }
 
 configure_gtk(){
@@ -120,12 +125,12 @@ enable_hibernation(){
 LOGFILE="SystemSettings.StdOutErr.log"
 renameFileForBackup ${LOGFILE}
 
-disable_apport 2>&1 | tee -a ${LOGFILE}
-add_lightdm_greeter_badges 2>&1 | tee -a ${LOGFILE}
-configure_alternatives 2>&1 | tee -a ${LOGFILE}
-copy_themes 2>&1 | tee -a ${LOGFILE}
-install_bunzen_faenza 2>&1 | tee -a ${LOGFILE}
-configure_gtk 2>&1 | tee -a ${LOGFILE}
-configure_grub 2>&1 | tee -a ${LOGFILE}
-configure_bash_for_root 2>&1 | tee -a ${LOGFILE}
-enable_hibernation 2>&1 | tee -a ${LOGFILE}
+#disable_apport 2>&1 | tee -a ${LOGFILE}
+#add_lightdm_greeter_badges 2>&1 | tee -a ${LOGFILE}
+#configure_alternatives 2>&1 | tee -a ${LOGFILE}
+#copy_themes 2>&1 | tee -a ${LOGFILE}
+install_bunsen_faenza 2>&1 | tee -a ${LOGFILE}
+#configure_gtk 2>&1 | tee -a ${LOGFILE}
+#configure_grub 2>&1 | tee -a ${LOGFILE}
+#configure_bash_for_root 2>&1 | tee -a ${LOGFILE}
+#enable_hibernation 2>&1 | tee -a ${LOGFILE}
