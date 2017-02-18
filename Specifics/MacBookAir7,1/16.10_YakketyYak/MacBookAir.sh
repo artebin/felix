@@ -13,7 +13,7 @@ configure_grub(){
   printSectionHeading "Configure grub ..."
   echo "- fix sporadic freezing issue"
   echo "- backlight controls"
-  sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=""/' /etc/default/grub
+  sudo sed -i '/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT="intel_idle.max_cstate=1 acpi_backlight=vendor"/' /etc/default/grub
   sudo update-grub
   printSectionEnding
 }
@@ -86,15 +86,15 @@ install_facetimehd(){
 LOGFILE="MacBookAir.StdOutErr.log"
 renameFileForBackup ${LOGFILE}
 
-retrieve_mac_book_air_product_name 2>&1 | tee -a StdOutErr.log
-configure_grub 2>&1 | tee -a StdOutErr.log
-configure_apple_hid 2>&1 | tee -a StdOutErr.log
-configure_xmodmap 2>&1 | tee -a StdOutErr.log
-tune_power_save_functions 2>&1 | tee -a StdOutErr.log
+retrieve_mac_book_air_product_name 2>&1 | tee -a ${LOGFILE}
+configure_grub 2>&1 | tee -a ${LOGFILE}
+configure_apple_hid 2>&1 | tee -a ${LOGFILE}
+configure_xmodmap 2>&1 | tee -a ${LOGFILE}
+tune_power_save_functions 2>&1 | tee -a ${LOGFILE}
 
 # mba6x_bl does not compile with 4.8 kernels
-# fix_suspend_resume_backlight_issue 2>&1 | tee -a StdOutErr.log
+# fix_suspend_resume_backlight_issue 2>&1 | tee -a ${LOGFILE}
 
 # bcwc_pcie does not compile with 4.5 and later kernels [[https://github.com/patjak/bcwc_pcie]]
-#install_facetimehd 2>&1 | tee -a StdOutErr.log
+#install_facetimehd 2>&1 | tee -a ${LOGFILE}
 

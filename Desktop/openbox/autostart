@@ -1,6 +1,7 @@
 tint2 &
 xfce4-volumed &
 xfce4-power-manager &
+pasystray &
 
 # Register Thunar in D-BUS
 thunar --daemon &
@@ -8,6 +9,4 @@ thunar --daemon &
 setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &
 xmodmap ~/.xmodmaprc &
 nitrogen --restore &
-#~/apps/pasystray/pasystray-master/src/pasystray &
 #conky -q &
-#pasystray &
