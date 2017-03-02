@@ -80,6 +80,16 @@ configure_xfce4_power_manager(){
   xfconf-query --create -t int -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s 1
 }
 
+configure_vlc(){
+  echo "Configuring vlc ..."
+  cd ${BASEDIR}/vlc
+  mkdir -p ~/.config/vlc
+  cp vlc-qt-interface.conf ~/.config/vlc
+  cp vlcrc ~/.config/vlc
+  mkdir -p ~/.local/share/vlc
+  cp ml.xspf ~/.local/share/vlc
+}
+
 copy_themes(){
   echo "Copying themes ..."
   cd ${BASEDIR}/themes
@@ -137,6 +147,7 @@ configure_mate_caja 2>&1 | tee -a ${LOGFILE}
 configure_mate_terminal 2>&1 | tee -a ${LOGFILE}
 configure_xfce4_thunar 2>&1 | tee -a ${LOGFILE}
 configure_xfce4_power_manager 2>&1 | tee -a ${LOGFILE}
+configure_vlc 2>&1 | tee -a ${LOGFILE}
 copy_themes 2>&1 | tee -a ${LOGFILE}
 configure_gtk 2>&1 | tee -a ${LOGFILE}
 configure_default_applications 2>&1 | tee -a ${LOGFILE}
