@@ -10,8 +10,19 @@
 				<vlc:option>network-caching=1000</vlc:option>
 			</extension>
 		</track>
+		<track>
+			<location>http://direct.franceculture.fr/live/franceculture-midfi.mp3</location>
+			<title>France Culture</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>1</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
 	</trackList>
 	<extension application="http://www.videolan.org/vlc/playlist/0">
+		<vlc:node title="Radio">
 			<vlc:item tid="0"/>
+			<vlc:item tid="1"/>
+		</vlc:node>
 	</extension>
 </playlist>
