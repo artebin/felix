@@ -118,10 +118,17 @@ if ! shopt -oq posix; then
 fi
 
 alias bc='bc -l'
+
 retrieve_weather(){
 curl wttr.in/${1}
 }
 alias weather=retrieve_weather
+
+github-clone(){
+git clone http://github.com/${1}/${2}i
+}
+alias github-clone=github-clone
+
 #export JAVA_HOME=/opt/jdk1.7.0_51/jre
 #export JDK_HOME=/opt/jdk1.7.0_51
 #export PATH=${JDK_HOME}/bin:/opt/apache-ant-1.9.4/bin:${PATH}
