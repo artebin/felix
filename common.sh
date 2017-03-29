@@ -25,5 +25,6 @@ printSectionEnding(){
   echo ""
 }
 
+SCRIPT_NAME=$(basename "$0")
 SCRIPT_PATH=$(readlink -f "$0")
 BASEDIR=$(dirname ${SCRIPT_PATH})
