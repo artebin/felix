@@ -1,0 +1,22 @@
+/*   
+ * Force usage of current theme icons 
+ * (do not use symbolic icons)
+ */
+* {
+  -gtk-icon-style: regular;
+}
+
+/*
+ * Do not paint (over|under)shoot indicator neither the "not the top/not the bottom" line indicator.
+ */
+scrolledwindow overshoot {
+  background: transparent;
+  border:none;
+  background-image: none;
+}
+scrolledwindow undershoot {
+  background-color: transparent;
+  border: none;
+  background-image: none;
+}
+
