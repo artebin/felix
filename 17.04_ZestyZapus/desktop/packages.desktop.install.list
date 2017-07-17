@@ -56,8 +56,8 @@ hamster-applet
 mplayer
 smplayer
 smtube
-deluged
-deluge-gtk
+#deluged
+#deluge-gtk
 bless
 kdiff3
 mono-mcs
