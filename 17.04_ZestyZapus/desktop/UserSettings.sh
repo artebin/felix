@@ -128,8 +128,8 @@ configure_gtk(){
 }
 
 configure_default_applications(){
-  mkdir -p ~/.local/share/applications
   echo "Configuring mate-caja as default file browser ..."
+  mkdir -p ~/.local/share/applications
   xdg-mime default caja.desktop inode/directory
 }
 
