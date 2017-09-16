@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ../../common.bash
+. ../../common.sh
 check_shell
 get_root_privileges
 
