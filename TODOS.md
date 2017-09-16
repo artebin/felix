@@ -7,3 +7,5 @@
 - 16-09-09: Super+Alt+Mouse drag for resizing window under the mouse pointer. 
 
 - Geany config
+
+vlc --control dbus
