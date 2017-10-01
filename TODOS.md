@@ -9,3 +9,11 @@
 - Geany config
 
 vlc --control dbus
+
+remove mousepad
+add docker.io
+synaptic is force to use its icon 16x16
+remove mate-icon-theme
+do not install faenza-bunsen
+add a shortcut for synaptic
+add a script donwload Faenza et modify the icons as I want
