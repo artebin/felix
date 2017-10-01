@@ -17,3 +17,7 @@ remove mate-icon-theme
 do not install faenza-bunsen
 add a shortcut for synaptic
 add a script donwload Faenza et modify the icons as I want
+oblogout
+docker koel
+geany config
+NFS unmount
