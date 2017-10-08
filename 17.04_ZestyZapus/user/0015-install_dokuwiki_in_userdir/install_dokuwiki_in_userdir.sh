@@ -25,6 +25,7 @@ install_dokuwiki_in_userdir(){
   chmod -R g+r ~/public_html
   chmod -R g+w ~/public_html/${DOKUWIKI_STABLE}/data
   find ~/public_html -type d | xargs chmod g+x
+  sudo service apache2 restart
 }
 
 cd ${BASEDIR}

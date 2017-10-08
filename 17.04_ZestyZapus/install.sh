@@ -59,7 +59,6 @@ USER_SCRIPT_PATH_ARRAY=( \
 "./user/0004-openbox/configure_openbox.sh" \
 "./user/0006-tint2/configure_tint2.sh" \
 "./user/0007-configure_dmenu/configure_dmenu.sh" \
-"./user/0007-configure_dmenu/dmenu-bind.sh" \
 "./user/0008-configure_xfce4_power_manager/configure_xfce4_power_manager.sh" \
 "./user/0009-configure_xfce4_thunar/configure_xfce4_thunar.sh" \
 "./user/0010-configure_mate_terminal/configure_mate_terminal.sh" \
