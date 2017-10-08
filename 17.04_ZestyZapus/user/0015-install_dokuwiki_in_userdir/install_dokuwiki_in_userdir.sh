@@ -23,9 +23,10 @@ install_dokuwiki_in_userdir(){
   cd ~/public_html/${DOKUWIKI_STABLE}/lib/tpl/
   tar xzf ./dokubook-stable.tgz
   chmod -R g+r ~/public_html
+  chmod -R g+w ~/public_html/${DOKUWIKI_STABLE}/data
   find ~/public_html -type d | xargs chmod g+x
 }
 
 cd ${BASEDIR}
 install_dokuwiki_in_userdir 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
-x-www-browser http://localhost/~${USERNAME}/${DOKUWIKI_STABLE}/install.php
+x-www-browser http://localhost/~${USERNAME}/${DOKUWIKI_STABLE}/install.php &
