@@ -3,7 +3,7 @@
 . ../../common.sh
 check_shell
 
-GTK_ICON_THEME_NAME="Faenza-Bunzen"
+GTK_ICON_THEME_NAME="Faenza"
 GTK_THEME_NAME="Greybird"
 
 configure_gtk(){
