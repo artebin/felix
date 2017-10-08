@@ -21,7 +21,7 @@ SYSTEM_SCRIPT_PATH_ARRAY=( \
 "./system/0007-configure_alternatives/configure_alternatives.sh" \
 "./system/0008-add_lightdm_greeter_badges/add_lightdm_greeter_badges.sh" \
 "./system/0009-install_gtk_themes/install_gtk_themes.sh" \
-"./system/0010-install_icon_themes/install_icon_themes.sh" \
+"./system/0010-configure_icon_themes/configure_icon_themes.sh" \
 "./system/0011-configure_gtk/configure_gtk.sh" \
 "./system/0012-install_pasystray_from_sources/install_pasystray_from_sources.sh" \
 "./system/0013-install_google_chome/install_google_chrome.sh" \

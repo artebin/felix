@@ -26,12 +26,11 @@ install_bunsen_faenza(){
 	update-icon-caches /usr/share/icons
 }
 
-# Quick and dirty
-modify_faenza(){
-	mv /usr/share/icons/Faenza/status /usr/share/icons/Faenza/status.bak
-	ln -s /usr/share/icons/Faenza-Dark /usr/share/icons/Faenza/status
-	update-icon-caches /usr/share/icons
+customize_faenza(){
+	# synaptic persists to use its 16x16 icon
+	mv /usr/share/icons/Faenza/apps/16/synaptic.png /usr/share/icons/Faenza/apps/16/synaptic.png.bak
+	ln -s /usr/share/icons/Faenza/apps/32/synaptic.png /usr/share/icons/Faenza/16/apps/synaptic.png
 }
 
 cd ${BASEDIR}
-modify_faenza 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+customize_faenza 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
