@@ -138,10 +138,11 @@ systray_icon_size = 24
 systray_icon_asb = 100 0 0
 
 # Clock
-time1_format = %H:%M %A %B %d
-time1_font = Droid Sans Mono Bold 10
+#time1_format = %H:%M %A %B %d
+time1_format = %b %d %R
+time1_font = Droid Sans Mono Bold 8
 clock_font_color = #ffffff 100
-clock_padding = 8 4
+clock_padding = 4 4
 clock_background_id = 11
 clock_lclick_command = gsimplecal
 clock_rclick_command = gsimplecal
@@ -156,6 +157,26 @@ execp_font_color = #ffffff 100
 execp_background_id = 3
 execp_tooltip = 
 execp_padding = 8 4
+	
+# Executor 2
+#execp = new 
+#execp_command = sh ~/scripts/mediaplayer2_title.sh
+#execp_font =  Droid Sans Mono Bold 8
+#execp_font_color = #ffffff 100
+#execp_background_id = 3
+#execp_tooltip = 
+#execp_padding = 8 4
+#execp_interval = 1
+
+# Executor 3
+#execp = new 
+#execp_command = cat ~/scripts/title
+#execp_font =  Droid Sans Mono Bold 8
+#execp_font_color = #ffffff 100
+#execp_background_id = 3
+#execp_tooltip = 
+#execp_padding = 4 4
+#execp_interval = 1
 
 # Tooltips
 tooltip = 1
