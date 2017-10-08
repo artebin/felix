@@ -56,7 +56,6 @@ USER_SCRIPT_PATH_ARRAY=( \
 "./user/0002-install_fonts/install_fonts.sh" \
 "./user/0003-configure_gtk/configure_gtk.sh" \
 "./user/0004-openbox/configure_openbox.sh" \
-"./user/0004-openbox/dialog_command.sh" \
 "./user/0006-tint2/configure_tint2.sh" \
 "./user/0007-configure_dmenu/configure_dmenu.sh" \
 "./user/0007-configure_dmenu/dmenu-bind.sh" \
