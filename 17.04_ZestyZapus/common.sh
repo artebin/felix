@@ -10,8 +10,7 @@ check_shell(){
 get_root_privileges(){
   if [ ${EUID} -ne 0 ]; then
     echo "This script needs the root priveleges!"
-    sudo "$0" "$@"
-    exit $?
+    exit 1
   fi
 }
 
@@ -26,7 +25,7 @@ check_xubuntu_version(){
   fi
   if ! grep -Fq "${SUPPORTED_XUBUNTU_VERSION}" ${INSTALLER_MEDIA_INFO_PATH}; then
     echo "This script has not been tested with: $(cat /var/log/installer/media-info)"
-    return 1
+    exit 1
   fi
 }
 
