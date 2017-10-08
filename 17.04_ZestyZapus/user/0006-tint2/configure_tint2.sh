@@ -1,13 +1,16 @@
 #!/bin/bash
 
-. ../../common.sh
+source ../../common.sh
 check_shell
 
 configure_tint2(){
   cd ${BASEDIR}
   echo "Configuring tint2 ..."
   renameFileForBackup ~/.config/tint2
-  cp -r ./tint2 ~/.config/
+  if [ ! -f ~/.config/tint2 ]; then
+    mkdir -p ~/.config/tint2
+  fi
+  cp ./tint2rc ~/.config/tint2/tint2rc
 }
 
 cd ${BASEDIR}

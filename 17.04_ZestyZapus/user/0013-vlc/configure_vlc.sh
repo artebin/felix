@@ -1,15 +1,23 @@
 #!/bin/bash
 
-. ../../common.sh
+source ../../common.sh
 check_shell
 
 configure_vlc(){
   cd ${BASEDIR}
   echo "Configuring vlc ..."
-  mkdir -p ~/.config/vlc
+  
+  renameFileForBackup ~/.config/vlc
+  if [ ! -f ~/.config/vlc ]; then
+    mkdir -p ~/.config/vlc
+  fi
   cp ./vlc-qt-interface.conf ~/.config/vlc
   cp ./vlcrc ~/.config/vlc
-  mkdir -p ~/.local/share/vlc
+  
+  renameFileForBackup ~/.local/share/vlc
+  if [ ! -f ~/.local/share/vlc ]; then
+    mkdir -p ~/.local/share/vlc
+  fi
   cp ./ml.xspf ~/.local/share/vlc
 }
 

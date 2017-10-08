@@ -58,3 +58,11 @@ SCRIPT_NAME=$(basename "$0")
 SCRIPT_PATH=$(readlink -f "$0")
 BASEDIR=$(dirname ${SCRIPT_PATH})
 SCRIPT_LOG_NAME="${SCRIPT_NAME%.*}.log.$(date +'%y%m%d-%H%M%S')"
+
+delete_log_files(){
+  if [ ! -d ${1} ]; then
+    echo "parameter 1 should be a directory";
+    exit 1;
+  fi
+  find ${1} -name *.log.* -type f -exec rm -fr {} \; 
+}

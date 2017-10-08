@@ -1,13 +1,16 @@
 #!/bin/bash
 
-. ../../common.sh
+source ../../common.sh
 check_shell
 
 configure_dmenu(){
   cd ${BASEDIR}
   echo "Configuring dmenu ..."
   renameFileForBackup ~/.config/dmenu
-  cp -r ./dmenu ~/.config/
+  if [ ! -f ~/.config/dmenu ]; then
+    mkdir -p ~/.config/dmenu
+  fi
+  cp ./dmenu-bind.sh ~/.config/dmenu
   chmod +x ~/.config/dmenu/dmenu-bind.sh
 }
 

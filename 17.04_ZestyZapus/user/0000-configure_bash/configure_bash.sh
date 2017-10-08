@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ../../common.sh
+source ../../common.sh
 check_shell
 
 configure_bash(){

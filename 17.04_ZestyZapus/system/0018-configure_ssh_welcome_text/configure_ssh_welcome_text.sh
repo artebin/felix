@@ -1,13 +1,13 @@
 #!/bin/bash
 
-. ../../common.sh
+source ../../common.sh
 check_shell
 get_root_privileges
 
 configure_ssh_welcome_text(){
   cd ${BASEDIR}
   cp ./00-welcome-dude /etc/update-motd.d/
-  cd ./tux /etc/update-motd.d/
+  cp ./tux /etc/update-motd.d/
   cd /etc/update-motd.d
   chmod 755 00-welcome-dude
   chmod 100 tux

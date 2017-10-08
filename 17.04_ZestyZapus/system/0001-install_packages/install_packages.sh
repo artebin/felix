@@ -1,12 +1,12 @@
 #!/bin/bash
 
-. ../../common.sh
+source ../../common.sh
 check_shell
 get_root_privileges
 
 process_package_install_list(){
   cd ${BASEDIR}
-  xargs apt-get -y install < ./packages.desktop.install.list
+  xargs apt-get -y install < ./packages.install.list
 }
 
 cd ${BASEDIR}
