@@ -6,11 +6,11 @@ get_root_privileges
 
 configure_ssh_welcome_text(){
   cd ${BASEDIR}
-  cp ./00-welcome-dude /etc/update-motd.d/
-  cp ./tux /etc/update-motd.d/
+  cp ./00-welcome-dude /etc/update-motd.d/00-welcome-dude
+  cp ./tux /etc/update-motd.d/tux
   cd /etc/update-motd.d
   chmod 755 00-welcome-dude
-  chmod 100 tux
+  chmod 644 tux
   chmod a-x 00-header
   chmod a-x 10-help-text
 }
