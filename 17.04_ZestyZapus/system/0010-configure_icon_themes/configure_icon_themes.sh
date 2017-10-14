@@ -4,33 +4,27 @@ source ../../common.sh
 check_shell
 get_root_privileges
 
-install_bunsen_faenza(){
-	echo "Installing bunsen-faenza-icon-theme ..."
+install_customized_faenza(){
+	echo "Installing customized Faenza... "
 	
 	cd ${BASEDIR}
-	git clone https://github.com/BunsenLabs/bunsen-faenza-icon-theme
-	cd bunsen-faenza-icon-theme
-	tar xzf bunsen-faenza-icon-theme.tar.gz
-	cp -r ./Faenza-Bunsen /usr/share/icons/
-	cp -r ./Faenza-Bunsen-common /usr/share/icons
-	cp -r ./Faenza-Dark-Bunsen /usr/share/icons
+	git clone http://github.com/Kazhnuz/faenza-vanilla-icon-theme
+	rm -fr ./faenza-vanilla-icon-theme/Faenza/status
+	cp -R ./faenza-vanilla-icon-theme/Faenza-Dark/status ./faenza-vanilla-icon-theme/Faenza/status
 	
-	# Cleanup
-	cd ${BASEDIR}
-	rm -fr bunsen-faenza-icon-theme
+	# synaptic persists to use its 16x16 icon. Dirty fix: replace the 16x16 by the 32x32
+	renameFileForBackup ./faenza-vanilla-icon-theme/Faenza/apps/16/synaptic.png
+	ln -s ./faenza-vanilla-icon-theme/Faenza/apps/32/synaptic.png ./faenza-vanilla-icon-theme/Faenza/apps/16/synaptic.png
 	
-	# Custumization: status icons are black but we want have them gray (tint2)
-	rm -fr /usr/share/icon/Faenza-Bunsen/status
-	cp -r /usr/share/icon/Faenza-Dark/state /usr/share/icons/Faenza-Bunsen
+	sed -i "/^Name=/s/.*/Name=Faenza-njames/" ./faenza-vanilla-icon-theme/Faenza/index.theme
+	ESCAPED_COMMENT=$(escape_sed_pattern "Comment=Icon theme project downloaded from https://github.com/Kazhnuz/faenza-vanilla-icon-theme and modified by njames")
+	sed -i "/^Comment=/s/.*/${ESCAPED_COMMENT}/" ./faenza-vanilla-icon-theme/Faenza/index.theme
+	mv ./faenza-vanilla-icon-theme/Faenza ./faenza-vanilla-icon-theme/Faenza-njames
+	
+	cp -R ./faenza-vanilla-icon-theme/Faenza-njames
 	
 	update-icon-caches /usr/share/icons
 }
 
-customize_faenza(){
-	# synaptic persists to use its 16x16 icon
-	mv /usr/share/icons/Faenza/apps/16/synaptic.png /usr/share/icons/Faenza/apps/16/synaptic.png.bak
-	ln -s /usr/share/icons/Faenza/apps/32/synaptic.png /usr/share/icons/Faenza/apps/16/synaptic.png
-}
-
 cd ${BASEDIR}
-customize_faenza 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+install_customized_faenza 2>&1 | tee -a ./${SCRIPT_LOG_NAME}

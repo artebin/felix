@@ -66,3 +66,10 @@ delete_log_files(){
   fi
   find ${1} -name *.log.* -type f -exec rm -fr {} \; 
 }
+
+escape_sed_pattern(){
+	echo ${1} | sed -e 's/[\/&]/\\&/g'
+}
+
+GTK_ICON_THEME_NAME="Faenza-njames"
+GTK_THEME_NAME="Greybird"

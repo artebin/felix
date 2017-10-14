@@ -1,10 +1,7 @@
 #!/bin/bash
 
-. ../../common.sh
+source ../../common.sh
 check_shell
-
-GTK_ICON_THEME_NAME="Faenza-Dark"
-GTK_THEME_NAME="Greybird"
 
 configure_gtk(){
   cd ${BASEDIR}

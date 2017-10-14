@@ -4,9 +4,6 @@ source ../../common.sh
 check_shell
 get_root_privileges
 
-GTK_ICON_THEME_NAME="Faenza-Dark"
-GTK_THEME_NAME="Greybird"
-
 configure_gtk(){
   cd ${BASEDIR}
   echo "Configuring GTK+ ..."
