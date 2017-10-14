@@ -29,7 +29,7 @@ install_bunsen_faenza(){
 customize_faenza(){
 	# synaptic persists to use its 16x16 icon
 	mv /usr/share/icons/Faenza/apps/16/synaptic.png /usr/share/icons/Faenza/apps/16/synaptic.png.bak
-	ln -s /usr/share/icons/Faenza/apps/32/synaptic.png /usr/share/icons/Faenza/16/apps/synaptic.png
+	ln -s /usr/share/icons/Faenza/apps/32/synaptic.png /usr/share/icons/Faenza/apps/16/synaptic.png
 }
 
 cd ${BASEDIR}
