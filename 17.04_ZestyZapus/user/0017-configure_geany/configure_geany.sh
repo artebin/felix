@@ -10,7 +10,7 @@ configure_geany(){
   if [ ! -f ~/.config/geany ]; then
     mkdir -p ~/.config/geany
   fi
-  cp filetypes.common ~/.config/geany/filetypes.common
+  cp filetypes.common ~/.config/geany/filedefs/filetypes.common
 }
 
 cd ${BASEDIR}
