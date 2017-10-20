@@ -68,7 +68,7 @@ delete_log_files(){
 }
 
 escape_sed_pattern(){
-	echo ${1} | sed -e 's/[\/&]/\\&/g'
+	printf "${1}" | sed -e 's/[\/&]/\\&/g'
 }
 
 GTK_ICON_THEME_NAME="Faenza-njames"
