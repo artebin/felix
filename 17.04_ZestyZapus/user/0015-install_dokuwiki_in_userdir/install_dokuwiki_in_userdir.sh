@@ -12,14 +12,15 @@ install_dokuwiki_in_userdir(){
   
   cd ${BASEDIR}
   mkdir -p ~/public_html
-  cp ./dokuwiki-stable.tgz ~/public_html
+  cp ./dokuwiki-stable.tgz ~/public_html/dokuwiki-stable.tgz
   cd ~/public_html
   tar xzf dokuwiki-stable.tgz
   
   cd ${BASEDIR}
-  cp ./dokubook-stable.tgz ~/public_html/${DOKUWIKI_STABLE}/lib/tpl/
-  cp ./conf/entities.conf ~/public_html/${DOKUWIKI_STABLE}/conf/
-  cp ./conf/userstyle.css ~/public_html/${DOKUWIKI_STABLE}/conf/
+  cp ./dokubook-stable.tgz ~/public_html/${DOKUWIKI_STABLE}/lib/tpl/dokubook-stable.tgz
+  cp ./conf/mime.local.conf ~/public_html/${DOKUWIKI_STABLE}/conf/mime.local.conf
+  cp ./conf/entities.conf ~/public_html/${DOKUWIKI_STABLE}/conf/entities.conf
+  cp ./conf/userstyle.css ~/public_html/${DOKUWIKI_STABLE}/conf/userstyle.css
   cd ~/public_html/${DOKUWIKI_STABLE}/lib/tpl/
   tar xzf ./dokubook-stable.tgz
   chmod -R g+r ~/public_html
