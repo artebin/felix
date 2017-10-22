@@ -41,8 +41,19 @@ div.breadcrumbs,div#dw__toc,ul.toc{
 	line-height: 1.5em ! important;
 }
 
+main p {
+	margin-top: 1em ! important;
+	margin-bottom: 0 ! important;
+}
+
 main ol,main ul {
-	line-height: 2em ! important;
+	margin-top: 0 ! important;
+	margin-bottom: 0 ! important;
+	line-height: 1.75em ! important;
+}
+
+main .table {
+	margin: 1em 0 0 0 ! important;
 }
 
 .dokuwiki blockquote {
