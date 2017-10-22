@@ -7,7 +7,7 @@ install_packages(){
   xargs sudo apt-get -y install < ./packages.deluge.deamon.list
 }
 
-# Add creditentials for user: echo "${user}:${password}:10 >> /home/deluge/.config/auth
+# Add creditentials for user: echo "${user}:${password}:10 >> /home/deluge/.config/deluge/auth
 # For using server and client on the same machine but started by different users: copy local creditential from server auth file into the auth file of the user which start the client.
 configure_deluge_deamon(){
   echo "Configuring deluge deamon ..."

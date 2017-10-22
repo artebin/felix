@@ -1,28 +1,28 @@
 h1 {
-	font-size:188% ! important;
-	font-weight:700 ! important;
+	font-size:188% !important;
+	font-weight:700 !important;
 }
 
 h2 {
-	font-size:150% ! important;
-	font-weight:700 ! important;
+	font-size:150% !important;
+	font-weight:700 !important;
 }
 
 h3,h4,h5,h6 {
-	border-bottom:none ! important;
-	font-weight:700 ! important;
+	border-bottom:none !important;
+	font-weight:700 !important;
 }
 
 h3 {
-	font-size:132% ! important;
+	font-size:132% !important;
 }
 
 h4 {
-	font-size:116% ! important;
+	font-size:116% !important;
 }
 
 h5 {
-	font-size:100% ! important;
+	font-size:100% !important;
 }
 
 h6 {
@@ -38,45 +38,47 @@ h1,h2,h3,h4,h5 {
 }
 
 div.breadcrumbs,div#dw__toc,ul.toc{
-	line-height: 1.5em ! important;
+	line-height: 1.5em !important;
 }
 
 main p {
-	margin-top: 1em ! important;
-	margin-bottom: 0 ! important;
+	margin-top: 1em !important;
+	margin-bottom: 0 !important;
 }
 
 main ol,main ul {
-	margin-top: 0 ! important;
-	margin-bottom: 0 ! important;
-	line-height: 1.75em ! important;
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	line-height: 1.75em !important;
 }
 
 main .table {
-	margin: 1em 0 0 0 ! important;
+	margin: 1em 0 0 0 !important;
 }
 
 .dokuwiki blockquote {
-	border-width: 0px 0px 0px 10px ! important;
-	padding: 5px 5px 5px 5px ! important;
+	margin: 1em 0 0 0 !important;
+	border-width: 0 0 0 10px !important;
+	padding: 5px 5px 5px 5px !important;
 	background-color: #F5F5DC !important;
 }
 
 /* code blocks by code tag */
 div.dokuwiki pre.code {
-	background-color: __background_other__ ! important;
-	max-height: 25em ! important;
-	overflow: auto ! important;
+	margin: 1em 0 0 0 !important;
+	background-color: __background_other__ !important;
+	max-height: 25em !important;
+	overflow: auto !important;
 }
 
 div.dokuwiki code {
-	background-color: lightgray ! important;
-	color: black ! important;
-	padding: 0px 5px 0px 5px;
+	background-color: darkgray !important;
+	color: black !important;
+	padding: 0 2px 0 2px;
 }
 
 .dokuwiki .code.a {
-	color: #ffffff ! important;
+	color: white !important;
 }
 
 #dw__toc {
