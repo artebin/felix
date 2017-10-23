@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 source ../../common.sh
 check_shell
@@ -21,6 +21,7 @@ install_dokuwiki_in_userdir(){
   cp ./conf/mime.local.conf ~/public_html/${DOKUWIKI_STABLE}/conf/mime.local.conf
   cp ./conf/entities.conf ~/public_html/${DOKUWIKI_STABLE}/conf/entities.conf
   cp ./conf/userstyle.css ~/public_html/${DOKUWIKI_STABLE}/conf/userstyle.css
+  cp ./conf/userscript.js ~/public_html/${DOKUWIKI_STABLE}/conf/userscript.js
   cd ~/public_html/${DOKUWIKI_STABLE}/lib/tpl/
   tar xzf ./dokubook-stable.tgz
   chmod -R g+r ~/public_html

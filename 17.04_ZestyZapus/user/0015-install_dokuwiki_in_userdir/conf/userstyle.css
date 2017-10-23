@@ -85,9 +85,78 @@ div.dokuwiki code {
 	width: 30% !important;
 }
 
-/*
+div.breadcrumbs {
+	padding: 0 1em 0 1em !important;
+	background-color: black !important;
+	color: white !important;
+	font-size: 100% !important;
+	line-height: 2em !important;
+}
+
+div.breadcrumbs a {
+	color: white !important;
+}
+
+div.meta {
+	font-size: 100% !important;
+	padding: 1em 0 0 0 !important;
+}
+
+div.doc {
+	float: none !important;
+	padding: 0 1em 0 1em !important;
+	text-align: left !important;
+	background-color: black !important;
+	color: white !important;
+	font-size: 100% !important;
+	line-height: 2em !important;
+}
+
+/***********************************************************************
  * Fix: with dokubook the bottom of the file icon is hidden.
- */
+ ***********************************************************************/
 .mediafile {
 	padding-bottom: 5px !important;
+}
+
+/***********************************************************************
+ * Fix: the side bar should be wider
+ * See [[https://www.dokuwiki.org/template:dokubook]]
+ ***********************************************************************/
+/* presume sidebar is left */
+div.dokuwiki div#sidebar_left { width: 160px !important; }
+/* change the 160px to the required width */
+div.dokuwiki div#dokubook_container_left { left: 170px !important;}
+/* change the 170px to the required width + 10 */
+
+/*
+ * If the sidebar is wider then we can see the "dokuwiki" text at the right of the dokuwiki logo.
+ */
+span.sb_label { display: none !important; }
+
+/***********************************************************************
+ * Make the dokubook_container_left narrower 
+ ***********************************************************************/
+div.dokuwiki {
+	margin: 0px auto !important;
+	width: 70% !important;
+	overflow: hidden !important;
+}
+div.dokuwiki div#sidebar_left {
+	position: relative !important;
+	float: left !important;
+	overflow: hidden !important;
+}
+div.dokuwiki div#dokubook_container_left {
+	position: relative !important;
+	left: 0px !important;
+	padding-left: 10px !important;
+	width: auto !important;
+	overflow: hidden !important;
+}
+div.dokuwiki div#sidebar_left .sidebar_box {
+	border: 1px solid #8cacbb;
+}
+div.dokuwiki div#sidebar_left div#search {
+	border: 1px solid #8cacbb;
 }
