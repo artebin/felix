@@ -1,5 +1,13 @@
 * add kodos regular expression tester
 * fix the problems with the dual screens
-* prepare shortcuts for fullscreen (think about work and video wall)
+* support NFS/samba + comments in /etc/fstab for how to mount the file systems
+* prepare shortcuts for fullscreen (think about office work and the video wall... )
+* when config Geany, also put the .desktop file for forcing one instance per file opening (the one instance per workspace does not seem to work)
+* geany shortcut for show/hide the sidebar?
 * fix icons (some icons are now missing in the xfce4-settings-manager)
+* remove shotwell from packages.install.list
+* categorize the packages in packages.install.list + add lshw?
+* try DockBarX
+* Latex install
+* put the trace files in a dedicated directory
 
