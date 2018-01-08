@@ -10,4 +10,5 @@
 * try DockBarX
 * Latex install
 * put the trace files in a dedicated directory
-
+* add xplanet to packages.install.list
+* clean: remove install_mate_1.17, ampache and deluge_deamon (keep it in the attic)
