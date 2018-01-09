@@ -1,0 +1,16 @@
+#!/bin/bash
+
+source ../../common.sh
+check_shell
+get_root_privileges
+
+process_package_remove_list(){
+	cd ${BASEDIR}
+	
+	echo "Remove unwanted packages ..."
+	xargs apt-get -y remove < ./packages.remove.list
+	apt-get -y autoremove
+}
+
+cd ${BASEDIR}
+process_package_remove_list 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
