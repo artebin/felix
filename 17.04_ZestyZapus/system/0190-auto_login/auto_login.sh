@@ -4,7 +4,7 @@ source ../../common.sh
 check_shell
 get_root_privileges
 
-AUTO_LOGIN_USER_NAME="njames"
+AUTO_LOGIN_USER_NAME=""
 
 configure_auto_login(){
 	cd ${BASEDIR}
