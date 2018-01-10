@@ -13,7 +13,7 @@
 			<item label="Task Manager (htop)"><action name="Execute"><command>mate-terminal --command=&quot;htop&quot;</command></action></item>
 		</menu>
 		<menu id="graphics" label="Graphics">
-			<item label="gThumb"><action name="Execute"><command>gthumb</command></action></item>
+			<item label="Shotwell"><action name="Execute"><command>Shotwell</command></action></item>
 			<item label="GIMP"><action name="Execute"><command>gimp</command></action></item>
 			<item label="Image Viewer (EoM)"><action name="Execute"><command>eom</command></action></item>
 			<item label="Screenshooter"><action name="Execute"><command>xfce4-screenshooter</command></action></item>
@@ -38,7 +38,14 @@
 			<item label="Skype"><action name="Execute"><command>skype</command></action></item>
 		</menu>
 		<menu id="office" label="Office">
-			<menu execute="~/.config/openbox/cb-pipemenus/cb-libreoffice-pipemenu" id="libreoffice" label="LibreOffice"/>
+			<menu id="libreoffice" label="LibreOffice">
+				<item label="Writer"><action name="Execute"><command>/usr/lib/libreoffice/program/swriter</command></action></item>
+				<item label="Calc"><action name="Execute"><command>/usr/lib/libreoffice/program/scalc</command></action></item>
+				<item label="Impress"><action name="Execute"><command>/usr/lib/libreoffice/program/simpress</command></action></item>
+				<item label="Base"><action name="Execute"><command>/usr/lib/libreoffice/program/sbase</command></action></item>
+				<item label="Math"><action name="Execute"><command>/usr/lib/libreoffice/program/smath</command></action></item>
+				<item label="Draw"><action name="Execute"><command>/usr/lib/libreoffice/program/sdraw</command></action></item>
+			</menu>
 			<item label="Google Drive"><action name="Execute"><command>x-www-browser https://drive.google.com/</command></action></item>
 			<item label="PDF Viewer (Atril)"><action name="Execute"><command>atril</command></action></item>
 		</menu>
