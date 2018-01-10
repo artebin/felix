@@ -11,24 +11,28 @@ source ./common.sh
 # find ./system/ -iname "*.sh" -exec sh -c 'echo \""{}"\" \\' \; | sort
 
 SYSTEM_SCRIPT_PATH_ARRAY=( \
-"./system/0000-upgrade_system/upgrade_system.sh" \
-"./system/0001-install_packages/install_packages.sh" \
-"./system/0002-remove_unwanted_packages/remove_unwanted_packages.sh" \
-"./system/0003-configure_grub/configure_grub.sh" \
-"./system/0004-disable_apport/disable_apport.sh" \
-"./system/0005-configure_bash_for_root/configure_bash_for_root.sh" \
-"./system/0006-enable_hibernation/enable_hibernation.sh" \
-"./system/0007-configure_alternatives/configure_alternatives.sh" \
-"./system/0008-add_lightdm_greeter_badges/add_lightdm_greeter_badges.sh" \
-"./system/0009-install_gtk_themes/install_gtk_themes.sh" \
-"./system/0010-configure_icon_themes/configure_icon_themes.sh" \
-"./system/0011-configure_gtk/configure_gtk.sh" \
-"./system/0012-install_pasystray_from_sources/install_pasystray_from_sources.sh" \
-"./system/0013-install_google_chome/install_google_chrome.sh" \
-"./system/0015-install_skype/install_skype.sh" \
-"./system/0016-install_remarquable/install_remarquable.sh" \
-"./system/0017-configure_php_in_userdir/configure_php_in_userdir.sh" \
-"./system/0018-configure_ssh_welcome_text/configure_ssh_welcome_text.sh" \
+"./system/0000-language_support/language_support.sh" \
+"./system/0001-regional_formats/regional_formats.sh" \
+"./system/0010-upgrade_system/upgrade_system.sh" \
+"./system/0020-install_packages/install_packages.sh" \
+"./system/0021-install_google_chome/install_google_chrome.sh" \
+"./system/0022-install_skype/install_skype.sh" \
+"./system/0023-install_dockbarx/install_dockbarx.sh" \
+"./system/0024-configure_php_in_userdir/configure_php_in_userdir.sh" \
+"./system/0030-remove_unwanted_packages/remove_unwanted_packages.sh" \
+"./system/0040-configure_grub/configure_grub.sh" \
+"./system/0050-disable_apport/disable_apport.sh" \
+"./system/0060-configure_bash_for_root/configure_bash_for_root.sh" \
+"./system/0070-enable_hibernation/enable_hibernation.sh" \
+"./system/0080-configure_alternatives/configure_alternatives.sh" \
+"./system/0090-add_lightdm_greeter_badges/add_lightdm_greeter_badges.sh" \
+"./system/0100-install_gtk_themes/install_gtk_themes.sh" \
+"./system/0110-configure_gtk/configure_gtk.sh" \
+"./system/0120-configure_icon_themes/configure_icon_themes.sh" \
+"./system/0121-install_fonts/install_fonts.sh" \
+"./system/0122-configure_lightdm_greeter/configure_lightdm_greeter.sh" \
+"./system/0130-install_pasystray_from_sources/install_pasystray_from_sources.sh" \
+"./system/0170-configure_ssh_welcome_text/configure_ssh_welcome_text.sh" \
 )
 
 execute_all_system_scripts(){
@@ -53,22 +57,19 @@ execute_all_system_scripts(){
 
 USER_SCRIPT_PATH_ARRAY=( \
 "./user/0000-configure_bash/configure_bash.sh" \
-"./user/0001-configure_vim/configure_vim.sh" \
-"./user/0002-install_fonts/install_fonts.sh" \
-"./user/0003-configure_gtk/configure_gtk.sh" \
-"./user/0004-openbox/configure_openbox.sh" \
-"./user/0006-tint2/configure_tint2.sh" \
-"./user/0007-configure_dmenu/configure_dmenu.sh" \
-"./user/0008-configure_xfce4_power_manager/configure_xfce4_power_manager.sh" \
-"./user/0009-configure_xfce4_thunar/configure_xfce4_thunar.sh" \
-"./user/0010-configure_mate_terminal/configure_mate_terminal.sh" \
-"./user/0011-configure_mate_caja/configure_mate_caja.sh" \
-"./user/0012-configure_htop/configure_htop.sh" \
-"./user/0013-vlc/configure_vlc.sh" \
-"./user/0015-install_dokuwiki_in_userdir/install_dokuwiki_in_userdir.sh" \
-"./user/0016_dbus_mpris_listener/mediaplayer2_title.sh" \
-"./user/0017-configure_geany/configure_geany.sh" \
-"./user/0100-configure_default_applications/configure_default_applications.sh" \
+"./user/0010-configure_vim/configure_vim.sh" \
+"./user/0011-configure_htop/configure_htop.sh" \
+"./user/0020-configure_gtk/configure_gtk.sh" \
+"./user/0030-configure_openbox/configure_openbox.sh" \
+"./user/0040-configure_tint2/configure_tint2.sh" \
+"./user/0050-configure_dmenu/configure_dmenu.sh" \
+"./user/0060-configure_xfce4_power_manager/configure_xfce4_power_manager.sh" \
+"./user/0080-configure_mate_terminal/configure_mate_terminal.sh" \
+"./user/0090-configure_mate_caja/configure_mate_caja.sh" \
+"./user/0100-configure_geany/configure_geany.sh" \
+"./user/0110-configure_vlc/configure_vlc.sh" \
+"./user/0120-configure_default_applications/configure_default_applications.sh" \
+"./user/0130-install_dokuwiki_in_userdir/install_dokuwiki_in_userdir.sh" \
 )
 
 execute_all_user_scripts(){
