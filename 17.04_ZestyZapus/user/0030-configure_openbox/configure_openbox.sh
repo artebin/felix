@@ -16,6 +16,7 @@ configure_openbox(){
 	cp ./menu.xml ~/.config/openbox
 	cp ./obapps-0.1.7.tar.gz ~/.config/openbox
 	cp ./rc.xml ~/.config/openbox
+	cp ./tint2_restart.sh ~/config/openbox/tint2_restart.sh
 }
 
 cd ${BASEDIR}

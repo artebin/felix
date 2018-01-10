@@ -238,15 +238,13 @@
 				<item label="Edit config file">
 					<action name="Execute">
 						<command>
-							geany ~/.config/tint2/tint2rc
+							geany -i ~/.config/tint2/tint2rc
 						</command>
 					</action>
 				</item>
 				<item label="Restart tint2">
 					<action name="Execute">
-						<command>
-							tint2restart
-						</command>
+						<command>bash ~/.config/openbox/tint2_restart.sh</command>
 					</action>
 				</item>
 				<separator label="Help?"/>
