@@ -1,3 +1,3 @@
 #!/bin/bash
 
-kill tint2;tint2&
+kill tint2;sleep 1;tint2&
