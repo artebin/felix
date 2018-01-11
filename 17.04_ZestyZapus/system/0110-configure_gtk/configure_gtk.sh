@@ -27,8 +27,10 @@ configure_gtk(){
 	# Disable the scrollbar overlay introduced in GTK+ 3.16
 	# Cannot find a property in gtkrc-3.0 for that...
 	echo "GTK_OVERLAY_SCROLLING=0" | sudo tee -a /etc/environment
-	# Disable SWT_GTK3 (use GTK+ 2.0 for SWT)
-	echo "SWT_GTK3=0" | sudo tee -a /etc/environment
+	
+	# Disable SWT_GTK3 (use GTK+ 2.0 for SWT) => SWT_GTK3=0
+	# 17-01-11: the support of GTK3 in eclipse is better now and there is refresh problems with the SWT_GTK2 => use SWT_GKT3
+	echo "SWT_GTK3=1" | sudo tee -a /etc/environment
 	
 	# It would be better to put the 2 env. variables above in Xsession.d as it will be less likely to conflict 
 	# with updates made by the packaging system but sudo/root would not have them => can not use the 2 lines below:
