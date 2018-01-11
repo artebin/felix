@@ -19,6 +19,7 @@ SYSTEM_SCRIPT_PATH_ARRAY=( \
 "./system/0022-install_skype/install_skype.sh" \
 "./system/0023-install_dockbarx/install_dockbarx.sh" \
 "./system/0024-configure_php_in_userdir/configure_php_in_userdir.sh" \
+"./system/0025-install_sqlitebrowser/install_sqlitebrowser.sh" \
 "./system/0030-remove_unwanted_packages/remove_unwanted_packages.sh" \
 "./system/0040-configure_grub/configure_grub.sh" \
 "./system/0050-disable_apport/disable_apport.sh" \
@@ -33,6 +34,7 @@ SYSTEM_SCRIPT_PATH_ARRAY=( \
 "./system/0122-configure_lightdm_greeter/configure_lightdm_greeter.sh" \
 "./system/0130-install_pasystray_from_sources/install_pasystray_from_sources.sh" \
 "./system/0170-configure_ssh_welcome_text/configure_ssh_welcome_text.sh" \
+"./system/0200-force_numlockx/force_numlockx.sh" \
 )
 
 execute_all_system_scripts(){
@@ -70,6 +72,7 @@ USER_SCRIPT_PATH_ARRAY=( \
 "./user/0110-configure_vlc/configure_vlc.sh" \
 "./user/0120-configure_default_applications/configure_default_applications.sh" \
 "./user/0130-install_dokuwiki_in_userdir/install_dokuwiki_in_userdir.sh" \
+"./user/0150-configure_firefox_default_profile/configure_firefox_default_profile.sh" \
 )
 
 execute_all_user_scripts(){
