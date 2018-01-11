@@ -93,6 +93,7 @@ unrar
 gpodder
 lsb-core
 gpick
-xchat
+hexchat
 samba
-cifs-util
+smbclient
+cifs-utils
