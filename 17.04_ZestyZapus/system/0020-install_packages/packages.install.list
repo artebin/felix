@@ -97,3 +97,6 @@ hexchat
 samba
 smbclient
 cifs-utils
+wireshark
+wireshark-gtk
+wireshark-doc
