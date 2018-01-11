@@ -11,7 +11,10 @@ configure_geany(){
 	if [ ! -f ~/.config/geany ]; then
 		mkdir -p ~/.config/geany
 	fi
-	cp filetypes.common ~/.config/geany/filedefs/filetypes.common
+	cp ./filetypes.common ~/.config/geany/filedefs/filetypes.common
+	
+	# Force geany to open file in new instance
+	cp ./geany.desktop ~/.local/share/applications/geany.desktop
 }
 
 cd ${BASEDIR}
