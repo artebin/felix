@@ -21,7 +21,7 @@ fold_symbol_highlight=fold_symbol_highlight
 
 # background colour of the current line, only the second and third argument is interpreted
 # use the third argument to enable or disable the highlighting of the current line (has to be true/false)
-current_line=current_line;0xFFFF00;true
+current_line=current_line;0xFCE94F;true
 
 # translucency for the current line(first argument) and the selection (second argument)
 # values between 0 and 256 are accepted. Note for Windows 95, 98 and ME users:
