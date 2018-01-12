@@ -10,6 +10,7 @@ configure_default_applications(){
 	
 	echo 'Configuring mate-caja as default file browser ...'
 	mkdir -p ~/.local/share/applications
+	cp ./caja.desktop ~/.local/share/applications/caja.desktop
 	xdg-mime default caja.desktop inode/directory
 	
 	echo 'Configuring thunderbird as default mail client ...'
