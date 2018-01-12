@@ -5,3 +5,6 @@
 
 **** 18-01-12 ****
 - using 'caja --no-desktop' in the .desktop file for mime type inode/directory seems to not work and don't know why => call directly "caja --no-desktop" from openbox rc.xml and menu.xml rather than 'xdg.open .'
+- put environment variables in /etc/profile.d/myenvvars.sh than in /etc/profile
+- LD_LIRABRY_PATH can not be set anymore from /etc/environment or /etc/profile, should use /etc/ld.so.conf.d/somefile.conf
+- Java is not using ld.so.conf files we can check default value of java.library.path with: java -XshowSettings:properties => best thing is to create a symbolic link 'ln -s /usr/lib/x86_64-linux-gnu/jni/libwibucmJNI64.so /usr/lib/libwibucmJNI64.so'
