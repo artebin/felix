@@ -6,9 +6,14 @@ check_shell
 configure_default_applications(){
 	cd ${BASEDIR}
 	
-	echo "Configuring mate-caja as default file browser ..."
+	# Note: the .desktop can be found in /usr/share/applications
+	
+	echo 'Configuring mate-caja as default file browser ...'
 	mkdir -p ~/.local/share/applications
 	xdg-mime default caja.desktop inode/directory
+	
+	echo 'Configuring thunderbird as default mail client ...'
+	xdg-mime default thunderbird.desktop 'x-scheme-handler/mailto'
 }
 
 cd ${BASEDIR}
