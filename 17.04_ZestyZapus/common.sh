@@ -36,7 +36,7 @@ getFileNameForBackup(){
 
 renameFileForBackup(){
 	if [ -f ${1} ]; then
-	BACKUP_FILE=$(getFileNameForBackup "$1")
+	
 	echo "Renamed existing file ${1} to ${BACKUP_FILE}"
 	mv "$1" ${BACKUP_FILE}
 	fi
@@ -69,6 +69,17 @@ delete_log_files(){
 
 escape_sed_pattern(){
 	printf "${1}" | sed -e 's/[\/&]/\\&/g'
+}
+
+add_or_update_line_based_on_prefix(){
+	PREFIX_TO_SEARCH=${1}
+	LINE_REPLACEMENT_VALUE=${2}
+	FILE_PATH=${3}
+	if grep -q "^${PREFIX_TO_SEARCH}" "${FILE_PATH}"; then
+		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FILE_PATH}"
+	else
+		echo "${LINE_REPLACEMENT_VALUE}" >> "${FILE_PATH}"
+	fi
 }
 
 GTK_ICON_THEME_NAME="Faenza-njames"

@@ -37,7 +37,7 @@ configure_firefox_default_profile(){
 	PREFIX_TO_SEARCH='user_pref("browser.startup.page"'
 	LINE_REPLACEMENT_VALUE='user_pref("browser.startup.page", 3);'
 	if grep -q "${KEY}" "${PREFS_JS_PATH}"; then
-		sed -i "/^${PREFIX}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${PREFS_JS_PATH}"
+		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${PREFS_JS_PATH}"
 	else
 		echo "${LINE_REPLACEMENT_VALUE}" >> "${PREFS_JS_PATH}"
 	fi
@@ -47,7 +47,7 @@ configure_firefox_default_profile(){
 	PREFIX_TO_SEARCH='user_pref("browser.download.useDownloadDir"'
 	LINE_REPLACEMENT_VALUE='user_pref("browser.download.useDownloadDir", false);'
 	if grep -q "${KEY}" "${PREFS_JS_PATH}"; then
-		sed -i "/^${PREFIX}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${PREFS_JS_PATH}"
+		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${PREFS_JS_PATH}"
 	else
 		echo "${LINE_REPLACEMENT_VALUE}" >> "${PREFS_JS_PATH}"
 	fi
@@ -57,7 +57,7 @@ configure_firefox_default_profile(){
 	PREFIX_TO_SEARCH='user_pref("signon.rememberSignons"'
 	LINE_REPLACEMENT_VALUE='user_pref("signon.rememberSignons", false);'
 	if grep -q "${KEY}" "${PREFS_JS_PATH}"; then
-		sed -i "/^${PREFIX}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${PREFS_JS_PATH}"
+		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${PREFS_JS_PATH}"
 	else
 		echo "${LINE_REPLACEMENT_VALUE}" >> "${PREFS_JS_PATH}"
 	fi
