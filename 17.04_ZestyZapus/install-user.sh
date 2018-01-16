@@ -54,4 +54,4 @@ execute_all_user_scripts(){
 	done
 }
 
-check_xubuntu_version && (execute_all_system_scripts;execute_all_user_scripts)
+check_xubuntu_version && execute_all_user_scripts
