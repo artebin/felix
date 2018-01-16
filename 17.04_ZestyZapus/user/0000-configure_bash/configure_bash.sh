@@ -4,12 +4,12 @@ source ../../common.sh
 check_shell
 
 configure_bash(){
-	cd ${BASEDIR}
+	cd "${BASEDIR}"
 	
-	echo "Configuring bash ..."
-	renameFileForBackup ~/.bashrc
-	cp ./bashrc ~/.bashrc
+	echo 'Configuring bash ...'
+	backup_file rename '~/.bashrc'
+	cp './bashrc' '~/.bashrc'
 }
 
-cd ${BASEDIR}
-configure_bash 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+cd "${BASEDIR}"
+configure_bash 2>&1 | tee -a "./${SCRIPT_LOG_NAME}"

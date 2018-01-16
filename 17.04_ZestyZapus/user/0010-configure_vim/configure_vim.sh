@@ -4,11 +4,12 @@ source ../../common.sh
 check_shell
 
 configure_vim(){
-	cd ${BASEDIR}
+	cd "${BASEDIR}"
 	
-	echo "Configuring vim ..."
-	renameFileForBackup ~/.vimrc
-	cp ./vimrc ~/.vimrc
+	echo 'Configuring vim ...'
+	backup_file rename '~/.vimrc'
+	cp './vimrc' '~/.vimrc'
 }
 
-configure_vim 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+cd "${BASEDIR}"
+configure_vim 2>&1 | tee -a "./${SCRIPT_LOG_NAME}"

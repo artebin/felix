@@ -29,26 +29,43 @@ check_xubuntu_version(){
 	fi
 }
 
-getFileNameForBackup(){
-	SUFFIX="${1}.bak.$(date +'%y%m%d-%H%M%S')"
-	echo ${SUFFIX}
-}
-
-renameFileForBackup(){
-	if [ -f ${1} ]; then
-	
-	echo "Renamed existing file ${1} to ${BACKUP_FILE}"
-	mv "$1" ${BACKUP_FILE}
+backup_file(){
+	if [[ "$#" -ne 2 ]]; then
+		echo "Function backup_file should be called with an argument"
+		exit 1
 	fi
+	if [[ -f "${2}" ]]; then
+		echo "Can not find ${1}"
+		exit 1
+	fi
+	FILE_BACKUP_PATH="${2}.bak.$(date +'%y%m%d-%H%M%S')"
+	case "${1}" in
+		"rename")
+			mv "${2}" "${FILE_BACKUP_PATH}"
+			if [[ "$?" -ne 0 ]]; then
+				echo "Can not backup file ${2}"
+				exit 1
+			fi
+			;;
+		"copy")
+			cp "${2}" "${FILE_BACKUP_PATH}"
+			if [[ "$?" -ne 0 ]]; then
+				echo "Can not backup file ${2}"
+				exit 1
+			;;
+		*)
+			echo "Unkown argument ${1}"
+			exit 1
+	esac
 }
 
-printSectionHeading(){
+print_section_heading(){
 	echo "###############################################################################################"
 	echo "# ${1}"
 	echo "###############################################################################################"
 }
 
-printSectionEnding(){
+print_section_ending(){
 	echo ""
 	echo ""
 	echo ""
