@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ../../common.sh
+source '../../common.sh'
 check_shell
 exit_if_has_not_root_privileges
 
