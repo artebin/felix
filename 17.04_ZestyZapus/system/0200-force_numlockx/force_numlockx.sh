@@ -2,7 +2,7 @@
 
 source ../../common.sh
 check_shell
-get_root_privileges
+exit_if_has_not_root_privileges
 
 force_numlockx(){
 	cd ${BASEDIR}
