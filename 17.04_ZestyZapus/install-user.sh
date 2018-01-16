@@ -5,12 +5,15 @@ if [ ! "${BASH_VERSION}" ] ; then
 	exit 1
 fi
 
-source ./common.sh
+source './common.sh'
 
-# TODO: add a check this script must not be runned with root privileges
+if has_root_privileges; then
+	echo 'This script should not be started with the root privileges'
+	exit 1
+fi
 
 # Build your initial list of scripts with:
-# find ./system/ -iname "*.sh" -exec sh -c 'echo \""{}"\" \\' \; | sort
+# find ./user/ -iname "*.sh" -exec sh -c "echo \'{}\' \\" \;|sort
 
 USER_SCRIPT_PATH_ARRAY=( \
 "./user/0000-configure_bash/configure_bash.sh" \

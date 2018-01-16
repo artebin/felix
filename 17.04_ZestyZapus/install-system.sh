@@ -5,10 +5,10 @@ if [ ! "${BASH_VERSION}" ] ; then
 	exit 1
 fi
 
-source ./common.sh
+source './common.sh'
 
 # Build your initial list of scripts with:
-# find ./system/ -iname "*.sh" -exec sh -c 'echo \""{}"\" \\' \; | sort
+# find ./system/ -iname "*.sh" -exec sh -c "echo \'{}\' \\" \;|sort
 
 SYSTEM_SCRIPT_PATH_ARRAY=( \
 "./system/0000-language_support/language_support.sh" \
