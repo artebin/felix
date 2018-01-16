@@ -34,7 +34,6 @@ SYSTEM_SCRIPT_PATH_ARRAY=( \
 './system/0122-configure_lightdm_greeter/configure_lightdm_greeter.sh' \
 './system/0130-install_pasystray_from_sources/install_pasystray_from_sources.sh' \
 './system/0170-configure_ssh_welcome_text/configure_ssh_welcome_text.sh' \
-'./system/0190-auto_login/auto_login.sh' \
 './system/0200-force_numlockx/force_numlockx.sh' \
 )
 

@@ -6,7 +6,7 @@ check_shell
 configure_firefox_default_profile(){
 	cd ${BASEDIR}
 	
-	echo "Configuring Firefox ..."
+	echo 'Configuring Firefox ...'
 	
 	# Retrieve path to the Firefox default profile
 	PREFS_JS_PATH=""
@@ -16,8 +16,8 @@ configure_firefox_default_profile(){
 	fi
 	
 	if [ ! -f "${PREFS_JS_PATH}" ]; then
-		echo "Can not find Firefox default profile => creating one ..."
-		firefox -CreateProfile "default"
+		echo 'Can not find Firefox default profile => creating one ...'
+		firefox -CreateProfile 'default'
 		
 		FIREFOX_DEFAULT_PROFILE_PATH=$(find ~/.mozilla/firefox -maxdepth 1 -iname "*\.default")
 		if [ -f "${FIREFOX_DEFAULT_PROFILE_PATH}/prefs.js" ]; then
@@ -25,7 +25,7 @@ configure_firefox_default_profile(){
 		fi
 	
 		if [ ! -f "${PREFS_JS_PATH}" ]; then
-			echo "Can not find Firefox default profile"
+			echo 'Can not find Firefox default profile'
 			exit 1
 		fi
 	fi

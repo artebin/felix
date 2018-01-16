@@ -7,7 +7,7 @@ exit_if_has_not_root_privileges
 configure_ssh_welcome_text(){
 	cd ${BASEDIR}
 	
-	echo 'Setting SSH welcome text'
+	echo 'Setting SSH welcome text ...'
 	cp ./00-welcome-dude /etc/update-motd.d/00-welcome-dude
 	cp ./tux /etc/update-motd.d/tux
 	cd /etc/update-motd.d
