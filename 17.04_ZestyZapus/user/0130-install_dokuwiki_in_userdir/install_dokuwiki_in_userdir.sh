@@ -3,13 +3,13 @@
 source ../../common.sh
 check_shell
 
-DOKUWIKI_STABLE="dokuwiki-2017-02-19e"
-USERNAME=`whoami`
+DOKUWIKI_STABLE='dokuwiki-2017-02-19e'
+USERNAME=$(whoami)
 
 install_dokuwiki_in_userdir(){
 	cd ${BASEDIR}
 	
-	echo "Installing DokuWiki in userdir ..."
+	echo 'Installing DokuWiki in userdir ...'
 	
 	sudo adduser www-data ${USERNAME}
 	

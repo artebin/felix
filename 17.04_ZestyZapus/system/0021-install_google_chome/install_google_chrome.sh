@@ -1,11 +1,11 @@
 #!/bin/bash
 
-source '../../common.sh'
+source ../../common.sh
 check_shell
 exit_if_has_not_root_privileges
 
 install_chrome(){
-	cd "${BASEDIR}"
+	cd ${BASEDIR}
 	
 	echo 'Installing Google Chrome from google.com'
 	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
@@ -14,5 +14,5 @@ install_chrome(){
 	apt-get install google-chrome-stable -y
 }
 
-cd "${BASEDIR}"
-install_chrome 2>&1 | tee -a "./${SCRIPT_LOG_NAME}"
+cd ${BASEDIR}
+install_chrome 2>&1 | tee -a ./${SCRIPT_LOG_NAME}

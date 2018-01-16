@@ -6,7 +6,7 @@ check_shell
 configure_mate_terminal(){
 	cd ${BASEDIR}
 	
-	echo "Configuring mate-terminal ..."
+	echo 'Configuring mate-terminal ...'
 	dconf load /org/mate/terminal/ < ./org.mate.terminal.dump
 }
 

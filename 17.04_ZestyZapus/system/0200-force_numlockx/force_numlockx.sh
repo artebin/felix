@@ -7,10 +7,10 @@ exit_if_has_not_root_privileges
 force_numlockx(){
 	cd ${BASEDIR}
 	
-	echo "Forcing numlockx ..."
+	echo 'Forcing numlockx ...'
 	apt-get install -y numlockx
 	if [ -f /etc/lightdm/lightdm.conf.d/60-force_numlockx.conf ]; then
-		printf "/etc/lightdm/lightdm.conf.d/60-force_num_lockx.conf already exists"
+		echo '/etc/lightdm/lightdm.conf.d/60-force_num_lockx.conf already exists'
 		exit 1
 	else
 		if [ ! -d /etc/lightdm/lightdm.conf.d ]; then

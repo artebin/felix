@@ -16,7 +16,7 @@ has_root_privileges(){
 }
 
 exit_if_has_not_root_privileges(){
-	if [[ ! has_root_privileges ]]; then
+	if ! has_root_privileges; then
 		echo 'This script needs the root priveleges'
 		exit 1
 	fi
@@ -43,8 +43,8 @@ backup_file(){
 		echo 'Function backup_file should be called with an argument'
 		exit 1
 	fi
-	if [[ -f "${2}" ]]; then
-		echo "Can not find ${1}"
+	if [[ ! -f "${2}" ]]; then
+		echo "Can not find ${2}"
 		exit 1
 	fi
 	FILE_BACKUP_PATH="${2}.bak.$(date +'%y%m%d-%H%M%S')"

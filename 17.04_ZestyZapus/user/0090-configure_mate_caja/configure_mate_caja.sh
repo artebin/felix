@@ -6,7 +6,7 @@ check_shell
 configure_mate_caja(){
 	cd ${BASEDIR}
 	
-	echo "Configuring mate-caja ..."
+	echo 'Configuring mate-caja ...'
 	dconf load /org/mate/caja/ < ./org.mate.caja.dump
 }
 

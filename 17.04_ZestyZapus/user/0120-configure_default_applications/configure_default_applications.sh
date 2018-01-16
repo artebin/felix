@@ -14,7 +14,7 @@ configure_default_applications(){
 	xdg-mime default caja.desktop inode/directory
 	
 	echo 'Configuring thunderbird as default mail client ...'
-	xdg-mime default thunderbird.desktop 'x-scheme-handler/mailto'
+	xdg-mime default thunderbird.desktop x-scheme-handler/mailto
 }
 
 cd ${BASEDIR}
