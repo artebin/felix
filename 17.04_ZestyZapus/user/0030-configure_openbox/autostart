@@ -1,12 +1,16 @@
 tint2 &
-xfce4-volumed &
-xfce4-power-manager &
+
+# xfce4-volumed is started via /etc/xdg/autostart/xfce4-volumed.desktop
+#xfce4-volumed &
+
+# xfce4-power-manager is started via /etc/xdg/autostart/xfce4-power-manager
+#xfce4-power-manager &
+
 pasystray &
 
 # Register Thunar in D-BUS
 #thunar --daemon &
 
 setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &
+
 xmodmap ~/.xmodmaprc &
-#nitrogen --restore &
-#conky -q &

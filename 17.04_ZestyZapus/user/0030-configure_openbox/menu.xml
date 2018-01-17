@@ -12,7 +12,8 @@
 			<item label="Task Manager (htop)"><action name="Execute"><command>mate-terminal --command=&quot;htop&quot;</command></action></item>
 			<item label="Disk Usage Analyzer"><action name="Execute"><command>mate-disk-usage-analyzer</command></action></item>
 			<item label="GVim"><action name="Execute"><command>gvim</command></action></item>
-			<item label="kdiff3"><action name="Execute"><command>kdiff3</command></action></item>
+			<item label="Hexadecimal Editor (Bless)"><action name="Execute"><command>gvim</command></action></item>
+			<item label="KDiff3"><action name="Execute"><command>kdiff3</command></action></item>
 		</menu>
 		<menu id="graphics" label="Graphics">
 			<item label="Image Viewer (EoM)"><action name="Execute"><command>eom</command></action></item>
