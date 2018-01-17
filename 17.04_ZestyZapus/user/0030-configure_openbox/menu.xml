@@ -11,6 +11,7 @@
 		<menu id="accessories" label="Accessories">
 			<item label="Task Manager (htop)"><action name="Execute"><command>mate-terminal --command=&quot;htop&quot;</command></action></item>
 			<item label="Disk Usage Analyzer"><action name="Execute"><command>mate-disk-usage-analyzer</command></action></item>
+			<item label="GVim"><action name="Execute"><command>gvim</command></action></item>
 			<item label="kdiff3"><action name="Execute"><command>kdiff3</command></action></item>
 		</menu>
 		<menu id="graphics" label="Graphics">
