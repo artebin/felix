@@ -12,45 +12,28 @@ if has_root_privileges; then
 	exit 1
 fi
 
-# Build your initial list of scripts with:
-# find ./user/ -iname "*.sh" -exec sh -c "echo \'{}\' \\" \;|sort
-
-USER_SCRIPT_PATH_ARRAY=( \
-'./user/0000-configure_bash/configure_bash.sh' \
-'./user/0010-configure_vim/configure_vim.sh' \
-'./user/0011-configure_htop/configure_htop.sh' \
-'./user/0020-configure_gtk/configure_gtk.sh' \
-'./user/0030-configure_openbox/configure_openbox.sh' \
-'./user/0040-configure_tint2/configure_tint2.sh' \
-'./user/0050-configure_dmenu/configure_dmenu.sh' \
-'./user/0060-configure_xfce4_power_manager/configure_xfce4_power_manager.sh' \
-'./user/0070-configure_xfce4_thunar/configure_xfce4_thunar.sh' \
-'./user/0080-configure_mate_terminal/configure_mate_terminal.sh' \
-'./user/0090-configure_mate_caja/configure_mate_caja.sh' \
-'./user/0100-configure_geany/configure_geany.sh' \
-'./user/0110-configure_vlc/configure_vlc.sh' \
-'./user/0120-configure_default_applications/configure_default_applications.sh' \
-'./user/0121-configure_firefox_default_profile/configure_firefox_default_profile.sh' \
-'./user/0130-install_dokuwiki_in_userdir/install_dokuwiki_in_userdir.sh' \
-)
+readarray -t SCRIPT_DIRECTORY_PATH_ARRAY < <(find ./user/ -type d -regex ".*/[0-9][0-9][0-9][0-9]-.*"|sort)
 
 execute_all_user_scripts(){
-	for SCRIPT_PATH in "${USER_SCRIPT_PATH_ARRAY[@]}"; do
+	for SCRIPT_DIRECTORY_PATH in "${SCRIPT_DIRECTORY_PATH_ARRAY[@]}"; do
 		cd "${BASEDIR}"
-		SCRIPT_NAME=$(basename "${SCRIPT_PATH}")
-		echo "SCRIPT_NAME=${SCRIPT_NAME}"
 		
-		SCRIPT_PATH=$(readlink -f "${SCRIPT_PATH}")
-		echo "SCRIPT_PATH=${SCRIPT_PATH}"
-		
-		SCRIPT_BASE_DIRECTORY=$(dirname "${SCRIPT_PATH}")
-		echo "SCRIPT_BASE_DIRECTORY=${SCRIPT_BASE_DIRECTORY}"
-		
+		# The script name is derived from the directory name
+		SCRIPT_FILE_NAME=$(basename "${SCRIPT_PATH}"|sed /s/^[0-9][0-9][0-9][0-9]-//).sh
+		SCRIPT_FILE_PATH=$(readlink -f "${SCRIPT_PATH}")
 		SCRIPT_LOG_NAME="${SCRIPT_NAME%.*}.log.$(date +'%y%m%d-%H%M%S')"
+		
+		echo
+		
+		echo "SCRIPT_DIRECTORY_PATH=${SCRIPT_DIRECTORY_PATH}"
+		echo "SCRIPT_FILE_NAME=${SCRIPT_FILE_NAME}"
+		echo "SCRIPT_FILE_PATH=${SCRIPT_FILE_PATH}"
 		echo "SCRIPT_LOG_NAME=${SCRIPT_LOG_NAME}"
 		
-		cd "${SCRIPT_BASE_DIRECTORY}"
-		bash "./${SCRIPT_NAME}"
+		#cd "${SCRIPT_BASE_DIRECTORY}"
+		#bash "./${SCRIPT_NAME}"
+		
+		echo
 	done
 }
 
