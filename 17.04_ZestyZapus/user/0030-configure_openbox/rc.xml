@@ -325,36 +325,30 @@
         <direction>down</direction>
       </action>
     </keybind>
-    <!-- Keybindings for running applications -->
-    <!--
-    <keybind key="A-F2">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>Run Program</name>
-        </startupnotify>
-        <command>gmrun</command>
-      </action>
-    </keybind>
-    -->
-    <keybind key="A-F3">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>dmenu-bind</name>
-        </startupnotify>
-        <command>~/.config/dmenu/dmenu-bind.sh</command>
-      </action>
-    </keybind>
-    <keybind key="W-f">
-      <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>File Manager</name>
-        </startupnotify>
-        <command>caja --no-desktop</command>
-      </action>
-    </keybind>
+		
+		<!--
+		########################################
+		# Keybindings for running applications
+		########################################
+		-->
+		<keybind key="XF86PowerOff">
+			<action name="Execute"><command>python ~/.config/openbox/exit.py</command></action>
+		</keybind>
+		
+		<keybind key="A-F3">
+			<action name="Execute">
+				<startupnotify><enabled>true</enabled><name>dmenu-bind</name></startupnotify>
+				<command>~/.config/dmenu/dmenu-bind.sh</command>
+			</action>
+		</keybind>
+		
+		<keybind key="W-f">
+			<action name="Execute">
+				<startupnotify><enabled>true</enabled><name>File Manager</name></startupnotify>
+				<command>caja --no-desktop</command>
+			</action>
+		</keybind>
+		
     <keybind key="W-s">
       <action name="Execute">
         <startupnotify>
