@@ -1,0 +1,162 @@
+h1 {
+	font-size:188% !important;
+	font-weight:700 !important;
+}
+
+h2 {
+	font-size:150% !important;
+	font-weight:700 !important;
+}
+
+h3,h4,h5,h6 {
+	border-bottom:none !important;
+	font-weight:700 !important;
+}
+
+h3 {
+	font-size:132% !important;
+}
+
+h4 {
+	font-size:116% !important;
+}
+
+h5 {
+	font-size:100% !important;
+}
+
+h6 {
+	font-size:80% !important;
+}
+
+h1,h2,h3,h4,h5 {
+	margin: 0 !important;
+}
+
+.level1,.level2,.level3,.level4,.level5 {
+	margin: 0 !important;
+}
+
+div.breadcrumbs,div#dw__toc,ul.toc{
+	line-height: 1.5em !important;
+}
+
+main p {
+	margin-top: 1em !important;
+	margin-bottom: 0 !important;
+}
+
+main ol,main ul {
+	margin-top: 0 !important;
+	margin-bottom: 0 !important;
+	line-height: 1.75em !important;
+}
+
+main .table {
+	margin: 1em 0 0 0 !important;
+}
+
+.dokuwiki blockquote {
+	margin: 1em 0 0 0 !important;
+	border-width: 0 0 0 10px !important;
+	padding: 5px 5px 5px 5px !important;
+	background-color: #F5F5DC !important;
+}
+
+/* code blocks by code tag */
+div.dokuwiki pre.code {
+	margin: 1em 0 0 0 !important;
+	background-color: __background_other__ !important;
+	max-height: 25em !important;
+	overflow: auto !important;
+}
+
+div.dokuwiki code {
+	background-color: darkgray !important;
+	color: black !important;
+	padding: 0 2px 0 2px;
+}
+
+.dokuwiki .code.a {
+	color: white !important;
+}
+
+#dw__toc {
+	width: 30% !important;
+}
+
+div.breadcrumbs {
+	padding: 0 1em 0 1em !important;
+	background-color: black !important;
+	color: white !important;
+	font-size: 100% !important;
+	line-height: 2em !important;
+}
+
+div.breadcrumbs a {
+	color: white !important;
+}
+
+div.meta {
+	font-size: 100% !important;
+	padding: 1em 0 0 0 !important;
+}
+
+div.doc {
+	float: none !important;
+	padding: 0 1em 0 1em !important;
+	text-align: left !important;
+	background-color: black !important;
+	color: white !important;
+	font-size: 100% !important;
+	line-height: 2em !important;
+}
+
+/***********************************************************************
+ * Fix: with dokubook the bottom of the file icon is hidden.
+ ***********************************************************************/
+.mediafile {
+	padding-bottom: 5px !important;
+}
+
+/***********************************************************************
+ * Fix: the side bar should be wider
+ * See [[https://www.dokuwiki.org/template:dokubook]]
+ ***********************************************************************/
+/* presume sidebar is left */
+div.dokuwiki div#sidebar_left { width: 160px !important; }
+/* change the 160px to the required width */
+div.dokuwiki div#dokubook_container_left { left: 170px !important;}
+/* change the 170px to the required width + 10 */
+
+/*
+ * If the sidebar is wider then we can see the "dokuwiki" text at the right of the dokuwiki logo.
+ */
+span.sb_label { display: none !important; }
+
+/***********************************************************************
+ * Make the dokubook_container_left narrower 
+ ***********************************************************************/
+div.dokuwiki {
+	margin: 0px auto !important;
+	width: 70% !important;
+	overflow: hidden !important;
+}
+div.dokuwiki div#sidebar_left {
+	position: relative !important;
+	float: left !important;
+	overflow: hidden !important;
+}
+div.dokuwiki div#dokubook_container_left {
+	position: relative !important;
+	left: 0px !important;
+	padding-left: 10px !important;
+	width: auto !important;
+	overflow: hidden !important;
+}
+div.dokuwiki div#sidebar_left .sidebar_box {
+	border: 1px solid #8cacbb;
+}
+div.dokuwiki div#sidebar_left div#search {
+	border: 1px solid #8cacbb;
+}

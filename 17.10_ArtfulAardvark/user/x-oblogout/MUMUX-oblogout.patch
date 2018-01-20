@@ -1,0 +1,62 @@
+diff -ruN oblogout-master/data/oblogout.conf MUMUX-oblogout/data/oblogout.conf
+--- oblogout-master/data/oblogout.conf	2009-11-18 11:09:59.000000000 +0100
++++ MUMUX-oblogout/data/oblogout.conf	2016-05-05 20:15:33.691453915 +0200
+@@ -1,11 +1,11 @@
+ [settings]
+-usehal = true
++usehal = false
+ 
+ [looks]
+ opacity = 70
+ bgcolor = black
+ buttontheme = simplistic
+-buttons = cancel, logout, restart, shutdown, suspend, lock
++buttons = cancel, logout, restart, shutdown, suspend, lock, switch
+ 
+ [shortcuts]
+ cancel = Escape
+@@ -19,9 +19,9 @@
+ [commands]
+ shutdown = shutdown -h now
+ restart = reboot
+-suspend = pmi action suspend
+-hibernate = pmi action hibernate
+-safesuspend = safesuspend
+-lock = gnome-screensaver-command -l
+-switchuser = gdm-control --switch-user
++suspend = systemctl suspend
++hibernate = systemctl hibernate
++safesuspend =
++lock = dm-tool lock
++switchuser = dm-tool switch-to-greeter
+ logout = openbox --exit
+diff -ruN oblogout-master/oblogout/__init__.py MUMUX-oblogout/oblogout/__init__.py
+--- oblogout-master/oblogout/__init__.py	2009-11-18 11:09:59.000000000 +0100
++++ MUMUX-oblogout/oblogout/__init__.py	2016-05-05 20:15:33.691453915 +0200
+@@ -56,11 +56,11 @@
+ 
+     cmd_shutdown = "shutdown -h now"
+     cmd_restart = "reboot"
+-    cmd_suspend = "pmi action suspend"
+-    cmd_hibernate = "pmi action hibernate"
++    cmd_suspend = "systemctl suspend"
++    cmd_hibernate = "systemctl hibernate"
+     cmd_safesuspend = ""
+-    cmd_lock = "gnome-screensaver-command -l"
+-    cmd_switch = "gdm-control --switch-user"
++    cmd_lock = "dm-tool lock"
++    cmd_switch = "dm-tool switch-to-greeter"
+     cmd_logout = "openbox --exit"
+ 
+     def __init__(self, config=None, local=None):
+Binary files oblogout-master/oblogout/__init__.pyc and MUMUX-oblogout/oblogout/__init__.pyc differ
+diff -ruN oblogout-master/oblogout-dev.sh MUMUX-oblogout/oblogout-dev.sh
+--- oblogout-master/oblogout-dev.sh	2009-11-18 11:09:59.000000000 +0100
++++ MUMUX-oblogout/oblogout-dev.sh	2016-05-05 21:11:16.209446390 +0200
+@@ -1,3 +1,4 @@
+ #!/bin/sh
+-OBLOGOUT_PATH=`dirname $0`
+-PYTHONPATH="$PYTHONPATH:$OBLOGOUT_PATH" python $OBLOGOUT_PATH/data/oblogout -l -v $*
++cd ~/scripts/MUMUX-oblogout
++OBLOGOUT_PATH=$(pwd)
++PYTHONPATH="${PYTHONPATH}:${OBLOGOUT_PATH}" python ${OBLOGOUT_PATH}/data/oblogout -l -v $*
