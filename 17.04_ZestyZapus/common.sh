@@ -35,7 +35,7 @@ check_xubuntu_version(){
 		echo "This script has not been tested with: $(cat /var/log/installer/media-info)"
 		exit 1
 	fi
-	echo 'Xubuntu version check: OK'
+	echo "Check Xubuntu version: ${SUPPORTED_XUBUNTU_VERSION} => OK"
 }
 
 backup_file(){

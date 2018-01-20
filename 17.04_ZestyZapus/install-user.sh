@@ -1,40 +1,73 @@
 #!/bin/bash
 
 if [ ! "${BASH_VERSION}" ] ; then
-	echo "This script should run with bash" 1>&2
+	printf 'This script should run with bash\n' 1>&2
 	exit 1
 fi
 
-source './common.sh'
+source ./common.sh
 
 if has_root_privileges; then
-	echo 'This script should not be started with the root privileges'
+	printf 'This script should not be started with the root privileges\n'
 	exit 1
 fi
 
-readarray -t SCRIPT_DIRECTORY_PATH_ARRAY < <(find ./user/ -type d -regex ".*/[0-9][0-9][0-9][0-9]-.*"|sort)
+readarray -t RECIPE_DIRECTORY_PATH_ARRAY < <(find ./user/ -maxdepth 1 -type d -regex ".*/[0-9][0-9][0-9][0-9]-.*" -exec readlink -f {} \;|sort)
 
-execute_all_user_scripts(){
-	for SCRIPT_DIRECTORY_PATH in "${SCRIPT_DIRECTORY_PATH_ARRAY[@]}"; do
-		cd "${BASEDIR}"
+list_all_user_recipes(){
+	printf '\nRecipes to be executed:\n'
+	for RECIPE_DIRECTORY_PATH in "${RECIPE_DIRECTORY_PATH_ARRAY[@]}"; do
+		RECIPE_NAME=$(basename ${RECIPE_DIRECTORY_PATH})
+		printf "\t${RECIPE_NAME}\n"
+	done
+	printf '\n'
+}
+
+execute_all_user_recipes(){
+	for RECIPE_DIRECTORY_PATH in "${RECIPE_DIRECTORY_PATH_ARRAY[@]}"; do
+		RECIPE_NAME=$(basename ${RECIPE_DIRECTORY_PATH})
 		
-		# The script name is derived from the directory name
-		SCRIPT_FILE_NAME=$(basename "${SCRIPT_PATH}"|sed /s/^[0-9][0-9][0-9][0-9]-//).sh
-		SCRIPT_FILE_PATH=$(readlink -f "${SCRIPT_PATH}")
+		# The script to execute is derived from the recipe name
+		SCRIPT_FILE_NAME=$(echo "${RECIPE_NAME}"|sed 's/^[0-9][0-9][0-9][0-9]-//').sh
+		SCRIPT_FILE_PATH="${RECIPE_DIRECTORY_PATH}/${SCRIPT_FILE_NAME}"
+		
+		printf "RECIPE_NAME: ${RECIPE_NAME}\n"
+		
+		if [[ ! -f "${SCRIPT_FILE_PATH}" ]]; then
+			printf "Can not find script for recipe: ${RECIPE_NAME}\n\n"
+			continue
+		fi
+		
+		printf "\t=> ${SCRIPT_FILE_NAME}\n" 
+		
+		cd "${RECIPE_DIRECTORY_PATH}"
 		SCRIPT_LOG_NAME="${SCRIPT_NAME%.*}.log.$(date +'%y%m%d-%H%M%S')"
+		#bash "./${SCRIPT_FILE_NAME}"
 		
-		echo
-		
-		echo "SCRIPT_DIRECTORY_PATH=${SCRIPT_DIRECTORY_PATH}"
-		echo "SCRIPT_FILE_NAME=${SCRIPT_FILE_NAME}"
-		echo "SCRIPT_FILE_PATH=${SCRIPT_FILE_PATH}"
-		echo "SCRIPT_LOG_NAME=${SCRIPT_LOG_NAME}"
-		
-		#cd "${SCRIPT_BASE_DIRECTORY}"
-		#bash "./${SCRIPT_NAME}"
-		
-		echo
+		printf '\n'
 	done
 }
 
-check_xubuntu_version && execute_all_user_scripts
+if ! check_xubuntu_version; then
+	exit 1
+fi
+
+list_all_user_recipes
+
+while true; do
+	read -p "Continue? [y/n] " USER_ANSWER
+	case "${USER_ANSWER}" in
+		[Yy]* )
+			printf '\n'
+			execute_all_user_recipes 
+			break
+			;;
+		[Nn]* ) 
+			exit
+			;;
+		* ) 
+			printf 'Please answer yes or no\n\n'
+			echo
+			;;
+	esac
+done
