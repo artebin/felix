@@ -42,7 +42,7 @@ execute_all_user_recipes(){
 		
 		cd "${RECIPE_DIRECTORY_PATH}"
 		SCRIPT_LOG_NAME="${SCRIPT_NAME%.*}.log.$(date +'%y%m%d-%H%M%S')"
-		#bash "./${SCRIPT_FILE_NAME}"
+		bash "./${SCRIPT_FILE_NAME}"
 		
 		printf '\n'
 	done

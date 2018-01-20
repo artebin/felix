@@ -8,7 +8,13 @@ install_dockbarx(){
 	cd ${BASEDIR}
 	
 	echo 'Installing DockbarX from ppa:dockbar-main/ppa ...'
+	
+	# Xubuntu 17.04 should use:
 	add-apt-repository -y ppa:dockbar-main/ppa
+	
+	# Xubuntu 17.10 should use:
+	#add-apt-repository -y ppa:xuzhen666/dockbarx
+	
 	apt-get update
 	apt-get install -y dockbarx dockbarx-themes-extra
 }
