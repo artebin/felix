@@ -8,3 +8,10 @@
 - put environment variables in /etc/profile.d/myenvvars.sh rather than in /etc/profile
 - LD_LIRABRY_PATH can not be set anymore from /etc/environment or /etc/profile, should use /etc/ld.so.conf.d/somefile.conf
 - Java is not using ld.so.conf files we can check default value of java.library.path with: java -XshowSettings:properties => best thing is to create a symbolic link 'ln -s /usr/lib/x86_64-linux-gnu/jni/libwibucmJNI64.so /usr/lib/libwibucmJNI64.so'
+
+**** 18-01-20 ****
+- test with Xubuntu 17.10:
+(1) the wallpaper used by LightdDM stays displayed after login
+(2) there is a problem with openbox, when a window is maximized, we cannot resize the window directly, we must change the window state to unmaximized first, however for a reason the unsucessful resizing changed the window size.
+(3) pasystray has some problem (but maybe it is because I am building pasystray from the source), the sound can be very loud and the volume amount corresponding to a mouse scroll step is very low.
+(4) there is some problem with the sound: cracking and bad quality audio (noticed with youtube, but it is clearly not about the original sound, the problem is in the local playback).
