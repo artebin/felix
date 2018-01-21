@@ -6,7 +6,7 @@ import gtk
 import os
 import getpass
 
-class cb_exit:
+class power_button_pressed:
 	def disable_buttons(self):
 		self.cancel.set_sensitive(False)
 		self.logout.set_sensitive(False)
@@ -27,15 +27,13 @@ class cb_exit:
 	def suspend_action(self,btn):
 		self.disable_buttons()
 		self.status.set_label("suspending, please standby...")
-		os.system("cb-lock")
-		os.system("dbus-send --system --print-reply --dest=\"org.freedesktop.UPower\" /org/freedesktop/UPower org.freedesktop.UPower.Suspend")
+		os.system("systemctl suspend")
 		gtk.main_quit()
 
 	def hibernate_action(self,btn):
 		self.disable_buttons()
 		self.status.set_label("hibernating, please standby...")
-		os.system("cb-lock")
-		os.system("dbus-send --system --print-reply --dest=\"org.freedesktop.UPower\" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate")
+		os.system("systemctl hibernate")
 		gtk.main_quit()
 
 	def reboot_action(self,btn):
@@ -133,5 +131,5 @@ def main():
     gtk.main()
 
 if __name__ == "__main__":
-    go = cb_exit()
+    go = power_button_pressed()
     main()

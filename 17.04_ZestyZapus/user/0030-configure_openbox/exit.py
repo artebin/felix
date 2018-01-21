@@ -6,7 +6,7 @@ import gtk
 import os
 import getpass
 
-class cb_exit:
+class exit:
 	def disable_buttons(self):
 		self.cancel.set_sensitive(False)
 		self.logout.set_sensitive(False)
@@ -103,5 +103,5 @@ def main():
     gtk.main()
 
 if __name__ == "__main__":
-    go = cb_exit()
+    go = exit()
     main()
