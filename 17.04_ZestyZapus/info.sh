@@ -20,6 +20,7 @@ get_ubuntu_version(){
 # Linux kernel version
 
 # GTK version
+dpkg -l libgtk2.0-0 libgtk-3-0
 
 # Java version
 

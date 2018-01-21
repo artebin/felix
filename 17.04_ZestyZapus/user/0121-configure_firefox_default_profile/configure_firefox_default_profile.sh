@@ -61,6 +61,16 @@ configure_firefox_default_profile(){
 	else
 		echo "${LINE_REPLACEMENT_VALUE}" >> "${PREFS_JS_PATH}"
 	fi
+	
+	echo 'Setting "Do not trim URLs in the URL bar" ...'
+	KEY='browser.urlbar.trimURLs'
+	PREFIX_TO_SEARCH='user_pref("browser.urlbar.trimURLs"'
+	LINE_REPLACEMENT_VALUE='user_pref("browser.urlbar.trimURLs", false);'
+	if grep -q "${KEY}" "${PREFS_JS_PATH}"; then
+		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${PREFS_JS_PATH}"
+	else
+		echo "${LINE_REPLACEMENT_VALUE}" >> "${PREFS_JS_PATH}"
+	fi
 }
 
 cd ${BASEDIR}
