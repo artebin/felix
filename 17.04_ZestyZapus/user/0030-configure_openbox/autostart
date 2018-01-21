@@ -1,7 +1,7 @@
 tint2 &
 
-# xfce4-volumed is started via /etc/xdg/autostart/xfce4-volumed.desktop
-#xfce4-volumed &
+# xfce4-volumed could be started via /etc/xdg/autostart/xfce4-volumed.desktop but there is a parameter "OnlyShowIn=XFCE;"
+xfce4-volumed &
 
 # xfce4-power-manager is started via /etc/xdg/autostart/xfce4-power-manager
 #xfce4-power-manager &
