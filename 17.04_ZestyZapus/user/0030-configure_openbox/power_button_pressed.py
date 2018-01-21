@@ -21,7 +21,7 @@ class cb_exit:
 
 	def logout_action(self,btn):
 		self.disable_buttons()
-		self.status.set_label("Exiting Openbox, please standby...")
+		self.status.set_label("Exiting Openbox, please standby ...")
 		os.system("openbox --exit")
 
 	def suspend_action(self,btn):
@@ -40,17 +40,17 @@ class cb_exit:
 
 	def reboot_action(self,btn):
 		self.disable_buttons()
-		self.status.set_label("Rebooting, please standby...")
-		os.system("dbus-send --system --print-reply --dest=\"org.freedesktop.ConsoleKit\" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart")
+		self.status.set_label("Rebooting, please standby ...")
+		os.system("systemctl reboot")
 
 	def shutdown_action(self,btn):
 		self.disable_buttons()
-		self.status.set_label("Shutting down, please standby...")
-		os.system("dbus-send --system --print-reply --dest=\"org.freedesktop.ConsoleKit\" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop")
+		self.status.set_label("Shutting down, please standby ...")
+		os.system("systemctl poweroff")
 
 	def create_window(self):
 		self.window = gtk.Window()
-		title = "Log out " + getpass.getuser() + "? Choose an option:"
+		title = "Exit session for " + getpass.getuser() + "? Choose an option:"
 		self.window.set_title(title)
 		self.window.set_border_width(5)
 		self.window.set_size_request(600, 80)
@@ -59,7 +59,7 @@ class cb_exit:
 		self.window.stick
 		self.window.set_position(1)
 		self.window.connect("delete_event", gtk.main_quit)
-		windowicon = self.window.render_icon(gtk.STOCK_QUIT, gtk.ICON_SIZE_MENU)
+		windowicon = self.window.render_icon(gtk.STOCK_QUIT, gtk.ICON_SIZE_DIALOG)
 		self.window.set_icon(windowicon)
 
 		

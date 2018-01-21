@@ -10,10 +10,8 @@ class cb_exit:
 	def disable_buttons(self):
 		self.cancel.set_sensitive(False)
 		self.logout.set_sensitive(False)
-		self.suspend.set_sensitive(False)
 		self.reboot.set_sensitive(False)
 		self.shutdown.set_sensitive(False)
-		self.hibernate.set_sensitive(False)
 
 	def cancel_action(self,btn):
 		self.disable_buttons()
@@ -21,36 +19,22 @@ class cb_exit:
 
 	def logout_action(self,btn):
 		self.disable_buttons()
-		self.status.set_label("Exiting Openbox, please standby...")
+		self.status.set_label("Exiting Openbox, please standby ...")
 		os.system("openbox --exit")
-
-	def suspend_action(self,btn):
-		self.disable_buttons()
-		self.status.set_label("suspending, please standby...")
-		os.system("cb-lock")
-		os.system("dbus-send --system --print-reply --dest=\"org.freedesktop.UPower\" /org/freedesktop/UPower org.freedesktop.UPower.Suspend")
-		gtk.main_quit()
-
-	def hibernate_action(self,btn):
-		self.disable_buttons()
-		self.status.set_label("hibernating, please standby...")
-		os.system("cb-lock")
-		os.system("dbus-send --system --print-reply --dest=\"org.freedesktop.UPower\" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate")
-		gtk.main_quit()
 
 	def reboot_action(self,btn):
 		self.disable_buttons()
-		self.status.set_label("Rebooting, please standby...")
-		os.system("dbus-send --system --print-reply --dest=\"org.freedesktop.ConsoleKit\" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart")
+		self.status.set_label("Rebooting, please standby ...")
+		os.system("systemctl reboot")
 
 	def shutdown_action(self,btn):
 		self.disable_buttons()
-		self.status.set_label("Shutting down, please standby...")
-		os.system("dbus-send --system --print-reply --dest=\"org.freedesktop.ConsoleKit\" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop")
+		self.status.set_label("Shutting down, please standby ...")
+		os.system("systemctl poweroff")
 
 	def create_window(self):
 		self.window = gtk.Window()
-		title = "Log out " + getpass.getuser() + "? Choose an option:"
+		title = "Exit session for " + getpass.getuser() + "? Choose an option:"
 		self.window.set_title(title)
 		self.window.set_border_width(5)
 		self.window.set_size_request(600, 80)
@@ -59,7 +43,7 @@ class cb_exit:
 		self.window.stick
 		self.window.set_position(1)
 		self.window.connect("delete_event", gtk.main_quit)
-		windowicon = self.window.render_icon(gtk.STOCK_QUIT, gtk.ICON_SIZE_MENU)
+		windowicon = self.window.render_icon(gtk.STOCK_QUIT, gtk.ICON_SIZE_DIALOG)
 		self.window.set_icon(windowicon)
 
 		
@@ -80,20 +64,6 @@ class cb_exit:
 		self.logout.connect("clicked", self.logout_action)
 		self.button_box.pack_start(self.logout)
 		self.logout.show()
-		
-		#Suspend button
-		self.suspend = gtk.Button("_Suspend")
-		self.suspend.set_border_width(4)
-		self.suspend.connect("clicked", self.suspend_action)
-		self.button_box.pack_start(self.suspend)
-		self.suspend.show()
-		
-		#Hibernate button
-		self.hibernate = gtk.Button("_Hibernate")
-		self.hibernate.set_border_width(4)
-		self.hibernate.connect("clicked", self.hibernate_action)
-		self.button_box.pack_start(self.hibernate)
-		self.hibernate.show()
 		
 		#Reboot button
 		self.reboot = gtk.Button("_Reboot")

@@ -94,10 +94,6 @@
 		<item label="Switch User"><action name="Execute"><execute>dm-tool switch-to-greeter</execute></action></item>
 		<item label="Suspend"><action name="Execute"><execute>sh ~/.config/openbox/dialog_command.sh "Suspend?" "systemctl suspend"</execute></action></item>
 		<item label="Hibernate"><action name="Execute"><execute>sh ~/.config/openbox/dialog_command.sh "Hibernate?" "systemctl hibernate"</execute></action></item>
-		<menu id="exit" label="Exit">
-			<item label="Log Out"><action name="Execute"><execute>sh ~/.config/openbox/dialog_command.sh "Log out?" "openbox --exit"</execute></action></item>
-			<item label="Reboot"><action name="Execute"><execute>sh ~/.config/openbox/dialog_command.sh "Reboot?" "systemctl reboot"</execute></action></item>
-			<item label="Shutdown"><action name="Execute"><execute>sh ~/.config/openbox/dialog_command.sh "Power off?" "systemctl poweroff"</execute></action></item>
-		</menu>
+		<item label="Exit"><action name="Execute"><execute>python ~/.config/openbox/exit.py</execute></action></item>
 	</menu>
 </openbox_menu>

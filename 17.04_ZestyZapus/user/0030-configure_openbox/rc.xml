@@ -332,7 +332,7 @@
 		########################################
 		-->
 		<keybind key="XF86PowerOff">
-			<action name="Execute"><command>python ~/.config/openbox/exit.py</command></action>
+			<action name="Execute"><command>python ~/.config/openbox/power_button_pressed.py</command></action>
 		</keybind>
 		
 		<keybind key="A-F3">
