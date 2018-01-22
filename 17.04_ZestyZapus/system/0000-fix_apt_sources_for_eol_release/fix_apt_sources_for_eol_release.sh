@@ -9,8 +9,10 @@ fix_apt_sources_for_eol_release(){
 	
 	echo 'Fixing apt sources for EOL release ...'
 	backup_file copy /etc/apt/sources.list
-	bash -c "cat sources.list | sed 's/be\.archive\.ubuntu\.com/old-releases\.ubuntu\.com/g' >sources.list"
-	bash -c "cat sources.list | sed 's/security\.ubuntu\.com/old-releases\.ubuntu\.com/g' >sources.list"
+	cp /etc/apt/sources.list ./sources.list
+	sed -i 's/be\.archive\.ubuntu\.com/old-releases\.ubuntu\.com/g' ./sources.list
+	sed -i 's/security\.ubuntu\.com/old-releases\.ubuntu\.com/g' ./sources.list
+	cp ./sources.list /etc/apt/sources.list
 	apt-get update
 }
 
