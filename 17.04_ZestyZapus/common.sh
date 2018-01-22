@@ -103,7 +103,7 @@ add_or_update_line_based_on_prefix(){
 	LINE_REPLACEMENT_VALUE="${2}"
 	FILE_PATH="${3}"
 	if grep -q "^${PREFIX_TO_SEARCH}" "${FILE_PATH}"; then
-		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FILE_PATH}"
+		sed -i "/^$(escape_sed_pattern ${PREFIX_TO_SEARCH})/s/.*/$(escape_sed_pattern ${LINE_REPLACEMENT_VALUE})/" "${FILE_PATH}"
 	else
 		echo "${LINE_REPLACEMENT_VALUE}" >> "${FILE_PATH}"
 	fi
