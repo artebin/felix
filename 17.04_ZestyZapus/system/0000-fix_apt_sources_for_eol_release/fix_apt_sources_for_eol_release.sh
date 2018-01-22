@@ -13,6 +13,7 @@ fix_apt_sources_for_eol_release(){
 	sed -i 's/be\.archive\.ubuntu\.com/old-releases\.ubuntu\.com/g' ./sources.list
 	sed -i 's/security\.ubuntu\.com/old-releases\.ubuntu\.com/g' ./sources.list
 	cp ./sources.list /etc/apt/sources.list
+	rm -f ./sources.list
 	apt-get update
 }
 
