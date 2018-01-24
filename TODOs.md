@@ -13,3 +13,4 @@
 * add xplanet to packages.install.list
 * clean: remove install_mate_1.17, ampache and deluge_deamon (keep it in the attic)
 * light dm config
+* user recipe for Geany config should check geany version number + should compare original file with my dot file
