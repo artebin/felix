@@ -18,9 +18,18 @@ configure_geany(){
 		mkdir -p ~/.config/geany/filedefs
 	fi
 	
-	# Copy geany config files
-	cp ./geany_1.29.filetypes.common ~/.config/geany/filedefs/filetypes.common
+	# Geany keyboard shortcuts:
+	# menu_messagewindow	= F6
+	# toggle_sidebar		= F7
+	# build_link			= <Shift>F8
+	# build_make			= <Primary><Shift>F8
+	# build_run				= F9
+	# switch_search_bar		= F3
+	# switch_scribble		= F5
 	cp ./geany_1.29.keybindings.conf ~/.config/geany/keybindings.conf
+	
+	# Geany configuration
+	cp ./geany_1.29.filetypes.common ~/.config/geany/filedefs/filetypes.common
 	
 	# Force geany to open files in new instance
 	if [ ! -f ~/.local/share/applications ]; then
