@@ -129,6 +129,33 @@ git clone http://github.com/${1}/${2}
 }
 alias github-clone=github-clone
 
-#export JAVA_HOME=/opt/jdk1.7.0_51/jre
-#export JDK_HOME=/opt/jdk1.7.0_51
-#export PATH=${JDK_HOME}/bin:/opt/apache-ant-1.9.4/bin:${PATH}
+backup_file(){
+	if [[ "$#" -ne 2 ]]; then
+		echo 'Function backup_file should be called with an argument'
+		exit 1
+	fi
+	if [[ ! -f "${2}" ]]; then
+		echo "Can not find ${2}"
+		exit 1
+	fi
+	FILE_BACKUP_PATH="${2}.bak.$(date +'%y%m%d-%H%M%S')"
+	case "${1}" in
+		'rename')
+			mv "${2}" "${FILE_BACKUP_PATH}"
+			if [[ "$?" -ne 0 ]]; then
+				echo "Can not backup file ${2}"
+				exit 1
+			fi
+			;;
+		'copy')
+			cp "${2}" "${FILE_BACKUP_PATH}"
+			if [[ "$?" -ne 0 ]]; then
+				echo "Can not backup file ${2}"
+				exit 1
+			fi
+			;;
+		*)
+			echo "Unkown argument ${1}"
+			exit 1
+	esac
+}
