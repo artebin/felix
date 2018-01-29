@@ -1,0 +1,8 @@
+# Copy in archive /opt and unpack
+sudo cp ./gandi-dyndns.at.gz /opt
+cd /opt
+sudo tar xzf ./gandi-dyndns.at.gz
+
+# Copy config.json
+
+# Add the cron task 
