@@ -3,7 +3,8 @@ sudo cp ./gandi-dyndns.tar.gz /opt
 cd /opt
 sudo tar xzf ./gandi-dyndns.at.gz
 
-# Copy config.json
+# Copy config.json and set permissions 600
+chmod 600 ./gandi-dyndns/config.json
 
 # Add a cron task 
 sudo crontab -l > sucron
