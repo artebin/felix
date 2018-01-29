@@ -22,5 +22,3 @@
 Xubuntu 16.04: bug #1568604 "Mouse cursor lost when unlocking with Intel graphics": <https://bugs.launchpad.net/ubuntu/+source/xserver-xorg-video-intel/+bug/1568604>  
 Solved by reinstalling intel driver, version 2:2.99.917+git20160706-1ubuntu1:
 <https://launchpad.net/ubuntu/yakkety/+package/xserver-xorg-video-intel>
-
-

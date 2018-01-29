@@ -20,7 +20,7 @@ configure_openbox(){
 	cp ./rc.xml ~/.config/openbox
 	cp ./tint2_restart.sh ~/.config/openbox/tint2_restart.sh
 	cp ./power_button_pressed.py ~/.config/openbox/power_button_pressed.sh
-	cp ./exit.py ~/.config/openbox/exit.sh
+	cp ./exit.py ~/.config/openbox/exit.py
 }
 
 cd ${BASEDIR}
