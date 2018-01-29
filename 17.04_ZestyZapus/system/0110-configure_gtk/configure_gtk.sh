@@ -25,7 +25,8 @@ configure_gtk(){
 	sed -i "/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=${GTK_ICON_THEME_NAME}/" /etc/gtk-3.0/settings.ini
 	
 	# Disable the scrollbar overlay introduced in GTK+ 3.16
-	# Cannot find a property in gtkrc-3.0 for that...
+	# It is used for scrollbar undershoot/overshoot and line marker indicating scrollbar value is not 0 or 1 (dashed line)
+	# Can not find a property in gtkrc-3.0 for that...
 	echo 'GTK_OVERLAY_SCROLLING=0' | sudo tee -a /etc/environment
 	
 	# Disable SWT_GTK3 (use GTK+ 2.0 for SWT) => SWT_GTK3=0
