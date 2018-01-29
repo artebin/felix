@@ -13,6 +13,7 @@
 - [] VirtualBox Frogstar install should not be a script but rather a documentation
 - [] XDMCP
 - [] xrdp and FreeRDP
+- [] update or remove Install.md
 
 # DONE
 - [x] When config Geany, also put the .desktop file for forcing one instance per file opening (the one instance per workspace does not seem to work)
