@@ -37,6 +37,7 @@ git
 nfs-common
 chromium-browser
 vlc
+libdvd-pkg
 dconf-cli
 dconf-editor
 dconf-tools

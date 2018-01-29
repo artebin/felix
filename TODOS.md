@@ -1,4 +1,7 @@
 # TODOS
+- [ ] default for laptops in xfce4-power-manager settings
+- [ ] Dialogs for suspend and hibernate from openbox menu?
+- [ ] Force num lock at boot time (console and X)
 - [ ] Add geany markdown template
 - [ ] Fix the problems with the dual screens
 - [ ] Support NFS/samba + comments in /etc/fstab for how to mount the file systems
@@ -12,9 +15,9 @@
 - [ ] Improve Shortcuts.md
 - [ ] XDMCP
 - [ ] xrdp and FreeRDP
-- [ ] update or remove Install.md
 
 # DONE
+- [x] update or remove Install.md
 - [x] VirtualBox Frogstar install should not be a script but rather a documentation
 - [x] auto_login and gandy_dns should not be in the list of the default recipes
 - [x] Add kodos regular expression tester => No, can not compile, too old stuff

@@ -15,7 +15,7 @@ fi
 readarray -t RECIPE_DIRECTORY_PATH_ARRAY < <(find ./user/ -maxdepth 1 -type d -regex ".*/[0-9][0-9][0-9][0-9]-.*" -exec readlink -f {} \;|sort)
 
 list_all_user_recipes(){
-	printf '\nRecipes to be executed:\n'
+	printf '\nRecipes to be used:\n'
 	for RECIPE_DIRECTORY_PATH in "${RECIPE_DIRECTORY_PATH_ARRAY[@]}"; do
 		RECIPE_NAME=$(basename ${RECIPE_DIRECTORY_PATH})
 		printf "\t${RECIPE_NAME}\n"
