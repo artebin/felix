@@ -1,4 +1,4 @@
-# TODO
+# TODOS
 - [ ] Add geany markdown template
 - [ ] Add kodos regular expression tester
 - [ ] Fix the problems with the dual screens
