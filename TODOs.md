@@ -1,4 +1,5 @@
 # TODO
+- [ ] Add geany markdown template
 - [ ] Add kodos regular expression tester
 - [ ] Fix the problems with the dual screens
 - [ ] Support NFS/samba + comments in /etc/fstab for how to mount the file systems
