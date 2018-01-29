@@ -1,6 +1,5 @@
 # TODOS
 - [ ] Add geany markdown template
-- [ ] Add kodos regular expression tester
 - [ ] Fix the problems with the dual screens
 - [ ] Support NFS/samba + comments in /etc/fstab for how to mount the file systems
 - [ ] Prepare shortcuts for fullscreen (think about office work and the video wall... )
@@ -11,12 +10,14 @@
 - [ ] Latex install
 - [ ] Add xplanet to packages.install.list
 - [ ] Improve Shortcuts.md
-- [ ] VirtualBox Frogstar install should not be a script but rather a documentation
 - [ ] XDMCP
 - [ ] xrdp and FreeRDP
 - [ ] update or remove Install.md
 
 # DONE
+- [x] VirtualBox Frogstar install should not be a script but rather a documentation
+- [x] auto_login and gandy_dns should not be in the list of the default recipes
+- [x] Add kodos regular expression tester => No, can not compile, too old stuff
 - [x] When config Geany, also put the .desktop file for forcing one instance per file opening (the one instance per workspace does not seem to work)
 - [x] Geany shortcut for show/hide the sidebar?
 - [x] Remove shotwell from packages.install.list => No shotwell should be installed by default

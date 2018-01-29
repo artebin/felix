@@ -18,6 +18,9 @@
 - It seems there is a bug in Nouveau driver with the framebuffer and when using multiple monitors. The boot is successful, xorgs seems to start properly, but we can not switch to the console with <Ctrl><Alt>F{x}. If we plug only one monitor then we can switch to the console. With the NVidia driver 384, we can also switch to console.
 - console framebuffer change resolution in `/etc/default/grub` with: `GRUB_GFXMODE=1024x768x32` and `GRUB_GFXPAYLOAD_LINUX=keep` (don't forget to call update-grub)
 
-
+# 16-09-28
+Xubuntu 16.04: bug #1568604 "Mouse cursor lost when unlocking with Intel graphics": <https://bugs.launchpad.net/ubuntu/+source/xserver-xorg-video-intel/+bug/1568604>  
+Solved by reinstalling intel driver, version 2:2.99.917+git20160706-1ubuntu1:
+<https://launchpad.net/ubuntu/yakkety/+package/xserver-xorg-video-intel>
 
 
