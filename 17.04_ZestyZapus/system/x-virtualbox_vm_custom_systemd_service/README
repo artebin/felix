@@ -3,6 +3,9 @@ VM_DIRECTORY_PATH=""
 VM_NAME=$(basedir ${VM_DIRECTORY_PATH})
 VM_SERVICE_FILE_NAME="virtualbox-${VM_NAME}.service"
 
+# Install VirtualBox Extension Pack
+sudo apt-get install virtualbox-ext-pack
+
 # Create user and copy VM files
 useradd "${USER_NAME}"
 addgroup "${USER_NAME}" vboxusers
