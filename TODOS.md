@@ -8,7 +8,6 @@
 - [ ] Fix icons (some icons are now missing in the xfce4-settings-manager)
 - [ ] Categorize the packages in packages.install.list + add lshw?
 - [ ] Latex install
-- [ ] Add xplanet to packages.install.list
 - [ ] Improve Shortcuts.md
 - [ ] XDMCP
 - [ ] xrdp and FreeRDP
