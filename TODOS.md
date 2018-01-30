@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Unmount shared folders before shutdown/reboot
 - [ ] Add geany markdown template
 - [ ] Fix the problems with the dual screens
 - [ ] Support NFS/samba + comments in /etc/fstab for how to mount the file systems
