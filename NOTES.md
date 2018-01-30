@@ -4,6 +4,7 @@
 
 # 18-01-29
 - IPv6 seems can be preferred over IPv4, use `ping <hostname> -4`
+- Library libdvdcss `apt-get install -y libdvd-pkg`
 
 # 18-01-20
 - Test Xubuntu 17.10:
