@@ -18,8 +18,11 @@ runuser -l "${USER_NAME}" -c "VBoxManage registervm /home/${USER_NAME}/VMs/${VM_
 
 # Add systemd service and enable it
 cp "./${VM_SERVICE_FILE_NAME}" "/etc/systemd/system/${VM_SERVICE_FILE_NAME}"
-chmod a+x "/etc/systemd/system/${VM_SERVICE_FILE_NAME}"
-systemctl enable "${VM_SERVICE_FILE_NAME}"
+systemctl daemon-reload
 
-# Retrieve status of the service
+# Start the service
+systemctl start virtualbox-frogstar.service
 systemctl status virtualbox-frogstar.service
+
+# Enable the service
+systemctl enable "${VM_SERVICE_FILE_NAME}"
