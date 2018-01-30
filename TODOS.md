@@ -1,7 +1,4 @@
 # TODOS
-- [ ] default for laptops in xfce4-power-manager settings
-- [ ] Dialogs for suspend and hibernate from openbox menu?
-- [ ] Force num lock at boot time (console and X)
 - [ ] Add geany markdown template
 - [ ] Fix the problems with the dual screens
 - [ ] Support NFS/samba + comments in /etc/fstab for how to mount the file systems
@@ -17,6 +14,10 @@
 - [ ] xrdp and FreeRDP
 
 # DONE
+- [x] Force num lock at boot time (console and X)
+- [x] Dialogs for suspend and hibernate not working from openbox menu?
+- [x] Default for laptops in xfce4-power-manager settings
+- [x] When suspended, the laptop is waked up by mouse move
 - [x] update or remove Install.md
 - [x] VirtualBox Frogstar install should not be a script but rather a documentation
 - [x] auto_login and gandy_dns should not be in the list of the default recipes

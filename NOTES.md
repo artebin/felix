@@ -1,3 +1,7 @@
+# 18-01-30
+- Setting up Frogstar: should add a static route in the router for re-directing trevize.net to the local host.
+- When suspended and on a laptop, the wake up is done at mouse move.
+
 # 18-01-29
 - IPv6 seems can be preferred over IPv4, use `ping <hostname> -4`
 
