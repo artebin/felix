@@ -1,5 +1,5 @@
 # 18-01-30
-- Setting up Frogstar: should add a static route in the router for re-directing trevize.net to the local host.
+- Setting up Frogstar: should add a static route in the router for re-directing the traffic from the local network (local host to trevize.net).
 - When suspended and on a laptop, the wake up is done at mouse move.
 
 # 18-01-29

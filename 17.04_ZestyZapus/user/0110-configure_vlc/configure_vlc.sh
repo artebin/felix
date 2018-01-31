@@ -6,15 +6,14 @@ check_shell
 configure_vlc(){
 	cd ${BASEDIR}
 	
-	echo 'Configuring vlc ...'
-	if [[ -f ~/.config/vlc ]]; then
+	echo "Configuring vlc ..."
+	if [ -f ~/.config/vlc ]; then
 		backup_file rename ~/.config/vlc
 	fi
 	if [ ! -f ~/.config/vlc ]; then
 		mkdir -p ~/.config/vlc
 	fi
-	cp ./vlc-qt-interface.conf ~/.config/vlc
-	cp ./vlcrc ~/.config/vlc
+	cp ./vlc-2.2.4-vlcrc ~/.config/vlc/vlcrc
 	
 	if [[ -f ~/.local/share/vlc ]]; then
 		backup_file rename ~/.local/share/vlc
@@ -22,7 +21,7 @@ configure_vlc(){
 	if [ ! -f ~/.local/share/vlc ]; then
 		mkdir -p ~/.local/share/vlc
 	fi
-	cp ./ml.xspf ~/.local/share/vlc
+	cp ./ml.xspf ~/.local/share/vlc/ml.xspf
 }
 
 cd ${BASEDIR}
