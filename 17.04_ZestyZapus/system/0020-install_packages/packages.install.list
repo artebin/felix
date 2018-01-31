@@ -106,3 +106,6 @@ tidy
 virtualbox
 smem
 meld
+qt4-dev-tools
+qt4-qmake
+libqtwebkit-dev
