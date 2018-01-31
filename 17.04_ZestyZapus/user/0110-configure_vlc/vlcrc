@@ -1,0 +1,2 @@
+# Resize interface to the native video size (boolean)
+qt-video-autoresize=0

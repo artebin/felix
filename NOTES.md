@@ -1,4 +1,11 @@
 # 18-01-30
+Mouse sensitivity:
+- `xinput list`
+- `xinput --list-props <device id>`
+- `xinput --set-prop <devide id> <property> <value>`
+Could also use lxinput from lxde desktop.
+
+# 18-01-30
 - Setting up Frogstar: should add a static route in the router for re-directing the traffic from the local network (local host to trevize.net).
 - When suspended and on a laptop, the wake up is done at mouse move.
 

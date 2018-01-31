@@ -13,9 +13,9 @@ configure_vlc(){
 	if [ ! -f ~/.config/vlc ]; then
 		mkdir -p ~/.config/vlc
 	fi
-	cp ./vlc-2.2.4-vlcrc ~/.config/vlc/vlcrc
+	cp ./vlcrc ~/.config/vlc/vlcrc
 	
-	if [[ -f ~/.local/share/vlc ]]; then
+	if [ -f ~/.local/share/vlc ]; then
 		backup_file rename ~/.local/share/vlc
 	fi
 	if [ ! -f ~/.local/share/vlc ]; then
