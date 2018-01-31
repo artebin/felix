@@ -1,4 +1,7 @@
 # TODOS
+- [ ] Add a function check_package_availability using dpkg/apt
+- [ ] Thunderbird open attachment in GUI and no action for going back to the message body
+- [ ] Add a note for the static route for accessing trevize.net from the local network
 - [ ] Unmount shared folders before shutdown/reboot
 - [ ] Add geany markdown template
 - [ ] Fix the problems with the dual screens
