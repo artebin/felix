@@ -1,4 +1,8 @@
 # TODOS
+- [ ] GTK table theming, odd rows with light gray.
+- [ ] <mouse middle button><mouse drag> should scroll or pan. That is a big GUI improvement. Would it be possible to intercept mouse event at a high level and change the inputs (replace by a scrolling?). Should read <https://unix.stackexchange.com/questions/25601/how-do-mouse-events-work-in-linux>.
+- [ ] Begin a dictionary/ontology for software UI (include "system tray", "notification tray", "scrollbar overlay" etc. ).
+- [ ] How to dock a window (and just a window) in the system tray?
 - [ ] Each time a process is killed, the mouse cursor is "busy" why? Ubuntu error reporting?
 - [ ] Add a function check_package_availability using dpkg/apt
 - [ ] Thunderbird open attachment in GUI and no action for going back to the message body
