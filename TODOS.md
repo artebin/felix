@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Caja extensions for comparing files/directories with meld.
 - [ ] GTK table theming, odd rows with light gray.
 - [ ] <mouse middle button><mouse drag> should scroll or pan. That is a big GUI improvement. Would it be possible to intercept mouse event at a high level and change the inputs (replace by a scrolling?). Should read <https://unix.stackexchange.com/questions/25601/how-do-mouse-events-work-in-linux>.
 - [ ] Begin a dictionary/ontology for software UI (include "system tray", "notification tray", "scrollbar overlay" etc. ).
