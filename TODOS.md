@@ -1,6 +1,6 @@
 # TODOS
-- [ ] Meld as a action in caja for comparing files & directories.
 - [ ] shortcuts for tiling the windows + boxing all the windows on the screen.
+- [ ] Caja extensions for comparing files/directories with meld.
 - [ ] GTK table theming, odd rows with light gray.
 - [ ] Begin a dictionary/ontology for software UI (include "system tray", "notification tray", "scrollbar overlay" etc. ).
 - [ ] How to dock a window (and just a window) in the system tray?

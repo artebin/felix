@@ -6,7 +6,7 @@ check_shell
 configure_gtk(){
 	cd ${BASEDIR}
 	
-	echo 'Configuring GTK ...'
+	echo "Configuring GTK ..."
 	
 	# GTK+ 2.0
 	if [ ! -f ~/.gtkrc-2.0 ]; then
@@ -25,13 +25,13 @@ configure_gtk(){
 	sed -i "/^gtk-theme-name/s/.*/gtk-theme-name=${GTK_THEME_NAME}/" ~/.config/gtk-3.0/settings.ini
 	sed -i "/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=${GTK_ICON_THEME_NAME}/" ~/.config/gtk-3.0/settings.ini
 	
-	if [[ -f ~/.config/gtk-3.0/gtk.css ]]; then
+	if [ -f ~/.config/gtk-3.0/gtk.css ]; then
 		backup_file rename ~/.config/gtk-3.0/gtk.css
 	fi
 	cp ./gtk.css ~/.config/gtk-3.0/gtk.css
 	
 	# Fix the sharing of bookmarks between GTK2 and GTK3
-	if [[ -f "~/.config/gtk-3.0/bookmarks" ]]; then
+	if [ -f "~/.config/gtk-3.0/bookmarks" ]; then
 		backup_file rename ~/.config/gtk-3.0/bookmarks
 	fi
 	ln -s ~/.gtk-bookmarks ~/.config/gtk-3.0/bookmarks
