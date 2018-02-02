@@ -110,3 +110,5 @@ qt4-dev-tools
 qt4-qmake
 libqtwebkit-dev
 lxinput
+gtk-3-examples
+gtk2.0-examples
