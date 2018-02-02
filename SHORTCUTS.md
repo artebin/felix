@@ -1,3 +1,16 @@
+# Terminal
+|Shortcut|Action|
+|-|
+| `<Ctrl>s`						| Scroll lock (XOFF) |
+| `<Ctrl>q`						| Scroll unlock (XON) |
+| `<Ctrl><Mouse drag>`			| Block selection |
+
+# Caja
+|Shortcut|Action|
+|-|
+| `F3`							| Show/hide extra pane |
+| `<Ctrl>l						| Show editable location text field |
+
 # Geany
 |Shortcut|Action|
 |-|
@@ -9,13 +22,6 @@
 | `<Ctrl>k`						| Duplicate line |
 | `<Ctrl><Mouse drag>`			| Column mode edition |
 | `<Ctrl><shift><Mouse drag>`	| Column mode edition |
-
-# Terminal
-|Shortcut|Action|
-|-|
-| `<Ctrl>s`						| Scroll lock (XOFF) |
-| `<Ctrl>q`						| Scroll unlock (XON) |
-| `<Ctrl><Mouse drag>`			| Block selection |
 
 # Eclipse
 |Shortcut|Action|

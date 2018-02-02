@@ -1,3 +1,14 @@
+# 18-02-01
+- GtkTreeview and background color for odd rows (aka "gtktreeview zebra striping"), see:
+  - <https://www.reddit.com/r/mate/comments/6xxtwb/caja_gtk3_alternating_row_colors_in_list_view/>
+  - <https://stackoverflow.com/questions/36002296/how-to-alternate-light-dark-rows-in-gtktreeview>
+  - set_rules_hint? deprecated since 3.14 <https://stackoverflow.com/questions/19449748/how-to-add-different-color-to-odd-and-even-rows-in-a-pygtk-treeview>
+  - <https://www.bountysource.com/issues/30469360-gtktreeview-odd-even-row-styling-no-longer-works>
+  - see <https://stackoverflow.com/questions/45546717/gtk-treeview-styling>
+  - GTK+ Inspector if debug enabled with `gsettings set org.gtk.Settings.Debug enable-inspector-keybinding true` and then using the shortcut `<Ctrl>d`
+  - GTK+ Inspector <https://blog.gtk.org/2017/04/05/the-gtk-inspector/>
+  - Use gtk-widget-factory which is actually gtk-demo (install it from the repository)
+
 # 18-01-30
 Mouse sensitivity:
 - `xinput list`
