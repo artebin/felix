@@ -6,33 +6,28 @@ check_shell
 configure_geany(){
 	cd ${BASEDIR}
 	
-	echo 'Configuring geany ...'
+	echo "Configuring geany ..."
 	
 	# Backup pre-existing geany config directory if it exists
-	if [[ -f ~/.config/geany ]]; then
+	if [ -d ~/.config/geany ]; then
 		backup_file rename ~/.config/geany
 	fi
+	mkdir -p ~/.config/geany
 	
-	# Create geany config directory if it does not exist
-	if [ ! -f ~/.config/geany ]; then
-		mkdir -p ~/.config/geany/filedefs
-	fi
-	
-	# Geany keyboard shortcuts:
-	# menu_messagewindow	= F6
-	# toggle_sidebar		= F7
-	# build_link			= <Shift>F8
-	# build_make			= <Primary><Shift>F8
-	# build_run				= F9
-	# switch_search_bar		= F3
-	# switch_scribble		= F5
+	# Geany keybindings
 	cp ./geany_1.29.keybindings.conf ~/.config/geany/keybindings.conf
 	
-	# Geany configuration
+	# Geany filedefs
+	mkdir -p ~/.config/geany/filedefs
 	cp ./geany_1.29.filetypes.common ~/.config/geany/filedefs/filetypes.common
 	
+	# GitHub markdown CSS
+	mkdir -p ~/.config/geany/plugins/markdown
+	cp ./github-markdown.css ~/.config/geany/plugins/markdown
+	cp ./github-markdown.html ~/.config/geany/plugins/markdown
+	
 	# Force geany to open files in new instance
-	if [ ! -f ~/.local/share/applications ]; then
+	if [ ! -d ~/.local/share/applications ]; then
 		mkdir -p ~/.local/share/applications
 	fi
 	cp ./geany.desktop ~/.local/share/applications/geany.desktop

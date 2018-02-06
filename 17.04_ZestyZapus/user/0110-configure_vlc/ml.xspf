@@ -3,10 +3,18 @@
 	<title>Media Library</title>
 	<trackList>
 		<track>
+			<location>http://direct.franceinfo.fr/live/franceinfo-midfi.mp3</location>
+			<title>sat-franceinfo-midfi.mp3</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>0</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
 			<location>http://direct.franceinter.fr/live/franceinter-midfi.mp3</location>
 			<title>France Inter</title>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
-				<vlc:id>0</vlc:id>
+				<vlc:id>1</vlc:id>
 				<vlc:option>network-caching=1000</vlc:option>
 			</extension>
 		</track>
@@ -14,7 +22,225 @@
 			<location>http://direct.franceculture.fr/live/franceculture-midfi.mp3</location>
 			<title>France Culture</title>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
-				<vlc:id>1</vlc:id>
+				<vlc:id>2</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>https://radios.rtbf.be/laprem1ere-64.aac</location>
+			<title>La Prem1ère</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>3</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>https://radios.rtbf.be/vivabxl-64.aac</location>
+			<title>RTBF - VivaCité Bruxelles</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>4</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>https://radios.rtbf.be/classic21-64.aac</location>
+			<title>Classic 21</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>5</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>https://radios.rtbf.be/musiq3-128.aac</location>
+			<title>Musiq 3</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>6</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://direct.fipradio.fr/live/fip-midfi.mp3</location>
+			<title>FIP</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>7</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://direct.fipradio.fr/live/fip-webradio1.mp3</location>
+			<title>FIP webradio1 back</title>
+			<image>file:///home/njames/.cache/vlc/art/arturl/3a2bfe85710c3ffede141f6d32536539/art</image>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>8</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://direct.fipradio.fr/live/fip-webradio2.mp3</location>
+			<title>FIP webradio2 main</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>9</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://direct.fipradio.fr/live/fip-webradio3.mp3</location>
+			<title>FIP webradio3 main</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>10</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://direct.fipradio.fr/live/fip-webradio4.mp3</location>
+			<title>FIP webradio4 back</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>11</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://direct.fipradio.fr/live/fip-webradio5.mp3</location>
+			<title>FIP webradio5 main</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>12</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://direct.fipradio.fr/live/fip-webradio6.mp3</location>
+			<title>FIP webradio6 back</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>13</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://chai5she.cdn.dvmr.fr/fip-webradio8.mp3</location>
+			<title>FIP webradio8 back</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>14</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1_mf_p?s=1509200429&amp;e=1509214829&amp;h=303ddcec4b6c98858f3670c0d29d6a85</location>
+			<title>bbc_radio_one</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>15</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio1xtra_mf_p?s=1509200637&amp;e=1509215037&amp;h=8a777b6dfb893cf1bed5a7c7e21c62d9</location>
+			<title>bbc_1xtra</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>16</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://amsterdam2.shouthost.com.streams.bassdrive.com:8000</location>
+			<title>Bassdrive - Worldwide Drum and Bass Radio</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>17</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://ice1.somafm.com/groovesalad-256-mp3</location>
+			<title>Groove Salad: a nicely chilled plate of ambient beats and grooves. [SomaFM]</title>
+			<image>file:///home/njames/.cache/vlc/art/arturl/3a2bfe85710c3ffede141f6d32536539/art</image>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>18</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://ice1.somafm.com/suburbsofgoa-128-mp3</location>
+			<title>Suburbs of Goa: Desi-influenced Asian world beats. [SomaFM]</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>19</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://ice1.somafm.com/fluid-128-mp3</location>
+			<title>Fluid: Drown in the electronic sound of instrumental hiphop, future soul and liquid trap. [SomaFM]</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>20</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://ice1.somafm.com/deepspaceone-128-aac</location>
+			<title>Deep Space One: Deep ambient electronic and space music. [SomaFM]</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>21</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://ridibundus.divergence-fm.org:8000/divergence.mp3</location>
+			<title>Divergence FM 93.9 MHz - Montpellier France</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>22</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://icepe12.infomaniak.ch:80/tsfjazz-high.mp3</location>
+			<title>TSF Jazz</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>23</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://swingfm.ice.infomaniak.ch:80/swingfm-128</location>
+			<title>Swing FM</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>24</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://broadcast.infomaniak.net/novazz-128.mp3</location>
+			<title>novazz</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>25</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://163.172.94.169:8080/radiolib</location>
+			<title>Radio Libertaire en haut-debit (192k)</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>26</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>http://hivane01.frequence3.net:8000/perfecto-64.aac</location>
+			<title>Radio Perfecto, La seule radio classic rock !</title>
+			<image>file:///home/njames/.cache/vlc/art/arturl/0f8ecf0e71163ae07875b33e9be6d4ff/art</image>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>27</vlc:id>
+			</extension>
+		</track>
+		<track>
+			<location>http://www.radioking.com/play/la-radio-du-cinema</location>
+			<title>La Radio Du Cinéma</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>28</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>https://amiga.lebtimnetz.de/necta192</location>
+			<title>Nectarine Demoscene Radio</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>29</vlc:id>
 				<vlc:option>network-caching=1000</vlc:option>
 			</extension>
 		</track>
@@ -23,6 +249,34 @@
 		<vlc:node title="Radio">
 			<vlc:item tid="0"/>
 			<vlc:item tid="1"/>
+			<vlc:item tid="2"/>
+			<vlc:item tid="3"/>
+			<vlc:item tid="4"/>
+			<vlc:item tid="5"/>
+			<vlc:item tid="6"/>
+			<vlc:item tid="7"/>
+			<vlc:item tid="8"/>
+			<vlc:item tid="9"/>
+			<vlc:item tid="10"/>
+			<vlc:item tid="11"/>
+			<vlc:item tid="12"/>
+			<vlc:item tid="13"/>
+			<vlc:item tid="14"/>
+			<vlc:item tid="15"/>
+			<vlc:item tid="16"/>
+			<vlc:item tid="17"/>
+			<vlc:item tid="18"/>
+			<vlc:item tid="19"/>
+			<vlc:item tid="20"/>
+			<vlc:item tid="21"/>
+			<vlc:item tid="22"/>
+			<vlc:item tid="23"/>
+			<vlc:item tid="24"/>
+			<vlc:item tid="25"/>
+			<vlc:item tid="26"/>
+			<vlc:item tid="27"/>
+			<vlc:item tid="28"/>
+			<vlc:item tid="29"/>
 		</vlc:node>
 	</extension>
 </playlist>
