@@ -67,7 +67,6 @@ while true; do
 			;;
 		* ) 
 			printf 'Please answer yes or no\n\n'
-			echo
 			;;
 	esac
 done

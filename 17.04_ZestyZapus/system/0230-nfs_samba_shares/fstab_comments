@@ -1,2 +1,7 @@
+
+# Mount samba share
 #//<ip or hostname>/<shared directory> <mount point> cifs guest,uid=1000,iocharset=utf8 0 0
+
+# Mount nfs share
 #<ip or hostname>:/<shared directory> <mount point> nfs noauto,users,rw,atime,nosuid,noexec,nodev,bg,comment=x-gvfs-show 0 0
+
