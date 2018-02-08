@@ -1,19 +1,19 @@
 # Terminal
-|Shortcut|Action|
-|-|
+| Shortcut | Action |
+| - |
 | `<Ctrl>s`						| Scroll lock (XOFF) |
 | `<Ctrl>q`						| Scroll unlock (XON) |
 | `<Ctrl><Mouse drag>`			| Block selection |
 
 # Caja
-|Shortcut|Action|
-|-|
+| Shortcut | Action |
+| - |
 | `F3`							| Show/hide extra pane |
 | `<Ctrl>l`						| Show editable location text field |
 
 # Geany
-|Shortcut|Action|
-|-|
+| Shortcut | Action |
+| - |
 | `F3`							| Switch search bar |
 | `F5`							| Switch scribble |
 | `F6`							| Toggle message window |
@@ -29,12 +29,12 @@
 | `<Ctrl><shift><Mouse drag>`	| Column mode edition |
 
 # Thunderbird
-|Shortcut|Action|
-|-|
+| Shortcut | Action |
+| - |
 | `<Ctrl><Shift>f`				| Search messages |
 
 # Eclipse
-|Shortcut|Action|
-|-|
+| Shortcut | Action |
+| - |
 | `<Ctrl>.`						| Next diff |
 | `<Ctrl>,`						| Previous diff |
