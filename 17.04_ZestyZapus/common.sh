@@ -47,7 +47,7 @@ backup_file(){
 		echo "Can not find ${2}"
 		exit 1
 	fi
-	FILE_BACKUP_PATH="${2}.bak.$(date +'%y%m%d-%H%M%S')"
+	FILE_BACKUP_PATH="${2}.bak.$(date -u +'%y%m%d-%H%M%S')"
 	case "${1}" in
 		'rename')
 			mv "${2}" "${FILE_BACKUP_PATH}"
@@ -84,7 +84,7 @@ print_section_ending(){
 SCRIPT_NAME=$(basename "$0")
 SCRIPT_PATH=$(readlink -f "$0")
 BASEDIR=$(dirname ${SCRIPT_PATH})
-SCRIPT_LOG_NAME="${SCRIPT_NAME%.*}.log.$(date +'%y%m%d-%H%M%S')"
+SCRIPT_LOG_NAME="${SCRIPT_NAME%.*}.log.$(date -u +'%y%m%d-%H%M%S')"
 
 list_log_files(){
 	find . -iname '*.log.*' -type f
