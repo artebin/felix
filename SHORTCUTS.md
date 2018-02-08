@@ -1,4 +1,5 @@
 # Terminal
+
 | Shortcut | Action |
 | - |
 | `<Ctrl>s`						| Scroll lock (XOFF) |
@@ -6,12 +7,14 @@
 | `<Ctrl><Mouse drag>`			| Block selection |
 
 # Caja
+
 | Shortcut | Action |
 | - |
 | `F3`							| Show/hide extra pane |
 | `<Ctrl>l`						| Show editable location text field |
 
 # Geany
+
 | Shortcut | Action |
 | - |
 | `F3`							| Switch search bar |
@@ -29,11 +32,13 @@
 | `<Ctrl><shift><Mouse drag>`	| Column mode edition |
 
 # Thunderbird
+
 | Shortcut | Action |
 | - |
 | `<Ctrl><Shift>f`				| Search messages |
 
 # Eclipse
+
 | Shortcut | Action |
 | - |
 | `<Ctrl>.`						| Next diff |
