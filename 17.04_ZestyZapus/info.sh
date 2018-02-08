@@ -2,6 +2,11 @@
 
 source ./common.sh
 
+################
+# Product name
+################
+sudo dmidecode -s system-product-name
+
 #####################
 # Distribution name
 #####################
