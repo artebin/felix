@@ -9,7 +9,7 @@
 |Shortcut|Action|
 |-|
 | `F3`							| Show/hide extra pane |
-| `<Ctrl>l						| Show editable location text field |
+| `<Ctrl>l`						| Show editable location text field |
 
 # Geany
 |Shortcut|Action|
@@ -27,6 +27,11 @@
 | `<Ctrl>k`						| Duplicate line |
 | `<Ctrl><Mouse drag>`			| Column mode edition |
 | `<Ctrl><shift><Mouse drag>`	| Column mode edition |
+
+# Thunderbird
+|Shortcut|Action|
+|-|
+| `<Ctrl><Shift>f`				| Search messages |
 
 # Eclipse
 |Shortcut|Action|
