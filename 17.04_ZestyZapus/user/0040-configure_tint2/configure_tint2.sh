@@ -6,8 +6,8 @@ check_shell
 configure_tint2(){
 	cd ${BASEDIR}
 	
-	echo 'Configuring tint2 ...'
-	if [[ -f ~/.config/tint2 ]]; then
+	echo "Configuring tint2 ..."
+	if [ -f ~/.config/tint2 ]; then
 		backup_file rename ~/.config/tint2
 	fi
 	if [ ! -f ~/.config/tint2 ]; then

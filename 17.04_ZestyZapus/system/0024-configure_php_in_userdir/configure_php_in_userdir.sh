@@ -7,7 +7,7 @@ exit_if_has_not_root_privileges
 configure_php_in_userdir(){
 	cd ${BASEDIR}
 	
-	echo 'Allowing PHP in userdir ...'
+	echo "Allowing PHP in userdir ..."
 	apt-get install -y apache2 libapache2-mod-php php php-mbstring php-xml
 	a2enmod userdir
 	

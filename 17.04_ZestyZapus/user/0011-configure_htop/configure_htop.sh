@@ -6,8 +6,8 @@ check_shell
 configure_htop(){
 	cd ${BASEDIR}
 	
-	echo 'Configuring htop ...'
-	if [[ -f ~/.htoprc ]]; then
+	echo "Configuring htop ..."
+	if [ -f ~/.htoprc ]; then
 		backup_file rename ~/.htoprc
 	fi
 	cp htoprc ~/.htoprc

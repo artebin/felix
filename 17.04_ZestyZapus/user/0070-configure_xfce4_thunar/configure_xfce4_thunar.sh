@@ -6,7 +6,7 @@ check_shell
 configure_xfce4_thunar(){
 	cd ${BASEDIR}
 	
-	echo 'Configuring xfce4-thunar ...'
+	echo "Configuring xfce4-thunar ..."
 	if [[ -f ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml ]]; then
 		backup_file rename ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
 	fi

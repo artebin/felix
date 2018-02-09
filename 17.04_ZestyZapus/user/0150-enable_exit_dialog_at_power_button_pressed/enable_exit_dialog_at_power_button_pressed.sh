@@ -6,7 +6,7 @@ check_shell
 enable_exit_dialog_at_power_button_pressed(){
 	cd ${BASEDIR}
 	
-	echo 'Enabling exit dialog at power button pressed ...'
+	echo "Enabling exit dialog at power button pressed ..."
 	cp /etc/systemd/logind.conf ./logind.conf
 	add_or_update_line_based_on_prefix "#HandlePowerKey=" "HandlePowerKey=ignore" ./logind.conf
 	sudo cp ./logind.conf /etc/systemd/logind.conf

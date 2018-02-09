@@ -1,3 +1,11 @@
+## .d files
+- /etc/apt/sources.list.d/
+- /etc/ld.so.conf.d/
+- /etc/profile.d/
+
+## MacBook Air 7,1
+- there is a problem with LightDM and it happens only with the MacBook Air 7,1.
+
 ## GtkTreeView zebra stripping
 My GTK+ version is 3.22.11. GtkTreeview and background color for odd rows (aka "gtktreeview zebra striping"), see:
 

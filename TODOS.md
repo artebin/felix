@@ -1,4 +1,6 @@
 # TODOS
+- [ ] use the script from work for writing a line of char in the terminal (abiding terminal width)
+- [ ] install other HID implementation allowing the horizontal scroll from the trackpad
 - [ ] shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Caja extensions for comparing files/directories with meld.
 - [ ] GTK table theming, odd rows with light gray.

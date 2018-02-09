@@ -6,8 +6,8 @@ check_shell
 configure_bash(){
 	cd ${BASEDIR}
 	
-	echo 'Configuring bash ...'
-	if [[ -f ~/.bashrc ]]; then
+	echo "Configuring bash ..."
+	if [ -f ~/.bashrc ]; then
 		backup_file rename ~/.bashrc
 	fi
 	cp ./bashrc ~/.bashrc

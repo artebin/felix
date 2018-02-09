@@ -7,8 +7,8 @@ exit_if_has_not_root_privileges
 disable_apport(){
 	cd ${BASEDIR}
 	
-	echo 'Disabling apport ...'
-	sed -i '/^enabled=/s/.*/enabled=0/' /etc/default/apport
+	echo "Disabling apport ..."
+	sed -i "/^enabled=/s/.*/enabled=0/" /etc/default/apport
 }
 
 cd ${BASEDIR}

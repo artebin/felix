@@ -7,7 +7,7 @@ exit_if_has_not_root_privileges
 copy_themes(){
 	cd ${BASEDIR}
 	
-	echo 'Copying themes ...'
+	echo "Copying themes ..."
 	tar xzf Erthe-njames.tar.gz
 	cp -R Erthe-njames /usr/share/themes
 	cd /usr/share/themes

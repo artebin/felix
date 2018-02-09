@@ -7,7 +7,7 @@ configure_trackpad(){
 	cd ${BASEDIR}
 	
 	echo "Configuring trackpad sensitivity ..."
-	echo "synclient FingerLow=110 FingerHigh=120" | tee -a ~/.config/openbox/autostart
+	echo "synclient FingerLow=110 FingerHigh=120 &"  >> ~/.config/openbox/autostart
 }
 
 cd ${BASEDIR}

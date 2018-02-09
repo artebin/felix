@@ -7,10 +7,10 @@ exit_if_has_not_root_privileges
 install_additional_fonts(){
 	cd ${BASEDIR}
 	
-	echo 'Installing additional fonts ...'
+	echo "Installing additional fonts ..."
 	cp *.ttf /usr/local/share/fonts/
 	
-	echo 'Updating font cache ...'
+	echo "Updating font cache ..."
 	fc-cache -f -v 1>/dev/null
 }
 

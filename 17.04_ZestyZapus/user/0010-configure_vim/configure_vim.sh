@@ -6,8 +6,8 @@ check_shell
 configure_vim(){
 	cd ${BASEDIR}
 	
-	echo 'Configuring vim ...'
-	if [[ -f ~/.vimrc ]]; then
+	echo "Configuring vim ..."
+	if [ -f ~/.vimrc ]; then
 		backup_file rename ~/.vimrc
 	fi
 	cp ./vimrc ~/.vimrc

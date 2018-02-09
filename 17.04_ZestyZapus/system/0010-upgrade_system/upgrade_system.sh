@@ -7,7 +7,7 @@ exit_if_has_not_root_privileges
 upgrade_system(){
 	cd ${BASEDIR}
 	
-	echo 'Upgrading the system ...'
+	echo "Upgrading the system ..."
 	apt-get update
 	apt-get -y upgrade
 	apt-get -y dist-upgrade

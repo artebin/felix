@@ -7,7 +7,7 @@ exit_if_has_not_root_privileges
 force_numlockx(){
 	cd ${BASEDIR}
 	
-	echo 'Disabling unwanted xdg autostart ...'
+	echo "Disabling unwanted xdg autostart ..."
 	
 	XDG_AUTOSTART_DESKTOP_FILE_ARRAY=(
 		#at-spi-dbus-bus.desktop

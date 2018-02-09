@@ -6,8 +6,8 @@ check_shell
 configure_openbox(){
 	cd ${BASEDIR}
 	
-	echo 'Configuring openbox ...'
-	if [[ -f ~/.config/openbox ]]; then
+	echo "Configuring openbox ..."
+	if [ -f ~/.config/openbox ]; then
 		backup_file rename ~/.config/openbox
 	fi
 	if [ ! -f ~/.config/openbox ]; then

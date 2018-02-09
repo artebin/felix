@@ -1,14 +1,14 @@
 #!/bin/bash
 
 check_shell(){
-	if [[ ! "${BASH_VERSION}" ]] ; then
-		echo 'This script should run with bash' 1>&2
+	if [ ! "${BASH_VERSION}" ] ; then
+		echo "This script should run with bash" 1>&2
 		exit 1
 	fi
 }
 
 has_root_privileges(){
-	if [[ "${EUID}" -eq 0 ]]; then
+	if [ "${EUID}" -eq 0 ]; then
 		return 0
 	else
 		return 1
@@ -17,18 +17,18 @@ has_root_privileges(){
 
 exit_if_has_not_root_privileges(){
 	if ! has_root_privileges; then
-		echo 'This script needs the root priveleges'
+		echo "This script needs the root priveleges"
 		exit 1
 	fi
 }
 
-INSTALLER_MEDIA_INFO_PATH='/var/log/installer/media-info'
-SUPPORTED_XUBUNTU_VERSION='Xubuntu 17.04'
+INSTALLER_MEDIA_INFO_PATH="/var/log/installer/media-info"
+SUPPORTED_XUBUNTU_VERSION="Xubuntu 17.04"
 
 check_xubuntu_version(){
-	if [[ ! -f "${INSTALLER_MEDIA_INFO_PATH}" ]]; then
+	if [ ! -f "${INSTALLER_MEDIA_INFO_PATH}" ]; then
 		echo "Unable to find file ${INSTALLER_MEDIA_INFO_PATH}"
-		echo 'Cannot check Xubuntu version'
+		echo "Can not check Xubuntu version"
 		exit 1
 	fi
 	if ! grep -Fq "${SUPPORTED_XUBUNTU_VERSION}" "${INSTALLER_MEDIA_INFO_PATH}"; then
@@ -39,26 +39,26 @@ check_xubuntu_version(){
 }
 
 backup_file(){
-	if [[ "$#" -ne 2 ]]; then
-		echo 'Function backup_file should be called with an argument'
+	if [ "$#" -ne 2 ]; then
+		echo "Function backup_file should be called with an argument"
 		exit 1
 	fi
-	if [[ ! -f "${2}" ]]; then
+	if [ ! -f "${2}" ]; then
 		echo "Can not find ${2}"
 		exit 1
 	fi
 	FILE_BACKUP_PATH="${2}.bak.$(date -u +'%y%m%d-%H%M%S')"
 	case "${1}" in
-		'rename')
+		"rename")
 			mv "${2}" "${FILE_BACKUP_PATH}"
-			if [[ "$?" -ne 0 ]]; then
+			if [ "$?" -ne 0 ]; then
 				echo "Can not backup file ${2}"
 				exit 1
 			fi
 			;;
-		'copy')
+		"copy")
 			cp "${2}" "${FILE_BACKUP_PATH}"
-			if [[ "$?" -ne 0 ]]; then
+			if [ "$?" -ne 0 ]; then
 				echo "Can not backup file ${2}"
 				exit 1
 			fi
@@ -70,9 +70,9 @@ backup_file(){
 }
 
 print_section_heading(){
-	echo '###############################################################################################'
+	echo "###############################################################################################"
 	echo "# ${1}"
-	echo '###############################################################################################'
+	echo "###############################################################################################"
 }
 
 print_section_ending(){
@@ -81,21 +81,31 @@ print_section_ending(){
 	echo
 }
 
-SCRIPT_NAME=$(basename "$0")
-SCRIPT_PATH=$(readlink -f "$0")
-BASEDIR=$(dirname ${SCRIPT_PATH})
-SCRIPT_LOG_NAME="${SCRIPT_NAME%.*}.log.$(date -u +'%y%m%d-%H%M%S')"
+CURRENT_SCRIPT_FILE_NAME=$(basename "$0")
+CURRENT_SCRIPT_FILE_PATH=$(readlink -f "$0")
+CURRENT_SCRIPT_LOG_FILE_NAME=retrieve_script_log_file_name "${CURRENT_SCRIPT_FILE_NAME}"
+BASEDIR=$(dirname ${CURRENT_SCRIPT_FILE_PATH})
+
+retrieve_log_file_name(){
+	if [ $# -ne 1 ]; then
+		echo "retrieve_log_file_name() expects file_name in argument"
+		return
+	fi
+	SCRIPT_FILE_NAME="${1}"
+	SCRIPT_LOG_FILE_NAME="${SCRIPT_FILE_NAME%.*}.log.$(date -u +'%y%m%d-%H%M%S')"
+	return "${SCRIPT_LOG_FILE_NAME}"
+}
 
 list_log_files(){
-	find . -iname '*.log.*' -type f
+	find . -iname "*.log.*" -type f
 }
 
 delete_log_files(){
-	find . -name '*.log.*' -type f -exec rm -fr {} \; 
+	find . -name "*.log.*" -type f -exec rm -fr {} \; 
 }
 
 escape_sed_pattern(){
-	printf "${1}" | sed -e 's/[\/&]/\\&/g'
+	printf "${1}" | sed -e "s/[\/&]/\\&/g"
 }
 
 add_or_update_line_based_on_prefix(){
@@ -111,17 +121,17 @@ add_or_update_line_based_on_prefix(){
 	fi
 }
 
-GTK_ICON_THEME_NAME='Faenza-njames'
-GTK_THEME_NAME='Greybird'
+GTK_ICON_THEME_NAME="Faenza-njames"
+GTK_THEME_NAME="Greybird"
 
-LOCALES_TO_GENERATE='en_US.UTF-8 en_GB.UTF-8 fr_FR.UTF-8'
-LOCALE_TO_USE_LANG='en_US.UTF-8'
-LOCALE_TO_USE_LC_NUMERIC='en_US.UTF-8'
-LOCALE_TO_USE_LC_TIME='en_GB.UTF-8'
-LOCALE_TO_USE_LC_MONETARY='fr_FR.UTF-8'
-LOCALE_TO_USE_LC_PAPER='fr_FR.UTF-8'
-LOCALE_TO_USE_LC_NAME='fr_FR.UTF-8'
-LOCALE_TO_USE_LC_ADDRESS='fr_FR.UTF-8'
-LOCALE_TO_USE_LC_TELEPHONE='fr_FR.UTF-8'
-LOCALE_TO_USE_LC_MEASUREMENT='fr_FR.UTF-8'
-LOCALE_TO_USE_LC_IDENTIFICATION='fr_FR.UTF-8'
+LOCALES_TO_GENERATE="en_US.UTF-8 en_GB.UTF-8 fr_FR.UTF-8"
+LOCALE_TO_USE_LANG="en_US.UTF-8"
+LOCALE_TO_USE_LC_NUMERIC="en_US.UTF-8"
+LOCALE_TO_USE_LC_TIME="en_GB.UTF-8"
+LOCALE_TO_USE_LC_MONETARY="fr_FR.UTF-8"
+LOCALE_TO_USE_LC_PAPER="fr_FR.UTF-8"
+LOCALE_TO_USE_LC_NAME="fr_FR.UTF-8"
+LOCALE_TO_USE_LC_ADDRESS="fr_FR.UTF-8"
+LOCALE_TO_USE_LC_TELEPHONE="fr_FR.UTF-8"
+LOCALE_TO_USE_LC_MEASUREMENT="fr_FR.UTF-8"
+LOCALE_TO_USE_LC_IDENTIFICATION="fr_FR.UTF-8"

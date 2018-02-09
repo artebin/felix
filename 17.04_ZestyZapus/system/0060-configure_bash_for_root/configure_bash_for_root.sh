@@ -7,7 +7,7 @@ exit_if_has_not_root_privileges
 configure_bash_for_root(){
 	cd ${BASEDIR}
 	
-	echo 'Configuring bash for root ...'
+	echo "Configuring bash for root ..."
 	backup_file rename /root/.bashrc
 	cp ./bashrc /root/.bashrc
 }
