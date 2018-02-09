@@ -25,4 +25,4 @@ install_pasystray(){
 }
 
 cd ${BASEDIR}
-install_pasystray 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+install_pasystray 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}

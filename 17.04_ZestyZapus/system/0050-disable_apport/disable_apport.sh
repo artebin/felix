@@ -12,4 +12,4 @@ disable_apport(){
 }
 
 cd ${BASEDIR}
-disable_apport 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+disable_apport 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}

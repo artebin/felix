@@ -18,4 +18,4 @@ configure_ssh_welcome_text(){
 }
 
 cd ${BASEDIR}
-configure_ssh_welcome_text 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+configure_ssh_welcome_text 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}

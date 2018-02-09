@@ -12,4 +12,4 @@ process_package_install_list(){
 }
 
 cd ${BASEDIR}
-process_package_install_list 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+process_package_install_list 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}

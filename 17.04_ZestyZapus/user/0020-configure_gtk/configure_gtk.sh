@@ -38,4 +38,4 @@ configure_gtk(){
 }
 
 cd ${BASEDIR}
-configure_gtk 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+configure_gtk 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}

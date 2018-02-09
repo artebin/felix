@@ -11,4 +11,4 @@ configure_mate_caja(){
 }
 
 cd ${BASEDIR}
-configure_mate_caja 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+configure_mate_caja 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}

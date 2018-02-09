@@ -47,4 +47,4 @@ force_numlockx(){
 }
 
 cd ${BASEDIR}
-force_numlockx 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+force_numlockx 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}

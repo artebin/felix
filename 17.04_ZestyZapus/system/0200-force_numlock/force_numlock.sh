@@ -43,5 +43,5 @@ force_numlock_xorg(){
 }
 
 cd ${BASEDIR}
-force_numlock_tty 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
-force_numlock_xorg 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+force_numlock_tty 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}
+force_numlock_xorg 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}

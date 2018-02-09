@@ -24,4 +24,4 @@ set_locale(){
 }
 
 cd ${BASEDIR}
-set_locale 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+set_locale 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}

@@ -34,4 +34,4 @@ configure_geany(){
 }
 
 cd ${BASEDIR}
-configure_geany 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+configure_geany 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}

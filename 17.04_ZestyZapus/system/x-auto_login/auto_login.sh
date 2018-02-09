@@ -28,4 +28,4 @@ configure_auto_login(){
 }
 
 cd ${BASEDIR}
-configure_auto_login 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+configure_auto_login 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}

@@ -13,4 +13,4 @@ configure_apple_hid(){
 }
 
 cd ${BASEDIR}
-configure_apple_hid 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+configure_apple_hid 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}

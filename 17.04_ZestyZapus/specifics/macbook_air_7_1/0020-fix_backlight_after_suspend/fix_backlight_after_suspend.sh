@@ -24,4 +24,4 @@ fix_backlight_after_suspend(){
 }
 
 cd ${BASEDIR}
-fix_backlight_after_suspend 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+fix_backlight_after_suspend 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}

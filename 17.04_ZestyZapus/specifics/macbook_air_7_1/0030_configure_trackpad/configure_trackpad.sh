@@ -11,4 +11,4 @@ configure_trackpad(){
 }
 
 cd ${BASEDIR}
-configure_trackpad 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+configure_trackpad 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}

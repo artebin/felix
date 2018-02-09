@@ -34,5 +34,5 @@ install_dokuwiki_in_userdir(){
 }
 
 cd ${BASEDIR}
-install_dokuwiki_in_userdir 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+install_dokuwiki_in_userdir 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}
 x-www-browser http://localhost/~${USERNAME}/${DOKUWIKI_STABLE}/install.php &

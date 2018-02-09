@@ -35,4 +35,4 @@ install_customized_faenza(){
 }
 
 cd ${BASEDIR}
-install_customized_faenza 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+install_customized_faenza 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}

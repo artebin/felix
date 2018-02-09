@@ -12,4 +12,4 @@ enable_hibernation(){
 }
 
 cd ${BASEDIR}
-enable_hibernation 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+enable_hibernation 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}

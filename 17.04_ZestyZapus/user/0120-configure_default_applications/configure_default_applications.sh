@@ -18,4 +18,4 @@ configure_default_applications(){
 }
 
 cd ${BASEDIR}
-configure_default_applications 2>&1 | tee -a ./${SCRIPT_LOG_NAME}
+configure_default_applications 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}
