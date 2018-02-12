@@ -1,8 +1,6 @@
 # TODOS
-- [ ] patches for dmenu
+- [ ] check the configuration of DokuWiki (entities etc.)
 - [ ] shortcuts for tiling the windows + boxing all the windows on the screen.
-- [ ] Caja extensions for comparing files/directories with meld.
-- [ ] GTK table theming, odd rows with light gray.
 - [ ] Begin a dictionary/ontology for software UI (include "system tray", "notification tray", "scrollbar overlay" etc. ).
 - [ ] How to dock a window (and just a window) in the system tray?
 - [ ] Each time a process is killed, the mouse cursor is "busy" why? Ubuntu error reporting?
@@ -24,6 +22,7 @@
 - [ ] xrdp and FreeRDP
 
 # DONE
+- [x] patch line height for dmenu
 - [x] Force num lock at boot time (console and X)
 - [x] Dialogs for suspend and hibernate not working from openbox menu?
 - [x] Default for laptops in xfce4-power-manager settings
