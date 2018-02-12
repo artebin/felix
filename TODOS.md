@@ -1,4 +1,5 @@
 # TODOS
+- [ ] improve dialogs suspend/hibernate etc. with a dialog modal to the root window (grab the events like in <https://stackoverflow.com/questions/31892015/how-to-disable-window-controls-when-a-modal-dialog-box-is-active-in-tkinter>
 - [ ] check the configuration of DokuWiki (entities etc.)
 - [ ] shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Begin a dictionary/ontology for software UI (include "system tray", "notification tray", "scrollbar overlay" etc. ).
@@ -8,7 +9,6 @@
 - [ ] Thunderbird open attachment in GUI and no action for going back to the message body
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 - [ ] Unmount shared folders before shutdown/reboot
-- [ ] Add geany markdown template
 - [ ] Fix the problems with the dual screens
 - [ ] Support NFS/samba + comments in /etc/fstab for how to mount the file systems
 - [ ] Prepare shortcuts for fullscreen (think about office work and the video wall... )
@@ -22,6 +22,8 @@
 - [ ] xrdp and FreeRDP
 
 # DONE
+- [x] Add geany markdown template
+- [x] common.sh backup function is not checking directory or file
 - [x] patch line height for dmenu
 - [x] Force num lock at boot time (console and X)
 - [x] Dialogs for suspend and hibernate not working from openbox menu?
