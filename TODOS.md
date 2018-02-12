@@ -1,4 +1,5 @@
 # TODOS
+- [ ] patches for dmenu
 - [ ] shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Caja extensions for comparing files/directories with meld.
 - [ ] GTK table theming, odd rows with light gray.
