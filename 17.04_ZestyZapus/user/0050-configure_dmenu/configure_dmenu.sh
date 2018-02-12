@@ -6,8 +6,8 @@ check_shell
 configure_dmenu(){
 	cd ${BASEDIR}
 	
-	echo 'Configuring dmenu ...'
-	if [[ -f ~/.config/dmenu ]]; then
+	echo "Configuring dmenu ..."
+	if [ -f ~/.config/dmenu ]; then
 		backup_file rename ~/.config/dmenu
 	fi
 	if [ ! -f ~/.config/dmenu ]; then
