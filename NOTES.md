@@ -1,8 +1,14 @@
-##
+## Modal dialog and grab X events
+I would like to be able to show a modal dialog, gray out the display and grab all the events (no keyboard shortcut <Alt><Tab> etc.). Exactly like `gksu` and `gksudo` are doing. The ideal thing would be a patch to zenity.
+
+- grab the events like in <https://stackoverflow.com/questions/31892015/how-to-disable-window-controls-when-a-modal-dialog-box-is-active-in-tkinter>
+- can use `wmctrl` for having zenity always on top <https://unix.stackexchange.com/questions/152294/keep-a-zenity-dialog-box-always-on-top-in-foreground>
+
+## Window management
 - Retrieve ID of the current desktop/workspace: `xprop -root _NET_CURRENT_DESKTOP`
 - wmctrl: interact with a EWMH/NetWM compatible X Window Manager.
 - Retrieve the list of current windows: `wmctrl -lx`
-
+- <https://www.linux.com/news/take-charge-your-window-manager-wmctrl-and-devils-pie>
 
 ## .d files
 - /etc/apt/sources.list.d/

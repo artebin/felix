@@ -1,5 +1,5 @@
 # TODOS
-- [ ] improve dialogs suspend/hibernate etc. with a dialog modal to the root window (grab the events like in <https://stackoverflow.com/questions/31892015/how-to-disable-window-controls-when-a-modal-dialog-box-is-active-in-tkinter>
+- [ ] improve dialogs suspend/hibernate etc. with a dialog modal like in gksu (grab the events like in <https://stackoverflow.com/questions/31892015/how-to-disable-window-controls-when-a-modal-dialog-box-is-active-in-tkinter>
 - [ ] check the configuration of DokuWiki (entities etc.)
 - [ ] we can retrieve the ICC color profile from the Mac install and re-install it in linux
 - [ ] use the script from work for writing a line of char in the terminal (abiding terminal width)
