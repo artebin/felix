@@ -43,9 +43,9 @@ retrieve_log_file_name(){
 		echo "retrieve_log_file_name() expects file_name in argument"
 		exit 1
 	fi
-	SCRIPT_FILE_NAME="${1}"
-	SCRIPT_LOG_FILE_NAME="${SCRIPT_FILE_NAME%.*}.log.$(date -u +'%y%m%d-%H%M%S')"
-	echo "${SCRIPT_LOG_FILE_NAME}"
+	FILE_NAME="${1}"
+	LOG_FILE_NAME="${FILE_NAME%.*}.log.$(date -u +'%y%m%d-%H%M%S')"
+	echo "${LOG_FILE_NAME}"
 }
 
 backup_file(){
@@ -116,8 +116,8 @@ add_or_update_line_based_on_prefix(){
 	fi
 }
 
-CURRENT_SCRIPT_FILE_NAME=$(basename "$0")
 CURRENT_SCRIPT_FILE_PATH=$(readlink -f "$0")
+CURRENT_SCRIPT_FILE_NAME=$(basename "$0")
 CURRENT_SCRIPT_LOG_FILE_NAME=$(retrieve_log_file_name "${CURRENT_SCRIPT_FILE_NAME}")
 BASEDIR=$(dirname "${CURRENT_SCRIPT_FILE_PATH}")
 

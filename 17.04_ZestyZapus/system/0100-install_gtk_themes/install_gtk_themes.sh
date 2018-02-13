@@ -20,4 +20,4 @@ copy_themes(){
 }
 
 cd ${BASEDIR}
-copy_themes 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}
+copy_themes 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}

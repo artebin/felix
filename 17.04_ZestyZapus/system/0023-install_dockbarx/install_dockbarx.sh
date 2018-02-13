@@ -20,4 +20,4 @@ install_dockbarx(){
 }
 
 cd ${BASEDIR}
-install_dockbarx 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}
+install_dockbarx 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}

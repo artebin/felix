@@ -18,4 +18,4 @@ configure_dmenu(){
 }
 
 cd ${BASEDIR}
-configure_dmenu 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}
+configure_dmenu 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}

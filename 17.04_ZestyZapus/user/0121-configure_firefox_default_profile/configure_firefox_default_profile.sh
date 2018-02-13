@@ -74,4 +74,4 @@ configure_firefox_default_profile(){
 }
 
 cd ${BASEDIR}
-configure_firefox_default_profile 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}
+configure_firefox_default_profile 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}

@@ -13,4 +13,4 @@ tune_power_save_functions(){
 }
 
 cd ${BASEDIR}
-tune_power_save_functions 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}
+tune_power_save_functions 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}

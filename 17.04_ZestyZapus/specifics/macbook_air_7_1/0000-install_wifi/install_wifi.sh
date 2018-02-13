@@ -12,4 +12,4 @@ install_wifi(){
 }
 
 cd ${BASEDIR}
-install_wifi 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}
+install_wifi 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}

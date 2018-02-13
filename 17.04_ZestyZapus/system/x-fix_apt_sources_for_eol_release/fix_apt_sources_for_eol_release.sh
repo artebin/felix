@@ -19,4 +19,4 @@ fix_apt_sources_for_eol_release(){
 }
 
 cd ${BASEDIR}
-fix_apt_sources_for_eol_release 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}
+fix_apt_sources_for_eol_release 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}

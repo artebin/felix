@@ -12,4 +12,4 @@ nfs_samba_shares(){
 }
 
 cd ${BASEDIR}
-nfs_samba_shares 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}
+nfs_samba_shares 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}

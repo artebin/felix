@@ -15,4 +15,4 @@ add_lightdm_greeter_badges(){
 }
 
 cd ${BASEDIR}
-add_lightdm_greeter_badges 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}
+add_lightdm_greeter_badges 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}

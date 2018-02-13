@@ -17,4 +17,4 @@ configure_xfce4_thunar(){
 }
 
 cd ${BASEDIR}
-configure_xfce4_thunar 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}
+configure_xfce4_thunar 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}

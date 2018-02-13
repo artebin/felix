@@ -14,4 +14,4 @@ enable_exit_dialog_at_power_button_pressed(){
 }
 
 cd ${BASEDIR}
-enable_exit_dialog_at_power_button_pressed 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}
+enable_exit_dialog_at_power_button_pressed 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}

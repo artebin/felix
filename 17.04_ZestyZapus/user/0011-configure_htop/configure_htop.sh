@@ -14,4 +14,4 @@ configure_htop(){
 }
 
 cd ${BASEDIR}
-configure_htop 2>&1 | tee -a ./${SCRIPT_LOG_FILE_NAME}
+configure_htop 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
