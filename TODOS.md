@@ -1,4 +1,5 @@
 # TODOS
+- [ ] we can retrieve the ICC color profile from the Mac install and re-install it in linux
 - [ ] use the script from work for writing a line of char in the terminal (abiding terminal width)
 - [ ] install other HID implementation allowing the horizontal scroll from the trackpad
 - [ ] shortcuts for tiling the windows + boxing all the windows on the screen.
@@ -13,7 +14,6 @@
 - [ ] Unmount shared folders before shutdown/reboot
 - [ ] Add geany markdown template
 - [ ] Fix the problems with the dual screens
-- [ ] Support NFS/samba + comments in /etc/fstab for how to mount the file systems
 - [ ] Prepare shortcuts for fullscreen (think about office work and the video wall... )
 - [ ] Openbox shortcut for minimizing the active window
 - [ ] Can we reorder the icons in the tint2, where are ordered the windows?
@@ -25,6 +25,7 @@
 - [ ] xrdp and FreeRDP
 
 # DONE
+- [x] Support NFS/samba + comments in /etc/fstab for how to mount the file systems
 - [x] Force num lock at boot time (console and X)
 - [x] Dialogs for suspend and hibernate not working from openbox menu?
 - [x] Default for laptops in xfce4-power-manager settings

@@ -1,3 +1,9 @@
+##
+- Retrieve ID of the current desktop/workspace: `xprop -root _NET_CURRENT_DESKTOP`
+- wmctrl: interact with a EWMH/NetWM compatible X Window Manager.
+- Retrieve the list of current windows: `wmctrl -lx`
+
+
 ## .d files
 - /etc/apt/sources.list.d/
 - /etc/ld.so.conf.d/
