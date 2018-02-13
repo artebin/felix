@@ -15,8 +15,11 @@ I would like to be able to show a modal dialog, gray out the display and grab al
 - /etc/ld.so.conf.d/
 - /etc/profile.d/
 
-## MacBook Air 7,1
-- there is a problem with LightDM and it happens only with the MacBook Air 7,1.
+## Screenshot utility with edition capabilities, screenshot annotation
+- shutter: total bloatware and the tray icon is very much irritating.
+- flameshot: irritating tray icon, impossible to find where is located the configuration files (even found a `Dharkael` folder in `.config` whatever is this folder it should be named `flameshot`), impossible to launch it after set "no tray icon".
+
+The best tool will stay xfce4-screenshooter and LibreOffice Draw for a long time...
 
 ## GtkTreeView zebra stripping
 My GTK+ version is 3.22.11. GtkTreeview and background color for odd rows (aka "gtktreeview zebra striping"), see:
@@ -43,7 +46,7 @@ Setting up Frogstar: should add a static route in the router for re-directing th
 IPv6 seems can be preferred over IPv4, use `ping <hostname> -4`
 
 ## DVD playback
-Ubuntu repositories offer the package libdvd-pkg for installing the library libdvdcss
+Ubuntu repositories offer the package libdvd-pkg for installing the library libdvdcss.
 
 ## Test Ubuntu 17.10
 1. BIOS corruption see <https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1734147>
@@ -70,9 +73,10 @@ virtualbox-guest-additions 5.1.22 seems to be buggy, unable to start Xorg. Insta
 It seems there is a bug in Nouveau driver with the framebuffer and when using multiple monitors. The boot is successful, X.org seems to start properly, but we can not switch to the console with <Ctrl><Alt>F{x}. If we plug only one monitor then we can switch to the console. With the NVidia driver 384, we can switch to console.
 
 ## Grub
-Console framebuffer change resolution in `/etc/default/grub` with: `GRUB_GFXMODE=1024x768x32` and `GRUB_GFXPAYLOAD_LINUX=keep` (don't forget to call update-grub)
+Console framebuffer change resolution in `/etc/default/grub` with: `GRUB_GFXMODE=1024x768x32` and `GRUB_GFXPAYLOAD_LINUX=keep` (do not forget to call update-grub)
 
-## Xubuntu 16.04: bug mouse cursor lost after unlocking wuth Intel Graphics
-Xubuntu 16.04: bug #1568604 "Mouse cursor lost when unlocking with Intel graphics": <https://bugs.launchpad.net/ubuntu/+source/xserver-xorg-video-intel/+bug/1568604>  
-Solved by reinstalling intel driver, version 2:2.99.917+git20160706-1ubuntu1:
+## Xubuntu 16.04: bug mouse cursor lost after unlocking with Intel Graphics
+<https://bugs.launchpad.net/ubuntu/+source/xserver-xorg-video-intel/+bug/1568604>
+
+Fixed by reinstalling intel driver, version 2:2.99.917+git20160706-1ubuntu1:
 <https://launchpad.net/ubuntu/yakkety/+package/xserver-xorg-video-intel>
