@@ -19,7 +19,7 @@ configure_openbox(){
 	cp ./obapps-0.1.7.tar.gz ~/.config/openbox
 	cp ./rc.xml ~/.config/openbox
 	cp ./tint2_restart.sh ~/.config/openbox/tint2_restart.sh
-	cp ./power_button_pressed.py ~/.config/openbox/power_button_pressed.sh
+	cp ./power_button_pressed.py ~/.config/openbox/power_button_pressed.py
 	cp ./exit.py ~/.config/openbox/exit.py
 }
 
