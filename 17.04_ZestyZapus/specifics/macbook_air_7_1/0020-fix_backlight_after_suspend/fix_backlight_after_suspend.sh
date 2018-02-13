@@ -22,6 +22,9 @@ fix_backlight_after_suspend(){
 	if [ -f "/usr/share/X11/xorg.conf.d/20-intel.conf" ]; then
 		backup_file rename /usr/share/X11/xorg.conf.d/20-intel.conf
 	fi
+	
+	# Cleaning
+	rm -rf ./mba6x_bl
 }
 
 cd ${BASEDIR}
