@@ -40,10 +40,10 @@ check_xubuntu_version(){
 
 backup_file(){
 	if [ "$#" -ne 2 ]; then
-		echo "Function backup_file should be called with an argument"
+		echo "backup_file() expects path in argument"
 		exit 1
 	fi
-	if [ ! -f "${2}" ]; then
+	if [ ! -e "${2}" ]; then
 		echo "Can not find ${2}"
 		exit 1
 	fi
@@ -70,9 +70,9 @@ backup_file(){
 }
 
 print_section_heading(){
-	echo "###############################################################################################"
+	printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =
 	echo "# ${1}"
-	echo "###############################################################################################"
+	printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =
 }
 
 print_section_ending(){

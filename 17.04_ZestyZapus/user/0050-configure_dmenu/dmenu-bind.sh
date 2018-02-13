@@ -1,3 +1,2 @@
 #!/bin/bash
-#exe=`dmenu_run -b -nb '#151617' -nf '#d8d8d8' -sb '#d8d8d8' -sf '#151617'` && eval "exec $exe"
-exe=`dmenu_run -b` && eval "exec $exe"
+exe=`dmenu_run -p '$' -h 34 -b -fn 'Droid Sans Mono-12' -sb '#FCE94F' -sf '#000000' ` && eval "exec $exe"

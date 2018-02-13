@@ -1,10 +1,10 @@
 # TODOS
+- [ ] improve dialogs suspend/hibernate etc. with a dialog modal to the root window (grab the events like in <https://stackoverflow.com/questions/31892015/how-to-disable-window-controls-when-a-modal-dialog-box-is-active-in-tkinter>
+- [ ] check the configuration of DokuWiki (entities etc.)
 - [ ] we can retrieve the ICC color profile from the Mac install and re-install it in linux
 - [ ] use the script from work for writing a line of char in the terminal (abiding terminal width)
 - [ ] install other HID implementation allowing the horizontal scroll from the trackpad
 - [ ] shortcuts for tiling the windows + boxing all the windows on the screen.
-- [ ] Caja extensions for comparing files/directories with meld.
-- [ ] GTK table theming, odd rows with light gray.
 - [ ] Begin a dictionary/ontology for software UI (include "system tray", "notification tray", "scrollbar overlay" etc. ).
 - [ ] How to dock a window (and just a window) in the system tray?
 - [ ] Each time a process is killed, the mouse cursor is "busy" why? Ubuntu error reporting?
@@ -12,7 +12,6 @@
 - [ ] Thunderbird open attachment in GUI and no action for going back to the message body
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 - [ ] Unmount shared folders before shutdown/reboot
-- [ ] Add geany markdown template
 - [ ] Fix the problems with the dual screens
 - [ ] Prepare shortcuts for fullscreen (think about office work and the video wall... )
 - [ ] Openbox shortcut for minimizing the active window
@@ -25,6 +24,9 @@
 - [ ] xrdp and FreeRDP
 
 # DONE
+- [x] Add geany markdown template
+- [x] common.sh backup function is not checking directory or file
+- [x] patch line height for dmenu
 - [x] Support NFS/samba + comments in /etc/fstab for how to mount the file systems
 - [x] Force num lock at boot time (console and X)
 - [x] Dialogs for suspend and hibernate not working from openbox menu?

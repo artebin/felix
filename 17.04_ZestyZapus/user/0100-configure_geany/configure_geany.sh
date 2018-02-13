@@ -23,7 +23,6 @@ configure_geany(){
 	
 	# GitHub markdown CSS
 	mkdir -p ~/.config/geany/plugins/markdown
-	cp ./github-markdown.css ~/.config/geany/plugins/markdown
 	cp ./github-markdown.html ~/.config/geany/plugins/markdown
 	
 	# Force geany to open files in new instance
