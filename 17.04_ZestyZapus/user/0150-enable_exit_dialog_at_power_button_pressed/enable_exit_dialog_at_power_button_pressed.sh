@@ -11,6 +11,9 @@ enable_exit_dialog_at_power_button_pressed(){
 	add_or_update_line_based_on_prefix "#HandlePowerKey=" "HandlePowerKey=ignore" ./logind.conf
 	sudo cp ./logind.conf /etc/systemd/logind.conf
 	# Configuration in openbox rc.xml file should already be done
+	
+	# Cleaning
+	rm -f ./logind.conf
 }
 
 cd ${BASEDIR}
