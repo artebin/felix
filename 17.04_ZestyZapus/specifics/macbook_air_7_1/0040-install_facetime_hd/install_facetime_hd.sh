@@ -26,6 +26,10 @@ install_facetime_hd(){
 	echo "blacklist bdc_pci" >> /etc/modprobe.d/blacklist.conf
 	modprobe facetimehd
 	echo "You can test your configuration with \'mplayer tv://\'"
+	
+	# Cleaning
+	cd ${BASEDIR}
+	rm -fr ./bcwc_pcie
 }
 
 cd ${BASEDIR}
