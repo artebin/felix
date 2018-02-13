@@ -1,4 +1,6 @@
 # TODOS
+- [ ] .rpmdb and .wget-hsts are owned by root in the user home
+- [ ] .xmodmap is owned by root
 - [ ] improve dialogs suspend/hibernate etc. with a dialog modal like in gksu (grab the events like in <https://stackoverflow.com/questions/31892015/how-to-disable-window-controls-when-a-modal-dialog-box-is-active-in-tkinter>
 - [ ] check the configuration of DokuWiki (entities etc.)
 - [ ] we can retrieve the ICC color profile from the Mac install and re-install it in linux

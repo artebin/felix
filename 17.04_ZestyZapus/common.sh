@@ -38,6 +38,16 @@ check_xubuntu_version(){
 	echo "Check Xubuntu version: ${SUPPORTED_XUBUNTU_VERSION} => OK"
 }
 
+retrieve_log_file_name(){
+	if [ $# -ne 1 ]; then
+		echo "retrieve_log_file_name() expects file_name in argument"
+		exit 1
+	fi
+	SCRIPT_FILE_NAME="${1}"
+	SCRIPT_LOG_FILE_NAME="${SCRIPT_FILE_NAME%.*}.log.$(date -u +'%y%m%d-%H%M%S')"
+	echo "${SCRIPT_LOG_FILE_NAME}"
+}
+
 backup_file(){
 	if [ "$#" -ne 2 ]; then
 		echo "backup_file() expects path in argument"
@@ -81,21 +91,6 @@ print_section_ending(){
 	echo
 }
 
-CURRENT_SCRIPT_FILE_NAME=$(basename "$0")
-CURRENT_SCRIPT_FILE_PATH=$(readlink -f "$0")
-CURRENT_SCRIPT_LOG_FILE_NAME=retrieve_script_log_file_name "${CURRENT_SCRIPT_FILE_NAME}"
-BASEDIR=$(dirname ${CURRENT_SCRIPT_FILE_PATH})
-
-retrieve_log_file_name(){
-	if [ $# -ne 1 ]; then
-		echo "retrieve_log_file_name() expects file_name in argument"
-		return
-	fi
-	SCRIPT_FILE_NAME="${1}"
-	SCRIPT_LOG_FILE_NAME="${SCRIPT_FILE_NAME%.*}.log.$(date -u +'%y%m%d-%H%M%S')"
-	return "${SCRIPT_LOG_FILE_NAME}"
-}
-
 list_log_files(){
 	find . -iname "*.log.*" -type f
 }
@@ -120,6 +115,11 @@ add_or_update_line_based_on_prefix(){
 		echo "${LINE_REPLACEMENT_VALUE}" >> "${FILE_PATH}"
 	fi
 }
+
+CURRENT_SCRIPT_FILE_NAME=$(basename "$0")
+CURRENT_SCRIPT_FILE_PATH=$(readlink -f "$0")
+CURRENT_SCRIPT_LOG_FILE_NAME=$(retrieve_log_file_name "${CURRENT_SCRIPT_FILE_NAME}")
+BASEDIR=$(dirname "${CURRENT_SCRIPT_FILE_PATH}")
 
 GTK_ICON_THEME_NAME="Faenza-njames"
 GTK_THEME_NAME="Greybird"
