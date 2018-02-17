@@ -27,6 +27,8 @@ install_facetime_hd(){
 	modprobe facetimehd
 	echo "You can test your configuration with \'mplayer tv://\'"
 	
+	echo "facetimehd" > /etc/modules-load.d/facetimehd.conf
+	
 	# Cleaning
 	cd ${BASEDIR}
 	rm -fr ./bcwc_pcie
