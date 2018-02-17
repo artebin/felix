@@ -10,7 +10,9 @@ configure_xmodmap(){
 	if [ -f "~/.xmodmap" ]; then
 		backup_file rename ~/.xmodmap
 	fi
-	cp ./xmodmap ~/.xmodmap
+	
+	cp ./Xmodmap ~/.Xmodmap
+	echo "xmodmap ~/.Xmodmap" >> ~/.xinitrc
 }
 
 cd ${BASEDIR}

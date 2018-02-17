@@ -13,4 +13,4 @@ pasystray &
 
 setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &
 
-xmodmap ~/.xmodmaprc &
+# Do not call `xmodmap` from here, it will not work. Use `~/.xinitrc` instead.
