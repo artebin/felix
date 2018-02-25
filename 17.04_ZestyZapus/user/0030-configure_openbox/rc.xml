@@ -338,7 +338,7 @@
 		<keybind key="A-F3">
 			<action name="Execute">
 				<startupnotify><enabled>true</enabled><name>dmenu-bind</name></startupnotify>
-				<command>~/.config/dmenu/dmenu-bind.sh</command>
+				<command>bash ~/.config/dmenu/dmenu-bind.sh</command>
 			</action>
 		</keybind>
 		

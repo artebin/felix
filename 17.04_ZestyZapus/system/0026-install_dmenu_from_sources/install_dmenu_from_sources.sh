@@ -10,9 +10,11 @@ install_dmenu_from_sources(){
 	echo "Installing dmenu from sources ..."
 	tar xzf dmenu-4.7.tar.gz
 	cp ./dmenu-lineheight-4.7.diff ./dmenu-4.7/
+	cp ./dmenu-xyw-4.7.diff ./dmenu-4.7/
 	
 	cd ./dmenu-4.7
 	patch < dmenu-lineheight-4.7.diff
+	patch < dmenu-xyw-4.7.diff
 	make
 	make install
 	
