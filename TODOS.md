@@ -1,4 +1,6 @@
 # TODOS
+- [ ] allow wake up with lid only
+- [ ] macbook wake with usb mouse
 - [ ] add should not be run with admin rights (xmodmap in specifics macbook)
 - [ ] add an install bash function (to be used by system, user and specifics, just wait in argument the directory containing the recipes)
 - [ ] Fix the MIME types using the user MIME db
