@@ -1,7 +1,9 @@
 # TODOS
+- [ ] add should not be run with admin rights (xmodmap in specifics macbook)
+- [ ] add an install bash function (to be used by system, user and specifics, just wait in argument the directory containing the recipes)
+- [ ] Fix the MIME types using the user MIME db
+- [ ] how to add a default application per mime type (text files => geany)
 - [ ] .rpmdb and .wget-hsts are owned by root in the user home
-- [ ] .xmodmap is owned by root
-- [ ] improve dialogs suspend/hibernate etc. with a dialog modal like in gksu (grab the events like in <https://stackoverflow.com/questions/31892015/how-to-disable-window-controls-when-a-modal-dialog-box-is-active-in-tkinter>
 - [ ] check the configuration of DokuWiki (entities etc.)
 - [ ] we can retrieve the ICC color profile from the Mac install and re-install it in linux
 - [ ] use the script from work for writing a line of char in the terminal (abiding terminal width)
@@ -26,6 +28,7 @@
 - [ ] xrdp and FreeRDP
 
 # DONE
+- [x] touchpad is still too much sensitive in macbook air => use mtrack
 - [x] Add geany markdown template
 - [x] common.sh backup function is not checking directory or file
 - [x] patch line height for dmenu
