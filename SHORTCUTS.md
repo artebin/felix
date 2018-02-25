@@ -44,3 +44,13 @@
 | `<Ctrl>.`						| Next diff |
 | `<Ctrl>,`						| Previous diff |
 | `<Shift><Alt>a`				| Toggle block selection mode |
+
+# MacBook Air
+
+| Shortcut | Action |
+| --- | --- |
+| <Fn><Up> | Page up |
+| <Fn>Down> | Page down |
+| <Fn><Left> | Home |
+| <Fn><Right> | End |
+| <Fn><Backspace> | Delete |
