@@ -3,7 +3,7 @@
 source ../../../common.sh
 check_shell
 
-configure_trackpad_mtrack{
+configure_trackpad_mtrack(){
 	cd ${BASEDIR}
 	
 	echo "Configuring trackpad mtrack ..."
