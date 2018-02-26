@@ -5,7 +5,9 @@ source ./common.sh
 ################
 # Product name
 ################
+print_section_heading "Product name"
 sudo dmidecode -s system-product-name
+print_section_ending
 
 #####################
 # Distribution name
