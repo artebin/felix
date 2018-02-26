@@ -116,6 +116,8 @@ add_or_update_line_based_on_prefix(){
 	fi
 }
 
+RECIPE_NAME_REGEX="([0-9][0-9][0-9][0-9])-([US])-(.*)"
+
 CURRENT_SCRIPT_FILE_PATH=$(readlink -f "$0")
 CURRENT_SCRIPT_FILE_NAME=$(basename "$0")
 CURRENT_SCRIPT_LOG_FILE_NAME=$(retrieve_log_file_name "${CURRENT_SCRIPT_FILE_NAME}")
