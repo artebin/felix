@@ -1,14 +1,12 @@
 # TODOS
+- [ ] Add shortcuts from openbox in shortcuts.md
 - [ ] allow wake up with lid only
 - [ ] macbook wake with usb mouse
-- [ ] add should not be run with admin rights (xmodmap in specifics macbook)
-- [ ] add an install bash function (to be used by system, user and specifics, just wait in argument the directory containing the recipes)
 - [ ] Fix the MIME types using the user MIME db
 - [ ] how to add a default application per mime type (text files => geany)
 - [ ] .rpmdb and .wget-hsts are owned by root in the user home
 - [ ] check the configuration of DokuWiki (entities etc.)
 - [ ] we can retrieve the ICC color profile from the Mac install and re-install it in linux
-- [ ] use the script from work for writing a line of char in the terminal (abiding terminal width)
 - [ ] install other HID implementation allowing the horizontal scroll from the trackpad
 - [ ] shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Begin a dictionary/ontology for software UI (include "system tray", "notification tray", "scrollbar overlay" etc. ).
@@ -19,17 +17,15 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 - [ ] Unmount shared folders before shutdown/reboot
 - [ ] Fix the problems with the dual screens
-- [ ] Prepare shortcuts for fullscreen (think about office work and the video wall... )
 - [ ] Openbox shortcut for minimizing the active window
-- [ ] Can we reorder the icons in the tint2, where are ordered the windows?
 - [ ] Fix icons (some icons are now missing in the xfce4-settings-manager)
 - [ ] Categorize the packages in packages.install.list + add lshw?
 - [ ] Latex install
-- [ ] Improve Shortcuts.md
-- [ ] XDMCP
-- [ ] xrdp and FreeRDP
+- [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] add an install bash function (to be used by system, user and specifics, just wait in argument the directory containing the recipes)
+- [x] add should not be run with admin rights (xmodmap in specifics macbook)
 - [x] touchpad is still too much sensitive in macbook air => use mtrack
 - [x] Add geany markdown template
 - [x] common.sh backup function is not checking directory or file
