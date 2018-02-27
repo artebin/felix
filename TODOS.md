@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are opened with geany.
+- [ ] Check the icon network-manager "connecting ..." + double check I do not use Faenza-Dark it should be OK??? No it is because of the GNOME Symbolic icons.
 - [ ] Add shortcuts from openbox in shortcuts.md
 - [ ] allow wake up with lid only
 - [ ] macbook wake with usb mouse
