@@ -1,47 +1,47 @@
 # TODOS
+- [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
+- [ ] Add a function check_package_availability using dpkg/apt
+- [ ] Offline repository (from external USB disk)
 - [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are opened with geany.
 - [ ] Check the icon network-manager "connecting ..." + double check I do not use Faenza-Dark it should be OK??? No it is because of the GNOME Symbolic icons.
+- [ ] Fix icons (some icons are now missing in the xfce4-settings-manager)
 - [ ] Add shortcuts from openbox in shortcuts.md
-- [ ] allow wake up with lid only
-- [ ] macbook wake with usb mouse
+- [ ] Openbox shortcut for minimizing the active window
+- [ ] Allow wake up with lid only
+- [ ] Macbook wake with usb mouse
 - [ ] Fix the MIME types using the user MIME db
-- [ ] how to add a default application per mime type (text files => geany)
+- [ ] How to add a default application per mime type (text files => geany)
 - [ ] .rpmdb and .wget-hsts are owned by root in the user home
-- [ ] check the configuration of DokuWiki (entities etc.)
-- [ ] we can retrieve the ICC color profile from the Mac install and re-install it in linux
-- [ ] shortcuts for tiling the windows + boxing all the windows on the screen.
+- [ ] Check the configuration of DokuWiki (entities etc.)
+- [ ] We can retrieve the ICC color profile from the Mac install and re-install it in linux
 - [ ] Begin a dictionary/ontology for software UI (include "system tray", "notification tray", "scrollbar overlay" etc. ).
 - [ ] How to dock a window (and just a window) in the system tray?
 - [ ] Each time a process is killed, the mouse cursor is "busy" why? Ubuntu error reporting?
-- [ ] Add a function check_package_availability using dpkg/apt
 - [ ] Thunderbird open attachment in GUI and no action for going back to the message body
 - [ ] Add a note for the static route for accessing trevize.net from the local network
-- [ ] Unmount shared folders before shutdown/reboot
 - [ ] Fix the problems with the dual screens
-- [ ] Openbox shortcut for minimizing the active window
-- [ ] Fix icons (some icons are now missing in the xfce4-settings-manager)
 - [ ] Categorize the packages in packages.install.list + add lshw?
 - [ ] Latex install
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
-- [x] disable bluetooth at startup
+- [x] Disable bluetooth at startup
 - [x] One instance of Geany per workspace
-- [x] add an install bash function (to be used by system, user and specifics, just wait in argument the directory containing the recipes)
-- [x] add should not be run with admin rights (xmodmap in specifics macbook)
-- [x] install other HID implementation allowing the horizontal scroll from the trackpad
-- [x] touchpad is still too much sensitive in macbook air => use mtrack
+- [x] Add an install bash function (to be used by system, user and specifics, just wait in argument the directory containing the recipes)
+- [x] Add should not be run with admin rights (xmodmap in specifics macbook)
+- [x] Install other HID implementation allowing the horizontal scroll from the trackpad
+- [x] Touchpad is still too much sensitive in macbook air => use mtrack
 - [x] Add geany markdown template
 - [x] common.sh backup function is not checking directory or file
-- [x] patch line height for dmenu
+- [x] Patch line height for dmenu
 - [x] Support NFS/samba + comments in /etc/fstab for how to mount the file systems
 - [x] Force num lock at boot time (console and X)
 - [x] Dialogs for suspend and hibernate not working from openbox menu?
 - [x] Default for laptops in xfce4-power-manager settings
 - [x] When suspended, the laptop is waked up by mouse move
-- [x] update or remove Install.md
+- [x] Update or remove Install.md
 - [x] VirtualBox Frogstar install should not be a script but rather a documentation
-- [x] auto_login and gandy_dns should not be in the list of the default recipes
+- [x] Auto_login and gandy_dns should not be in the list of the default recipes
 - [x] Add kodos regular expression tester => No, can not compile, too old stuff
 - [x] When config Geany, also put the .desktop file for forcing one instance per file opening (the one instance per workspace does not seem to work)
 - [x] Geany shortcut for show/hide the sidebar?
