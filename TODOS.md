@@ -1,6 +1,5 @@
 # TODOS
 - [ ] disable bluetooth at startup
-- [ ] One instance of Geany per workspace
 - [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are opened with geany.
 - [ ] Check the icon network-manager "connecting ..." + double check I do not use Faenza-Dark it should be OK??? No it is because of the GNOME Symbolic icons.
 - [ ] Add shortcuts from openbox in shortcuts.md
@@ -11,7 +10,6 @@
 - [ ] .rpmdb and .wget-hsts are owned by root in the user home
 - [ ] check the configuration of DokuWiki (entities etc.)
 - [ ] we can retrieve the ICC color profile from the Mac install and re-install it in linux
-- [ ] install other HID implementation allowing the horizontal scroll from the trackpad
 - [ ] shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Begin a dictionary/ontology for software UI (include "system tray", "notification tray", "scrollbar overlay" etc. ).
 - [ ] How to dock a window (and just a window) in the system tray?
@@ -28,8 +26,10 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] One instance of Geany per workspace
 - [x] add an install bash function (to be used by system, user and specifics, just wait in argument the directory containing the recipes)
 - [x] add should not be run with admin rights (xmodmap in specifics macbook)
+- [x] install other HID implementation allowing the horizontal scroll from the trackpad
 - [x] touchpad is still too much sensitive in macbook air => use mtrack
 - [x] Add geany markdown template
 - [x] common.sh backup function is not checking directory or file
