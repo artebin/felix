@@ -8,7 +8,7 @@ install_java_env_vars(){
 	cd ${BASEDIR}
 	
 	echo "Installing Java environment variables ..."
-	cp ./java_env_vars.sh /etc/profile.d/java_env_vars.sh
+	cp ./java_env_vars.sh /etc/profile.d/java-env-vars.sh
 }
 
 cd ${BASEDIR}
