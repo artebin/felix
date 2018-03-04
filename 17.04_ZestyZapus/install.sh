@@ -72,9 +72,9 @@ execute_recipes(){
 		cd "${RECIPES_PARENT_DIRECTORY}"
 		
 		# Execute the recipe with the required rights
-		if [ "${RECIPE_REQUIRED_RIGHTS}" = "U" ]; then
+		if [ "${RECIPE_REQUIRED_RIGHTS}" = "u" ]; then
 			bash "./${RECIPE_SCRIPT_FILE_NAME}"
-		elif [ "${RECIPE_REQUIRED_RIGHTS}" = "S" ]; then
+		elif [ "${RECIPE_REQUIRED_RIGHTS}" = "s" ]; then
 			sudo bash "./${RECIPE_SCRIPT_FILE_NAME}"
 		else
 			echo "Can not retrieve execution rights for RECIPE_NAME: ${RECIPE_NAME}"
