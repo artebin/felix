@@ -9,6 +9,8 @@ fi
 CURRENT_DESKTOP_ID=${BASH_REMATCH[2]}
 echo "CURRENT_DESKTOP_ID=${CURRENT_DESKTOP_ID}"
 
+# can user `xdotool get_desktop`
+
 IFS=$'\n'
 readarray -t WINDOW_INFO_ARRAY < <(wmctrl -l)
 WINDOW_INFO_REGEX="([^ ]+)( +)([^ ]+)( +)(.*)"
@@ -29,14 +31,26 @@ done
 
 echo "WINDOW_ID_FOR_CURRENT_DESKTOP_ARRAY=${WINDOW_ID_FOR_CURRENT_DESKTOP_ARRAY[@]}"
 
-NET_CLIENT_LIST_STACKING_PREFIX_TO_SKIP="_NET_CLIENT_LIST_STACKING(WINDOW): window id # "
-NET_CLIENT_LIST_STACKING_PREFIX_TO_SKIP_LENGTH="${#NET_CLIENT_LIST_STACKING_PREFIX_TO_SKIP}"  
-TMP=$(xprop -root | grep '_NET_CLIENT_LIST_STACKING(WINDOW)')
-TMP=${TMP:NET_CLIENT_LIST_STACKING_PREFIX_TO_SKIP_LENGTH}
-IFS=', ' read -r -a WINDOW_ID_ARRAY <<< "${TMP}"
-
-for WINDOW_ID in ${WINDOW_ID_ARRAY[@]}; do
-	echo "WINDOW_ID=${WINDOW_ID}"
+for WINDOw_ID in "${WINDOW_ID_FOR_CURRENT_DESKTOP_ARRAY[@]}"; do
+	WINDOW_INFO=$(xwininfo -id "${WINDOw_ID}")
+	#WINDOW_INFO=$(xprop -id "${WINDOw_ID}")
+	echo "${WINDOW_INFO}"
+	echo
 done
+
+# Can use <https://unix.stackexchange.com/questions/281168/x-find-out-if-a-window-is-visible-to-the-user-i-e-not-covered-by-others>
+# Window should be IsViewable
+
+function stacking_window_list(){
+	NET_CLIENT_LIST_STACKING_PREFIX_TO_SKIP="_NET_CLIENT_LIST_STACKING(WINDOW): window id # "
+	NET_CLIENT_LIST_STACKING_PREFIX_TO_SKIP_LENGTH="${#NET_CLIENT_LIST_STACKING_PREFIX_TO_SKIP}"  
+	TMP=$(xprop -root | grep '_NET_CLIENT_LIST_STACKING(WINDOW)')
+	TMP=${TMP:NET_CLIENT_LIST_STACKING_PREFIX_TO_SKIP_LENGTH}
+	IFS=', ' read -r -a WINDOW_ID_ARRAY <<< "${TMP}"
+	
+	for WINDOW_ID in ${WINDOW_ID_ARRAY[@]}; do
+		echo "WINDOW_ID=${WINDOW_ID}"
+	done
+}
 
 
