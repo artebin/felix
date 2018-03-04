@@ -1,5 +1,4 @@
 # TODOS
-- [ ] disable bluetooth at startup
 - [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are opened with geany.
 - [ ] Check the icon network-manager "connecting ..." + double check I do not use Faenza-Dark it should be OK??? No it is because of the GNOME Symbolic icons.
 - [ ] Add shortcuts from openbox in shortcuts.md
@@ -26,6 +25,7 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] disable bluetooth at startup
 - [x] One instance of Geany per workspace
 - [x] add an install bash function (to be used by system, user and specifics, just wait in argument the directory containing the recipes)
 - [x] add should not be run with admin rights (xmodmap in specifics macbook)
