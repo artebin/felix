@@ -2,4 +2,15 @@
 #export JRE_HOME=""
 #export ANT_HOME=""
 #export MVN_HOME=""
-#export PATH=${JDK_HOME}/bin:${ANT_HOME}/bin:${MVN_HOME}/bin:${PATH}
+
+if [ -z "${JDK_HOME}" ]; then
+	export PATH=${JDK_HOME}/bin:${PATH}
+fi
+
+if [ -z "${ANT_HOME}" ]; then
+	export PATH=${ANT_HOME}/bin:${PATH}
+fi
+
+if [ -z "${MVN_HOME}" ]; then
+	export PATH=${MVN_HOME}/bin:${PATH}
+fi
