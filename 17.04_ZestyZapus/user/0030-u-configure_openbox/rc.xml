@@ -358,6 +358,17 @@
         <command>sh /home/njames/scripts/screencast.sh</command>
       </action>
     </keybind>
+    
+    <keybind key="W-r">
+      <action name="Execute">
+        <startupnotify>
+          <enabled>true</enabled>
+          <name>Translate Selected Text</name>
+        </startupnotify>
+        <command>bash ~/.config/openbox/translate.sh</command>
+      </action>
+    </keybind>
+    
     <keybind key="W-t">
       <action name="Execute">
         <startupnotify>
