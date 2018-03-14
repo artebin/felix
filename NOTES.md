@@ -71,6 +71,7 @@ Java is not using ld.so.conf files we can check default value of java.library.pa
 
 ## Firefox
 - Better usage of the URL bar/Search bar: "keyword.enable=false" will allow to use machine name in the URL bar. Use the addon "Custom New Tab" for giving the focus to the page when the New Tab action is performed. Use <F6> for focusing the URL bar and <CTRL+k> for focusing the Search bar.
+- use "about:newtab" as home page
 
 ## Thunderbird
 - Stop to wrap the lines in not-HTML composition: "mail.wrap_long_lines=false" and "mailnews.wraplength=0"
