@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Translate feature should allow to type the text, use a dialog for that.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Add a function check_package_availability using dpkg/apt
 - [ ] Offline repository (from external USB disk)
@@ -25,6 +26,7 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] It can occurs that login after suspend/hibernate, the keyboard configuration is lost. 
 - [x] Disable bluetooth at startup
 - [x] One instance of Geany per workspace
 - [x] Add an install bash function (to be used by system, user and specifics, just wait in argument the directory containing the recipes)

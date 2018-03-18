@@ -90,3 +90,9 @@ Console framebuffer change resolution in `/etc/default/grub` with: `GRUB_GFXMODE
 
 Fixed by reinstalling intel driver, version 2:2.99.917+git20160706-1ubuntu1:
 <https://launchpad.net/ubuntu/yakkety/+package/xserver-xorg-video-intel>
+
+## Keyboard configuration lost after suspend/resume
+Sometimes the keyboard configuration done with `setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &` is lost after suspend/resume, but not always.
+This answer on unix.stackexchange seems to say it should always be the case <https://unix.stackexchange.com/questions/59623/custom-keyboard-layout-is-reset-to-default-after-standby-or-reboot>.
+It also says that Xmodmap configuration is lost after suspend. 
+In a way or another, it is better to set the keyboard in `/etc/default/keyboard`
