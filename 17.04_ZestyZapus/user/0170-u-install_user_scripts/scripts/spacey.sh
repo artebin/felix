@@ -1,8 +1,10 @@
-#!/bin/bash
+#!/usr/bin/bash
+#
+# See <https://wiki.archlinux.org/index.php/Color_output_in_console#Terminal_emulators>
 #
 # ANSI color scheme script featuring Space Invaders
 #
-# Original: http://crunchbanglinux.org/forums/post/126921/#p126921
+# Original: http://crunchbang.org/forums/viewtopic.php?pid=126921%23p126921#p126921
 # Modified by lolilolicon
 #
 
