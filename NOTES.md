@@ -74,6 +74,7 @@ Java is not using ld.so.conf files we can check default value of java.library.pa
 - use "about:newtab" as home page
 
 ## Thunderbird
+- Show the menu bar with <F10>
 - Stop to wrap the lines in not-HTML composition: "mail.wrap_long_lines=false" and "mailnews.wraplength=0"
 
 ## Xubuntu 17.04: bug with VirtualBox guest additions 5.1.22 
