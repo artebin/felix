@@ -124,3 +124,5 @@ p7zip-rar
 xsel
 translate-shell
 colortest
+pdftk
+inotify-hookable inotify-tools iwatch
