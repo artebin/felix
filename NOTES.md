@@ -75,7 +75,16 @@ Java is not using ld.so.conf files we can check default value of java.library.pa
 
 ## Thunderbird
 - Show the menu bar with <F10>
+- Stop auto mark as read when a message is selected: "mailnews.mark_message_read.auto=false"
 - Stop to wrap the lines in not-HTML composition: "mail.wrap_long_lines=false" and "mailnews.wraplength=0"
+
+## Eclipse
+Minimal installation of Eclipse:
+- Download the Eclipse platform <http://download.eclipse.org/eclipse/downloads/drops4/R-4.7.2-201711300510/>
+- Go to `Help>Install New Software` and install the Eclipse Marketplace
+- Install Java Development Tools (JDT) and Subversive using the Eclipse Marketplace
+- Add the SVNKit repository <http://community.polarion.com/projects/subversive/download/eclipse/6.0/update-site/> from Polarion (see the Polarion website).
+- Go to `Preferences>Java>Compiler>Building` and check `Circular dependencies=Warning`
 
 ## Xubuntu 17.04: bug with VirtualBox guest additions 5.1.22 
 virtualbox-guest-additions 5.1.22 seems to be buggy, unable to start Xorg. Install virtualbox-guest-additions 5.1.24 from <http://download.virtualbox.org/virtualbox> and it is working properly.

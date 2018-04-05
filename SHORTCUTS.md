@@ -36,6 +36,7 @@
 | Shortcut | Action |
 | --- | --- |
 | `<Ctrl><Shift>f`				| Search messages |
+| `*`							| Expand all conversations in the current view |
 
 # Eclipse
 
