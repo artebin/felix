@@ -1,6 +1,9 @@
 # TODOS
 - [ ] Should be able to categorize the packages in packages.list
 - [ ] Remove packages for Ubuntu update notifications "update-manager, update-manager-core, update-notifier, update-notifier-common, xubuntu-desktop, flashplugin-installer, ubuntu-release-upgrader-gtk"
+- [ ] Is xfce4-volumed really is started via /etc/xdg/autostart/xfce4-volumed.desktop? If yes then we should not start it also from openbox autostart file.
+- [ ] If keyboard is properly configured via /etc/default/keyboard then no need to configure it via openbox autostart.
+- [ ] reboot/shutdown can still be waiting for the nfs mount point to be unmounted.
 - [ ] Translate feature should allow to type the text, use a dialog for that.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Add a function check_package_availability using dpkg/apt
