@@ -1,4 +1,7 @@
 # TODOS
+- [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
+- [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
+- [ ] Read <https://wiki.archlinux.org/index.php/File_manager_functionality>
 - [ ] Should be able to categorize the packages in packages.list
 - [ ] Remove packages for Ubuntu update notifications "update-manager, update-manager-core, update-notifier, update-notifier-common, xubuntu-desktop, flashplugin-installer, ubuntu-release-upgrader-gtk"
 - [ ] Is xfce4-volumed really is started via /etc/xdg/autostart/xfce4-volumed.desktop? If yes then we should not start it also from openbox autostart file.
