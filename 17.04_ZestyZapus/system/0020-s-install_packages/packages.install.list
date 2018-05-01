@@ -2,6 +2,7 @@
 # System and command line tools
 #################################
 hwinfo
+lshw
 inxi
 htop
 glances
