@@ -44,6 +44,7 @@ install_termite(){
 	update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/termite 60
 	
 	# Clean
+	cd ${BASEDIR}
 	rm -fr ./termite
 	rm -fr ./vte-ng
 }
