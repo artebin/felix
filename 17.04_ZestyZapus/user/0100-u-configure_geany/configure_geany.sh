@@ -6,9 +6,9 @@ check_shell
 configure_geany(){
 	cd ${BASEDIR}
 	
-	echo "Configuring geany ..."
+	echo "Configuring Geany ..."
 	
-	# Backup pre-existing geany config directory if it exists
+	# Backup pre-existing Geany config directory if it exists
 	if [ -d ~/.config/geany ]; then
 		backup_file rename ~/.config/geany
 	fi
@@ -25,11 +25,12 @@ configure_geany(){
 	mkdir -p ~/.config/geany/plugins/markdown
 	cp ./github-markdown.html ~/.config/geany/plugins/markdown
 	
-	# Force geany to open files in new instance
+	# Force Geany to re-use the same instance per desktop/workspace
 	if [ ! -d ~/.local/share/applications ]; then
 		mkdir -p ~/.local/share/applications
 	fi
 	cp ./geany.desktop ~/.local/share/applications/geany.desktop
+	cp ./geany_one_instance_per_workspace.sh ~/.config/openbox
 }
 
 cd ${BASEDIR}
