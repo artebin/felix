@@ -1,19 +1,19 @@
-################
-# System tools
-################
-htop
-glances
+#################################
+# System and command line tools
+#################################
 hwinfo
 inxi
+htop
+glances
 smem
 lsb-core
 pv
 progress
-lolcat
 fuseiso
 fuseiso9660
 colortest
 inotify-hookable inotify-tools iwatch
+lolcat
 
 ################
 # File manager
@@ -31,38 +31,34 @@ mate-icon-theme
 mate-icon-theme-faenza
 faenza-icon-theme
 
-###############
-# X.org tools
-###############
+##############
+# Xorg tools
+##############
 xsel
+wmctrl xdotool xautomation
 
 ##################################
 # Window manager & desktop tools
 ##################################
-openbox openbox-menu
-obconf
-obmenu
-tint2
-suckless-tools
-gsimplecal
-tomboy
-plank
-wmctrl
-xdotool
-xautomation
-icc-profiles
-arandr
-synaptic
-gksu
-galternatives
+openbox openbox-menu obconf obmenu
 lxappearance lxappearance-obconf
 dconf-cli dconf-editor dconf-tools
 mate-utils
-xfce4-goodies
-gparted
+xfburn xfce4-dict xfce4-screenshooter xfce4-power-manager xfce4-notifyd
 lxinput
-translate-shell
+tint2
+suckless-tools
+gksu
+galternatives
+gsimplecal
+tomboy
+plank
+arandr
+synaptic
+gparted
 hamster-applet
+aspell-fr
+translate-shell
 
 #############################
 # Virtual Terminal Emulator
@@ -104,6 +100,7 @@ shotwell
 gimp
 gimp-data-extras
 gpick
+icc-profiles
 
 #######################
 # Fonts & font viewer
@@ -111,10 +108,6 @@ gpick
 fonts-font-awesome
 gnome-specimen
 gnome-font-viewer
-
-python-pip
-python-imaging
-python-dbus
 
 #######
 # NFS
@@ -144,6 +137,7 @@ sshfs
 # Network tools
 #################
 curl
+gigolo
 wireshark
 wireshark-gtk
 wireshark-doc
@@ -183,28 +177,10 @@ paprefs
 #########
 hatari
 
-
-aspell-fr
-
 ################
 # Office suite
 ################
 libreoffice
-
-#########
-# Stuff
-#########
-gir1.2-gtksource-3.0
-python3-markdown
-gir1.2-webkit-3.0
-gir1.2-javascriptcoregtk-3.0
-python-gtkspellcheck
-python3-bs4
-python-wxgtk3.0
-python-wxtools
-wx3.0-i18n
-python-xlib
-mono-mcs
 
 #######
 # Git
