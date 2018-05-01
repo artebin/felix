@@ -100,7 +100,7 @@ delete_log_files(){
 }
 
 escape_sed_pattern(){
-	printf "${1}" | sed -e "s/[\/&]/\\&/g"
+	printf "${1}" | sed 's/\//\\\//g'
 }
 
 add_or_update_line_based_on_prefix(){
