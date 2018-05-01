@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ../../../common.sh
+source ../../common.sh
 check_shell
 
 configure_trackpad_mtrack(){
