@@ -4,3 +4,4 @@ evince evince-common
 ristretto
 parole
 apport apport-gtk apport-symptoms python3-apport
+update-manager update-notifier update-notifier-common xubuntu-desktop ubuntu-release-upgrader-core ubuntu-release-upgrader-gtk 
