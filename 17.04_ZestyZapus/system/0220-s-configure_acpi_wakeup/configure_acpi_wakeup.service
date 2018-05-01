@@ -2,7 +2,7 @@
 Description=Configure ACPI wakeup
 
 [Service]
-ExecStart=/bin/bash -c "echo LID0 >> /proc/acpi/wakeup;"
+ExecStart=
 
 [Install]
 WantedBy=multi-user.target
