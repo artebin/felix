@@ -34,11 +34,11 @@ configure_acpi_wakeup(){
 	done < ./acpi_wakeup
 	
 	add_or_update_line_based_on_prefix "ExecStart" "ExecStart=/bin/bash -c \"${CONFIGURE_COMMAND}\"" ./configure_acpi_wakeup.service
-	#~ cp ./configure_acpi_wakeup.service /etc/systemd/system/configure_acpi_wakeup.service
-	#~ systemctl daemon-reload
-	#~ systemctl start configure_acpi_wakeup.service
-	#~ systemctl status configure_acpi_wakeup.service
-	#~ systemctl enable configure_acpi_wakeup.service
+	cp ./configure_acpi_wakeup.service /etc/systemd/system/configure_acpi_wakeup.service
+	systemctl daemon-reload
+	systemctl start configure_acpi_wakeup.service
+	systemctl status configure_acpi_wakeup.service
+	systemctl enable configure_acpi_wakeup.service
 }
 
 cd ${BASEDIR}
