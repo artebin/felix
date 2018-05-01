@@ -11,7 +11,7 @@ DESKTOP_ID="${DESKTOP_ID##* }"
 if [ ! -z "${DESKTOP_ID}" ]; then
 	GEANY_SOCKET_FILE="geany-socket-${USER}-${DISPLAY_ID}-${DESKTOP_ID}"
 	echo "toto"
-	exec geany --socket-file "${GEANY_SOCKET_FILE}" "$@"
+	exec geany --socket-file "/tmp/${GEANY_SOCKET_FILE}" "$@"
 else
 	echo "titi"
 	exec geany "$@"
