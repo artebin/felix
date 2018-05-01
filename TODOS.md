@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Path in Geany desktop file is using "~" which is not supported here.
 - [ ] See <https://gist.github.com/jeanlescure/084dd6113931ea5a0fd91> for offline Debian repository.
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
@@ -35,6 +36,14 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] .rpmdb and .wget-hsts are owned by root in the user home => they are created when installing Skype.
+- [x] Should be able to categorize the packages in packages.list
+- [x] Remove package whoopsie
+- [x] Remove packages for Ubuntu update notifications "update-manager, update-manager-core, update-notifier, update-notifier-common, xubuntu-desktop, flashplugin-installer, ubuntu-release-upgrader-gtk"
+- [x] Allow wake up with lid only
+- [x] Macbook wakes up with usb mouse, remove this.
+- [x] Each time a process is killed, the mouse cursor is "busy" why? Ubuntu error reporting? => it is Ubuntu whoopsie... Remove it.
+- [x] Categorize the packages in packages.install.list + add lshw?
 - [x] It can occurs that login after suspend/hibernate, the keyboard configuration is lost. 
 - [x] Disable bluetooth at startup
 - [x] One instance of Geany per workspace
