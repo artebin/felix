@@ -42,6 +42,10 @@ install_termite(){
 	ln -s /usr/local/share/terminfo/x/xterm-termite /lib/terminfo/x/xterm-termite
 	
 	update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/local/bin/termite 60
+	
+	# Clean
+	rm -fr ./termite
+	rm -fr ./vte-ng
 }
 
 cd ${BASEDIR}
