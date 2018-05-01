@@ -15,7 +15,7 @@ disable_bluetooth_adapter_at_boot_time(){
 		# Check if bluetooth already disabled
 		grep -Fxq "rfkill block bluetooth" /etc/rc.local
 		if [ $? -eq 1 ]; then
-			backup_file copy /root/.bashrc
+			backup_file copy /etc/rc.local
 			echo "rfkill block bluetooth" >> /etc/rc.local
 		fi
 	else

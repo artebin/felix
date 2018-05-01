@@ -1,128 +1,229 @@
-build-essential
-synaptic
-gksu
-vim
-vim-gtk
-geany
-geany-plugins
+################
+# System tools
+################
 htop
+glances
+hwinfo
+inxi
+smem
+lsb-core
+pv
+progress
+lolcat
+fuseiso
+fuseiso9660
+colortest
+inotify-hookable inotify-tools iwatch
+
+################
+# File manager
+################
 caja
 caja-actions
 caja-extensions-common
 caja-open-terminal
+pcmanfm
+
+###################
+# Desktop theming
+###################
 mate-icon-theme
 mate-icon-theme-faenza
 faenza-icon-theme
-gimp
-gimp-data-extras
-gsimplecal
+
+###############
+# X.org tools
+###############
+xsel
+
+##################################
+# Window manager & desktop tools
+##################################
+openbox openbox-menu
 obconf
 obmenu
-openbox
-openbox-menu
 tint2
 suckless-tools
+gsimplecal
+tomboy
+plank
+wmctrl
+xdotool
+xautomation
+icc-profiles
+arandr
+synaptic
+gksu
+galternatives
+lxappearance lxappearance-obconf
+dconf-cli dconf-editor dconf-tools
+mate-utils
+xfce4-goodies
+gparted
+lxinput
+translate-shell
+hamster-applet
+
+#############################
+# Virtual Terminal Emulator
+#############################
 mate-terminal
+
+#################################
+# File editor & file diff tools
+#################################
+vim
+vim-gtk
+bless
+jq
+tidy
+kdiff3
+meld
+geany
+geany-plugins
+
+#######################################
+# PDF viewer & PDF manipulation tools
+#######################################
 atril
+pdftk
+wkhtmltopdf
+
+###################
+# Archive manager
+###################
 engrampa
-lxappearance
-lxappearance-obconf
+unrar
+p7zip-rar
+
+#######################################
+# Image viewer, browser, manipulation
+#######################################
 eom
+shotwell
+gimp
+gimp-data-extras
+gpick
+
+#######################
+# Fonts & font viewer
+#######################
+fonts-font-awesome
 gnome-specimen
 gnome-font-viewer
+
 python-pip
 python-imaging
 python-dbus
-git
+
+#######
+# NFS
+#######
 nfs-common
+nfs-kernel-server
+
+#########
+# Samba
+#########
+samba
+smbclient
+cifs-utils
+
+#######
+# FTP
+#######
+bareftp
+
+#######
+# SSH
+#######
+ssh
+sshfs
+
+#################
+# Network tools
+#################
+curl
+wireshark
+wireshark-gtk
+wireshark-doc
+
+###############
+# Web browser
+###############
 chromium-browser
+
+##########################
+# Audio and video player
+##########################
+cmus
+pianobar
 vlc
-dconf-cli
-dconf-editor
-dconf-tools
-mate-utils
+mplayer
+gpodder
+
+###################
+# Chat and webcam
+###################
+hexchat
+empathy
+cheese
+
+###############
+# Pulse audio
+###############
 libpulse-dev
 paman
 pavucontrol
 pavumeter
 paprefs
-arandr
-gparted
-bareftp
+
+#########
+# Games
+#########
 hatari
-tomboy
+
+
 aspell-fr
-hamster-applet
-bless
-kdiff3
-mono-mcs
-galternatives
-xfce4-goodies
-empathy
+
+################
+# Office suite
+################
+libreoffice
+
+#########
+# Stuff
+#########
+gir1.2-gtksource-3.0
+python3-markdown
+gir1.2-webkit-3.0
+gir1.2-javascriptcoregtk-3.0
+python-gtkspellcheck
+python3-bs4
 python-wxgtk3.0
 python-wxtools
 wx3.0-i18n
 python-xlib
-shotwell
-curl
-libreoffice
-fonts-font-awesome
-gir1.2-gtksource-3.0
-python3-markdown
-gir1.2-webkit-3.0
-wkhtmltopdf
-gir1.2-javascriptcoregtk-3.0
-python-gtkspellcheck
-autoconf
-libgtk-3-dev
-libgtk2.0-dev
+mono-mcs
+
+#######
+# Git
+#######
+git
 giggle
 git-cola
-glances
-pv
-progress
-lolcat
-pianobar
-cmus
-ssh
-inxi
-sshfs
-pcmanfm
-python3-bs4
-unrar
-gpodder
-lsb-core
-gpick
-hexchat
-samba
-smbclient
-cifs-utils
-wireshark
-wireshark-gtk
-wireshark-doc
+
+#####################
+# Development tools
+#####################
+build-essential
+autoconf
+libgtk-3-dev gtk-3-examples
+libgtk2.0-dev gtk2.0-examples
 subversion
-hwinfo
-tidy
+
+##############
+# VirtualBox
+##############
 virtualbox
 virtualbox-ext-pack
-smem
-meld
-lxinput
-gtk-3-examples
-gtk2.0-examples
-fuseiso
-fuseiso9660
-cheese
-mplayer
-jq
-wmctrl
-xdotool
-xautomation
-icc-profiles
-plank
-p7zip-rar
-xsel
-translate-shell
-colortest
-pdftk
-inotify-hookable inotify-tools iwatch
