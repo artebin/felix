@@ -60,8 +60,8 @@ execute_recipes(){
 		
 		RECIPE_ID="${BASH_REMATCH[1]}"
 		RECIPE_REQUIRED_RIGHTS="${BASH_REMATCH[2]}"
-		RECIPE_SCRIPT_FILE_NAME="${BASH_REMATCH[3]}"
-		RECIPE_SCRIPT_FILE_PATH="${RECIPES_PARENT_DIRECTORY}/${RECIPE_SCRIPT_FILE_NAME}.sh"
+		RECIPE_SCRIPT_FILE_NAME="${BASH_REMATCH[3]}.sh"
+		RECIPE_SCRIPT_FILE_PATH="${RECIPE_PATH}/${RECIPE_SCRIPT_FILE_NAME}"
 		
 		if [ ! -f "${RECIPE_SCRIPT_FILE_PATH}" ]; then
 			echo "Can not find script for recipe: ${RECIPE_SCRIPT_FILE_PATH}"
@@ -69,7 +69,7 @@ execute_recipes(){
 			continue
 		fi
 		
-		cd "${RECIPES_PARENT_DIRECTORY}"
+		cd "${RECIPE_PATH}"
 		
 		# Execute the recipe with the required rights
 		if [ "${RECIPE_REQUIRED_RIGHTS}" = "u" ]; then
