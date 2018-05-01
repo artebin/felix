@@ -44,6 +44,7 @@ wmctrl xdotool xautomation
 openbox openbox-menu obconf obmenu
 lxappearance lxappearance-obconf
 dconf-cli dconf-editor dconf-tools
+gconf-service
 mate-utils
 xfburn xfce4-dict xfce4-screenshooter xfce4-power-manager xfce4-notifyd
 lxinput
