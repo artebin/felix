@@ -12,6 +12,8 @@ install_skype(){
 	dpkg -i skypeforlinux-64.deb
 	
 	# Cleanup
+	rm -fr ~/.rpmdb
+	rm -f ~/.wget-hsts
 	rm -f ./skypeforlinux-64.deb
 }
 
