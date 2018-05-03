@@ -16,3 +16,5 @@ setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
 # Do not call `xmodmap` from here, it will not work. Use `~/.xinitrc` instead.
+
+xsetroot -solid "#3F5458"
