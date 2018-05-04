@@ -1,4 +1,8 @@
 # TODOS
+- [ ] Should remove apt.input file
+- [ ] Add nfs-kernel-server to the install package list
+- [ ] Example for NFS export
+- [ ] Add xfce4-mime-settings in openbox menu
 - [ ] Path in Geany desktop file is using "~" which is not supported here.
 - [ ] See <https://gist.github.com/jeanlescure/084dd6113931ea5a0fd91> for offline Debian repository.
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
