@@ -89,7 +89,7 @@
 			<item label="Configure Printers"><action name="Execute"><command>system-config-printer</command></action></item>
 			<item label="GParted"><action name="Execute"><command>pkexec gparted</command></action></item>
 			<item label="GAlternatives"><action name="Execute"><command>pkexec galternatives</command></action></item>
-			<item label="Software &amp; Updates"><action name="Execute"><command>pkexec software-properties-gtk</command></action></item>
+			<item label="Software &amp; Updates"><action name="Execute"><command>software-properties-gtk</command></action></item>
 			<item label="Synaptic Package Manager"><action name="Execute"><command>pkexec synaptic</command></action></item>
 			<item label="User Login Settings"><action name="Execute"><command>pkexec lightdm-gtk-greeter-settings</command></action></item>
 		</menu>
