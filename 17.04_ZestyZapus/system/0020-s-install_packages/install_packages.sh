@@ -28,6 +28,9 @@ process_package_install_list(){
 	done < ./packages.install.list
 	
 	xargs apt-get -y install < "${APT_INPUT_FILE}"
+	
+	# Cleaning
+	rm -f "${APT_INPUT_FILE}"
 }
 
 cd ${BASEDIR}
