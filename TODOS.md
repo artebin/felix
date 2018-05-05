@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Do not browse media when inserted.
 - [ ] See <https://gist.github.com/jeanlescure/084dd6113931ea5a0fd91> for offline Debian repository.
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
