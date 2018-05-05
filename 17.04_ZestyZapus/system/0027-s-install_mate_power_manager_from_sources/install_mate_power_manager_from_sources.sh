@@ -26,6 +26,19 @@ install_mate_power_manager_from_sources(){
 	make
 	make install
 	
+	# Copy polkit policy file
+	if [ -f "/usr/share/polkit-1/actions/org.mate.power.policy" ]; then
+		backup_file rename /usr/share/polkit-1/actions/org.mate.power.policy
+	fi
+	cd ${BASEDIR}/mate-power-manager/policy
+	REGEXP="@sbindir@/mate-power-backlight-helper"
+	SED_ESCAPED_REGEXP=$(escape_sed_pattern "${REGEXP}")
+	REPLACEMENT="/usr/local/sbin/mate-power-backlight-helper"
+	SED_ESCAPED_REPLACEMENT=$(escape_sed_pattern "${REPLACEMENT}")
+	cat ./org.mate.power.policy.in2 | sed "s/${SED_ESCAPED_REGEXP}/${SED_ESCAPED_REPLACEMENT}/g" > ./org.mate.power.policy
+	cp ./org.mate.power.policy /usr/share/polkit-1/actions/
+	service polkit restart
+	
 	# Cleaning
 	cd ${BASEDIR}
 	rm -fr ./mate-power-manager
