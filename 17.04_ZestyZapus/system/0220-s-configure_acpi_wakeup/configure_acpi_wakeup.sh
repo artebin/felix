@@ -25,10 +25,12 @@ configure_acpi_wakeup(){
 		fi
 		DEVICE_ID=`echo "${LINE}"|cut -f1`
 		STATUS=`echo "${LINE}"|cut -f3`
-		if [[ ${STATUS} == \*disabled* && ${LINE} == LID* ]]; then
-			CONFIGURE_COMMAND="echo ${DEVICE_ID} >> /proc/acpi/wakeup;${CONFIGURE_COMMAND}"
-			continue
-		elif [[ ${STATUS} != \*disabled* ]]; then
+		if [[ "${LINE}" == LID* ]]; then
+			if [[ "${STATUS}" == \*disabled* ]]; then
+				CONFIGURE_COMMAND="echo ${DEVICE_ID} >> /proc/acpi/wakeup;${CONFIGURE_COMMAND}"
+				continue
+			fi
+		elif [[ "${STATUS}" != \*disabled* ]]; then
 			CONFIGURE_COMMAND="echo ${DEVICE_ID} >> /proc/acpi/wakeup;${CONFIGURE_COMMAND}"
 		fi
 	done < ./acpi_wakeup
