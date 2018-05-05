@@ -9,24 +9,46 @@ process_package_install_list(){
 	
 	echo "Installing packages ..."
 	
-	APT_INPUT_FILE="./apt.pkg.list"
+	PACKAGES_INSTALL_LIST_FILE="./packages.install.list"
 	
+	# Build apt input file, one package per line
+	APT_INPUT_FILE="./apt.pkg.list"
 	if [ -f "${APT_INPUT_FILE}" ]; then
 		rm -f "${APT_INPUT_FILE}"
 	fi
 	while read LINE; do
 		INDEX_OF_COMMENT=`expr index "${LINE}" '#'`
 		if [ "${INDEX_OF_COMMENT}" -eq 0 ]; then
-			PACKAGE_LINE_LIST=${LINE}
+			PACKAGES_LINE=${LINE}
 		else
 			SUBSTRING_LENGTH=`expr ${INDEX_OF_COMMENT}-1`
-			PACKAGE_LINE_LIST=${LINE:0:${SUBSTRING_LENGTH}}
+			PACKAGES_LINE=${LINE:0:${SUBSTRING_LENGTH}}
 		fi
-		if [ ! -z "${PACKAGE_LINE_LIST}" ]; then
-			echo ${PACKAGE_LINE_LIST} >>"${APT_INPUT_FILE}"
+		if [ ! -z "${PACKAGES_LINE}" ]; then
+			echo "${PACKAGES_LINE}"| tr " " "\n" >> "${APT_INPUT_FILE}"
 		fi
-	done < ./packages.install.list
+	done < "${PACKAGES_INSTALL_LIST_FILE}"
 	
+	# Test package availability
+	# Currently using `aptitude search` which is very slow. Code should be improved later.
+	MISSING_PACKAGE_FILE="./packages.missing.list"
+	if [ -f "${MISSING_PACKAGE_FILE}" ]; then
+		rm -f "${MISSING_PACKAGE_FILE}"
+	fi
+	while read LINE; do
+		PACKAGE_AVAILABILITY=`aptitude search "^${LINE}\$"`
+		if [ $? -ne 0 ]; then
+			echo "Package ${LINE} is missing" >> "${MISSING_PACKAGE_FILE}"
+		fi
+	done < "${APT_INPUT_FILE}"
+	if [ -s "${MISSING_PACKAGE_FILE}" ]; then
+		echo "Some packages are missing."
+		echo "See ${MISSING_PACKAGE_FILE}"
+		echo "Exiting ..."
+		exit 1
+	 fi
+	
+	# Proceed install
 	xargs apt-get -y install < "${APT_INPUT_FILE}"
 	
 	# Cleaning
