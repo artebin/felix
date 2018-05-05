@@ -11,7 +11,8 @@ pasystray &
 # Register Thunar in D-BUS
 #thunar --daemon &
 
-setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &
+# Keyboard should be set properly in /etc/default/keyboard
+#setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &
 
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
