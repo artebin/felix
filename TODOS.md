@@ -1,34 +1,29 @@
 # TODOS
-- [ ] Add xfce4-mime-settings in openbox menu
 - [ ] Path in Geany desktop file is using "~" which is not supported here.
 - [ ] See <https://gist.github.com/jeanlescure/084dd6113931ea5a0fd91> for offline Debian repository.
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
 - [ ] Read <https://wiki.archlinux.org/index.php/File_manager_functionality>
-- [ ] Is xfce4-volumed really is started via /etc/xdg/autostart/xfce4-volumed.desktop? If yes then we should not start it also from openbox autostart file.
 - [ ] If keyboard is properly configured via /etc/default/keyboard then no need to configure it via openbox autostart.
 - [ ] reboot/shutdown can still be waiting for the nfs mount point to be unmounted.
 - [ ] Translate feature should allow to type the text, use a dialog for that.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
-- [ ] Add a function check_package_availability using dpkg/apt
 - [ ] Offline repository (from external USB disk)
 - [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are opened with geany.
-- [ ] Fix icons (some icons are now missing in the xfce4-settings-manager)
 - [ ] Add shortcuts from openbox in shortcuts.md
 - [ ] Openbox shortcut for minimizing the active window
-- [ ] Fix the MIME types using the user MIME db
-- [ ] How to add a default application per mime type (text files => geany)
 - [ ] Check the configuration of DokuWiki (entities etc.)
 - [ ] We can retrieve the ICC color profile from the Mac install and re-install it in linux
 - [ ] Begin a dictionary/ontology for software UI (include "system tray", "notification tray", "scrollbar overlay" etc. ).
 - [ ] How to dock a window (and just a window) in the system tray?
-- [ ] Thunderbird open attachment in GUI and no action for going back to the message body
 - [ ] Add a note for the static route for accessing trevize.net from the local network
-- [ ] Fix the problems with the dual screens
 - [ ] Latex install
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] Add a function check_package_availability using dpkg/apt => current implementation is using `aptitude search` because can not find relevent return code for `apt` and `dpkg`.
+- [x] Is xfce4-volumed really is started via /etc/xdg/autostart/xfce4-volumed.desktop? If yes then we should not start it also from openbox autostart file.
+- [x] Add xfce4-mime-settings in openbox menu
 - [x] Example for NFS export => already in the `exports` file installed with the package manager
 - [x] Add nfs-kernel-server to the install package list
 - [x] Should remove apt.input file
