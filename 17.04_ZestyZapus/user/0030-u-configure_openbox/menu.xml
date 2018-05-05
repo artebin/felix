@@ -54,7 +54,14 @@
 		</menu>
 		<separator/>
 		<menu id="settings" label="Settings">
-			<menu id="obConfig" label="Openbox">
+			<menu id="DisplaySettings" label="Display Settings">
+				<item label="ARandR Screen Layout Editor"><action name="Execute"><command>arandr</command></action></item>
+				<separator label="Help?"/>
+				<item label="man xrandr"><action name="Execute"><command>mate-terminal --command=&quot;man xrandr&quot;</command></action></item>
+			</menu>
+			<item label="Mouse Settings"><action name="Execute"><command>xfce4-mouse-settings</command></action></item>
+			<item label="Keyboard Settings"><action name="Execute"><command>xfce4-keyboard-settings</command></action></item>
+			<menu id="OpenboxConfig" label="Openbox">
 				<item label="Edit menu.xml"><action name="Execute"><command>bash ~/.config/openbox/geany_one_instance_per_workspace.sh ~/.config/openbox/menu.xml</command></action></item>
 				<item label="Edit rc.xml"><action name="Execute"><command>bash ~/.config/openbox/geany_one_instance_per_workspace.sh ~/.config/openbox/rc.xml</command></action></item>
 				<item label="Edit autostart"><action name="Execute"><command>bash ~/.config/openbox/geany_one_instance_per_workspace.sh ~/.config/openbox/autostart</command></action></item>
@@ -66,20 +73,16 @@
 				<item label="Reconfigure"><action name="Reconfigure"/></item>
 				<item label="Restart"><action name="Restart"/></item>
 			</menu>
-			<menu id="tint2config" label="tint2">
+			<menu id="Tint2Config" label="tint2">
 				<item label="Edit config file"><action name="Execute"><command>bash ~/.config/openbox/geany_one_instance_per_workspace.sh ~/.config/tint2/tint2rc</command></action></item>
 				<item label="Restart tint2"><action name="Execute"><command>bash ~/.config/openbox/tint2_restart.sh</command></action></item>
 				<separator label="Help?"/>
 				<item label="man page"><action name="Execute"><command>mate-terminal --command=&quot;man tint2&quot;</command></action></item>
 				<item label="Online Help"><action name="Execute"><command>x-www-browser http://code.google.com/p/tint2/wiki/Welcome</command></action></item>
 			</menu>
-			<menu id="DisplaySettings" label="Display Settings">
-				<item label="ARandR Screen Layout Editor"><action name="Execute"><command>arandr</command></action></item>
-				<separator label="Help?"/>
-				<item label="man xrandr"><action name="Execute"><command>mate-terminal --command=&quot;man xrandr&quot;</command></action></item>
-			</menu>
-			<item label="Edit Default Applications"><action name="Execute"><command>termite --command=&quot;sudo update-alternatives --all&quot;</command></action></item>
 			<item label="User Interface Settings"><action name="Execute"><command>lxappearance</command></action></item>
+			<item label="Edit Default Applications"><action name="Execute"><command>termite --command=&quot;sudo update-alternatives --all&quot;</command></action></item>
+			<item label="MIME Type Editor"><action name="Execute"><command>xfce4-mime-settings</command></action></item>
 			<item label="Power Management"><action name="Execute"><command>xfce4-power-manager-settings</command></action></item>
 		</menu>
 		<menu id="system" label="System">
