@@ -1,5 +1,4 @@
 # TODOS
-- [ ] Clipboard persistence? It is sometimes annoying to see the clipboard is empty after exiting geany but we expected to do a paste somewhere.
 - [ ] See <https://gist.github.com/jeanlescure/084dd6113931ea5a0fd91> for offline Debian repository.
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
@@ -21,6 +20,7 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] Clipboard persistence? It is sometimes annoying to see the clipboard is empty after exiting geany but we expected to do a paste somewhere. => install clipit and start it via openbox autostart.
 - [x] polkit policy file for mate-power-manager and backlight helper is missing.
 - [x] Path in Geany desktop file is using "~" which is not supported here.
 - [x] Add a function check_package_availability using dpkg/apt => current implementation is using `aptitude search` because can not find relevent return code for `apt` and `dpkg`.

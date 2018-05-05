@@ -1,10 +1,9 @@
 tint2 &
 
+clipit &
+
 # xfce4-volumed could be started via /etc/xdg/autostart/xfce4-volumed.desktop but there is a parameter "OnlyShowIn=XFCE;"
 xfce4-volumed &
-
-# xfce4-power-manager is started via /etc/xdg/autostart/xfce4-power-manager
-#xfce4-power-manager &
 
 pasystray &
 
@@ -17,5 +16,12 @@ pasystray &
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
 
 # Do not call `xmodmap` from here, it will not work. Use `~/.xinitrc` instead.
+#xmodmap ~/.Xmodmap &
 
-xsetroot -solid "#3F5458"
+xsetroot -solid "#3F5458" &
+
+# If distribution is Xubuntu then xfce4-power-manager is started via /etc/xdg/autostart/xfce4-power-manager
+# Could be the file should be renamed in order to prevent xfce4-power-manager to be started
+
+# sleep a few seconds before starting mate-power-manager because sometimes the battery icon of mate-power-manager is missing, we get instead a orange box including an exclamation mark.
+sleep 10 && mate-power-manager &
