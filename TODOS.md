@@ -1,7 +1,4 @@
 # TODOS
-- [ ] Should remove apt.input file
-- [ ] Add nfs-kernel-server to the install package list
-- [ ] Example for NFS export
 - [ ] Add xfce4-mime-settings in openbox menu
 - [ ] Path in Geany desktop file is using "~" which is not supported here.
 - [ ] See <https://gist.github.com/jeanlescure/084dd6113931ea5a0fd91> for offline Debian repository.
@@ -32,6 +29,9 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] Example for NFS export => already in the `exports` file installed with the package manager
+- [x] Add nfs-kernel-server to the install package list
+- [x] Should remove apt.input file
 - [x] .rpmdb and .wget-hsts are owned by root in the user home => they are created when installing Skype.
 - [x] Should be able to categorize the packages in packages.list
 - [x] Remove package whoopsie

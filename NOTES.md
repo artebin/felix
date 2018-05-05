@@ -1,3 +1,22 @@
+## Xubuntu 18.04
+- obmenu is not working:
+>Traceback (most recent call last):
+>  File "/usr/bin/obmenu", line 617, in <module>
+>    app.init()
+>  File "/usr/bin/obmenu", line 521, in init
+>    self.menu.loadMenu(self.menu_path)
+>  File "/usr/lib/python2.7/dist-packages/obxml.py", line 153, in loadMenu
+>    self.dom = xml.dom.minidom.parseString(fil.read())
+>  File "/usr/lib/python2.7/xml/dom/minidom.py", line 1928, in parseString
+>    return expatbuilder.parseString(string)
+>  File "/usr/lib/python2.7/xml/dom/expatbuilder.py", line 940, in parseString
+>    return builder.parseString(string)
+>  File "/usr/lib/python2.7/xml/dom/expatbuilder.py", line 223, in parseString
+>    parser.Parse(string, True)
+>xml.parsers.expat.ExpatError: not well-formed (invalid token): line 16, column 22
+- Icon tray of xfce4-power-manager is not displayed properly? Does it not use the user-selected icon theme stock anymore? Furthermore the new version is not nice, the choice of the color for the dialog appearing when the user clicks the tray icon is very bad => move to mate-power-manager which is far better, simpler. However I see a problem with permission for starting `/usr/local/sbin/mate-power-backlight-helper", I suppose I should add a polkit configuration for it in `/usr/share/polkit-1/actions`. 
+- Geany Markdown is not available in the repository?
+
 ## DisplayLink
 Today there is no support of Daisy-Chain DisplayPort 1.2 monitors in Linux (MST Multi-Stream Transport).
 
