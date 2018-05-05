@@ -3,7 +3,6 @@
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
 - [ ] Read <https://wiki.archlinux.org/index.php/File_manager_functionality>
-- [ ] If keyboard is properly configured via /etc/default/keyboard then no need to configure it via openbox autostart.
 - [ ] reboot/shutdown can still be waiting for the nfs mount point to be unmounted.
 - [ ] Translate feature should allow to type the text, use a dialog for that.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
@@ -20,6 +19,7 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] If keyboard is properly configured via /etc/default/keyboard then no need to configure it via openbox autostart.
 - [x] Clipboard persistence? It is sometimes annoying to see the clipboard is empty after exiting geany but we expected to do a paste somewhere. => install clipit and start it via openbox autostart.
 - [x] polkit policy file for mate-power-manager and backlight helper is missing.
 - [x] Path in Geany desktop file is using "~" which is not supported here.
