@@ -14,8 +14,8 @@
 >  File "/usr/lib/python2.7/xml/dom/expatbuilder.py", line 223, in parseString
 >    parser.Parse(string, True)
 >xml.parsers.expat.ExpatError: not well-formed (invalid token): line 16, column 22
-- Icon tray of xfce4-power-manager is not displayed properly? Does it not use the user-selected icon theme stock anymore? Furthermore the new version is not nice, the choice of the color for the dialog appearing when the user clicks the tray icon is very bad => move to mate-power-manager which is far better, simpler. However I see a problem with permission for starting `/usr/local/sbin/mate-power-backlight-helper", I suppose I should add a polkit configuration for it in `/usr/share/polkit-1/actions`. 
-- Geany Markdown is not available in the repository?
+- Icon tray of xfce4-power-manager is not displayed properly? Does it not use the user-selected icon theme stock anymore? Furthermore the new version is not nice, the choice of the color for the dialog appearing when the user clicks the tray icon is very bad => move to mate-power-manager which is far better, simpler. However I see a problem with permission for starting `/usr/local/sbin/mate-power-backlight-helper`, I suppose I should add a polkit configuration for it in `/usr/share/polkit-1/actions`. 
+- Geany Markdown is not available in the repository, probably because peg-markdown is missing.
 
 ## DisplayLink
 Today there is no support of Daisy-Chain DisplayPort 1.2 monitors in Linux (MST Multi-Stream Transport).
