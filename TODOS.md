@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Waiting for window when launching command from dmenu? (and spinning cursor?)
 - [ ] Should invert F6 and F7 in geany shortcuts.
 - [ ] Can change the alternative for the desktop background.
 - [ ] Do not browse media when inserted.
