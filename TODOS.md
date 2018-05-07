@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Should invert F6 and F7 in geany shortcuts.
 - [ ] Can change the alternative for the desktop background.
 - [ ] Do not browse media when inserted.
 - [ ] See <https://gist.github.com/jeanlescure/084dd6113931ea5a0fd91> for offline Debian repository.
