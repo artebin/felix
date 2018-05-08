@@ -8,7 +8,7 @@ install_alltray_from_sources(){
 	cd ${BASEDIR}
 	
 	echo "Installing AllTray from sources ..."
-	echo "Cloning <https://github.com/bill-auger/alltray>"
+	echo "GitHub repository: <https://github.com/bill-auger/alltray>"
 	
 	# Dependencies
 	apt-get install -y libgtop2-dev libwnck-dev libxpm-dev
