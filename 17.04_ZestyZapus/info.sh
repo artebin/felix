@@ -12,6 +12,7 @@ print_section_ending
 #####################
 # Distribution name
 #####################
+lsb_release -a
 
 ##################
 # Ubuntu version
