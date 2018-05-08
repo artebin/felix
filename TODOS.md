@@ -1,6 +1,5 @@
 # TODOS
 - [ ] Replace ClipIt by clipmenu <https://github.com/cdown/clipmenu/>
-- [ ] Compile alltray from source and use this fork of alltray <https://github.com/bill-auger/alltray>
 - [ ] Waiting for window when launching command from dmenu? (and spinning cursor?)
 - [ ] Should invert F6 and F7 in geany shortcuts.
 - [ ] Can change the alternative for the desktop background.
@@ -25,6 +24,7 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] Compile alltray from source and use this fork of alltray <https://github.com/bill-auger/alltray>
 - [x] If keyboard is properly configured via /etc/default/keyboard then no need to configure it via openbox autostart.
 - [x] Clipboard persistence? It is sometimes annoying to see the clipboard is empty after exiting geany but we expected to do a paste somewhere. => install clipit and start it via openbox autostart.
 - [x] polkit policy file for mate-power-manager and backlight helper is missing.
