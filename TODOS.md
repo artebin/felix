@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Replace ClipIt by clipmenu <https://github.com/cdown/clipmenu/>
 - [ ] Compile alltray from source and use this fork of alltray <https://github.com/bill-auger/alltray>
 - [ ] Waiting for window when launching command from dmenu? (and spinning cursor?)
 - [ ] Should invert F6 and F7 in geany shortcuts.
