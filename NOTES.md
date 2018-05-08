@@ -1,3 +1,9 @@
+## Offline repository
+How to get a local copy of an Ubuntu/Debian repository (i.e. <http://archive.ubuntu.com/ubuntu/dists/> )
+- <https://askubuntu.com/questions/393018/create-local-copy-of-ubuntu-remote-repository>
+- <https://help.ubuntu.com/community/Rsyncmirror>
+- <https://gist.github.com/jeanlescure/084dd6113931ea5a0fd9>
+
 ## Xubuntu 18.04
 - obmenu is not working:
 >Traceback (most recent call last):

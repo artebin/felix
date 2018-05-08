@@ -4,7 +4,6 @@
 - [ ] Should invert F6 and F7 in geany shortcuts.
 - [ ] Can change the alternative for the desktop background.
 - [ ] Do not browse media when inserted.
-- [ ] See <https://gist.github.com/jeanlescure/084dd6113931ea5a0fd91> for offline Debian repository.
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
 - [ ] Read <https://wiki.archlinux.org/index.php/File_manager_functionality>
@@ -16,9 +15,7 @@
 - [ ] Add shortcuts from openbox in shortcuts.md
 - [ ] Openbox shortcut for minimizing the active window
 - [ ] Check the configuration of DokuWiki (entities etc.)
-- [ ] We can retrieve the ICC color profile from the Mac install and re-install it in linux
 - [ ] Begin a dictionary/ontology for software UI (include "system tray", "notification tray", "scrollbar overlay" etc. ).
-- [ ] How to dock a window (and just a window) in the system tray?
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 - [ ] Latex install
 - [ ] XDMCP, xrdp and FreeRDP
