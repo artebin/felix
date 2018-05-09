@@ -19,8 +19,8 @@
 | --- | --- |
 | `F3`							| Switch search bar |
 | `F5`							| Switch scribble |
-| `F6`							| Toggle message window |
-| `F7`							| Toggle sidebar |
+| `F6`							| Toggle sidebar |
+| `F7`							| Toggle message window |
 | `<Shift>F8`					| Build link |
 | `<Ctrl><Shift>F8`				| Build make |
 | `F9`							| Build run |

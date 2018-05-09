@@ -1,7 +1,6 @@
 # TODOS
-- [ ] Replace ClipIt by clipmenu <https://github.com/cdown/clipmenu/>
+- [ ] Replace ClipIt by clipmenu <https://github.com/cdown/clipmenu/> or clipster <https://github.com/mrichar1/clipster>
 - [ ] Waiting for window when launching command from dmenu? (and spinning cursor?)
-- [ ] Should invert F6 and F7 in geany shortcuts.
 - [ ] Can change the alternative for the desktop background.
 - [ ] Do not browse media when inserted.
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
@@ -21,6 +20,7 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] Should invert F6 and F7 in geany shortcuts.
 - [x] Compile alltray from source and use this fork of alltray <https://github.com/bill-auger/alltray>
 - [x] If keyboard is properly configured via /etc/default/keyboard then no need to configure it via openbox autostart.
 - [x] Clipboard persistence? It is sometimes annoying to see the clipboard is empty after exiting geany but we expected to do a paste somewhere. => install clipit and start it via openbox autostart.
