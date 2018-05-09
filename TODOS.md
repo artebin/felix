@@ -2,7 +2,6 @@
 - [ ] Replace ClipIt by clipmenu <https://github.com/cdown/clipmenu/> or clipster <https://github.com/mrichar1/clipster>
 - [ ] Waiting for window when launching command from dmenu? (and spinning cursor?)
 - [ ] Can change the alternative for the desktop background.
-- [ ] Do not browse media when inserted.
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
 - [ ] Read <https://wiki.archlinux.org/index.php/File_manager_functionality>
@@ -20,6 +19,7 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] Do not browse media when inserted.
 - [x] Should invert F6 and F7 in geany shortcuts.
 - [x] Compile alltray from source and use this fork of alltray <https://github.com/bill-auger/alltray>
 - [x] If keyboard is properly configured via /etc/default/keyboard then no need to configure it via openbox autostart.

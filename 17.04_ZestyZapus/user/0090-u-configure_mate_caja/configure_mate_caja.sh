@@ -8,6 +8,7 @@ configure_mate_caja(){
 	
 	echo "Configuring mate-caja ..."
 	dconf load /org/mate/caja/ < ./org.mate.caja.dump
+	dconf load /org/mate/desktop/ < ./org.mate.desktop.dump
 }
 
 cd ${BASEDIR}
