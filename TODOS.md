@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Move translate-notify.sh in /usr/bin for being able to start it from dmenu, or add a folder of executables in dmenu.
 - [ ] Replace ClipIt by clipmenu <https://github.com/cdown/clipmenu/> or clipster <https://github.com/mrichar1/clipster>
 - [ ] Waiting for window when launching command from dmenu? (and spinning cursor?)
 - [ ] Can change the alternative for the desktop background.

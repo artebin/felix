@@ -366,9 +366,9 @@
 			<action name="Execute">
 				<startupnotify>
 					<enabled>true</enabled>
-					<name>Translate Selected Text</name>
+					<name>Translate Notify</name>
 				</startupnotify>
-				<command>bash ~/.config/openbox/translate.sh</command>
+				<command>bash ~/.config/openbox/translate-notify.sh</command>
 			</action>
 		</keybind>
 		<keybind key="W-t">
