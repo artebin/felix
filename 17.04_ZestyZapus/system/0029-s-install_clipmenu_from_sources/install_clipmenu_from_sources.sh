@@ -7,13 +7,20 @@ exit_if_has_not_root_privileges
 install_clipmenu_from_sources(){
 	cd ${BASEDIR}
 	
+	# ClipNotify
+	cd ${BASEDIR}
+	echo "Installing ClipNotify from sources ..."
+	echo "GitHub repository: <https://github.com/cdown/clipnotify>"
+	git clone https://github.com/cdown/clipnotify
+	cd ./clipnotify
+	make
+	cp ./clipnotify /usr/bin
+	
+	# ClipMenu
+	cd ${BASEDIR}
 	echo "Installing ClipMenu from sources ..."
 	echo "GitHub repository: <https://github.com/cdown/clipmenu>"
-	
-	# Cloning github repository
 	git clone https://github.com/cdown/clipmenu
-	
-	# Proceed to install
 	cd ./clipmenu
 	cp ./clipdel /usr/bin
 	cp ./clipmenu /usr/bin
@@ -26,6 +33,7 @@ install_clipmenu_from_sources(){
 	
 	# Cleaning
 	cd ${BASEDIR}
+	rm -fr ./clipnotify
 	rm -fr ./clipmenu
 }
 
