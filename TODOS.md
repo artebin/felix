@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Still some colors are not correct with Termite.
+- [ ] Investigate problems with Xubuntu 18.04: no Geany Markdoown plugin, no paman.
 - [ ] Move translate-notify.sh in /usr/bin for being able to start it from dmenu, or add a folder of executables in dmenu.
 - [ ] Replace ClipIt by clipmenu <https://github.com/cdown/clipmenu/> or clipster <https://github.com/mrichar1/clipster>
 - [ ] Waiting for window when launching command from dmenu? (and spinning cursor?)
@@ -9,7 +11,7 @@
 - [ ] reboot/shutdown can still be waiting for the nfs mount point to be unmounted.
 - [ ] Translate feature should allow to type the text, use a dialog for that.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
-- [ ] Offline repository (from external USB disk)
+- [ ] Offline repository (from external USB disk) <https://askubuntu.com/questions/882255/i-do-not-fully-understand-wiki-aptget-offline>
 - [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are opened with geany.
 - [ ] Add shortcuts from openbox in shortcuts.md
 - [ ] Openbox shortcut for minimizing the active window
