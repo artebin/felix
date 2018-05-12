@@ -23,7 +23,7 @@ exit_if_has_not_root_privileges(){
 }
 
 INSTALLER_MEDIA_INFO_PATH="/var/log/installer/media-info"
-SUPPORTED_XUBUNTU_VERSION="Xubuntu 17.04"
+SUPPORTED_XUBUNTU_VERSION="Xubuntu 18.04"
 
 check_xubuntu_version(){
 	if [ ! -f "${INSTALLER_MEDIA_INFO_PATH}" ]; then
@@ -122,6 +122,8 @@ CURRENT_SCRIPT_FILE_PATH=$(readlink -f "$0")
 CURRENT_SCRIPT_FILE_NAME=$(basename "$0")
 CURRENT_SCRIPT_LOG_FILE_NAME=$(retrieve_log_file_name "${CURRENT_SCRIPT_FILE_NAME}")
 BASEDIR=$(dirname "${CURRENT_SCRIPT_FILE_PATH}")
+
+TEST_PACKAGE_AVAILABILITY="true"
 
 GTK_ICON_THEME_NAME="Faenza-njames"
 GTK_THEME_NAME="Greybird"

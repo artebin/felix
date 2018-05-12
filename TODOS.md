@@ -1,4 +1,7 @@
 # TODOS
+- [x] Package availability should be optional. Directly from common.sh or with arg to the recipe script. Better output for test package availability
+- [ ] Package availability shoud exit and stop the execution of the recipe.
+- [ ] Geany toolbar icon size
 - [ ] Install Python SimpleHttpServer and try it for accessing local mirror of repository <https://askubuntu.com/questions/771547/ubuntu-16-04-apt-get-update-doesnt-work-with-local-repository>
 - [ ] Clean Openbox rc.xml
 - [ ] Still some colors are not correct with Termite.

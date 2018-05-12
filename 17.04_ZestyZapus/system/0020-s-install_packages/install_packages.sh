@@ -31,22 +31,36 @@ process_package_install_list(){
 	
 	# Test package availability
 	# Currently using `aptitude search` which is very slow. Code should be improved later.
-	MISSING_PACKAGE_FILE="./packages.missing.list"
-	if [ -f "${MISSING_PACKAGE_FILE}" ]; then
-		rm -f "${MISSING_PACKAGE_FILE}"
-	fi
-	while read LINE; do
-		PACKAGE_AVAILABILITY=`aptitude search "^${LINE}\$"`
-		if [ $? -ne 0 ]; then
-			echo "Package ${LINE} is missing" >> "${MISSING_PACKAGE_FILE}"
+	if [ "${TEST_PACKAGE_AVAILABILITY}" == "true" ]; then
+		apt-get install -y aptitude
+		PACKAGE_MISSING_LIST_FILE="./packages.missing.list"
+		if [ -f "${PACKAGE_MISSING_LIST_FILE}" ]; then
+			rm -f "${PACKAGE_MISSING_LIST_FILE}"
 		fi
-	done < "${APT_INPUT_FILE}"
-	if [ -s "${MISSING_PACKAGE_FILE}" ]; then
-		echo "Some packages are missing."
-		echo "See ${MISSING_PACKAGE_FILE}"
-		echo "Exiting ..."
-		exit 1
-	 fi
+		while read LINE; do
+			if [ -z "${LINE}" ]; then
+				continue;
+			fi
+			PACKAGE_AVAILABILITY=`aptitude search "^${LINE}\$"`
+			if [ $? -eq 0 ]; then
+				printf "[\e[92m%s\e[0m] %s\n" "OK" "${LINE}"
+			else
+				printf "[\e[91m%s\e[0m] %s\n" "MISSING" "${LINE}"
+				echo "${LINE}" >> "${PACKAGE_MISSING_LIST_FILE}"
+			fi
+		done < "${APT_INPUT_FILE}"
+		if [ -s "${PACKAGE_MISSING_LIST_FILE}" ]; then
+			echo "Some packages are missing."
+			echo "See ${PACKAGE_MISSING_LIST_FILE}"
+			if [ ! -z "${RECIPE_NAME}" ]; then
+				echo "Stopping recipes execution and exiting ..."
+				STOP_RECIPES_EXECUTION="true"
+			else
+				echo "Exiting ... "
+			fi
+			exit 1
+		 fi
+	fi
 	
 	# Proceed install
 	xargs apt-get -y install < "${APT_INPUT_FILE}"
@@ -54,6 +68,27 @@ process_package_install_list(){
 	# Cleaning
 	rm -f "${APT_INPUT_FILE}"
 }
+
+usage(){
+	printf "Usage: ${0} [OPTION...]\n\n"
+	printf -- "  -d test package availability\n"
+}
+
+if [ -z "${TEST_PACKAGE_AVAILABILITY}" ]; then
+	TEST_PACKAGE_AVAILABILITY="false"
+fi
+
+while getopts ":t" OPT; do
+	case ${OPT} in
+	t)
+		TEST_PACKAGE_AVAILABILITY="true"
+		;;
+	*)
+		usage
+		exit 1
+		;;
+	esac
+done
 
 cd ${BASEDIR}
 process_package_install_list 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
