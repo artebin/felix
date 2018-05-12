@@ -9,7 +9,7 @@
 		<item label="Media Player"><action name="Execute"><command>vlc</command></action></item>
 		<separator/>
 		<menu id="accessories" label="Accessories">
-			<item label="Task Manager (htop)"><action name="Execute"><command>mate-terminal --command=&quot;htop&quot;</command></action></item>
+			<item label="Task Manager (htop)"><action name="Execute"><command>termite --exec=&quot;htop&quot;</command></action></item>
 			<item label="Disk Usage Analyzer"><action name="Execute"><command>mate-disk-usage-analyzer</command></action></item>
 			<item label="GVim"><action name="Execute"><command>gvim</command></action></item>
 			<item label="Hexadecimal Editor (Bless)"><action name="Execute"><command>bless</command></action></item>
@@ -18,7 +18,7 @@
 		<menu id="graphics" label="Graphics">
 			<item label="Image Viewer (EoM)"><action name="Execute"><command>eom</command></action></item>
 			<item label="Screenshooter"><action name="Execute"><command>xfce4-screenshooter</command></action></item>
-			<item label="Shotwell"><action name="Execute"><command>Shotwell</command></action></item>
+			<item label="Shotwell"><action name="Execute"><command>shotwell</command></action></item>
 			<item label="GIMP"><action name="Execute"><command>gimp</command></action></item>
 		</menu>
 		<menu id="multimedia" label="Multimedia">
@@ -33,12 +33,12 @@
 				<item label="Google Chrome"><action name="Execute"><execute>google-chrome</execute></action></item>
 			</menu>
 			<item label="Empathy"><action name="Execute"><command>empathy</command></action></item>
-			<item label="Skype"><action name="Execute"><command>skype</command></action></item>
+			<item label="Skype"><action name="Execute"><command>skypeforlinux</command></action></item>
 			<item label="IRC Client (HexChat)"><action name="Execute"><command>hexchat</command></action></item>
-			<item label="Remote Filesystems"><action name="Execute"><command>gigolo</command></action></item>
+			<item label="Remote Filesystems (Gigolo)"><action name="Execute"><command>gigolo</command></action></item>
 			<item label="Thunderbird"><action name="Execute"><execute>thunderbird</execute></action></item>
 			<item label="FTP Client (BareFTP)"><action name="Execute"><command>bareftp</command></action></item>
-			<item label="Transmission BitTorrent Client"><action name="Execute"><command>transmission-gtk</command></action></item>
+			<item label="BitTorrent Client (Transmission)"><action name="Execute"><command>transmission-gtk</command></action></item>
 		</menu>
 		<menu id="office" label="Office">
 			<menu id="libreoffice" label="LibreOffice">
@@ -57,7 +57,7 @@
 			<menu id="DisplaySettings" label="Display Settings">
 				<item label="ARandR Screen Layout Editor"><action name="Execute"><command>arandr</command></action></item>
 				<separator label="Help?"/>
-				<item label="man xrandr"><action name="Execute"><command>mate-terminal --command=&quot;man xrandr&quot;</command></action></item>
+				<item label="man xrandr"><action name="Execute"><command>termite --exec=&quot;man xrandr&quot;</command></action></item>
 			</menu>
 			<item label="Mouse Settings"><action name="Execute"><command>xfce4-mouse-settings</command></action></item>
 			<item label="Keyboard Settings"><action name="Execute"><command>xfce4-keyboard-settings</command></action></item>
@@ -77,11 +77,11 @@
 				<item label="Edit config file"><action name="Execute"><command>bash ~/.config/openbox/geany_one_instance_per_workspace.sh ~/.config/tint2/tint2rc</command></action></item>
 				<item label="Restart tint2"><action name="Execute"><command>bash ~/.config/openbox/tint2_restart.sh</command></action></item>
 				<separator label="Help?"/>
-				<item label="man page"><action name="Execute"><command>mate-terminal --command=&quot;man tint2&quot;</command></action></item>
+				<item label="man page"><action name="Execute"><command>termite --exec=&quot;man tint2&quot;</command></action></item>
 				<item label="Online Help"><action name="Execute"><command>x-www-browser http://code.google.com/p/tint2/wiki/Welcome</command></action></item>
 			</menu>
 			<item label="User Interface Settings"><action name="Execute"><command>lxappearance</command></action></item>
-			<item label="Edit Default Applications"><action name="Execute"><command>termite --command=&quot;sudo update-alternatives --all&quot;</command></action></item>
+			<item label="Edit Default Applications"><action name="Execute"><command>termite --exec=&quot;sudo update-alternatives --all&quot;</command></action></item>
 			<item label="MIME Type Editor"><action name="Execute"><command>xfce4-mime-settings</command></action></item>
 			<item label="Power Management"><action name="Execute"><command>xfce4-power-manager-settings</command></action></item>
 		</menu>
