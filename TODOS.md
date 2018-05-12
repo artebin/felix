@@ -1,10 +1,10 @@
 # TODOS
-- [x] Package availability should be optional. Directly from common.sh or with arg to the recipe script. Better output for test package availability
-- [ ] Package availability shoud exit and stop the execution of the recipe.
+- [x] Test for package availability in install_packages.sh should be optional.
+- [ ] install.sh should stop as soon as a recipe returns an error code.
 - [ ] Geany toolbar icon size
 - [ ] Install Python SimpleHttpServer and try it for accessing local mirror of repository <https://askubuntu.com/questions/771547/ubuntu-16-04-apt-get-update-doesnt-work-with-local-repository>
 - [ ] Clean Openbox rc.xml
-- [ ] Still some colors are not correct with Termite.
+- [ ] Still some colors are not correct with Termite (htop).
 - [ ] Investigate problems with Xubuntu 18.04: no Geany Markdoown plugin, no paman.
 - [ ] Move translate-notify.sh in /usr/bin for being able to start it from dmenu, or add a folder of executables in dmenu.
 - [ ] Replace ClipIt by clipmenu <https://github.com/cdown/clipmenu/> or clipster <https://github.com/mrichar1/clipster>
