@@ -29,7 +29,7 @@ process_package_install_list(){
 		fi
 	done < "${PACKAGES_INSTALL_LIST_FILE}"
 	
-	# Test package availability
+	# Check package availability
 	# Currently using `aptitude search` which is very slow. Code should be improved later.
 	if [ "${TEST_PACKAGE_AVAILABILITY}" == "true" ]; then
 		apt-get install -y aptitude
@@ -52,12 +52,6 @@ process_package_install_list(){
 		if [ -s "${PACKAGE_MISSING_LIST_FILE}" ]; then
 			echo "Some packages are missing."
 			echo "See ${PACKAGE_MISSING_LIST_FILE}"
-			if [ ! -z "${RECIPE_NAME}" ]; then
-				echo "Stopping recipes execution and exiting ..."
-				STOP_RECIPES_EXECUTION="true"
-			else
-				echo "Exiting ... "
-			fi
 			exit 1
 		 fi
 	fi
@@ -69,26 +63,6 @@ process_package_install_list(){
 	rm -f "${APT_INPUT_FILE}"
 }
 
-usage(){
-	printf "Usage: ${0} [OPTION...]\n\n"
-	printf -- "  -d test package availability\n"
-}
-
-if [ -z "${TEST_PACKAGE_AVAILABILITY}" ]; then
-	TEST_PACKAGE_AVAILABILITY="false"
-fi
-
-while getopts ":t" OPT; do
-	case ${OPT} in
-	t)
-		TEST_PACKAGE_AVAILABILITY="true"
-		;;
-	*)
-		usage
-		exit 1
-		;;
-	esac
-done
-
 cd ${BASEDIR}
 process_package_install_list 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+exit "${PIPESTATUS[0]}"
