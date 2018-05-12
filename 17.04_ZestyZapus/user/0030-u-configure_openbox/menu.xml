@@ -9,7 +9,7 @@
 		<item label="Media Player"><action name="Execute"><command>vlc</command></action></item>
 		<separator/>
 		<menu id="accessories" label="Accessories">
-			<item label="Task Manager (htop)"><action name="Execute"><command>termite --exec=&quot;htop&quot;</command></action></item>
+			<item label="Task Manager (htop)"><action name="Execute"><command>termite --exec="htop";</command></action></item>
 			<item label="Disk Usage Analyzer"><action name="Execute"><command>mate-disk-usage-analyzer</command></action></item>
 			<item label="GVim"><action name="Execute"><command>gvim</command></action></item>
 			<item label="Hexadecimal Editor (Bless)"><action name="Execute"><command>bless</command></action></item>
@@ -57,7 +57,7 @@
 			<menu id="DisplaySettings" label="Display Settings">
 				<item label="ARandR Screen Layout Editor"><action name="Execute"><command>arandr</command></action></item>
 				<separator label="Help?"/>
-				<item label="man xrandr"><action name="Execute"><command>termite --exec=&quot;man xrandr&quot;</command></action></item>
+				<item label="man xrandr"><action name="Execute"><command>termite --exec="man xrandr"</command></action></item>
 			</menu>
 			<item label="Mouse Settings"><action name="Execute"><command>xfce4-mouse-settings</command></action></item>
 			<item label="Keyboard Settings"><action name="Execute"><command>xfce4-keyboard-settings</command></action></item>
@@ -77,11 +77,11 @@
 				<item label="Edit config file"><action name="Execute"><command>bash ~/.config/openbox/geany_one_instance_per_workspace.sh ~/.config/tint2/tint2rc</command></action></item>
 				<item label="Restart tint2"><action name="Execute"><command>bash ~/.config/openbox/tint2_restart.sh</command></action></item>
 				<separator label="Help?"/>
-				<item label="man page"><action name="Execute"><command>termite --exec=&quot;man tint2&quot;</command></action></item>
+				<item label="man page"><action name="Execute"><command>termite --exec="man tint2"</command></action></item>
 				<item label="Online Help"><action name="Execute"><command>x-www-browser http://code.google.com/p/tint2/wiki/Welcome</command></action></item>
 			</menu>
 			<item label="User Interface Settings"><action name="Execute"><command>lxappearance</command></action></item>
-			<item label="Edit Default Applications"><action name="Execute"><command>termite --exec=&quot;sudo update-alternatives --all&quot;</command></action></item>
+			<item label="Edit Default Applications"><action name="Execute"><command>termite --exec="sudo update-alternatives --all"</command></action></item>
 			<item label="MIME Type Editor"><action name="Execute"><command>xfce4-mime-settings</command></action></item>
 			<item label="Power Management"><action name="Execute"><command>xfce4-power-manager-settings</command></action></item>
 		</menu>
