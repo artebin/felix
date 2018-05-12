@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Install Python SimpleHttpServer and try it for accessing local mirror of repository <https://askubuntu.com/questions/771547/ubuntu-16-04-apt-get-update-doesnt-work-with-local-repository>
+- [ ] Clean Openbox rc.xml
 - [ ] Still some colors are not correct with Termite.
 - [ ] Investigate problems with Xubuntu 18.04: no Geany Markdoown plugin, no paman.
 - [ ] Move translate-notify.sh in /usr/bin for being able to start it from dmenu, or add a folder of executables in dmenu.
