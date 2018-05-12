@@ -50,16 +50,15 @@ xfce4-volumed xfburn xfce4-dict xfce4-screenshooter xfce4-power-manager xfce4-no
 lxinput
 tint2
 suckless-tools
-gksu
+#gksu #N/A in Xubuntu 18.04
 galternatives
-clipit
 gsimplecal
 tomboy
 plank
 arandr
 synaptic
 gparted
-hamster-applet
+#hamster-applet #N/A in Xubuntu 18.04
 aspell-fr
 translate-shell
 
@@ -85,7 +84,7 @@ geany-plugins
 # PDF viewer & PDF manipulation tools
 #######################################
 atril
-pdftk
+#pdftk #N/A in Xubuntu 18.04
 wkhtmltopdf
 
 ###################
@@ -109,7 +108,7 @@ icc-profiles
 # Fonts & font viewer
 #######################
 fonts-font-awesome
-gnome-specimen
+#gnome-specimen #N/A in Xubuntu 18.04
 gnome-font-viewer
 
 #######
@@ -171,7 +170,7 @@ cheese
 # Pulse audio
 ###############
 libpulse-dev
-paman
+#paman #N/A in Xubuntu 18.04
 pavucontrol
 pavumeter
 paprefs
@@ -203,7 +202,7 @@ cmake
 libgtk-3-dev gtk-3-examples
 libgtk2.0-dev gtk2.0-examples
 libxml2-dbg libxml2-dev libxml2-doc
-libusb-1.0-0.dev 	#For compiling Dump1090
+libusb-1.0-0.dev #For compiling Dump1090
 subversion
 
 ##############
