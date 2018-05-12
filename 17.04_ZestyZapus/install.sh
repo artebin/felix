@@ -48,7 +48,6 @@ list_recipes(){
 }
 
 execute_recipes(){
-	STOP_RECIPES_EXECUTION="false"
 	for RECIPE_PATH in "${RECIPE_PATH_ARRAY[@]}"; do
 		RECIPE_NAME=$(basename ${RECIPE_PATH})
 		print_section_heading "RECIPE_NAME: ${RECIPE_NAME}"
@@ -75,14 +74,16 @@ execute_recipes(){
 		# Execute the recipe with the required rights
 		if [ "${RECIPE_REQUIRED_RIGHTS}" = "u" ]; then
 			bash "./${RECIPE_SCRIPT_FILE_NAME}"
+			RECIPE_EXIT_CODE=$?
 		elif [ "${RECIPE_REQUIRED_RIGHTS}" = "s" ]; then
 			sudo bash "./${RECIPE_SCRIPT_FILE_NAME}"
+			RECIPE_EXIT_CODE=$?
 		else
 			echo "Can not retrieve execution rights for RECIPE_NAME: ${RECIPE_NAME}"
 		fi
 		print_section_ending
 		
-		if [ "${STOP_RECIPES_EXECUTION}" == "true" ]; then
+		if [ "${RECIPE_EXIT_CODE}" -ne 0 ]; then
 			echo "Recipe \"${RECIPE_NAME}\" asked to stop recipes execution."
 			echo "Exiting..."
 			exit 1
