@@ -17,6 +17,7 @@ install_mate_power_manager_from_sources(){
 					   libnotify-dev \
 					   libdbus-glib-1-dev \
 					   libcanberra-dev \
+					   libcanberra-gtk3-dev \
 					   yelp-tools \
 					   mate-common
 	
