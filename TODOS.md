@@ -1,5 +1,6 @@
 # TODOS
-- [ ] Add the prefernces for mate-power-manager.
+- [ ] Shortcut dmenu and clipmenu should be configured side by side?
+- [ ] Add the preferences for mate-power-manager.
 - [x] Test for package availability in install_packages.sh should be optional.
 - [ ] install.sh should stop as soon as a recipe returns an error code.
 - [ ] Geany toolbar icon size
