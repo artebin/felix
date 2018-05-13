@@ -48,7 +48,7 @@ lxappearance lxappearance-obconf
 dconf-cli dconf-editor dconf-tools
 gconf-service
 mate-utils
-xfce4-volumed xfburn xfce4-dict xfce4-screenshooter xfce4-power-manager xfce4-notifyd
+xfce4-volumed xfburn xfce4-dict xfce4-screenshooter xfce4-notifyd
 lxinput
 tint2
 suckless-tools
