@@ -32,6 +32,14 @@ deb [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic main restricted univers
 ```
 - start a http server for the repository, go into `<mirror directory>/mirror/archive.ubuntu.com` and execute `python -m SimpleHTTPServer 10001`
 
+## MIME types and default application
+- retrieve the MIME type: `xdg-mime query filetype <some file>`
+- retrieve the current default application: `xdg-mime query default <mime type>`
+- search for the desktop file: `locate <desktop file for the application we want as the default>`
+- set the default application: `xdg-mime default <desktop file> <mime type>`
+- test: `xdg-mime query default <mime type>`
+- the MIME database is stored in `~/.local/share/applications/mimeapps.list`
+
 ## Xubuntu 18.04
 - obmenu is not working:
 >Traceback (most recent call last):
