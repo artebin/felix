@@ -1,15 +1,15 @@
 # TODOS
+- [ ] Can VLC directly record a window? (with MRL)
 - [ ] Shortcut dmenu and clipmenu should be configured side by side?
-- [ ] Add the preferences for mate-power-manager.
+- [x] Add the preferences for mate-power-manager.
 - [x] Test for package availability in install_packages.sh should be optional.
 - [ ] install.sh should stop as soon as a recipe returns an error code.
 - [ ] Geany toolbar icon size
-- [ ] Install Python SimpleHttpServer and try it for accessing local mirror of repository <https://askubuntu.com/questions/771547/ubuntu-16-04-apt-get-update-doesnt-work-with-local-repository>
 - [ ] Clean Openbox rc.xml
 - [ ] Still some colors are not correct with Termite (htop).
 - [ ] Investigate problems with Xubuntu 18.04: no Geany Markdoown plugin, no paman.
 - [ ] Move translate-notify.sh in /usr/bin for being able to start it from dmenu, or add a folder of executables in dmenu.
-- [ ] Replace ClipIt by clipmenu <https://github.com/cdown/clipmenu/> or clipster <https://github.com/mrichar1/clipster>
+- [x] Replace ClipIt by clipmenu <https://github.com/cdown/clipmenu/> or clipster <https://github.com/mrichar1/clipster>
 - [ ] Waiting for window when launching command from dmenu? (and spinning cursor?)
 - [ ] Can change the alternative for the desktop background.
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
@@ -18,7 +18,7 @@
 - [ ] reboot/shutdown can still be waiting for the nfs mount point to be unmounted.
 - [ ] Translate feature should allow to type the text, use a dialog for that.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
-- [ ] Offline repository (from external USB disk) <https://askubuntu.com/questions/882255/i-do-not-fully-understand-wiki-aptget-offline>
+- [x] Offline repository (from external USB disk) <https://askubuntu.com/questions/882255/i-do-not-fully-understand-wiki-aptget-offline>
 - [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are opened with geany.
 - [ ] Add shortcuts from openbox in shortcuts.md
 - [ ] Openbox shortcut for minimizing the active window
