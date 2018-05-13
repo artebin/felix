@@ -30,7 +30,10 @@ process_package_install_list(){
 	done < "${PACKAGES_INSTALL_LIST_FILE}"
 	
 	# Check package availability
-	# Currently using `aptitude search` which is very slow. Code should be improved later.
+	# Currently using `aptitude search` which is very slow. 
+	# Furthermore it expects an argument which can follow a query language, i.e. `g++` will not work => for now only escaping '+'
+	# See <https://wiki.debian.org/Aptitude#Advanced_search_patterns>
+	# TODO: code should be improved later.
 	if [ "${TEST_PACKAGE_AVAILABILITY}" == "true" ]; then
 		apt-get install -y aptitude
 		PACKAGE_MISSING_LIST_FILE="./packages.missing.list"
@@ -41,9 +44,10 @@ process_package_install_list(){
 			if [ -z "${LINE}" ]; then
 				continue;
 			fi
-			PACKAGE_AVAILABILITY=`aptitude search "^${LINE}\$"`
+			ESCAPED_LINE=$(echo "${LINE}" | sed 's/\+/\\\+/g')
+			PACKAGE_AVAILABILITY=`aptitude search "^${ESCAPED_LINE}\$"`
 			if [ $? -eq 0 ]; then
-				printf "[\e[92m%s\e[0m] %s\n" "OK" "${LINE}"
+				printf "     [\e[92m%s\e[0m] %s\n" "OK" "${LINE}"
 			else
 				printf "[\e[91m%s\e[0m] %s\n" "MISSING" "${LINE}"
 				echo "${LINE}" >> "${PACKAGE_MISSING_LIST_FILE}"
