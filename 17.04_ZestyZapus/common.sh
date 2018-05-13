@@ -116,6 +116,30 @@ add_or_update_line_based_on_prefix(){
 	fi
 }
 
+yes_no_dialog(){
+	if [ "$#" -ne 1 ]; then
+		echo "ERROR! yes_no_dialog() expects one argument"
+		return 1
+	fi
+	DIALOG_TEXT="${1}"
+	while true; do
+		read -p "${DIALOG_TEXT} [y/n] " USER_ANSWER
+		case "${USER_ANSWER}" in
+			[Yy]* )
+				printf "yes"
+				break
+				;;
+			[Nn]* )
+				printf "no"
+				break
+				;;
+			* )
+				printf "Please answer yes or no\n\n" > /dev/stderr
+				;;
+		esac
+	done
+}
+
 RECIPE_NAME_REGEX="([0-9][0-9][0-9][0-9])-([us])-(.*)"
 
 CURRENT_SCRIPT_FILE_PATH=$(readlink -f "$0")
