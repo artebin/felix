@@ -25,3 +25,7 @@ disable_bluetooth_adapter_at_boot_time(){
 
 cd ${BASEDIR}
 disable_bluetooth_adapter_at_boot_time 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+EXIT_CODE="${PIPESTATUS[0]}"
+if [ "${EXIT_CODE}" -ne 0 ]; then
+	exit "${EXIT_CODE}"
+fi
