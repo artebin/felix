@@ -3,25 +3,6 @@
 source ./common.sh
 check_shell
 
-print_usage(){
-	echo "Usage: bash install.sh <recipes parent directory>"
-}
-
-if [ $# -ne 1 ]; then
-	print_usage
-	exit 1
-fi
-
-RECIPES_PARENT_DIRECTORY="${1}"
-if [ ! -d "${RECIPES_PARENT_DIRECTORY}" ]; then
-	echo "Can not find RECIPES_PARENT_DIRECTORY: ${RECIPES_PARENT_DIRECTORY}"
-	print_usage
-	exit 1
-fi
-
-RECIPES_PARENT_DIRECTORY=$(readlink -f "${RECIPES_PARENT_DIRECTORY}")
-readarray -t RECIPE_PATH_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_NAME_REGEX}" -exec readlink -f {} \;|sort)
-
 list_recipes(){
 	printf "Recipes found:\n"
 	for RECIPE_PATH in "${RECIPE_PATH_ARRAY[@]}"; do
@@ -32,22 +13,23 @@ list_recipes(){
 			continue
 		fi
 		
-		printf "\t${RECIPE_NAME}\n"
+		printf "  ${RECIPE_NAME}\n"
 		
 		RECIPE_ID="${BASH_REMATCH[1]}"
 		RECIPE_REQUIRED_RIGHTS="${BASH_REMATCH[2]}"
 		RECIPE_SCRIPT_FILE_NAME="${BASH_REMATCH[3]}"
 		RECIPE_SCRIPT_FILE_PATH="${RECIPES_PARENT_DIRECTORY}/${RECIPE_SCRIPT_FILE_NAME}"
 		
-		#printf "\t\tRECIPE_NAME: ${RECIPE_NAME}\n"
-		#printf "\t\tRECIPE_ID: ${RECIPE_ID}\n"
-		#printf "\t\tRECIPE_REQUIRED_RIGHTS: ${RECIPE_REQUIRED_RIGHTS}\n"
-		#printf "\t\tRECIPE_SCRIPT_FILE_NAME: ${RECIPE_SCRIPT_FILE_NAME}\n"
-		#printf "\t\tRECIPE_SCRIPT_FILE_PATH: ${RECIPE_SCRIPT_FILE_PATH}\n"
+		#printf "    RECIPE_NAME: ${RECIPE_NAME}\n"
+		#printf "    RECIPE_ID: ${RECIPE_ID}\n"
+		#printf "    RECIPE_REQUIRED_RIGHTS: ${RECIPE_REQUIRED_RIGHTS}\n"
+		#printf "    RECIPE_SCRIPT_FILE_NAME: ${RECIPE_SCRIPT_FILE_NAME}\n"
+		#printf "    RECIPE_SCRIPT_FILE_PATH: ${RECIPE_SCRIPT_FILE_PATH}\n"
 	done
 }
 
 execute_recipes(){
+	printf "Executing recipes ...\n\n"
 	for RECIPE_PATH in "${RECIPE_PATH_ARRAY[@]}"; do
 		RECIPE_NAME=$(basename ${RECIPE_PATH})
 		print_section_heading "RECIPE_NAME: ${RECIPE_NAME}"
@@ -63,54 +45,110 @@ execute_recipes(){
 		RECIPE_SCRIPT_FILE_NAME="${BASH_REMATCH[3]}.sh"
 		RECIPE_SCRIPT_FILE_PATH="${RECIPE_PATH}/${RECIPE_SCRIPT_FILE_NAME}"
 		
+		# Check recipe script exists
 		if [ ! -f "${RECIPE_SCRIPT_FILE_PATH}" ]; then
 			echo "Can not find script for recipe: ${RECIPE_SCRIPT_FILE_PATH}"
 			print_section_ending
 			continue
 		fi
 		
-		cd "${RECIPE_PATH}"
+		EXECUTION_EXPECTED="true"
 		
-		# Execute the recipe with the required rights
-		if [ "${RECIPE_REQUIRED_RIGHTS}" = "u" ]; then
-			bash "./${RECIPE_SCRIPT_FILE_NAME}"
-		elif [ "${RECIPE_REQUIRED_RIGHTS}" = "s" ]; then
-			sudo bash "./${RECIPE_SCRIPT_FILE_NAME}"
-		else
-			echo "Can not retrieve execution rights for RECIPE_NAME: ${RECIPE_NAME}"
+		# Interactive mode?
+		if [ "${INTERACTIVE_MODE}" == "true" ]; then
+			USER_ANSWER=$(yes_no_dialog "Execute this recipe?")
+			if [ "${USER_ANSWER}" != "yes" ]; then
+				EXECUTION_EXPECTED="false"
+			fi
 		fi
+		
+		if [ "${EXECUTION_EXPECTED}" == "true" ]; then
+			cd "${RECIPE_PATH}"
+			
+			# Execute the recipe with the required rights
+			RECIPE_EXIT_CODE=0
+			if [ "${RECIPE_REQUIRED_RIGHTS}" = "u" ]; then
+				bash "./${RECIPE_SCRIPT_FILE_NAME}"
+				RECIPE_EXIT_CODE=$?
+			elif [ "${RECIPE_REQUIRED_RIGHTS}" = "s" ]; then
+				sudo bash "./${RECIPE_SCRIPT_FILE_NAME}"
+				RECIPE_EXIT_CODE=$?
+			else
+				echo "Can not retrieve execution rights for RECIPE_NAME: ${RECIPE_NAME}"
+			fi
+			
+			# Stop execution of the recipes if current recipe return an error code
+			if [ "${RECIPE_EXIT_CODE}" -ne 0 ]; then
+				echo "Recipe \"${RECIPE_NAME}\" returned an error code."
+				echo "Exiting."
+				exit 1
+			fi
+		fi
+		
 		print_section_ending
 	done
 }
 
-if ! check_xubuntu_version; then
+print_usage(){
+	printf "Usage: bash install.sh [OPTION...] <recipes parent directory>\n\n"
+	printf -- "  -i interactive mode\n"
+}
+
+# Retrieve options
+INTERACTIVE_MODE="false"
+while getopts ":i" OPT; do
+	case "${OPT}" in
+		i)
+			INTERACTIVE_MODE="true"
+			;;
+		*)
+			print_usage
+			;;
+	esac
+done
+shift $((OPTIND-1))
+
+# Only one argument is allowed and it is the parent directory for recipes
+if [ $# -ne 1 ]; then
+	print_usage
+	exit 1
+fi
+RECIPES_PARENT_DIRECTORY="${1}"
+
+# Check existence of the parent directory for recipes
+if [ ! -d "${RECIPES_PARENT_DIRECTORY}" ]; then
+	echo "Can not find RECIPES_PARENT_DIRECTORY: ${RECIPES_PARENT_DIRECTORY}"
+	print_usage
 	exit 1
 fi
 
+# Retrieve array of recipes
+RECIPES_PARENT_DIRECTORY=$(readlink -f "${RECIPES_PARENT_DIRECTORY}")
 printf "RECIPES_PARENT_DIRECTORY: ${RECIPES_PARENT_DIRECTORY}\n"
+readarray -t RECIPE_PATH_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_NAME_REGEX}" -exec readlink -f {} \;|sort)
 
+# Exit if no recipe found
 if [ "${#RECIPE_PATH_ARRAY[@]}" -eq 0 ]; then
 	echo "No recipes found in RECIPES_PARENT_DIRECTORY: ${RECIPES_PARENT_DIRECTORY}"
 	exit 0
 fi
 
+# Check Xubuntu version
+if ! check_xubuntu_version; then
+	exit 1
+fi
+
+# List recipes
 echo
 list_recipes
-echo
 
-while true; do
-	read -p "Continue? [y/n] " USER_ANSWER
-	case "${USER_ANSWER}" in
-		[Yy]* )
-			printf "\n"
-			execute_recipes 
-			break
-			;;
-		[Nn]* ) 
-			exit
-			;;
-		* ) 
-			printf "Please answer yes or no\n\n"
-			;;
-	esac
-done
+# Ask user to continue
+echo
+USER_ANSWER=$(yes_no_dialog "Continue?")
+if [ "${USER_ANSWER}" != "yes" ]; then
+	echo "Exiting."
+	exit 0
+fi
+
+# Execute the recipes
+execute_recipes

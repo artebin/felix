@@ -29,24 +29,36 @@ process_package_install_list(){
 		fi
 	done < "${PACKAGES_INSTALL_LIST_FILE}"
 	
-	# Test package availability
-	# Currently using `aptitude search` which is very slow. Code should be improved later.
-	MISSING_PACKAGE_FILE="./packages.missing.list"
-	if [ -f "${MISSING_PACKAGE_FILE}" ]; then
-		rm -f "${MISSING_PACKAGE_FILE}"
-	fi
-	while read LINE; do
-		PACKAGE_AVAILABILITY=`aptitude search "^${LINE}\$"`
-		if [ $? -ne 0 ]; then
-			echo "Package ${LINE} is missing" >> "${MISSING_PACKAGE_FILE}"
+	# Check package availability
+	# Currently using `aptitude search` which is very slow. 
+	# Furthermore it expects an argument which can follow a query language, i.e. `g++` will not work => for now only escaping '+'
+	# See <https://wiki.debian.org/Aptitude#Advanced_search_patterns>
+	# TODO: code should be improved later.
+	if [ "${TEST_PACKAGE_AVAILABILITY}" == "true" ]; then
+		apt-get install -y aptitude
+		PACKAGE_MISSING_LIST_FILE="./packages.missing.list"
+		if [ -f "${PACKAGE_MISSING_LIST_FILE}" ]; then
+			rm -f "${PACKAGE_MISSING_LIST_FILE}"
 		fi
-	done < "${APT_INPUT_FILE}"
-	if [ -s "${MISSING_PACKAGE_FILE}" ]; then
-		echo "Some packages are missing."
-		echo "See ${MISSING_PACKAGE_FILE}"
-		echo "Exiting ..."
-		exit 1
-	 fi
+		while read LINE; do
+			if [ -z "${LINE}" ]; then
+				continue;
+			fi
+			ESCAPED_LINE=$(echo "${LINE}" | sed 's/\+/\\\+/g')
+			PACKAGE_AVAILABILITY=`aptitude search "^${ESCAPED_LINE}\$"`
+			if [ $? -eq 0 ]; then
+				printf "     [\e[92m%s\e[0m] %s\n" "OK" "${LINE}"
+			else
+				printf "[\e[91m%s\e[0m] %s\n" "MISSING" "${LINE}"
+				echo "${LINE}" >> "${PACKAGE_MISSING_LIST_FILE}"
+			fi
+		done < "${APT_INPUT_FILE}"
+		if [ -s "${PACKAGE_MISSING_LIST_FILE}" ]; then
+			echo "Some packages are missing."
+			echo "See ${PACKAGE_MISSING_LIST_FILE}"
+			exit 1
+		 fi
+	fi
 	
 	# Proceed install
 	xargs apt-get -y install < "${APT_INPUT_FILE}"
@@ -57,3 +69,7 @@ process_package_install_list(){
 
 cd ${BASEDIR}
 process_package_install_list 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+EXIT_CODE="${PIPESTATUS[0]}"
+if [ "${EXIT_CODE}" -ne 0 ]; then
+	exit "${EXIT_CODE}"
+fi

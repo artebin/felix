@@ -1,8 +1,44 @@
+## FlightRadar24
+- retrieve fr24feed from <https://www.flightradar24.com/share-your-data>
+- the binary executable is not perfoming a usable configuration on Ubuntu (at least Ubuntu 18.04). Maybe the install procedure failed, or it expects to find dump1090 in `/usr/lib/fr24`. It is no problem: (1) copy fr24feed in `/usr/bin`, (2) compile dump1090 and then copy dump1090 and gmap.html to `/usr/lib/fr24`. The systemd service file is also missing but it is no difficulty to write one.
+
+## Dump1090
+- Dump1090 can not work if there is no udev rule for the DVB-T. Retrieve the VendorID and the ProductID with `lsusb` and create/update `/etc/udev/rules.d/rtl-sdr.rules`:
+```
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2832", MODE:="0666" -
+```
+- make udev reload the rules with:
+```
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+```
+- start dump1090 with `./dump1090 --interactive --net` and visit `http://localhost:8080`
+
 ## Offline repository
-How to get a local copy of an Ubuntu/Debian repository (i.e. <http://archive.ubuntu.com/ubuntu/dists/> )
-- <https://askubuntu.com/questions/393018/create-local-copy-of-ubuntu-remote-repository>
-- <https://help.ubuntu.com/community/Rsyncmirror>
-- <https://gist.github.com/jeanlescure/084dd6113931ea5a0fd9>
+- create a mirror of the repository with `apt-mirror` (configure `/etc/apt/mirror.list` and execute `apt-mirror`)
+- add a sources list in `/etc/apt/sources.list.d/local_mirror.list` with something like the content below:
+```
+deb [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic main restricted universe multiverse
+# deb-src [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic main restricted universe multiverse
+
+# deb [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic-updates main restricted universe multiverse
+# deb-src [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic-updates main restricted universe multiverse
+
+# deb [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic-backports main restricted universe multiverse
+# deb-src [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic-backports main restricted universe multiverse
+
+# deb [ arch=amd64 ] http://localhost:10001/ubuntu bionic-security main restricted universe multiverse
+# deb-src [ arch=amd64 ] http://localhost:10001/ubuntu bionic-security main restricted universe multiverse
+```
+- start a http server for the repository, go into `<mirror directory>/mirror/archive.ubuntu.com` and execute `python -m SimpleHTTPServer 10001`
+
+## MIME types and default application
+- retrieve the MIME type: `xdg-mime query filetype <some file>`
+- retrieve the current default application: `xdg-mime query default <mime type>`
+- search for the desktop file: `locate <desktop file for the application we want as the default>`
+- set the default application: `xdg-mime default <desktop file> <mime type>`
+- test: `xdg-mime query default <mime type>`
+- the MIME database is stored in `~/.local/share/applications/mimeapps.list`
 
 ## Xubuntu 18.04
 - obmenu is not working:

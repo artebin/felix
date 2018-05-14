@@ -6,3 +6,4 @@ parole
 apport apport-gtk apport-symptoms python3-apport
 update-manager update-notifier update-notifier-common xubuntu-desktop ubuntu-release-upgrader-core ubuntu-release-upgrader-gtk
 whoopsie libwhoopsie0
+xfce4-power-manager xfce4-power-manager-data xfce4-power-manager-plugins

@@ -75,3 +75,7 @@ configure_firefox_default_profile(){
 
 cd ${BASEDIR}
 configure_firefox_default_profile 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+EXIT_CODE="${PIPESTATUS[0]}"
+if [ "${EXIT_CODE}" -ne 0 ]; then
+	exit "${EXIT_CODE}"
+fi
