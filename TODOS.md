@@ -15,6 +15,7 @@
 - [ ] reboot/shutdown can still be waiting for the nfs mount point to be unmounted.
 - [ ] Translate feature should allow to type the text, use a dialog for that.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
+- [ ] Work with `/etc/mime.types` for setting all text with Geany, all audio/video with VLC.
 - [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are opened with geany.
 - [ ] Add shortcuts from openbox in shortcuts.md
 - [ ] Openbox shortcut for minimizing the active window
