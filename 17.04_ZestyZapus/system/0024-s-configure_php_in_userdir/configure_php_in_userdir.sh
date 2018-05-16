@@ -11,13 +11,8 @@ configure_php_in_userdir(){
 	apt-get install -y apache2 libapache2-mod-php php php-mbstring php-xml
 	a2enmod userdir
 	
-	# Xubuntu 17.04 is using php7.0
-	backup_file rename /etc/apache2/mods-available/php7.0.conf
-	cp ./apache2-php7.0.conf /etc/apache2/mods-available/php7.0.conf
-	
-	# Xubuntu 17.10 is using php7.1
-	#backup_file rename /etc/apache2/mods-available/php7.1.conf
-	#cp ./apache2-php7.1.conf /etc/apache2/mods-available/php7.1.conf
+	backup_file rename /etc/apache2/mods-available/php7.2.conf
+	cp ./apache2-php7.2.conf /etc/apache2/mods-available/php7.2.conf
 	
 	systemctl restart apache2
 }
