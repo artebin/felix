@@ -1,4 +1,5 @@
 # TODOS
+- [ ] There is a problem with user recipe configure_gtk, the file `.gtk-bookmarks` does not exists.
 - [ ] Can VLC directly record a window? (with MRL)
 - [ ] Shortcut dmenu and clipmenu should be configured side by side?
 - [ ] install.sh should stop as soon as a recipe returns an error code.
