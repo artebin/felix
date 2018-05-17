@@ -1,8 +1,12 @@
 # TODOS
+- [ ] mtrack is not working properly with Ubuntu18.04 (cursor jumps random and no right click).
+- [ ] Compile tint2 from the sources <https://github.com/o9000/tint2>
+- [ ] tint2 clock is sometimes not synchronized properly (got a +2 minutes sometimes).
+- [ ] mate-power-manager shows sometimes an "unkown icon", like it tries to show a icon but it is missing in the icon stock.
+- [ ] How to improve Eclipse UI? It is ugly with Ubuntu 18.04. I was quite happy with Ubuntu 17.04/SWT_GTK3.
+- [ ] Copying large file vampirising the machine resources.
 - [ ] There is a problem with user recipe configure_gtk, the file `.gtk-bookmarks` does not exists.
-- [ ] Can VLC directly record a window? (with MRL)
 - [ ] Shortcut dmenu and clipmenu should be configured side by side?
-- [ ] install.sh should stop as soon as a recipe returns an error code.
 - [ ] Geany toolbar icon size
 - [ ] Clean Openbox rc.xml
 - [ ] Still some colors are not correct with Termite (htop).
@@ -27,6 +31,7 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] install.sh should stop as soon as a recipe returns an error code.
 - [x] Test for package availability in install_packages.sh should be optional.
 - [x] Add the preferences for mate-power-manager.
 - [x] Offline repository (from external USB disk) <https://askubuntu.com/questions/882255/i-do-not-fully-understand-wiki-aptget-offline>
