@@ -1,4 +1,9 @@
 # TODOS
+- [ ] CSVKit
+- [ ] How to disable the touch screen on the Dell Inspiron 7000?
+- [ ] Quick tool for rendering chart? In Latex maybe? GNU plot.
+- [ ] Add gnumeric, can be useful when LibreOffice crashes (and it happens quite often... ).
+- [ ] compile gsimplecal + use a config for showing Local/UTC times
 - [ ] mtrack is not working properly with Ubuntu18.04 (cursor jumps random and no right click).
 - [ ] Compile tint2 from the sources <https://github.com/o9000/tint2>
 - [ ] tint2 clock is sometimes not synchronized properly (got a +2 minutes sometimes).
