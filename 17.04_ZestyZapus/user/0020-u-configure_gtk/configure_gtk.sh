@@ -34,6 +34,7 @@ configure_gtk(){
 	if [ -f "~/.config/gtk-3.0/bookmarks" ]; then
 		backup_file rename ~/.config/gtk-3.0/bookmarks
 	fi
+	touch ~/.gtk-bookmarks
 	ln -s ~/.gtk-bookmarks ~/.config/gtk-3.0/bookmarks
 }
 
