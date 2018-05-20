@@ -1,5 +1,8 @@
 # TODOS
-- [ ] CSVKit
+- [ ] install.sh should have a log indicating which recipe failed.
+- [ ] Ubuntu drivers?
+- [ ] Eclipse GUI looks better with Adwaita.
+- [ ] add CSVKit
 - [ ] How to disable the touch screen on the Dell Inspiron 7000?
 - [ ] Quick tool for rendering chart? In Latex maybe? GNU plot.
 - [ ] Add gnumeric, can be useful when LibreOffice crashes (and it happens quite often... ).
