@@ -31,7 +31,7 @@ configure_gtk(){
 	cp ./gtk.css ~/.config/gtk-3.0/gtk.css
 	
 	# Fix the sharing of bookmarks between GTK2 and GTK3
-	if [ -f "~/.config/gtk-3.0/bookmarks" ]; then
+	if [ -f ~/.config/gtk-3.0/bookmarks ]; then
 		backup_file rename ~/.config/gtk-3.0/bookmarks
 	fi
 	touch ~/.gtk-bookmarks
