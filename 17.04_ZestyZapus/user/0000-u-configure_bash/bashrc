@@ -119,15 +119,21 @@ fi
 
 alias bc='bc -l'
 
-retrieve_weather(){
-curl wttr.in/${1}
+weather(){
+	curl "wttr.in/${1}"
 }
-alias weather=retrieve_weather
+alias weather=weather
 
 github-clone(){
-git clone http://github.com/${1}/${2}
+	git clone "http://github.com/${1}/${2}"
 }
 alias github-clone=github-clone
+
+git-config-global-user-name-email(){
+	git config --global user.name "${1}"
+	git config --global user.email "${2}"
+}
+alias git-config-global-user-name-email=git-config-global-user-name-email
 
 backup_file(){
 	if [[ "$#" -ne 2 ]]; then
