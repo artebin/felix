@@ -29,7 +29,7 @@ configure_geany(){
 	if [ ! -d ~/.local/share/applications ]; then
 		mkdir -p ~/.local/share/applications
 	fi
-	cp ./geany.desktop ~/.local/share/applications/geany.desktop
+	desktop-file-install --dir=${HOME}/.local/share/applications geany.desktop
 	cp ./geany_one_instance_per_workspace.sh ~/.config/openbox
 }
 
