@@ -13,6 +13,16 @@ configure_default_applications(){
 	cp ./caja.desktop ~/.local/share/applications/caja.desktop
 	xdg-mime default caja.desktop inode/directory
 	
+	echo "Removing some MIME types declared by LibreOffice which is quite aggressive on this regard ... "
+	cp /usr/share/applications/libreoffice-*.desktop ~/.local/share/applications
+	SED_PATTERN=";text/plain;"
+	ESCAPED_SED_PATTERN=$(escape_sed_pattern "${SED_PATTERN}")
+	sed -i.bak "s/${ESCAPED_SED_PATTERN}/;/g" ~/.local/share/applications/libreoffice-writer.desktop
+	
+	echo "Removing all MIME types declared by Vim ..."
+	cp /usr/share/applications/vim.desktop ~/.local/share/applications
+	sed -i.bak "s/MimeType=.*/MimeType=/g" ~/.local/share/applications/vim.desktop
+	
 	echo "Configuring thunderbird as default mail client ..."
 	xdg-mime default thunderbird.desktop x-scheme-handler/mailto
 }
