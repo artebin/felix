@@ -18,14 +18,16 @@ network={
 }
 ```
 Can not make it work with 5GHz WiFi network (?)
-- `sudo passwd`
+- default ssh login="pi" passwd="rasberry"
+- delete `/etc/sudoers.d/010_pi-nopasswd`
+- `passwd` and `sudo passwd`
+- `sudo dpkg-reconfigure locales` and keep only "en_US.UTF-8"
 - configure properly `/etc/default/locale`
-- configure properly `/etc/default/keyboard`
+- configure properly `/etc/default/keyboard` (notably `variant="altgr-intl"`)
+- `apt-get update`
+- `apt-get upgrade`
 - add a user with `adduser` and add it to the `sudo` group
 - logout and login with newly created user
 - delete pi user with `deluser -remove-home pi`
-- delete `/etc/sudoers.d/010_pi-nopasswd`
-- `apt-get update`
-- `apt-get upgrade`
 
 ## XRDP
