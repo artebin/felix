@@ -1,21 +1,16 @@
 # TODOS
 - [ ] install.sh should have a log indicating which recipe failed.
-- [x] Switch to Adwaita: (1) Eclipse GUI looks better with Adwaita, (2) bug with Termite scrollbar seems to be fixed with Adwaita, (3) Gsimplecal is better rendered.
 - [ ] add CSVKit.
 - [ ] How to disable the touch screen on the Dell Inspiron 7000?
 - [ ] Quick tool for rendering chart? In Latex maybe? GNU plot.
 - [ ] Add gnumeric, can be useful when LibreOffice crashes (and it happens quite often... ).
 - [ ] Compile gsimplecal + use a config for showing Local/UTC times.
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
-- [x] Disable recipe for mtrack because it is not working with Ubuntu18.04 (cursor jumps random and no right click).
 - [ ] Compile tint2 from the sources <https://github.com/o9000/tint2>
 - [ ] tint2 clock is sometimes not synchronized properly (got a +2 minutes sometimes).
 - [ ] mate-power-manager shows sometimes an "unkown icon", like it tries to show a icon but it is missing in the icon stock.
-- [x] How to improve Eclipse UI? It is ugly with Ubuntu 18.04. I was quite happy with Ubuntu 17.04/SWT_GTK3 => it is far better with Adwaita.
 - [ ] Copying large file vampirising the machine resources.
-- [x] There is a problem with user recipe configure_gtk, the file `.gtk-bookmarks` does not exists.
 - [ ] Shortcut dmenu and clipmenu should be configured side by side?
-- [x] Geany toolbar icon size => better with Adwaita.
 - [ ] Clean Openbox rc.xml
 - [ ] Still some colors are not correct with Termite (htop).
 - [ ] Investigate problems with Xubuntu 18.04: no Geany Markdoown plugin, no paman.
@@ -39,6 +34,11 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] Switch to Adwaita: (1) Eclipse GUI looks better with Adwaita, (2) bug with Termite scrollbar seems to be fixed with Adwaita, (3) Gsimplecal is better rendered.
+- [x] Disable recipe for mtrack because it is not working with Ubuntu18.04 (cursor jumps random and no right click).
+- [x] How to improve Eclipse UI? It is ugly with Ubuntu 18.04. I was quite happy with Ubuntu 17.04/SWT_GTK3 => it is far better with Adwaita.
+- [x] There is a problem with user recipe configure_gtk, the file `.gtk-bookmarks` does not exists.
+- [x] Geany toolbar icon size => better with Adwaita.
 - [x] install.sh should stop as soon as a recipe returns an error code.
 - [x] Test for package availability in install_packages.sh should be optional.
 - [x] Add the preferences for mate-power-manager.
