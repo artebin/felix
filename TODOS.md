@@ -1,13 +1,12 @@
 # TODOS
+- [ ] Should use `#!/usr/bin/env bash` in particular for geany_one_instance_per_workspace.sh
 - [ ] install.sh should have a log indicating which recipe failed.
 - [ ] add CSVKit.
 - [ ] How to disable the touch screen on the Dell Inspiron 7000?
 - [ ] Quick tool for rendering chart? In Latex maybe? GNU plot.
 - [ ] Add gnumeric, can be useful when LibreOffice crashes (and it happens quite often... ).
-- [ ] Compile gsimplecal + use a config for showing Local/UTC times.
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
-- [ ] Compile tint2 from the sources <https://github.com/o9000/tint2>
-- [ ] tint2 clock is sometimes not synchronized properly (got a +2 minutes sometimes).
+- [ ] tint2 clock is sometimes not synchronized properly (got a +2 minutes sometimes) => compile tint2 from the sources.
 - [ ] mate-power-manager shows sometimes an "unkown icon", like it tries to show a icon but it is missing in the icon stock.
 - [ ] Copying large file vampirising the machine resources.
 - [ ] Shortcut dmenu and clipmenu should be configured side by side?
