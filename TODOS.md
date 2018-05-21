@@ -34,6 +34,7 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] Add configuration file for gsimplecal.
 - [x] Switch to Adwaita: (1) Eclipse GUI looks better with Adwaita, (2) bug with Termite scrollbar seems to be fixed with Adwaita, (3) Gsimplecal is better rendered.
 - [x] Disable recipe for mtrack because it is not working with Ubuntu18.04 (cursor jumps random and no right click).
 - [x] How to improve Eclipse UI? It is ugly with Ubuntu 18.04. I was quite happy with Ubuntu 17.04/SWT_GTK3 => it is far better with Adwaita.
