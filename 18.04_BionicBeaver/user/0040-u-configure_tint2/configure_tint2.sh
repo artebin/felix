@@ -14,6 +14,12 @@ configure_tint2(){
 		mkdir -p ~/.config/tint2
 	fi
 	cp ./tint2rc ~/.config/tint2/tint2rc
+	
+	if [ -f ~/.config/gsimplecal/config ]; then
+		backup_file rename ~/.config/tint2
+	fi
+	mkdir -p ~/.config/gsimplecal
+	cp ./gsimplecal.config ~/.config/gsimplecal/config
 }
 
 cd ${BASEDIR}
