@@ -23,7 +23,7 @@
 - [ ] Translate feature should allow to type the text, use a dialog for that.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Work with `/etc/mime.types` for setting all text with Geany, all audio/video with VLC.
-- [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are opened with geany.
+- [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are not opened with web browsers by default.
 - [ ] Add shortcuts from openbox in shortcuts.md
 - [ ] Openbox shortcut for minimizing the active window
 - [ ] Check the configuration of DokuWiki (entities etc.)
