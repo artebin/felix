@@ -26,11 +26,12 @@ configure_geany(){
 	cp ./github-markdown.html ~/.config/geany/plugins/markdown
 	
 	# Force Geany to re-use the same instance per desktop/workspace
-	if [ ! -d ~/.local/share/applications ]; then
-		mkdir -p ~/.local/share/applications
-	fi
-	desktop-file-install --dir=${HOME}/.local/share/applications geany.desktop
-	cp ./geany_one_instance_per_workspace.sh ~/.config/openbox
+	# I can not make it work by overriding geany.desktop in ~/.local/share/applications
+	# I directly fix the /usr/share/applications/geany.desktop file
+	sudo cp ./geany_one_instance_per_workspace.sh /usr/bin/geany_one_instance_per_workspace
+	sudo chmod a+x /usr/bin/geany_one_instance_per_workspace
+	sudo sed -i "s/Exec=.*/Exec=bash geany_one_instance_per_workspace %F/" /usr/share/applications/geany.desktop
+	sudo update-desktop-database
 }
 
 cd ${BASEDIR}
