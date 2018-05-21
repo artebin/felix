@@ -17,6 +17,7 @@ inotify-hookable inotify-tools iwatch
 lolcat
 aptitude
 apt-mirror
+nmap
 
 ################
 # File manager
