@@ -19,6 +19,11 @@ configure_tint2(){
 		backup_file rename ~/.config/tint2
 	fi
 	mkdir -p ~/.config/gsimplecal
+	SED_PATTERN="LOCAL_TIME_ZONE"
+	ESCAPED_SED_PATTERN=$(escape_sed_pattern ${SED_PATTERN})
+	REPLACEMENT_STRING="${LOCAL_TIME_ZONE}"
+	ESCAPED_REPLACEMENT_STRING=$(escape_sed_pattern ${REPLACEMENT_STRING})
+	sed -i.bak "s/${ESCAPED_SED_PATTERN}/${ESCAPED_REPLACEMENT_STRING}/g" ./gsimplecal.config
 	cp ./gsimplecal.config ~/.config/gsimplecal/config
 }
 
