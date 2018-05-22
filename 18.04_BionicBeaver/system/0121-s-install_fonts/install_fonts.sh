@@ -8,7 +8,9 @@ install_additional_fonts(){
 	cd ${BASEDIR}
 	
 	echo "Installing additional fonts ..."
-	cp *.ttf /usr/local/share/fonts/
+	cp ./fonts/Droid/*.ttf /usr/local/share/fonts/
+	cp ./fonts/Montserrat/*.ttf /usr/local/share/fonts/
+	cp ./fonts/Roboto/*.ttf /usr/local/share/fonts/
 	
 	echo "Updating font cache ..."
 	fc-cache -f -v 1>/dev/null
