@@ -16,7 +16,7 @@ configure_tint2(){
 	cp ./tint2rc ~/.config/tint2/tint2rc
 	
 	if [ -f ~/.config/gsimplecal/config ]; then
-		backup_file rename ~/.config/tint2
+		backup_file rename ~/.config/gsimplecal/config
 	fi
 	mkdir -p ~/.config/gsimplecal
 	SED_PATTERN="LOCAL_TIME_ZONE"
