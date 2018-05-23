@@ -1,8 +1,7 @@
 # TODOS
-- [ ] Should use `#!/usr/bin/env bash` in particular for geany_one_instance_per_workspace.sh
+- [ ] Add `traceroute`.
 - [ ] install.sh should have a log indicating which recipe failed.
 - [ ] add CSVKit.
-- [ ] How to disable the touch screen on the Dell Inspiron 7000?
 - [ ] Quick tool for rendering chart? In Latex maybe? GNU plot.
 - [ ] Add gnumeric, can be useful when LibreOffice crashes (and it happens quite often... ).
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
@@ -33,6 +32,8 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] Should use `#!/usr/bin/env bash` in particular for geany_one_instance_per_workspace.sh
+- [x] How to disable the touch screen on the Dell Inspiron 7000?
 - [x] Add configuration file for gsimplecal.
 - [x] Switch to Adwaita: (1) Eclipse GUI looks better with Adwaita, (2) bug with Termite scrollbar seems to be fixed with Adwaita, (3) Gsimplecal is better rendered.
 - [x] Disable recipe for mtrack because it is not working with Ubuntu18.04 (cursor jumps random and no right click).
