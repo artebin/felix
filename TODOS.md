@@ -1,5 +1,4 @@
 # TODOS
-- [ ] Add `traceroute`.
 - [ ] install.sh should have a log indicating which recipe failed.
 - [ ] add CSVKit.
 - [ ] Quick tool for rendering chart? In Latex maybe? GNU plot.
@@ -14,7 +13,6 @@
 - [ ] Investigate problems with Xubuntu 18.04: no Geany Markdoown plugin, no paman.
 - [ ] Move translate-notify.sh in /usr/bin for being able to start it from dmenu, or add a folder of executables in dmenu.
 - [ ] Waiting for window when launching command from dmenu? (and spinning cursor?)
-- [ ] Can change the alternative for the desktop background.
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
 - [ ] Read <https://wiki.archlinux.org/index.php/File_manager_functionality>
@@ -32,6 +30,7 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] Add `traceroute`.
 - [x] Should use `#!/usr/bin/env bash` in particular for geany_one_instance_per_workspace.sh
 - [x] How to disable the touch screen on the Dell Inspiron 7000?
 - [x] Add configuration file for gsimplecal.
