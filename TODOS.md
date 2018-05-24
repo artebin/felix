@@ -11,13 +11,10 @@
 - [ ] Clean Openbox rc.xml
 - [ ] Still some colors are not correct with Termite (htop).
 - [ ] Investigate problems with Xubuntu 18.04: no Geany Markdoown plugin, no paman.
-- [ ] Move translate-notify.sh in /usr/bin for being able to start it from dmenu, or add a folder of executables in dmenu.
-- [ ] Waiting for window when launching command from dmenu? (and spinning cursor?)
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
 - [ ] Read <https://wiki.archlinux.org/index.php/File_manager_functionality>
 - [ ] reboot/shutdown can still be waiting for the nfs mount point to be unmounted.
-- [ ] Translate feature should allow to type the text, use a dialog for that.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Work with `/etc/mime.types` for setting all text with Geany, all audio/video with VLC.
 - [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are not opened with web browsers by default.
@@ -30,6 +27,9 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] Waiting for window when launching command from dmenu? (and spinning cursor?) => StartNofity was `true` in openbox rc/xml
+- [x] Translate feature should allow to type the text, use a dialog for that => use dmenu
+- [x] Move translate-notify.sh in /usr/bin for being able to start it from dmenu, or add a folder of executables in dmenu.
 - [x] Add `traceroute`.
 - [x] Should use `#!/usr/bin/env bash` in particular for geany_one_instance_per_workspace.sh
 - [x] How to disable the touch screen on the Dell Inspiron 7000?
