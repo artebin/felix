@@ -141,6 +141,7 @@ sshfs
 #################
 # Network tools
 #################
+traceroute
 curl
 gigolo
 wireshark
