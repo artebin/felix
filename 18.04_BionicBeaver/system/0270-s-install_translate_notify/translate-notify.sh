@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 usage(){
 	printf "Usage: $0 [text to translate]\n\n"

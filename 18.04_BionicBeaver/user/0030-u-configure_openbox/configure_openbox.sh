@@ -21,7 +21,6 @@ configure_openbox(){
 	cp ./tint2_restart.sh ~/.config/openbox/tint2_restart.sh
 	cp ./power_button_pressed.py ~/.config/openbox/power_button_pressed.py
 	cp ./exit.py ~/.config/openbox/exit.py
-	cp ./translate-notify.sh ~/.config/openbox/translate-notify.sh
 }
 
 cd ${BASEDIR}

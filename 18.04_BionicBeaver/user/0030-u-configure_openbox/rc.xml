@@ -365,10 +365,10 @@
 		<keybind key="W-r">
 			<action name="Execute">
 				<startupnotify>
-					<enabled>true</enabled>
+					<enabled>false</enabled>
 					<name>Translate Notify</name>
 				</startupnotify>
-				<command>bash ~/.config/openbox/translate-notify.sh</command>
+				<command>translate-notify</command>
 			</action>
 		</keybind>
 		<keybind key="W-t">
