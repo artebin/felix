@@ -25,11 +25,14 @@ install_clipmenu_from_sources(){
 	cp ./clipdel /usr/bin
 	cp ./clipmenu /usr/bin
 	cp ./clipmenud /usr/bin
-	cp ./init/clipmenud.service /etc/systemd/system
-	systemctl daemon-reload
-	systemctl start clipmenud.service
-	systemctl status clipmenud.service
-	systemctl enable clipmenud.service
+	
+	# I can not make it work with the service
+	# It will be executed via openbox autostart
+	#cp ./init/clipmenud.service /etc/systemd/system
+	#systemctl daemon-reload
+	#systemctl start clipmenud.service
+	#systemctl status clipmenud.service
+	#systemctl enable clipmenud.service
 	
 	# Cleaning
 	cd ${BASEDIR}

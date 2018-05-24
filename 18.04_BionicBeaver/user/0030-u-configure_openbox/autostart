@@ -22,3 +22,5 @@ xsetroot -solid "#303030" &
 # Could be the file should be renamed in order to prevent xfce4-power-manager to be started
 
 mate-power-manager &
+
+clipmenud &
