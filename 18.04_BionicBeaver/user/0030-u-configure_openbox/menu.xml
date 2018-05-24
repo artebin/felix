@@ -9,7 +9,7 @@
 		<item label="Media Player"><action name="Execute"><command>vlc</command></action></item>
 		<separator/>
 		<menu id="accessories" label="Accessories">
-			<item label="Task Manager (htop)"><action name="Execute"><command>termite --exec="htop";</command></action></item>
+			<item label="Task Manager (htop)"><action name="Execute"><command>termite --exec="htop"</command></action></item>
 			<item label="Disk Usage Analyzer"><action name="Execute"><command>mate-disk-usage-analyzer</command></action></item>
 			<item label="GVim"><action name="Execute"><command>gvim</command></action></item>
 			<item label="Hexadecimal Editor (Bless)"><action name="Execute"><command>bless</command></action></item>
