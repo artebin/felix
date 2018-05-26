@@ -1,13 +1,12 @@
 # TODOS
 - [ ] install.sh should have a log indicating which recipe failed.
-- [ ] add CSVKit.
 - [ ] Quick tool for rendering chart? In Latex maybe? GNU plot.
-- [ ] Add gnumeric, can be useful when LibreOffice crashes (and it happens quite often... ).
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
 - [ ] tint2 clock is sometimes not synchronized properly (got a +2 minutes sometimes) => compile tint2 from the sources.
 - [ ] mate-power-manager shows sometimes an "unkown icon", like it tries to show a icon but it is missing in the icon stock.
 - [ ] Copying large file vampirising the machine resources.
-- [ ] Shortcut dmenu and clipmenu should be configured side by side?
+- [ ] Rework a little bit the shortcuts `<win>c` should be clip menu, `<win>r` should be dmenu, `<win>z` should be translate notify
+- [ ] Translate-notify should indicate when the clipboard is empty.
 - [ ] Clean Openbox rc.xml
 - [ ] Still some colors are not correct with Termite (htop).
 - [ ] Investigate problems with Xubuntu 18.04: no Geany Markdoown plugin, no paman.
@@ -27,6 +26,9 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] Should I use `--no-install-recommends` with apt? => yes, try with it for next install.
+- [x] add CSVKit.
+- [x] Add gnumeric, can be useful when LibreOffice crashes (and it happens quite often... ).
 - [x] Waiting for window when launching command from dmenu? (and spinning cursor?) => StartNofity was `true` in openbox rc/xml
 - [x] Translate feature should allow to type the text, use a dialog for that => use dmenu
 - [x] Move translate-notify.sh in /usr/bin for being able to start it from dmenu, or add a folder of executables in dmenu.
