@@ -5,6 +5,7 @@ usage(){
 }
 
 SELECTED_TEXT=""
+INPUT_IS_CLIPBOARD=""
 
 if [ "$#" -gt 1 ]; then
 	usage
@@ -12,13 +13,21 @@ if [ "$#" -gt 1 ]; then
 fi
 
 if [ "$#" -eq 1 ]; then
+	INPUT_IS_CLIPBOARD="false"
 	SELECTED_TEXT="${1}"
+	SELECTED_TEXT=$(echo "${SELECTED_TEXT}" | sed -e 's/^[ \t]*//' | sed -e 's/[ \t]*$//')
+	if [ -z "${SELECTED_TEXT}" ]; then
+		notify-send --icon=info "Translation" "Nothing to translate"
+		exit 0
+	fi
 else
+	INPUT_IS_CLIPBOARD="true"
 	SELECTED_TEXT=$(xsel -o)
-fi
-
-if [ -z "${SELECTED_TEXT}" ]; then
-	exit 0
+	SELECTED_TEXT=$(echo "${SELECTED_TEXT}" | sed -e 's/^[ \t]*//' | sed -e 's/[ \t]*$//')
+	if [ -z "${SELECTED_TEXT}" ]; then
+		notify-send --icon=info "Translation" "Nothing to translate"
+		exit 0
+	fi
 fi
 
 TRANSLATION=$(trans -b :fr "${SELECTED_TEXT}")
