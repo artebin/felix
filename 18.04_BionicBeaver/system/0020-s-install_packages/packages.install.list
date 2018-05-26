@@ -1,6 +1,6 @@
-#################################
-# System and command line tools
-#################################
+################
+# System tools
+################
 hwinfo
 lshw
 inxi
@@ -8,111 +8,29 @@ htop
 glances
 smem
 lsb-core
-pv
-progress
 fuseiso
 fuseiso9660
-colortest
 inotify-hookable inotify-tools iwatch
-lolcat
-aptitude
-apt-mirror
-nmap
-
-################
-# File manager
-################
-caja
-caja-actions
-caja-extensions-common
-caja-open-terminal
-pcmanfm
-
-###################
-# Desktop theming
-###################
-mate-icon-theme
-mate-icon-theme-faenza
-faenza-icon-theme
-
-##############
-# Xorg tools
-##############
-xsel
-wmctrl xdotool xautomation
-
-##################################
-# Window manager & desktop tools
-##################################
-openbox openbox-menu obconf obmenu
-lxappearance lxappearance-obconf
-dconf-cli dconf-editor dconf-tools
-gconf-service
-mate-utils
-xfce4-volumed xfburn xfce4-dict xfce4-screenshooter xfce4-notifyd
-lxinput
-tint2
-suckless-tools
-#gksu #N/A in Xubuntu 18.04
-galternatives
-gsimplecal
-tomboy
-plank
-arandr
-synaptic
-gparted
-#hamster-applet #N/A in Xubuntu 18.04
-aspell-fr
-translate-shell
-
-#############################
-# Virtual Terminal Emulator
-#############################
-mate-terminal
 
 #################################
-# File editor & file diff tools
+# Terminal & command line tools
 #################################
 vim
-vim-gtk
-bless
-jq
-tidy
-kdiff3
-meld
-geany
-geany-plugins
+pv
+progress
+colortest
+translate-shell
 
-#######################################
-# PDF viewer & PDF manipulation tools
-#######################################
-atril
-#pdftk #N/A in Xubuntu 18.04
-wkhtmltopdf
-
-###################
-# Archive manager
-###################
-engrampa
-unrar
-p7zip-rar
-
-#######################################
-# Image viewer, browser, manipulation
-#######################################
-eom
-shotwell
-gimp
-gimp-data-extras
-gpick
-icc-profiles
-
-#######################
-# Fonts & font viewer
-#######################
-fonts-font-awesome
-#gnome-specimen #N/A in Xubuntu 18.04
-gnome-font-viewer
+#################
+# Network tools
+#################
+nmap
+traceroute
+curl
+gigolo
+wireshark
+wireshark-gtk
+wireshark-doc
 
 #######
 # NFS
@@ -138,15 +56,107 @@ bareftp
 ssh
 sshfs
 
-#################
-# Network tools
-#################
-traceroute
-curl
-gigolo
-wireshark
-wireshark-gtk
-wireshark-doc
+###################
+# Package manager
+###################
+aptitude
+apt-mirror
+
+##############
+# Extra toys
+##############
+lolcat
+cmus
+pianobar
+
+##############
+# Xorg tools
+##############
+xsel
+wmctrl xdotool xautomation
+
+##################################
+# Window manager & desktop tools
+##################################
+openbox openbox-menu obconf obmenu
+lxappearance lxappearance-obconf
+dconf-cli dconf-editor dconf-tools
+gconf-service
+mate-utils
+xfce4-volumed xfburn xfce4-dict xfce4-screenshooter xfce4-notifyd
+lxinput
+tint2
+suckless-tools
+galternatives
+gsimplecal
+tomboy
+plank
+arandr
+synaptic
+gparted
+aspell-fr
+
+###################
+# Desktop theming
+###################
+mate-icon-theme
+mate-icon-theme-faenza
+faenza-icon-theme
+
+#######################
+# Fonts & font viewer
+#######################
+fonts-font-awesome
+gnome-font-viewer
+
+#############################
+# Virtual Terminal Emulator
+#############################
+mate-terminal
+
+################
+# File manager
+################
+caja
+caja-actions
+caja-extensions-common
+caja-open-terminal
+pcmanfm
+
+#################################
+# File editor & file diff tools
+#################################
+vim-gtk
+geany
+geany-plugins
+meld kdiff3
+bless
+jq
+tidy
+
+#######################################
+# PDF viewer & PDF manipulation tools
+#######################################
+atril
+#pdftk #N/A in Xubuntu 18.04
+wkhtmltopdf
+
+###################
+# Archive manager
+###################
+engrampa
+unrar
+p7zip-rar
+
+#######################################
+# Image viewer, browser, manipulation
+#######################################
+eom
+shotwell
+gimp
+gimp-data-extras
+gpick
+icc-profiles
 
 ###############
 # Web browser
@@ -156,9 +166,10 @@ chromium-browser
 ##########################
 # Audio and video player
 ##########################
+libpulse-dev
+#paman #N/A in Xubuntu 18.04
+pavucontrol pavumeter paprefs
 flac
-cmus
-pianobar
 vlc
 mplayer
 gpodder
@@ -170,15 +181,6 @@ hexchat
 empathy
 cheese
 
-###############
-# Pulse audio
-###############
-libpulse-dev
-#paman #N/A in Xubuntu 18.04
-pavucontrol
-pavumeter
-paprefs
-
 #########
 # Games
 #########
@@ -188,6 +190,12 @@ hatari
 # Office suite
 ################
 libreoffice
+gnumeric gnumeric-plugins-extra
+
+#####################
+# Data manipulation
+#####################
+csvkit csvkit-doc
 
 #######
 # Git
