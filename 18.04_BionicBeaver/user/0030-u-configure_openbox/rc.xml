@@ -178,6 +178,7 @@
 	</dock>
 	<keyboard>
 		<chainQuitKey>C-g</chainQuitKey>
+		
 		<!-- Keybindings for desktop switching -->
 		<keybind key="C-A-Left">
 			<action name="GoToDesktop">
@@ -250,6 +251,7 @@
 		<keybind key="W-d">
 			<action name="ToggleShowDesktop" />
 		</keybind>
+		
 		<!-- Keybindings for windows -->
 		<keybind key="A-F4">
 			<action name="Close" />
@@ -269,11 +271,7 @@
 				<command>xfce4-screenshooter</command>
 			</action>
 		</keybind>
-		<keybind key="A-Print">
-			<action name="Execute">
-				<command>scrot '%Y-%m-%d--%s_$wx$h_scrot.png' -e 'mv $f ~/images/ &amp; viewnior ~/images/$f'</command>
-			</action>
-		</keybind>
+		
 		<!-- Keybindings for window switching -->
 		<keybind key="A-Tab">
 			<action name="NextWindow">
@@ -304,6 +302,7 @@
 				</finalactions>
 			</action>
 		</keybind>
+		
 		<!-- Keybindings for window switching with the arrow keys -->
 		<keybind key="W-S-Right">
 			<action name="DirectionalCycleWindows">
@@ -325,48 +324,49 @@
 				<direction>down</direction>
 			</action>
 		</keybind>
-		<!--
-		     ########################################
-		     # Keybindings for running applications
-		     ########################################
-		-->
+		
+		<!-- Keybindings for running applications -->
 		<keybind key="XF86PowerOff">
-			<action name="Execute">
-				<command>python ~/.config/openbox/power_button_pressed.py</command>
-			</action>
-		</keybind>
-		<keybind key="A-F3">
 			<action name="Execute">
 				<startupnotify>
 					<enabled>false</enabled>
-					<name>dmenu-bind</name>
+					<name>power_button_pressed.py</name>
 				</startupnotify>
-				<command>bash ~/.config/dmenu/dmenu-bind.sh</command>
-			</action>
-		</keybind>
-		<keybind key="W-f">
-			<action name="Execute">
-				<startupnotify>
-					<enabled>true</enabled>
-					<name>File Manager</name>
-				</startupnotify>
-				<command>caja --no-desktop</command>
-			</action>
-		</keybind>
-		<keybind key="W-s">
-			<action name="Execute">
-				<startupnotify>
-					<enabled>true</enabled>
-					<name>Screencast</name>
-				</startupnotify>
-				<command>sh /home/njames/scripts/screencast.sh</command>
+				<command>python ~/.config/openbox/power_button_pressed.py</command>
 			</action>
 		</keybind>
 		<keybind key="W-r">
 			<action name="Execute">
 				<startupnotify>
 					<enabled>false</enabled>
-					<name>Translate Notify</name>
+					<name>dmenu-bind.sh</name>
+				</startupnotify>
+				<command>bash ~/.config/dmenu/dmenu-bind.sh</command>
+			</action>
+		</keybind>
+		<keybind key="W-c">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>false</enabled>
+					<name>clipmenu</name>
+				</startupnotify>
+				<command>clipmenu</command>
+			</action>
+		</keybind>
+		<keybind key="W-f">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>true</enabled>
+					<name>caja</name>
+				</startupnotify>
+				<command>caja --no-desktop</command>
+			</action>
+		</keybind>
+		<keybind key="W-z">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>false</enabled>
+					<name>translate-notify</name>
 				</startupnotify>
 				<command>translate-notify</command>
 			</action>
@@ -374,8 +374,8 @@
 		<keybind key="W-t">
 			<action name="Execute">
 				<startupnotify>
-					<enabled>true</enabled>
-					<name>Terminal</name>
+					<enabled>false</enabled>
+					<name>x-terminal-emulator</name>
 				</startupnotify>
 				<command>x-terminal-emulator</command>
 			</action>
@@ -384,22 +384,11 @@
 			<action name="Execute">
 				<startupnotify>
 					<enabled>true</enabled>
-					<name>Web Browser</name>
+					<name>x-www-browser</name>
 				</startupnotify>
 				<command>x-www-browser</command>
 			</action>
 		</keybind>
-		<!--
-		     <keybind key="W-l">
-		     <action name="Execute">
-		     <startupnotify>
-		     <enabled>true</enabled>
-		     <name>Lock screen</name>
-		     </startupnotify>
-		     <command>xscreensaver-command -lock</command>
-		     </action>
-		     </keybind>
-		-->
 		<keybind key="W-e">
 			<action name="Execute">
 				<startupnotify>
@@ -421,10 +410,10 @@
 		<keybind key="W-h">
 			<action name="Execute">
 				<startupnotify>
-					<enabled>true</enabled>
+					<enabled>false</enabled>
 					<name>htop</name>
 				</startupnotify>
-				<command>mate-terminal --command="htop"</command>
+				<command>termite --exec="htop"</command>
 			</action>
 		</keybind>
 		<keybind key="W-v">
@@ -436,17 +425,6 @@
 				<command>pavucontrol</command>
 			</action>
 		</keybind>
-		<!--
-		     <keybind key="W-x">
-		     <action name="Execute">
-		     <startupnotify>
-		     <enabled>true</enabled>
-		     <name>Logout</name>
-		     </startupnotify>
-		     <command>cb-exit</command>
-		     </action>
-		     </keybind>
-		-->
 		<keybind key="W-Tab">
 			<action name="ShowMenu">
 				<menu>client-list-combined-menu</menu>
@@ -462,6 +440,7 @@
 				<menu>root-menu</menu>
 			</action>
 		</keybind>
+
 		<!-- A bit of tiling -->
 		<keybind key="W-Right">
 			<action name="GrowToEdgeEast" />
