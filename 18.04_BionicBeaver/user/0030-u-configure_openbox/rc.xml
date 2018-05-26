@@ -253,6 +253,12 @@
 		</keybind>
 		
 		<!-- Keybindings for windows -->
+		<keybind key="W-1">
+			<action name="ToggleAlwaysOnTop" />
+		</keybind>
+		<keybind key="W-2">
+			<action name="ToggleFullscreen" />
+		</keybind>
 		<keybind key="A-F4">
 			<action name="Close" />
 		</keybind>
@@ -458,12 +464,6 @@
 			<action name="Execute">
 				<command>cb-aerosnap --right</command>
 			</action>
-		</keybind>
-		<keybind key="W-1">
-			<action name="ToggleAlwaysOnTop" />
-		</keybind>
-		<keybind key="W-2">
-			<action name="ToggleFullscreen" />
 		</keybind>
 	</keyboard>
 	
