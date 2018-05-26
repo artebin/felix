@@ -465,31 +465,8 @@
 		<keybind key="W-2">
 			<action name="ToggleFullscreen" />
 		</keybind>
-		<!-- Dell Latitude E6530 Fn+F1 (sleep) -->
-		<keybind key="0x8E">
-			<action name="Execute">
-				<command>geany</command>
-			</action>
-		</keybind>
-		<!-- Dell Latitude E6530 Fn+F3 (scroll lock) -->
-		<!--<keybind key="0x46">
-		     <action name="Execute">
-		     <command>geany</command>
-		     </action>
-		     </keybind>-->
-		<!-- Dell Latitude E6530 Fn+F5 (lock touchpad) -->
-		<!--<keybind key="0x39">
-		     <action name="Execute">
-		     <command>geany</command>
-		     </action>
-		     </keybind>-->
-		<!-- Dell Latitude E6530 Fn+F8 (switch screen) -->
-		<!--<keybind key="0x7D">
-		     <action name="Execute">
-		     <command>geany</command>
-		     </action>
-		     </keybind>-->
 	</keyboard>
+	
 	<mouse>
 		<dragThreshold>8</dragThreshold>
 		<!-- number of pixels the mouse must move before a drag begins -->
