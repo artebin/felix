@@ -355,6 +355,15 @@
 				<command>bash ~/.config/dmenu/dmenu-bind.sh</command>
 			</action>
 		</keybind>
+		<keybind key="W-a">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>false</enabled>
+					<name>alltray (attach to already-running application)</name>
+				</startupnotify>
+				<command>alltray -a</command>
+			</action>
+		</keybind>
 		<keybind key="W-c">
 			<action name="Execute">
 				<startupnotify>
