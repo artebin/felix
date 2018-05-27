@@ -190,7 +190,6 @@ hatari
 # Office suite
 ################
 libreoffice
-gnumeric gnumeric-plugins-extra
 
 #####################
 # Data manipulation
