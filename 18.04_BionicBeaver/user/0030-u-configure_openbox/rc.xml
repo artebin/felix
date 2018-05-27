@@ -364,7 +364,7 @@
 					<enabled>false</enabled>
 					<name>alltray (attach to already-running application)</name>
 				</startupnotify>
-				<command>alltray -a</command>
+				<command>alltray -H -a</command>
 			</action>
 		</keybind>
 		<keybind key="W-c">
