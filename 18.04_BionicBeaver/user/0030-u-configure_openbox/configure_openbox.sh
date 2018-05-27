@@ -18,9 +18,10 @@ configure_openbox(){
 	cp ./menu.xml ~/.config/openbox
 	cp ./obapps-0.1.7.tar.gz ~/.config/openbox
 	cp ./rc.xml ~/.config/openbox
-	cp ./tint2_restart.sh ~/.config/openbox/tint2_restart.sh
-	cp ./power_button_pressed.py ~/.config/openbox/power_button_pressed.py
-	cp ./exit.py ~/.config/openbox/exit.py
+	cp ./tint2_restart.sh ~/.config/openbox
+	cp ./clipmenu_run.sh ~/.config/openbox
+	cp ./power_button_pressed.py ~/.config/openbox
+	cp ./exit.py ~/.config/openbox
 }
 
 cd ${BASEDIR}

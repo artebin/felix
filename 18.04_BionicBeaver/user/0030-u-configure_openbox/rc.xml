@@ -361,7 +361,7 @@
 					<enabled>false</enabled>
 					<name>clipmenu</name>
 				</startupnotify>
-				<command>clipmenu</command>
+				<command>bash ~/.config/openbox/clipmenu_run.sh</command>
 			</action>
 		</keybind>
 		<keybind key="W-f">
