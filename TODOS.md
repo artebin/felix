@@ -4,7 +4,7 @@
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
 - [ ] tint2 clock is sometimes not synchronized properly (got a +2 minutes sometimes) => compile tint2 from the sources.
 - [ ] mate-power-manager shows sometimes an "unkown icon", like it tries to show a icon but it is missing in the icon stock.
-- [ ] Copying large file vampirising the machine resources.
+- [ ] Copying large file vampirising the machine resources. Try to replicate the problem. See <https://askubuntu.com/questions/397249/system-freezes-unresponsive-unusable-when-copying-large-file-to-usb> next time it happens.
 - [ ] Clean Openbox rc.xml and add openbox rc.xml v3.4 original for comparison.
 - [ ] Investigate problems with Xubuntu 18.04: no Geany Markdoown plugin, no paman.
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
