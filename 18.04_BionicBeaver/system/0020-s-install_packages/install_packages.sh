@@ -61,7 +61,7 @@ process_package_install_list(){
 	fi
 	
 	# Proceed install
-	xargs apt-get -y install --no-install-recommends < "${APT_INPUT_FILE}"
+	xargs apt -y install < "${APT_INPUT_FILE}"
 	
 	# Cleaning
 	rm -f "${APT_INPUT_FILE}"
