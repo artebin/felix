@@ -1,11 +1,17 @@
 ## Laptop: use external monitor only
-Several way to do it: via X.org configuration (in `/usr/share/X11/xorg.conf.d`) or via lightdm configuration.
+Several way to do it: 
+- X.org configuration (in `/usr/share/X11/xorg.conf.d`)
+- LightDM configuration and xrandr
 
 Lightdm configuration: create `/etc/lightdm/lightdm.conf.d/10-display_setup.conf`
 ```
 [Seat:*]
 display-setup-script=xrandr --output LVDS-1 --off --output DP-1 --off --output HDMI-1 --primary --mode 1360x768 --pos 0x0 --rotate normal --output VGA-1 --off
 ```
+
+We can `export DISPLAY=:0.0` for running xrandr from SSH.
+
+For an unknown reason, I have problems with resolution 1360x768: the screen is not entirely display, some pixels are missing North, West, South, East. But no problem with resolution 1280x760.
 
 ## FlightRadar24
 - retrieve fr24feed from <https://www.flightradar24.com/share-your-data>
@@ -87,6 +93,8 @@ I would like to be able to show a modal dialog, gray out the display and grab al
 - /etc/apt/sources.list.d/
 - /etc/ld.so.conf.d/
 - /etc/profile.d/
+- /usr/share/X11/xorg.conf.d
+- /etc/lightdm/lightdm.conf.d
 
 ## Screenshot utility with edition capabilities, screenshot annotation
 - shutter: total bloatware and the tray icon is very much irritating.
