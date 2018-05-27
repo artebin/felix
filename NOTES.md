@@ -1,3 +1,11 @@
+## Laptop and external monitor
+Several to do it: via X.org configuration (in `/usr/share/X11/xorg.conf.d`) or via lightdm configuration.
+With lightdm configuration, create `/etc/lightdm/lightdm.conf.d/10-display_setup.conf`
+```
+[Seat:*]
+display-setup-script=xrandr --output LVDS-1 --off --output DP-1 --off --output HDMI-1 --primary --mode 1360x768 --pos 0x0 --rotate normal --output VGA-1 --off
+```
+
 ## FlightRadar24
 - retrieve fr24feed from <https://www.flightradar24.com/share-your-data>
 - the binary executable is not perfoming a usable configuration on Ubuntu (at least Ubuntu 18.04). Maybe the install procedure failed, or it expects to find dump1090 in `/usr/lib/fr24`. It is no problem: (1) copy fr24feed in `/usr/bin`, (2) compile dump1090 and then copy dump1090 and gmap.html to `/usr/lib/fr24`. The systemd service file is also missing but it is no difficulty to write one.
