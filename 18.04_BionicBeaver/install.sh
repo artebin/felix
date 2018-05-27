@@ -124,7 +124,6 @@ fi
 
 # Retrieve array of recipes
 RECIPES_PARENT_DIRECTORY=$(readlink -f "${RECIPES_PARENT_DIRECTORY}")
-printf "RECIPES_PARENT_DIRECTORY: ${RECIPES_PARENT_DIRECTORY}\n"
 readarray -t RECIPE_PATH_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_NAME_REGEX}" -exec readlink -f {} \;|sort)
 
 # Exit if no recipe found
@@ -139,6 +138,7 @@ if ! check_xubuntu_version; then
 fi
 
 # List recipes
+printf "RECIPES_PARENT_DIRECTORY: ${RECIPES_PARENT_DIRECTORY}\n"
 echo
 list_recipes
 
