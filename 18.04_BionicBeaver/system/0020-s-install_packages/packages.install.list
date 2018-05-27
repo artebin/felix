@@ -72,7 +72,7 @@ pianobar
 ##############
 # Xorg tools
 ##############
-xsel
+xsel xclip
 wmctrl xdotool xautomation
 
 ##################################
