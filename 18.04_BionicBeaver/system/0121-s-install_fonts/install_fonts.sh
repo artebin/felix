@@ -9,7 +9,7 @@ install_additional_fonts(){
 	
 	echo "Installing additional fonts ..."
 	cp ./fonts/Droid/*.ttf /usr/local/share/fonts/
-	cp ./fonts/Montserrat/*.ttf /usr/local/share/fonts/
+	cp ./fonts/Montserrat/*.otf /usr/local/share/fonts/
 	cp ./fonts/Roboto/*.ttf /usr/local/share/fonts/
 	
 	echo "Updating font cache ..."
