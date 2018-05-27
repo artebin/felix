@@ -1,6 +1,7 @@
-## Laptop and external monitor
-Several to do it: via X.org configuration (in `/usr/share/X11/xorg.conf.d`) or via lightdm configuration.
-With lightdm configuration, create `/etc/lightdm/lightdm.conf.d/10-display_setup.conf`
+## Laptop: use external monitor only
+Several way to do it: via X.org configuration (in `/usr/share/X11/xorg.conf.d`) or via lightdm configuration.
+
+Lightdm configuration: create `/etc/lightdm/lightdm.conf.d/10-display_setup.conf`
 ```
 [Seat:*]
 display-setup-script=xrandr --output LVDS-1 --off --output DP-1 --off --output HDMI-1 --primary --mode 1360x768 --pos 0x0 --rotate normal --output VGA-1 --off
