@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 check_shell(){
 	if [ ! "${BASH_VERSION}" ] ; then
