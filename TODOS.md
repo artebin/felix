@@ -5,8 +5,7 @@
 - [ ] tint2 clock is sometimes not synchronized properly (got a +2 minutes sometimes) => compile tint2 from the sources.
 - [ ] mate-power-manager shows sometimes an "unkown icon", like it tries to show a icon but it is missing in the icon stock.
 - [ ] Copying large file vampirising the machine resources.
-- [ ] Clean Openbox rc.xml
-- [ ] Still some colors are not correct with Termite (htop).
+- [ ] Clean Openbox rc.xml and add openbox rc.xml v3.4 original for comparison.
 - [ ] Investigate problems with Xubuntu 18.04: no Geany Markdoown plugin, no paman.
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
@@ -16,14 +15,15 @@
 - [ ] Work with `/etc/mime.types` for setting all text with Geany, all audio/video with VLC.
 - [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are not opened with web browsers by default.
 - [ ] Add shortcuts from openbox in shortcuts.md
-- [ ] Openbox shortcut for minimizing the active window
 - [ ] Check the configuration of DokuWiki (entities etc.)
 - [ ] Begin a dictionary/ontology for software UI (include "system tray", "notification tray", "scrollbar overlay" etc. ).
 - [ ] Add a note for the static route for accessing trevize.net from the local network
-- [ ] Latex install
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] Openbox shortcut for minimizing the active window
+- [x] Latex install (just install texlive)
+- [x] Still some colors are not correct with Termite (htop) => openbox `rc.xml` was not correct and was starting htop with mate-terminal instead of termite (but no idea why the colors are not correct with mate-terminal).
 - [x] Translate-notify should indicate when the clipboard is empty.
 - [x] Rework a little bit the shortcuts `<win>c` should be clip menu, `<win>r` should be dmenu, `<win>z` should be translate notify
 - [x] Should I use `--no-install-recommends` with apt? => yes, try with it for next install.
