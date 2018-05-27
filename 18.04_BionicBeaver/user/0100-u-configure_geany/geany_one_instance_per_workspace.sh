@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 DISPLAY_ID="${DISPLAY:1}"
 if [ -z "${DISPLAY_ID}" ]; then
