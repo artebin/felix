@@ -24,3 +24,5 @@ xsetroot -solid "#303030" &
 mate-power-manager &
 
 clipmenud &
+
+tomboy &
