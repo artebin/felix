@@ -52,6 +52,13 @@ print_section_heading "Free memory"
 free -m
 print_section_ending
 
+#####################
+# Swaps information
+#####################
+print_section_heading "/proc/swaps"
+cat /proc/swaps
+print_section_ending
+
 ###############
 # GTK version
 ###############
