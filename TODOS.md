@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Add some bash function for working with time durations (or use some bc functions).
+- [ ] Add a bash function for psjava, by default hide the classpath (too long string)
 - [ ] install.sh should have a log indicating which recipe failed.
 - [ ] Quick tool for rendering chart? In Latex maybe? GNU plot.
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
