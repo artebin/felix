@@ -14,6 +14,9 @@ configure_geany(){
 	fi
 	mkdir -p ~/.config/geany
 	
+	# Geany conf
+	cp ./geany_1.29.geany.conf ~/.config/geany/geany.conf
+	
 	# Geany keybindings
 	cp ./geany_1.29.keybindings.conf ~/.config/geany/keybindings.conf
 	
