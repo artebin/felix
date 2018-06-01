@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Can I set the font size by default in the geany config files?
+- [ ] Try to put the notifications of Translate-Notify in south-center.
 - [ ] Add some bash function for working with time durations (or use some bc functions).
 - [ ] Add a bash function for psjava, by default hide the classpath (too long string)
 - [ ] install.sh should have a log indicating which recipe failed.
