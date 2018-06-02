@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Use a Caja script for diff file/directory with meld, see <https://ubuntu-mate.community/t/copy-to-move-to-in-caja/15156/5>
 - [ ] Can I set the font size by default in the geany config files?
 - [ ] Try to put the notifications of Translate-Notify in south-center.
 - [ ] Add some bash function for working with time durations (or use some bc functions).
