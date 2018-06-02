@@ -40,6 +40,7 @@
 			<item label="Thunderbird"><action name="Execute"><execute>thunderbird</execute></action></item>
 			<item label="FTP Client (BareFTP)"><action name="Execute"><command>bareftp</command></action></item>
 			<item label="BitTorrent Client (Transmission)"><action name="Execute"><command>transmission-gtk</command></action></item>
+			<item label="VNC Client (Remmina)"><action name="Execute"><command>remmina</command></action></item>
 		</menu>
 		<menu id="office" label="Office">
 			<menu id="libreoffice" label="LibreOffice">
