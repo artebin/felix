@@ -1,9 +1,7 @@
 # TODOS
 - [ ] Use a Caja script for diff file/directory with meld, see <https://ubuntu-mate.community/t/copy-to-move-to-in-caja/15156/5>
-- [ ] Can I set the font size by default in the geany config files?
 - [ ] Try to put the notifications of Translate-Notify in south-center.
 - [ ] Add some bash function for working with time durations (or use some bc functions).
-- [ ] Add a bash function for psjava, by default hide the classpath (too long string)
 - [ ] install.sh should have a log indicating which recipe failed.
 - [ ] Quick tool for rendering chart? In Latex maybe? GNU plot.
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
@@ -26,6 +24,7 @@
 - [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] Can I set the font size by default in the geany config files?
 - [x] Openbox shortcut for minimizing the active window
 - [x] Latex install (just install texlive)
 - [x] Still some colors are not correct with Termite (htop) => openbox `rc.xml` was not correct and was starting htop with mate-terminal instead of termite (but no idea why the colors are not correct with mate-terminal).
