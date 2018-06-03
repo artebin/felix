@@ -3,7 +3,7 @@
 # This caja script shows a zenity file/directory selector and start
 # a comparison with meld
 
-DIFF_SOURCE_LEFT="${1}"
+DIFF_SOURCE_LEFT=$(readlink -f "${1}")
 DIFF_SOURCE_RIGHT=""
 
 if [ -d "${DIFF_SOURCE_LEFT}" ]; then
@@ -15,6 +15,7 @@ if [ "$?" -eq 1 ]; then
 	exit 1
 fi
 DIFF_SOURCE_RIGHT=$(awk -F, '{print $1}' <<<${DIFF_SOURCE_RIGHT})
+DIFF_SOURCE_RIGHT=$(readlink -f "${DIFF_SOURCE_RIGHT}")
 if [ ! -e "${DIFF_SOURCE_LEFT}" ]; then
 	zenity --error --text="Can not find ${DIFF_SOURCE_LEFT}"
 	exit 1
