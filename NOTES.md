@@ -22,7 +22,7 @@ display-setup-script=xrandr --output LVDS-1 --off --output DP-1 --off --output H
 
 I have problems with resolution 1360x768 but maybe because of my TV device: some pixels are missing North, West, South, East.
 It happens only the first time I switch to this resolution, if I set 1920x1080 and then go back to 1360x768 then it is properly displayed. No problem with other resolutions.
-I can fix the problem by setup the monitors via lightdm configuration except for the resolution, and then use a second xrandr command executed via openbox autostart which will set wanted the resolution.
+I can fix the problem by setup the monitors via lightdm configuration (with a resolution like 1280x720 - not 1360x768), and then use a second xrandr command executed via openbox autostart which will set wanted the resolution.
 
 ## XRDP
 - on the server: `sudo apt install xrdp xordxrdp`
