@@ -1,3 +1,5 @@
+#xrandr --output LVDS-1 --off --output DP-1 --off --output HDMI-1 --mode 1360x768 --primary --pos 0x0 --rotate normal --output VGA-1 --off &
+
 tint2 &
 
 # xfce4-volumed could be started via /etc/xdg/autostart/xfce4-volumed.desktop but there is a parameter "OnlyShowIn=XFCE;"
@@ -25,3 +27,4 @@ mate-power-manager &
 
 bash clipmenud_run.sh &
 
+#transmission-gtk -m &
