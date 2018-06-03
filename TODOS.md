@@ -12,7 +12,7 @@
 - [ ] mate-power-manager shows sometimes an "unkown icon", like it tries to show a icon but it is missing in the icon stock.
 - [ ] Copying large file vampirising the machine resources. Try to replicate the problem. See <https://askubuntu.com/questions/397249/system-freezes-unresponsive-unusable-when-copying-large-file-to-usb> next time it happens.
 - [ ] Clean Openbox rc.xml and add openbox rc.xml v3.4 original for comparison.
-- [ ] Investigate problems with Xubuntu 18.04: no Geany Markdoown plugin, no paman.
+- [ ] No PulseAudio paman in Xubuntu 18.04 but do I really need it?
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
 - [ ] Read <https://wiki.archlinux.org/index.php/File_manager_functionality>
@@ -24,9 +24,10 @@
 - [ ] Check the configuration of DokuWiki (entities etc.)
 - [ ] Begin a dictionary/ontology for software UI (include "system tray", "notification tray", "scrollbar overlay" etc. ).
 - [ ] Add a note for the static route for accessing trevize.net from the local network
-- [ ] XDMCP, xrdp and FreeRDP
 
 # DONE
+- [x] No Geany Markdown plugin in Xubuntu 18.04 => `libwebkit2gtk-4.0-dev` need to be installed for compiling it and maybe it is not the case when Ubuntu build the geany-plugins package. Fix is: clone the geany-plugin git repo and make/make install the markdown plugin. 
+- [x] XDMCP, xrdp and FreeRDP
 - [x] Can I set the font size by default in the geany config files?
 - [x] Openbox shortcut for minimizing the active window
 - [x] Latex install (just install texlive)
