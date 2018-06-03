@@ -24,10 +24,22 @@ I have problems with resolution 1360x768 but maybe because of my TV device: some
 It happens only the first time I switch to this resolution, if I set 1920x1080 and then go back to 1360x768 then it is properly displayed. No problem with other resolutions.
 I can fix the problem by setup the monitors via lightdm configuration (with a resolution like 1280x720 - not 1360x768), and then use a second xrandr command executed via openbox autostart which will set wanted the resolution.
 
-## XRDP
+## Remote desktop
+
+### x11vnc
+It is the most simple way to get a vnc, just install it on the server and run  once the session is started. On the client everything vnc client should work.
+- `x11vnc -storepasswd` to define a password (in `~/.vnc/passwd`)
+- `x11vnc -usepw -noxdamage -forever`: there is an argument `-ncache 10` for improving the rendering on the client side but I have some problems with it, I can see on the bottom of the screen an area which is a copy of the top of the screen.
+- I had several crashes with x11vnc, so I would investigate another remote desktop (vnc server or xrdp).
+
+### VNC server
+- vnc4server (based on realvnc)
+- tigervnc (based on tightvnc which is based on realvnc)
+
+### XRDP
 - on the server: `sudo apt install xrdp xordxrdp`
 - on the client: `sudo apt install remmina`
-- Remmina may shows an error when we want to connect "You requested an H264 GFX mode for server x.x.x.x, but your libfreerdp does not support H264. Please check Color Depth settings". See <https://github.com/FreeRDP/Remmina/issues/1584>. We just need to create a profile because the default connection will use the best screen profile using H264.
+- Remmina may show an error when we want to connect "You requested an H264 GFX mode for server x.x.x.x, but your libfreerdp does not support H264. Please check Color Depth settings". See <https://github.com/FreeRDP/Remmina/issues/1584>. We just need to create a profile because the default connection will use the best screen profile using H264.
 
 ## FlightRadar24
 - retrieve fr24feed from <https://www.flightradar24.com/share-your-data>

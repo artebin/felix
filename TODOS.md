@@ -3,7 +3,6 @@
 - [ ] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x'.
 - [ ] Disable gnome keyring?
 - [ ] Use a Caja script for diff file/directory with meld, see <https://ubuntu-mate.community/t/copy-to-move-to-in-caja/15156/5>
-- [ ] Try to put the notifications of Translate-Notify in south-center.
 - [ ] Add some bash function for working with time durations (or use some bc functions).
 - [ ] install.sh should have a log indicating which recipe failed.
 - [ ] Quick tool for rendering chart? In Latex maybe? GNU plot.
