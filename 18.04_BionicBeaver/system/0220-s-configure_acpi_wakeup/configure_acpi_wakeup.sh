@@ -4,16 +4,32 @@ source ../../common.sh
 check_shell
 exit_if_has_not_root_privileges
 
+# This script analyse the content of `/proc/acpi/wakeup` in order to 
+# guess which acpi wakeup should  be enable or not. As a consequence the
+# state of `/proc/acpi/wakeup` is important when the script is executed.
+# Do not run the script multiple times in a row, neither run it when 
+# `configure_acpi_wakeup.service` has been started.
+
+# By default disable all acpi wakeup except for LID.
+# In particular: disable it for mouse and keyboard.
+DISABLE_ALL_EXCEPT_LID="true"
+
 configure_acpi_wakeup(){
 	cd ${BASEDIR}
 	
 	echo "Configure acpi wakeup ..."
+	
 	if [ -f /etc/systemd/system/configure_acpi_wakeup.service ]; then
 		echo "/etc/systemd/system/configure_acpi_wakeup.service already exists"
 		exit 1
 	fi
 	
-	# Disable everything except LID
+	if [ "${DISABLE_ALL_EXCEPT_LID}" = "true" ]; then
+		echo "Disabling all acpi wakeup except for LID ..."
+	else
+		echo "Disabling all acpi wakup ..."
+	fi
+	
 	cat /proc/acpi/wakeup > ./acpi_wakeup
 	CONFIGURE_COMMAND=""
 	while read LINE; do
@@ -25,14 +41,18 @@ configure_acpi_wakeup(){
 		fi
 		DEVICE_ID=`echo "${LINE}"|cut -f1`
 		STATUS=`echo "${LINE}"|cut -f3`
+		
 		if [[ "${LINE}" == LID* ]]; then
-			if [[ "${STATUS}" == \*disabled* ]]; then
-				CONFIGURE_COMMAND="echo ${DEVICE_ID} >> /proc/acpi/wakeup;${CONFIGURE_COMMAND}"
-				continue
+			if [ "${DISABLE_ALL_EXCEPT_LID}" = "true" ]; then
+				if [[ "${STATUS}" == \*disabled* ]]; then
+					CONFIGURE_COMMAND="echo ${DEVICE_ID} >> /proc/acpi/wakeup;${CONFIGURE_COMMAND}"
+					continue
+				fi
 			fi
 		elif [[ "${STATUS}" != \*disabled* ]]; then
 			CONFIGURE_COMMAND="echo ${DEVICE_ID} >> /proc/acpi/wakeup;${CONFIGURE_COMMAND}"
 		fi
+		
 	done < ./acpi_wakeup
 	
 	add_or_update_line_based_on_prefix "ExecStart" "ExecStart=/bin/bash -c \"${CONFIGURE_COMMAND}\"" ./configure_acpi_wakeup.service
