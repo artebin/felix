@@ -1,12 +1,8 @@
 # TODOS
-- [ ] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x'.
-- [ ] Use a Caja script for diff file/directory with meld, see <https://ubuntu-mate.community/t/copy-to-move-to-in-caja/15156/5>
+- [ ] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x' => use gtk inspector to find the missing icon.
 - [ ] Add some bash function for working with time durations (or use some bc functions).
 - [ ] Quick tool for rendering chart? In Latex maybe? GNU plot.
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
-- [ ] tint2 clock is sometimes not synchronized properly (got a +2 minutes sometimes) => compile tint2 from the sources.
-- [ ] mate-power-manager shows sometimes an "unkown icon", like it tries to show a icon but it is missing in the icon stock.
-- [ ] Copying large file vampirising the machine resources. Try to replicate the problem. See <https://askubuntu.com/questions/397249/system-freezes-unresponsive-unusable-when-copying-large-file-to-usb> next time it happens.
 - [ ] Clean Openbox rc.xml and add openbox rc.xml v3.4 original for comparison.
 - [ ] No PulseAudio paman in Xubuntu 18.04 but do I really need it?
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
@@ -22,6 +18,7 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 
 # DONE
+- [x] Use a Caja script for diff file/directory with meld, see <https://ubuntu-mate.community/t/copy-to-move-to-in-caja/15156/5>
 - [x] install.sh should have a log indicating which recipe failed.
 - [x] Disable gnome keyring.
 - [x] Use `[Seat:*]` instead of `[Seat:defaults]`
