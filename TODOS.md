@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Use `[Seat:*]` instead of `[Seat:defaults]`
 - [ ] Comment/Uncomment shortcuts is missing in geany.
 - [ ] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x'.
 - [ ] Disable gnome keyring?
