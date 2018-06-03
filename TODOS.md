@@ -1,10 +1,7 @@
 # TODOS
-- [ ] Comment/Uncomment shortcuts is missing in geany.
 - [ ] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x'.
-- [ ] Disable gnome keyring?
 - [ ] Use a Caja script for diff file/directory with meld, see <https://ubuntu-mate.community/t/copy-to-move-to-in-caja/15156/5>
 - [ ] Add some bash function for working with time durations (or use some bc functions).
-- [ ] install.sh should have a log indicating which recipe failed.
 - [ ] Quick tool for rendering chart? In Latex maybe? GNU plot.
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
 - [ ] tint2 clock is sometimes not synchronized properly (got a +2 minutes sometimes) => compile tint2 from the sources.
@@ -25,6 +22,8 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 
 # DONE
+- [x] install.sh should have a log indicating which recipe failed.
+- [x] Disable gnome keyring.
 - [x] Use `[Seat:*]` instead of `[Seat:defaults]`
 - [x] No Geany Markdown plugin in Xubuntu 18.04 => `libwebkit2gtk-4.0-dev` need to be installed for compiling it and maybe it is not the case when Ubuntu build the geany-plugins package. Fix is: clone the geany-plugin git repo and make/make install the markdown plugin. 
 - [x] XDMCP, xrdp and FreeRDP

@@ -29,7 +29,9 @@ list_recipes(){
 }
 
 execute_recipes(){
-	printf "Executing recipes ...\n\n"
+	printf "Executing recipes ...\n"
+	printf "Interactive mode=${INTERACTIVE_MODE}\n\n"
+	
 	for RECIPE_PATH in "${RECIPE_PATH_ARRAY[@]}"; do
 		RECIPE_NAME=$(basename ${RECIPE_PATH})
 		print_section_heading "RECIPE_NAME: ${RECIPE_NAME}"
@@ -149,6 +151,7 @@ if [ "${USER_ANSWER}" != "yes" ]; then
 	echo "Exiting."
 	exit 0
 fi
+echo
 
 # Execute the recipes
-execute_recipes
+execute_recipes 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
