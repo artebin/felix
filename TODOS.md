@@ -1,5 +1,4 @@
 # TODOS
-- [ ] Use `[Seat:*]` instead of `[Seat:defaults]`
 - [ ] Comment/Uncomment shortcuts is missing in geany.
 - [ ] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x'.
 - [ ] Disable gnome keyring?
@@ -26,6 +25,7 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 
 # DONE
+- [x] Use `[Seat:*]` instead of `[Seat:defaults]`
 - [x] No Geany Markdown plugin in Xubuntu 18.04 => `libwebkit2gtk-4.0-dev` need to be installed for compiling it and maybe it is not the case when Ubuntu build the geany-plugins package. Fix is: clone the geany-plugin git repo and make/make install the markdown plugin. 
 - [x] XDMCP, xrdp and FreeRDP
 - [x] Can I set the font size by default in the geany config files?
