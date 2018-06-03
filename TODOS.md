@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Comment/Uncomment shortcuts is missing in geany.
+- [ ] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x'.
 - [ ] Disable gnome keyring?
 - [ ] Use a Caja script for diff file/directory with meld, see <https://ubuntu-mate.community/t/copy-to-move-to-in-caja/15156/5>
 - [ ] Try to put the notifications of Translate-Notify in south-center.
