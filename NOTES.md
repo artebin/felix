@@ -1,21 +1,38 @@
-## Laptop: use external monitor only
-Several way to do it: 
+## Laptop: use external monitor only (the laptop lid is closed)
+First thing to do: disable all events regarding the lid in `/etc/systemd/logind.conf`
+```
+[Login]
+HandleLidSwitch=ignore
+HandleLidSwitchDocked=ignore
+```
+
+Use `xrandr --query` to see the current state of the system.
+We can `export DISPLAY=:0.0` for running xrandr from SSH.
+
+Second thing to do is the setup of the monitors, there are several ways to do it: 
 - X.org configuration (in `/usr/share/X11/xorg.conf.d`)
 - LightDM configuration and xrandr
+- window manager autostart an xrandr 
 
-Lightdm configuration: create `/etc/lightdm/lightdm.conf.d/10-display_setup.conf`
+Lightdm configuration: create `/etc/lightdm/lightdm.conf.d/10-setup_displays.conf`
 ```
 [Seat:*]
 display-setup-script=xrandr --output LVDS-1 --off --output DP-1 --off --output HDMI-1 --primary --mode 1360x768 --pos 0x0 --rotate normal --output VGA-1 --off
 ```
 
-We can `export DISPLAY=:0.0` for running xrandr from SSH.
+I have problems with resolution 1360x768 but maybe because of my TV device: some pixels are missing North, West, South, East.
+It happens only the first time I switch to this resolution, if I set 1920x1080 and then go back to 1360x768 then it is properly displayed. No problem with other resolutions.
+I can fix the problem by setup the monitors via lightdm configuration except for the resolution, and then use a second xrandr command executed via openbox autostart which will set wanted the resolution.
 
-For an unknown reason, I have problems with resolution 1360x768: the screen is not entirely display, some pixels are missing North, West, South, East. But no problem with resolution 1280x760.
+## XRDP
+- on the server: `sudo apt install xrdp xordxrdp`
+- on the client: `sudo apt install remmina`
+- Remmina may shows an error when we want to connect "You requested an H264 GFX mode for server x.x.x.x, but your libfreerdp does not support H264. Please check Color Depth settings". See <https://github.com/FreeRDP/Remmina/issues/1584>. We just need to create a profile because the default connection will use the best screen profile using H264.
 
 ## FlightRadar24
 - retrieve fr24feed from <https://www.flightradar24.com/share-your-data>
 - the binary executable is not perfoming a usable configuration on Ubuntu (at least Ubuntu 18.04). Maybe the install procedure failed, or it expects to find dump1090 in `/usr/lib/fr24`. It is no problem: (1) copy fr24feed in `/usr/bin`, (2) compile dump1090 and then copy dump1090 and gmap.html to `/usr/lib/fr24`. The systemd service file is also missing but it is no difficulty to write one.
+- the argument `--interactive` of dump1090 prevent the feeding of FR24 for an unknown reason. Just use `--net` for having the map but remove `--interactive`.
 
 ## Dump1090
 - Dump1090 can not work if there is no udev rule for the DVB-T. Retrieve the VendorID and the ProductID with `lsusb` and create/update `/etc/udev/rules.d/rtl-sdr.rules`:
@@ -72,10 +89,10 @@ deb [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic main restricted univers
 >    parser.Parse(string, True)
 >xml.parsers.expat.ExpatError: not well-formed (invalid token): line 16, column 22
 - Icon tray of xfce4-power-manager is not displayed properly? Does it not use the user-selected icon theme stock anymore? Furthermore the new version is not nice, the choice of the color for the dialog appearing when the user clicks the tray icon is very bad => move to mate-power-manager which is far better, simpler. However I see a problem with permission for starting `/usr/local/sbin/mate-power-backlight-helper`, I suppose I should add a polkit configuration for it in `/usr/share/polkit-1/actions`. 
-- Geany Markdown is not available in the repository, probably because peg-markdown is missing.
+- Geany Markdown is not available in the repository.
 
 ## DisplayLink
-Today there is no support of Daisy-Chain DisplayPort 1.2 monitors in Linux (MST Multi-Stream Transport).
+Today there is no support of Daisy-Chaining DisplayPort 1.2 monitors in Linux (MST Multi-Stream Transport).
 
 ## Modal dialog and grab X events
 I would like to be able to show a modal dialog, gray out the display and grab all the events (no keyboard shortcut <Alt><Tab> etc.). Exactly like `gksu` and `gksudo` are doing. The ideal thing would be a patch to zenity.
