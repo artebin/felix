@@ -4,7 +4,6 @@
 - [ ] Quick tool for rendering chart? In Latex maybe? GNU plot.
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
 - [ ] Clean Openbox rc.xml and add openbox rc.xml v3.4 original for comparison.
-- [ ] No PulseAudio paman in Xubuntu 18.04 but do I really need it?
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
 - [ ] Read <https://wiki.archlinux.org/index.php/File_manager_functionality>
@@ -18,6 +17,7 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 
 # DONE
+- [x] No PulseAudio paman in Xubuntu 18.04 but do I really need it? => I can compile it from the sources, do not know why it is missing in Ubuntu 18.04 repository.
 - [x] Use a Caja script for diff file/directory with meld, see <https://ubuntu-mate.community/t/copy-to-move-to-in-caja/15156/5>
 - [x] install.sh should have a log indicating which recipe failed.
 - [x] Disable gnome keyring.
