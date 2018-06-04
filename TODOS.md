@@ -1,7 +1,4 @@
 # TODOS
-- [ ] Bash script can be opened by LibreOffice?
-- [ ] VNC with 2 screens.
-- [x] Find a search tool with GUI and associate openbox shotcut and menu item.
 - [ ] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x' => use gtk inspector to find the missing icon.
 - [ ] Add some bash function for working with time durations (or use some bc functions).
 - [ ] Quick tool for rendering chart? In Latex maybe? GNU plot.
@@ -20,6 +17,8 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 
 # DONE
+- [x] VNC with 2 screens => not possible, it is no has no concept of separate monitor, we should set the geometry to support the size of the 2 screens combined.
+- [x] Find a search tool with GUI => FSearch seems interesting...
 - [x] System monitor: CPU, Memory, I/O, network + add it to openbox menu. => use glances (don't like much mate-system-monitor but keep it installed)
 - [x] Use dunst notification (for Translate-Notify especially) => missing dependencies `libxss-dev` and `libxdg-basedir1`
 - [x] Caja seems to open MATE terminal (instead of x-terminal-emulator) => property to set in dconf
