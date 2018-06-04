@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# This caja script open a file in a terminal with `tail -n +1 -f`
+
+INPUT_FILE=$(readlink -f "${1}")
+if [ ! -e "${INPUT_FILE}" ]; then
+	zenity --error --text="Can not find ${INPUT_FILE}"
+	exit 1
+fi
+if [ ! -f "${INPUT_FILE}" ]; then
+	zenity --error --text="Can not use this script on a directory"
+	exit 1
+fi
+termite --exec="tail -n +1 -f ${INPUT_FILE}"
