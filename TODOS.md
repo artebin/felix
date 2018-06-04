@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Find a search tool with GUI and associate openbox shotcut and menu item.
 - [ ] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x' => use gtk inspector to find the missing icon.
 - [ ] Add some bash function for working with time durations (or use some bc functions).
 - [ ] Quick tool for rendering chart? In Latex maybe? GNU plot.
