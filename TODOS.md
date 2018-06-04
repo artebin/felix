@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Use dunst notification (for Translate-Notify especially).
+- [ ] VNC with 2 screens.
 - [ ] System log viewer (with search functinality).
 - [ ] Add MATE System Log Viewer in the openbox menu.
 - [ ] System monitor: CPU, Memory, I/O, network + add it to openbox menu.
