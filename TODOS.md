@@ -1,4 +1,7 @@
 # TODOS
+- [ ] Scrolllock indicator?
+- [ ] Add a `tail and follow` caja script (rename tail_from_first_byte_and_follow).
+- [ ] Bash script can be opened by LibreOffice?
 - [ ] Use dunst notification (for Translate-Notify especially).
 - [ ] VNC with 2 screens.
 - [ ] System log viewer (with search functinality).

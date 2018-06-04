@@ -18,6 +18,8 @@ configure_mate_caja(){
 	fi
 	mkdir -p ~/.config/caja/scripts
 	cp ./diff_with ~/.config/caja/scripts
+	cp ./tail_and_follow ~/.config/caja/scripts
+	cp ./tail_from_first_line_and_follow ~/.config/caja/scripts
 }
 
 cd ${BASEDIR}
