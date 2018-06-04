@@ -12,6 +12,11 @@ configure_mate_caja(){
 	dconf load /org/mate/caja/ < ./org.mate.caja.dump
 	dconf load /org/mate/desktop/ < ./org.mate.desktop.dump
 	
+	# For an unkown reason caja-open-terminal plugin is not using
+	# x-terminal-emulator by default.
+	echo "Use x-terminal-emulator for \"Open in Terminal\" action ..."
+	gsettings set org.mate.applications-terminal exec x-terminal-emulator
+	
 	echo "Adding caja scripts ..."
 	if [ -d ~/.config/caja/scripts ]; then
 	backup_file rename ~/.config/caja/scripts

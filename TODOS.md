@@ -1,6 +1,5 @@
 # TODOS
 - [ ] Scrolllock indicator?
-- [ ] Add a `tail and follow` caja script (rename tail_from_first_byte_and_follow).
 - [ ] Bash script can be opened by LibreOffice?
 - [ ] Use dunst notification (for Translate-Notify especially).
 - [ ] VNC with 2 screens.
@@ -26,6 +25,8 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 
 # DONE
+- [x] Caja seems to open MATE terminal (instead of x-terminal-emulator) => property to set in dconf
+- [x] Add a `tail and follow` caja script.
 - [x] No PulseAudio paman in Xubuntu 18.04 but do I really need it? => I can compile it from the sources, do not know why it is missing in Ubuntu 18.04 repository.
 - [x] Use a Caja script for diff file/directory with meld, see <https://ubuntu-mate.community/t/copy-to-move-to-in-caja/15156/5>
 - [x] install.sh should have a log indicating which recipe failed.
