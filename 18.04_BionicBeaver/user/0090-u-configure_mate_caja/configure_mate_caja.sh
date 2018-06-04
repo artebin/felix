@@ -14,6 +14,7 @@ configure_mate_caja(){
 	
 	# For an unkown reason caja-open-terminal plugin is not using
 	# x-terminal-emulator by default.
+	# See <https://github.com/mate-desktop/caja-extensions/blob/master/open-terminal/caja-open-terminal.c>
 	echo "Use x-terminal-emulator for \"Open in Terminal\" action ..."
 	gsettings set org.mate.applications-terminal exec x-terminal-emulator
 	

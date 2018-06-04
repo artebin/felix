@@ -4,7 +4,7 @@
 hwinfo
 lshw
 inxi
-htop
+htop atop iotop sysstat
 glances
 smem
 lsb-core
@@ -83,7 +83,7 @@ openbox openbox-menu obconf obmenu
 lxappearance lxappearance-obconf
 dconf-cli dconf-editor dconf-tools
 gconf-service
-mate-utils
+mate-utils mate-system-monitor
 xfce4-volumed xfburn xfce4-dict xfce4-screenshooter xfce4-notifyd
 lxinput
 tint2

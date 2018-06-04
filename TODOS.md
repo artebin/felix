@@ -1,7 +1,5 @@
 # TODOS
-- [ ] Scrolllock indicator?
 - [ ] Bash script can be opened by LibreOffice?
-- [ ] Use dunst notification (for Translate-Notify especially).
 - [ ] VNC with 2 screens.
 - [ ] System log viewer (with search functinality).
 - [ ] Add MATE System Log Viewer in the openbox menu.
@@ -25,6 +23,7 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 
 # DONE
+- [x] Use dunst notification (for Translate-Notify especially) => missing dependencies `libxss-dev` and `libxdg-basedir1`
 - [x] Caja seems to open MATE terminal (instead of x-terminal-emulator) => property to set in dconf
 - [x] Add a `tail and follow` caja script.
 - [x] No PulseAudio paman in Xubuntu 18.04 but do I really need it? => I can compile it from the sources, do not know why it is missing in Ubuntu 18.04 repository.
