@@ -135,33 +135,19 @@ git-config-global-user-name-email(){
 }
 alias git-config-global-user-name-email=git-config-global-user-name-email
 
-backup_file(){
-	if [[ "$#" -ne 2 ]]; then
-		echo 'Function backup_file should be called with an argument'
-		exit 1
-	fi
-	if [[ ! -f "${2}" ]]; then
-		echo "Can not find ${2}"
-		exit 1
-	fi
-	FILE_BACKUP_PATH="${2}.bak.$(date +'%y%m%d-%H%M%S')"
-	case "${1}" in
-		'rename')
-			mv "${2}" "${FILE_BACKUP_PATH}"
-			if [[ "$?" -ne 0 ]]; then
-				echo "Can not backup file ${2}"
-				exit 1
-			fi
-			;;
-		'copy')
-			cp "${2}" "${FILE_BACKUP_PATH}"
-			if [[ "$?" -ne 0 ]]; then
-				echo "Can not backup file ${2}"
-				exit 1
-			fi
-			;;
-		*)
-			echo "Unkown argument ${1}"
-			exit 1
-	esac
+datetime2seconds(){
+        date -d "${1}" %s
+}       
+alias datetime2seconds=datetime2seconds
+
+dates_diff(){
+        LEFT_DATE_IN_SECONDS=$(date -d "${1}" +%s)
+        RIGHT_DATE_IN_SECONDS=$(date -d "${2}" +%s)
+        DIFF_IN_SECONDS=$(( ${RIGHT_DATE_IN_SECONDS} - ${LEFT_DATE_IN_SECONDS} ))
+        DAY_COUNT=$(( ${DIFF_IN_SECONDS} / 86400 ))
+        SECONDS_FROM_MIDNIGHT_COUNT=$(( ${DIFF_IN_SECONDS} % 86400  ))
+        TIME_OF_DAY=$(date -u -d @"${DIFF_IN_SECONDS}" +"%T")
+        echo "${DAY_COUNT}d ${TIME_OF_DAY}"
 }
+alias dates_diff=dates_diff
+

@@ -1,22 +1,23 @@
 # TODOS
+- [ ] What is the alert alias in bashrc?
 - [ ] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x' => use gtk inspector to find the missing icon.
-- [ ] Add some bash function for working with time durations (or use some bc functions).
-- [ ] Quick tool for rendering chart? In Latex maybe? GNU plot.
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
+- [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Clean Openbox rc.xml and add openbox rc.xml v3.4 original for comparison.
+- [ ] Add shortcuts from openbox in shortcuts.md
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
 - [ ] Read <https://wiki.archlinux.org/index.php/File_manager_functionality>
 - [ ] reboot/shutdown can still be waiting for the nfs mount point to be unmounted.
-- [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Work with `/etc/mime.types` for setting all text with Geany, all audio/video with VLC.
 - [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are not opened with web browsers by default.
-- [ ] Add shortcuts from openbox in shortcuts.md
 - [ ] Check the configuration of DokuWiki (entities etc.)
 - [ ] Begin a dictionary/ontology for software UI (include "system tray", "notification tray", "scrollbar overlay" etc. ).
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 
 # DONE
+- [x] Add some bash function for working with time durations (or use some bc functions).
+- [x] Quick tool for rendering chart? => gnu plot and plotdrop GTK GUI.
 - [x] VNC with 2 screens => not possible, it is no has no concept of separate monitor, we should set the geometry to support the size of the 2 screens combined.
 - [x] Find a search tool with GUI => FSearch seems interesting...
 - [x] System monitor: CPU, Memory, I/O, network + add it to openbox menu. => use glances (don't like much mate-system-monitor but keep it installed)
