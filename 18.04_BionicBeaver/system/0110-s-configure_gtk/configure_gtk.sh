@@ -16,6 +16,9 @@ configure_gtk(){
 	sed -i "/^gtk-theme-name/s/.*/gtk-theme-name=\"${GTK_THEME_NAME}\"/" /etc/gtk-2.0/gtkrc
 	sed -i "/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"${GTK_ICON_THEME_NAME}\"/" /etc/gtk-2.0/gtkrc
 	
+	# Fix theme Adwaita/gtk-2.0: menus have no borders
+	patch /usr/share/themes/Adwaita/gtk-2.0/main.rc < ./fix_adwaita_gtk2_menu_with_no_border.patch
+	
 	# GTK+ 3.0
 	if [ ! -f /etc/gtk-3.0/settings.ini ]; then
 		cp system.gtkrc-3.0 /etc/gtk-3.0/settings.ini
