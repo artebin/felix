@@ -197,6 +197,7 @@ libreoffice
 # Data manipulation
 #####################
 csvkit csvkit-doc
+gnuplot plotdrop
 
 #######
 # Git
