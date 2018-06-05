@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Border for menus in GTK2 with Adwaita.
+- [ ] Width of the error zenity popup window.
 - [ ] Add geany shorcut for moving line up/down.
 - [ ] Invert ctrl+k and ctrl+d? The shortcuts from Eclipse are quite well designed...
 - [ ] What is the alert alias in bashrc?
