@@ -1,8 +1,6 @@
 # TODOS
 - [ ] Border for menus in GTK2 with Adwaita.
 - [ ] Width of the error zenity popup window.
-- [ ] Add geany shorcut for moving line up/down.
-- [ ] Invert ctrl+k and ctrl+d? The shortcuts from Eclipse are quite well designed...
 - [ ] What is the alert alias in bashrc?
 - [ ] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x' => use gtk inspector to find the missing icon.
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
@@ -20,6 +18,8 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 
 # DONE
+- [x] Add geany shorcut for moving line up/down.
+- [x] Invert ctrl+k and ctrl+d? The shortcuts from Eclipse are quite well designed...
 - [x] Add some bash function for working with time durations (or use some bc functions).
 - [x] Quick tool for rendering chart? => gnu plot and plotdrop GTK GUI.
 - [x] VNC with 2 screens => not possible, it is no has no concept of separate monitor, we should set the geometry to support the size of the 2 screens combined.
