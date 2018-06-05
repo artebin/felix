@@ -12,9 +12,9 @@ force_numlockx(){
 	XDG_AUTOSTART_DESKTOP_FILE_ARRAY=(
 		#at-spi-dbus-bus.desktop
 		#blueman.desktop
-		gnome-keyring-pkcs11.desktop
-		gnome-keyring-secrets.desktop
-		gnome-keyring-ssh.desktop
+		#gnome-keyring-pkcs11.desktop
+		#gnome-keyring-secrets.desktop
+		#gnome-keyring-ssh.desktop
 		#gnome-software-service.desktop
 		#gnome-user-share-obexpush.desktop
 		#gnome-user-share-webdav.desktop
@@ -42,7 +42,7 @@ force_numlockx(){
 	
 	for XDG_AUTOSTART_FILE_NAME in "${XDG_AUTOSTART_DESKTOP_FILE_ARRAY[@]}"; do
 		echo "Disabling autostart for ${XDG_AUTOSTART_FILE_NAME} ..."
-		#backup_file rename /etc/xdg/autostart/${XDG_AUTOSTART_FILE_NAME}
+		backup_file rename /etc/xdg/autostart/${XDG_AUTOSTART_FILE_NAME}
 	done
 }
 
