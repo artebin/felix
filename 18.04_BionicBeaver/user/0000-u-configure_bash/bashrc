@@ -151,3 +151,38 @@ dates_diff(){
 }
 alias dates_diff=dates_diff
 
+backup_file(){
+	if [ "$#" -ne 2 ]; then
+		echo "Usage: backup_file mode path"
+		echo "  arguments:"
+		echo "    mode\t\t'rename' or 'copy'"
+		exit 1
+	fi
+	MODE="${1}"
+	FILE_TO_BACKUP="${2}"
+	if [ ! -e "${FILE_TO_BACKUP}" ]; then
+		echo "Can not find ${FILE_TO_BACKUP}"
+		exit 1
+	fi
+	FILE_BACKUP="${FILE_TO_BACKUP}.bak.$(date -u +'%y%m%d-%H%M%S')"
+	case "${MODE}" in
+		"rename")
+			mv "${FILE_TO_BACKUP}" "${FILE_BACKUP}"
+			if [ "$?" -ne 0 ]; then
+				echo "Can not backup: ${FILE_TO_BACKUP}"
+				exit 1
+			fi
+			;;
+		"copy")
+			cp "${FILE_TO_BACKUP}" "${FILE_BACKUP}"
+			if [ "$?" -ne 0 ]; then
+				echo "Can not backup: ${FILE_TO_BACKUP}"
+				exit 1
+			fi
+			;;
+		*)
+			echo "Unkown mode \"${MODE}\""
+			exit 1
+	esac
+}
+alias backup_file=backup_file

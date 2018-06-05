@@ -1,5 +1,4 @@
 # TODOS
-- [ ] Border for menus in GTK2 with Adwaita.
 - [ ] Width of the error zenity popup window.
 - [ ] What is the alert alias in bashrc?
 - [ ] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x' => use gtk inspector to find the missing icon.
@@ -18,6 +17,8 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 
 # DONE
+- [x] re-add backup alias in bashrc.
+- [x] Border for menus in GTK2 with Adwaita. See <http://www.techytalk.info/fix-clearlooks-gtk-2-theme-missing-menu-borders-on-java-applications/> and <https://azizsaboor.wordpress.com/2015/03/17/fixing-netbeans-menu-display-on-linux-missing-menu-borders-white-on-white-invisible-menu-items/>.
 - [x] Add geany shorcut for moving line up/down.
 - [x] Invert ctrl+k and ctrl+d? The shortcuts from Eclipse are quite well designed...
 - [x] Add some bash function for working with time durations (or use some bc functions).
