@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Add geany shorcut for moving line up/down.
+- [ ] Invert ctrl+k and ctrl+d? The shortcuts from Eclipse are quite well designed...
 - [ ] What is the alert alias in bashrc?
 - [ ] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x' => use gtk inspector to find the missing icon.
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
