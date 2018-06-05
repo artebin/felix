@@ -1,7 +1,6 @@
 # TODOS
 - [ ] Width of the error zenity popup window.
-- [ ] What is the alert alias in bashrc?
-- [ ] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x' => use gtk inspector to find the missing icon.
+- [ ] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x' => use gtk inspector to find the missing icon. It can see the prorblem with obconf. See <http://linux-buddy.blogspot.com/2014/01/gtk-example-spinbutton.html>. I also have that with other GTK theme (greybird, numix).
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Clean Openbox rc.xml and add openbox rc.xml v3.4 original for comparison.

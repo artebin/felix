@@ -56,7 +56,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# NJ : 18-08-2016 : use \w for complete path and \W for current path 
+# NJ:16-08-18: use \w for complete path and \W for current path 
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
 else
@@ -136,18 +136,18 @@ git-config-global-user-name-email(){
 alias git-config-global-user-name-email=git-config-global-user-name-email
 
 datetime2seconds(){
-        date -d "${1}" %s
-}       
+	date -d "${1}" %s
+}
 alias datetime2seconds=datetime2seconds
 
 dates_diff(){
-        LEFT_DATE_IN_SECONDS=$(date -d "${1}" +%s)
-        RIGHT_DATE_IN_SECONDS=$(date -d "${2}" +%s)
-        DIFF_IN_SECONDS=$(( ${RIGHT_DATE_IN_SECONDS} - ${LEFT_DATE_IN_SECONDS} ))
-        DAY_COUNT=$(( ${DIFF_IN_SECONDS} / 86400 ))
-        SECONDS_FROM_MIDNIGHT_COUNT=$(( ${DIFF_IN_SECONDS} % 86400  ))
-        TIME_OF_DAY=$(date -u -d @"${DIFF_IN_SECONDS}" +"%T")
-        echo "${DAY_COUNT}d ${TIME_OF_DAY}"
+	LEFT_DATE_IN_SECONDS=$(date -d "${1}" +%s)
+	RIGHT_DATE_IN_SECONDS=$(date -d "${2}" +%s)
+	DIFF_IN_SECONDS=$(( ${RIGHT_DATE_IN_SECONDS} - ${LEFT_DATE_IN_SECONDS} ))
+	DAY_COUNT=$(( ${DIFF_IN_SECONDS} / 86400 ))
+	SECONDS_FROM_MIDNIGHT_COUNT=$(( ${DIFF_IN_SECONDS} % 86400  ))
+	TIME_OF_DAY=$(date -u -d @"${DIFF_IN_SECONDS}" +"%T")
+	echo "${DAY_COUNT}d ${TIME_OF_DAY}"
 }
 alias dates_diff=dates_diff
 
