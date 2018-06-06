@@ -1,4 +1,6 @@
 # TODOS
+- [ ] XF86 keys (Explorer, Mail, HomePage, WWW, Calculator, Music, Messenger etc.)
+- [ ] Some icons are missing in Faenza (try Artha for example, some icons are found in Awaita theme but not in Faenza). Maybe I could complete Faenza with Adwaita?
 - [ ] Add a caja script diff_each_other.
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
