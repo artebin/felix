@@ -7,12 +7,22 @@ exit_if_has_not_root_privileges
 install_customized_faenza(){
 	cd ${BASEDIR}
 	
+	echo "Installing custom Faenza icon theme ..."
+	
+	if [ -d /usr/share/icon/Faenza-njames ]; then
+		echo "Directory /usr/share/icon/Faenza-njames already exists!"
+		return 1
+	fi
+	
 	echo "Cloning Faenza from http://github.com/Kazhnuz/faenza-vanilla-icon-theme ..."
 	git clone http://github.com/Kazhnuz/faenza-vanilla-icon-theme
 	
 	echo "Fix status icons for dark theme ..."
 	rm -fr ./faenza-vanilla-icon-theme/Faenza/status
 	cp -R ./faenza-vanilla-icon-theme/Faenza-Dark/status ./faenza-vanilla-icon-theme/Faenza/status
+	
+	echo "Fix 'list-remove' icons ..."
+	cp -R ./Faenza-fixed/actions/* ./faenza-vanilla-icon-theme/Faenza/actions
 	
 	echo "Installing our customized Faenza ..."
 	sed -i "/^Name=/s/.*/Name=Faenza-njames/" ./faenza-vanilla-icon-theme/Faenza/index.theme
@@ -21,7 +31,7 @@ install_customized_faenza(){
 	mv ./faenza-vanilla-icon-theme/Faenza ./faenza-vanilla-icon-theme/Faenza-njames
 	cp -R ./faenza-vanilla-icon-theme/Faenza-njames /usr/share/icons
 	
-	echo "synaptic persists to use its 16x16 icon => dirty fix: replace the 16x16 by the 32x32 ..."
+	echo "Fix for Synaptic persists to use its 16x16 icon => dirty fix: link the 16x16 to the 32x32 icon ..."
 	cd /usr/share/icons/Faenza-njames/apps/16
 	backup_file rename ./synaptic.png
 	ln -s ../32/synaptic.png ./synaptic.png
