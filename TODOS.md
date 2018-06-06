@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Faenza 1.3.1
 - [ ] XF86 keys (Explorer, Mail, HomePage, WWW, Calculator, Music, Messenger etc.)
 - [ ] Some icons are missing in Faenza (try Artha for example, some icons are found in Awaita theme but not in Faenza). Maybe I could complete Faenza with Adwaita?
 - [ ] Add a caja script diff_each_other.
