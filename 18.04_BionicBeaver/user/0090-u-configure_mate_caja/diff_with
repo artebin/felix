@@ -17,11 +17,11 @@ fi
 DIFF_SOURCE_RIGHT=$(awk -F, '{print $1}' <<<${DIFF_SOURCE_RIGHT})
 DIFF_SOURCE_RIGHT=$(readlink -f "${DIFF_SOURCE_RIGHT}")
 if [ ! -e "${DIFF_SOURCE_LEFT}" ]; then
-	zenity --error --text="Can not find ${DIFF_SOURCE_LEFT}"
+	zenity --no-wrap --error --text="Can not find ${DIFF_SOURCE_LEFT}"
 	exit 1
 fi
 if [ ! -e "${DIFF_SOURCE_RIGHT}" ]; then
-	zenity --error --text="Can not find ${DIFF_SOURCE_RIGHT}"
+	zenity --no-wrap --error --text="Can not find ${DIFF_SOURCE_RIGHT}"
 	exit 1
 fi
 meld "${DIFF_SOURCE_LEFT}" "${DIFF_SOURCE_RIGHT}"
