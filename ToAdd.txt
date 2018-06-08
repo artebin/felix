@@ -1,0 +1,1 @@
+Application using GTK2: GVim, Thunar etc.
