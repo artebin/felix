@@ -1,1 +1,3 @@
 Application using GTK2: GVim, Thunar etc.
+Caja seems to have problems when we opened multiple terminal via ssh, we should avoid that
+It seems dmenu is not using the location of the mouse pointer to determine the current screem but rather using the location of the currently focused window.
