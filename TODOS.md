@@ -22,7 +22,7 @@
 - [x] Width of the error zenity popup window => use option `--no-wrap`
 - [x] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x' => use gtk inspector to find the missing icon. It can see the prorblem with obconf. See <http://linux-buddy.blogspot.com/2014/01/gtk-example-spinbutton.html>. See <https://github.com/GNOME/gtk/blob/master/demos/gtk-demo/spinbutton.c>. The problem is `list-remove.png` from Faenza. It could be fixed for all action icon by re-using/modifying the add icon.
 - [x] re-add backup alias in bashrc.
-- [x] Border for menus in GTK2 with Adwaita. See <http://www.techytalk.info/fix-clearlooks-gtk-2-theme-missing-menu-borders-on-java-applications/> and <https://azizsaboor.wordpress.com/2015/03/17/fixing-netbeans-menu-display-on-linux-missing-menu-borders-white-on-white-invisible-menu-items/>.
+- [x] Border for menus in GTK2 with Adwaita, it is quite important because we still have GTK2 application running: Thunar, GVim etc. See <http://www.techytalk.info/fix-clearlooks-gtk-2-theme-missing-menu-borders-on-java-applications/> and <https://azizsaboor.wordpress.com/2015/03/17/fixing-netbeans-menu-display-on-linux-missing-menu-borders-white-on-white-invisible-menu-items/>.
 - [x] Add geany shorcut for moving line up/down.
 - [x] Invert ctrl+k and ctrl+d? The shortcuts from Eclipse are quite well designed...
 - [x] Add some bash function for working with time durations (or use some bc functions).
