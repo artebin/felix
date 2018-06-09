@@ -23,7 +23,7 @@ configure_mate_caja(){
 	backup_file rename ~/.config/caja/scripts
 	fi
 	mkdir -p ~/.config/caja/scripts
-	cp ./diff_with ~/.config/caja/scripts
+	cp ./compare ~/.config/caja/scripts
 	cp ./tail_and_follow ~/.config/caja/scripts
 	cp ./tail_entirely_and_follow ~/.config/caja/scripts
 }
