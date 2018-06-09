@@ -24,10 +24,9 @@ install_customized_faenza(){
 	echo "Fix 'list-remove' icons ..."
 	cp -R ./Faenza-fixed/actions/* ./faenza-vanilla-icon-theme/Faenza/actions
 	
-	echo "Fix for Synaptic persists to use its 16x16 icon => dirty fix: replace the 16x16 by the 32x32 icon ..."
-	cd /usr/share/icons/Faenza-njames/apps/16
-	backup_file rename ./synaptic.png
-	cp ../32/synaptic.png ./synaptic.png
+	echo "Fix for Synaptic which persists to use its 16x16 icon => dirty fix: replace the 16x16 by the 32x32 icon ..."
+	backup_file rename ./faenza-vanilla-icon-theme/Faenza/apps/16/synaptic.png
+	cp ./faenza-vanilla-icon-theme/Faenza/apps/32/synaptic.png ./faenza-vanilla-icon-theme/Faenza/apps/16/synaptic.png
 	
 	echo "Installing our customized Faenza ..."
 	sed -i "/^Name=/s/.*/Name=Faenza-njames/" ./faenza-vanilla-icon-theme/Faenza/index.theme
