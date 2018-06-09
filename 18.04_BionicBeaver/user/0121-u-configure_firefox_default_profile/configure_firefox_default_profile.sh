@@ -71,6 +71,16 @@ configure_firefox_default_profile(){
 	else
 		echo "${LINE_REPLACEMENT_VALUE}" >> "${PREFS_JS_PATH}"
 	fi
+	
+	echo "Setting \"Do not show search engines in drop panel of the URL bar\" ..."
+	KEY="browser.urlbar.oneOffSearches"
+	PREFIX_TO_SEARCH="user_pref(\"browser.urlbar.oneOffSearches\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"browser.urlbar.oneOffSearches\", false);"
+	if grep -q "${KEY}" "${PREFS_JS_PATH}"; then
+		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${PREFS_JS_PATH}"
+	else
+		echo "${LINE_REPLACEMENT_VALUE}" >> "${PREFS_JS_PATH}"
+	fi
 }
 
 cd ${BASEDIR}
