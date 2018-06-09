@@ -1,8 +1,6 @@
 # TODOS
-- [ ] Look at the icon pack we could find on DeviantArt <https://www.google.com/search?q=linux+icon+theme+viewer&num=20&client=firefox-b-ab&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjLoYvjx8HbAhWCJMAKHd8CBhQQ_AUoAXoECAEQAw&biw=1280&bih=969#imgrc=_6DYBMWdUZayrM:>. Notably NouveGNOME sounds interesting.
-- [ ] Faenza 1.3.1
-- [ ] XF86 keys (Explorer, Mail, HomePage, WWW, Calculator, Music, Messenger etc.)
-- [ ] Some icons are missing in Faenza (try Artha for example, some icons are found in Awaita theme but not in Faenza). Maybe I could complete Faenza with Adwaita?
+- [ ] It seems config for geany is missing: side bar, message bar, toolbar only image.
+- [ ] XF86 keys (Explorer, Mail, HomePage, WWW, Calculator, Music, Messenger etc.).
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Clean Openbox rc.xml and add openbox rc.xml v3.4 original for comparison.
