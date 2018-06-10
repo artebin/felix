@@ -30,4 +30,13 @@ Can not make it work with 5GHz WiFi network (?)
 - logout and login with newly created user
 - delete pi user with `deluser -remove-home pi`
 
-## XRDP
+## Disable X.org
+-- disable
+-- enable
+
+## VNC server
+
+## Performance monitoring
+- `dstat` written on a remote location (NFS)
+
+## GPIO
