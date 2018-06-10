@@ -16,6 +16,10 @@ chown -R "${USER_NAME}":"${USER_NAME}" "/home/${USER_NAME}"
 # Register the VM for user
 runuser -l "${USER_NAME}" -c "VBoxManage registervm /home/${USER_NAME}/VMs/${VM_NAME}/${VM_NAME}.vbox"
 
+# Non existing NIC => update of the network configuration may be needed
+- edit ${VM_NAME}.vbox
+- search for the nonexisting NIC and replace it by the proper one
+
 # Add systemd service and enable it
 cp "./${VM_SERVICE_FILE_NAME}" "/etc/systemd/system/${VM_SERVICE_FILE_NAME}"
 systemctl daemon-reload
