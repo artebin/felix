@@ -140,11 +140,15 @@ I would like to be able to show a modal dialog, gray out the display and grab al
 - <https://www.linux.com/news/take-charge-your-window-manager-wmctrl-and-devils-pie>
 
 ## .d files
-- /etc/apt/sources.list.d/
-- /etc/ld.so.conf.d/
-- /etc/profile.d/
+- /etc/apt/sources.list.d
+- /etc/ld.so.conf.d
+- /etc/profile.d
 - /usr/share/X11/xorg.conf.d
 - /etc/lightdm/lightdm.conf.d
+- /etc/logrotate.d
+
+## Change window title or add window decorator
+- The tab principle from Fluxbox would be interesting for attaching a name to a window (given by the user, choosen by the user). The idea of grouping by tabs does not interest me and I do not see an interest in that, but the decoration and the ability to give a name to a window would be interesting (as far as I know we can not set the tab title in Fluxbox). However this is an interesting reading about why no tabs in openbox <http://icculus.org/pipermail/openbox/2003-April/000491.html>.
 
 ## Screenshot utility with edition capabilities, screenshot annotation
 - shutter: total bloatware and the tray icon is very much irritating.
