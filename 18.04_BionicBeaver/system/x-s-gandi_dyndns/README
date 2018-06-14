@@ -8,7 +8,7 @@ chmod 600 ./gandi-dyndns/config.json
 
 # Add a cron task 
 sudo crontab -l > sucron
-sudo echo "*/5 * * * * /opt/gandi-dyndns/gandi_dyndns.py --config /opt/gandi-dyndns/config.json >>/var/log/gandi-dns/gandi-dns.log 2>&1" >> sucron
+sudo echo "*/5 * * * * cd /opt/gandi-dyndns;./gandi_dyndns.py --config ./config.json >>/var/log/gandi-dyndns/gandi-dyndns.log 2>&1" >> sucron
 sudo crontab sucron
 sudo rm sucron
 

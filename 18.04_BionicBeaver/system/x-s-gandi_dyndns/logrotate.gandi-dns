@@ -1,0 +1,7 @@
+/var/log/gandi-dns/gandi-dns.log {
+	rotate 12
+	monthly
+	compress
+	missingok
+	notifempty
+}
