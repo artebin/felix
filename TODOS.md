@@ -1,4 +1,5 @@
 # TODOS
+- [ ] After some time of inactivity the displays are closed even if VLC is runnning fullscreen.
 - [ ] It seems config for geany is missing: side bar, message bar, toolbar only image.
 - [ ] XF86 keys (Explorer, Mail, HomePage, WWW, Calculator, Music, Messenger etc.).
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.

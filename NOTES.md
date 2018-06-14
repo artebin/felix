@@ -11,8 +11,8 @@ We can `export DISPLAY=:0.0` for running xrandr from SSH.
 
 Second thing to do is the setup of the monitors, there are several ways to do it: 
 - X.org configuration (in `/usr/share/X11/xorg.conf.d`)
-- LightDM configuration and xrandr
-- window manager autostart an xrandr 
+- LightDM configuration and xrandr (in `/etc/lightdm/lightdm.conf.d`)
+- window manager autostart and xrandr
 
 Lightdm configuration: create `/etc/lightdm/lightdm.conf.d/10-setup_displays.conf`
 ```
