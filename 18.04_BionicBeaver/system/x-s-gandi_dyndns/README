@@ -1,4 +1,4 @@
-# Copy the archive in /opt and unpack it
+# Copy gandi-dns in /opt and unpack it
 sudo cp ./gandi-dyndns.tar.gz /opt
 cd /opt
 sudo tar xzf ./gandi-dyndns.at.gz
@@ -8,6 +8,10 @@ chmod 600 ./gandi-dyndns/config.json
 
 # Add a cron task 
 sudo crontab -l > sucron
-sudo echo "*/5 * * * * /opt/gandi-dyndns/gandi_dyndns.py --config /opt/gandi-dyndns/config.json" >> sucron
+sudo echo "*/5 * * * * /opt/gandi-dyndns/gandi_dyndns.py --config /opt/gandi-dyndns/config.json >>/var/log/gandi-dns/gandi-dns.log 2>&1" >> sucron
 sudo crontab sucron
 sudo rm sucron
+
+# Logging
+mkdir /var/log/gandi-dns
+cp ./logrotate.gandi-dns /etc/logrotate.d/gandi-dns
