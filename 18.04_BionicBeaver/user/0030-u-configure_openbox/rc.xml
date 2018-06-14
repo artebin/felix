@@ -340,6 +340,15 @@
 		</keybind>
 		
 		<!-- Keybindings for running applications -->
+		<keybind key="C-A-q">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>false</enabled>
+					<name>xkill</name>
+				</startupnotify>
+				<command>xkill</command>
+			</action>
+		</keybind>
 		<keybind key="XF86PowerOff">
 			<action name="Execute">
 				<startupnotify>
