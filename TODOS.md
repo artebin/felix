@@ -1,20 +1,18 @@
 # TODOS
+- [ ] Work with `/etc/mime.types` for setting all text with Geany, all audio/video with VLC.
+- [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are not opened with web browsers by default.
 - [ ] It seems config for geany is missing: side bar, message bar, toolbar only image.
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
-- [ ] Clean Openbox rc.xml and add openbox rc.xml v3.4 original for comparison.
 - [ ] Add shortcuts from openbox in shortcuts.md
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
 - [ ] Read <https://wiki.archlinux.org/index.php/File_manager_functionality>
-- [ ] reboot/shutdown can still be waiting for the nfs mount point to be unmounted.
-- [ ] Work with `/etc/mime.types` for setting all text with Geany, all audio/video with VLC.
-- [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are not opened with web browsers by default.
 - [ ] Check the configuration of DokuWiki (entities etc.)
-- [ ] Begin a dictionary/ontology for software UI (include "system tray", "notification tray", "scrollbar overlay" etc. ).
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 
 # DONE
+- [x] Clean Openbox rc.xml and add openbox rc.xml v3.4 original for comparison.
 - [x] XF86 keys (Explorer, Mail, WWW, Music, Messenger etc.). See <http://wiki.linuxquestions.org/wiki/XF86_keyboard_symbols>.
 - [x] After some time of inactivity the displays are closed even if VLC is runnning fullscreen => can not replicate it.
 - [x] Add a caja script compare which allow 1 or 2 arguments.

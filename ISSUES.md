@@ -5,3 +5,4 @@
 - Caja: copying files is very slow compared to the command line (local or remote).
 - dmenu: for selecting on which monitor to appear, dmenu seems to use the monitor on which the currently focused window is located. It should use the mouse pointer location.
 - Geany: markdown plugin is not properly using the css specified (colors are not used and lines starting with the character `#` inside a blockcode are treated as a heading).
+- reboot/shutdown can still be waiting for the nfs mount points to be unmounted.

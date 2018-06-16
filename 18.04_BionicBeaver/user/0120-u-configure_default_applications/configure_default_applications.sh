@@ -23,6 +23,16 @@ configure_default_applications(){
 	cp /usr/share/applications/vim.desktop ~/.local/share/applications
 	sed -i.bak "s/MimeType=.*/MimeType=/g" ~/.local/share/applications/vim.desktop
 	
+	echo "Removing MIME types image/* declared by Firefox, Chromium and Google Chrome ... "
+	cp /usr/share/applications/firefox.desktop ~/.local/share/applications
+	cp /usr/share/applications/chromium-browser.desktop ~/.local/share/applications
+	cp /usr/share/applications/google-chrome.desktop ~/.local/share/applications
+	SED_PATTERN=";image/[^;]*;"
+	ESCAPED_SED_PATTERN=$(escape_sed_pattern "${SED_PATTERN}")
+	sed -i.bak "s/${ESCAPED_SED_PATTERN}/;/g" ~/.local/share/applications/firefox.desktop
+	sed -i.bak "s/${ESCAPED_SED_PATTERN}/;/g" ~/.local/share/applications/chromium-browser.desktop
+	sed -i.bak "s/${ESCAPED_SED_PATTERN}/;/g" ~/.local/share/applications/google-chrome.desktop
+	
 	echo "Configuring thunderbird as default mail client ..."
 	xdg-mime default thunderbird.desktop x-scheme-handler/mailto
 }
