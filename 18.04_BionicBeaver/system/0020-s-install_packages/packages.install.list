@@ -198,6 +198,7 @@ libreoffice
 # Data manipulation
 #####################
 csvkit csvkit-doc
+xmlstarlet
 gnuplot plotdrop
 
 #######
