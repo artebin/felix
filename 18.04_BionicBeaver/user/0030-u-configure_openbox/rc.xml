@@ -339,6 +339,17 @@
 			</action>
 		</keybind>
 		
+		<!-- Keybindings for XFree86 keyboard symbols -->
+		<keybind key="XF86PowerOff">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>false</enabled>
+					<name>power_button_pressed.py</name>
+				</startupnotify>
+				<command>python ~/.config/openbox/power_button_pressed.py</command>
+			</action>
+		</keybind>
+		
 		<!-- Keybindings for running applications -->
 		<keybind key="C-A-q">
 			<action name="Execute">
@@ -347,15 +358,6 @@
 					<name>xkill</name>
 				</startupnotify>
 				<command>xkill</command>
-			</action>
-		</keybind>
-		<keybind key="XF86PowerOff">
-			<action name="Execute">
-				<startupnotify>
-					<enabled>false</enabled>
-					<name>power_button_pressed.py</name>
-				</startupnotify>
-				<command>python ~/.config/openbox/power_button_pressed.py</command>
 			</action>
 		</keybind>
 		<keybind key="W-r">

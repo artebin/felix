@@ -1,7 +1,6 @@
 # TODOS
-- [ ] After some time of inactivity the displays are closed even if VLC is runnning fullscreen.
 - [ ] It seems config for geany is missing: side bar, message bar, toolbar only image.
-- [ ] XF86 keys (Explorer, Mail, HomePage, WWW, Calculator, Music, Messenger etc.).
+- [ ] XF86 keys (Explorer, Mail, HomePage, WWW, Calculator, Music, Messenger etc.). See <http://wiki.linuxquestions.org/wiki/XF86_keyboard_symbols>.
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Clean Openbox rc.xml and add openbox rc.xml v3.4 original for comparison.
@@ -17,6 +16,7 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 
 # DONE
+- [x] After some time of inactivity the displays are closed even if VLC is runnning fullscreen => can not replicate it.
 - [x] Add a caja script compare which allow 1 or 2 arguments.
 - [x] Width of the error zenity popup window => use option `--no-wrap`
 - [x] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x' => use gtk inspector to find the missing icon. It can see the prorblem with obconf. See <http://linux-buddy.blogspot.com/2014/01/gtk-example-spinbutton.html>. See <https://github.com/GNOME/gtk/blob/master/demos/gtk-demo/spinbutton.c>. The problem is `list-remove.png` from Faenza. It could be fixed for all action icon by re-using/modifying the add icon.
