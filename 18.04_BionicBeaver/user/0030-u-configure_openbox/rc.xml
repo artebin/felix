@@ -287,11 +287,6 @@
 				<command>scrot -s</command>
 			</action>
 		</keybind>
-		<keybind key="Print">
-			<action name="Execute">
-				<command>xfce4-screenshooter</command>
-			</action>
-		</keybind>
 		<!-- Keybindings for window switching -->
 		<keybind key="A-Tab">
 			<action name="NextWindow">
@@ -356,6 +351,12 @@
 					<name>Text Editor</name>
 				</startupnotify>
 				<command>geany_one_instance_per_workspace</command>
+			</action>
+		</keybind>
+		<!-- Launch xfce4-screenshooter when Print is pressed -->
+		<keybind key="Print">
+			<action name="Execute">
+				<command>xfce4-screenshooter</command>
 			</action>
 		</keybind>
 		<keybind key="C-A-q">
