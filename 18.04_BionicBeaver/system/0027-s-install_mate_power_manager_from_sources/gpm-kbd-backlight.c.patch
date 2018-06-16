@@ -1,0 +1,13 @@
+diff --git a/src/gpm-kbd-backlight.c b/src/gpm-kbd-backlight.c
+index ec353e0..d21fea1 100644
+--- a/src/gpm-kbd-backlight.c
++++ b/src/gpm-kbd-backlight.c
+@@ -800,7 +800,7 @@ noerr:
+              G_CALLBACK (gpm_kbd_backlight_control_resume_cb), backlight);
+ 
+    /* set initial values for whether we're on AC or battery*/
+-   gpm_kbd_backlight_evaluate_power_source_and_set (backlight);
++   //gpm_kbd_backlight_evaluate_power_source_and_set (backlight);
+ }
+ 
+ /**
