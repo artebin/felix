@@ -9,7 +9,7 @@ configure_touchpad_synaptics(){
 	echo "Configuring touchpad synaptics ..."
 	
 	echo "Setting sensitivity ..."
-	echo "synclient FingerLow=110 FingerHigh=120 &"  >> ~/.config/openbox/autostart
+	echo "\nsynclient FingerLow=110 FingerHigh=120 &\n"  >> ~/.config/openbox/autostart
 }
 
 cd ${BASEDIR}
