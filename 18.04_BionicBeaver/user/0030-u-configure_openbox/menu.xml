@@ -56,6 +56,7 @@
 			<item label="PDF Viewer (Atril)"><action name="Execute"><command>atril</command></action></item>
 			<item label="Google Drive"><action name="Execute"><command>x-www-browser https://drive.google.com/</command></action></item>
 		</menu>
+		<item label="Printers"><action name="Execute"><command>system-config-printer</command></action></item>
 		<separator/>
 		<menu id="settings" label="Settings">
 			<menu id="OpenboxConfig" label="Openbox">
@@ -70,10 +71,8 @@
 			</menu>
 			<menu id="Tint2Config" label="tint2">
 				<item label="Edit config file"><action name="Execute"><command>geany_one_instance_per_workspace ~/.config/tint2/tint2rc</command></action></item>
+				<separator/>
 				<item label="Restart tint2"><action name="Execute"><command>bash ~/.config/openbox/tint2_restart.sh</command></action></item>
-				<separator label="Help?"/>
-				<item label="man page"><action name="Execute"><command>termite --exec="man tint2"</command></action></item>
-				<item label="Online Help"><action name="Execute"><command>x-www-browser http://code.google.com/p/tint2/wiki/Welcome</command></action></item>
 			</menu>
 			<item label="User Interface Settings"><action name="Execute"><command>lxappearance</command></action></item>
 			<separator/>
@@ -81,19 +80,21 @@
 			<item label="Mouse Settings"><action name="Execute"><command>xfce4-mouse-settings</command></action></item>
 			<item label="Keyboard Settings"><action name="Execute"><command>xfce4-keyboard-settings</command></action></item>
 			<separator/>
-			<item label="Edit Default Applications"><action name="Execute"><command>termite --exec="sudo update-alternatives --all"</command></action></item>
-			<item label="GAlternatives"><action name="Execute"><command>pkexec galternatives</command></action></item>
-			<item label="MIME Type Editor"><action name="Execute"><command>xfce4-mime-settings</command></action></item>
+			<item label="Update Alternatives"><action name="Execute"><command>termite --exec="sudo update-alternatives --all"</command></action></item>
+			<item label="Update Alternatives GUI"><action name="Execute"><command>pkexec galternatives</command></action></item>
+			<item label="MIME Settings"><action name="Execute"><command>xfce4-mime-settings</command></action></item>
 			<separator/>
 			<item label="Power Management Preferences"><action name="Execute"><command>mate-power-preferences</command></action></item>
 			<item label="Power Statistics"><action name="Execute"><command>mate-power-statistics</command></action></item>
 		</menu>
 		<menu id="system" label="System">
-			<item label="Configure Printers"><action name="Execute"><command>system-config-printer</command></action></item>
-			<item label="GParted"><action name="Execute"><command>pkexec gparted</command></action></item>
+			<menu id="SystemTools" label="Tools">
+				<item label="GParted"><action name="Execute"><command>pkexec gparted</command></action></item>
+			</menu>
+			<item label="User Login Settings"><action name="Execute"><command>pkexec lightdm-gtk-greeter-settings</command></action></item>
+			<separator/>
 			<item label="Software &amp; Updates"><action name="Execute"><command>software-properties-gtk</command></action></item>
 			<item label="Synaptic Package Manager"><action name="Execute"><command>pkexec synaptic</command></action></item>
-			<item label="User Login Settings"><action name="Execute"><command>pkexec lightdm-gtk-greeter-settings</command></action></item>
 		</menu>
 		<separator/>
 		<item label="Lock Session"><action name="Execute"><execute>dm-tool lock</execute></action></item>
