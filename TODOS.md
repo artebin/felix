@@ -1,5 +1,4 @@
 # TODOS
-- [ ] The fix for the menu border adwaita gtk2 seems to not work anymore.
 - [ ] Work with `/etc/mime.types` for setting all text with Geany, all audio/video with VLC.
 - [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are not opened with web browsers by default.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
@@ -21,6 +20,7 @@
 - mtrack do not seems to work with Ubuntu18.04.
 
 # DONE
+- [x] The fix for the menu border adwaita gtk2 seems to not work anymore.
 - [x] mate-power-manager always set to 100pc the keyboard backlight when it starts => did not find the problem, made a quickfix.
 - [x] It seems config for geany is missing: side bar, message bar, toolbar only image.
 - [x] Clean Openbox rc.xml and add openbox rc.xml v3.4 original for comparison.
