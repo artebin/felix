@@ -24,8 +24,7 @@ I have problems with resolution 1360x768 but maybe because of my TV device: some
 It happens only the first time I switch to this resolution, if I set 1920x1080 and then go back to 1360x768 then it is properly displayed. No problem with other resolutions.
 I can fix the problem by setup the monitors via lightdm configuration (with a resolution like 1280x720 - not 1360x768), and then use a second xrandr command executed via openbox autostart which will set wanted the resolution.
 
-## Remote desktop
-
+## Remote desktops
 After some testings: the best is to use vnc4erver (or TigerVNC).
 
 ### x11vnc
@@ -104,6 +103,10 @@ deb [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic main restricted univers
 - set the default application: `xdg-mime default <desktop file> <mime type>`
 - test: `xdg-mime query default <mime type>`
 - the MIME database is stored in `~/.local/share/applications/mimeapps.list`
+
+I still do not understand how the MIME is supposed to work with the file managers. First I do not understand how the suggested application are order by the file manager.
+Another example: I have an image in `~/Download`, if select the file and click right then it is offered to me to open the file with shotwell.
+If I delete the image and then if I go to the Trash folder, select the file and click right, suddently firefox is offered for opening the file.
 
 ## Xubuntu 18.04
 - obmenu is not working:
