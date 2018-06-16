@@ -1,6 +1,6 @@
 # TODOS
 - [ ] It seems config for geany is missing: side bar, message bar, toolbar only image.
-- [ ] XF86 keys (Explorer, Mail, HomePage, WWW, Calculator, Music, Messenger etc.). See <http://wiki.linuxquestions.org/wiki/XF86_keyboard_symbols>.
+- [ ] XF86 keys (Explorer, Mail, WWW, Music, Messenger etc.). See <http://wiki.linuxquestions.org/wiki/XF86_keyboard_symbols>.
 - [ ] Fix mtrack for Macbook with Ubuntu18.04.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Clean Openbox rc.xml and add openbox rc.xml v3.4 original for comparison.
