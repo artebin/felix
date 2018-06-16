@@ -1,5 +1,5 @@
---- adwaita_3.28_gtk2_main.rc	2018-06-05 22:01:46.115901752 +0200
-+++ main.rc	2018-06-05 22:08:36.451636991 +0200
+--- main.rc.orig	2018-06-16 21:03:29.472470596 +0200
++++ main.rc	2018-06-16 21:04:28.176199402 +0200
 @@ -84,7 +84,7 @@
    # ( every window is misaligned for the sake of menus ):
    GtkMenuBar::internal-padding = 0
@@ -9,24 +9,23 @@
    GtkMenu::double-arrows       = 0
    GtkMenuItem::arrow-scaling   = 1
    GtkMenuItem::toggle-spacing  = 10
-@@ -1522,14 +1522,12 @@
+@@ -1522,15 +1522,12 @@
  }
  
  style "menu" {
 -
--  xthickness = 0
--  ythickness = 0
+   xthickness = 0
+   ythickness = 0
 -
 -  bg[NORMAL]      = @menu_color
 -  bg[INSENSITIVE] = @menu_color
 -  bg[PRELIGHT]    = @menu_color
 -  bg[SELECTED]    = @selected_bg_color
-+	xthickness = 0
-+	ythickness = 0
-+	bg[NORMAL] = shade (1.08, @bg_color)
-+	engine "adwaita" {
-+		radius = 0.0
-+	}
+-
++  bg[NORMAL] = shade (1.08, @bg_color)
++  engine "adwaita" {
++  	radius = 0.0
++  }
  }
  
  style "menu_item" {
