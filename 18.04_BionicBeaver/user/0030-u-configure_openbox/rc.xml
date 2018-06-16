@@ -441,6 +441,15 @@
 			</action>
 		</keybind>
 		<!-- Keybindings for running applications -->
+		<keybind key="W-e">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>true</enabled>
+					<name>Text Editor</name>
+				</startupnotify>
+				<command>geany_one_instance_per_workspace</command>
+			</action>
+		</keybind>
 		<keybind key="C-A-q">
 			<action name="Execute">
 				<startupnotify>
@@ -511,15 +520,6 @@
 					<name>x-www-browser</name>
 				</startupnotify>
 				<command>x-www-browser</command>
-			</action>
-		</keybind>
-		<keybind key="W-e">
-			<action name="Execute">
-				<startupnotify>
-					<enabled>true</enabled>
-					<name>Text Editor</name>
-				</startupnotify>
-				<command>geany_one_instance_per_workspace</command>
 			</action>
 		</keybind>
 		<keybind key="W-m">
