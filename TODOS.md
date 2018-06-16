@@ -1,8 +1,7 @@
 # TODOS
+- [ ] The fix for the menu border adwaita gtk2 seems to not work anymore.
 - [ ] Work with `/etc/mime.types` for setting all text with Geany, all audio/video with VLC.
 - [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are not opened with web browsers by default.
-- [ ] It seems config for geany is missing: side bar, message bar, toolbar only image.
-- [ ] Fix mtrack for Macbook with Ubuntu18.04.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Add shortcuts from openbox in shortcuts.md
 - [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
@@ -11,7 +10,19 @@
 - [ ] Check the configuration of DokuWiki (entities etc.)
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 
+# ISSUES
+- AllTray: when using `alltray -a` and if the user types ESC then the window popup is still showed but there is nothing we can do with it except closing it.
+- Alltray: when uniconifying a window, the current virtual workspace changes for being the one of the window at time of the iconify.
+- Caja: the side panel is not working correctly (and the rendering for painting the focuses/unfocused panel is a little ugly).
+- Caja: copying files is very slow compared to the command line (local or remote).
+- dmenu: dmenu appears on the monitor on which the currently focused window is located. It should use the mouse pointer location to determine the monitor.
+- Geany: markdown plugin is not properly using the css specified (colors are not used and lines starting with the character `#` inside a blockcode are treated as a heading).
+- reboot/shutdown can still be waiting for the nfs mount points to be unmounted.
+- mtrack do not seems to work with Ubuntu18.04.
+
 # DONE
+- [x] mate-power-manager always set to 100pc the keyboard backlight when it starts => did not find the problem, made a quickfix.
+- [x] It seems config for geany is missing: side bar, message bar, toolbar only image.
 - [x] Clean Openbox rc.xml and add openbox rc.xml v3.4 original for comparison.
 - [x] XF86 keys (Explorer, Mail, WWW, Music, Messenger etc.). See <http://wiki.linuxquestions.org/wiki/XF86_keyboard_symbols>.
 - [x] After some time of inactivity the displays are closed even if VLC is runnning fullscreen => can not replicate it.
