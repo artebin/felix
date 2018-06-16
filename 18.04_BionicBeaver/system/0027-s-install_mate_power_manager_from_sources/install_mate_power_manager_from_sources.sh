@@ -22,7 +22,21 @@ install_mate_power_manager_from_sources(){
 					   mate-common
 	
 	git clone https://github.com/mate-desktop/mate-power-manager
-	cd ./mate-power-manager
+	
+	# There is a problem when resuming the keyboard backlight:
+	# when mate-power-manager starts, the backlight is always set to 100pc.
+	# Frankly I do not care at all about resuming the keyboard backlight, 
+	# actually I even find this a kind of weird ... Maybe a configuration
+	# property should be available to disable the resume of the keyboard
+	# backlight.
+	# 
+	# Dirty fix: the patch applied below will comment the line of code 
+	# resuming the keyboard backlight.
+	cp ./gpm-kbd-backlight.c.patch ./mate-power-manager/src
+	cd ./mate-power-manager/src
+	patch <gpm-kbd-backlight.c.patch
+	
+	cd ..
 	./autogen.sh
 	make
 	make install
