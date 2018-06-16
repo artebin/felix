@@ -58,9 +58,6 @@
 		</menu>
 		<separator/>
 		<menu id="settings" label="Settings">
-			<item label="Screen Layout (arandr)"><action name="Execute"><command>arandr</command></action></item>
-			<item label="Mouse Settings"><action name="Execute"><command>xfce4-mouse-settings</command></action></item>
-			<item label="Keyboard Settings"><action name="Execute"><command>xfce4-keyboard-settings</command></action></item>
 			<menu id="OpenboxConfig" label="Openbox">
 				<item label="GUI Config Tool"><action name="Execute"><command>obconf</command></action></item>
 				<separator/>
@@ -79,14 +76,21 @@
 				<item label="Online Help"><action name="Execute"><command>x-www-browser http://code.google.com/p/tint2/wiki/Welcome</command></action></item>
 			</menu>
 			<item label="User Interface Settings"><action name="Execute"><command>lxappearance</command></action></item>
+			<separator/>
+			<item label="Screen Layout (arandr)"><action name="Execute"><command>arandr</command></action></item>
+			<item label="Mouse Settings"><action name="Execute"><command>xfce4-mouse-settings</command></action></item>
+			<item label="Keyboard Settings"><action name="Execute"><command>xfce4-keyboard-settings</command></action></item>
+			<separator/>
 			<item label="Edit Default Applications"><action name="Execute"><command>termite --exec="sudo update-alternatives --all"</command></action></item>
+			<item label="GAlternatives"><action name="Execute"><command>pkexec galternatives</command></action></item>
 			<item label="MIME Type Editor"><action name="Execute"><command>xfce4-mime-settings</command></action></item>
-			<item label="Power Management"><action name="Execute"><command>xfce4-power-manager-settings</command></action></item>
+			<separator/>
+			<item label="Power Management Preferences"><action name="Execute"><command>mate-power-preferences</command></action></item>
+			<item label="Power Statistics"><action name="Execute"><command>mate-power-statistics</command></action></item>
 		</menu>
 		<menu id="system" label="System">
 			<item label="Configure Printers"><action name="Execute"><command>system-config-printer</command></action></item>
 			<item label="GParted"><action name="Execute"><command>pkexec gparted</command></action></item>
-			<item label="GAlternatives"><action name="Execute"><command>pkexec galternatives</command></action></item>
 			<item label="Software &amp; Updates"><action name="Execute"><command>software-properties-gtk</command></action></item>
 			<item label="Synaptic Package Manager"><action name="Execute"><command>pkexec synaptic</command></action></item>
 			<item label="User Login Settings"><action name="Execute"><command>pkexec lightdm-gtk-greeter-settings</command></action></item>
