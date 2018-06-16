@@ -340,11 +340,93 @@
 		</keybind>
 		
 		<!-- Keybindings for XFree86 keyboard symbols -->
+		<keybind key="XF86Search">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>false</enabled>
+					<name>XF86Search</name>
+				</startupnotify>
+				<command>caja --no-desktop</command>
+			</action>
+		</keybind>
+		<keybind key="XF86HomePage">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>true</enabled>
+					<name>XF86HomePage</name>
+				</startupnotify>
+				<command>bash -c 'caja --no-desktop "${HOME}"'</command>
+			</action>
+		</keybind>
+		<keybind key="XF86Explorer">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>true</enabled>
+					<name>XF86Explorer</name>
+				</startupnotify>
+				<command>caja --no-desktop</command>
+			</action>
+		</keybind>
+		<keybind key="XF86Mail">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>true</enabled>
+					<name>XF86Mail</name>
+				</startupnotify>
+				<command>thunderbird</command>
+			</action>
+		</keybind>
+		<keybind key="XF86Messenger">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>true</enabled>
+					<name>XF86Messenger</name>
+				</startupnotify>
+				<command>empathy</command>
+			</action>
+		</keybind>
+		<keybind key="XF86Music">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>true</enabled>
+					<name>XF86Music</name>
+				</startupnotify>
+				<command>vlc</command>
+			</action>
+		</keybind>
+		<!-- Fix for Rii i8 for which the XF86Tools symbol is sent for the Media Player key -->
+		<keybind key="XF86Tools">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>true</enabled>
+					<name>XF86Tools</name>
+				</startupnotify>
+				<command>vlc</command>
+			</action>
+		</keybind>
+		<keybind key="XF86Terminal">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>true</enabled>
+					<name>XF86Terminal</name>
+				</startupnotify>
+				<command>x-terminal-emulator</command>
+			</action>
+		</keybind>
+		<keybind key="XF86WWW">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>true</enabled>
+					<name>XF86WWW</name>
+				</startupnotify>
+				<command>x-www-browser</command>
+			</action>
+		</keybind>
 		<keybind key="XF86PowerOff">
 			<action name="Execute">
 				<startupnotify>
 					<enabled>false</enabled>
-					<name>power_button_pressed.py</name>
+					<name>XF86PowerOff</name>
 				</startupnotify>
 				<command>python ~/.config/openbox/power_button_pressed.py</command>
 			</action>
