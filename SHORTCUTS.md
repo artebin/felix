@@ -2,9 +2,9 @@
 
 | Shorcut | Action |
 | --- | --- |
-| `<Win>1`						| Iconify currently focused window |	
+| `<Win>1`						| Toggle currently focused window always on top |
 | `<Win>2`						| Toggle fullscreen on currently focused window |
-| `<Win>3`						| Toggle currently focused window always on top |
+| `<Win>3`						| Iconify currently focused window |	
 | `<Alt><F4>`					| Close currently focused window |
 | `<Alt><Esc>`					| Lower and unfocus |
 
@@ -21,14 +21,13 @@
 
 | Shortcut | Action |
 | --- | --- |
-| `<F3>`						| Show/hide extra pane |
 | `<Ctrl>l`						| Show editable location text field |
 
 # Geany
 
 | Shortcut | Action |
 | --- | --- |
-| `<F3>`						| Switch search bar |
+| `<F3>`						| Go to search bar |
 | `<F5>`						| Switch scribble |
 | `<F6>`						| Toggle sidebar |
 | `<F7>`						| Toggle message window |
@@ -39,8 +38,7 @@
 | `<Alt><PgDn>`					| Move line down |
 | `<Ctrl>d`						| Delete line |
 | `<Ctrl>k`						| Duplicate line |
-| `<Ctrl><Mouse drag>`			| Column mode edition |
-| `<Ctrl><shift><Mouse drag>`	| Column mode edition |
+| `<Ctrl><Mouse drag>`			| Column mode edition (can be combine with a <Shift>) |
 
 # Thunderbird
 
@@ -49,7 +47,7 @@
 | `<Ctrl><Shift>f`				| Search messages |
 | `*`							| Expand all conversations in the current view |
 
-# Eclipse
+# Eclipse (shortcuts we may not already know ... )
 
 | Shortcut | Action |
 | --- | --- |

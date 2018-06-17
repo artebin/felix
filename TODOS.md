@@ -13,7 +13,7 @@
 - dmenu: dmenu appears on the monitor on which the currently focused window is located. It should use the mouse pointer location to determine the monitor.
 - Geany: markdown plugin is not properly using the css specified (colors are not used and lines starting with the character `#` inside a blockcode are treated as a heading).
 - reboot/shutdown can still be waiting for the nfs mount points to be unmounted.
-- mtrack do not seems to work with Ubuntu18.04.
+- mtrack does not seem to work with Ubuntu18.04.
 
 # DONE
 - [x] Read <https://wiki.archlinux.org/index.php/File_manager_functionality>
