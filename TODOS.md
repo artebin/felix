@@ -1,11 +1,7 @@
 # TODOS
-- [ ] Work with `/etc/mime.types` for setting all text with Geany, all audio/video with VLC.
-- [ ] Set MIME types using ~/.local/share/mime and `update-mime-database ~/.local/share/mime`, check XML files are not opened with web browsers by default.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
-- [ ] Add shortcuts from openbox in shortcuts.md
-- [ ] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
-- [ ] Read <https://wiki.archlinux.org/index.php/File_manager_functionality>
+- [ ] Add shortcuts from openbox in shortcuts.md
 - [ ] Check the configuration of DokuWiki (entities etc.)
 - [ ] Add a note for the static route for accessing trevize.net from the local network
 
@@ -20,6 +16,10 @@
 - mtrack do not seems to work with Ubuntu18.04.
 
 # DONE
+- [x] Read <https://wiki.archlinux.org/index.php/File_manager_functionality>
+- [x] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
+- [x] Work with `/etc/mime.types` for setting all text with Geany, all audio/video with VLC.
+- [x] Set MIME types using ~/.config/mimeapps.list.
 - [x] The fix for the menu border adwaita gtk2 seems to not work anymore.
 - [x] mate-power-manager always set to 100pc the keyboard backlight when it starts => did not find the problem, made a quickfix.
 - [x] It seems config for geany is missing: side bar, message bar, toolbar only image.
