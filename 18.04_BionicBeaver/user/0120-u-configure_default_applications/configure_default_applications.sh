@@ -6,35 +6,64 @@ check_shell
 configure_default_applications(){
 	cd ${BASEDIR}
 	
-	# Note: the .desktop can be found in /usr/share/applications
+	backup_file rename ~/.config/mimeapps.list
 	
 	echo "Configuring mate-caja as default file browser ..."
 	mkdir -p ~/.local/share/applications
 	cp ./caja.desktop ~/.local/share/applications/caja.desktop
 	xdg-mime default caja.desktop inode/directory
 	
-	echo "Removing some MIME types declared by LibreOffice which is quite aggressive on this regard ... "
-	cp /usr/share/applications/libreoffice-*.desktop ~/.local/share/applications
-	SED_PATTERN=";text/plain;"
-	ESCAPED_SED_PATTERN=$(escape_sed_pattern "${SED_PATTERN}")
-	sed -i.bak "s/${ESCAPED_SED_PATTERN}/;/g" ~/.local/share/applications/libreoffice-writer.desktop
-	
-	echo "Removing all MIME types declared by Vim ..."
-	cp /usr/share/applications/vim.desktop ~/.local/share/applications
-	sed -i.bak "s/MimeType=.*/MimeType=/g" ~/.local/share/applications/vim.desktop
-	
-	echo "Removing MIME types image/* declared by Firefox, Chromium and Google Chrome ... "
-	cp /usr/share/applications/firefox.desktop ~/.local/share/applications
-	cp /usr/share/applications/chromium-browser.desktop ~/.local/share/applications
-	cp /usr/share/applications/google-chrome.desktop ~/.local/share/applications
-	SED_PATTERN=";image/[^;]*;"
-	ESCAPED_SED_PATTERN=$(escape_sed_pattern "${SED_PATTERN}")
-	sed -i.bak "s/${ESCAPED_SED_PATTERN}/;/g" ~/.local/share/applications/firefox.desktop
-	sed -i.bak "s/${ESCAPED_SED_PATTERN}/;/g" ~/.local/share/applications/chromium-browser.desktop
-	sed -i.bak "s/${ESCAPED_SED_PATTERN}/;/g" ~/.local/share/applications/google-chrome.desktop
-	
 	echo "Configuring thunderbird as default mail client ..."
 	xdg-mime default thunderbird.desktop x-scheme-handler/mailto
+	
+	# MIME types are defined in /etc/mime.types
+	# Set default applications per MIME types:
+	#	text/*			Geany
+	#	image/* 		Eye Of MATE
+	#	audio/*			VLC
+	#	video/*			VLC
+	
+	rm -f ./mimeapps.list
+	
+	while read LINE ; do
+		if [[ ${LINE} =~ ^text/ ]]; then
+			MIME_TYPE=$(echo "${LINE}"|awk -F " " '{print $1}')
+			echo "${MIME_TYPE}=geany.desktop" >>./mimeapps.list
+			continue
+		fi
+		if [[ ${LINE} =~ ^application/.*\+xml.* ]]; then
+			MIME_TYPE=$(echo "${LINE}"|awk -F " " '{print $1}')
+			echo "${MIME_TYPE}=geany.desktop" >>./mimeapps.list
+			continue
+		fi
+		if [[ ${LINE} =~ ^application/xml-.* ]]; then
+			MIME_TYPE=$(echo "${LINE}"|awk -F " " '{print $1}')
+			echo "${MIME_TYPE}=geany.desktop" >>./mimeapps.list
+			continue
+		fi
+		if [[ ${LINE} =~ ^image/ ]]; then
+			MIME_TYPE=$(echo "${LINE}"|awk -F " " '{print $1}')
+			echo "${MIME_TYPE}=eom.desktop" >>./mimeapps.list
+			continue
+		fi
+		if [[ ${LINE} =~ ^audio/ ]]; then
+			MIME_TYPE=$(echo "${LINE}"|awk -F " " '{print $1}')
+			echo "${MIME_TYPE}=vlc.desktop" >>./mimeapps.list
+			continue
+		fi
+		if [[ ${LINE} =~ ^video/ ]]; then
+			MIME_TYPE=$(echo "${LINE}"|awk -F " " '{print $1}')
+			echo "${MIME_TYPE}=vlc.desktop" >>./mimeapps.list
+			continue
+		fi
+	done </etc/mime.types
+	
+	echo "application/xml=geany.desktop" >>./mimeapps.list
+	
+	DEFAULT_APPLICATIONS_LINE_NUMBER=$(grep -nr -E "^\[Default Applications]" ~/.config/mimeapps.list|awk -F ":" '{print $1}')
+	sed -i.bak "/^\[Default Applications\]$/ r ./mimeapps.list"  ~/.config/mimeapps.list
+	
+	update-desktop-database
 }
 
 cd ${BASEDIR}
