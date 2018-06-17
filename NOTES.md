@@ -1,3 +1,12 @@
+## Fix keyboard backlight in mate-power-manager
+The problem is that keyboard backlight is set to 100pc when mate-power-manager starts and when some power management is done (leaving idle for example).
+
+First add for debugging messages with `g_debug()...` then re-compile and execute:
+```
+export G_MESSAGES_DEBUG=all;make clean;make;./src/mate-power-manager
+```
+
+
 ## Laptop: use external monitor only (the laptop lid is closed)
 First thing to do: disable all events regarding the lid in `/etc/systemd/logind.conf`
 ```
