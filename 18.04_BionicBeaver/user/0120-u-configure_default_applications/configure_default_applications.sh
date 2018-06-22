@@ -6,7 +6,9 @@ check_shell
 configure_default_applications(){
 	cd ${BASEDIR}
 	
-	backup_file rename ~/.config/mimeapps.list
+	if [ -f ~/.config/mimeapps.list ]; then
+		backup_file rename ~/.config/mimeapps.list
+	fi
 	
 	echo "Configuring mate-caja as default file browser ..."
 	mkdir -p ~/.local/share/applications
@@ -22,8 +24,6 @@ configure_default_applications(){
 	#	image/* 		Eye Of MATE
 	#	audio/*			VLC
 	#	video/*			VLC
-	
-	rm -f ./mimeapps.list
 	
 	while read LINE ; do
 		if [[ ${LINE} =~ ^text/ ]]; then
