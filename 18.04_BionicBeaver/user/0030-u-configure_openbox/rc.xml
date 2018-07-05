@@ -260,13 +260,13 @@
 		</keybind>
 		<!-- Keybindings for windows -->
 		<keybind key="W-1">
-			<action name="Iconify"/>
+			<action name="ToggleAlwaysOnTop"/>
 		</keybind>
 		<keybind key="W-2">
 			<action name="ToggleFullscreen"/>
 		</keybind>
 		<keybind key="W-3">
-			<action name="ToggleAlwaysOnTop"/>
+			<action name="Iconify"/>
 		</keybind>
 		<keybind key="A-F4">
 			<action name="Close"/>
