@@ -231,6 +231,11 @@ Minimal installation of Eclipse:
 - Add the SVNKit repository <http://community.polarion.com/projects/subversive/download/eclipse/6.0/update-site/> from Polarion (see the Polarion website).
 - Go to `Preferences>Java>Compiler>Building` and check `Circular dependencies=Warning`
 
+## Sidebar of GTK3 filechooserdialog is not using the icon from the GTK theme
+- <https://forum.xfce.org/viewtopic.php?id=10958>
+- <https://github.com/shimmerproject/Greybird/issues/83>
+- <https://forums.linuxmint.com/viewtopic.php?t=224506> 
+
 ## Xubuntu 17.04: bug with VirtualBox guest additions 5.1.22 
 virtualbox-guest-additions 5.1.22 seems to be buggy, unable to start Xorg. Install virtualbox-guest-additions 5.1.24 from <http://download.virtualbox.org/virtualbox> and it is working properly.
 

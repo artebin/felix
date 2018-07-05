@@ -1,6 +1,12 @@
 # TODOS
+- [ ] Create an install setting using the ubuntu miniso.
+- [ ] Should use `/usr/share/backgrounds` rather than `/usr/share/wallpapers`.
+- [ ] We can do not cleaning in openbox rc.xml, sort the application keyboard shortcut by alphanumeric sort.
+- [ ] Fix the Xmodmap for the macbook.
+- [ ] Need a way to do some settings regarding the sensitiviy of the touchpad/mouse a save these settings. The xfce4-mouse-settings is not saved and even worst it is reset during a session but it probably because I use it in a not-XFCE desktop.
+- [ ] Test if caja gets unresponsive when the NFS is mounter via a regular mount command rather via gvfs. Just test it by mount it, access it via caja, unplug the network and access it again via caja.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
-- [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
+- [ ] Read <https://github.com/capn-damo/Openbox- tiling/blob/master/ob-tile.sh>
 - [ ] Add shortcuts from openbox in shortcuts.md
 - [ ] Check the configuration of DokuWiki (entities etc.)
 - [ ] Add a note for the static route for accessing trevize.net from the local network
