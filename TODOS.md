@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Add pigz and collectd, dstat, atop
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>
 - [ ] Add shortcuts from openbox in shortcuts.md
