@@ -11,6 +11,7 @@ lsb-core
 fuseiso
 fuseiso9660
 inotify-hookable inotify-tools iwatch
+collectd atop
 
 #################################
 # Terminal & command line tools
@@ -24,6 +25,7 @@ translate-shell
 #################
 # Network tools
 #################
+snmp snmp-mibs-downloader
 nmap
 traceroute
 curl
@@ -149,6 +151,7 @@ wkhtmltopdf
 engrampa
 unrar
 p7zip-rar
+pigz
 
 #######################################
 # Image viewer, browser, manipulation
@@ -198,7 +201,7 @@ libreoffice
 # Data manipulation
 #####################
 csvkit csvkit-doc
-xmlstarlet
+xmlstarlet xmlto
 gnuplot plotdrop
 
 #######

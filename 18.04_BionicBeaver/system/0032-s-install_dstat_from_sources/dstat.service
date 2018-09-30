@@ -1,0 +1,11 @@
+[Unit]
+Description=Dstat advanced performance monitor
+Documentation=man:dstat(1)
+
+[Service]
+Type=forking
+ExecStart=/usr/share/dstat/dstat-start-service.sh &
+ExecStop=/usr/share/dstat/dstat-stop-service.sh &
+
+[Install]
+WantedBy=multi-user.target

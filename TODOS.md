@@ -5,11 +5,20 @@
 - [ ] Fix the Xmodmap for the macbook.
 - [ ] Need a way to do some settings regarding the sensitiviy of the touchpad/mouse a save these settings. The xfce4-mouse-settings is not saved and even worst it is reset during a session but it probably because I use it in a not-XFCE desktop.
 - [ ] Test if caja gets unresponsive when the NFS is mounter via a regular mount command rather via gvfs. Just test it by mount it, access it via caja, unplug the network and access it again via caja.
+- [ ] Fix "N: Ignoring file 'google-chrome.list.bak.180822-101529' in directory '/etc/apt/sources.list.d/' as it has an invalid filename extension"
+- [ ] Hibernate is not working anymore.
+- [ ] SSH Welcome message should not include Ubuntu message.
+- [ ] Install dstat from source.
+- [ ] Thunderbird config do not mark read automatically.
+- [ ] Path to JDK should to specified in .xsessionrc (will works on everything Linux distributions).
+- [ ] Add recipe for updating the XDG default directory (remove "Templates" and "Music" should be default).
+- [ ] Compile from source <https://github.com/freedesktop/xdg-desktop-file-utils> because command "update-desktop-update" is bugged in Ubuntu 18.04.
+- [ ] Add pigz and collectd, dstat, atop (+ retrieve systemd service for collectd/dstat from haddock).
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
-- [ ] Read <https://github.com/capn-damo/Openbox- tiling/blob/master/ob-tile.sh>
-- [ ] Add shortcuts from openbox in shortcuts.md
-- [ ] Check the configuration of DokuWiki (entities etc.)
-- [ ] Add a note for the static route for accessing trevize.net from the local network
+- [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>.
+- [ ] Add shortcuts from openbox in shortcuts.md.
+- [ ] Check the configuration of DokuWiki (entities etc.).
+- [ ] Add a note for the static route for accessing trevize.net from the local network.
 
 # ISSUES
 - AllTray: when using `alltray -a` and if the user types ESC then the window popup is still showed but there is nothing we can do with it except closing it.
