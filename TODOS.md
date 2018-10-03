@@ -1,4 +1,9 @@
 # TODOS
+- [ ] A script at startup of openbox checking for the default application and notify the user about some changes.
+- [ ] Patch EOM for not showing "set background" is window manager is not Metacity (the WM which should be used with EOM). Use $XDG_SESSION_DESKTOP.
+- [ ] Add install for 'psmisc' (not installed by default on Debian)
+- [ ] Switch back to MATE-Terminal (and archive the installation script for Termite) 
+- [ ] Add python-pip
 - [ ] Create an install setting using the ubuntu miniso.
 - [ ] Should use `/usr/share/backgrounds` rather than `/usr/share/wallpapers`.
 - [ ] We can do not cleaning in openbox rc.xml, sort the application keyboard shortcut by alphanumeric sort.
