@@ -22,8 +22,6 @@ configure_ssh_welcome_text(){
 	cd /etc/update-motd.d
 	chmod 755 00-welcome-dude
 	chmod 644 tux
-	chmod a-x 00-header
-	chmod a-x 10-help-text
 }
 
 cd ${BASEDIR}
