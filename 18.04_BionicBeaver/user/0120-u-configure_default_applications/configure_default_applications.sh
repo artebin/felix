@@ -20,10 +20,10 @@ configure_default_applications(){
 	
 	# MIME types are defined in /etc/mime.types
 	# Set default applications per MIME types:
-	#	text/*			Geany
-	#	image/* 		Eye Of MATE
-	#	audio/*			VLC
-	#	video/*			VLC
+	#   text/*			Geany
+	#   image/* 		Eye Of MATE
+	#   audio/*			VLC
+	#   video/*			VLC
 	
 	while read LINE ; do
 		if [[ ${LINE} =~ ^text/ ]]; then
@@ -63,7 +63,10 @@ configure_default_applications(){
 	DEFAULT_APPLICATIONS_LINE_NUMBER=$(grep -nr -E "^\[Default Applications]" ~/.config/mimeapps.list|awk -F ":" '{print $1}')
 	sed -i.bak "/^\[Default Applications\]$/ r ./mimeapps.list"  ~/.config/mimeapps.list
 	
-	update-desktop-database
+	# Here we have not modified the .desktop files in /usr => no need to call 'update-desktop-database'
+	# Calling 'update-desktop-database' with no arguments will use $XDG_DATA_DIRS which on Ubuntu18.04 is valued with:
+	# /usr/share/openbox:/usr/local/share/:/usr/share/
+	#update-desktop-database
 }
 
 cd ${BASEDIR}
