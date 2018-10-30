@@ -25,6 +25,7 @@ translate-shell
 #################
 # Network tools
 #################
+nethogs speedometer tcptrack bmon
 snmp snmp-mibs-downloader
 nmap
 traceroute
