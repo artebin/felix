@@ -6,3 +6,4 @@ bold-color='#000000000000'
 foreground-color='#FFFFFFFFFFFF'
 visible-name='Default'
 use-theme-colors=false
+default-show-menubar=false

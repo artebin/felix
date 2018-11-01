@@ -3,8 +3,6 @@
 - [ ] It seems thunderbird is not using x-www-browser (chromium is used), "network.protocol-handler.warn-external.http" should be true for all. gnome-www-browser should be set too (not only x-www-browser).
 - [ ] A script at startup of openbox checking for the default application and notify the user about some changes.
 - [ ] Patch EOM for not showing "set background" is window manager is not Metacity (the WM which should be used with EOM). Use $XDG_SESSION_DESKTOP.
-- [ ] Add install for 'psmisc' (not installed by default on Debian)
-- [ ] Switch back to MATE-Terminal (and archive the installation script for Termite) 
 - [ ] Add python-pip
 - [ ] Create an install setting using the ubuntu miniso.
 - [ ] Should use `/usr/share/backgrounds` rather than `/usr/share/wallpapers`.
@@ -36,6 +34,9 @@
 - mtrack does not seem to work with Ubuntu18.04.
 
 # DONE
+- [x] Do not show by default menubar in mate-terminal.
+- [x] Switch back to MATE-Terminal (and archive the installation script for Termite)
+- [x] Add install for 'psmisc' (not installed by default on Debian)
 - [x] SSH Welcome message should not include Ubuntu message.
 - [x] Path to JDK should to specified in .xsessionrc (will works on everything Linux distributions).
 - [x] Geany default configuration should indent with "tab and space"

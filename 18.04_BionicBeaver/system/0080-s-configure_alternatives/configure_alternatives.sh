@@ -7,9 +7,9 @@ exit_if_has_not_root_privileges
 configure_alternatives(){
 	cd ${BASEDIR}
 	
-	# NJ: 18-04-29: termite should have been set as x-terminal-emulator during its installation
+	# NJ: 18-11-01: termite is installed but there is a bug with SSH and remote systems. See <https://wiki.archlinux.org/index.php/termite#Remote_SSH_error>.
 	#echo "Setting mate-terminal as x-terminal-emulator ..."
-	#update-alternatives --set x-terminal-emulator /usr/bin/mate-terminal.wrapper
+	update-alternatives --set x-terminal-emulator /usr/bin/mate-terminal.wrapper
 	
 	echo "Setting firefox as x-www-browser ..."
 	update-alternatives --set x-www-browser /usr/bin/firefox
