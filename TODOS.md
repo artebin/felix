@@ -6,7 +6,6 @@
 - [ ] Patch EOM for not showing "set background" is window manager is not Metacity (the WM which should be used with EOM). Use $XDG_SESSION_DESKTOP.
 - [ ] Add python-pip
 - [ ] Create an install setting using the ubuntu miniso.
-- [ ] Should use `/usr/share/backgrounds` rather than `/usr/share/wallpapers`.
 - [ ] Fix the Xmodmap for the macbook.
 - [ ] Need a way to do some settings regarding the sensitiviy of the touchpad/mouse a save these settings. The xfce4-mouse-settings is not saved and even worst it is reset during a session but it probably because I use it in a not-XFCE desktop.
 - [ ] Test if caja gets unresponsive when the NFS is mounter via a regular mount command rather via gvfs. Just test it by mount it, access it via caja, unplug the network and access it again via caja.
@@ -34,6 +33,7 @@
 - mtrack does not seem to work with Ubuntu18.04.
 
 # DONE
+- [x] Should use `/usr/share/backgrounds` rather than `/usr/share/wallpapers`.
 - [x] Do not show by default menubar in mate-terminal.
 - [x] Switch back to MATE-Terminal (and archive the installation script for Termite)
 - [x] Add install for 'psmisc' (not installed by default on Debian)
