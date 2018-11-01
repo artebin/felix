@@ -173,6 +173,11 @@ csvkit csvkit-doc
 xmlstarlet xmlto
 gnuplot plotdrop
 
+##############
+# Subversion
+##############
+subversion
+
 #######
 # Git
 #######
