@@ -1,6 +1,7 @@
 ################
 # System tools
 ################
+psmisc
 hwinfo
 lshw
 inxi
