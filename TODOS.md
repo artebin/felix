@@ -1,4 +1,5 @@
 # TODOS
+- [ ] "mailto" and firefox
 - [ ] Add a Caja script for executing a script into a terminal and "press a key" before exit the terminal.
 - [ ] It seems thunderbird is not using x-www-browser (chromium is used), "network.protocol-handler.warn-external.http" should be true for all. gnome-www-browser should be set too (not only x-www-browser).
 - [ ] A script at startup of openbox checking for the default application and notify the user about some changes.
@@ -6,7 +7,6 @@
 - [ ] Add python-pip
 - [ ] Create an install setting using the ubuntu miniso.
 - [ ] Should use `/usr/share/backgrounds` rather than `/usr/share/wallpapers`.
-- [ ] We can do not cleaning in openbox rc.xml, sort the application keyboard shortcut by alphanumeric sort.
 - [ ] Fix the Xmodmap for the macbook.
 - [ ] Need a way to do some settings regarding the sensitiviy of the touchpad/mouse a save these settings. The xfce4-mouse-settings is not saved and even worst it is reset during a session but it probably because I use it in a not-XFCE desktop.
 - [ ] Test if caja gets unresponsive when the NFS is mounter via a regular mount command rather via gvfs. Just test it by mount it, access it via caja, unplug the network and access it again via caja.
