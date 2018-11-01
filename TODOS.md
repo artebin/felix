@@ -14,10 +14,8 @@
 - [ ] Test if caja gets unresponsive when the NFS is mounter via a regular mount command rather via gvfs. Just test it by mount it, access it via caja, unplug the network and access it again via caja.
 - [ ] Fix "N: Ignoring file 'google-chrome.list.bak.180822-101529' in directory '/etc/apt/sources.list.d/' as it has an invalid filename extension"
 - [ ] Hibernate is not working anymore.
-- [ ] SSH Welcome message should not include Ubuntu message.
 - [ ] Install dstat from source.
 - [ ] Thunderbird config do not mark read automatically.
-- [ ] Path to JDK should to specified in .xsessionrc (will works on everything Linux distributions).
 - [ ] Add recipe for updating the XDG default directory (remove "Templates" and "Music" should be default).
 - [ ] Compile from source <https://github.com/freedesktop/xdg-desktop-file-utils> because command "update-desktop-update" is bugged in Ubuntu 18.04.
 - [ ] Add pigz and collectd, dstat, atop (+ retrieve systemd service for collectd/dstat from haddock).
@@ -38,6 +36,8 @@
 - mtrack does not seem to work with Ubuntu18.04.
 
 # DONE
+- [x] SSH Welcome message should not include Ubuntu message.
+- [x] Path to JDK should to specified in .xsessionrc (will works on everything Linux distributions).
 - [x] Geany default configuration should indent with "tab and space"
 - [x] Fix indentation in TODOS.md
 - [x] Open "Google Drive" from the menu should create a new Web Browser window, else Drive can be opened in the Web Browser in Desktop#1 but current desktop is Desktop#4.

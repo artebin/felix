@@ -14,13 +14,14 @@ configure_ssh_welcome_text(){
 	for FILE in ./*; do
 		backup_file rename ./"${FILE}"
 	done
+	chmod a-x ./*
 	
 	# Adding Tux Welcome Dude
 	cd ${BASEDIR}
 	cp ./00-welcome-dude /etc/update-motd.d/00-welcome-dude
 	cp ./tux /etc/update-motd.d/tux
 	cd /etc/update-motd.d
-	chmod 755 00-welcome-dude
+	chmod 744 00-welcome-dude
 	chmod 644 tux
 }
 
