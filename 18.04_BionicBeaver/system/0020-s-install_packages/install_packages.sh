@@ -9,7 +9,7 @@ process_package_install_list(){
 	
 	echo "Installing packages ..."
 	
-	PACKAGES_INSTALL_LIST_FILE="./packages.install.list"
+	PACKAGES_INSTALL_LIST_FILE="./packages.install.minimal.list"
 	
 	# Build apt input file, one package per line
 	APT_INPUT_FILE="./apt.pkg.list"

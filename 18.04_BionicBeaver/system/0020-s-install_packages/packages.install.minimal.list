@@ -1,54 +1,47 @@
 ################
 # System tools
 ################
-psmisc
-hwinfo
-lshw
-inxi
-htop atop iotop sysstat dstat
-glances
-smem
 lsb-core
-fuseiso
-fuseiso9660
+psmisc
+hwinfo lshw inxi
+htop atop iotop sysstat dstat glances smem collectd
+fuseiso fuseiso9660
 inotify-hookable inotify-tools iwatch
-collectd atop
 
 #################################
 # Terminal & command line tools
 #################################
 vim
-pv
-progress
+pv progress
 colortest
+
+############################
+# Language and translation
+############################
 translate-shell
+aspell-fr
+
 
 #################
 # Network tools
 #################
 nethogs speedometer tcptrack bmon
 snmp snmp-mibs-downloader
-nmap
-traceroute
+nmap traceroute
 curl
 gigolo
-wireshark
-wireshark-gtk
-wireshark-doc
+wireshark wireshark-gtk wireshark-doc
 remmina
 
 #######
 # NFS
 #######
-nfs-common
-nfs-kernel-server
+nfs-common nfs-kernel-server
 
 #########
 # Samba
 #########
-samba
-smbclient
-cifs-utils
+samba smbclient cifs-utils
 
 #######
 # FTP
@@ -59,20 +52,12 @@ bareftp
 # SSH
 #######
 ssh
-sshfs
 
 ###################
 # Package manager
 ###################
 aptitude
 apt-mirror
-
-##############
-# Extra toys
-##############
-lolcat
-cmus
-pianobar
 
 ##############
 # Xorg tools
@@ -86,7 +71,7 @@ wmctrl xdotool xautomation
 openbox openbox-menu obconf obmenu
 lxappearance lxappearance-obconf
 dconf-cli dconf-editor dconf-tools
-gconf-service
+gconf-service gconf-editor
 mate-utils mate-system-monitor
 xfce4-volumed xfburn xfce4-dict xfce4-screenshooter xfce4-notifyd
 lxinput
@@ -94,13 +79,11 @@ tint2
 suckless-tools
 galternatives
 gsimplecal
-tomboy
 plank
 arandr
 synaptic
 gparted
 seahorse
-aspell-fr
 
 ###################
 # Desktop theming
@@ -108,12 +91,6 @@ aspell-fr
 mate-icon-theme
 mate-icon-theme-faenza
 faenza-icon-theme
-
-#######################
-# Fonts & font viewer
-#######################
-fonts-font-awesome
-gnome-font-viewer
 
 #############################
 # Virtual Terminal Emulator
@@ -123,18 +100,13 @@ mate-terminal
 ################
 # File manager
 ################
-caja
-caja-actions
-caja-extensions-common
-caja-open-terminal
-pcmanfm
+caja caja-actions caja-extensions-common caja-open-terminal
 
 #################################
 # File editor & file diff tools
 #################################
 vim-gtk
-geany
-geany-plugins
+geany geany-plugins
 meld kdiff3
 bless
 jq
@@ -189,11 +161,6 @@ hexchat
 empathy
 cheese
 
-#########
-# Games
-#########
-hatari
-
 ################
 # Office suite
 ################
@@ -212,31 +179,3 @@ gnuplot plotdrop
 git
 giggle
 git-cola
-
-#####################
-# Development tools
-#####################
-build-essential
-gcc g++ make
-autoconf
-cmake
-sassc
-libgtk-3-dev gtk-3-examples
-libgtk2.0-dev gtk2.0-examples
-libxml2-dbg libxml2-dev libxml2-doc
-subversion
-golang
-
-#########
-# DVB-T
-#########
-rtl-sdr
-w-scan
-gqrx-sdr
-librtlsdr-dev libusb-1.0-0.dev #For compiling Dump1090
-
-##############
-# VirtualBox
-##############
-virtualbox
-virtualbox-ext-pack
