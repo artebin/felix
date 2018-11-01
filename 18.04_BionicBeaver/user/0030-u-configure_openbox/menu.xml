@@ -54,7 +54,8 @@
 				<item label="Draw"><action name="Execute"><command>/usr/lib/libreoffice/program/sdraw</command></action></item>
 			</menu>
 			<item label="PDF Viewer (Atril)"><action name="Execute"><command>atril</command></action></item>
-			<item label="Google Drive"><action name="Execute"><command>x-www-browser https://drive.google.com/</command></action></item>
+			<!-- The use the of argument --new-window below should work for Firefox, Chrome, Chromium -->
+			<item label="Google Drive"><action name="Execute"><command>x-www-browser --new-window https://drive.google.com/</command></action></item>
 		</menu>
 		<item label="Printers"><action name="Execute"><command>system-config-printer</command></action></item>
 		<separator/>
