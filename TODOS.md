@@ -1,5 +1,5 @@
 # TODOS
-- [ ] Add a Caja script for executing a script into a terminal.
+- [ ] Add a Caja script for executing a script into a terminal and "press a key" before exit the terminal.
 - [ ] It seems thunderbird is not using x-www-browser (chromium is used), "network.protocol-handler.warn-external.http" should be true for all. gnome-www-browser should be set too (not only x-www-browser).
 - [ ] A script at startup of openbox checking for the default application and notify the user about some changes.
 - [ ] Patch EOM for not showing "set background" is window manager is not Metacity (the WM which should be used with EOM). Use $XDG_SESSION_DESKTOP.
@@ -38,6 +38,9 @@
 - mtrack does not seem to work with Ubuntu18.04.
 
 # DONE
+- [x] Geany default configuration should indent with "tab and space"
+- [x] Fix indentation in TODOS.md
+- [x] Open "Google Drive" from the menu should create a new Web Browser window, else Drive can be opened in the Web Browser in Desktop#1 but current desktop is Desktop#4.
 - [x] Read <https://wiki.archlinux.org/index.php/File_manager_functionality>
 - [x] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
 - [x] Work with `/etc/mime.types` for setting all text with Geany, all audio/video with VLC.
