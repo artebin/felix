@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Use autofs for preventing caja to freeze when NFS/Samba is down or network problems. See <https://unix.stackexchange.com/questions/267138/preventing-broken-nfs-connection-from-freezing-the-client-system> and <https://help.ubuntu.com/community/Autofs>.
 - [ ] "mailto" and firefox
 - [ ] Add a Caja script for executing a script into a terminal and "press a key" before exit the terminal.
 - [ ] It seems thunderbird is not using x-www-browser (chromium is used), "network.protocol-handler.warn-external.http" should be true for all. gnome-www-browser should be set too (not only x-www-browser).
