@@ -1,4 +1,10 @@
 # TODOS
+- [ ] Add tree in default package to install.
+- [ ] scroll by pixel/pc amount in LibreOffice Calc (rather by number of rows).
+- [ ] <https://bugs.launchpad.net/ubuntu/+source/gvfs/+bug/378783> 
+- [ ] Install dex: "DesktopEntry eXecution implements the Freedesktop.org autostart specification, independent of any desktop or window manager environment.". Why xdg-open is not implemented the same way?
+- [ ] locate panel-desktop-handler.desktop => this desktop file is called for creating a shortcut for each execution of one desktop file with exo-open, gvfs-open, xdg-open etc.
+- [ ] Patch Caja: always show the file name (extension are hidden for .desktop files for example) See <https://github.com/mate-desktop/caja/issues/727> open ticket.
 - [ ] Use autofs for preventing caja to freeze when NFS/Samba is down or network problems. See <https://unix.stackexchange.com/questions/267138/preventing-broken-nfs-connection-from-freezing-the-client-system> and <https://help.ubuntu.com/community/Autofs>.
 - [ ] "mailto" and firefox
 - [ ] Add a Caja script for executing a script into a terminal and "press a key" before exit the terminal.
