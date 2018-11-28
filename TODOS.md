@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Caja script for indenting XML file
 - [ ] Add tree in default package to install.
 - [ ] scroll by pixel/pc amount in LibreOffice Calc (rather by number of rows).
 - [ ] <https://bugs.launchpad.net/ubuntu/+source/gvfs/+bug/378783> 
