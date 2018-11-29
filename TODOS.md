@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Execute the dstat recipe by default but do not start the service.
 - [ ] Caja script for indenting XML file
 - [ ] Add tree in default package to install.
 - [ ] scroll by pixel/pc amount in LibreOffice Calc (rather by number of rows).

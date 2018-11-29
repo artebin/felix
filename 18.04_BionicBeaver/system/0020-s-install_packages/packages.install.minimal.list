@@ -2,9 +2,13 @@
 # System tools
 ################
 lsb-core
-psmisc
-hwinfo lshw inxi
-htop atop iotop sysstat dstat glances smem collectd
+psmisc #Includes fuser, killall, peekfd, pstree, prtstat
+hwinfo lshw
+htop
+iotop
+dstat
+smem
+collectd
 fuseiso fuseiso9660
 inotify-hookable inotify-tools iwatch
 
@@ -12,7 +16,7 @@ inotify-hookable inotify-tools iwatch
 # Terminal & command line tools
 #################################
 vim
-pv progress
+pv
 colortest
 
 ############################
@@ -20,7 +24,6 @@ colortest
 ############################
 translate-shell
 aspell-fr
-
 
 #################
 # Network tools
@@ -31,7 +34,11 @@ nmap traceroute
 curl
 gigolo
 wireshark wireshark-gtk wireshark-doc
-remmina
+
+#######
+# SSH
+#######
+ssh
 
 #######
 # NFS
@@ -49,9 +56,9 @@ samba smbclient cifs-utils
 bareftp
 
 #######
-# SSH
+# VNC
 #######
-ssh
+remmina
 
 ###################
 # Package manager
@@ -109,8 +116,6 @@ vim-gtk
 geany geany-plugins
 meld kdiff3
 bless
-jq
-tidy
 
 #######################################
 # PDF viewer & PDF manipulation tools
@@ -170,7 +175,8 @@ libreoffice
 # Data manipulation
 #####################
 csvkit csvkit-doc
-xmlstarlet xmlto
+libxml2-utils xmlstarlet tidy xmlto
+jq
 gnuplot plotdrop
 
 ##############

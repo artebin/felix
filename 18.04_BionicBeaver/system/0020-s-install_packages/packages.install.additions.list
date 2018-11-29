@@ -1,15 +1,7 @@
-##############
-# Extra toys
-##############
-lolcat
-cmus
-pianobar
-
 #######################
 # Fonts & font viewer
 #######################
 fonts-font-awesome
-gnome-font-viewer
 
 ##################################
 # Window manager & desktop tools
