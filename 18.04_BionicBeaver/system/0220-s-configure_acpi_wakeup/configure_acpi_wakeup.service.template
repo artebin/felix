@@ -1,0 +1,8 @@
+[Unit]
+Description=Configure ACPI wakeup
+
+[Service]
+ExecStart=/bin/bash -c "echo EHC1 >> /proc/acpi/wakeup;"
+
+[Install]
+WantedBy=multi-user.target
