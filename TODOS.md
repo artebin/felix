@@ -1,4 +1,7 @@
 # TODOS
+- [ ] Geany side bar at right.
+- [ ] Check that NumLock is ON after login.
+- [ ] At first start the bluetooth is actived
 - [ ] Execute the dstat recipe by default but do not start the service.
 - [ ] Caja script for indenting XML file
 - [ ] Add tree in default package to install.
