@@ -67,6 +67,10 @@ configure_default_applications(){
 	# Calling 'update-desktop-database' with no arguments will use $XDG_DATA_DIRS which on Ubuntu18.04 is valued with:
 	# /usr/share/openbox:/usr/local/share/:/usr/share/
 	#update-desktop-database
+	
+	# Cleaning
+	cd ${BASEDIR}
+	rm -f mimeapps.list
 }
 
 cd ${BASEDIR}
