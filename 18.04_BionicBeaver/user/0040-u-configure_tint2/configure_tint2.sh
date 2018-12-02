@@ -10,21 +10,25 @@ configure_tint2(){
 	if [ -f ~/.config/tint2 ]; then
 		backup_file rename ~/.config/tint2
 	fi
-	if [ ! -f ~/.config/tint2 ]; then
-		mkdir -p ~/.config/tint2
-	fi
-	cp ./tint2rc ~/.config/tint2/tint2rc
+	mkdir -p ~/.config/tint2
+	cp tint2rc ~/.config/tint2/tint2rc
 	
 	if [ -f ~/.config/gsimplecal/config ]; then
 		backup_file rename ~/.config/gsimplecal/config
 	fi
 	mkdir -p ~/.config/gsimplecal
+	
+	cp gsimplecal.config.template gsimplecal.config
 	SED_PATTERN="LOCAL_TIME_ZONE"
 	ESCAPED_SED_PATTERN=$(escape_sed_pattern ${SED_PATTERN})
 	REPLACEMENT_STRING="${LOCAL_TIME_ZONE}"
 	ESCAPED_REPLACEMENT_STRING=$(escape_sed_pattern ${REPLACEMENT_STRING})
-	sed -i.bak "s/${ESCAPED_SED_PATTERN}/${ESCAPED_REPLACEMENT_STRING}/g" ./gsimplecal.config
-	cp ./gsimplecal.config ~/.config/gsimplecal/config
+	sed -i "s/${ESCAPED_SED_PATTERN}/${ESCAPED_REPLACEMENT_STRING}/g" ./gsimplecal.config
+	cp gsimplecal.config ~/.config/gsimplecal/config
+	
+	# Cleaning
+	cd ${BASEDIR}
+	rm -f gsimplecal.config
 }
 
 cd ${BASEDIR}
