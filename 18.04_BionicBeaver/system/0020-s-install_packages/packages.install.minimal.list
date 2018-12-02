@@ -48,7 +48,7 @@ nfs-common nfs-kernel-server
 #########
 # Samba
 #########
-samba smbclient cifs-utils
+cifs-utils
 
 #######
 # FTP
@@ -98,6 +98,7 @@ seahorse
 mate-icon-theme
 mate-icon-theme-faenza
 faenza-icon-theme
+fonts-font-awesome
 
 #############################
 # Virtual Terminal Emulator
@@ -109,13 +110,15 @@ mate-terminal
 ################
 caja caja-actions caja-extensions-common caja-open-terminal
 
-#################################
-# File editor & file diff tools
-#################################
+########################################
+# File reader/editor & file diff tools
+########################################
 vim-gtk
+glogg
 geany geany-plugins
 meld kdiff3
 bless
+mediainfo
 
 #######################################
 # PDF viewer & PDF manipulation tools
@@ -164,7 +167,7 @@ mps-youtube
 ###################
 hexchat
 empathy
-cheese
+guvcview
 
 ################
 # Office suite
@@ -190,3 +193,22 @@ subversion
 git
 giggle
 git-cola
+
+#####################
+# Development tools
+#####################
+build-essential
+gcc g++ make
+autoconf
+cmake
+sassc
+libgtk-3-dev gtk-3-examples
+libgtk2.0-dev gtk2.0-examples
+libxml2-dbg libxml2-dev libxml2-doc
+golang
+
+##############
+# VirtualBox
+##############
+virtualbox
+virtualbox-ext-pack
