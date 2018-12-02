@@ -12,8 +12,17 @@ disable_touchscreen(){
 	#  - disable it directly in the X.org configuration in `/usr/share/X11/xorg.conf/40-libinput.conf`
 	# Here we disable it in X.org configuration
 	
+	LIB_INPUT_CONF_FILE="/usr/share/X11/xorg.conf.d/40-libinput.conf"
+	if [[ ! -f "${LIB_INPUT_CONF_FILE}" ]]; then
+		printf "Can not find ${LIB_INPUT_CONF_FILE}\n"
+		printf "Exiting ...\n"
+		return 1
+	fi
+	
+	backup_file copy "${LIB_INPUT_CONF_FILE}"
+	
 	echo "Disabling touchscreen ..."
-	sudo sed -i.bak "s/MatchIsTouchscreen \"on\"/MatchIsTouchscreen \"off\"/g" /usr/share/X11/xorg.conf/40-libinput.conf
+	sed -i.bak "s/MatchIsTouchscreen \"on\"/MatchIsTouchscreen \"off\"/g" "${LIB_INPUT_CONF_FILE}"
 }
 
 cd ${BASEDIR}
