@@ -24,6 +24,8 @@ configure_acpi_wakeup(){
 		exit 1
 	fi
 	
+	cp configure_acpi_wakeup.service.template configure_acpi_wakeup.service
+	
 	if [ "${DISABLE_ALL_EXCEPT_LID}" = "true" ]; then
 		echo "Disabling all acpi wakeup except for LID ..."
 	else
@@ -61,6 +63,10 @@ configure_acpi_wakeup(){
 	systemctl start configure_acpi_wakeup.service
 	systemctl status configure_acpi_wakeup.service
 	systemctl enable configure_acpi_wakeup.service
+	
+	# Cleaning
+	cd ${BASEDIR}
+	rm -f acpi_wakeup configure_acpi_wakeup.service
 }
 
 cd ${BASEDIR}
