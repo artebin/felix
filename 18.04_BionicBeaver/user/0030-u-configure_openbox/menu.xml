@@ -12,10 +12,11 @@
 			<item label="Task Manager (htop)"><action name="Execute"><command>termite --exec="htop"</command></action></item>
 			<item label="System Monitor (glances)"><action name="Execute"><command>termite --exec="glances"</command></action></item>
 			<item label="Disk Usage Analyzer"><action name="Execute"><command>mate-disk-usage-analyzer</command></action></item>
-			<item label="Encryption Keys Manager (seahorse)"><action name="Execute"><command>seahorse</command></action></item>
+			<item label="Log Explorer (glogg)"><action name="Execute"><command>glogg</command></action></item>
 			<item label="GVim"><action name="Execute"><command>gvim</command></action></item>
 			<item label="Hexadecimal Editor (Bless)"><action name="Execute"><command>bless</command></action></item>
 			<item label="Diff &amp; Merge Tool (Meld)"><action name="Execute"><command>meld</command></action></item>
+			<item label="Encryption Keys Manager (seahorse)"><action name="Execute"><command>seahorse</command></action></item>
 		</menu>
 		<menu id="graphics" label="Graphics">
 			<item label="Image Viewer (EoM)"><action name="Execute"><command>eom</command></action></item>
