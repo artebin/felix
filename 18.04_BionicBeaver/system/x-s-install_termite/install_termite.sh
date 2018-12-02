@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# This recipe has been disabled because termite has problems with SSH <https://github.com/thestinger/termite/issues/229>
+
 source ../../common.sh
 check_shell
 exit_if_has_not_root_privileges
@@ -52,6 +54,4 @@ install_termite(){
 cd ${BASEDIR}
 install_termite 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
-	exit "${EXIT_CODE}"
-fi
+exit "${EXIT_CODE}"
