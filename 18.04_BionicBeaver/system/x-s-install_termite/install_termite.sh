@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# This recipe has been disabled because termite has problems with SSH <https://github.com/thestinger/termite/issues/229>
+# NJ: 18-12-02: this recipe has been disabled because termite has 
+# problems with SSH <https://github.com/thestinger/termite/issues/229>
 
 source ../../common.sh
 check_shell
