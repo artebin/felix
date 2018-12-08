@@ -1,5 +1,5 @@
 # TODOS
-- [ ] Restart X with <Ctrl><Alt>Backspace
+- [ ] Add traces for monitoring the time taken for the installation.
 - [ ] Pulse audio does not restart properly after logout/login.
 - [ ] Disable the automatic update in ubuntu <https://askubuntu.com/questions/1059971/disable-updates-from-command-line-in-ubuntu-16-04>.
 - [ ] Should revert to xfce4-power-manager now but fix the icons first.
@@ -47,6 +47,8 @@
 - [ ] reboot/shutdown can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Add guvcview in package to install (good replacement for cheese which is deadly GNOME refactored)
+- [x] Restart X with <Ctrl><Alt>Backspace
 - [x] XDG user dirs Templates, remove it.
 - [x] mtrack does not seem to work with Ubuntu18.04. => apparrently it is fixed now 18-12-08
 - [x] Caja: the side panel is not working correctly (and the rendering for painting the focuses/unfocused panel is a little ugly). => fixed in Caja v1.20.2

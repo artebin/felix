@@ -2,10 +2,7 @@
 Must install `virtualbox-guest-x11`.
 
 ## Xmodmap
-For listing current configuration of the keyboard:
-```
-$xmodmap pke
-```
+List the current configuration of the keyboard with `$xmodmap pke`
 
 ## Fix keyboard backlight in mate-power-manager
 The problem is that keyboard backlight is set to 100pc when mate-power-manager starts and when some power management is done (leaving idle for example).
