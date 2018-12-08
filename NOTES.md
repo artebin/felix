@@ -1,3 +1,12 @@
+## Shared clipboard between host/guest in Virtualbox
+Must install `virtualbox-guest-x11`.
+
+## Xmodmap
+For listing current configuration of the keyboard:
+```
+$xmodmap pke
+```
+
 ## Fix keyboard backlight in mate-power-manager
 The problem is that keyboard backlight is set to 100pc when mate-power-manager starts and when some power management is done (leaving idle for example).
 
@@ -94,13 +103,13 @@ sudo udevadm trigger
 deb [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic main restricted universe multiverse
 # deb-src [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic main restricted universe multiverse
 
-# deb [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic-updates main restricted universe multiverse
+deb [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic-updates main restricted universe multiverse
 # deb-src [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic-updates main restricted universe multiverse
 
 # deb [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic-backports main restricted universe multiverse
 # deb-src [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic-backports main restricted universe multiverse
 
-# deb [ arch=amd64 ] http://localhost:10001/ubuntu bionic-security main restricted universe multiverse
+deb [ arch=amd64 ] http://localhost:10001/ubuntu bionic-security main restricted universe multiverse
 # deb-src [ arch=amd64 ] http://localhost:10001/ubuntu bionic-security main restricted universe multiverse
 ```
 - start a http server for the repository, go into `<mirror directory>/mirror/archive.ubuntu.com` and execute `python -m SimpleHTTPServer 10001`

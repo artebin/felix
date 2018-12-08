@@ -1,4 +1,7 @@
 # TODOS
+- [ ] Restart X with <Ctrl><Alt>Backspace
+- [ ] Pulse audio does not restart properly after logout/login.
+- [ ] Disable the automatic update in ubuntu <https://askubuntu.com/questions/1059971/disable-updates-from-command-line-in-ubuntu-16-04>.
 - [ ] Should revert to xfce4-power-manager now but fix the icons first.
 - [ ] It seems the state of "Num Lock" is not preserved anymore after wake after suspend.
 - [ ] Disable gfs MTP AFC and GPhoto2 <https://github.com/eRadical/ansible-my-fedora-workstation/issues/11>
