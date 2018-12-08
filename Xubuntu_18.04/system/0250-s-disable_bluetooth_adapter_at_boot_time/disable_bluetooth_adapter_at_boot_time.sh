@@ -24,14 +24,6 @@ disable_bluetooth_adapter_at_boot_time(){
 		backup_file copy "${RC_LOCAL_FILE}"
 		echo "rfkill block bluetooth" >> "${RC_LOCAL_FILE}"
 	fi
-	
-	echo "Do not start blueman-applet automatically via .desktop file in /etc/xdg/autostart ..."
-	XDG_AUTOSTART_BLUEMAN_APPLET_FILE="/etc/xdg/autostart/blueman.desktop"
-	if [[ ! -f "${XDG_AUTOSTART_BLUEMAN_APPLET_FILE}" ]]; then
-		echo "Can not find file: ${XDG_AUTOSTART_BLUEMAN_APPLET_FILE}"
-	else
-		backup_file rename "${XDG_AUTOSTART_BLUEMAN_APPLET_FILE}"
-	fi
 }
 
 cd ${BASEDIR}
