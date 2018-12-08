@@ -8,7 +8,6 @@ htop
 iotop
 dstat
 smem
-collectd
 fuseiso fuseiso9660
 inotify-hookable inotify-tools iwatch
 tree
