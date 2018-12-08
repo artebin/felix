@@ -1,8 +1,0 @@
-[Unit]
-Description=Configure ACPI wakeup
-
-[Service]
-ExecStart=
-
-[Install]
-WantedBy=multi-user.target

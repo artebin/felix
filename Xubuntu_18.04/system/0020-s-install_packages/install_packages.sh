@@ -9,7 +9,7 @@ process_package_install_list(){
 	
 	echo "Installing packages ..."
 	
-	PACKAGES_INSTALL_LIST_FILE="./packages.install.minimal.list"
+	PACKAGES_LIST_FILE="./packages.install.minimal.list"
 	
 	# Build apt input file, one package per line
 	APT_INPUT_FILE="./apt.pkg.list"
@@ -24,10 +24,11 @@ process_package_install_list(){
 			SUBSTRING_LENGTH=`expr ${INDEX_OF_COMMENT}-1`
 			PACKAGES_LINE=${LINE:0:${SUBSTRING_LENGTH}}
 		fi
+		PACKAGES_LINE=$(echo "${PACKAGES_LINE}"|awk '{$1=$1};1')
 		if [ ! -z "${PACKAGES_LINE}" ]; then
 			echo "${PACKAGES_LINE}"| tr " " "\n" >> "${APT_INPUT_FILE}"
 		fi
-	done < "${PACKAGES_INSTALL_LIST_FILE}"
+	done < "${PACKAGES_LIST_FILE}"
 	
 	# Check package availability
 	# Currently using `aptitude search` which is very slow. 
@@ -65,6 +66,8 @@ process_package_install_list(){
 	
 	# Cleaning
 	rm -f "${APT_INPUT_FILE}"
+	
+	echo
 }
 
 cd ${BASEDIR}

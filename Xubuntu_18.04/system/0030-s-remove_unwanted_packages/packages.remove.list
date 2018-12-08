@@ -2,7 +2,7 @@
 mousepad
 ristretto #Image viewer => we prefer to use EOM from MATE
 parole #Media player => we prefer to use VLC
-xfce4-power-manager xfce4-power-manager-data xfce4-power-manager-plugins => we prefer to use mate-power-manager
+xfce4-power-manager xfce4-power-manager-data xfce4-power-manager-plugins #We prefer to use mate-power-manager
 
 # Remove some GNOME software
 file-roller #GNOME Archive Manager (it is still "File Roller" whatever can say the GNOME team... )

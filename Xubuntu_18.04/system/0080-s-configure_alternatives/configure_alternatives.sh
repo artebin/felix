@@ -10,6 +10,8 @@ configure_alternatives(){
 	echo "Setting mate-terminal as x-terminal-emulator ..."
 	update-alternatives --set x-terminal-emulator /usr/bin/mate-terminal.wrapper
 	
+	echo
+	
 	echo "Setting firefox as x-www-browser ..."
 	update-alternatives --set x-www-browser /usr/bin/firefox
 }

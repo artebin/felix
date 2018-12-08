@@ -10,21 +10,23 @@ configure_firefox_default_profile(){
 	
 	# Retrieve path to the Firefox default profile
 	PREFS_JS_PATH=""
-	FIREFOX_DEFAULT_PROFILE_PATH=$(find ~/.mozilla/firefox -maxdepth 1 -iname "*\.default")
-	if [ -f "${FIREFOX_DEFAULT_PROFILE_PATH}/prefs.js" ]; then
-		PREFS_JS_PATH="${FIREFOX_DEFAULT_PROFILE_PATH}/prefs.js"
+	if [[ -d ~/.mozilla/firefox ]]; then
+		FIREFOX_DEFAULT_PROFILE_PATH=$(find ~/.mozilla/firefox -maxdepth 1 -iname "*\.default")
+		if [[ -f "${FIREFOX_DEFAULT_PROFILE_PATH}/prefs.js" ]]; then
+			PREFS_JS_PATH="${FIREFOX_DEFAULT_PROFILE_PATH}/prefs.js"
+		fi
 	fi
 	
-	if [ ! -f "${PREFS_JS_PATH}" ]; then
+	if [[ ! -f "${PREFS_JS_PATH}" ]]; then
 		echo "Can not find Firefox default profile => creating one ..."
 		firefox -CreateProfile "default"
 		
 		FIREFOX_DEFAULT_PROFILE_PATH=$(find ~/.mozilla/firefox -maxdepth 1 -iname "*\.default")
-		if [ -f "${FIREFOX_DEFAULT_PROFILE_PATH}/prefs.js" ]; then
+		if [[ -f "${FIREFOX_DEFAULT_PROFILE_PATH}/prefs.js" ]]; then
 			PREFS_JS_PATH="${FIREFOX_DEFAULT_PROFILE_PATH}/prefs.js"
 		fi
 	
-		if [ ! -f "${PREFS_JS_PATH}" ]; then
+		if [[ ! -f "${PREFS_JS_PATH}" ]]; then
 			echo "Can not find Firefox default profile"
 			exit 1
 		fi
@@ -111,7 +113,9 @@ configure_firefox_default_profile(){
 		echo "${LINE_REPLACEMENT_VALUE}" >> "${PREFS_JS_PATH}"
 	fi
 }
+
 cd ${BASEDIR}
+
 configure_firefox_default_profile 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
