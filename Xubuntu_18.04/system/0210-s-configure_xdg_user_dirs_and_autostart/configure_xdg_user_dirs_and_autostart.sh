@@ -4,6 +4,20 @@ source ../../common.sh
 check_shell
 exit_if_has_not_root_privileges
 
+update_xdg_user_dirs_default(){
+	cd ${BASEDIR}
+	
+	echo "Remove Templates as a XDG user directory ..."
+	XDG_USER_DIRS_DEFAULT_FILE="/etc/xdg/user-dirs.defaults"
+	if [[ ! -f "${XDG_USER_DIRS_DEFAULT_FILE}" ]]; then
+		echo "Can not find file: ${XDG_USER_DIRS_DEFAULT_FILE}"
+	else
+		sed -i.bak "s/^TEMPLATES=/#TEMPLATES=/g" "${XDG_USER_DIRS_DEFAULT_FILE}"
+	fi
+	
+	echo
+}
+
 list_xdg_autostart_desktop_files(){
 	cd ${BASEDIR}
 	
@@ -38,6 +52,8 @@ list_xdg_autostart_desktop_files(){
 		done
 		echo
 	done
+	
+	echo
 }
 
 disable_unwanted_xdg_autostart(){
@@ -57,10 +73,24 @@ disable_unwanted_xdg_autostart(){
 			backup_file rename "/etc/xdg/autostart/${XDG_AUTOSTART_FILE_NAME}"
 		fi
 	done
+	
+	echo
 }
 
 cd ${BASEDIR}
-list_xdg_autostart_desktop_files
+
+update_xdg_user_dirs_default 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+EXIT_CODE="${PIPESTATUS[0]}"
+if [ "${EXIT_CODE}" -ne 0 ]; then
+	exit "${EXIT_CODE}"
+fi
+
+list_xdg_autostart_desktop_files 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+EXIT_CODE="${PIPESTATUS[0]}"
+if [ "${EXIT_CODE}" -ne 0 ]; then
+	exit "${EXIT_CODE}"
+fi
+
 disable_unwanted_xdg_autostart 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
