@@ -11,15 +11,26 @@ disable_bluetooth_adapter_at_boot_time(){
 	
 	# See <https://askubuntu.com/questions/67758/how-can-i-deactivate-bluetooth-on-system-startup>
 	
-	if [ -f /etc/rc/local ]; then
-		# Check if bluetooth already disabled
-		grep -Fxq "rfkill block bluetooth" /etc/rc.local
-		if [ $? -eq 1 ]; then
-			backup_file copy /etc/rc.local
-			echo "rfkill block bluetooth" >> /etc/rc.local
-		fi
+	RC_LOCAL_FILE="/etc/rc.local"
+	if [[ ! -f "${RC_LOCAL_FILE}" ]]; then
+		touch "${RC_LOCAL_FILE}"
+	fi
+	
+	# Check if bluetooth already disabled
+	grep -Fxq "rfkill block bluetooth" "${RC_LOCAL_FILE}"
+	if [[ $? -eq 0 ]]; then
+		echo "${RC_LOCAL_FILE} is already configured to disable bluetooth adapter"
 	else
-		echo "rfkill block bluetooth" > /etc/rc.local
+		backup_file copy "${RC_LOCAL_FILE}"
+		echo "rfkill block bluetooth" >> "${RC_LOCAL_FILE}"
+	fi
+	
+	echo "Do not start blueman-applet automatically via .desktop file in /etc/xdg/autostart ..."
+	XDG_AUTOSTART_BLUEMAN_APPLET_FILE="/etc/xdg/autostart/blueman.desktop"
+	if [[ ! -f "${XDG_AUTOSTART_BLUEMAN_APPLET_FILE}" ]]; then
+		echo "Can not find file: ${XDG_AUTOSTART_BLUEMAN_APPLET_FILE}"
+	else
+		backup_file rename "${XDG_AUTOSTART_BLUEMAN_APPLET_FILE}"
 	fi
 }
 
