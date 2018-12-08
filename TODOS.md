@@ -2,7 +2,7 @@
 - [ ] Add traces for monitoring the time taken for the installation.
 - [ ] Pulse audio does not restart properly after logout/login.
 - [ ] Disable the automatic update in ubuntu <https://askubuntu.com/questions/1059971/disable-updates-from-command-line-in-ubuntu-16-04>.
-- [ ] Should revert to xfce4-power-manager now but fix the icons first.
+- [ ] Should revert to xfce4-power-manager now but fix the icons first <https://bbs.archlinux.org/viewtopic.php?id=216495>.
 - [ ] It seems the state of "Num Lock" is not preserved anymore after wake after suspend.
 - [ ] Disable gfs MTP AFC and GPhoto2 <https://github.com/eRadical/ansible-my-fedora-workstation/issues/11>
 - [ ] It seems there is a space between the window and the edges of the screens when we resize.
@@ -26,7 +26,7 @@
 - [ ] Need a way to do some settings regarding the sensitiviy of the touchpad/mouse a save these settings. The xfce4-mouse-settings is not saved and even worst it is reset during a session but it probably because I use it in a not-XFCE desktop.
 - [ ] Test if caja gets unresponsive when the NFS is mounter via a regular mount command rather via gvfs. Just test it by mount it, access it via caja, unplug the network and access it again via caja.
 - [ ] Fix "N: Ignoring file 'google-chrome.list.bak.180822-101529' in directory '/etc/apt/sources.list.d/' as it has an invalid filename extension"
-- [ ] Hibernate is not working anymore.
+- [ ] Hibernate is not working anymore => should add a kernel parameter, see <https://soulkiln.blog/2018/08/14/ubuntu-18-04-hibernate-and-suspend-fix/>.
 - [ ] Install dstat from source.
 - [ ] Thunderbird config do not mark read automatically.
 - [ ] Add recipe for updating the XDG default directory (remove "Templates" and "Music" should be default).

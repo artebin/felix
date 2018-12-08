@@ -11,7 +11,10 @@ First add for debugging messages with `g_debug()...` then re-compile and execute
 ```
 export G_MESSAGES_DEBUG=all;make clean;make;./src/mate-power-manager
 ```
-
+## Firefox Add-ons
+- Adblock Plus
+- Google search link fix
+- Google Translator for Firefox
 
 ## Laptop: use external monitor only (the laptop lid is closed)
 First thing to do: disable all events regarding the lid in `/etc/systemd/logind.conf`
