@@ -1,10 +1,24 @@
+# Remove some XFCE software
 mousepad
-file-roller
+ristretto #Image viewer => we prefer to use EOM from MATE
+parole #Media player => we prefer to use VLC
+xfce4-power-manager xfce4-power-manager-data xfce4-power-manager-plugins => we prefer to use mate-power-manager
+
+# Remove some GNOME software
+file-roller #GNOME Archive Manager (it is still "File Roller" whatever can say the GNOME team... )
 evince evince-common
-ristretto
-parole
+
+# Remove Ubuntu Crash Reporter
 apport apport-gtk apport-symptoms python3-apport
-update-manager update-notifier update-notifier-common xubuntu-desktop ubuntu-release-upgrader-core ubuntu-release-upgrader-gtk
-gnome-software gnome-software-common gnome-software-plugin-snap snapd
+
+# Remove Ubuntu Error Reporter (it sends to Canonical the crash reports created by Apport)
 whoopsie libwhoopsie0
-xfce4-power-manager xfce4-power-manager-data xfce4-power-manager-plugins
+
+# Remove Ubuntu snapd
+snapd
+
+# Remove GNOME software and update manager, notifier
+gnome-software gnome-software-common gnome-software-plugin-snap update-manager update-notifier update-notifier-common
+
+# Remove Ubuntu release upgrader
+ubuntu-release-upgrader-core ubuntu-release-upgrader-gtk
