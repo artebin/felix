@@ -1,4 +1,13 @@
 # TODOS
+- [ ] What is the meaning of the "Public" folder from XDG specs.
+- [ ] Disable gfs MTP AFC and GPhoto2 <https://github.com/eRadical/ansible-my-fedora-workstation/issues/11>
+- [ ] It seems there is a space between the window and the edges of the screens when we resize.
+- [ ] add mercurial
+- [ ] Htop is still executed by termite via openbox rc.xml
+- [ ] It seems bluman is using 50MB in RAM and I never use the bluetooth. Would it be possible to disable it?
+- [ ] Geany tab at right opening of the tab will give 70% of the width to the tab rather than the editor. Save width of the tab?
+- [ ] When all the document are closed in Geany, the Markdown Preview still shows the last preview. Also the links are clickable in the preview and the page is showed in the sidebar but there is no way to navigate and go back to the preview.
+- [ ] When locked the name of the use is bold and ugly in lightdm, why? For indicating that session is locked? The button "unlock" is not enough?
 - [ ] Geany side bar at right.
 - [ ] Check that NumLock is ON after login.
 - [ ] At first start the bluetooth is actived
