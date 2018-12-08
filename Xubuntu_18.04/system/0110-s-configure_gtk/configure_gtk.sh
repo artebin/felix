@@ -44,10 +44,28 @@ configure_gtk(){
 	# Add gtk.css for root
 	mkdir -p /root/.config/gtk-3.0
 	cp gtk.css /root/.config/gtk-3.0/gtk.css
+	
+	echo
+}
+
+no_rounded_corners_for_xfce_notify_default(){
+	cd ${BASEDIR}
+	echo "Remove rounded corners in default theme for xfce notify ..."
+	XFCE_NOTIFY_GTK_CSS_FILE="/usr/share/themes/Default/xfce-notify-4.0/gtk.css"
+	backup_file copy "${XFCE_NOTIFY_GTK_CSS_FILE}"
+	cp xfce-notify-4.0.gtk.css "${XFCE_NOTIFY_GTK_CSS_FILE}"
+	echo
 }
 
 cd ${BASEDIR}
+
 configure_gtk 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+EXIT_CODE="${PIPESTATUS[0]}"
+if [ "${EXIT_CODE}" -ne 0 ]; then
+	exit "${EXIT_CODE}"
+fi
+
+no_rounded_corners_for_xfce_notify_default 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"
