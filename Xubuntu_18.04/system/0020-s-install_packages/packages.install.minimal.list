@@ -182,17 +182,12 @@ libxml2-utils xmlstarlet tidy xmlto
 jq
 gnuplot plotdrop
 
-##############
-# Subversion
-##############
+#######
+# VCS
+#######
 subversion
-
-#######
-# Git
-#######
-git
-giggle
-git-cola
+git giggle git-cola
+mercurial
 
 #####################
 # Development tools
