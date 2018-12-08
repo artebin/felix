@@ -2,6 +2,7 @@
 
 source ../../common.sh
 check_shell
+exit_if_has_not_root_privileges
 
 terminate_x_with_ctrl_alt_backspace(){
 	cd ${BASEDIR}
