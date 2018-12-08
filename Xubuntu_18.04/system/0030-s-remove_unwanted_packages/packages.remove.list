@@ -18,7 +18,7 @@ whoopsie libwhoopsie0
 snapd
 
 # Remove GNOME software and update manager, notifier
-gnome-software gnome-software-common gnome-software-plugin-snap update-manager update-notifier update-notifier-common
+gnome-software gnome-software-common gnome-software-plugin-snap update-manager update-manager-core update-notifier update-notifier-common
 
 # Remove Ubuntu release upgrader
 ubuntu-release-upgrader-core ubuntu-release-upgrader-gtk
