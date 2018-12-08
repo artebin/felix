@@ -1,21 +1,12 @@
 # TODOS
-- [ ] Geany redo should be <ctrl><shift>z
+- [ ] Should revert to xfce4-power-manager now but fix the icons first.
 - [ ] It seems the state of "Num Lock" is not preserved anymore after wake after suspend.
-- [ ] What is the meaning of the "Public" folder from XDG specs.
 - [ ] Disable gfs MTP AFC and GPhoto2 <https://github.com/eRadical/ansible-my-fedora-workstation/issues/11>
 - [ ] It seems there is a space between the window and the edges of the screens when we resize.
-- [ ] add mercurial
-- [ ] Htop is still executed by termite via openbox rc.xml
-- [ ] It seems bluman is using 50MB in RAM and I never use the bluetooth. Would it be possible to disable it?
-- [ ] Geany tab at right opening of the tab will give 70% of the width to the tab rather than the editor. Save width of the tab?
 - [ ] When all the document are closed in Geany, the Markdown Preview still shows the last preview. Also the links are clickable in the preview and the page is showed in the sidebar but there is no way to navigate and go back to the preview.
 - [ ] When locked the name of the use is bold and ugly in lightdm, why? For indicating that session is locked? The button "unlock" is not enough?
-- [ ] Geany side bar at right.
-- [ ] Check that NumLock is ON after login.
-- [ ] At first start the bluetooth is actived
 - [ ] Execute the dstat recipe by default but do not start the service.
-- [ ] Caja script for indenting XML file
-- [ ] Add tree in default package to install.
+- [ ] Add caja script for indenting XML file
 - [ ] scroll by pixel/pc amount in LibreOffice Calc (rather by number of rows).
 - [ ] <https://bugs.launchpad.net/ubuntu/+source/gvfs/+bug/378783> 
 - [ ] Install dex: "DesktopEntry eXecution implements the Freedesktop.org autostart specification, independent of any desktop or window manager environment.". Why xdg-open is not implemented the same way?
@@ -27,7 +18,6 @@
 - [ ] It seems thunderbird is not using x-www-browser (chromium is used), "network.protocol-handler.warn-external.http" should be true for all. gnome-www-browser should be set too (not only x-www-browser).
 - [ ] A script at startup of openbox checking for the default application and notify the user about some changes.
 - [ ] Patch EOM for not showing "set background" is window manager is not Metacity (the WM which should be used with EOM). Use $XDG_SESSION_DESKTOP.
-- [ ] Add python-pip
 - [ ] Create an install setting using the ubuntu miniso.
 - [ ] Fix the Xmodmap for the macbook.
 - [ ] Need a way to do some settings regarding the sensitiviy of the touchpad/mouse a save these settings. The xfce4-mouse-settings is not saved and even worst it is reset during a session but it probably because I use it in a not-XFCE desktop.
@@ -46,16 +36,24 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network.
 
 # ISSUES
-- AllTray: when using `alltray -a` and if the user types ESC then the window popup is still showed but there is nothing we can do with it except closing it.
-- Alltray: when uniconifying a window, the current virtual workspace changes for being the one of the window at time of the iconify.
-- Caja: the side panel is not working correctly (and the rendering for painting the focuses/unfocused panel is a little ugly).
-- Caja: copying files is very slow compared to the command line (local or remote).
-- dmenu: dmenu appears on the monitor on which the currently focused window is located. It should use the mouse pointer location to determine the monitor.
-- Geany: markdown plugin is not properly using the css specified (colors are not used and lines starting with the character `#` inside a blockcode are treated as a heading).
-- reboot/shutdown can still be waiting for the nfs mount points to be unmounted.
-- mtrack does not seem to work with Ubuntu18.04.
+- [ ] AllTray: when using `alltray -a` and if the user types ESC then the window popup is still showed but there is nothing we can do with it except closing it.
+- [ ] Alltray: when uniconifying a window, the current virtual workspace changes for being the one of the window at time of the iconify.
+- [ ] Caja: copying files is very slow compared to the command line (local or remote). => it can be because of GVFS
+- [ ] dmenu: dmenu appears on the monitor on which the currently focused window is located. It should use the mouse pointer location to determine the monitor.
+- [ ] Geany: markdown plugin is not properly using the css specified (colors are not used and lines starting with the character `#` inside a blockcode are treated as a heading).
+- [ ] reboot/shutdown can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] XDG user dirs Templates, remove it.
+- [x] mtrack does not seem to work with Ubuntu18.04. => apparrently it is fixed now 18-12-08
+- [x] Caja: the side panel is not working correctly (and the rendering for painting the focuses/unfocused panel is a little ugly). => fixed in Caja v1.20.2
+- [x] Geany redo should be <ctrl><shift>z
+- [x] Geany tab at right opening of the tab will give 70% of the width to the tab rather than the editor. Save width of the tab? => just revert to sidebar at left
+- [x] Add tree in default package to install.
+- [x] Disable autostart of blueman-applet
+- [x] It seems bluman is using 50MB in RAM and I never use the bluetooth. Would it be possible to disable it? => yes just rename the .desktop file in /etc/xdg/autostart
+- [x] Completely remove references to termite
+- [x] add mercurial
 - [x] Should use `/usr/share/backgrounds` rather than `/usr/share/wallpapers`.
 - [x] Do not show by default menubar in mate-terminal.
 - [x] Switch back to MATE-Terminal (and archive the installation script for Termite)
