@@ -446,7 +446,7 @@
 					<enabled>false</enabled>
 					<name>htop</name>
 				</startupnotify>
-				<command>termite --exec="htop"</command>
+				<command>x-terminal-emulator -e "htop"</command>
 			</action>
 		</keybind>
 		<keybind key="W-v">

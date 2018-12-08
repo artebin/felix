@@ -9,8 +9,8 @@
 		<item label="Media Player"><action name="Execute"><command>vlc</command></action></item>
 		<separator/>
 		<menu id="accessories" label="Accessories">
-			<item label="Task Manager (htop)"><action name="Execute"><command>termite --exec="htop"</command></action></item>
-			<item label="System Monitor (glances)"><action name="Execute"><command>termite --exec="glances"</command></action></item>
+			<item label="Task Manager (htop)"><action name="Execute"><command>x-terminal-emulator -e "htop"</command></action></item>
+			<item label="System Monitor (glances)"><action name="Execute"><command>x-terminal-emulator -e "glances"</command></action></item>
 			<item label="Disk Usage Analyzer"><action name="Execute"><command>mate-disk-usage-analyzer</command></action></item>
 			<item label="Log Explorer (glogg)"><action name="Execute"><command>glogg</command></action></item>
 			<item label="GVim"><action name="Execute"><command>gvim</command></action></item>
@@ -26,7 +26,7 @@
 		</menu>
 		<menu id="multimedia" label="Multimedia">
 			<item label="Volume Control"><action name="Execute"><command>pavucontrol</command></action></item>
-			<item label="MPS YouTube"><action name="Execute"><command>termite --exec="mpsyt"</command></action></item>
+			<item label="MPS YouTube"><action name="Execute"><command>x-terminal-emulator -e "mpsyt"</command></action></item>
 			<item label="VLC"><action name="Execute"><command>vlc</command></action></item>
 			<item label="Xfburn"><action name="Execute"><command>xfburn</command></action></item>
 		</menu>
@@ -82,7 +82,7 @@
 			<item label="Mouse Settings"><action name="Execute"><command>xfce4-mouse-settings</command></action></item>
 			<item label="Keyboard Settings"><action name="Execute"><command>xfce4-keyboard-settings</command></action></item>
 			<separator/>
-			<item label="Update Alternatives"><action name="Execute"><command>termite --exec="sudo update-alternatives --all"</command></action></item>
+			<item label="Update Alternatives"><action name="Execute"><command>x-terminal-emulator -e "sudo update-alternatives --all"</command></action></item>
 			<item label="Update Alternatives GUI"><action name="Execute"><command>pkexec galternatives</command></action></item>
 			<item label="MIME Settings"><action name="Execute"><command>xfce4-mime-settings</command></action></item>
 			<separator/>

@@ -11,4 +11,4 @@ if [ ! -f "${INPUT_FILE}" ]; then
 	zenity --no-wrap --error --text="Can not use this script on a directory"
 	exit 1
 fi
-termite --exec="tail -n +1 -f ${INPUT_FILE}"
+x-terminal-emulator -e "tail -n +1 -f ${INPUT_FILE}"
