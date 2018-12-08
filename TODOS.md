@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Geany redo should be <ctrl><shift>z
+- [ ] It seems the state of "Num Lock" is not preserved anymore after wake after suspend.
 - [ ] What is the meaning of the "Public" folder from XDG specs.
 - [ ] Disable gfs MTP AFC and GPhoto2 <https://github.com/eRadical/ansible-my-fedora-workstation/issues/11>
 - [ ] It seems there is a space between the window and the edges of the screens when we resize.
