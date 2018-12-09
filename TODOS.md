@@ -1,17 +1,14 @@
 # TODOS
+- [ ] Caja bugs when create new file (or directory) with name starting with a dot.
 - [ ] Search for "apt" in the project and avoid to use apt, use apt-get instead when possible.
 - [ ] Remove blueman-applet from Openbox autostart and add a menu entry for starting it. 
-- [ ] Recipe for removing packages is not working properly (too many packages removed).
 - [ ] Add traces for monitoring the time taken for the installation.
-- [ ] Pulse audio does not restart properly after logout/login.
-- [ ] Disable the automatic update in ubuntu <https://askubuntu.com/questions/1059971/disable-updates-from-command-line-in-ubuntu-16-04>.
 - [ ] Should revert to xfce4-power-manager now but fix the icons first <https://bbs.archlinux.org/viewtopic.php?id=216495>.
 - [ ] It seems the state of "Num Lock" is not preserved anymore after wake after suspend.
 - [ ] Disable gfs MTP AFC and GPhoto2 <https://github.com/eRadical/ansible-my-fedora-workstation/issues/11>
 - [ ] It seems there is a space between the window and the edges of the screens when we resize.
 - [ ] When all the document are closed in Geany, the Markdown Preview still shows the last preview. Also the links are clickable in the preview and the page is showed in the sidebar but there is no way to navigate and go back to the preview.
 - [ ] When locked the name of the use is bold and ugly in lightdm, why? For indicating that session is locked? The button "unlock" is not enough?
-- [ ] Execute the dstat recipe by default but do not start the service.
 - [ ] Add caja script for indenting XML file
 - [ ] scroll by pixel/pc amount in LibreOffice Calc (rather by number of rows).
 - [ ] <https://bugs.launchpad.net/ubuntu/+source/gvfs/+bug/378783> 
@@ -28,16 +25,12 @@
 - [ ] Fix the Xmodmap for the macbook.
 - [ ] Need a way to do some settings regarding the sensitiviy of the touchpad/mouse a save these settings. The xfce4-mouse-settings is not saved and even worst it is reset during a session but it probably because I use it in a not-XFCE desktop.
 - [ ] Test if caja gets unresponsive when the NFS is mounter via a regular mount command rather via gvfs. Just test it by mount it, access it via caja, unplug the network and access it again via caja.
-- [ ] Fix "N: Ignoring file 'google-chrome.list.bak.180822-101529' in directory '/etc/apt/sources.list.d/' as it has an invalid filename extension"
 - [ ] Hibernate is not working anymore => should add a kernel parameter, see <https://soulkiln.blog/2018/08/14/ubuntu-18-04-hibernate-and-suspend-fix/>.
-- [ ] Install dstat from source.
 - [ ] Thunderbird config do not mark read automatically.
 - [ ] Add recipe for updating the XDG default directory (remove "Templates" and "Music" should be default).
 - [ ] Compile from source <https://github.com/freedesktop/xdg-desktop-file-utils> because command "update-desktop-update" is bugged in Ubuntu 18.04.
-- [ ] Add pigz and collectd, dstat, atop (+ retrieve systemd service for collectd/dstat from haddock).
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>.
-- [ ] Add shortcuts from openbox in shortcuts.md.
 - [ ] Check the configuration of DokuWiki (entities etc.).
 - [ ] Add a note for the static route for accessing trevize.net from the local network.
 
@@ -50,6 +43,13 @@
 - [ ] reboot/shutdown can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Add shortcuts from openbox in shortcuts.md.
+- [x] Add pigz
+- [x] Execute the dstat recipe by default but do not start the service.
+- [x] Install dstat from source.
+- [x] Disable the automatic update in ubuntu <https://askubuntu.com/questions/1059971/disable-updates-from-command-line-in-ubuntu-16-04>.
+- [x] Pulse audio does not restart properly after logout/login. Fixed with <https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting#ALSA_channels_mute_when_headphones_are_plugged/unplugged_improperly>.
+- [x] Recipe for removing packages is not working properly (too many packages removed).
 - [x] Add guvcview in package to install (good replacement for cheese which is deadly GNOME refactored)
 - [x] Restart X with <Ctrl><Alt>Backspace
 - [x] XDG user dirs Templates, remove it.
