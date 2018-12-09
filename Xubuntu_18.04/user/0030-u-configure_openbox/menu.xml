@@ -86,8 +86,7 @@
 			<item label="Update Alternatives GUI"><action name="Execute"><command>pkexec galternatives</command></action></item>
 			<item label="MIME Settings"><action name="Execute"><command>xfce4-mime-settings</command></action></item>
 			<separator/>
-			<item label="Power Management Preferences"><action name="Execute"><command>mate-power-preferences</command></action></item>
-			<item label="Power Statistics"><action name="Execute"><command>mate-power-statistics</command></action></item>
+			<item label="Power Management Preferences"><action name="Execute"><command>xfce4-power-preferences</command></action></item>
 		</menu>
 		<menu id="system" label="System">
 			<menu id="SystemTools" label="Tools">
