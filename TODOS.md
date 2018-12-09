@@ -1,4 +1,7 @@
 # TODOS
+- [ ] Search for "apt" in the project and avoid to use apt, use apt-get instead when possible.
+- [ ] Remove blueman-applet from Openbox autostart and add a menu entry for starting it. 
+- [ ] Recipe for removing packages is not working properly (too many packages removed).
 - [ ] Add traces for monitoring the time taken for the installation.
 - [ ] Pulse audio does not restart properly after logout/login.
 - [ ] Disable the automatic update in ubuntu <https://askubuntu.com/questions/1059971/disable-updates-from-command-line-in-ubuntu-16-04>.
