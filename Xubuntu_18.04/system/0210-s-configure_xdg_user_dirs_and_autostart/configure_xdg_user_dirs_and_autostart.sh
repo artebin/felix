@@ -63,6 +63,7 @@ disable_unwanted_xdg_autostart(){
 	
 	XDG_AUTOSTART_DESKTOP_FILE_ARRAY=(
 		"blueman.desktop"
+		"xfce4-power-manager.desktop"
 	)
 	
 	for XDG_AUTOSTART_FILE_NAME in "${XDG_AUTOSTART_DESKTOP_FILE_ARRAY[@]}"; do

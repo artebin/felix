@@ -20,8 +20,9 @@ pasystray &
 
 xsetroot -solid "#303030" &
 
-# If distribution is Xubuntu then xfce4-power-manager is started via /etc/xdg/autostart/xfce4-power-manager
-#xfce4-power-manager
+# If distribution is Xubuntu then xfce4-power-manager may have been started via /etc/xdg/autostart/xfce4-power-manager
+xfce4-power-manager
+#mate-power-manager
 
 bash clipmenud_run.sh &
 
