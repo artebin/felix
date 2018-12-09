@@ -21,9 +21,7 @@ pasystray &
 xsetroot -solid "#303030" &
 
 # If distribution is Xubuntu then xfce4-power-manager is started via /etc/xdg/autostart/xfce4-power-manager
-# Could be the file should be renamed in order to prevent xfce4-power-manager to be started
-
-mate-power-manager &
+#xfce4-power-manager
 
 bash clipmenud_run.sh &
 
