@@ -10,9 +10,12 @@ install_translate_notify(){
 	echo "Install Translate-Notify ..."
 	cp ./translate-notify.sh /usr/bin/translate-notify
 	chmod a+x /usr/bin/translate-notify
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 install_translate_notify 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

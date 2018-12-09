@@ -23,9 +23,12 @@ disable_touchscreen(){
 	
 	echo "Disabling touchscreen ..."
 	sed -i.bak "s/MatchIsTouchscreen \"on\"/MatchIsTouchscreen \"off\"/g" "${LIB_INPUT_CONF_FILE}"
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 disable_touchscreen 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

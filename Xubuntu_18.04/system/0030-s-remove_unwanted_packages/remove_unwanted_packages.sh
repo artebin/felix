@@ -34,12 +34,14 @@ process_package_remove_list(){
 	apt-get -y autoremove
 	
 	# Cleaning
+	cd ${BASEDIR}
 	rm -f "${APT_INPUT_FILE}"
 	
 	echo
 }
 
 cd ${BASEDIR}
+
 process_package_remove_list 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

@@ -12,9 +12,12 @@ add_lightdm_greeter_badges(){
 	echo "Adding lightdm greeter badges ..."
 	cp ./${LIGHTDM_GREETER_OPENBOX_BADGE_FILE_NAME} /usr/share/icons/hicolor/scalable/places/openbox_badge-symbolic.svg
 	update-icon-caches /usr/share/icons/hicolor
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 add_lightdm_greeter_badges 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

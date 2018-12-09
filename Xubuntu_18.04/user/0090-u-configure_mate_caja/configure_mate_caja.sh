@@ -26,9 +26,12 @@ configure_mate_caja(){
 	cp ./compare ~/.config/caja/scripts
 	cp ./tail_and_follow ~/.config/caja/scripts
 	cp ./tail_entirely_and_follow ~/.config/caja/scripts
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 configure_mate_caja 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

@@ -23,9 +23,12 @@ configure_ssh_welcome_text(){
 	cd /etc/update-motd.d
 	chmod 744 00-welcome-dude
 	chmod 644 tux
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 configure_ssh_welcome_text 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

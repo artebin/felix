@@ -14,9 +14,12 @@ configure_xfce4_thunar(){
 		mkdir -p ~/.config/xfce4/xfconf/xfce-perchannel-xml
 	fi
 	cp ./thunar.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 configure_xfce4_thunar 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

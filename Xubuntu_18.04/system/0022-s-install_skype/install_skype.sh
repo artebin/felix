@@ -12,12 +12,16 @@ install_skype(){
 	dpkg -i skypeforlinux-64.deb
 	
 	# Cleanup
-	rm -fr ~/.rpmdb
-	rm -f ~/.wget-hsts
+	cd ${BASEDIR}
 	rm -f ./skypeforlinux-64.deb
+	rm -fr ~/.rpmdb
+	rm -fr ~/.wget-hsts
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 install_skype 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

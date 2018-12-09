@@ -41,9 +41,12 @@ install_customized_faenza(){
 	# Cleanup
 	cd ${BASEDIR}
 	rm -fr ./faenza-vanilla-icon-theme
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 install_customized_faenza 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

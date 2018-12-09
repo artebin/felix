@@ -25,9 +25,12 @@ configure_auto_login(){
 		sed -i "/^autologin-user=/s/.*/autologin-user=${AUTO_LOGIN_USER_NAME}/" ./50-autologin.conf
 		cp ./50-autologin.conf /etc/lightdm/lightdm.conf.d/50-autologin.conf
 	fi
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 configure_auto_login 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

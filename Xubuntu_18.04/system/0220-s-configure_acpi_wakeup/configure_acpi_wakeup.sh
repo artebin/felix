@@ -67,9 +67,12 @@ configure_acpi_wakeup(){
 	# Cleaning
 	cd ${BASEDIR}
 	rm -f acpi_wakeup configure_acpi_wakeup.service
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 configure_acpi_wakeup 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

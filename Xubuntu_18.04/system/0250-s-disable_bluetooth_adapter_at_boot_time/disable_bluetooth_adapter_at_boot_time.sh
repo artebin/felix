@@ -24,9 +24,12 @@ disable_bluetooth_adapter_at_boot_time(){
 		backup_file copy "${RC_LOCAL_FILE}"
 		echo "rfkill block bluetooth" >> "${RC_LOCAL_FILE}"
 	fi
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 disable_bluetooth_adapter_at_boot_time 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

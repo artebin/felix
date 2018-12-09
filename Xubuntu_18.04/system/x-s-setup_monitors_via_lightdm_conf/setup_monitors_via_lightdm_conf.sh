@@ -14,9 +14,12 @@ setup_monitors_via_lightdm_conf(){
 	fi
 	
 	cp ./10-monitors_setup.sh /etc/lightdm/lightdm.conf.d
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 setup_monitors_via_lightdm_conf 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

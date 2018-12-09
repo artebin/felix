@@ -21,9 +21,12 @@ set_locale(){
 	update-locale LC_TELEPHONE=${LOCALE_TO_USE_LC_TELEPHONE}
 	update-locale LC_MEASUREMENT=${LOCALE_TO_USE_LC_MEASUREMENT}
 	update-locale LC_IDENTIFICATION=${LOCALE_TO_USE_LC_IDENTIFICATION}
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 set_locale 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

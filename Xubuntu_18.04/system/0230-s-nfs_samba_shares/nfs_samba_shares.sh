@@ -9,9 +9,12 @@ nfs_samba_shares(){
 	
 	echo "nfs samba shares ..."
 	cat ./fstab_comments >>/etc/fstab
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 nfs_samba_shares 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

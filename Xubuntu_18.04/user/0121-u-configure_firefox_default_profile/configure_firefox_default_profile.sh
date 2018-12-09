@@ -112,6 +112,8 @@ configure_firefox_default_profile(){
 	else
 		echo "${LINE_REPLACEMENT_VALUE}" >> "${PREFS_JS_PATH}"
 	fi
+	
+	echo
 }
 
 cd ${BASEDIR}

@@ -10,9 +10,12 @@ configure_lightdm_greeter(){
 	echo "Configuring LightDM greeter ..."
 	backup_file rename /etc/lightdm/lightdm-gtk-greeter.conf
 	cp ./lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 configure_lightdm_greeter 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

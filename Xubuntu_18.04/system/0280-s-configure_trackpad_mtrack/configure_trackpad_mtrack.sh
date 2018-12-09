@@ -23,9 +23,12 @@ configure_trackpad_mtrack(){
 	#   9 = 5th button (aka browser forward button)
 	
 	cp ./80-mtrack.conf /usr/share/X11/xorg.conf.d/
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 configure_trackpad_mtrack 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

@@ -57,9 +57,12 @@ install_mate_power_manager_from_sources(){
 	# Cleaning
 	cd ${BASEDIR}
 	rm -fr ./mate-power-manager
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 install_mate_power_manager_from_sources 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

@@ -22,9 +22,12 @@ configure_openbox(){
 	cp ./clipmenu_run.sh ~/.config/openbox
 	cp ./power_button_pressed.py ~/.config/openbox
 	cp ./exit.py ~/.config/openbox
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 configure_openbox 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

@@ -32,9 +32,12 @@ install_facetime_hd(){
 	# Cleaning
 	cd ${BASEDIR}
 	rm -fr ./bcwc_pcie
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 install_facetime_hd 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

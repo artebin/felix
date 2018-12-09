@@ -10,9 +10,12 @@ configure_apple_hid(){
 	echo "Configuring Apple HID (use fn key for special functions keys) ..."
 	echo "options hid_apple fnmode=2" > /etc/modprobe.d/hid_apple.conf
 	update-initramfs -u -k all
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 configure_apple_hid 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

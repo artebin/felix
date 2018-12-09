@@ -15,9 +15,12 @@ install_chrome(){
 	echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
 	apt-get update
 	apt-get install google-chrome-stable -y
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 install_chrome 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
