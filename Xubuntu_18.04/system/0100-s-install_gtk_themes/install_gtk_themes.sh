@@ -13,7 +13,11 @@ copy_themes(){
 	cd /usr/share/themes
 	chmod -R go+r ./Erthe-njames
 	find ./Erthe-njames -type d | xargs chmod go+x
-  
+	
+	cd ${BASEDIR}
+	cp -R njames /usr/share/themes
+	chmod -R go+r /usr/share/themes/njames
+	
 	# Cleanup
 	cd ${BASEDIR}
 	rm -fr Erthe-njames
