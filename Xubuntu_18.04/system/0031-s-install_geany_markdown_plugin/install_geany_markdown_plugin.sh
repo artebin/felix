@@ -8,7 +8,7 @@ install_geany_markdown_plugin(){
 	cd ${BASEDIR}
 	
 	echo "Install Geany / Markdown plugin ..."
-	apt install -y libwebkit2gtk-4.0-dev
+	apt-get install -y libwebkit2gtk-4.0-dev
 	git clone http://github.com/geany/geany-plugins
 	cd geany-plugins
 	./autogen.sh
