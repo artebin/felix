@@ -14,9 +14,12 @@ configure_xfce4_power_manager(){
 	xfconf-query --create -t int -c xfce4-power-manager -p /xfce4-power-manager/show-tray-icon -s 1
 	xfconf-query --create -t int -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-battery -s 1
 	xfconf-query --create -t int -c xfce4-power-manager -p /xfce4-power-manager/lid-action-on-ac -s 1
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 configure_xfce4_power_manager 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

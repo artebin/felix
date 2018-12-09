@@ -12,9 +12,12 @@ disable_apport(){
 	
 	echo "Disabling apport ..."
 	sed -i "/^enabled=/s/.*/enabled=0/" /etc/default/apport
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 disable_apport 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

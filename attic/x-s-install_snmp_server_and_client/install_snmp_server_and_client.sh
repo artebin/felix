@@ -42,6 +42,8 @@ install_snmp_deamon(){
 	
 	# Test snmpget command
 	snmpget -v1 -c public localhost .1.3.6.1.4.1.2021.4.6.0
+	
+	echo
 }
 
 install_zabbix(){
@@ -83,9 +85,12 @@ install_zabbix(){
 	
 	# Load http://localhost/zabbix in the browser
 	# Default login "Admin" and default password "zabbix"
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 install_snmp_server_and_client 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

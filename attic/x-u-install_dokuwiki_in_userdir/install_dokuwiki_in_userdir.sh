@@ -31,9 +31,12 @@ install_dokuwiki_in_userdir(){
 	chmod -R g+w ~/public_html/${DOKUWIKI_STABLE}/data
 	find ~/public_html -type d | xargs chmod g+x
 	sudo service apache2 restart
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 install_dokuwiki_in_userdir 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

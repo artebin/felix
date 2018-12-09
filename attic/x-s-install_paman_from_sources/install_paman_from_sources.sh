@@ -18,9 +18,12 @@ install_pasystray(){
 	# Cleanup
 	cd ${BASEDIR}
 	rm -fr paman-0.9.4
+	
+	echo
 }
 
 cd ${BASEDIR}
+
 install_pasystray 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
