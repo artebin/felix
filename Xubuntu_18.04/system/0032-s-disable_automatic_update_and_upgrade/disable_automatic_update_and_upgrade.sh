@@ -21,7 +21,7 @@ disable_automatic_update_and_upgrade(){
 	echo
 	
 	echo "Remove unattended-upgrades ..."
-	apt-get remove --y -purge unattended-upgrades
+	apt-get remove -y --purge unattended-upgrades
 	
 	echo
 }
