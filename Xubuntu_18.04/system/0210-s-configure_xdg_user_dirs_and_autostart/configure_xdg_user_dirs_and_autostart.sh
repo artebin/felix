@@ -62,11 +62,11 @@ disable_unwanted_xdg_autostart(){
 	echo "Disabling unwanted xdg autostart ..."
 	
 	XDG_AUTOSTART_DESKTOP_FILE_ARRAY=(
-		blueman.desktop
+		"blueman.desktop"
 	)
 	
 	for XDG_AUTOSTART_FILE_NAME in "${XDG_AUTOSTART_DESKTOP_FILE_ARRAY[@]}"; do
-		if [[ ! -f "${XDG_AUTOSTART_FILE_NAME}" ]]; then
+		if [[ ! -f "/etc/xdg/autostart/${XDG_AUTOSTART_FILE_NAME}" ]]; then
 			echo "Can not find file: ${XDG_AUTOSTART_FILE_NAME}"
 		else
 			echo "Disabling autostart for ${XDG_AUTOSTART_FILE_NAME} ..."
