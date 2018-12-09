@@ -7,13 +7,12 @@ configure_xfce4_thunar(){
 	cd ${BASEDIR}
 	
 	echo "Configuring xfce4-thunar ..."
-	if [[ -f ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml ]]; then
-		backup_file rename ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
+	CONFIG_FILE="thunar.xml"
+	if [ -f ~/.config/xfce4/xfconf/xfce-perchannel-xml/"${CONFIG_FILE}" ]; then
+		backup_file rename ~/.config/xfce4/xfconf/xfce-perchannel-xml/"${CONFIG_FILE}"
 	fi
-	if [ ! -f ~/.config/xfce4/xfconf/xfce-perchannel-xml ]; then
-		mkdir -p ~/.config/xfce4/xfconf/xfce-perchannel-xml
-	fi
-	cp ./thunar.xml ~/.config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml
+	mkdir -p ~/.config/xfce4/xfconf/xfce-perchannel-xml
+	cp "${CONFIG_FILE}" ~/.config/xfce4/xfconf/xfce-perchannel-xml
 	
 	echo
 }
