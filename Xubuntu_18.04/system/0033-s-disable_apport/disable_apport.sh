@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# NJ: 18-12-002: this recipe has been disabled because we now expect
-# apport to be uninstalled.
-
 source ../../common.sh
 check_shell
 exit_if_has_not_root_privileges
