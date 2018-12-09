@@ -1,8 +1,12 @@
+## Ubuntu 18.04: no wired network and Realtek ethernet controller RTL8168
+- `apt-get remove --purge r8168-dkms`
+- download and install the most recent version of the driver <https://packages.debian.org/sid/all/r8168-dkms/download>
+
 ## Shared clipboard between host/guest in Virtualbox
 Must install `virtualbox-guest-x11`.
 
 ## Xmodmap
-List the current configuration of the keyboard with `$xmodmap pke`
+List the current configuration of the keyboard with `xmodmap pke`.
 
 ## Fix keyboard backlight in mate-power-manager
 The problem is that keyboard backlight is set to 100pc when mate-power-manager starts and when some power management is done (leaving idle for example).
