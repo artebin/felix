@@ -15,7 +15,9 @@ disable_apport(){
 	else
 		add_or_update_line_based_on_prefix "enabled=" "enabled=0" "${APPORT_FILE}"
 	fi
-	service apport stop
+	
+	systemctl stop apport.service
+	systemctl disable apport.service
 	
 	echo
 }
@@ -29,12 +31,13 @@ disable_whoopsie(){
 	
 	WHOOPSIE_FILE="/etc/default/whoopsie"
 	if [ ! -f "${WHOOPSIE_FILE}" ]; then
-		echo "Can not find file: ${WHOOPSIE_FILE}"
-		exit 1
+		cp whoopsie.conf "${WHOOPSIE_FILE}"
 	else
 		add_or_update_line_based_on_prefix "report_crashes=" "report_crashes=false" "${WHOOPSIE_FILE}"
 	fi
-	service whoopsie stop
+	
+	systemctl stop whoopsie.service
+	systemctl disable whoopsie.service
 	
 	echo
 }
