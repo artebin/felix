@@ -2,7 +2,7 @@
 See <https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1752772>
 - `apt-get remove --purge r8168-dkms`
 - download and install the most recent version of the driver <https://packages.debian.org/sid/all/r8168-dkms/download>
-- add a service /etc/systemd/r8169_fix.service
+- add a service /etc/systemd/system/r8169_fix.service
 ```
 [Unit]
 Description=Local system resume actions
