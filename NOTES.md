@@ -1,6 +1,26 @@
-## Ubuntu 18.04: no wired network and Realtek ethernet controller RTL8168
+## Ubuntu 18.04: r8169 ethernet card not working at all or not working after suspend
+See <https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1752772>
 - `apt-get remove --purge r8168-dkms`
 - download and install the most recent version of the driver <https://packages.debian.org/sid/all/r8168-dkms/download>
+- add a service /etc/systemd/r8169_fix.service
+```
+[Unit]
+Description=Local system resume actions
+After=suspend.target
+After=hybrid-sleep.target
+After=hibernate.target
+
+[Service]
+Type=simple
+ExecStartPre=/usr/bin/modprobe -r r8169
+ExecStart=/usr/bin/modprobe r8169
+
+[Install]
+WantedBy=suspend.target
+WantedBy=hybrid-sleep.target
+WantedBy=hibernate.target
+```
+- `sudo systemctl enable fix-r8169.service`
 
 ## Shared clipboard between host/guest in Virtualbox
 Must install `virtualbox-guest-x11`.
