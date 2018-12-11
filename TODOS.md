@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Still a problem with mtack we do not have left click with the 2-fingers tap.
 - [ ] Easily add more locales to gsimplecal.
 - [ ] Gvfs is slow, could be better to mount the nfs via autofs rather than gvfs.
 - [ ] Try thunar v1.8.x ?
