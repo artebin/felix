@@ -1,4 +1,7 @@
 # TODOS
+- [ ] Easily add more locales to gsimplecal.
+- [ ] Gvfs is slow, could be better to mount the nfs via autofs rather than gvfs.
+- [ ] Try thunar v1.8.x ?
 - [ ] Caja bugs when create new file (or directory) with name starting with a dot.
 - [ ] Search for "apt" in the project and avoid to use apt, use apt-get instead when possible.
 - [ ] Remove blueman-applet from Openbox autostart and add a menu entry for starting it. 
