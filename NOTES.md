@@ -1,3 +1,7 @@
+## Eclipse font rendering buggy with GTK3
+It is because of "Use mixed fonts and color labels" settings 
+See <https://bugs.eclipse.org/bugs/show_bug.cgi?id=465054>
+
 ## Ubuntu 18.04: r8169 ethernet card not working at all or not working after suspend
 See <https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1752772>
 - `apt-get remove --purge r8168-dkms`
