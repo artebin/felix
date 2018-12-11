@@ -1,5 +1,26 @@
 # TODOS
-- [ ] Still a problem with mtack we do not have left click with the 2-fingers tap.
+- [ ] Openbox add keybinds in openbox rc.xml for mouse clicks with:
+```
+<keybind key="W-Left">
+  <action name="Execute">
+    <command>xdotool keyup Super_L click 1</command>
+  </action>
+</keybind>
+
+<keybind key="W-Down">
+  <action name="Execute">
+    <command>xdotool keyup Super_L click 2</command>
+  </action>
+</keybind>
+
+<keybind key="W-Right">
+  <action name="Execute">
+    <command>xdotool keyup Super_L click 3</command>
+  </action>
+</keybind>
+```
+But we should also change the keybinds for tiling (not using S(Left|Down|Right|Up)
+- [ ] Still a problem with mtrack we do not have right click with the 2-fingers tap. Add key shortcut for left/middle click.
 - [ ] Easily add more locales to gsimplecal.
 - [ ] Gvfs is slow, could be better to mount the nfs via autofs rather than gvfs.
 - [ ] Try thunar v1.8.x ?
