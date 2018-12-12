@@ -1,4 +1,5 @@
 # TODOS
+- [ ] gpicview should replace EOM (replace the text in the .desktop file)
 - [ ] Still a problem with mtrack we do not have right click with the 2-fingers tap. Add key shortcut for left/middle click.
 - [ ] Gvfs is slow, could be better to mount the nfs via autofs rather than gvfs.
 - [ ] Try thunar v1.8.x ?
