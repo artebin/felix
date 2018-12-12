@@ -50,7 +50,7 @@ install_zabbix(){
 	cd ${BASEDIR}
 	
 	echo "Install snmp client Zabbix ..."
-	apt -y install apache2
+	apt-get -y install apache2
 	
 	# ServerTokens only in the server HTTP response header 
 	add_or_update_line_based_on_prefix "ServerTokens " "ServerTokens Prod" "/etc/apache2/conf-enabled/security.conf"
@@ -58,7 +58,7 @@ install_zabbix(){
 	# Set ServerName and ServerAdmin in /etc/apache2/apache2.conf
 	
 	# Install PHP
-	apt -y install php php-pear php-cgi php-common libapache2-mod-php php-mbstring php-net-socket php-gd php-xml-util php-mysql php-gettext php-bcmath
+	apt-get -y install php php-pear php-cgi php-common libapache2-mod-php php-mbstring php-net-socket php-gd php-xml-util php-mysql php-gettext php-bcmath
 	a2enconf php7.2-cgi
 	
 	# Set time zone for PHP
@@ -69,8 +69,8 @@ install_zabbix(){
 	# Install Zabbix server
 	wget http://repo.zabbix.com/zabbix/3.4/ubuntu/pool/main/z/zabbix-release/zabbix-release_3.4-1+bionic_all.deb
 	dpkg -i ./zabbix-release_3.4-1+bionic_all.deb
-	apt update
-	apt -y install zabbix-agent zabbix-server-mysql php-mysql zabbix-frontend-php
+	apt-get update
+	apt-get -y install zabbix-agent zabbix-server-mysql php-mysql zabbix-frontend-php
 	
 	# Create database and set rights for user zabbix
 	# mysql -uroot -p

@@ -8,7 +8,7 @@ install_pasystray(){
 	cd ${BASEDIR}
 	
 	echo "Installing paman v0.9.1 from sources (retrieved from <http://0pointer.de/lennart/projects/paman/>) ..."
-	apt install -y libgtkmm-2.4-dev libgtkmm-3.0-dev libglademm-2.4-dev lynx
+	apt-get install -y libgtkmm-2.4-dev libgtkmm-3.0-dev libglademm-2.4-dev lynx
 	tar xzf ./paman-0.9.4.tar.gz
 	cd ./paman-0.9.4
 	./configure
