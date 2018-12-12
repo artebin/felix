@@ -1,37 +1,11 @@
 # TODOS
-- [ ] Openbox add keybinds in openbox rc.xml for mouse clicks with:
-```
-<keybind key="W-Left">
-  <action name="Execute">
-    <command>xdotool keyup Super_L click 1</command>
-  </action>
-</keybind>
-
-<keybind key="W-Down">
-  <action name="Execute">
-    <command>xdotool keyup Super_L click 2</command>
-  </action>
-</keybind>
-
-<keybind key="W-Right">
-  <action name="Execute">
-    <command>xdotool keyup Super_L click 3</command>
-  </action>
-</keybind>
-```
-But we should also change the keybinds for tiling (not using S(Left|Down|Right|Up)
 - [ ] Still a problem with mtrack we do not have right click with the 2-fingers tap. Add key shortcut for left/middle click.
-- [ ] Easily add more locales to gsimplecal.
 - [ ] Gvfs is slow, could be better to mount the nfs via autofs rather than gvfs.
 - [ ] Try thunar v1.8.x ?
 - [ ] Caja bugs when create new file (or directory) with name starting with a dot.
-- [ ] Search for "apt" in the project and avoid to use apt, use apt-get instead when possible.
-- [ ] Remove blueman-applet from Openbox autostart and add a menu entry for starting it. 
 - [ ] Add traces for monitoring the time taken for the installation.
 - [ ] Should revert to xfce4-power-manager now but fix the icons first <https://bbs.archlinux.org/viewtopic.php?id=216495>.
 - [ ] It seems the state of "Num Lock" is not preserved anymore after wake after suspend.
-- [ ] Disable gfs MTP AFC and GPhoto2 <https://github.com/eRadical/ansible-my-fedora-workstation/issues/11>
-- [ ] It seems there is a space between the window and the edges of the screens when we resize.
 - [ ] When all the document are closed in Geany, the Markdown Preview still shows the last preview. Also the links are clickable in the preview and the page is showed in the sidebar but there is no way to navigate and go back to the preview.
 - [ ] When locked the name of the use is bold and ugly in lightdm, why? For indicating that session is locked? The button "unlock" is not enough?
 - [ ] Add caja script for indenting XML file
@@ -63,11 +37,15 @@ But we should also change the keybinds for tiling (not using S(Left|Down|Right|U
 - [ ] AllTray: when using `alltray -a` and if the user types ESC then the window popup is still showed but there is nothing we can do with it except closing it.
 - [ ] Alltray: when uniconifying a window, the current virtual workspace changes for being the one of the window at time of the iconify.
 - [ ] Caja: copying files is very slow compared to the command line (local or remote). => it can be because of GVFS
+- [ ] Caja: create new directory with name starting with a dot is bugged.
 - [ ] dmenu: dmenu appears on the monitor on which the currently focused window is located. It should use the mouse pointer location to determine the monitor.
 - [ ] Geany: markdown plugin is not properly using the css specified (colors are not used and lines starting with the character `#` inside a blockcode are treated as a heading).
 - [ ] reboot/shutdown can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Search for "apt" in the project and avoid to use apt, use apt-get instead when possible.
+- [x] Remove blueman-applet from Openbox autostart and add a menu entry for starting it. 
+- [x] Openbox add keybinds in openbox rc.xml for mouse clicks.
 - [x] Add shortcuts from openbox in shortcuts.md.
 - [x] Add pigz
 - [x] Execute the dstat recipe by default but do not start the service.
