@@ -31,6 +31,7 @@
 			<item label="Xfburn"><action name="Execute"><command>xfburn</command></action></item>
 		</menu>
 		<menu id="network" label="Network">
+			<item label="Bluetooth (blueman-applet)"><action name="Execute"><command>blueman-applet</command></action></item>
 			<menu id="wwwbrowsers" label="WWW Browsers">
 				<item label="Firefox"><action name="Execute"><execute>firefox</execute></action></item>
 				<item label="Chromium"><action name="Execute"><execute>chromium-browser</execute></action></item>
