@@ -4,6 +4,7 @@
 		<strength>10</strength>
 		<screen_edge_strength>20</screen_edge_strength>
 	</resistance>
+	
 	<focus>
 		<focusNew>no</focusNew>
 		<!-- always try to focus new windows when they appear. other rules do
@@ -20,8 +21,9 @@
        this many milliseconds (1000 = 1 sec) before moving focus to it -->
 		<raiseOnFocus>no</raiseOnFocus>
 		<!-- when followMouse is enabled, and a window is given focus by moving the
-       mouse into it, also raise the window -->
+			 mouse into it, also raise the window -->
 	</focus>
+	
 	<placement>
 		<policy>Smart</policy>
 		<!-- 'Smart' or 'UnderMouse' -->
@@ -39,6 +41,7 @@
        following: 'Mouse' - where the mouse is, or
                   'Active' - where the active window is -->
 	</placement>
+	
 	<theme>
 		<name>Erthe-njames</name>
 		<titleLayout>LIMSDC</titleLayout>
@@ -109,6 +112,7 @@
 			<!-- 'italic' or 'normal' -->
 		</font>
 	</theme>
+	
 	<desktops>
 		<!-- this stuff is only used at startup, pagers allow you to change them
        during a session
@@ -140,6 +144,7 @@
 		<!-- The number of milliseconds to show the popup for when switching
        desktops.  Set this to 0 to disable the popup. -->
 	</desktops>
+	
 	<resize>
 		<drawContents>yes</drawContents>
 		<popupShow>Never</popupShow>
@@ -156,6 +161,7 @@
          distance from bottom edge, or 'Center' -->
 		</popupFixedPosition>
 	</resize>
+	
 	<!-- You can reserve a portion of your screen where windows will not cover when
      they are maximized, or when they are initially placed.
      Many programs reserve space automatically, but you can use this in other
@@ -166,6 +172,7 @@
 		<left>0</left>
 		<right>0</right>
 	</margins>
+	
 	<dock>
 		<position>TopLeft</position>
 		<!-- (Top|Bottom)(Left|Right|)|Top|Bottom|Left|Right|Floating -->
@@ -184,9 +191,36 @@
 		<moveButton>Middle</moveButton>
 		<!-- 'Left', 'Middle', 'Right' -->
 	</dock>
+	
 	<keyboard>
 		<chainQuitKey>C-g</chainQuitKey>
-		<!-- Keybindings for desktop switching -->
+		
+		<!--
+		################################
+		  Keybindings for mouse clicks
+		################################
+		-->
+		<keybind key="W-a">
+			<action name="Execute">
+				<command>xdotool keyup Super_L click 1</command>
+			</action>
+		</keybind>
+		<keybind key="W-s">
+			<action name="Execute">
+				<command>xdotool keyup Super_L click 2</command>
+			</action>
+		</keybind>
+		<keybind key="W-d">
+			<action name="Execute">
+				<command>xdotool keyup Super_L click 3</command>
+			</action>
+		</keybind>
+		
+		<!--
+		#####################################
+		  Keybindings for desktop switching
+		#####################################
+		-->
 		<keybind key="C-A-Left">
 			<action name="GoToDesktop">
 				<to>left</to>
@@ -255,10 +289,15 @@
 				<to>4</to>
 			</action>
 		</keybind>
-		<keybind key="W-d">
+		
+		<!--
+		###########################
+		  Keybindings for windows
+		###########################
+		-->
+		<keybind key="W-0x31">
 			<action name="ToggleShowDesktop"/>
 		</keybind>
-		<!-- Keybindings for windows -->
 		<keybind key="W-1">
 			<action name="ToggleAlwaysOnTop"/>
 		</keybind>
@@ -287,7 +326,12 @@
 				<command>scrot -s</command>
 			</action>
 		</keybind>
-		<!-- Keybindings for window switching -->
+		
+		<!--
+		####################################
+		  Keybindings for window switching
+		####################################
+		-->
 		<keybind key="A-Tab">
 			<action name="NextWindow">
 				<finalactions>
@@ -317,7 +361,12 @@
 				</finalactions>
 			</action>
 		</keybind>
-		<!-- Keybindings for window switching with the arrow keys -->
+			
+		<!--
+		########################################################
+		  Keybindings for window switching with the arrow keys
+		########################################################
+		-->
 		<keybind key="W-S-Right">
 			<action name="DirectionalCycleWindows">
 				<direction>right</direction>
@@ -343,7 +392,6 @@
 				<menu>client-list-combined-menu</menu>
 			</action>
 		</keybind>
-		<!-- Keybindings for running applications -->
 		<keybind key="W-e">
 			<action name="Execute">
 				<startupnotify>
@@ -353,7 +401,6 @@
 				<command>geany_one_instance_per_workspace</command>
 			</action>
 		</keybind>
-		<!-- Launch xfce4-screenshooter when Print is pressed -->
 		<keybind key="Print">
 			<action name="Execute">
 				<command>xfce4-screenshooter</command>
@@ -375,15 +422,6 @@
 					<name>dmenu-bind.sh</name>
 				</startupnotify>
 				<command>bash ~/.config/dmenu/dmenu-bind.sh</command>
-			</action>
-		</keybind>
-		<keybind key="W-a">
-			<action name="Execute">
-				<startupnotify>
-					<enabled>false</enabled>
-					<name>alltray (attach to already-running application)</name>
-				</startupnotify>
-				<command>alltray -H -a</command>
 			</action>
 		</keybind>
 		<keybind key="W-c">
@@ -463,7 +501,12 @@
 				<menu>root-menu</menu>
 			</action>
 		</keybind>
-		<!-- A bit of tiling -->
+		
+		<!--
+		###################
+		  A bit of tiling
+		###################
+		-->
 		<keybind key="W-Right">
 			<action name="GrowToEdgeEast"/>
 		</keybind>
@@ -476,7 +519,12 @@
 		<keybind key="W-Up">
 			<action name="GrowToEdgeNorth"/>
 		</keybind>
-		<!-- Keybindings for XFree86 keyboard symbols -->
+		
+		<!--
+		############################################
+		  Keybindings for XFree86 keyboard symbols
+		############################################
+		-->
 		<keybind key="XF86Search">
 			<action name="Execute">
 				<startupnotify>
@@ -569,6 +617,7 @@
 			</action>
 		</keybind>
 	</keyboard>
+	
 	<mouse>
 		<dragThreshold>8</dragThreshold>
 		<!-- number of pixels the mouse must move before a drag begins -->
@@ -909,6 +958,7 @@
 			</mousebind>
 		</context>
 	</mouse>
+	
 	<menu>
 		<!-- You can specify more than one menu file in here and they are all loaded,
        just don't make menu ids clash or, well, it'll be kind of pointless -->
@@ -936,6 +986,7 @@
 		<manageDesktops>yes</manageDesktops>
 		<!-- show the manage desktops section in the client-list-(combined-)menu -->
 	</menu>
+	
 	<applications>
 		<!--
   # this is an example with comments through out. use these to make your
@@ -1032,4 +1083,5 @@
   # end of the example
 -->
 	</applications>
+	
 </openbox_config>
