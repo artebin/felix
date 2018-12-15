@@ -1,4 +1,5 @@
 # TODOS
+- [ ] SDDM to replace lightdm
 - [ ] gpicview should replace EOM (replace the text in the .desktop file)
 - [ ] Still a problem with mtrack we do not have right click with the 2-fingers tap. Add key shortcut for left/middle click.
 - [ ] Gvfs is slow, could be better to mount the nfs via autofs rather than gvfs.
@@ -19,7 +20,7 @@
 - [ ] "mailto" and firefox
 - [ ] Add a Caja script for executing a script into a terminal and "press a key" before exit the terminal.
 - [ ] It seems thunderbird is not using x-www-browser (chromium is used), "network.protocol-handler.warn-external.http" should be true for all. gnome-www-browser should be set too (not only x-www-browser).
-- [ ] A script at startup of openbox checking for the default application and notify the user about some changes.
+- [ ] A script at startup of openbox checking for the default application and notify the user about some changes. Have a look at Xfce4 MIME Type Editor.
 - [ ] Patch EOM for not showing "set background" is window manager is not Metacity (the WM which should be used with EOM). Use $XDG_SESSION_DESKTOP.
 - [ ] Create an install setting using the ubuntu miniso.
 - [ ] Fix the Xmodmap for the macbook.
@@ -35,8 +36,6 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network.
 
 # ISSUES
-- [ ] AllTray: when using `alltray -a` and if the user types ESC then the window popup is still showed but there is nothing we can do with it except closing it.
-- [ ] Alltray: when uniconifying a window, the current virtual workspace changes for being the one of the window at time of the iconify.
 - [ ] Caja: copying files is very slow compared to the command line (local or remote). => it can be because of GVFS
 - [ ] Caja: create new directory with name starting with a dot is bugged.
 - [ ] dmenu: dmenu appears on the monitor on which the currently focused window is located. It should use the mouse pointer location to determine the monitor.
@@ -44,6 +43,8 @@
 - [ ] reboot/shutdown can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Remove alltray.
+- [x] Make the DisplayLink works.
 - [x] Search for "apt" in the project and avoid to use apt, use apt-get instead when possible.
 - [x] Remove blueman-applet from Openbox autostart and add a menu entry for starting it. 
 - [x] Openbox add keybinds in openbox rc.xml for mouse clicks.
