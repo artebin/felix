@@ -174,6 +174,13 @@ If I delete the image and then if I go to the Trash folder, select the file and 
 - Geany Markdown is not available in the repository.
 
 ## DisplayLink
+- Driver available at <https://www.displaylink.com/downloads/ubuntu>
+- `xrandr --listproviders`
+- `xrandr --current`
+- Enabling DVI output on startup <https://wiki.archlinux.org/index.php/DisplayLink#Enabling_DVI_output_on_startup>
+- DisplayLink driver does not work with Intel GPUs after recent X upgrades, see <https://wiki.archlinux.org/index.php/DisplayLink#DisplayLink_driver_does_not_work_with_Intel_GPUs_after_recent_X_upgrades>
+
+## DisplayPort
 Today there is no support of Daisy-Chaining DisplayPort 1.2 monitors in Linux (MST Multi-Stream Transport).
 
 ## Modal dialog and grab X events
