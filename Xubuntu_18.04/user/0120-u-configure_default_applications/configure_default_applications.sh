@@ -10,9 +10,20 @@ configure_default_applications(){
 		backup_file rename ~/.config/mimeapps.list
 	fi
 	
-	echo "Configuring mate-caja as default file browser ..."
+	#
+	# We override a few .desktop files:
+	#
+	#   - Caja: to be started with a script assuring one instance per
+	#     workspace.
+	#
+	#   - GPicView: gpicview.desktop which is installed with the package 
+	#     gives "Image Viewer" as application name but we don't want to
+	#     see that, it's name is GPicView, point.
+	#
 	mkdir -p ~/.local/share/applications
-	cp ./caja.desktop ~/.local/share/applications/caja.desktop
+	cp *.desktop ~/.local/share/applications
+	
+	echo "Configuring mate-caja as default file browser ..."
 	xdg-mime default caja.desktop inode/directory
 	
 	echo "Configuring thunderbird as default mail client ..."
@@ -21,7 +32,7 @@ configure_default_applications(){
 	# MIME types are defined in /etc/mime.types
 	# Set default applications per MIME types:
 	#   text/*			Geany
-	#   image/* 		Eye Of MATE
+	#   image/* 		GPicView
 	#   audio/*			VLC
 	#   video/*			VLC
 	
@@ -43,7 +54,7 @@ configure_default_applications(){
 		fi
 		if [[ ${LINE} =~ ^image/ ]]; then
 			MIME_TYPE=$(echo "${LINE}"|awk -F " " '{print $1}')
-			echo "${MIME_TYPE}=eom.desktop" >>./mimeapps.list
+			echo "${MIME_TYPE}=gpicview.desktop" >>./mimeapps.list
 			continue
 		fi
 		if [[ ${LINE} =~ ^audio/ ]]; then

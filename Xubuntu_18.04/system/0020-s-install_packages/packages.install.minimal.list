@@ -138,7 +138,7 @@ pigz
 #######################################
 # Image viewer, browser, manipulation
 #######################################
-eom
+gpicview
 shotwell
 gimp gimp-data-extras
 inkscape
