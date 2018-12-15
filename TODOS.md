@@ -1,6 +1,6 @@
 # TODOS
-- [ ] SDDM to replace lightdm
-- [ ] Still a problem with mtrack we do not have right click with the 2-fingers tap. Add key shortcut for left/middle click.
+- [ ] Jar should not be associated to Java.
+- [ ] Still a problem with mtrack we do not have right click with the 2-fingers tap.
 - [ ] Gvfs is slow, could be better to mount the nfs via autofs rather than gvfs.
 - [ ] Try thunar v1.8.x ?
 - [ ] Add traces for monitoring the time taken for the installation.
@@ -34,7 +34,6 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network.
 
 # ISSUES
-- [x] Should revert to xfce4-power-manager.
 - [ ] Caja: bug when create new file (or directory) with name starting with a dot.
 - [ ] Caja: copying files is very slow compared to the command line (local or remote). => it can be because of GVFS
 - [ ] Caja: create new directory with name starting with a dot is bugged.
@@ -48,6 +47,7 @@
 - [x] Make the DisplayLink works.
 - [x] Search for "apt" in the project and avoid to use apt, use apt-get instead when possible.
 - [x] Remove blueman-applet from Openbox autostart and add a menu entry for starting it. 
+- [x] Should revert to xfce4-power-manager.
 - [x] Openbox add keybinds in openbox rc.xml for mouse clicks.
 - [x] Add shortcuts from openbox in shortcuts.md.
 - [x] Add pigz
