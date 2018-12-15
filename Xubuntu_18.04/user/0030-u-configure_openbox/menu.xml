@@ -19,7 +19,7 @@
 			<item label="Encryption Keys Manager (seahorse)"><action name="Execute"><command>seahorse</command></action></item>
 		</menu>
 		<menu id="graphics" label="Graphics">
-			<item label="Image Viewer (EoM)"><action name="Execute"><command>eom</command></action></item>
+			<item label="Image Viewer (GPicView)"><action name="Execute"><command>gpicview</command></action></item>
 			<item label="Screenshooter"><action name="Execute"><command>xfce4-screenshooter</command></action></item>
 			<item label="Shotwell"><action name="Execute"><command>shotwell</command></action></item>
 			<item label="GIMP"><action name="Execute"><command>gimp</command></action></item>
