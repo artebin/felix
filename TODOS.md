@@ -3,9 +3,8 @@
 - [ ] Still a problem with mtrack we do not have right click with the 2-fingers tap. Add key shortcut for left/middle click.
 - [ ] Gvfs is slow, could be better to mount the nfs via autofs rather than gvfs.
 - [ ] Try thunar v1.8.x ?
-- [ ] Caja bugs when create new file (or directory) with name starting with a dot.
 - [ ] Add traces for monitoring the time taken for the installation.
-- [ ] Should revert to xfce4-power-manager now but fix the icons first <https://bbs.archlinux.org/viewtopic.php?id=216495>.
+- [ ] Fix the icons for xfce4-power-manager. See <https://bbs.archlinux.org/viewtopic.php?id=216495>.
 - [ ] It seems the state of "Num Lock" is not preserved anymore after wake after suspend.
 - [ ] When all the document are closed in Geany, the Markdown Preview still shows the last preview. Also the links are clickable in the preview and the page is showed in the sidebar but there is no way to navigate and go back to the preview.
 - [ ] When locked the name of the use is bold and ugly in lightdm, why? For indicating that session is locked? The button "unlock" is not enough?
@@ -35,6 +34,8 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network.
 
 # ISSUES
+- [x] Should revert to xfce4-power-manager.
+- [ ] Caja: bug when create new file (or directory) with name starting with a dot.
 - [ ] Caja: copying files is very slow compared to the command line (local or remote). => it can be because of GVFS
 - [ ] Caja: create new directory with name starting with a dot is bugged.
 - [ ] dmenu: dmenu appears on the monitor on which the currently focused window is located. It should use the mouse pointer location to determine the monitor.
