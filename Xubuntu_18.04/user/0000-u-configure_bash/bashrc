@@ -117,6 +117,7 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Add standard math library to bc
 alias bc='bc -l'
 
 weather(){
@@ -186,3 +187,10 @@ backup_file(){
 	esac
 }
 alias backup_file=backup_file
+
+# Sed command for removing ANSI/VT100 control sequences
+# See <https://stackoverflow.com/questions/17998978/removing-colors-from-output>
+remove_terminal_control_sequences(){
+	sed -r "s/\x1B(\[[0-9;]*[JKmsu]|\(B)//g"
+}
+alias remove_terminal_control_sequences=remove_terminal_control_sequences

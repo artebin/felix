@@ -56,7 +56,7 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# NJ : 18-08-2016 : use \w for complete path and \W for current path 
+# NJ:16-08-18: use \w for complete path and \W for current path 
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
 else
@@ -117,45 +117,80 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Add standard math library to bc
 alias bc='bc -l'
 
-retrieve_weather(){
-curl wttr.in/${1}
+weather(){
+	curl "wttr.in/${1}"
 }
-alias weather=retrieve_weather
+alias weather=weather
 
 github-clone(){
-git clone http://github.com/${1}/${2}
+	git clone "http://github.com/${1}/${2}"
 }
 alias github-clone=github-clone
 
+git-config-global-user-name-email(){
+	git config --global user.name "${1}"
+	git config --global user.email "${2}"
+}
+alias git-config-global-user-name-email=git-config-global-user-name-email
+
+datetime2seconds(){
+	date -d "${1}" %s
+}
+alias datetime2seconds=datetime2seconds
+
+dates_diff(){
+	LEFT_DATE_IN_SECONDS=$(date -d "${1}" +%s)
+	RIGHT_DATE_IN_SECONDS=$(date -d "${2}" +%s)
+	DIFF_IN_SECONDS=$(( ${RIGHT_DATE_IN_SECONDS} - ${LEFT_DATE_IN_SECONDS} ))
+	DAY_COUNT=$(( ${DIFF_IN_SECONDS} / 86400 ))
+	SECONDS_FROM_MIDNIGHT_COUNT=$(( ${DIFF_IN_SECONDS} % 86400  ))
+	TIME_OF_DAY=$(date -u -d @"${DIFF_IN_SECONDS}" +"%T")
+	echo "${DAY_COUNT}d ${TIME_OF_DAY}"
+}
+alias dates_diff=dates_diff
+
 backup_file(){
-	if [[ "$#" -ne 2 ]]; then
-		echo 'Function backup_file should be called with an argument'
+	if [ "$#" -ne 2 ]; then
+		echo "Usage: backup_file mode path"
+		echo "  arguments:"
+		echo "    mode\t\t'rename' or 'copy'"
 		exit 1
 	fi
-	if [[ ! -f "${2}" ]]; then
-		echo "Can not find ${2}"
+	MODE="${1}"
+	FILE_TO_BACKUP="${2}"
+	if [ ! -e "${FILE_TO_BACKUP}" ]; then
+		echo "Can not find ${FILE_TO_BACKUP}"
 		exit 1
 	fi
-	FILE_BACKUP_PATH="${2}.bak.$(date +'%y%m%d-%H%M%S')"
-	case "${1}" in
-		'rename')
-			mv "${2}" "${FILE_BACKUP_PATH}"
-			if [[ "$?" -ne 0 ]]; then
-				echo "Can not backup file ${2}"
+	FILE_BACKUP="${FILE_TO_BACKUP}.bak.$(date -u +'%y%m%d-%H%M%S')"
+	case "${MODE}" in
+		"rename")
+			mv "${FILE_TO_BACKUP}" "${FILE_BACKUP}"
+			if [ "$?" -ne 0 ]; then
+				echo "Can not backup: ${FILE_TO_BACKUP}"
 				exit 1
 			fi
 			;;
-		'copy')
-			cp "${2}" "${FILE_BACKUP_PATH}"
-			if [[ "$?" -ne 0 ]]; then
-				echo "Can not backup file ${2}"
+		"copy")
+			cp "${FILE_TO_BACKUP}" "${FILE_BACKUP}"
+			if [ "$?" -ne 0 ]; then
+				echo "Can not backup: ${FILE_TO_BACKUP}"
 				exit 1
 			fi
 			;;
 		*)
-			echo "Unkown argument ${1}"
+			echo "Unkown mode \"${MODE}\""
 			exit 1
 	esac
 }
+alias backup_file=backup_file
+
+# Sed command for removing ANSI/VT100 control sequences
+# See <https://stackoverflow.com/questions/17998978/removing-colors-from-output>
+remove_terminal_control_sequences(){
+	sed -r "s/\x1B(\[[0-9;]*[JKmsu]|\(B)//g"
+}
+alias remove_terminal_control_sequences=remove_terminal_control_sequences
