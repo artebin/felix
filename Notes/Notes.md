@@ -5,44 +5,9 @@ sudo service lightdm stop
 sudo apt-get install xserver-xorg-video-nouveau
 ```
 
-## Ubuntu 18.04: resume from hibernate crashes because of video drivers
-- the problem does not appear on MacBook air 7.1 shipped with Intel HD4000.
-- the problem occurs on Dell Inspiron 7737 shipped with Intel i915 (Haswell-ULT Integrated Graphics Controller). See:
--- <https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1807264>.
--- <https://unix.stackexchange.com/questions/419456/i915-intel-skylake-system-freeze-after-wake-up-from-hibernate-suspend-to-disk>
-
-## Ubuntu 18.04: hibernate
-Allowing hibernate in polkit is not enough in Ubuntu 18.04, we have to update grub by adding kernel parameter below:
-```resume=UUID=<UUID_OF_SWAP_PARTITION>```
-
 ## Eclipse font rendering buggy with GTK3
 It is because of "Use mixed fonts and color labels" settings 
 See <https://bugs.eclipse.org/bugs/show_bug.cgi?id=465054>
-
-## Ubuntu 18.04: r8169 ethernet card not working at all or not working after suspend
-See <https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1752772>
-- it seems `r8168-dkms` is not installed by default in Xubuntu 18.04
-- `apt-get remove --purge r8168-dkms`
-- download and install the most recent version of the driver <https://packages.debian.org/sid/all/r8168-dkms/download>
-- add a service /etc/systemd/system/r8169_fix.service
-```
-[Unit]
-Description=Local system resume actions
-After=suspend.target
-After=hybrid-sleep.target
-After=hibernate.target
-
-[Service]
-Type=simple
-ExecStartPre=/usr/bin/modprobe -r r8169
-ExecStart=/usr/bin/modprobe r8169
-
-[Install]
-WantedBy=suspend.target
-WantedBy=hybrid-sleep.target
-WantedBy=hibernate.target
-```
-- `sudo systemctl enable r8169_fix.service`
 
 ## Shared clipboard between host/guest in Virtualbox
 Must install `virtualbox-guest-x11`.
@@ -87,39 +52,6 @@ display-setup-script=xrandr --output LVDS-1 --off --output DP-1 --off --output H
 I have problems with resolution 1360x768 but maybe because of my TV device: some pixels are missing North, West, South, East.
 It happens only the first time I switch to this resolution, if I set 1920x1080 and then go back to 1360x768 then it is properly displayed. No problem with other resolutions.
 I can fix the problem by setup the monitors via lightdm configuration (with a resolution like 1280x720 - not 1360x768), and then use a second xrandr command executed via openbox autostart which will set wanted the resolution.
-
-## Remote desktops
-After some testings: the best is to use vnc4erver (or TigerVNC).
-
-### x11vnc
-It is the most simple way to get a vnc, just install it on the server and run  once the session is started. On the client everything vnc client should work.
-- `x11vnc -storepasswd` to define a password (in `~/.vnc/passwd`)
-- `x11vnc -usepw -noxdamage -forever`: there is an argument `-ncache 10` for improving the rendering on the client side but I have some problems with it, I can see on the bottom of the screen an area which is a copy of the top of the screen.
-- I had several crashes with x11vnc, so I would investigate another remote desktop (vnc server or xrdp).
-
-### VNC server
-See <https://wiki.archlinux.org/index.php/TigerVNC>
-
-- vnc4server (based on realvnc)
-- tigervnc (based on tightvnc which is based on realvnc)
-
-On the server:
-- `sudo apt install vnc4server`
-- `vncpasswd`
-- `x0vncserver -display :0 -passwordfile ~/.vnc/passwd`
-
-The best and simplest thing to do for an automatically available session with VNC: autologin and starting of the `x0vncserver`.
-The starting of the vncserver can be done with openbox autostart or `.xsessionrc`.
-
-There is an option autologin-in-background feature in LightDM, see:
-- <https://code.launchpad.net/~mterry/lightdm/autologin-in-background/+merge/162670>
-- <https://github.com/CanonicalLtd/lightdm/blob/master/data/lightdm.conf>
-Unfortunately I have no success in using it (or I have not understood what it should do): the switch to the user session is done but the LightDM documentation says that the contrary should be done.
-
-### XRDP
-- on the server: `sudo apt install xrdp xordxrdp`
-- on the client: `sudo apt install remmina`
-- Remmina may show an error when we want to connect "You requested an H264 GFX mode for server x.x.x.x, but your libfreerdp does not support H264. Please check Color Depth settings". See <https://github.com/FreeRDP/Remmina/issues/1584>. We just need to create a profile because the default connection will use the best screen profile using H264.
 
 ## FlightRadar24
 - retrieve fr24feed from <https://www.flightradar24.com/share-your-data>
@@ -171,25 +103,6 @@ deb [ arch=amd64 ] http://localhost:10001/ubuntu bionic-security main restricted
 I still do not understand how the MIME is supposed to work with the file managers. First I do not understand how the suggested application are order by the file manager.
 Another example: I have an image in `~/Download`, if select the file and click right then it is offered to me to open the file with shotwell.
 If I delete the image and then if I go to the Trash folder, select the file and click right, suddently firefox is offered for opening the file.
-
-## Xubuntu 18.04
-- obmenu is not working:
->Traceback (most recent call last):
->  File "/usr/bin/obmenu", line 617, in <module>
->    app.init()
->  File "/usr/bin/obmenu", line 521, in init
->    self.menu.loadMenu(self.menu_path)
->  File "/usr/lib/python2.7/dist-packages/obxml.py", line 153, in loadMenu
->    self.dom = xml.dom.minidom.parseString(fil.read())
->  File "/usr/lib/python2.7/xml/dom/minidom.py", line 1928, in parseString
->    return expatbuilder.parseString(string)
->  File "/usr/lib/python2.7/xml/dom/expatbuilder.py", line 940, in parseString
->    return builder.parseString(string)
->  File "/usr/lib/python2.7/xml/dom/expatbuilder.py", line 223, in parseString
->    parser.Parse(string, True)
->xml.parsers.expat.ExpatError: not well-formed (invalid token): line 16, column 22
-- Icon tray of xfce4-power-manager is not displayed properly? Does it not use the user-selected icon theme stock anymore? Furthermore the new version is not nice, the choice of the color for the dialog appearing when the user clicks the tray icon is very bad => move to mate-power-manager which is far better, simpler. However I see a problem with permission for starting `/usr/local/sbin/mate-power-backlight-helper`, I suppose I should add a polkit configuration for it in `/usr/share/polkit-1/actions`. 
-- Geany Markdown is not available in the repository.
 
 ## DisplayLink
 - Driver available at <https://www.displaylink.com/downloads/ubuntu>
@@ -257,14 +170,6 @@ IPv6 seems can be preferred over IPv4, use `ping <hostname> -4`
 ## DVD playback
 Ubuntu repositories offer the package libdvd-pkg for installing the library libdvdcss.
 
-## Test Ubuntu 17.10
-1. BIOS corruption see <https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1734147>
-2. The wallpaper used by LightdDM stays displayed after login
-3. There is a problem with openbox, when a window is maximized, we cannot resize the window directly, we must change the indow state to unmaximized first, however for a reason the unsucessful resizing changed the window size.
-4. pasystray has some problem (but maybe it is because I am building pasystray from the source), the sound can be very loud and the volume amount corresponding to a mouse scroll step is very low.
-5. There is some problem with the sound: cracking and bad quality audio (noticed with youtube, but it is clearly not about the original sound, the problem is in the local playback).
-6. While copying a file on a external drive, the popup showing the file transfer is not shown, we can see the files in the file browser but the copy operation is still running. we tried to umount the external drive and then a popup is showed "operation on-going".
-
 ## Openbox Menu
 Using `caja --no-desktop` in the .desktop file for mime type inode/directory seems to not work and don't know why => call directly `caja --no-desktop` from openbox rc.xml and menu.xml rather than `xdg.open .`
 
@@ -298,20 +203,8 @@ Minimal installation of Eclipse:
 - <https://github.com/shimmerproject/Greybird/issues/83>
 - <https://forums.linuxmint.com/viewtopic.php?t=224506> 
 
-## Xubuntu 17.04: bug with VirtualBox guest additions 5.1.22 
-virtualbox-guest-additions 5.1.22 seems to be buggy, unable to start Xorg. Install virtualbox-guest-additions 5.1.24 from <http://download.virtualbox.org/virtualbox> and it is working properly.
-
-## Xubuntu 17.04: bug in Nouveau driver when switching to console if multiple monitors
-It seems there is a bug in Nouveau driver with the framebuffer and when using multiple monitors. The boot is successful, X.org seems to start properly, but we can not switch to the console with <Ctrl><Alt>F{x}. If we plug only one monitor then we can switch to the console. With the NVidia driver 384, we can switch to console.
-
 ## Grub
 Console framebuffer change resolution in `/etc/default/grub` with: `GRUB_GFXMODE=1024x768x32` and `GRUB_GFXPAYLOAD_LINUX=keep` (do not forget to call update-grub)
-
-## Xubuntu 16.04: bug mouse cursor lost after unlocking with Intel Graphics
-<https://bugs.launchpad.net/ubuntu/+source/xserver-xorg-video-intel/+bug/1568604>
-
-Fixed by reinstalling intel driver, version 2:2.99.917+git20160706-1ubuntu1:
-<https://launchpad.net/ubuntu/yakkety/+package/xserver-xorg-video-intel>
 
 ## Keyboard configuration lost after suspend/resume
 Sometimes the keyboard configuration done with `setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &` is lost after suspend/resume, but not always.
