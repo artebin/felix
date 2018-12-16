@@ -11,6 +11,13 @@ print_section_heading "Product name"
 sudo dmidecode -s system-product-name
 print_section_ending
 
+#################
+# Hardware info
+#################
+print_section_heading "Hardware information (inxi -Fxz)"
+inxi -Fxz
+print_section_ending
+
 ###################
 # RAM information
 ###################

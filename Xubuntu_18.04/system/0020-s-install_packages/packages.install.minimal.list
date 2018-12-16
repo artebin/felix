@@ -3,7 +3,7 @@
 ################
 lsb-core
 psmisc #Includes fuser, killall, peekfd, pstree, prtstat
-hwinfo lshw
+hwinfo lshw inxi
 htop
 iotop
 dstat

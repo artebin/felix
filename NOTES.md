@@ -1,3 +1,11 @@
+## Ubuntu 18.04: resume from hibernate crashes because of video drivers
+- the problem does not appear on MacBook air 7.1 shipped with Intel HD4000.
+- the problem occurs on Dell Inspiron 7737 shipped with Intel i915 (Haswell-ULT Integrated Graphics Controller). See <https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1807264>.
+
+## Ubuntu 18.04: hibernate
+Allowing hibernate in polkit is not enough in Ubuntu 18.04, we have to update grub by adding kernel parameter below:
+```resume=UUID=<UUID_OF_SWAP_PARTITION>```
+
 ## Eclipse font rendering buggy with GTK3
 It is because of "Use mixed fonts and color labels" settings 
 See <https://bugs.eclipse.org/bugs/show_bug.cgi?id=465054>
