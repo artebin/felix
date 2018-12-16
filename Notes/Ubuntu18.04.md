@@ -9,21 +9,38 @@ Allowing hibernate in polkit is not enough in Ubuntu 18.04, we have to update gr
 ```resume=UUID=<UUID_OF_SWAP_PARTITION>```
 
 ## Ubuntu 18.04: r8169 ethernet card not working at all or not working after suspend
-See <https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1752772>
-- it seems `r8168-dkms` is not installed by default in Xubuntu 18.04
+- <https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1752772>
+- <https://forum.manjaro.org/t/linux415-r8168-cant-connect-to-the-network-after-suspend-to-ram/39557/12>
 - `apt-get remove --purge r8168-dkms`
 - download and install the most recent version of the driver <https://packages.debian.org/sid/all/r8168-dkms/download>
-- add a service /etc/systemd/system/r8169_fix.service
+- add a service /etc/systemd/system/r8169_fix_before_suspend.service
 ```
 [Unit]
-Description=Local system resume actions
+Description=Remove r8169 module before suspend/hybrid-sleep/hibernate
+Before=suspend.target
+Before=hybrid-sleep.target
+Before=hibernate.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/modprobe -r r8169
+
+[Install]
+WantedBy=suspend.target
+WantedBy=hybrid-sleep.target
+WantedBy=hibernate.target
+```
+- `sudo systemctl enable r8169_fix_before_suspend.service`
+- add a service /etc/systemd/system/r8169_fix_after_suspend.service
+```
+[Unit]
+Description=Insert r8169 module after suspend/hybrid-sleep/hibernate
 After=suspend.target
 After=hybrid-sleep.target
 After=hibernate.target
 
 [Service]
 Type=simple
-ExecStartPre=/usr/bin/modprobe -r r8169
 ExecStart=/usr/bin/modprobe r8169
 
 [Install]
@@ -31,7 +48,7 @@ WantedBy=suspend.target
 WantedBy=hybrid-sleep.target
 WantedBy=hibernate.target
 ```
-- `sudo systemctl enable r8169_fix.service`
+- `sudo systemctl enable r8169_fix_after_suspend.service`
 
 ## Xubuntu 18.04
 - obmenu is not working:
