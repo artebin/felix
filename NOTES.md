@@ -1,3 +1,10 @@
+## Switch video driver from terminal
+```
+sudo apt-get autoremove --purge nvidia-*
+sudo service lightdm stop
+sudo apt-get install xserver-xorg-video-nouveau
+```
+
 ## Ubuntu 18.04: resume from hibernate crashes because of video drivers
 - the problem does not appear on MacBook air 7.1 shipped with Intel HD4000.
 - the problem occurs on Dell Inspiron 7737 shipped with Intel i915 (Haswell-ULT Integrated Graphics Controller). See:
@@ -14,6 +21,7 @@ See <https://bugs.eclipse.org/bugs/show_bug.cgi?id=465054>
 
 ## Ubuntu 18.04: r8169 ethernet card not working at all or not working after suspend
 See <https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1752772>
+- it seems `r8168-dkms` is not installed by default in Xubuntu 18.04
 - `apt-get remove --purge r8168-dkms`
 - download and install the most recent version of the driver <https://packages.debian.org/sid/all/r8168-dkms/download>
 - add a service /etc/systemd/system/r8169_fix.service
@@ -34,7 +42,7 @@ WantedBy=suspend.target
 WantedBy=hybrid-sleep.target
 WantedBy=hibernate.target
 ```
-- `sudo systemctl enable fix-r8169.service`
+- `sudo systemctl enable r8169_fix.service`
 
 ## Shared clipboard between host/guest in Virtualbox
 Must install `virtualbox-guest-x11`.
