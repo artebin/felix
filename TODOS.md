@@ -1,10 +1,11 @@
 # TODOS
+- [ ] Install xdg-utils from sources.
+- [ ] VNC through SSH.
 - [ ] Jar should not be associated to Java.
 - [ ] Still a problem with mtrack we do not have right click with the 2-fingers tap.
 - [ ] Gvfs is slow, could be better to mount the nfs via autofs rather than gvfs.
 - [ ] Try thunar v1.8.x ?
 - [ ] Fix the icons for xfce4-power-manager. See <https://bbs.archlinux.org/viewtopic.php?id=216495>.
-- [ ] When all the document are closed in Geany, the Markdown Preview still shows the last preview. Also the links are clickable in the preview and the page is showed in the sidebar but there is no way to navigate and go back to the preview.
 - [ ] When locked the name of the use is bold and ugly in lightdm, why? For indicating that session is locked? The button "unlock" is not enough?
 - [ ] Add caja script for indenting XML file
 - [ ] scroll by pixel/pc amount in LibreOffice Calc (rather by number of rows).
@@ -35,7 +36,9 @@
 - [ ] Caja: copying files is very slow compared to the command line (local or remote). => it can be because of GVFS
 - [ ] Caja: create new directory with name starting with a dot is bugged.
 - [ ] dmenu: dmenu appears on the monitor on which the currently focused window is located. It should use the mouse pointer location to determine the monitor.
-- [ ] Geany: markdown plugin is not properly using the css specified (colors are not used and lines starting with the character `#` inside a blockcode are treated as a heading).
+- [ ] Geany/Mardown: plugin is not properly using the css specified (colors are not used and lines starting with the character `#` inside a blockcode are treated as a heading).
+- [ ] Geany/Mardown: when all the document are closed, the Markdown Preview still shows the last preview done.
+- [ ] Geany/Mardown: the links are clickable in the preview, if we click one link then the page is showed in the sidebar but there is no way to navigate and go back to the preview.
 - [ ] reboot/shutdown can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
