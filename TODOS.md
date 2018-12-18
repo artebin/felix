@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Check that we can open 2 window "File Properties" concurrently for 2 different files in Caja.
 - [ ] Install xdg-utils from sources.
 - [ ] VNC through SSH.
 - [ ] Jar should not be associated to Java.
