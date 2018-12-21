@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Refactor "common.sh" to "felix_xubuntu18.04.sh" and use the "common.sh" from "MiscAdditions".
 - [ ] Check that we can open 2 window "File Properties" concurrently for 2 different files in Caja.
 - [ ] Install xdg-utils from sources.
 - [ ] VNC through SSH.
