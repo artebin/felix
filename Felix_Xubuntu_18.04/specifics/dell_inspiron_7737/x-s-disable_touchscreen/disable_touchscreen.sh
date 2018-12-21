@@ -22,7 +22,7 @@ disable_touchscreen(){
 	backup_file copy "${LIB_INPUT_CONF_FILE}"
 	
 	echo "Disabling touchscreen ..."
-	sed -i.bak "s/MatchIsTouchscreen \"on\"/MatchIsTouchscreen \"off\"/g" "${LIB_INPUT_CONF_FILE}"
+	sed -i "s/MatchIsTouchscreen \"on\"/MatchIsTouchscreen \"off\"/g" "${LIB_INPUT_CONF_FILE}"
 	
 	echo
 }

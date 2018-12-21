@@ -7,7 +7,7 @@ exit_if_has_not_root_privileges
 setup_monitors_via_lightdm_conf(){
 	cd ${BASEDIR}
 	
-	echo "Adding monitors setup via lightdm configuration ..."
+	echo "Setup monitors setup via lightdm configuration ..."
 	if [ -f /etc/lightdm/lightdm.conf.d/10-monitors_setup.sh ]; then
 		echo "lightdm configuration file /etc/lightdm/lightdm.conf.d/10-monitors_setup.sh already exists!"
 		exit 1
