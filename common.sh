@@ -30,6 +30,28 @@ is_cygwin_platform(){
 	fi
 }
 
+is_bash(){
+	if [ ! "${BASH_VERSION}" ] ; then
+		echo "This script should run with bash" 1>&2
+		exit 1
+	fi
+}
+
+has_root_privileges(){
+	if [ "${EUID}" -eq 0 ]; then
+		return 0
+	else
+		return 1
+	fi
+}
+
+exit_if_has_not_root_privileges(){
+	if ! has_root_privileges; then
+		echo "This script needs the root priveleges"
+		exit 1
+	fi
+}
+
 retrieve_absolute_path(){
 	# The 'readlink' command can not be used on Mac platform to retrieve the absolute path of the current script.
 	# Internet says there's no simple way to do this and we have to invoke perl.
@@ -114,6 +136,37 @@ print_section_ending(){
 	echo
 	echo
 	echo
+}
+
+backup_file(){
+	if [ "$#" -ne 2 ]; then
+		echo "backup_file() expects path in argument"
+		exit 1
+	fi
+	if [ ! -e "${2}" ]; then
+		echo "Can not find ${2}"
+		exit 1
+	fi
+	FILE_BACKUP_PATH="${2}.bak.$(date -u +'%y%m%d-%H%M%S')"
+	case "${1}" in
+		"rename")
+			mv "${2}" "${FILE_BACKUP_PATH}"
+			if [ "$?" -ne 0 ]; then
+				echo "Can not backup file ${2}"
+				exit 1
+			fi
+			;;
+		"copy")
+			cp "${2}" "${FILE_BACKUP_PATH}"
+			if [ "$?" -ne 0 ]; then
+				echo "Can not backup file ${2}"
+				exit 1
+			fi
+			;;
+		*)
+			echo "Unkown argument ${1}"
+			exit 1
+	esac
 }
 
 convert_yymmdd_to_epoch(){
