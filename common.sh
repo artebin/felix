@@ -185,3 +185,10 @@ convert_hhmmss_time_duration_to_seconds(){
 	TIME_DURATION_IN_SECONDS=$(echo "${TIME_DURATION_IN_HHMMSS}"|awk '{print substr($1,1,2)*60*60 + substr($1,3,2)*60 + substr($1,5,2)}')
 	printf "${TIME_DURATION_IN_SECONDS}"
 }
+
+# Sed command for removing ANSI/VT100 control sequences
+# See <https://stackoverflow.com/questions/17998978/removing-colors-from-output>
+remove_terminal_control_sequences(){
+	sed -r "s/\x1B(\[[0-9;]*[JKmsu]|\(B)//g"
+}
+alias remove_terminal_control_sequences=remove_terminal_control_sequences
