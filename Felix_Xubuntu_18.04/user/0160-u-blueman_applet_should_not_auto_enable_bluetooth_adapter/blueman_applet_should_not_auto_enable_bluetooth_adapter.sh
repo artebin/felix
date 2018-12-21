@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 source ../../Felix_Xubuntu_18.04.sh
-check_shell
+is_bash
 
 blueman_applet_should_not_auto_enable_bluetooth_adapter(){
 	cd ${BASEDIR}

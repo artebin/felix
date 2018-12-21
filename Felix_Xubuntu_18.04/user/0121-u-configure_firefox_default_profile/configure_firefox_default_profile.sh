@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 source ../../Felix_Xubuntu_18.04.sh
-check_shell
+is_bash
 
 configure_firefox_default_profile(){
 	cd ${BASEDIR}

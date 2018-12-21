@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 source ../../Felix_Xubuntu_18.04.sh
-check_shell
+is_bash
 
 enable_exit_dialog_at_power_button_pressed(){
 	cd ${BASEDIR}

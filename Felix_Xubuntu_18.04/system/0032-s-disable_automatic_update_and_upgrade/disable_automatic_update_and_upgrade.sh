@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 source ../../Felix_Xubuntu_18.04.sh
-check_shell
+is_bash
 exit_if_has_not_root_privileges
 
 disable_automatic_update_and_upgrade(){
