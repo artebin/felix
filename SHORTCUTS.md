@@ -128,6 +128,13 @@
 | `<Ctrl><Shift>m`			| Mark all occurences of the selection or the word under cursor if no seletion |
 | `<Ctrl>e`					| Toogle line commentation |
 
+## Firefox
+
+| Shortcut | Action |
+| --- | --- |
+| `<Ctrl><Shift>t`			| Undo last tab closure |
+| `<Ctrl><Alt>r`			| Toogle reader view |
+
 ## Thunderbird
 
 | Shortcut | Action |
