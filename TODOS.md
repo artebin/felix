@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Command line git-flavored markdown-2-html? with pandoc or <http://daringfireball.net/projects/downloads/Markdown_1.0.1.zip>.
 - [ ] Refactor "common.sh" to "felix_xubuntu18.04.sh" and use the "common.sh" from "MiscAdditions".
 - [ ] Check that we can open 2 window "File Properties" concurrently for 2 different files in Caja.
 - [ ] Install xdg-utils from sources.
