@@ -1,4 +1,11 @@
 # TODOS
+- [ ] Horizontal scrolling with regular touchpad driver (not mtrack)
+- [ ] Power manager just for managing the brightness and locking the screen before suspend/hibernate (managed by logind)
+- [ ] Screenshot key on Macbook Air
+- [ ] Disable styling for mardown in Vim because buggy (italic wrongly detected)
+- [ ] improved recipe 0220 use a regex "EHC*" rather than EHC1. Disable them all. Only power button should wake up the computer.
+- [ ] Suspend-freeze.
+- [ ] Suspend then hibernate, see <https://askubuntu.com/questions/12383/how-to-go-automatically-from-suspend-into-hibernate>
 - [ ] Command line git-flavored markdown-2-html? with pandoc or <http://daringfireball.net/projects/downloads/Markdown_1.0.1.zip>.
 - [ ] Refactor "common.sh" to "felix_xubuntu18.04.sh" and use the "common.sh" from "MiscAdditions".
 - [ ] Check that we can open 2 window "File Properties" concurrently for 2 different files in Caja.
@@ -8,7 +15,10 @@
 - [ ] Still a problem with mtrack we do not have right click with the 2-fingers tap.
 - [ ] Gvfs is slow, could be better to mount the nfs via autofs rather than gvfs.
 - [ ] Try thunar v1.8.x ?
+- [ ] Add traces for monitoring the time taken for the installation.
 - [ ] Fix the icons for xfce4-power-manager. See <https://bbs.archlinux.org/viewtopic.php?id=216495>.
+- [ ] It seems the state of "Num Lock" is not preserved anymore after wake after suspend.
+- [ ] When all the document are closed in Geany, the Markdown Preview still shows the last preview. Also the links are clickable in the preview and the page is showed in the sidebar but there is no way to navigate and go back to the preview.
 - [ ] When locked the name of the use is bold and ugly in lightdm, why? For indicating that session is locked? The button "unlock" is not enough?
 - [ ] Add caja script for indenting XML file
 - [ ] scroll by pixel/pc amount in LibreOffice Calc (rather by number of rows).
@@ -21,6 +31,7 @@
 - [ ] Add a Caja script for executing a script into a terminal and "press a key" before exit the terminal.
 - [ ] It seems thunderbird is not using x-www-browser (chromium is used), "network.protocol-handler.warn-external.http" should be true for all. gnome-www-browser should be set too (not only x-www-browser).
 - [ ] A script at startup of openbox checking for the default application and notify the user about some changes. Have a look at Xfce4 MIME Type Editor.
+- [ ] Patch EOM for not showing "set background" is window manager is not Metacity (the WM which should be used with EOM). Use $XDG_SESSION_DESKTOP.
 - [ ] Create an install setting using the ubuntu miniso.
 - [ ] Fix the Xmodmap for the macbook.
 - [ ] Need a way to do some settings regarding the sensitiviy of the touchpad/mouse a save these settings. The xfce4-mouse-settings is not saved and even worst it is reset during a session but it probably because I use it in a not-XFCE desktop.
@@ -45,7 +56,6 @@
 - [ ] reboot/shutdown can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
-- [x] Patch EOM for not showing "set background" is window manager is not Metacity (the WM which should be used with EOM). Use $XDG_SESSION_DESKTOP. => Replaced EOM by GPicView
 - [x] gpicview should replace EOM (replace the text in the .desktop file)
 - [x] Remove alltray.
 - [x] Make the DisplayLink works.
@@ -57,7 +67,6 @@
 - [x] Add pigz
 - [x] Execute the dstat recipe by default but do not start the service.
 - [x] Install dstat from source.
-- [x] It seems the state of "Num Lock" is not preserved anymore after wake after suspend. => checked OK.
 - [x] Disable the automatic update in ubuntu <https://askubuntu.com/questions/1059971/disable-updates-from-command-line-in-ubuntu-16-04>.
 - [x] Pulse audio does not restart properly after logout/login. Fixed with <https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting#ALSA_channels_mute_when_headphones_are_plugged/unplugged_improperly>.
 - [x] Recipe for removing packages is not working properly (too many packages removed).

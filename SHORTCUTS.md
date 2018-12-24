@@ -159,3 +159,4 @@
 | `<Fn><Left>` 				| Home |
 | `<Fn><Right>` 			| End |
 | `<Fn><Backspace>` 		| Delete |
+| `<Fn><Enter>`				| Insert |
