@@ -392,6 +392,54 @@
 				<menu>client-list-combined-menu</menu>
 			</action>
 		</keybind>
+		
+		<!--
+		##################################################
+		  Keybindings for display and keyboard backlight
+		##################################################
+		-->
+		<keybind key="XF86MonBrightnessDown">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>false</enabled>
+					<name>XF86MonBrightnessDown</name>
+				</startupnotify>
+				<command>bash ~/.config/openbox/brillo_backlight_notify.sh -d</command>
+			</action>
+		</keybind>
+		<keybind key="XF86MonBrightnessUp">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>false</enabled>
+					<name>XF86MonBrightnessUp</name>
+				</startupnotify>
+				<command>bash ~/.config/openbox/brillo_backlight_notify.sh -i</command>
+			</action>
+		</keybind>
+		<keybind key="XF86KbdBrightnessDown">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>false</enabled>
+					<name>XF86KbdBrightnessDown</name>
+				</startupnotify>
+				<command>bash ~/.config/openbox/brillo_keyboard_notify.sh -d</command>
+			</action>
+		</keybind>
+		<keybind key="XF86KbdBrightnessUp">
+			<action name="Execute">
+				<startupnotify>
+					<enabled>false</enabled>
+					<name>XF86KbdBrightnessUp</name>
+				</startupnotify>
+				<command>bash ~/.config/openbox/brillo_keyboard_notify.sh -i</command>
+			</action>
+		</keybind>
+		
+		<!--
+		########################################
+		  Keybindings for application shortcut
+		########################################
+		-->
 		<keybind key="W-e">
 			<action name="Execute">
 				<startupnotify>
