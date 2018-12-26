@@ -192,3 +192,12 @@ remove_terminal_control_sequences(){
 	sed -r "s/\x1B(\[[0-9;]*[JKmsu]|\(B)//g"
 }
 alias remove_terminal_control_sequences=remove_terminal_control_sequences
+
+is_package_installed(){
+	if [[ $# -ne 1 ]]; then
+		echo "Function 'is_package_installed' expects one argument"
+		return 2
+	fi
+	RETURN_CODE=$(dpkg-query -W -f='${Status}' nano 2>/dev/null | grep -c "ok installed")
+	return "${RETURN_CODE}"
+}
