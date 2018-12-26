@@ -1,5 +1,6 @@
 # TODOS
-- [ ] Horizontal scrolling with regular touchpad driver (not mtrack)
+- [ ] Kernel parameter for acpi on macbook air.
+- [ ] Add a recipe for "brillo" <https://www.reddit.com/r/archlinux/comments/9mr58u/my_brightness_control_tool_brillo_has_a_new/>.
 - [ ] Power manager just for managing the brightness and locking the screen before suspend/hibernate (managed by logind)
 - [ ] Screenshot key on Macbook Air
 - [ ] Disable styling for mardown in Vim because buggy (italic wrongly detected)
@@ -56,6 +57,9 @@
 - [ ] reboot/shutdown can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Brillo + notification if X.
+- [x] Prevent notify-send from stacking <https://unix.stackexchange.com/questions/376071/prevent-notify-send-from-stacking>
+- [x] Add recipe for notify-send.sh <https://github.com/vlevit/notify-send.sh>
 - [x] gpicview should replace EOM (replace the text in the .desktop file)
 - [x] Remove alltray.
 - [x] Make the DisplayLink works.
