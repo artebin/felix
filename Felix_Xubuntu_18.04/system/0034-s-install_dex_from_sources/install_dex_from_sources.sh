@@ -15,8 +15,13 @@ install_dex_from_sources(){
 	# Clone git repository
 	cd ${BASEDIR}
 	git clone https://github.com/jceb/dex
+	
+	# Patch dex for supporting 'Terminal=(true|false)' property in .desktop files
+	# See <https://github.com/jceb/dex/issues/33>
 	cd dex
 	patch dex < ../terminal_property.patch
+	
+	# Install
 	make install
 	
 	# Cleaning
