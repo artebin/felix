@@ -1,19 +1,17 @@
 # TODOS
-- [ ] Kernel parameter for acpi on macbook air.
-- [ ] Add a recipe for "brillo" <https://www.reddit.com/r/archlinux/comments/9mr58u/my_brightness_control_tool_brillo_has_a_new/>.
-- [ ] Power manager just for managing the brightness and locking the screen before suspend/hibernate (managed by logind)
+- [ ] Geany: key shortcut for "Line wrapping"
+- [ ] Clean recipe openbox clipmenud_run.sh should be removed.
+- [ ] Kernel parameter for acpi on macbook air (native).
+- [ ] Check what is missing if we do not use a Power manager (multiple displays support in logind?).
 - [ ] Screenshot key on Macbook Air
 - [ ] Disable styling for mardown in Vim because buggy (italic wrongly detected)
-- [ ] improved recipe 0220 use a regex "EHC*" rather than EHC1. Disable them all. Only power button should wake up the computer.
-- [ ] Suspend-freeze.
-- [ ] Suspend then hibernate, see <https://askubuntu.com/questions/12383/how-to-go-automatically-from-suspend-into-hibernate>
+- [ ] Add recipe for suspend-then-hibernate, see <https://askubuntu.com/questions/12383/how-to-go-automatically-from-suspend-into-hibernate>
 - [ ] Command line git-flavored markdown-2-html? with pandoc or <http://daringfireball.net/projects/downloads/Markdown_1.0.1.zip>.
-- [ ] Refactor "common.sh" to "felix_xubuntu18.04.sh" and use the "common.sh" from "MiscAdditions".
 - [ ] Check that we can open 2 window "File Properties" concurrently for 2 different files in Caja.
+- [ ] Use xdg-open from openbox (no panel no desktop).
 - [ ] Install xdg-utils from sources.
 - [ ] VNC through SSH.
 - [ ] Jar should not be associated to Java.
-- [ ] Still a problem with mtrack we do not have right click with the 2-fingers tap.
 - [ ] Gvfs is slow, could be better to mount the nfs via autofs rather than gvfs.
 - [ ] Try thunar v1.8.x ?
 - [ ] Add traces for monitoring the time taken for the installation.
@@ -24,7 +22,7 @@
 - [ ] Add caja script for indenting XML file
 - [ ] scroll by pixel/pc amount in LibreOffice Calc (rather by number of rows).
 - [ ] <https://bugs.launchpad.net/ubuntu/+source/gvfs/+bug/378783> 
-- [ ] Install dex: "DesktopEntry eXecution implements the Freedesktop.org autostart specification, independent of any desktop or window manager environment.". Why xdg-open is not implemented the same way?
+- [ ] Install dex: "DesktopEntry eXecution implements the Freedesktop.org autostart specification, independent of any desktop or window manager environment.". Why xdg-open is not implemented the same way? See <https://github.com/jceb/dex>.
 - [ ] locate panel-desktop-handler.desktop => this desktop file is called for creating a shortcut for each execution of one desktop file with exo-open, gvfs-open, xdg-open etc.
 - [ ] Patch Caja: always show the file name (extension are hidden for .desktop files for example) See <https://github.com/mate-desktop/caja/issues/727> open ticket.
 - [ ] Use autofs for preventing caja to freeze when NFS/Samba is down or network problems. See <https://unix.stackexchange.com/questions/267138/preventing-broken-nfs-connection-from-freezing-the-client-system> and <https://help.ubuntu.com/community/Autofs>.
@@ -32,7 +30,6 @@
 - [ ] Add a Caja script for executing a script into a terminal and "press a key" before exit the terminal.
 - [ ] It seems thunderbird is not using x-www-browser (chromium is used), "network.protocol-handler.warn-external.http" should be true for all. gnome-www-browser should be set too (not only x-www-browser).
 - [ ] A script at startup of openbox checking for the default application and notify the user about some changes. Have a look at Xfce4 MIME Type Editor.
-- [ ] Patch EOM for not showing "set background" is window manager is not Metacity (the WM which should be used with EOM). Use $XDG_SESSION_DESKTOP.
 - [ ] Create an install setting using the ubuntu miniso.
 - [ ] Fix the Xmodmap for the macbook.
 - [ ] Need a way to do some settings regarding the sensitiviy of the touchpad/mouse a save these settings. The xfce4-mouse-settings is not saved and even worst it is reset during a session but it probably because I use it in a not-XFCE desktop.
@@ -57,6 +54,10 @@
 - [ ] reboot/shutdown can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Patch EOM for not showing "set background" is window manager is not Metacity (the WM which should be used with EOM). Use $XDG_SESSION_DESKTOP. => EOM replaced by GPicView.
+- [x] Still a problem with mtrack we do not have right click with the 2-fingers tap.
+- [x] Refactor "common.sh" to "felix_xubuntu18.04.sh" and extract functions in a common.sh located at the root of the project.
+- [x] Add a recipe for "brillo" <https://www.reddit.com/r/archlinux/comments/9mr58u/my_brightness_control_tool_brillo_has_a_new/>.
 - [x] Brillo + notification if X.
 - [x] Prevent notify-send from stacking <https://unix.stackexchange.com/questions/376071/prevent-notify-send-from-stacking>
 - [x] Add recipe for notify-send.sh <https://github.com/vlevit/notify-send.sh>
