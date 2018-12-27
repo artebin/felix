@@ -127,6 +127,9 @@
 | `<Ctrl><Mouse drag>`		| Column mode edition (can be combine with a <Shift>) |
 | `<Ctrl><Shift>m`			| Mark all occurences of the selection or the word under cursor if no seletion |
 | `<Ctrl>e`					| Toogle line commentation |
+| `<Ctrl><Alt>w`			| Toogle line wrapping |
+| `<Ctrl>w`					| Close opened document |
+| `<Ctrl><Shift>w`			| Close all opened documents |
 
 ## Firefox
 

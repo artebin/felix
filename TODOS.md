@@ -1,9 +1,10 @@
 # TODOS
-- [ ] Geany: key shortcut for "Line wrapping"
+- [ ] Scrolling with mtrack is too much sensitive.
+- [ ] Add recipe for fdpowermon + specifies icons from Faenza for the battery indicator.
 - [ ] Clean recipe openbox clipmenud_run.sh should be removed.
 - [ ] Kernel parameter for acpi on macbook air (native).
 - [ ] Check what is missing if we do not use a Power manager (multiple displays support in logind?).
-- [ ] Screenshot key on Macbook Air
+- [ ] Screenshot key on Macbook Air.
 - [ ] Disable styling for mardown in Vim because buggy (italic wrongly detected)
 - [ ] Add recipe for suspend-then-hibernate, see <https://askubuntu.com/questions/12383/how-to-go-automatically-from-suspend-into-hibernate>
 - [ ] Command line git-flavored markdown-2-html? with pandoc or <http://daringfireball.net/projects/downloads/Markdown_1.0.1.zip>.
@@ -22,7 +23,6 @@
 - [ ] Add caja script for indenting XML file
 - [ ] scroll by pixel/pc amount in LibreOffice Calc (rather by number of rows).
 - [ ] <https://bugs.launchpad.net/ubuntu/+source/gvfs/+bug/378783> 
-- [ ] Install dex: "DesktopEntry eXecution implements the Freedesktop.org autostart specification, independent of any desktop or window manager environment.". Why xdg-open is not implemented the same way? See <https://github.com/jceb/dex>.
 - [ ] locate panel-desktop-handler.desktop => this desktop file is called for creating a shortcut for each execution of one desktop file with exo-open, gvfs-open, xdg-open etc.
 - [ ] Patch Caja: always show the file name (extension are hidden for .desktop files for example) See <https://github.com/mate-desktop/caja/issues/727> open ticket.
 - [ ] Use autofs for preventing caja to freeze when NFS/Samba is down or network problems. See <https://unix.stackexchange.com/questions/267138/preventing-broken-nfs-connection-from-freezing-the-client-system> and <https://help.ubuntu.com/community/Autofs>.
@@ -54,6 +54,9 @@
 - [ ] reboot/shutdown can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Geany: key shortcut for "Line wrapping".
+- [x] Install dex: "DesktopEntry eXecution implements the Freedesktop.org autostart specification, independent of any desktop or window manager environment.". Why xdg-open is not implemented the same way? See <https://github.com/jceb/dex>.
+- [x] Add a recipe for disabling the Mac startup chime.
 - [x] Patch EOM for not showing "set background" is window manager is not Metacity (the WM which should be used with EOM). Use $XDG_SESSION_DESKTOP. => EOM replaced by GPicView.
 - [x] Still a problem with mtrack we do not have right click with the 2-fingers tap.
 - [x] Refactor "common.sh" to "felix_xubuntu18.04.sh" and extract functions in a common.sh located at the root of the project.
