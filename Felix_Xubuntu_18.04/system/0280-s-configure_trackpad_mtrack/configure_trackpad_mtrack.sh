@@ -5,8 +5,6 @@ is_bash
 exit_if_has_not_root_privileges
 
 configure_trackpad_mtrack(){
-	cd ${BASEDIR}
-	
 	echo "Configuring trackpad mtrack ..."
 	
 	apt-get install -y xserver-xorg-input-mtrack
@@ -21,7 +19,10 @@ configure_trackpad_mtrack(){
 	#   7 = push scroll wheel right
 	#   8 = 4th button (aka browser backward button)
 	#   9 = 5th button (aka browser forward button)
+	#
+	# See <http://xahlee.info/linux/linux_x11_mouse_button_number.html>.
 	
+	cd ${BASEDIR}
 	cp ./80-mtrack.conf /usr/share/X11/xorg.conf.d/
 	
 	echo

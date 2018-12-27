@@ -1,11 +1,10 @@
 # TODOS
-- [ ] Scrolling with mtrack is too much sensitive.
 - [ ] Add recipe for fdpowermon + specifies icons from Faenza for the battery indicator.
 - [ ] Clean recipe openbox clipmenud_run.sh should be removed.
 - [ ] Kernel parameter for acpi on macbook air (native).
 - [ ] Check what is missing if we do not use a Power manager (multiple displays support in logind?).
 - [ ] Screenshot key on Macbook Air.
-- [ ] Disable styling for mardown in Vim because buggy (italic wrongly detected)
+- [ ] Look at the vim Mardown styling.
 - [ ] Add recipe for suspend-then-hibernate, see <https://askubuntu.com/questions/12383/how-to-go-automatically-from-suspend-into-hibernate>
 - [ ] Command line git-flavored markdown-2-html? with pandoc or <http://daringfireball.net/projects/downloads/Markdown_1.0.1.zip>.
 - [ ] Check that we can open 2 window "File Properties" concurrently for 2 different files in Caja.
@@ -54,6 +53,7 @@
 - [ ] reboot/shutdown can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Scrolling with mtrack is too much sensitive.
 - [x] Geany: key shortcut for "Line wrapping".
 - [x] Install dex: "DesktopEntry eXecution implements the Freedesktop.org autostart specification, independent of any desktop or window manager environment.". Why xdg-open is not implemented the same way? See <https://github.com/jceb/dex>.
 - [x] Add a recipe for disabling the Mac startup chime.
