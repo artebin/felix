@@ -8,7 +8,7 @@ fix_notify_send(){
 	echo "Fix notify-send ..."
 	
 	if $(is_package_installed "libnotify-bin"); then
-		apt-get remove -y libnotify-send
+		apt-get remove -y "libnotify-bin"
 	fi
 	
 	cd ${BASEDIR}
