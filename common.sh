@@ -196,8 +196,10 @@ alias remove_terminal_control_sequences=remove_terminal_control_sequences
 is_package_installed(){
 	if [[ $# -ne 1 ]]; then
 		echo "Function 'is_package_installed' expects one argument"
-		return 2
+		return 1
 	fi
-	RETURN_CODE=$(dpkg-query -W -f='${Status}' nano 2>/dev/null | grep -c "ok installed")
+	PACKAGE_NAME="${1}"
+	dpkg-query -W -f='${Status}' "${PACKAGE_NAME}" 2>/dev/null | grep -q "ok installed"
+	RETURN_CODE=$?
 	return "${RETURN_CODE}"
 }
