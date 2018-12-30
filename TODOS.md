@@ -1,5 +1,5 @@
 # TODOS
-- [ ] Add recipe for fdpowermon + specifies icons from Faenza for the battery indicator.
+- [ ] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron.
 - [ ] Clean recipe openbox clipmenud_run.sh should be removed.
 - [ ] Kernel parameter for acpi on macbook air (native).
 - [ ] Check what is missing if we do not use a Power manager (multiple displays support in logind?).
@@ -8,14 +8,12 @@
 - [ ] Add recipe for suspend-then-hibernate, see <https://askubuntu.com/questions/12383/how-to-go-automatically-from-suspend-into-hibernate>
 - [ ] Command line git-flavored markdown-2-html? with pandoc or <http://daringfireball.net/projects/downloads/Markdown_1.0.1.zip>.
 - [ ] Check that we can open 2 window "File Properties" concurrently for 2 different files in Caja.
-- [ ] Use xdg-open from openbox (no panel no desktop).
-- [ ] Install xdg-utils from sources.
+- [ ] Use xdg-open from openbox (no panel no desktop). We can use "dex" but would be good to be able to use xdg-open (gtk-open, exo-open etc. ).
 - [ ] VNC through SSH.
 - [ ] Jar should not be associated to Java.
 - [ ] Gvfs is slow, could be better to mount the nfs via autofs rather than gvfs.
 - [ ] Try thunar v1.8.x ?
 - [ ] Add traces for monitoring the time taken for the installation.
-- [ ] Fix the icons for xfce4-power-manager. See <https://bbs.archlinux.org/viewtopic.php?id=216495>.
 - [ ] It seems the state of "Num Lock" is not preserved anymore after wake after suspend.
 - [ ] When all the document are closed in Geany, the Markdown Preview still shows the last preview. Also the links are clickable in the preview and the page is showed in the sidebar but there is no way to navigate and go back to the preview.
 - [ ] When locked the name of the use is bold and ugly in lightdm, why? For indicating that session is locked? The button "unlock" is not enough?
@@ -33,7 +31,6 @@
 - [ ] Fix the Xmodmap for the macbook.
 - [ ] Need a way to do some settings regarding the sensitiviy of the touchpad/mouse a save these settings. The xfce4-mouse-settings is not saved and even worst it is reset during a session but it probably because I use it in a not-XFCE desktop.
 - [ ] Test if caja gets unresponsive when the NFS is mounter via a regular mount command rather via gvfs. Just test it by mount it, access it via caja, unplug the network and access it again via caja.
-- [ ] Hibernate is not working anymore => should add a kernel parameter, see <https://soulkiln.blog/2018/08/14/ubuntu-18-04-hibernate-and-suspend-fix/>.
 - [ ] Thunderbird config do not mark read automatically.
 - [ ] Add recipe for updating the XDG default directory (remove "Templates" and "Music" should be default).
 - [ ] Compile from source <https://github.com/freedesktop/xdg-desktop-file-utils> because command "update-desktop-update" is bugged in Ubuntu 18.04.
@@ -53,6 +50,10 @@
 - [ ] reboot/shutdown can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Hibernate is not working anymore => should add a kernel parameter, see <https://soulkiln.blog/2018/08/14/ubuntu-18-04-hibernate-and-suspend-fix/>.
+- [x] Fix the icons for xfce4-power-manager. See <https://bbs.archlinux.org/viewtopic.php?id=216495>. => use fdpowermon now.
+- [x] Install xdg-utils from sources. => complicated, xdg-utils is a dependency for many packages.
+- [x] Add recipe for fdpowermon + specifies icons from Faenza for the battery indicator.
 - [x] Scrolling with mtrack is too much sensitive.
 - [x] Geany: key shortcut for "Line wrapping".
 - [x] Install dex: "DesktopEntry eXecution implements the Freedesktop.org autostart specification, independent of any desktop or window manager environment.". Why xdg-open is not implemented the same way? See <https://github.com/jceb/dex>.
