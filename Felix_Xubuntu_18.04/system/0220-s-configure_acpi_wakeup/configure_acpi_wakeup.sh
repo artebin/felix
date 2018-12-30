@@ -71,8 +71,30 @@ configure_acpi_wakeup(){
 	echo
 }
 
-cd ${BASEDIR}
+extract_acpi_dsdt(){
+	echo "Extracting ACPI DSDT table ..."
+	
+	# ACPI Advanced Configuration and Power Interface
+	# DSDT Differentiated System Description Table
+	
+	cd ${BASEDIR}
+	if ! $(is_package_installed "acpia-tools"); then
+		apt-get install -y "acpia-tools"
+	fi
+	cat /sys/firmware/acpi/tables/DSDT > dsdt.dat
+	
+	# Decompile the table with the Intel's ASL compiler
+	iasl -d dsdt.dat
+}
 
+cd ${BASEDIR}
+extract_acpi_dsdt 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+EXIT_CODE="${PIPESTATUS[0]}"
+if [ "${EXIT_CODE}" -ne 0 ]; then
+	exit "${EXIT_CODE}"
+fi
+
+cd ${BASEDIR}
 configure_acpi_wakeup 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
