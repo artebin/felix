@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Disable bluetooh module better than current recipe see <https://askubuntu.com/questions/67758/how-can-i-deactivate-bluetooth-on-system-startup> + action in openbox menu for re-activating it.
+- [ ] cp asks for confirmation when overwrite.
 - [ ] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron.
 - [ ] Clean recipe openbox clipmenud_run.sh should be removed.
 - [ ] Kernel parameter for acpi on macbook air (native).

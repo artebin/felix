@@ -1,3 +1,8 @@
+## Screenshot a specific window from the command line with xwd
+```
+xwd > screenshot.xwd;convert screenshot.xwd screenshot.png
+```
+
 ## X11 mouse button numbering
 See <http://xahlee.info/linux/linux_x11_mouse_button_number.html>
 
