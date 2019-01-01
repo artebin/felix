@@ -20,8 +20,8 @@ extract_acpi_dsdt(){
 	iasl -d dsdt.dat
 }
 
-disable_all_acpi_wakeup_except_for_lid(){
-	echo "Disable all ACPI wakeup except for LID ..."
+disable_all_acpi_wakeup_except_for_platform_subsystems(){
+	echo "Disable all ACPI wakeup except for SUBSYSTEM[platform] ..."
 	
 	cd ${BASEDIR}
 	ACPI_WAKEUP_FILE_NAME="acpi_wakeup.rules"
@@ -42,11 +42,11 @@ disable_all_acpi_wakeup_except_for_lid(){
 			SUBSYSTEM="${SYSFS_NODE%%:*}"
 			KERNEL="${SYSFS_NODE#*:}"
 			
-			echo "DEVICE[${DEVICE}] S_STATE[${S_STATE}] STATUS[${STATUS}] SYSFS_NODE[${SYSFS_NODE}] SUBSYSTEM=[${SUBSYSTEM}] KERNEL[${KERNEL}]"
-			
-			if [[ "${DEVICE}" =~ ^LID.* ]]; then
+			if [[ "${SUBSYSTEM}" == "platform" ]]; then
 				continue
 			fi
+			
+			echo "DEVICE[${DEVICE}] S_STATE[${S_STATE}] STATUS[${STATUS}] SYSFS_NODE[${SYSFS_NODE}] SUBSYSTEM=[${SUBSYSTEM}] KERNEL[${KERNEL}]"
 			
 			echo "# Disable DEVICE[${DEVICE}] from S_STATE[${S_STATE}]" >> "${ACPI_WAKEUP_FILE_NAME}"
 			echo "SUBSYSTEM==\"${SUBSYSTEM}\", KERNEL==\"${KERNEL}\", ATTR{power/wakeup}=\"disabled\"" >> "${ACPI_WAKEUP_FILE_NAME}"
@@ -71,7 +71,7 @@ if [ "${EXIT_CODE}" -ne 0 ]; then
 fi
 
 cd ${BASEDIR}
-disable_all_acpi_wakeup_except_for_lid 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+disable_all_acpi_wakeup_except_for_platform_subsystems 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"
