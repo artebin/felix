@@ -9,6 +9,7 @@ iotop
 dstat
 glances
 smem
+battery-stats
 fuseiso fuseiso9660
 inotify-hookable inotify-tools iwatch
 tree
