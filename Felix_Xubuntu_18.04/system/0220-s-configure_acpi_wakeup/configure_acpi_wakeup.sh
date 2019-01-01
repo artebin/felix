@@ -4,73 +4,6 @@ source ../../Felix_Xubuntu_18.04.sh
 is_bash
 exit_if_has_not_root_privileges
 
-# This script analyse the content of `/proc/acpi/wakeup` in order to 
-# guess which acpi wakeup should  be enable or not. As a consequence the
-# state of `/proc/acpi/wakeup` is important when the script is executed.
-# Do not run the script multiple times in a row, neither run it when 
-# `configure_acpi_wakeup.service` has been started.
-
-# By default disable all acpi wakeup except for LID.
-# In particular: disable it for mouse and keyboard.
-DISABLE_ALL_EXCEPT_LID="true"
-
-configure_acpi_wakeup(){
-	cd ${BASEDIR}
-	
-	echo "Configure acpi wakeup ..."
-	
-	if [ -f /etc/systemd/system/configure_acpi_wakeup.service ]; then
-		echo "/etc/systemd/system/configure_acpi_wakeup.service already exists"
-		exit 1
-	fi
-	
-	cp configure_acpi_wakeup.service.template configure_acpi_wakeup.service
-	
-	if [ "${DISABLE_ALL_EXCEPT_LID}" = "true" ]; then
-		echo "Disabling all acpi wakeup except for LID ..."
-	else
-		echo "Disabling all acpi wakup ..."
-	fi
-	
-	cat /proc/acpi/wakeup > ./acpi_wakeup
-	CONFIGURE_COMMAND=""
-	while read LINE; do
-		if [[ ${LINE} == Device* ]]; then
-			continue
-		fi
-		if [[ ${LINE} != [a-zA-Z0-9]* ]]; then
-			continue
-		fi
-		DEVICE_ID=`echo "${LINE}"|cut -f1`
-		STATUS=`echo "${LINE}"|cut -f3`
-		
-		if [[ "${LINE}" == LID* ]]; then
-			if [ "${DISABLE_ALL_EXCEPT_LID}" = "true" ]; then
-				if [[ "${STATUS}" == \*disabled* ]]; then
-					CONFIGURE_COMMAND="echo ${DEVICE_ID} >> /proc/acpi/wakeup;${CONFIGURE_COMMAND}"
-					continue
-				fi
-			fi
-		elif [[ "${STATUS}" != \*disabled* ]]; then
-			CONFIGURE_COMMAND="echo ${DEVICE_ID} >> /proc/acpi/wakeup;${CONFIGURE_COMMAND}"
-		fi
-		
-	done < ./acpi_wakeup
-	
-	add_or_update_line_based_on_prefix "ExecStart" "ExecStart=/bin/bash -c \"${CONFIGURE_COMMAND}\"" ./configure_acpi_wakeup.service
-	cp ./configure_acpi_wakeup.service /etc/systemd/system/configure_acpi_wakeup.service
-	systemctl daemon-reload
-	systemctl start configure_acpi_wakeup.service
-	systemctl status configure_acpi_wakeup.service
-	systemctl enable configure_acpi_wakeup.service
-	
-	# Cleaning
-	cd ${BASEDIR}
-	rm -f acpi_wakeup configure_acpi_wakeup.service
-	
-	echo
-}
-
 extract_acpi_dsdt(){
 	echo "Extracting ACPI DSDT table ..."
 	
@@ -87,6 +20,49 @@ extract_acpi_dsdt(){
 	iasl -d dsdt.dat
 }
 
+disable_all_acpi_wakeup_except_for_lid(){
+	echo "Disable all ACPI wakeup except for LID ..."
+	
+	cd ${BASEDIR}
+	ACPI_WAKEUP_FILE_NAME="acpi_wakeup.rules"
+	if [[ -f "${ACPI_WAKEUP_FILE_NAME}" ]]; then
+		rm -f "${ACPI_WAKEUP_FILE_NAME}"
+	fi
+	
+	DEVICE_LINE_REGEX="^([0-9a-zA-Z]+)\s+([0-9a-zA-Z]+)\s+(.*[enabled|disabled])\s+([0-9a-ZA-Z:.]+)$"
+	while read -r LINE; do
+		if [[ "${LINE}" =~ ^Device ]]; then
+			continue
+		fi
+		if [[ "${LINE}" =~ ${DEVICE_LINE_REGEX} ]]; then
+			DEVICE="${BASH_REMATCH[1]}"
+			S_STATE="${BASH_REMATCH[2]}"
+			STATUS="${BASH_REMATCH[3]}"
+			SYSFS_NODE="${BASH_REMATCH[4]}"
+			SUBSYSTEM="${SYSFS_NODE%%:*}"
+			KERNEL="${SYSFS_NODE#*:}"
+			
+			echo "DEVICE[${DEVICE}] S_STATE[${S_STATE}] STATUS[${STATUS}] SYSFS_NODE[${SYSFS_NODE}] SUBSYSTEM=[${SUBSYSTEM}] KERNEL[${KERNEL}]"
+			
+			if [[ "${DEVICE}" =~ ^LID.* ]]; then
+				continue
+			fi
+			
+			echo "# Disable DEVICE[${DEVICE}] from S_STATE[${S_STATE}]" >> "${ACPI_WAKEUP_FILE_NAME}"
+			echo "SUBSYSTEM==\"${SUBSYSTEM}\", KERNEL==\"${KERNEL}\", ATTR{power/wakeup}=\"disabled\"" >> "${ACPI_WAKEUP_FILE_NAME}"
+			echo "" >> "${ACPI_WAKEUP_FILE_NAME}"
+		fi
+	done < /proc/acpi/wakeup
+	
+	cp acpi_wakeup.rules /etc/udev/rules.d/90-acpi_wakeup.rules
+	
+	# Cleaning
+	cd ${BASEDIR}
+	rm -f acpi_wake.rules
+	
+	echo
+}
+
 cd ${BASEDIR}
 extract_acpi_dsdt 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
@@ -95,7 +71,7 @@ if [ "${EXIT_CODE}" -ne 0 ]; then
 fi
 
 cd ${BASEDIR}
-configure_acpi_wakeup 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+disable_all_acpi_wakeup_except_for_lid 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"
