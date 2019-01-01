@@ -7,7 +7,7 @@ exit_if_has_not_root_privileges
 install_fdpowermon_from_sources(){
 	echo "Installing fdpowermon from sources ..."
 	
-	# Remove package 'fdpowermon' and 'fdpowermon-icons' if already 
+	# Remove packages 'fdpowermon' and 'fdpowermon-icons' if already 
 	# installed.
 	if $(is_package_installed "fdpowermon"); then
 		dpkg --purge "fdpowermon"
@@ -56,7 +56,6 @@ install_fdpowermon_from_sources(){
 }
 
 cd ${BASEDIR}
-
 install_fdpowermon_from_sources 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
