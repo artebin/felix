@@ -19,7 +19,7 @@ install_dex_from_sources(){
 	# Patch dex for supporting 'Terminal=(true|false)' property in .desktop files
 	# See <https://github.com/jceb/dex/issues/33>
 	cd dex
-	patch dex < ../terminal_property.patch
+	patch dex < ../fix_terminal_property.patch
 	
 	# Install
 	make install
@@ -32,7 +32,6 @@ install_dex_from_sources(){
 }
 
 cd ${BASEDIR}
-
 install_dex_from_sources 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
