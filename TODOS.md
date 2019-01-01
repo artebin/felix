@@ -1,4 +1,7 @@
 # TODOS
+- [ ] Brillo and Display|Keyboard backlight in console (keysym ?).
+- [ ] macbook air: acpi_osi in kernel pameters see <https://wiki.archlinux.org/index.php/Mac#Suspend_and_Hibernate>
+- [ ] Improve recipe for ACPI events (notably USB etc. expect LID) with a script to be called by the service. Could be the script will be used not only for ACPI wakeup but also for others ACPI event groups.
 - [ ] Disable bluetooh module better than current recipe see <https://askubuntu.com/questions/67758/how-can-i-deactivate-bluetooth-on-system-startup> + action in openbox menu for re-activating it.
 - [ ] cp asks for confirmation when overwrite.
 - [ ] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron.
