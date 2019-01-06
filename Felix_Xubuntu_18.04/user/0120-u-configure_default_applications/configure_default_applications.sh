@@ -6,6 +6,10 @@ is_bash
 configure_default_applications(){
 	cd ${BASEDIR}
 	
+	if [[ -f mimeapps.list ]]; then
+		rm -f mimeapps.list
+	fi
+	
 	if [ -f ~/.config/mimeapps.list ]; then
 		backup_file rename ~/.config/mimeapps.list
 	fi
@@ -37,36 +41,41 @@ configure_default_applications(){
 	#   video/*			VLC
 	
 	while read LINE ; do
-		if [[ ${LINE} =~ ^text/ ]]; then
+		MIME_TYPE=""
+		if [[ "${LINE}" =~ ^#.* ]]; then
+			continue
+		fi
+		if [[ "${LINE}" =~ .*[0-9a-zA-Z].* ]]; then
 			MIME_TYPE=$(echo "${LINE}"|awk -F " " '{print $1}')
+		fi
+		if [[ -z "${MIME_TYPE}" ]]; then
+			continue
+		fi
+		if [[ "${MIME_TYPE}" =~ ^text/ ]]; then
 			echo "${MIME_TYPE}=geany.desktop" >>./mimeapps.list
 			continue
 		fi
-		if [[ ${LINE} =~ ^application/.*\+xml.* ]]; then
-			MIME_TYPE=$(echo "${LINE}"|awk -F " " '{print $1}')
+		if [[ "${MIME_TYPE}" =~ ^application/.*\+xml.* ]]; then
 			echo "${MIME_TYPE}=geany.desktop" >>./mimeapps.list
 			continue
 		fi
-		if [[ ${LINE} =~ ^application/xml-.* ]]; then
-			MIME_TYPE=$(echo "${LINE}"|awk -F " " '{print $1}')
+		if [[ "${MIME_TYPE}" =~ ^application/xml-.* ]]; then
 			echo "${MIME_TYPE}=geany.desktop" >>./mimeapps.list
 			continue
 		fi
-		if [[ ${LINE} =~ ^image/ ]]; then
-			MIME_TYPE=$(echo "${LINE}"|awk -F " " '{print $1}')
+		if [[ "${MIME_TYPE}" =~ ^image/ ]]; then
 			echo "${MIME_TYPE}=gpicview.desktop" >>./mimeapps.list
 			continue
 		fi
-		if [[ ${LINE} =~ ^audio/ ]]; then
-			MIME_TYPE=$(echo "${LINE}"|awk -F " " '{print $1}')
+		if [[ "${MIME_TYPE}" =~ ^audio/ ]]; then
 			echo "${MIME_TYPE}=vlc.desktop" >>./mimeapps.list
 			continue
 		fi
-		if [[ ${LINE} =~ ^video/ ]]; then
-			MIME_TYPE=$(echo "${LINE}"|awk -F " " '{print $1}')
+		if [[ "${MIME_TYPE}" =~ ^video/ ]]; then
 			echo "${MIME_TYPE}=vlc.desktop" >>./mimeapps.list
 			continue
 		fi
+		echo "${MIME_TYPE}=" >>./mimeapps.list
 	done </etc/mime.types
 	
 	echo "application/xml=geany.desktop" >>./mimeapps.list

@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Configure default difftoll for git (diffuse? ).
 - [ ] Brillo and Display|Keyboard backlight in console (keysym ?).
 - [ ] macbook air: acpi_osi in kernel pameters see <https://wiki.archlinux.org/index.php/Mac#Suspend_and_Hibernate>
 - [ ] Improve recipe for ACPI events (notably USB etc. expect LID) with a script to be called by the service. Could be the script will be used not only for ACPI wakeup but also for others ACPI event groups.
