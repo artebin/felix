@@ -9,7 +9,7 @@ enable_hibernation(){
 	
 	# Add polkit authority for upower and logind
 	cd ${BASEDIR}
-	cat com.ubuntu.enable-hibernate.pkla | tee /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
+	cp com.ubuntu.enable-hibernate.pkla /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
 	
 	echo
 }
@@ -26,7 +26,7 @@ configure_suspend_then_hibernation(){
 	
 	# Configure logind
 	echo "Set HandleLidSwitch=suspend ..."
-	echo "Set HandleLidSwitchDocked=ignore ..."
+	add_or_update_line_based_on_prefix '#*HandleLidSwitch=' 'HandleLidSwitch=suspend-then-hibernate' /etc/systemd/logind.conf
 	
 	# Restart the service
 	systemctl restart systemd-logind.service
@@ -34,11 +34,11 @@ configure_suspend_then_hibernation(){
 	echo
 }
 
-# SystemdSuspendSedation
-# See <https://wiki.debian.org/SystemdSuspendSedation>.
-
 configure_suspend_sedation(){
 	echo "Configuring suspend-sedation ..."
+	
+	# SystemdSuspendSedation
+	# See <https://wiki.debian.org/SystemdSuspendSedation>
 	
 	# Adding service
 	cd ${BASEDIR}
@@ -52,6 +52,13 @@ configure_suspend_sedation(){
 
 cd ${BASEDIR}
 enable_hibernation 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+EXIT_CODE="${PIPESTATUS[0]}"
+if [ "${EXIT_CODE}" -ne 0 ]; then
+	exit "${EXIT_CODE}"
+fi
+
+cd ${BASEDIR}
+configure_suspend_then_hibernation 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"
