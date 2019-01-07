@@ -75,8 +75,12 @@ configure_default_applications(){
 			echo "${MIME_TYPE}=vlc.desktop" >>./mimeapps.list
 			continue
 		fi
+		if [[ "${MIME_TYPE}" == 'application/pdf' ]]; then
+			echo "${MIME_TYPE}=atril.desktop" >>./mimeapps.list
+			continue
+		fi
 		echo "${MIME_TYPE}=" >>./mimeapps.list
-	done </etc/mime.types
+	done < /etc/mime.types
 	
 	echo "application/xml=geany.desktop" >>./mimeapps.list
 	
