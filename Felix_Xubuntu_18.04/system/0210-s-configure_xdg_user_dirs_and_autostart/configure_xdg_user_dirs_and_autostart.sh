@@ -62,6 +62,7 @@ disable_unwanted_xdg_autostart(){
 	echo "Disabling unwanted xdg autostart ..."
 	
 	XDG_AUTOSTART_DESKTOP_FILE_ARRAY=(
+		"nm-applet"
 		"blueman.desktop"
 		"xfce4-power-manager.desktop"
 	)
