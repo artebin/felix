@@ -1,4 +1,7 @@
 # TODOS
+- [ ] pdf are opened with gimp.
+- [ ] On the Dell the fn key for keyboard backlight is not working properly because there is only one key.
+- [ ] On the Dell I can see 2 notifiations when I change the backlight.
 - [ ] "tint2rc": caja will open the fil with "Tint2 Settings", how does it works?
 - [ ] Display switched off by fdpowermon or something else? (no powermanager from xfce or mate should be started anymore).
 - [ ] Do not start fdpowermon is no battery, test in openbox autostart.
