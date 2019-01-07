@@ -11,15 +11,15 @@
 		<menu id="accessories" label="Accessories">
 			<item label="Task Manager (htop)"><action name="Execute"><command>x-terminal-emulator -e "htop"</command></action></item>
 			<item label="System Monitor (glances)"><action name="Execute"><command>x-terminal-emulator -e "glances"</command></action></item>
-			<item label="Disk Usage Analyzer"><action name="Execute"><command>mate-disk-usage-analyzer</command></action></item>
+			<item label="Disk Usage Analyzer (ncdu)"><action name="Execute"><command>x-terminal-emulator -e "ncdu"</command></action></item>
 			<item label="Log Explorer (glogg)"><action name="Execute"><command>glogg</command></action></item>
 			<item label="GVim"><action name="Execute"><command>gvim</command></action></item>
-			<item label="Hexadecimal Editor (Bless)"><action name="Execute"><command>bless</command></action></item>
-			<item label="Diff &amp; Merge Tool (Meld)"><action name="Execute"><command>meld</command></action></item>
+			<item label="Hexadecimal Editor (bless)"><action name="Execute"><command>bless</command></action></item>
+			<item label="Diff &amp; Merge Tool (meld)"><action name="Execute"><command>meld</command></action></item>
 			<item label="Encryption Keys Manager (seahorse)"><action name="Execute"><command>seahorse</command></action></item>
 		</menu>
 		<menu id="graphics" label="Graphics">
-			<item label="Image Viewer (GPicView)"><action name="Execute"><command>gpicview</command></action></item>
+			<item label="Image Viewer (gpicview)"><action name="Execute"><command>gpicview</command></action></item>
 			<item label="Screenshooter"><action name="Execute"><command>xfce4-screenshooter</command></action></item>
 			<item label="Shotwell"><action name="Execute"><command>shotwell</command></action></item>
 			<item label="GIMP"><action name="Execute"><command>gimp</command></action></item>
@@ -31,7 +31,7 @@
 			<item label="Xfburn"><action name="Execute"><command>xfburn</command></action></item>
 		</menu>
 		<menu id="network" label="Network">
-			<item label="Bluetooth (blueman-applet)"><action name="Execute"><command>blueman-applet</command></action></item>
+			<item label="Bluetooth (blueman-applet)"><action name="Execute"><command>bash -c "pkexec modprobe btusb;blueman-applet"</command></action></item>
 			<menu id="wwwbrowsers" label="WWW Browsers">
 				<item label="Firefox"><action name="Execute"><execute>firefox</execute></action></item>
 				<item label="Chromium"><action name="Execute"><execute>chromium-browser</execute></action></item>
@@ -39,12 +39,12 @@
 			</menu>
 			<item label="Empathy"><action name="Execute"><command>empathy</command></action></item>
 			<item label="Skype"><action name="Execute"><command>skypeforlinux</command></action></item>
-			<item label="IRC Client (HexChat)"><action name="Execute"><command>hexchat</command></action></item>
-			<item label="Remote Filesystems (Gigolo)"><action name="Execute"><command>gigolo</command></action></item>
+			<item label="IRC Client (hexchat)"><action name="Execute"><command>hexchat</command></action></item>
+			<item label="Remote Filesystems (gigolo)"><action name="Execute"><command>gigolo</command></action></item>
 			<item label="Thunderbird"><action name="Execute"><execute>thunderbird</execute></action></item>
-			<item label="FTP Client (BareFTP)"><action name="Execute"><command>bareftp</command></action></item>
-			<item label="BitTorrent Client (Transmission)"><action name="Execute"><command>transmission-gtk</command></action></item>
-			<item label="VNC Client (Remmina)"><action name="Execute"><command>remmina</command></action></item>
+			<item label="FTP Client (bareftp)"><action name="Execute"><command>bareftp</command></action></item>
+			<item label="BitTorrent Client (transmission)"><action name="Execute"><command>transmission-gtk</command></action></item>
+			<item label="VNC Client (remmina)"><action name="Execute"><command>remmina</command></action></item>
 		</menu>
 		<menu id="office" label="Office">
 			<menu id="libreoffice" label="LibreOffice">
@@ -55,7 +55,7 @@
 				<item label="Math"><action name="Execute"><command>/usr/lib/libreoffice/program/smath</command></action></item>
 				<item label="Draw"><action name="Execute"><command>/usr/lib/libreoffice/program/sdraw</command></action></item>
 			</menu>
-			<item label="PDF Viewer (Atril)"><action name="Execute"><command>atril</command></action></item>
+			<item label="PDF Viewer (atril)"><action name="Execute"><command>atril</command></action></item>
 			<!-- The use the of argument --new-window below should work for Firefox, Chrome, Chromium -->
 			<item label="Google Drive"><action name="Execute"><command>x-www-browser --new-window https://drive.google.com/</command></action></item>
 		</menu>
