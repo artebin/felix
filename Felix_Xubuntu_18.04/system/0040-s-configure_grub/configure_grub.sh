@@ -22,11 +22,14 @@ configure_grub(){
 	sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=\"\"/" /etc/default/grub
 	echo
 	
-	# Add swap partition for resume from hibernate
-	echo "Add swap partition for resume from hibernate ..."
+	# Update kernel parameters:
+	#  - add swap partition for resume from hibernate
+	#  - disable the ACPI Operating System Identification function (_OSI). See <https://unix.stackexchange.com/questions/246672/how-to-set-acpi-osi-parameter-in-the-grub>
 	FIRST_SWAP_PARTITION_DEVICE_NAME=$(swapon --noheadings --raw --show=NAME|head -n1)
 	FIRST_SWAP_PARTITION_UUID=$(sudo blkid -s UUID -o value ${FIRST_SWAP_PARTITION_DEVICE_NAME})
-	sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=\"resume=UUID=${FIRST_SWAP_PARTITION_UUID}\"/" /etc/default/grub
+	echo "Adding swap partition for resume from hibernate: ${FIRST_SWAP_PARTITION_UUID}"
+	echo "Disablingthe ACPI Operating System Identification function"
+	sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=\"resume=UUID=${FIRST_SWAP_PARTITION_UUID} acpi_osi=\"/" /etc/default/grub
 	echo
 	
 	update-grub
