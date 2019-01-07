@@ -8,13 +8,12 @@ configure_fdpowermon(){
 	
 	cd ${BASEDIR}
 	mkdir -p ~/.config/fdpowermon
-	cp faenza_felix.theme.cfg ~/.config/fdpowermon
+	cp faenza_felix.theme.cfg ~/.config/fdpowermon/theme.cfg
 	
 	echo
 }
 
 cd ${BASEDIR}
-
 configure_fdpowermon 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
