@@ -73,7 +73,7 @@ execute_recipes(){
 				bash "./${RECIPE_SCRIPT_FILE_NAME}"
 				RECIPE_EXIT_CODE=$?
 			elif [ "${RECIPE_REQUIRED_RIGHTS}" = "s" ]; then
-				sudo bash "./${RECIPE_SCRIPT_FILE_NAME}"
+				sudo -H bash "./${RECIPE_SCRIPT_FILE_NAME}"
 				RECIPE_EXIT_CODE=$?
 			else
 				echo "Can not retrieve execution rights for RECIPE_NAME: ${RECIPE_NAME}"
