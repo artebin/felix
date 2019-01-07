@@ -11,8 +11,8 @@ extract_acpi_dsdt(){
 	# DSDT Differentiated System Description Table
 	
 	cd ${BASEDIR}
-	if ! $(is_package_installed "acpia-tools"); then
-		apt-get install -y "acpia-tools"
+	if ! $(is_package_installed "acpica-tools"); then
+		apt-get install -y "acpica-tools"
 	fi
 	cat /sys/firmware/acpi/tables/DSDT > dsdt.dat
 	
