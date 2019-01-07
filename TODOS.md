@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Do not start fdpowermon is no battery, test in openbox autostart.
 - [ ] Configure default difftoll for git (diffuse? ).
 - [ ] Brillo and Display|Keyboard backlight in console (keysym ?).
 - [ ] macbook air: acpi_osi in kernel pameters see <https://wiki.archlinux.org/index.php/Mac#Suspend_and_Hibernate>
