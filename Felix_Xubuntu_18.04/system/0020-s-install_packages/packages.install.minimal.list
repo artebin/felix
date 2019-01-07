@@ -13,6 +13,7 @@ battery-stats
 fuseiso fuseiso9660
 inotify-hookable inotify-tools iwatch
 tree
+ncdu
 
 #################################
 # Terminal & command line tools
