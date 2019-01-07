@@ -1,4 +1,6 @@
 # TODOS
+- [ ] "tint2rc": caja will open the fil with "Tint2 Settings", how does it works?
+- [ ] Display switched off by fdpowermon or something else? (no powermanager from xfce or mate should be started anymore).
 - [ ] Do not start fdpowermon is no battery, test in openbox autostart.
 - [ ] Configure default difftoll for git (diffuse? ).
 - [ ] Brillo and Display|Keyboard backlight in console (keysym ?).
