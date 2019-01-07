@@ -58,8 +58,8 @@ disable_all_acpi_wakeup_except_for_platform_subsystems(){
 	
 	# Cleaning
 	cd ${BASEDIR}
-	rm -f acpi_wake.rules
-	
+	rm -f dsdt.dat
+	rm -f acpi_wakeup.rules
 	echo
 }
 
