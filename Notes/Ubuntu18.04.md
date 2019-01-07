@@ -9,6 +9,7 @@ Allowing hibernate in polkit is not enough in Ubuntu 18.04, we have to update gr
 ```resume=UUID=<UUID_OF_SWAP_PARTITION>```
 
 ## Ubuntu 18.04: r8169 ethernet card not working at all or not working after suspend
+- just need to blacklist `r8169`
 - <https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1752772>
 - <https://forum.manjaro.org/t/linux415-r8168-cant-connect-to-the-network-after-suspend-to-ram/39557/12>
 - `apt-get remove --purge r8168-dkms`
