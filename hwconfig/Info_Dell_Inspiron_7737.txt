@@ -1,24 +1,37 @@
 ================================================================================
-# Product name
+# DMI information BIOS (dmidecode)
 ================================================================================
-Inspiron 7737
+bios-vendor: Dell Inc.         
+bios-version: A14
+bios-release-date: 10/04/2016
+
+
+
+================================================================================
+# DMI information System (dmidecode)
+================================================================================
+system-manufacturer: Dell Inc.         
+system-product-name: Inspiron 7737
+system-version: Not Specified
 
 
 
 ================================================================================
 # Hardware information (inxi -Fxz)
 ================================================================================
-System:    Host: voltaire Kernel: 4.15.0-42-generic x86_64
+System:    Host: voltaire Kernel: 4.15.0-43-generic x86_64
            bits: 64 gcc: 7.3.0
            Desktop: Openbox 3.6.1 Distro: Ubuntu 18.04.1 LTS
 Machine:   Device: portable System: Dell product: Inspiron 7737 serial: <filter>
            Mobo: Dell model: 0YHYKX v: A00 serial: <filter>
            UEFI [Legacy]: Dell v: A14 date: 10/04/2016
+Battery    BAT0: charge: 57.7 Wh 115.8% condition: 49.8/57.7 Wh (86%)
+           model: Samsung SDI DELL 62VNH49 status: Full
 CPU:       Dual core Intel Core i7-4510U (-MT-MCP-) 
            arch: Haswell rev.1 cache: 4096 KB
            flags: (lm nx sse sse2 sse3 sse4_1 sse4_2 ssse3 vmx) bmips: 7981
-           clock speeds: max: 3100 MHz 1: 981 MHz 2: 1450 MHz 3: 1205 MHz
-           4: 1359 MHz
+           clock speeds: max: 3100 MHz 1: 1163 MHz 2: 1304 MHz 3: 1483 MHz
+           4: 1487 MHz
 Graphics:  Card-1: Intel Haswell-ULT Integrated Graphics Controller
            bus-ID: 00:02.0
            Card-2: NVIDIA GK107M [GeForce GT 750M] bus-ID: 04:00.0
@@ -31,90 +44,29 @@ Audio:     Card-1 Intel 8 Series HD Audio Controller
            driver: snd_hda_intel bus-ID: 00:1b.0
            Card-2 Intel Haswell-ULT HD Audio Controller
            driver: snd_hda_intel bus-ID: 00:03.0
-           Sound: Advanced Linux Sound Architecture v: k4.15.0-42-generic
+           Sound: Advanced Linux Sound Architecture v: k4.15.0-43-generic
 Network:   Card-1: Intel Wireless 7260 driver: iwlwifi bus-ID: 02:00.0
            IF: wlp2s0 state: down mac: <filter>
            Card-2: Realtek RTL8111/8168/8411 PCIE Gigabit Ethernet Controller
            driver: r8168 v: 8.046.00-NAPI port: 4000 bus-ID: 03:00.1
            IF: enp3s0f1 state: up speed: 1000 Mbps duplex: full mac: <filter>
-Drives:    HDD Total Size: 1000.2GB (4.2% used)
-           ID-1: /dev/sda model: ST1000LM014 size: 1000.2GB temp: 35C
-Partition: ID-1: / size: 46G used: 11G (25%) fs: ext4 dev: /dev/sda1
-           ID-2: /home size: 841G used: 331M (1%) fs: ext4 dev: /dev/sda3
+Drives:    HDD Total Size: 1000.2GB (4.3% used)
+           ID-1: /dev/sda model: ST1000LM014 size: 1000.2GB temp: 27C
+Partition: ID-1: / size: 46G used: 11G (26%) fs: ext4 dev: /dev/sda1
+           ID-2: /home size: 841G used: 1.1G (1%) fs: ext4 dev: /dev/sda3
            ID-3: swap-1 size: 32.00GB used: 0.00GB (0%)
            fs: swap dev: /dev/sda2
 RAID:      No RAID devices: /proc/mdstat, md_mod kernel module present
-Sensors:   System Temperatures: cpu: 45.0C mobo: N/A gpu: 0.0:41C
+Sensors:   System Temperatures: cpu: 43.0C mobo: N/A gpu: 0.0:39C
            Fan Speeds (in rpm): cpu: N/A
-Info:      Processes: 209 Uptime: 38 min Memory: 1524.1/15939.3MB
+Info:      Processes: 208 Uptime: 3 days Memory: 1564.9/15939.3MB
            Init: systemd runlevel: 5 Gcc sys: 7.3.0
            Client: Shell (bash 4.4.191) inxi: 2.3.56 
 
 
 
 ================================================================================
-# RAM information (demidecode --type memory)
-================================================================================
-# dmidecode 3.1
-Getting SMBIOS data from sysfs.
-SMBIOS 2.7 present.
-
-Handle 0x0005, DMI type 16, 23 bytes
-Physical Memory Array
-	Location: System Board Or Motherboard
-	Use: System Memory
-	Error Correction Type: None
-	Maximum Capacity: 16 GB
-	Error Information Handle: Not Provided
-	Number Of Devices: 2
-
-Handle 0x0006, DMI type 17, 34 bytes
-Memory Device
-	Array Handle: 0x0005
-	Error Information Handle: Not Provided
-	Total Width: 64 bits
-	Data Width: 64 bits
-	Size: 8192 MB
-	Form Factor: SODIMM
-	Set: None
-	Locator: DIMM_A
-	Bank Locator: Not Specified
-	Type: DDR3
-	Type Detail: Synchronous
-	Speed: 1600 MT/s
-	Manufacturer: Hynix/Hyundai
-	Serial Number: 4BC1E9FC
-	Asset Tag: 9876543210
-	Part Number: HMT41GS6BFR8A-PB  
-	Rank: Unknown
-	Configured Clock Speed: 1600 MT/s
-
-Handle 0x0007, DMI type 17, 34 bytes
-Memory Device
-	Array Handle: 0x0005
-	Error Information Handle: Not Provided
-	Total Width: 64 bits
-	Data Width: 64 bits
-	Size: 8192 MB
-	Form Factor: SODIMM
-	Set: None
-	Locator: DIMM_B
-	Bank Locator: Not Specified
-	Type: DDR3
-	Type Detail: Synchronous
-	Speed: 1600 MT/s
-	Manufacturer: Hynix/Hyundai
-	Serial Number: 4B61E9E3
-	Asset Tag: 9876543210
-	Part Number: HMT41GS6BFR8A-PB  
-	Rank: Unknown
-	Configured Clock Speed: 1600 MT/s
-
-
-
-
-================================================================================
-# Displays
+# Display information (xrandr --current)
 ================================================================================
 Screen 0: minimum 8 x 8, current 1920 x 1080, maximum 16384 x 16384
 eDP-1-1 connected 1920x1080+0+0 (normal left inverted right x axis y axis) 382mm x 215mm
@@ -169,7 +121,7 @@ HDMI-1-1 disconnected (normal left inverted right x axis y axis)
 
 
 ================================================================================
-# Distribution name
+# Distribution name (lsb_release -a)
 ================================================================================
 LSB Version:	core-9.20170808ubuntu1-noarch:security-9.20170808ubuntu1-noarch
 Distributor ID:	Ubuntu
@@ -180,7 +132,7 @@ Codename:	bionic
 
 
 ================================================================================
-# Ubuntu Version (cat /var/log/installer/media-info)
+# Ubuntu version (cat /var/log/installer/media-info)
 ================================================================================
 Xubuntu 18.04.1 LTS "Bionic Beaver" - Release amd64 (20180725)
 
@@ -188,6 +140,7 @@ Xubuntu 18.04.1 LTS "Bionic Beaver" - Release amd64 (20180725)
 ================================================================================
 # Linux Kernel Version
 ================================================================================
+Linux version 4.15.0-43-generic (buildd@lgw01-amd64-001) (gcc version 7.3.0 (Ubuntu 7.3.0-16ubuntu3)) #46-Ubuntu SMP Thu Dec 6 14:45:28 UTC 2018
 
 
 
@@ -195,36 +148,36 @@ Xubuntu 18.04.1 LTS "Bionic Beaver" - Release amd64 (20180725)
 # Memory info (cat /proc/meminfo)
 ================================================================================
 MemTotal:       16321872 kB
-MemFree:        13763796 kB
-MemAvailable:   14311668 kB
-Buffers:           79916 kB
-Cached:           922716 kB
+MemFree:        13568644 kB
+MemAvailable:   14418484 kB
+Buffers:          167764 kB
+Cached:           989996 kB
 SwapCached:            0 kB
-Active:          1564308 kB
-Inactive:         752520 kB
-Active(anon):    1315584 kB
-Inactive(anon):   224588 kB
-Active(file):     248724 kB
-Inactive(file):   527932 kB
+Active:          1720444 kB
+Inactive:         709308 kB
+Active(anon):    1273396 kB
+Inactive(anon):   116820 kB
+Active(file):     447048 kB
+Inactive(file):   592488 kB
 Unevictable:          32 kB
 Mlocked:              32 kB
 SwapTotal:      31250428 kB
 SwapFree:       31250428 kB
-Dirty:               492 kB
+Dirty:              1748 kB
 Writeback:             0 kB
-AnonPages:       1313752 kB
-Mapped:           534488 kB
-Shmem:            225988 kB
-Slab:              88804 kB
-SReclaimable:      49820 kB
-SUnreclaim:        38984 kB
-KernelStack:        8212 kB
-PageTables:        31172 kB
+AnonPages:       1271908 kB
+Mapped:           444264 kB
+Shmem:            118232 kB
+Slab:             170336 kB
+SReclaimable:     127996 kB
+SUnreclaim:        42340 kB
+KernelStack:        8032 kB
+PageTables:        31832 kB
 NFS_Unstable:          0 kB
 Bounce:                0 kB
 WritebackTmp:          0 kB
 CommitLimit:    39411364 kB
-Committed_AS:    4064824 kB
+Committed_AS:    4694880 kB
 VmallocTotal:   34359738367 kB
 VmallocUsed:           0 kB
 VmallocChunk:          0 kB
@@ -239,9 +192,9 @@ HugePages_Free:        0
 HugePages_Rsvd:        0
 HugePages_Surp:        0
 Hugepagesize:       2048 kB
-DirectMap4k:      209888 kB
-DirectMap2M:     4929536 kB
-DirectMap1G:    11534336 kB
+DirectMap4k:      256992 kB
+DirectMap2M:     8028160 kB
+DirectMap1G:     8388608 kB
 
 
 
@@ -249,37 +202,13 @@ DirectMap1G:    11534336 kB
 # Free memory (free -m)
 ================================================================================
               total        used        free      shared  buff/cache   available
-Mem:          15939        1470       13440         220        1027       13975
+Mem:          15939        1432       13251         115        1255       14080
 Swap:         30517           0       30517
 
 
 
 ================================================================================
-# Temperature sensors
-================================================================================
-coretemp-isa-0000
-Adapter: ISA adapter
-Package id 0:  +46.0°C  (high = +100.0°C, crit = +100.0°C)
-Core 0:        +42.0°C  (high = +100.0°C, crit = +100.0°C)
-Core 1:        +45.0°C  (high = +100.0°C, crit = +100.0°C)
-
-acpitz-virtual-0
-Adapter: Virtual device
-temp1:        +45.5°C  (crit = +84.0°C)
-
-dell_smm-virtual-0
-Adapter: Virtual device
-Processor Fan: 2567 RPM
-CPU:            +45.0°C  
-Ambient:        +42.0°C  
-Ambient:        +38.0°C  
-GPU:            +40.0°C  
-
-
-
-
-================================================================================
-# /proc/swaps
+# Swap information (cat /proc/swaps)
 ================================================================================
 Filename				Type		Size	Used	Priority
 /dev/sda2                               partition	31250428	0	-2
@@ -287,7 +216,31 @@ Filename				Type		Size	Used	Priority
 
 
 ================================================================================
-# GTK+ version
+# Temperature sensors (sensors)
+================================================================================
+coretemp-isa-0000
+Adapter: ISA adapter
+Package id 0:  +43.0°C  (high = +100.0°C, crit = +100.0°C)
+Core 0:        +40.0°C  (high = +100.0°C, crit = +100.0°C)
+Core 1:        +43.0°C  (high = +100.0°C, crit = +100.0°C)
+
+acpitz-virtual-0
+Adapter: Virtual device
+temp1:        +44.5°C  (crit = +84.0°C)
+
+dell_smm-virtual-0
+Adapter: Virtual device
+Processor Fan: 2553 RPM
+CPU:            +44.0°C  
+Ambient:        +39.0°C  
+Ambient:        +34.0°C  
+GPU:            +38.0°C  
+
+
+
+
+================================================================================
+# GTK+ version (dpkg -l libgtk2.0-0 libgtk-3-0)
 ================================================================================
 Desired=Unknown/Install/Remove/Purge/Hold
 | Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
