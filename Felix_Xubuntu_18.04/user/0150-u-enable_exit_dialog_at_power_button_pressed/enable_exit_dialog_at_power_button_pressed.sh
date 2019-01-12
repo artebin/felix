@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ../../Felix_Xubuntu_18.04.sh
+source ../../xubuntu_18.04.sh
 is_bash
 
 enable_exit_dialog_at_power_button_pressed(){

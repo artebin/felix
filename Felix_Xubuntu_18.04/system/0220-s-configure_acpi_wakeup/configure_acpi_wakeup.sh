@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ../../Felix_Xubuntu_18.04.sh
+source ../../xubuntu_18.04.sh
 is_bash
 exit_if_has_not_root_privileges
 
