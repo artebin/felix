@@ -5,6 +5,11 @@ print_usage(){
 	echo
 }
 
+NOTIFICATION_ID_FILE="/dev/shm/${USER}.brillo_keyboard_notification.id"
+if [[ -f "${NOTIFICATION_ID_FILE}" ]]; then
+	NOTIFICATION_ID=$(head -n 1 "${NOTIFICATION_ID_FILE}")
+fi
+
 VARIATION_INCREMENT="INCREMENT"
 VARIATION_DECREMENT="DECREMENT"
 VARIATION=""
@@ -48,11 +53,6 @@ else
 	exit 1
 fi
 
-NOTIFICATION_ID_FILE="/dev/shm/${USER}.brillo_keyboard_notification.id"
-if [[ -f "${NOTIFICATION_ID_FILE}" ]]; then
-	NOTIFICATION_ID=$(head -n 1 "${NOTIFICATION_ID_FILE}")
-fi
-
 if [[ -z "${NOTIFICATION_ID}" ]]; then
 	NOTIFICATION_ID=$(notify-send "Display brightness" -i keyboard-brightness -h int:value:"${BRIGHTNESS_VALUE}" -p)
 	echo "${NOTIFICATION_ID}" > "${NOTIFICATION_ID_FILE}"
@@ -60,3 +60,4 @@ else
 	NOTIFICATION_ID=$(notify-send "Display brightness" -i keyboard-brightness -h int:value:"${BRIGHTNESS_VALUE}" -p -r "${NOTIFICATION_ID}")
 	echo "${NOTIFICATION_ID}" > "${NOTIFICATION_ID_FILE}"
 fi
+
