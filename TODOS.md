@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Replace dmenu by rofi?
 - [ ] "enter your password to unlock your login keyring".
 - [ ] pdf are opened with gimp.
 - [ ] On the Dell the fn key for keyboard backlight is not working properly because there is only one key.
