@@ -1,3 +1,49 @@
+## Duplicated X events for hotkeys on Dell laptops (XF86MonBrightnessDown / XF86MonBrightnessUp)
+Experienced on Dell Inspiron 7737, I tried different combination of kernel parameters with no results, including:
+- `acpi_osi=`
+- `acpi_backlight=vendor acpi_osi=linux`
+
+Documentation:
+- <https://bugs.launchpad.net/ubuntu/+source/hal/+bug/207473>
+- <https://www.reddit.com/r/awesomewm/comments/abo30w/awesomewm_handles_xf86monbrightnessup_and/>
+- it can be analyzed with `acpi_listen` and `xev`, on the MacBook Air we can see only one event.
+
+List all keycodes in the console:
+`xmodmap -pke | less`
+
+To be noted that `xev` does not show the keysym when the events are captured. When captured, the output is like below:
+```
+FocusOut event, serial 45, synthetic NO, window 0x3000001,
+    mode NotifyGrab, detail NotifyAncestor
+
+FocusOut event, serial 45, synthetic NO, window 0x3000001,
+    mode NotifyUngrab, detail NotifyPointer
+
+FocusIn event, serial 45, synthetic NO, window 0x3000001,
+    mode NotifyUngrab, detail NotifyAncestor
+
+KeymapNotify event, serial 45, synthetic NO, window 0x0,
+    keys:  0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   
+           0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0 
+```
+
+When not captured, the output is like below:
+```
+KeyPress event, serial 48, synthetic NO, window 0x3000001,
+    root 0x2ff, subw 0x3000002, time 1959596, (62,64), root:(1783,762),
+    state 0x10, keycode 232 (keysym 0x1008ff03, XF86MonBrightnessDown), same_screen YES,
+    XLookupString gives 0 bytes: 
+    XmbLookupString gives 0 bytes: 
+    XFilterEvent returns: False
+
+KeyRelease event, serial 48, synthetic NO, window 0x3000001,
+    root 0x2ff, subw 0x3000002, time 1959596, (62,64), root:(1783,762),
+    state 0x10, keycode 232 (keysym 0x1008ff03, XF86MonBrightnessDown), same_screen YES,
+    XLookupString gives 0 bytes: 
+    XFilterEvent returns: False
+
+```
+
 ## Screenshot a specific window from the command line with xwd
 ```
 xwd > screenshot.xwd;convert screenshot.xwd screenshot.png
