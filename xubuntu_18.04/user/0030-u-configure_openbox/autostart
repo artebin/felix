@@ -1,3 +1,5 @@
+xsetroot -solid "#303030" &
+
 #xrandr --output LVDS-1 --off --output DP-1 --off --output HDMI-1 --mode 1360x768 --primary --pos 0x0 --rotate normal --output VGA-1 --off &
 
 tint2 &
@@ -7,7 +9,7 @@ nm-applet &
 sleep 1
 
 # xfce4-volumed could be started via /etc/xdg/autostart/xfce4-volumed.desktop but there is a parameter "OnlyShowIn=XFCE;"
-xfce4-volumed &
+#xfce4-volumed &
 
 pasystray &
 
@@ -22,12 +24,9 @@ pasystray &
 # Do not call `xmodmap` from here, it will not work. Use `~/.xinitrc` instead.
 #xmodmap ~/.Xmodmap &
 
-xsetroot -solid "#303030" &
-
 # If distribution is Xubuntu then xfce4-power-manager may have been started via '/etc/xdg/autostart/xfce4-power-manager'
 # => Check it is not the case!
 #xfce4-power-manager
-
 
 bash clipmenud_run.sh &
 

@@ -10,8 +10,11 @@ XF86KbdBrightnessDown
 XF86KbdBrightnessUp
 	flock -n "/dev/shm/${USER}.brillo.keyboard.notification_id" bash /home/njames/.config/openbox/brillo_keyboard_notify.sh -i
 
-XF86Audio{Raise,Lower}Volume
-	pulseaudio-ctl {up,down} 2
+XF86AudioLowerVolume
+	flock -n "/dev/shm/${USER}.pulseaudioctl.volume.notification_id" bash /home/njames/.config/openbox/pulseaudioctl_notify.sh -d
+
+XF86AudioRaiseVolume
+	flock -n "/dev/shm/${USER}.pulseaudioctl.volume.notification_id" bash /home/njames/.config/openbox/pulseaudioctl_notify.sh -i
 
 XF86AudioMute
 	pulseaudio-ctl mute

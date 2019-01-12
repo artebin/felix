@@ -5,7 +5,7 @@ print_usage(){
 	echo
 }
 
-NOTIFICATION_ID_FILE="/dev/shm/${USER}.brillo_keyboard_notification.id"
+NOTIFICATION_ID_FILE="/dev/shm/${USER}.brillo.backlight.notification_id"
 if [[ -f "${NOTIFICATION_ID_FILE}" ]]; then
 	NOTIFICATION_ID=$(head -n 1 "${NOTIFICATION_ID_FILE}")
 fi
@@ -60,4 +60,3 @@ else
 	NOTIFICATION_ID=$(notify-send "Display brightness" -i display-brightness -h int:value:"${BRIGHTNESS_VALUE}" -p -r "${NOTIFICATION_ID}")
 	echo "${NOTIFICATION_ID}" > "${NOTIFICATION_ID_FILE}"
 fi
-
