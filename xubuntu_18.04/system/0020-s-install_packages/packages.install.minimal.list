@@ -85,7 +85,6 @@ lxappearance lxappearance-obconf
 dconf-cli dconf-editor dconf-tools
 gconf-service gconf-editor
 mate-utils mate-system-monitor
-xfce4-power-manager xfce4-power-manager-data xfce4-power-manager-plugins
 xfce4-volumed xfburn xfce4-dict xfce4-screenshooter xfce4-notifyd
 lxinput
 tint2
