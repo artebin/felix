@@ -1,0 +1,20 @@
+XF86MonBrightnessDown
+	flock -n "/dev/shm/${USER}.brillo.backlight.notification_id" bash /home/njames/.config/openbox/brillo_backlight_notify.sh -d
+
+XF86MonBrightnessUp
+	flock -n "/dev/shm/${USER}.brillo.backlight.notification_id" bash /home/njames/.config/openbox/brillo_backlight_notify.sh -i
+
+XF86KbdBrightnessDown
+	flock -n "/dev/shm/${USER}.brillo.keyboard.notification_id" bash /home/njames/.config/openbox/brillo_keyboard_notify.sh -d
+
+XF86KbdBrightnessUp
+	flock -n "/dev/shm/${USER}.brillo.keyboard.notification_id" bash /home/njames/.config/openbox/brillo_keyboard_notify.sh -i
+
+XF86Audio{Raise,Lower}Volume
+	pulseaudio-ctl {up,down} 2
+
+XF86AudioMute
+	pulseaudio-ctl mute
+
+XF86AudioMicMute
+	pulseaudio-ctl mute-input
