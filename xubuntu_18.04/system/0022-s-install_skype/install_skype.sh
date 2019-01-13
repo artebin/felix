@@ -21,7 +21,6 @@ install_skype(){
 }
 
 cd ${BASEDIR}
-
 install_skype 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
