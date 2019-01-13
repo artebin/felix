@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Set lightdm settings.
+- [ ] Set cursor themes.
 - [ ] Extract localisation FR from minimal.packages.list, it should only contains US locales.
 - [ ] Move hotkeys from openbox rc.xml to sxhkd.
 - [ ] Replace dmenu by rofi?
