@@ -134,8 +134,8 @@ if [ "${#RECIPE_PATH_ARRAY[@]}" -eq 0 ]; then
 	exit 0
 fi
 
-# Check Xubuntu version
-if ! check_xubuntu_version; then
+# Check Ubuntu version
+if ! check_ubuntu_version; then
 	exit 1
 fi
 
