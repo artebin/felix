@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cat /etc/update-motd.d/tux
+echo "Welcome on $(hostname) !"
+echo "What can I do for u dude ?"

@@ -1,0 +1,225 @@
+################
+# System tools
+################
+lsb-core
+psmisc #Includes fuser, killall, peekfd, pstree, prtstat
+hwinfo lshw inxi
+htop
+iotop
+dstat
+glances
+smem
+battery-stats
+fuseiso fuseiso9660
+inotify-hookable inotify-tools iwatch
+
+#################################
+# Terminal & command line tools
+#################################
+tree
+ncdu
+ranger
+vim
+pv
+colortest
+
+############################
+# Language and translation
+############################
+translate-shell
+aspell-fr
+
+#################
+# Network tools
+#################
+nethogs speedometer tcptrack bmon
+snmp snmp-mibs-downloader
+nmap traceroute
+curl
+gigolo
+wireshark wireshark-gtk wireshark-doc
+network-manager-gnome
+
+#######
+# SSH
+#######
+ssh
+
+#######
+# NFS
+#######
+nfs-common nfs-kernel-server
+
+#########
+# Samba
+#########
+cifs-utils
+
+#######
+# FTP
+#######
+bareftp
+
+#######
+# VNC
+#######
+remmina
+
+###################
+# Package manager
+###################
+aptitude
+apt-mirror
+
+###################
+# Display Manager
+###################
+lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+
+##############
+# Xorg tools
+##############
+xterm
+xsel xclip
+wmctrl xdotool xautomation
+xserver-xephyr
+
+##################################
+# Window manager & desktop tools
+##################################
+openbox openbox-menu obconf obmenu
+lxappearance lxappearance-obconf
+dconf-cli dconf-editor dconf-tools
+gconf-service gconf-editor
+mate-utils mate-system-monitor
+xfce4-volumed xfce4-notifyd xfce4-dict xfce4-screenshooter xfburn
+lxinput
+tint2
+suckless-tools
+galternatives
+gsimplecal
+plank
+arandr
+software-properties-gtk
+synaptic
+gparted
+seahorse
+
+###################
+# Desktop theming
+###################
+blackbird-gtk-theme bluebird-gtk-theme greybird-gtk-theme
+human-theme
+faenza-icon-theme
+fonts-font-awesome
+
+#############################
+# Virtual Terminal Emulator
+#############################
+mate-terminal
+
+################
+# File manager
+################
+thunar
+caja caja-actions caja-extensions-common caja-open-terminal
+
+########################################
+# File reader/editor & file diff tools
+########################################
+vim-gtk
+glogg
+geany geany-plugins
+meld kdiff3
+bless
+mediainfo
+
+#######################################
+# PDF viewer & PDF manipulation tools
+#######################################
+atril
+#pdftk #N/A in Ubuntu 18.04
+wkhtmltopdf
+
+###################
+# Archive manager
+###################
+engrampa
+unrar
+p7zip-rar
+pigz
+
+#######################################
+# Image viewer, browser, manipulation
+#######################################
+gpicview
+shotwell
+gimp gimp-data-extras
+inkscape
+gpick
+icc-profiles
+
+###############
+# Web browser
+###############
+firefox
+chromium-browser
+
+##########################
+# Audio and video player
+##########################
+libpulse-dev
+#paman #N/A in Ubuntu 18.04
+pavucontrol pavumeter paprefs
+flac
+vlc
+gaupol subtitleeditor
+mplayer
+gpodder
+audacity
+
+###################
+# Chat and webcam
+###################
+hexchat
+empathy
+guvcview
+
+################
+# Office suite
+################
+libreoffice
+
+#####################
+# Data manipulation
+#####################
+csvkit csvkit-doc
+libxml2-utils xmlstarlet tidy xmlto
+jq
+gnuplot plotdrop
+
+#######
+# VCS
+#######
+subversion
+git giggle git-cola
+mercurial
+
+#####################
+# Development tools
+#####################
+build-essential
+gcc g++ make
+autoconf
+cmake
+sassc
+libgtk-3-dev gtk-3-examples
+libgtk2.0-dev gtk2.0-examples
+libxml2-dbg libxml2-dev libxml2-doc
+golang
+
+##############
+# VirtualBox
+##############
+virtualbox
+virtualbox-ext-pack
