@@ -12,12 +12,12 @@ smem
 battery-stats
 fuseiso fuseiso9660
 inotify-hookable inotify-tools iwatch
-tree
-ncdu
 
 #################################
 # Terminal & command line tools
 #################################
+tree
+ncdu
 ranger
 vim
 pv
@@ -70,9 +70,15 @@ remmina
 aptitude
 apt-mirror
 
+###################
+# Display Manager
+###################
+lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+
 ##############
 # Xorg tools
 ##############
+xterm
 xsel xclip
 wmctrl xdotool xautomation
 xserver-xephyr
@@ -85,7 +91,7 @@ lxappearance lxappearance-obconf
 dconf-cli dconf-editor dconf-tools
 gconf-service gconf-editor
 mate-utils mate-system-monitor
-xfce4-volumed xfburn xfce4-dict xfce4-screenshooter xfce4-notifyd
+xfce4-volumed xfce4-notifyd xfce4-dict xfce4-screenshooter xfburn
 lxinput
 tint2
 suckless-tools
@@ -111,6 +117,7 @@ mate-terminal
 ################
 # File manager
 ################
+thunar
 caja caja-actions caja-extensions-common caja-open-terminal
 
 ########################################
@@ -127,7 +134,7 @@ mediainfo
 # PDF viewer & PDF manipulation tools
 #######################################
 atril
-#pdftk #N/A in Xubuntu 18.04
+#pdftk #N/A in Ubuntu 18.04
 wkhtmltopdf
 
 ###################
@@ -151,20 +158,20 @@ icc-profiles
 ###############
 # Web browser
 ###############
+firefox
 chromium-browser
 
 ##########################
 # Audio and video player
 ##########################
 libpulse-dev
-#paman #N/A in Xubuntu 18.04
+#paman #N/A in Ubuntu 18.04
 pavucontrol pavumeter paprefs
 flac
 vlc
 gaupol subtitleeditor
 mplayer
 gpodder
-mps-youtube
 audacity
 
 ###################
