@@ -12,9 +12,10 @@ configure_grub(){
 	backup_file copy /etc/default/grub
 	echo
 	
-	# Remove hidden timeout 0 => show grub
-	echo "Remove timeout style => show grub ..."
+	# Show grub and set timeout
+	echo "Show grub and set timeout ..."
 	sed -i "/^GRUB_TIMEOUT_STYLE/s/.*/#GRUB_TIMEOUT_STYLE=/" /etc/default/grub
+	sed -i "/^GRUB_TIMEOUT/s/.*/GRUB_TIMEOUT=10/" /etc/default/grub
 	echo
 	
 	# Remove boot option 'quiet' and 'splash'
