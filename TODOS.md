@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Extract localisation FR from minimal.packages.list, it should only contains US locales.
+- [ ] Move hotkeys from openbox rc.xml to sxhkd.
 - [ ] Replace dmenu by rofi?
 - [ ] "enter your password to unlock your login keyring".
 - [ ] pdf are opened with gimp.
