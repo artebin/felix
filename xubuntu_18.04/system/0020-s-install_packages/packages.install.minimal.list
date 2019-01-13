@@ -106,6 +106,7 @@ seahorse
 ###################
 # Desktop theming
 ###################
+human-theme
 faenza-icon-theme
 fonts-font-awesome
 
