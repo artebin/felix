@@ -2,25 +2,29 @@
 
 source "$(dirname ${BASH_SOURCE})/../common.sh"
 
-INSTALLER_MEDIA_INFO_PATH="/var/log/installer/media-info"
 SUPPORTED_UBUNTU_VERSION="Ubuntu 18.04"
 
 check_ubuntu_version(){
-	if [ ! -f "${INSTALLER_MEDIA_INFO_PATH}" ]; then
-		echo "Unable to find file ${INSTALLER_MEDIA_INFO_PATH}"
-		echo "Can not check Ubuntu version"
+	LSB_RELEASE_FILE="/etc/lsb-release"
+	if [[ ! -f "${LSB_RELEASE_FILE}" ]]; then
+		echo "Cannot find file: ${LSB_RELEASE_FILE}"
+		echo "Cannot check Ubuntu version"
+		echo
 		exit 1
 	fi
-	if ! grep -Fq "${SUPPORTED_UBUNTU_VERSION}" "${INSTALLER_MEDIA_INFO_PATH}"; then
-		echo "This script has not been tested with: $(cat /var/log/installer/media-info)"
+	if ! grep -Fq "${SUPPORTED_UBUNTU_VERSION}" "${LSB_RELEASE_FILE}"; then
+		echo "This script has not been tested with:"
+		cat "${LSB_RELEASE_FILE}"
+		echo
 		exit 1
 	fi
 	echo "Check Ubuntu version: ${SUPPORTED_UBUNTU_VERSION} => OK"
 }
 
 retrieve_log_file_name(){
-	if [ $# -ne 1 ]; then
-		echo "retrieve_log_file_name() expects file_name in argument"
+	if [[ $# -ne 1 ]]; then
+		echo "retrieve_log_file_name() expects FILE_NAME in argument"
+		echo
 		exit 1
 	fi
 	FILE_NAME="${1}"
