@@ -3,31 +3,6 @@
 source ./ubuntu_18.04.sh
 is_bash
 
-list_recipes(){
-	printf "Recipes found:\n"
-	for RECIPE_PATH in "${RECIPE_PATH_ARRAY[@]}"; do
-		RECIPE_NAME=$(basename ${RECIPE_PATH})
-		
-		if [[ ! "${RECIPE_NAME}" =~ ${RECIPE_NAME_REGEX} ]]; then
-			printf "\tRECIPE_NAME is not well formed: ${RECIPE_NAME} => it will be ignored!\n"
-			continue
-		fi
-		
-		printf "  ${RECIPE_NAME}\n"
-		
-		RECIPE_ID="${BASH_REMATCH[1]}"
-		RECIPE_REQUIRED_RIGHTS="${BASH_REMATCH[2]}"
-		RECIPE_SCRIPT_FILE_NAME="${BASH_REMATCH[3]}"
-		RECIPE_SCRIPT_FILE_PATH="${RECIPES_PARENT_DIRECTORY}/${RECIPE_SCRIPT_FILE_NAME}"
-		
-		#printf "    RECIPE_NAME: ${RECIPE_NAME}\n"
-		#printf "    RECIPE_ID: ${RECIPE_ID}\n"
-		#printf "    RECIPE_REQUIRED_RIGHTS: ${RECIPE_REQUIRED_RIGHTS}\n"
-		#printf "    RECIPE_SCRIPT_FILE_NAME: ${RECIPE_SCRIPT_FILE_NAME}\n"
-		#printf "    RECIPE_SCRIPT_FILE_PATH: ${RECIPE_SCRIPT_FILE_PATH}\n"
-	done
-}
-
 execute_recipes(){
 	printf "Executing recipes ...\n"
 	printf "Interactive mode=${INTERACTIVE_MODE}\n\n"
@@ -142,7 +117,7 @@ fi
 # List recipes
 printf "RECIPES_PARENT_DIRECTORY: ${RECIPES_PARENT_DIRECTORY}\n"
 echo
-list_recipes
+list_recipes "${RECIPES_PARENT_DIRECTORY}"
 
 # Ask user to continue
 echo
