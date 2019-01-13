@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ../../xubuntu_18.04.sh
+source ../../ubuntu_18.04.sh
 is_bash
 exit_if_has_not_root_privileges
 
@@ -13,6 +13,7 @@ configure_netplan_for_using_network_manager(){
 	sed -i "/^\s+renderer:.*/  renderer: NetworkManager/" /etc/netplan/01-network-manager-all.yaml
 	echo
 	
+	netplan generate
 	netplan apply
 	service network-manager restart
 	

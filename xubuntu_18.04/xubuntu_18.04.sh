@@ -5,7 +5,7 @@ source "$(dirname ${BASH_SOURCE})/../common.sh"
 INSTALLER_MEDIA_INFO_PATH="/var/log/installer/media-info"
 SUPPORTED_XUBUNTU_VERSION="Xubuntu 18.04"
 
-check_xubuntu_version(){
+check_ubuntu_version(){
 	if [ ! -f "${INSTALLER_MEDIA_INFO_PATH}" ]; then
 		echo "Unable to find file ${INSTALLER_MEDIA_INFO_PATH}"
 		echo "Can not check Xubuntu version"

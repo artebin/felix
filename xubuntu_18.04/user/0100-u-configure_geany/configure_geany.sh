@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ../../xubuntu_18.04.sh
+source ../../ubuntu_18.04.sh
 is_bash
 
 configure_geany(){
