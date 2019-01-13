@@ -104,6 +104,7 @@ software-properties-gtk
 synaptic
 gparted
 seahorse
+zenity
 
 ###################
 # Desktop theming
