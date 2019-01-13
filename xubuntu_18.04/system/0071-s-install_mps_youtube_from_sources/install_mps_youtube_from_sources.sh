@@ -11,10 +11,13 @@ install_mps_youtube_from_sources(){
 	if ! $(is_package_installed "python3-pip"); then
 		apt-get install -y "python3-pip"
 	fi
+	if ! $(is_package_installed "pandoc"); then
+		apt-get install -y "pandoc"
+	fi
 	
 	# Install youtube-dl from sources
 	cd ${BASEDIR}
-	git clone http://github.com/rg3/youtube-dl
+	git clone https://github.com/rg3/youtube-dl
 	cd youtube-dl
 	make
 	make install

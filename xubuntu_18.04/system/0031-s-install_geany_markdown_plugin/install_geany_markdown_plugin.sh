@@ -5,11 +5,18 @@ is_bash
 exit_if_has_not_root_privileges
 
 install_geany_markdown_plugin(){
-	cd ${BASEDIR}
-	
 	echo "Install Geany / Markdown plugin ..."
+	
+	# Install dependencies
+	apt-get install -y install intltool
 	apt-get install -y libwebkit2gtk-4.0-dev
+	
+	# Clone git repository
+	cd ${BASEDIR}
 	git clone http://github.com/geany/geany-plugins
+	
+	# Compile and install
+	cd ${BASEDIR}
 	cd geany-plugins
 	./autogen.sh
 	./configure

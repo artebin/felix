@@ -8,9 +8,10 @@ install_dstat_from_sources(){
 	cd ${BASEDIR}
 	
 	echo "Install dstat from sources ..."
-	git clone http://github.com/dagwieers/dstat
+	git clone https://github.com/dagwieers/dstat
 	cd dstat
-	make;make install
+	make
+	make install
 	
 	cd ${BASEDIR}
 	cp dstat-start-service.sh /usr/share/dstat

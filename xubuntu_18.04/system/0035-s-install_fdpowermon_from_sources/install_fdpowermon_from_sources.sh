@@ -23,6 +23,9 @@ install_fdpowermon_from_sources(){
 	if ! $(is_package_installed "devscripts"); then
 		apt-get install -y "devscripts"
 	fi
+	if ! $(is_package_installed "libgtk3-perl"); then
+		apt-get install -y "libgtk3-perl"
+	fi
 	
 	# Create a directory 'fdpowermon-build' because we will call
 	# 'dpkg-buildpackage' and its output directory is always the
