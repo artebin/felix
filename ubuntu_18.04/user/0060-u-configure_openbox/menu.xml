@@ -101,8 +101,8 @@
 		<separator/>
 		<item label="Lock Session"><action name="Execute"><execute>dm-tool lock</execute></action></item>
 		<item label="Switch User"><action name="Execute"><execute>dm-tool switch-to-greeter</execute></action></item>
-		<item label="Suspend"><action name="Execute"><execute>sh ~/.config/openbox/dialog_command.sh "Suspend?" "systemctl suspend"</execute></action></item>
-		<item label="Hibernate"><action name="Execute"><execute>sh ~/.config/openbox/dialog_command.sh "Hibernate?" "systemctl hibernate"</execute></action></item>
+		<item label="Suspend"><action name="Execute"><execute>sh ~/.config/openbox/dialog_command.sh "Suspend?" "xset dpms force off;systemctl suspend"</execute></action></item>
+		<item label="Hibernate"><action name="Execute"><execute>sh ~/.config/openbox/dialog_command.sh "Hibernate?" "xset dpms force off;systemctl hibernate"</execute></action></item>
 		<item label="Exit"><action name="Execute"><execute>python ~/.config/openbox/exit.py</execute></action></item>
 	</menu>
 </openbox_menu>

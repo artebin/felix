@@ -4,5 +4,5 @@
 (sleep 1 && wmctrl -F -a "${1}" -b add,above) &
 DIALOG_RETURN_CODE=$(zenity --no-wrap --question --title="${1}" --text "${2}"; echo $?)
 if [ ${DIALOG_RETURN_CODE} = 0 ]; then
-	exec ${2}
+	bash -c "${2}"
 fi
