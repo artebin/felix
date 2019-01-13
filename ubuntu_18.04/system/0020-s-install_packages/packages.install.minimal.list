@@ -107,6 +107,7 @@ seahorse
 ###################
 # Desktop theming
 ###################
+blackbird-gtk-theme bluebird-gtk-theme greybird-gtk-theme
 human-theme
 faenza-icon-theme
 fonts-font-awesome
