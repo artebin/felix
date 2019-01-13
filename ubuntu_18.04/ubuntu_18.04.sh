@@ -42,6 +42,94 @@ delete_log_files(){
 
 RECIPE_NAME_REGEX="([0-9][0-9][0-9][0-9])-([us])-(.*)"
 
+list_recipes(){
+	if [[ $# -ne 1 ]]; then
+		printf "list_recipes() expects RECIPES_PARENT_DIRECTORY in argument\n"
+		printf "\n"
+		exit 1
+	fi
+	RECIPES_PARENT_DIRECTORY="${1}"
+	if [[ ! -d "${RECIPES_PARENT_DIRECTORY}" ]]; then
+		printf "Cannot find RECIPES_PARENT_DIRECTORY: ${RECIPES_PARENT_DIRECTORY }\n"
+		printf "\n"
+		exit 1
+	fi
+	
+	# Retrieve array of recipes
+	RECIPES_PARENT_DIRECTORY=$(readlink -f "${RECIPES_PARENT_DIRECTORY}")
+	readarray -t RECIPE_PATH_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_NAME_REGEX}" -exec readlink -f {} \;|sort)
+	
+	# List the recipes
+	printf "Recipes found:\n"
+	for RECIPE_PATH in "${RECIPE_PATH_ARRAY[@]}"; do
+		RECIPE_NAME=$(basename ${RECIPE_PATH})
+		
+		if [[ ! "${RECIPE_NAME}" =~ ${RECIPE_NAME_REGEX} ]]; then
+			printf "\tRECIPE_NAME is not well formed: ${RECIPE_NAME} => it will be ignored!\n"
+			continue
+		fi
+		
+		printf "  ${RECIPE_NAME}\n"
+		
+		RECIPE_ID="${BASH_REMATCH[1]}"
+		RECIPE_REQUIRED_RIGHTS="${BASH_REMATCH[2]}"
+		RECIPE_SCRIPT_FILE_NAME="${BASH_REMATCH[3]}"
+		RECIPE_SCRIPT_FILE_PATH="${RECIPES_PARENT_DIRECTORY}/${RECIPE_SCRIPT_FILE_NAME}"
+		
+		#printf "    RECIPE_NAME: ${RECIPE_NAME}\n"
+		#printf "    RECIPE_ID: ${RECIPE_ID}\n"
+		#printf "    RECIPE_REQUIRED_RIGHTS: ${RECIPE_REQUIRED_RIGHTS}\n"
+		#printf "    RECIPE_SCRIPT_FILE_NAME: ${RECIPE_SCRIPT_FILE_NAME}\n"
+		#printf "    RECIPE_SCRIPT_FILE_PATH: ${RECIPE_SCRIPT_FILE_PATH}\n"
+	done
+}
+
+re_index_recipes(){
+	if [[ $# -ne 1 ]]; then
+		printf "re_index_recipes() expects RECIPES_PARENT_DIRECTORY in argument\n"
+		printf "\n"
+		exit 1
+	fi
+	RECIPES_PARENT_DIRECTORY="${1}"
+	if [[ ! -d "${RECIPES_PARENT_DIRECTORY}" ]]; then
+		printf "Cannot find RECIPES_PARENT_DIRECTORY: ${RECIPES_PARENT_DIRECTORY }\n"
+		printf "\n"
+		exit 1
+	fi
+	
+	# Retrieve array of recipes
+	RECIPES_PARENT_DIRECTORY=$(readlink -f "${RECIPES_PARENT_DIRECTORY}")
+	readarray -t RECIPE_PATH_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_NAME_REGEX}" -exec readlink -f {} \;|sort)
+	
+	# Re-index the recipes
+	ID=0
+	ID_INCREMENT=10
+	for RECIPE_PATH in "${RECIPE_PATH_ARRAY[@]}"; do
+		ID=$(( "${ID}" + "${ID_INCREMENT}" ))
+		
+		RECIPE_NAME=$(basename ${RECIPE_PATH})
+		
+		if [[ ! "${RECIPE_NAME}" =~ ${RECIPE_NAME_REGEX} ]]; then
+			printf "\tRECIPE_NAME is not well formed: ${RECIPE_NAME} => it will be ignored!\n"
+			continue
+		fi
+		
+		RECIPE_ID="${BASH_REMATCH[1]}"
+		RECIPE_REQUIRED_RIGHTS="${BASH_REMATCH[2]}"
+		RECIPE_SCRIPT_FILE_NAME="${BASH_REMATCH[3]}"
+		RECIPE_SCRIPT_FILE_PATH="${RECIPES_PARENT_DIRECTORY}/${RECIPE_SCRIPT_FILE_NAME}"
+		
+		RECIPE_NEW_ID=$(printf "%04d" ${ID})
+		RECIPE_NEW_NAME="${RECIPE_NEW_ID}-${RECIPE_REQUIRED_RIGHTS}-${RECIPE_SCRIPT_FILE_NAME}"
+		
+		if [[ "${RECIPE_NAME}" = "${RECIPE_NEW_NAME}" ]]; then
+			continue
+		fi
+		
+		mv "${RECIPE_PATH}" "$(dirname ${RECIPE_PATH})/${RECIPE_NEW_NAME}"
+	done
+}
+
 CURRENT_SCRIPT_FILE_PATH=$(readlink -f "$0")
 CURRENT_SCRIPT_FILE_NAME=$(basename "$0")
 CURRENT_SCRIPT_LOG_FILE_NAME=$(retrieve_log_file_name "${CURRENT_SCRIPT_FILE_NAME}")
