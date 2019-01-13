@@ -30,7 +30,7 @@ configure_grub(){
 	FIRST_SWAP_PARTITION_UUID=$(sudo blkid -s UUID -o value ${FIRST_SWAP_PARTITION_DEVICE_NAME})
 	echo "Adding swap partition for resume from hibernate: ${FIRST_SWAP_PARTITION_UUID}"
 	echo "Disablingthe ACPI Operating System Identification function"
-	sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=\"resume=UUID=${FIRST_SWAP_PARTITION_UUID} acpi_osi=\"/" /etc/default/grub
+	sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=\"resume=UUID=${FIRST_SWAP_PARTITION_UUID}/" /etc/default/grub
 	echo
 	
 	update-grub
