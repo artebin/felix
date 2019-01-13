@@ -3,19 +3,19 @@
 source "$(dirname ${BASH_SOURCE})/../common.sh"
 
 INSTALLER_MEDIA_INFO_PATH="/var/log/installer/media-info"
-SUPPORTED_XUBUNTU_VERSION="Xubuntu 18.04"
+SUPPORTED_UBUNTU_VERSION="Ubuntu 18.04"
 
 check_ubuntu_version(){
 	if [ ! -f "${INSTALLER_MEDIA_INFO_PATH}" ]; then
 		echo "Unable to find file ${INSTALLER_MEDIA_INFO_PATH}"
-		echo "Can not check Xubuntu version"
+		echo "Can not check Ubuntu version"
 		exit 1
 	fi
-	if ! grep -Fq "${SUPPORTED_XUBUNTU_VERSION}" "${INSTALLER_MEDIA_INFO_PATH}"; then
+	if ! grep -Fq "${SUPPORTED_UBUNTU_VERSION}" "${INSTALLER_MEDIA_INFO_PATH}"; then
 		echo "This script has not been tested with: $(cat /var/log/installer/media-info)"
 		exit 1
 	fi
-	echo "Check Xubuntu version: ${SUPPORTED_XUBUNTU_VERSION} => OK"
+	echo "Check Ubuntu version: ${SUPPORTED_UBUNTU_VERSION} => OK"
 }
 
 retrieve_log_file_name(){
