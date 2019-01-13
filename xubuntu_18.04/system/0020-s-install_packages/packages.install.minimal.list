@@ -38,6 +38,7 @@ nmap traceroute
 curl
 gigolo
 wireshark wireshark-gtk wireshark-doc
+network-manager-gnome
 
 #######
 # SSH
