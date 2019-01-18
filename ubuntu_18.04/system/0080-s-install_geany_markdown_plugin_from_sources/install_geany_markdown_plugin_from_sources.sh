@@ -4,8 +4,8 @@ source ../../ubuntu_18.04.sh
 is_bash
 exit_if_has_not_root_privileges
 
-install_geany_markdown_plugin(){
-	echo "Install Geany / Markdown plugin ..."
+install_geany_markdown_plugin_from_sources(){
+	echo "Install Geany / Markdown plugin from sources ..."
 	
 	# Install dependencies
 	apt-get install -y install intltool
@@ -32,8 +32,7 @@ install_geany_markdown_plugin(){
 }
 
 cd ${BASEDIR}
-
-install_geany_markdown_plugin 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+install_geany_markdown_plugin_from_sources 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"
