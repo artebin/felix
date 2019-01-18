@@ -82,7 +82,7 @@ light-locker light-locker-settings
 # Xorg tools
 ##############
 xterm
-xsel xclip
+xsel xclip xdo xtitle
 wmctrl xdotool xautomation
 xserver-xephyr
 
