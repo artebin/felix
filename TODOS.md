@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Install rxvt and xterm.
 - [ ] Set lightdm settings.
 - [ ] Set cursor themes.
 - [ ] Extract localisation FR from minimal.packages.list, it should only contains US locales.
