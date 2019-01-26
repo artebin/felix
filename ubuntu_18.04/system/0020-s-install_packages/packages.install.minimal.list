@@ -17,12 +17,11 @@ vbetool
 #################################
 # Terminal & command line tools
 #################################
+colortest
 tree
+vim
 ncdu
 ranger
-vim
-pv
-colortest
 
 ############################
 # Language and translation
@@ -33,13 +32,14 @@ aspell-fr
 #################
 # Network tools
 #################
+network-manager-gnome
+blueman
 nethogs speedometer tcptrack bmon
-snmp snmp-mibs-downloader
 nmap traceroute
 curl
 gigolo
 wireshark wireshark-gtk wireshark-doc
-network-manager-gnome
+snmp snmp-mibs-downloader
 
 #######
 # SSH
@@ -81,7 +81,6 @@ light-locker light-locker-settings
 ##############
 # Xorg tools
 ##############
-xterm
 xsel xclip xdo xtitle
 wmctrl xdotool xautomation
 xserver-xephyr
@@ -111,15 +110,14 @@ zenity
 ###################
 # Desktop theming
 ###################
-blackbird-gtk-theme bluebird-gtk-theme greybird-gtk-theme
-human-theme
+greybird-gtk-theme human-theme
 faenza-icon-theme
 fonts-font-awesome
 
 #############################
 # Virtual Terminal Emulator
 #############################
-mate-terminal
+xterm mate-terminal
 
 ################
 # File manager
