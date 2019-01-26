@@ -23,6 +23,11 @@ configure_grub(){
 	sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=\"\"/" /etc/default/grub
 	echo
 	
+	# Disable graphical terminal
+	echo "Disable graphical terminal ..."
+	sed -i "/^#GRUB_TERMINAL=/s/.*/GRUB_TERMINAL=console/" /etc/default/grub
+	echo
+	
 	# Update kernel parameters:
 	#  - add swap partition for resume from hibernate
 	#  - disable the ACPI Operating System Identification function (_OSI). See <https://unix.stackexchange.com/questions/246672/how-to-set-acpi-osi-parameter-in-the-grub>
@@ -30,7 +35,7 @@ configure_grub(){
 	FIRST_SWAP_PARTITION_UUID=$(sudo blkid -s UUID -o value ${FIRST_SWAP_PARTITION_DEVICE_NAME})
 	echo "Adding swap partition for resume from hibernate: ${FIRST_SWAP_PARTITION_UUID}"
 	echo "Disablingthe ACPI Operating System Identification function"
-	sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=\"resume=UUID=${FIRST_SWAP_PARTITION_UUID}/" /etc/default/grub
+	sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=\"resume=UUID=${FIRST_SWAP_PARTITION_UUID}\"/" /etc/default/grub
 	echo
 	
 	update-grub
