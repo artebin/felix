@@ -11,9 +11,7 @@ extract_acpi_dsdt(){
 	# DSDT Differentiated System Description Table
 	
 	cd ${BASEDIR}
-	if ! $(is_package_installed "acpica-tools"); then
-		apt-get install -y "acpica-tools"
-	fi
+	install_package_if_not_installed "acpica-tools"
 	cat /sys/firmware/acpi/tables/DSDT > dsdt.dat
 	
 	# Decompile the table with the Intel's ASL compiler

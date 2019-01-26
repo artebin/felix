@@ -8,9 +8,7 @@ install_dex_from_sources(){
 	echo "Installing dex from sources ..."
 	
 	# Install dependencies
-	if ! $(is_package_installed "python3-sphinx"); then
-		apt-get install -y "python3-sphinx"
-	fi
+	install_package_if_not_installed "python3-sphinx"
 	
 	# Clone git repository
 	cd ${BASEDIR}

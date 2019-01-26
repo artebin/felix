@@ -10,9 +10,7 @@ install_brillo_from_sources(){
 	# See <https://www.reddit.com/r/archlinux/comments/9mr58u/my_brightness_control_tool_brillo_has_a_new/>.
 	
 	# Install dependencies
-	if ! $(is_package_installed "go-md2man"); then
-		apt-get install -y go-md2man
-	fi
+	install_package_if_not_installed "go-md2man"
 	
 	# Clone repository
 	cd ${BASEDIR}

@@ -8,12 +8,7 @@ install_sxhkd_from_sources(){
 	echo "Installing sxhkd from sources ..."
 	
 	# Install dependencies
-	if ! $(is_package_installed "libxcb-util-dev"); then
-		apt-get install -y "libxcb-util-dev"
-	fi
-	if ! $(is_package_installed "libxcb-keysyms1-dev"); then
-		apt-get install -y "libxcb-keysyms1-dev"
-	fi
+	install_package_if_not_installed "libxcb-util-dev" "libxcb-keysyms1-dev"
 	
 	# Clone git repository
 	git clone https://github.com/baskerville/sxhkd

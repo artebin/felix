@@ -195,11 +195,41 @@ alias remove_terminal_control_sequences=remove_terminal_control_sequences
 
 is_package_installed(){
 	if [[ $# -ne 1 ]]; then
-		echo "Function 'is_package_installed' expects one argument"
+		echo "Function \"is_package_installed\" expects one argument"
 		return 1
 	fi
 	PACKAGE_NAME="${1}"
 	dpkg-query -W -f='${Status}' "${PACKAGE_NAME}" 2>/dev/null | grep -q "ok installed"
 	RETURN_CODE=$?
 	return "${RETURN_CODE}"
+}
+
+install_package_if_not_installed(){
+	if [[ ! $# -ge 1 ]]; then
+		echo "Function \"install_package_if_not_installed\" expects at least one argument"
+		return 1
+	fi
+	for PACKAGE_NAME in $@; do
+		if $(is_package_installed "${PACKAGE_NAME}"); then
+			printf "Package \"${PACKAGE_NAME}\" is already installed\n"
+		else
+			printf "Installing \"${PACKAGE_NAME}\"\n"
+			apt-get install -y "${PACKAGE_NAME}"
+		fi
+	done
+}
+
+remove_with_purge_package_if_installed(){
+	if [[ ! $# -ge 1 ]]; then
+		echo "Function \"remove_with_purge_package_if_installed\" expects at least one argument"
+		return 1
+	fi
+	for PACKAGE_NAME in $@; do
+		if ! $(is_package_installed "${PACKAGE_NAME}"); then
+			printf "Package \"${PACKAGE_NAME}\" not removed because not installed\n"
+		else
+			printf "Removing \"${PACKAGE_NAME}\"\n"
+			apt-get remove --purge -y "${PACKAGE_NAME}"
+		fi
+	done
 }

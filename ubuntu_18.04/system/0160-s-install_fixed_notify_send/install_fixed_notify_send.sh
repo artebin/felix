@@ -7,9 +7,8 @@ exit_if_has_not_root_privileges
 install_fixed_notify_send(){
 	echo "Install a fixed version of notify-send ..."
 	
-	if $(is_package_installed "libnotify-bin"); then
-		apt-get remove -y "libnotify-bin"
-	fi
+	# Remove package libnotidy-bin if installed
+	remove_with_purge_package_if_installed "libnotify-bin"
 	
 	# Clone git repository
 	cd ${BASEDIR}

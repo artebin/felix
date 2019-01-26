@@ -9,23 +9,10 @@ install_fdpowermon_from_sources(){
 	
 	# Remove packages 'fdpowermon' and 'fdpowermon-icons' if already 
 	# installed.
-	if $(is_package_installed "fdpowermon"); then
-		dpkg --purge "fdpowermon"
-	fi
-	if $(is_package_installed "fdpowermon-icons"); then
-		dpkg --purge "fdpowermon-icons"
-	fi
+	remove_with_purge_package_if_installed "fdpowermon" "fdpowermon-icons"
 	
 	# Install dependencies
-	if ! $(is_package_installed "acpi"); then
-		apt-get install -y "acpi"
-	fi
-	if ! $(is_package_installed "devscripts"); then
-		apt-get install -y "devscripts"
-	fi
-	if ! $(is_package_installed "libgtk3-perl"); then
-		apt-get install -y "libgtk3-perl"
-	fi
+	install_package_if_not_installed "acpi" "devscripts" "libgtk3-perl"
 	
 	# Create a directory 'fdpowermon-build' because we will call
 	# 'dpkg-buildpackage' and its output directory is always the

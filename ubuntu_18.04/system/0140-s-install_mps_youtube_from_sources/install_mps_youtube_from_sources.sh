@@ -8,12 +8,7 @@ install_mps_youtube_from_sources(){
 	echo "Install mps-youtube from sources ..."
 	
 	# Install dependencies
-	if ! $(is_package_installed "python3-pip"); then
-		apt-get install -y "python3-pip"
-	fi
-	if ! $(is_package_installed "pandoc"); then
-		apt-get install -y "pandoc"
-	fi
+	install_package_if_not_installed "python3-pip" "pandoc"
 	
 	# Install youtube-dl from sources
 	cd ${BASEDIR}
