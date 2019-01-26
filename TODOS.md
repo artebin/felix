@@ -1,39 +1,32 @@
 # TODOS
-- [ ] Install rxvt and xterm.
-- [ ] Set lightdm settings.
-- [ ] Set cursor themes.
+- [ ] Rename ubuntu_18.04.sh to ubuntu_18.04.conf.
+- [ ] Recipes should source common.sh/ubuntu_18.04.sh via an env. variable, not via parent directories.
 - [ ] Extract localisation FR from minimal.packages.list, it should only contains US locales.
 - [ ] Move hotkeys from openbox rc.xml to sxhkd.
 - [ ] Replace dmenu by rofi?
 - [ ] "enter your password to unlock your login keyring".
 - [ ] pdf are opened with gimp.
-- [ ] On the Dell the fn key for keyboard backlight is not working properly because there is only one key.
-- [ ] On the Dell I can see 2 notifiations when I change the backlight.
-- [ ] "tint2rc": caja will open the fil with "Tint2 Settings", how does it works?
+- [ ] "tint2rc": caja will open the file with "Tint2 Settings", how does it works?
 - [ ] Display switched off by fdpowermon or something else? (no powermanager from xfce or mate should be started anymore).
-- [ ] Do not start fdpowermon is no battery, test in openbox autostart.
-- [ ] Configure default difftoll for git (diffuse? ).
+- [ ] Do not start fdpowermon if no battery, test in openbox autostart.
+- [ ] Configure default difftoll for git, editor etc.
 - [ ] Brillo and Display|Keyboard backlight in console (keysym ?).
 - [ ] macbook air: acpi_osi in kernel pameters see <https://wiki.archlinux.org/index.php/Mac#Suspend_and_Hibernate>
-- [ ] Improve recipe for ACPI events (notably USB etc. expect LID) with a script to be called by the service. Could be the script will be used not only for ACPI wakeup but also for others ACPI event groups.
-- [ ] Disable bluetooh module better than current recipe see <https://askubuntu.com/questions/67758/how-can-i-deactivate-bluetooth-on-system-startup> + action in openbox menu for re-activating it.
+- [ ] macbook air: kernel parameter for acpi on macbook air (native).
+- [ ] macbook air: screenshot key.
+- [ ] Look at the vim Mardown styling.
 - [ ] cp asks for confirmation when overwrite.
 - [ ] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron.
-- [ ] Clean recipe openbox clipmenud_run.sh should be removed.
-- [ ] Kernel parameter for acpi on macbook air (native).
+- [ ] Clean recipe openbox clipmenud_run.sh should be removed? Check about that.
 - [ ] Check what is missing if we do not use a Power manager (multiple displays support in logind?).
-- [ ] Screenshot key on Macbook Air.
-- [ ] Look at the vim Mardown styling.
 - [ ] Add recipe for suspend-then-hibernate, see <https://askubuntu.com/questions/12383/how-to-go-automatically-from-suspend-into-hibernate>
 - [ ] Command line git-flavored markdown-2-html? with pandoc or <http://daringfireball.net/projects/downloads/Markdown_1.0.1.zip>.
 - [ ] Check that we can open 2 window "File Properties" concurrently for 2 different files in Caja.
 - [ ] Use xdg-open from openbox (no panel no desktop). We can use "dex" but would be good to be able to use xdg-open (gtk-open, exo-open etc. ).
 - [ ] VNC through SSH.
 - [ ] Jar should not be associated to Java.
-- [ ] Gvfs is slow, could be better to mount the nfs via autofs rather than gvfs.
-- [ ] Try thunar v1.8.x ?
+- [ ] Use autofs for preventing caja to freeze when NFS/Samba is down or network problems. See <https://unix.stackexchange.com/questions/267138/preventing-broken-nfs-connection-from-freezing-the-client-system> and <https://help.ubuntu.com/community/Autofs>.
 - [ ] Add traces for monitoring the time taken for the installation.
-- [ ] It seems the state of "Num Lock" is not preserved anymore after wake after suspend.
 - [ ] When all the document are closed in Geany, the Markdown Preview still shows the last preview. Also the links are clickable in the preview and the page is showed in the sidebar but there is no way to navigate and go back to the preview.
 - [ ] When locked the name of the use is bold and ugly in lightdm, why? For indicating that session is locked? The button "unlock" is not enough?
 - [ ] Add caja script for indenting XML file
@@ -41,12 +34,10 @@
 - [ ] <https://bugs.launchpad.net/ubuntu/+source/gvfs/+bug/378783> 
 - [ ] locate panel-desktop-handler.desktop => this desktop file is called for creating a shortcut for each execution of one desktop file with exo-open, gvfs-open, xdg-open etc.
 - [ ] Patch Caja: always show the file name (extension are hidden for .desktop files for example) See <https://github.com/mate-desktop/caja/issues/727> open ticket.
-- [ ] Use autofs for preventing caja to freeze when NFS/Samba is down or network problems. See <https://unix.stackexchange.com/questions/267138/preventing-broken-nfs-connection-from-freezing-the-client-system> and <https://help.ubuntu.com/community/Autofs>.
 - [ ] "mailto" and firefox
 - [ ] Add a Caja script for executing a script into a terminal and "press a key" before exit the terminal.
 - [ ] It seems thunderbird is not using x-www-browser (chromium is used), "network.protocol-handler.warn-external.http" should be true for all. gnome-www-browser should be set too (not only x-www-browser).
 - [ ] A script at startup of openbox checking for the default application and notify the user about some changes. Have a look at Xfce4 MIME Type Editor.
-- [ ] Create an install setting using the ubuntu miniso.
 - [ ] Fix the Xmodmap for the macbook.
 - [ ] Need a way to do some settings regarding the sensitiviy of the touchpad/mouse a save these settings. The xfce4-mouse-settings is not saved and even worst it is reset during a session but it probably because I use it in a not-XFCE desktop.
 - [ ] Test if caja gets unresponsive when the NFS is mounter via a regular mount command rather via gvfs. Just test it by mount it, access it via caja, unplug the network and access it again via caja.
@@ -59,6 +50,7 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network.
 
 # ISSUES
+- [ ] GPicView: very slow with SVG files.
 - [ ] Caja: bug when create new file (or directory) with name starting with a dot.
 - [ ] Caja: copying files is very slow compared to the command line (local or remote). => it can be because of GVFS
 - [ ] Caja: create new directory with name starting with a dot is bugged.
@@ -69,6 +61,13 @@
 - [ ] reboot/shutdown can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Set lightdm settings.
+- [x] Set cursor themes.
+- [x] Install xterm (not installed by default with ubuntu miniso).
+- [x] On the Dell the fn key for keyboard backlight is not working properly because there is only one key => it is managed by the hardware, no known X86 symbols for this key.
+- [x] On the Dell I can see 2 notifiations when I change the backlight => use xshkd and lock the notification_id file.
+- [x] Improve recipe for ACPI events (notably USB etc. expect LID) with a script to be called by the service. Could be the script will be used not only for ACPI wakeup but also for others ACPI event groups.
+- [x] Disable bluetooh module better than current recipe see <https://askubuntu.com/questions/67758/how-can-i-deactivate-bluetooth-on-system-startup> + action in openbox menu for re-activating it.
 - [x] Hibernate is not working anymore => should add a kernel parameter, see <https://soulkiln.blog/2018/08/14/ubuntu-18-04-hibernate-and-suspend-fix/>.
 - [x] Fix the icons for xfce4-power-manager. See <https://bbs.archlinux.org/viewtopic.php?id=216495>. => use fdpowermon now.
 - [x] Install xdg-utils from sources. => complicated, xdg-utils is a dependency for many packages.
