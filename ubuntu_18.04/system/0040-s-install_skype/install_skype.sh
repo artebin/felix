@@ -5,9 +5,10 @@ is_bash
 exit_if_has_not_root_privileges
 
 install_skype(){
-	cd ${BASEDIR}
-	
 	echo "Installing Skype from skype.com ..."
+	
+	# Download the package and install it
+	cd ${BASEDIR}
 	wget https://go.skype.com/skypeforlinux-64.deb
 	dpkg -i skypeforlinux-64.deb
 	
@@ -18,6 +19,13 @@ install_skype(){
 	rm -fr ~/.wget-hsts
 	
 	echo
+}
+
+fix_tray_icon(){
+	# Fix the tiled tray icon/app indicator see <https://answers.microsoft.com/en-us/skype/forum/skype_linux-skype_startms-skype_installms/system-tray-icon-in-xfce/d3f162bf-0bbf-481b-90a1-f43cae9a86cc?page=5>
+	cd ${BASEDIR}
+	wget https://drive.google.com/open?id=1jWNVnN0gaaOqghhoa_t0WKPPZka4hAMC >app.asar
+	cp app.asar /usr/share/skypeforlinux/resources/app.asar
 }
 
 cd ${BASEDIR}
