@@ -1,6 +1,5 @@
 # TODOS
 - [ ] Rename ubuntu_18.04.sh to ubuntu_18.04.conf.
-- [ ] Recipes should source common.sh/ubuntu_18.04.sh via an env. variable, not via parent directories.
 - [ ] Extract localisation FR from minimal.packages.list, it should only contains US locales.
 - [ ] Move hotkeys from openbox rc.xml to sxhkd.
 - [ ] Replace dmenu by rofi?
@@ -61,6 +60,7 @@
 - [ ] reboot/shutdown can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Skype: tray icon/app-indicator is buggy. It happens with skype and possibly others, the problem is in libappindicator and/or Electron <https://github.com/mate-desktop/mate-panel/issues/793> <https://answers.microsoft.com/en-us/skype/forum/skype_linux-skype_startms-skype_installms/system-tray-icon-in-xfce/d3f162bf-0bbf-481b-90a1-f43cae9a86cc?page=5> <https://github.com/electron/electron/issues/12791>.
 - [x] Set lightdm settings.
 - [x] Set cursor themes.
 - [x] Install xterm (not installed by default with ubuntu miniso).
