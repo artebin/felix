@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ../../ubuntu_18.04.sh
+source ../../ubuntu_1804.conf
 is_bash
 
 enable_exit_dialog_at_power_button_pressed(){

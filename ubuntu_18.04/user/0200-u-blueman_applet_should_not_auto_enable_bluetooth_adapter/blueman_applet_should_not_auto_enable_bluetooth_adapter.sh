@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ../../ubuntu_18.04.sh
+source ../../ubuntu_1804.conf
 is_bash
 
 blueman_applet_should_not_auto_enable_bluetooth_adapter(){
