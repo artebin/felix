@@ -142,6 +142,11 @@ atril
 #pdftk #N/A in Ubuntu 18.04
 wkhtmltopdf
 
+############
+# Printing
+############
+system-config-printer
+
 ###################
 # Archive manager
 ###################
