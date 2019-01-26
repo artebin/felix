@@ -5,10 +5,15 @@ is_bash
 exit_if_has_not_root_privileges
 
 configure_lightdm_greeter(){
+	echo "Configuring LightDM greeter ..."
+	
 	cd ${BASEDIR}
 	
-	echo "Configuring LightDM greeter ..."
 	backup_file rename /etc/lightdm/lightdm-gtk-greeter.conf
+	
+	# Copy some backgrounds free of use from unsplash <https://unsplash.com> 
+	cp ./backgrounds/*.jpg /usr/share/backgrounds
+	
 	cp ./lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 	
 	echo
