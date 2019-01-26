@@ -467,9 +467,9 @@
 			<action name="Execute">
 				<startupnotify>
 					<enabled>false</enabled>
-					<name>dmenu-bind.sh</name>
+					<name>rofi</name>
 				</startupnotify>
-				<command>bash ~/.config/dmenu/dmenu-bind.sh</command>
+				<command>rofi -show run</command>
 			</action>
 		</keybind>
 		<keybind key="W-c">
