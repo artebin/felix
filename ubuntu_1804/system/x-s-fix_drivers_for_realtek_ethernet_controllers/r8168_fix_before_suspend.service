@@ -6,7 +6,7 @@ Before=hibernate.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/modprobe -r r8169
+ExecStart=/usr/bin/modprobe -r r8168
 
 [Install]
 WantedBy=suspend.target
