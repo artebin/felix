@@ -14,8 +14,7 @@ fix_drivers_for_realtek_ethernet_controllers(){
 	install_package_if_not_installed "r8168-dkms"
 	
 	# Blacklist r8169
-	echo "\nblacklist r8169\n\n" >/etc/modprobe.d/blacklist.conf
-	add_or_update_line_based_on_prefix "^blacklist r8169$" "\n\nblacklist r8169\n\n" /etc/modprobe.d/blacklist.conf
+	add_or_update_line_based_on_prefix "^blacklist r8169$" "blacklist r8169" /etc/modprobe.d/blacklist.conf
 	
 	# Re-generate initramfs image
 	update-initramfs -u
