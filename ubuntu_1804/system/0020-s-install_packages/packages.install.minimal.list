@@ -84,7 +84,7 @@ light-locker light-locker-settings
 xsel xclip xdo xtitle
 wmctrl xdotool xautomation
 xserver-xephyr
-xfce4-mouse-settings xfce4-keyboard-settings xfce4-mime-settings
+xfce4-settings
 
 ##################################
 # Window manager & desktop tools
