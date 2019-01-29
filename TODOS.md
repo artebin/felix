@@ -1,4 +1,7 @@
 # TODOS
+- 
+- [ ] Path to Felix project root should be global variable.
+- [ ] Improve console traces for install.sh and for recipe system OK/MISSING package.
 - [ ] Add an alias in bachrc or a menuitem in openbox menu for doing a screenshot of a window with 'xwd'.
 - [ ] Make changes allowing to run 'info.sh' without 'common.sh'.
 - [ ] Extract localisation FR from minimal.packages.list, it should only contains US locales.

@@ -3,6 +3,12 @@
 source ./ubuntu_1804.conf
 is_bash
 
+FELIX_BANNER='  __      _ _      
+ / _| ___| (_)_  __
+| |_ / _ \ | \ \/ /
+|  _|  __/ | |>  < 
+|_|  \___|_|_/_/\_\'
+
 execute_recipes(){
 	printf "Executing recipes ...\n"
 	printf "Interactive mode=${INTERACTIVE_MODE}\n\n"
@@ -91,6 +97,9 @@ if [ $# -ne 1 ]; then
 	exit 1
 fi
 RECIPES_PARENT_DIRECTORY="${1}"
+
+echo "${FELIX_BANNER}"
+echo
 
 # Check existence of the parent directory for recipes
 if [ ! -d "${RECIPES_PARENT_DIRECTORY}" ]; then
