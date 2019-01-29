@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Add an alias in bachrc or a menuitem in openbox menu for doing a screenshot of a window with 'xwd'.
+- [ ] Make changes allowing to run 'info.sh' without 'common.sh'.
 - [ ] Extract localisation FR from minimal.packages.list, it should only contains US locales.
 - [ ] Move hotkeys from openbox rc.xml to sxhkd.
 - [ ] "enter your password to unlock your login keyring".
