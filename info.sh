@@ -38,15 +38,15 @@ print_display_info_xrandr(){
 	print_section_ending
 }
 
-print_distrib_info_lsb_release(){
-	print_section_heading "Distribution name (lsb_release -a)"
-	lsb_release -a
+print_lsb_release(){
+	print_section_heading "Distribution name (cat /etc/lsb-release)"
+	cat /etc/lsb-release
 	print_section_ending
 }
 
-print_ubuntu_version(){
-	print_section_heading "Ubuntu version (cat /var/log/installer/media-info)"
-	cat /var/log/installer/media-info
+print_video_card_model_and_driver(){
+	print_section_heading "Video card model and driver"
+	lspci -k | grep -EA3 'VGA|3D|Display' 
 	print_section_ending
 }
 
@@ -86,15 +86,21 @@ print_gtk_version(){
 	print_section_ending
 }
 
+print_key_codes(){
+	print_section_heading "Key codes (xmodmap -pke)"
+	xmodmap -pke
+	print_section_ending
+}
+
 print_dmi_info_bios
 print_dmi_info_system
 print_hardware_info_inxi | remove_terminal_control_sequences
 print_display_info_xrandr
-print_distrib_info_lsb_release
-print_ubuntu_version
+print_lsb_release
 print_linux_kernel_version
 print_memory_info
 print_free_memory
 print_swap_information
 print_temperature_sensors
 print_gtk_version
+print_key_codes
