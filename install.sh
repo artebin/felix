@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source ./ubuntu_1804.conf
+source "$(dirname ${BASH_SOURCE})/felix.sh"
 is_bash
 
 FELIX_BANNER='  __      _ _      

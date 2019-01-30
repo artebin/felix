@@ -1,15 +1,16 @@
 #!/usr/bin/env bash
 
+source ../../../../felix.sh
 source ../../../ubuntu_1804.conf
 is_bash
 exit_if_has_not_root_privileges
 
 disable_touchscreen(){
-	cd ${BASEDIR}
+	cd "${BASEDIR}"
 	
 	# For disabling the touchscreen we can use use:
-	#  - `xinput` and `xinput disable <device ID>`, it can be done when we login via the `.xsession`
-	#  - disable it directly in the X.org configuration in `/usr/share/X11/xorg.conf/40-libinput.conf`
+	#  - 'xinput' and 'xinput disable <device ID>', it can be done when we login via the '.xsession'
+	#  - disable it directly in the X.org configuration in '/usr/share/X11/xorg.conf/40-libinput.conf'
 	# Here we disable it in X.org configuration
 	
 	LIB_INPUT_CONF_FILE="/usr/share/X11/xorg.conf.d/40-libinput.conf"
@@ -27,9 +28,9 @@ disable_touchscreen(){
 	echo
 }
 
-cd ${BASEDIR}
-
-disable_touchscreen 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+BASEDIR="$(dirname ${BASH_SOURCE})"
+cd "${BASEDIR}"
+disable_touchscreen 2>&1 | tee -a "$(retrieve_log_file_name ${BASH_SOURCE})"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"
