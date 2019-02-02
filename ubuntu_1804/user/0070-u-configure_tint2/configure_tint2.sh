@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+source ../../../felix.sh
 source ../../ubuntu_1804.conf
 is_bash
 
