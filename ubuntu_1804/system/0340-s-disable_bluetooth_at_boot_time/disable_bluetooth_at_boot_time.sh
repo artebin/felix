@@ -38,6 +38,8 @@ disable_bluetooth_adapter_at_boot_time(){
 	echo
 }
 
+BASEDIR="$(dirname ${BASH_SOURCE})"
+
 cd ${BASEDIR}
 blacklist_bluetooth_driver_module 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"

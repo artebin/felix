@@ -47,8 +47,9 @@ force_numlock_xorg(){
 	echo
 }
 
-cd ${BASEDIR}
+BASEDIR="$(dirname ${BASH_SOURCE})"
 
+cd ${BASEDIR}
 force_numlock_tty 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
@@ -56,7 +57,6 @@ if [ "${EXIT_CODE}" -ne 0 ]; then
 fi
 
 cd ${BASEDIR}
-
 force_numlock_xorg 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

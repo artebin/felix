@@ -80,6 +80,8 @@ disable_unwanted_xdg_autostart(){
 	echo
 }
 
+BASEDIR="$(dirname ${BASH_SOURCE})"
+
 cd ${BASEDIR}
 update_xdg_user_dirs_default 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"

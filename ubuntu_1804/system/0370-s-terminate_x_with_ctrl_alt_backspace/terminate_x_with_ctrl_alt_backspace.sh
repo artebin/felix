@@ -14,6 +14,8 @@ terminate_x_with_ctrl_alt_backspace(){
 	echo
 }
 
+BASEDIR="$(dirname ${BASH_SOURCE})"
+
 cd ${BASEDIR}
 terminate_x_with_ctrl_alt_backspace 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"

@@ -29,6 +29,7 @@ disable_touchscreen(){
 }
 
 BASEDIR="$(dirname ${BASH_SOURCE})"
+
 cd "${BASEDIR}"
 disable_touchscreen 2>&1 | tee -a "$(retrieve_log_file_name ${BASH_SOURCE})"
 EXIT_CODE="${PIPESTATUS[0]}"

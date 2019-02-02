@@ -14,6 +14,8 @@ process_package_install_list(){
 	echo
 }
 
+BASEDIR="$(dirname ${BASH_SOURCE})"
+
 cd ${BASEDIR}
 process_package_install_list 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"

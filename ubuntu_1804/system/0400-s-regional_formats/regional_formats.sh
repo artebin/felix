@@ -26,6 +26,8 @@ set_locale(){
 	echo
 }
 
+BASEDIR="$(dirname ${BASH_SOURCE})"
+
 cd ${BASEDIR}
 set_locale 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
 EXIT_CODE="${PIPESTATUS[0]}"

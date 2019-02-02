@@ -23,6 +23,8 @@ disable_apport(){
 	echo
 }
 
+BASEDIR="$(dirname ${BASH_SOURCE})"
+
 disable_whoopsie(){
 	cd ${BASEDIR}
 	
