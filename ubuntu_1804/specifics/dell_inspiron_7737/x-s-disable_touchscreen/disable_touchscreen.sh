@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 source ../../../../felix.sh
-source ../../../../felix.sh
 source ../../../ubuntu_1804.conf
 is_bash
 exit_if_has_not_root_privileges
