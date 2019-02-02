@@ -17,7 +17,7 @@ terminate_x_with_ctrl_alt_backspace(){
 BASEDIR="$(dirname ${BASH_SOURCE})"
 
 cd ${BASEDIR}
-terminate_x_with_ctrl_alt_backspace 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+terminate_x_with_ctrl_alt_backspace 2>&1 | tee -a "$(retrieve_log_file_name ${BASH_SOURCE})"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"

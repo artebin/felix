@@ -49,7 +49,7 @@ install_fdpowermon_from_sources(){
 BASEDIR="$(dirname ${BASH_SOURCE})"
 
 cd ${BASEDIR}
-install_fdpowermon_from_sources 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+install_fdpowermon_from_sources 2>&1 | tee -a "$(retrieve_log_file_name ${BASH_SOURCE})"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"

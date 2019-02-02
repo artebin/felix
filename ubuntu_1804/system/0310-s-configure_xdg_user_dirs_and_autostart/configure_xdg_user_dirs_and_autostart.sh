@@ -83,21 +83,21 @@ disable_unwanted_xdg_autostart(){
 BASEDIR="$(dirname ${BASH_SOURCE})"
 
 cd ${BASEDIR}
-update_xdg_user_dirs_default 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+update_xdg_user_dirs_default 2>&1 | tee -a "$(retrieve_log_file_name ${BASH_SOURCE})"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"
 fi
 
 cd ${BASEDIR}
-list_xdg_autostart_desktop_files 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+list_xdg_autostart_desktop_files 2>&1 | tee -a "$(retrieve_log_file_name ${BASH_SOURCE})"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"
 fi
 
 cd ${BASEDIR}
-disable_unwanted_xdg_autostart 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+disable_unwanted_xdg_autostart 2>&1 | tee -a "$(retrieve_log_file_name ${BASH_SOURCE})"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"
