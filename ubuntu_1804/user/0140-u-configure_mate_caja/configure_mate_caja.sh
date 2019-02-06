@@ -27,6 +27,8 @@ configure_mate_caja(){
 	cp ./compare ~/.config/caja/scripts
 	cp ./tail_and_follow ~/.config/caja/scripts
 	cp ./tail_entirely_and_follow ~/.config/caja/scripts
+	cp ./xml_indent ~/.config/caja/scripts
+	cp ./xml_indent_copy ~/.config/caja/scripts
 	
 	echo
 }
