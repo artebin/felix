@@ -113,8 +113,13 @@ zenity
 # Desktop theming
 ###################
 greybird-gtk-theme human-theme
+
+#########
+# Fonts
+#########
 faenza-icon-theme
 fonts-font-awesome
+fonts-arkpandora
 
 #############################
 # Virtual Terminal Emulator
