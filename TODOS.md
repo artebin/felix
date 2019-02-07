@@ -1,5 +1,5 @@
 # TODOS
-- 
+- [ ] Use gliv or nomacs to replace GPicView.
 - [ ] Path to Felix project root should be global variable.
 - [ ] Improve console traces for install.sh and for recipe system OK/MISSING package.
 - [ ] Add an alias in bachrc or a menuitem in openbox menu for doing a screenshot of a window with 'xwd'.
