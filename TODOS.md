@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Add a recipe for installing claws-mail from sources + plugins (fancy, vcalendar etc. ).
 - [ ] Use gliv or nomacs to replace GPicView.
 - [ ] Path to Felix project root should be global variable.
 - [ ] Improve console traces for install.sh and for recipe system OK/MISSING package.
@@ -63,6 +64,7 @@
 - [ ] reboot/shutdown can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Indent JSON command.
 - [x] Rename ubuntu_18.04.sh to ubuntu_18.04.conf.
 - [x] Replace dmenu by rofi? => not by default but it is installed now.
 - [x] Skype: tray icon/app-indicator is buggy. It happens with skype and possibly others, the problem is in libappindicator and/or Electron <https://github.com/mate-desktop/mate-panel/issues/793> <https://answers.microsoft.com/en-us/skype/forum/skype_linux-skype_startms-skype_installms/system-tray-icon-in-xfce/d3f162bf-0bbf-481b-90a1-f43cae9a86cc?page=5> <https://github.com/electron/electron/issues/12791>.
