@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Do not open SVG with gpic view because it is too slow, use inkscape instead.
 - [ ] systemd manager.
 - [ ] Special menu in rofi for the XF86S symbols.
 - [ ] Move the scripts (including the openbox scripts) in a script folder in the $HOME.
