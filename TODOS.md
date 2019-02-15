@@ -1,4 +1,7 @@
 # TODOS
+- [ ] Special menu in rofi for the XF86S symbols.
+- [ ] Move the scripts (including the openbox scripts) in a script folder in the $HOME.
+- [ ] Add the screenshot scripts in the openbox menu.
 - [ ] Add a recipe for installing claws-mail from sources + plugins (fancy, vcalendar etc. ).
 - [ ] Use gliv or nomacs to replace GPicView.
 - [ ] Path to Felix project root should be global variable.
