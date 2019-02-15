@@ -1,4 +1,5 @@
 # TODOS
+- [ ] systemd manager.
 - [ ] Special menu in rofi for the XF86S symbols.
 - [ ] Move the scripts (including the openbox scripts) in a script folder in the $HOME.
 - [ ] Add the screenshot scripts in the openbox menu.
