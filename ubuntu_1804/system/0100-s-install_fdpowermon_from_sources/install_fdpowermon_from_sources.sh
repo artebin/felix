@@ -2,11 +2,15 @@
 
 source ../../../felix.sh
 source ../../ubuntu_1804.conf
+
+BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
+
 is_bash
 exit_if_has_not_root_privileges
 
 install_fdpowermon_from_sources(){
-	echo "Installing fdpowermon from sources ..."
+	echo "Install fdpowermon from sources ..."
 	
 	# Remove packages 'fdpowermon' and 'fdpowermon-icons' if already 
 	# installed.
@@ -18,7 +22,7 @@ install_fdpowermon_from_sources(){
 	# Create a directory 'fdpowermon-build' because we will call
 	# 'dpkg-buildpackage' and its output directory is always the
 	# parent directory.
-	cd ${BASEDIR}
+	cd "${BASEDIR}"
 	mkdir fdpowermon-build
 	cd fdpowermon-build
 	
@@ -29,8 +33,8 @@ install_fdpowermon_from_sources(){
 	cd fdpowermon
 	dpkg-buildpackage
 	
-	# Install the packages
-	cd ${BASEDIR}/fdpowermon-build
+	# Install the package
+	cd "${BASEDIR}/fdpowermon-build"
 	dpkg -i fdpowermon_*.deb
 	
 	# The package 'fdpowermon-icons' installs a few icons of the
@@ -40,17 +44,15 @@ install_fdpowermon_from_sources(){
 	fi
 	
 	# Cleaning
-	cd ${BASEDIR}
+	cd "${BASEDIR}"
 	rm -fr fdpowermon-build
 	
 	echo
 }
 
-BASEDIR="$(dirname ${BASH_SOURCE})"
-
-cd ${BASEDIR}
-install_fdpowermon_from_sources 2>&1 | tee -a "$(retrieve_log_file_name ${BASH_SOURCE})"
+cd "${BASEDIR}"
+install_fdpowermon_from_sources 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi

@@ -2,32 +2,35 @@
 
 source ../../../felix.sh
 source ../../ubuntu_1804.conf
+
+BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
+
 is_bash
 exit_if_has_not_root_privileges
 
 process_package_install_list(){
-	cd ${BASEDIR}
+	echo "Install packages ..."
 	
-	echo "Installing packages ..."
-	
+	cd "${BASEDIR}"
 	PACKAGES_LIST_FILE="./packages.install.minimal.list"
 	
 	# Build apt input file, one package per line
 	APT_INPUT_FILE="./apt.pkg.list"
-	if [ -f "${APT_INPUT_FILE}" ]; then
+	if [[ -f "${APT_INPUT_FILE}" ]]; then
 		rm -f "${APT_INPUT_FILE}"
 	fi
 	while read LINE; do
 		INDEX_OF_COMMENT=`expr index "${LINE}" '#'`
-		if [ "${INDEX_OF_COMMENT}" -eq 0 ]; then
+		if [[ "${INDEX_OF_COMMENT}" -eq 0 ]]; then
 			PACKAGES_LINE=${LINE}
 		else
 			SUBSTRING_LENGTH=`expr ${INDEX_OF_COMMENT}-1`
 			PACKAGES_LINE=${LINE:0:${SUBSTRING_LENGTH}}
 		fi
 		PACKAGES_LINE=$(echo "${PACKAGES_LINE}"|awk '{$1=$1};1')
-		if [ ! -z "${PACKAGES_LINE}" ]; then
-			echo "${PACKAGES_LINE}"| tr " " "\n" >> "${APT_INPUT_FILE}"
+		if [[ ! -z "${PACKAGES_LINE}" ]]; then
+			echo "${PACKAGES_LINE}" | tr " " "\n" >> "${APT_INPUT_FILE}"
 		fi
 	done < "${PACKAGES_LIST_FILE}"
 	
@@ -36,26 +39,26 @@ process_package_install_list(){
 	# Furthermore it expects an argument which can follow a query language, i.e. `g++` will not work => for now only escaping '+'
 	# See <https://wiki.debian.org/Aptitude#Advanced_search_patterns>
 	# TODO: code should be improved later.
-	if [ "${TEST_PACKAGE_AVAILABILITY}" == "true" ]; then
+	if [[ "${TEST_PACKAGE_AVAILABILITY}" == "true" ]]; then
 		apt-get install -y aptitude
 		PACKAGE_MISSING_LIST_FILE="./packages.missing.list"
-		if [ -f "${PACKAGE_MISSING_LIST_FILE}" ]; then
+		if [[ -f "${PACKAGE_MISSING_LIST_FILE}" ]]; then
 			rm -f "${PACKAGE_MISSING_LIST_FILE}"
 		fi
 		while read LINE; do
-			if [ -z "${LINE}" ]; then
+			if [[ -z "${LINE}" ]]; then
 				continue;
 			fi
 			ESCAPED_LINE=$(echo "${LINE}" | sed 's/\+/\\\+/g')
 			PACKAGE_AVAILABILITY=`aptitude search "^${ESCAPED_LINE}\$"`
-			if [ $? -eq 0 ]; then
+			if [[ $? -eq 0 ]]; then
 				printf "     [\e[92m%s\e[0m] %s\n" "OK" "${LINE}"
 			else
 				printf "[\e[91m%s\e[0m] %s\n" "MISSING" "${LINE}"
 				echo "${LINE}" >> "${PACKAGE_MISSING_LIST_FILE}"
 			fi
 		done < "${APT_INPUT_FILE}"
-		if [ -s "${PACKAGE_MISSING_LIST_FILE}" ]; then
+		if [[ -s "${PACKAGE_MISSING_LIST_FILE}" ]]; then
 			echo "Some packages are missing."
 			echo "See ${PACKAGE_MISSING_LIST_FILE}"
 			exit 1
@@ -71,11 +74,9 @@ process_package_install_list(){
 	echo
 }
 
-BASEDIR="$(dirname ${BASH_SOURCE})"
-
-cd ${BASEDIR}
-process_package_install_list 2>&1 | tee -a "$(retrieve_log_file_name ${BASH_SOURCE})"
+cd "${BASEDIR}"
+process_package_install_list 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
