@@ -140,6 +140,7 @@ geany geany-plugins
 meld kdiff3
 bless
 mediainfo
+regexxer
 
 #######################################
 # PDF viewer & PDF manipulation tools
