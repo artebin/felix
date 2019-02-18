@@ -6,7 +6,7 @@ source ../../ubuntu_1804.conf
 
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE})"
 
-is_bash
+exit_if_not_bash
 
 configure_rofi(){
 	echo "Configure rofi ..."

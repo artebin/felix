@@ -6,7 +6,7 @@ source ../../ubuntu_1804.conf
 
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE})"
 
-is_bash
+exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_claws_mail_from_sources(){

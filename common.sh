@@ -30,7 +30,7 @@ is_cygwin_platform(){
 	fi
 }
 
-is_bash(){
+exit_if_not_bash(){
 	if [ ! "${BASH_VERSION}" ] ; then
 		echo "This script should run with bash" 1>&2
 		exit 1

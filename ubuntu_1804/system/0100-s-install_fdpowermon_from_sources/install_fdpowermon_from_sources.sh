@@ -6,7 +6,7 @@ source ../../ubuntu_1804.conf
 BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 
-is_bash
+exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_fdpowermon_from_sources(){

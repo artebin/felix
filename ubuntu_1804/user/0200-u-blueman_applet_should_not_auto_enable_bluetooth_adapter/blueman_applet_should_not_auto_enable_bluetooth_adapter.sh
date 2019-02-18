@@ -6,7 +6,7 @@ source ../../ubuntu_1804.conf
 BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 
-is_bash
+exit_if_not_bash
 
 blueman_applet_should_not_auto_enable_bluetooth_adapter(){
 	cd ${BASEDIR}

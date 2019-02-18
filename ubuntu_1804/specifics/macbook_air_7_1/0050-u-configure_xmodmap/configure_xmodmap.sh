@@ -2,7 +2,7 @@
 
 source ../../../../felix.sh
 source ../../../ubuntu_1804.conf
-is_bash
+exit_if_not_bash
 
 configure_xmodmap(){
 	cd ${BASEDIR}
