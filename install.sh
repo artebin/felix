@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 source "$(dirname ${BASH_SOURCE})/felix.sh"
-is_bash
+exit_if_not_bash
 
 FELIX_BANNER='  __      _ _      
  / _| ___| (_)_  __
