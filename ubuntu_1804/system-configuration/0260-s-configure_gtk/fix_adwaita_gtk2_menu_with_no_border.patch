@@ -1,0 +1,31 @@
+--- main.rc.orig	2018-06-16 21:03:29.472470596 +0200
++++ main.rc	2018-06-16 21:04:28.176199402 +0200
+@@ -84,7 +84,7 @@
+   # ( every window is misaligned for the sake of menus ):
+   GtkMenuBar::internal-padding = 0
+   GtkMenu::horizontal-padding  = 0
+-  GtkMenu::vertical-padding    = 2
++  GtkMenu::vertical-padding    = 0
+   GtkMenu::double-arrows       = 0
+   GtkMenuItem::arrow-scaling   = 1
+   GtkMenuItem::toggle-spacing  = 10
+@@ -1522,15 +1522,12 @@
+ }
+ 
+ style "menu" {
+-
+   xthickness = 0
+   ythickness = 0
+-
+-  bg[NORMAL]      = @menu_color
+-  bg[INSENSITIVE] = @menu_color
+-  bg[PRELIGHT]    = @menu_color
+-  bg[SELECTED]    = @selected_bg_color
+-
++  bg[NORMAL] = shade (1.08, @bg_color)
++  engine "adwaita" {
++  	radius = 0.0
++  }
+ }
+ 
+ style "menu_item" {

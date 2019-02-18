@@ -1,0 +1,7 @@
+/var/log/dstat/*.csv {
+	rotate 40
+	daily
+	compress
+	missingok
+	notifempty
+}

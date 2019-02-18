@@ -1,0 +1,490 @@
+Dec 30 14:17:41 rollin kernel: [ 3372.351601] PM: Syncing filesystems ... done.
+Dec 30 14:17:41 rollin kernel: [ 3372.423529] Freezing user space processes ... (elapsed 0.001 seconds) done.
+Dec 30 14:17:41 rollin kernel: [ 3372.425467] OOM killer disabled.
+Dec 30 14:17:41 rollin kernel: [ 3372.425468] Freezing remaining freezable tasks ... (elapsed 0.001 seconds) done.
+Dec 30 14:17:41 rollin kernel: [ 3372.426742] Suspending console(s) (use no_console_suspend to debug)
+Dec 30 14:17:41 rollin kernel: [ 3372.427806] FWMSG: [ISP] CMD = 0x0001 [CISP_CMD_STOP]
+Dec 30 14:17:41 rollin kernel: [ 3372.438935] facetimehd 0000:02:00.0: fthd_hw_deinit
+Dec 30 14:17:41 rollin kernel: [ 3372.905439] thunderbolt 0000:07:00.0: suspending...
+Dec 30 14:17:41 rollin kernel: [ 3372.905649] ACPI: EC: interrupt blocked
+Dec 30 14:17:41 rollin kernel: [ 3372.906986] thunderbolt 0000:07:00.0: suspend finished
+Dec 30 14:17:41 rollin kernel: [ 3372.906993] thunderbolt 0000:07:00.0: stopping RX ring 0
+Dec 30 14:17:41 rollin kernel: [ 3372.907007] thunderbolt 0000:07:00.0: disabling interrupt at register 0x38200 bit 12 (0x1001 -> 0x1)
+Dec 30 14:17:41 rollin kernel: [ 3372.907029] thunderbolt 0000:07:00.0: stopping TX ring 0
+Dec 30 14:17:41 rollin kernel: [ 3372.907041] thunderbolt 0000:07:00.0: disabling interrupt at register 0x38200 bit 0 (0x1 -> 0x0)
+Dec 30 14:17:41 rollin kernel: [ 3372.907054] thunderbolt 0000:07:00.0: control channel stopped
+Dec 30 14:17:41 rollin kernel: [ 3372.989353] ACPI: Preparing to enter system sleep state S3
+Dec 30 14:17:41 rollin kernel: [ 3373.096797] ACPI: EC: event blocked
+Dec 30 14:17:41 rollin kernel: [ 3373.096798] ACPI: EC: EC stopped
+Dec 30 14:17:41 rollin kernel: [ 3373.096799] PM: Saving platform NVS memory
+Dec 30 14:17:41 rollin kernel: [ 3373.096808] Disabling non-boot CPUs ...
+Dec 30 14:17:41 rollin kernel: [ 3373.114169] smpboot: CPU 1 is now offline
+Dec 30 14:17:41 rollin kernel: [ 3373.133100] IRQ 66: no longer affine to CPU2
+Dec 30 14:17:41 rollin kernel: [ 3373.134117] smpboot: CPU 2 is now offline
+Dec 30 14:17:41 rollin kernel: [ 3373.156991] IRQ 18: no longer affine to CPU3
+Dec 30 14:17:41 rollin kernel: [ 3373.156998] IRQ 21: no longer affine to CPU3
+Dec 30 14:17:41 rollin kernel: [ 3373.157005] IRQ 43: no longer affine to CPU3
+Dec 30 14:17:41 rollin kernel: [ 3373.157012] IRQ 45: no longer affine to CPU3
+Dec 30 14:17:41 rollin kernel: [ 3373.157017] IRQ 46: no longer affine to CPU3
+Dec 30 14:17:41 rollin kernel: [ 3373.158048] smpboot: CPU 3 is now offline
+Dec 30 14:17:41 rollin kernel: [ 3373.160930] ACPI: Low-level resume complete
+Dec 30 14:17:41 rollin kernel: [ 3373.161039] ACPI: EC: EC started
+Dec 30 14:17:41 rollin kernel: [ 3373.161041] PM: Restoring platform NVS memory
+Dec 30 14:17:41 rollin kernel: [ 3373.164852] Enabling non-boot CPUs ...
+Dec 30 14:17:41 rollin kernel: [ 3373.164942] x86: Booting SMP configuration:
+Dec 30 14:17:41 rollin kernel: [ 3373.164945] smpboot: Booting Node 0 Processor 1 APIC 0x2
+Dec 30 14:17:41 rollin kernel: [ 3373.222685]  cache: parent cpu1 should not be sleeping
+Dec 30 14:17:41 rollin kernel: [ 3373.347439] CPU1 is up
+Dec 30 14:17:41 rollin kernel: [ 3373.347494] smpboot: Booting Node 0 Processor 2 APIC 0x1
+Dec 30 14:17:41 rollin kernel: [ 3373.348164]  cache: parent cpu2 should not be sleeping
+Dec 30 14:17:41 rollin kernel: [ 3373.348355] CPU2 is up
+Dec 30 14:17:41 rollin kernel: [ 3373.348384] smpboot: Booting Node 0 Processor 3 APIC 0x3
+Dec 30 14:17:41 rollin kernel: [ 3373.402462]  cache: parent cpu3 should not be sleeping
+Dec 30 14:17:41 rollin kernel: [ 3373.570510] CPU3 is up
+Dec 30 14:17:41 rollin kernel: [ 3373.574311] ACPI: Waking up from system sleep state S3
+Dec 30 14:17:41 rollin kernel: [ 3373.576162] ACPI: EC: interrupt unblocked
+Dec 30 14:17:41 rollin kernel: [ 3373.576762] pcieport 0000:06:03.0: quirk: waiting for thunderbolt to reestablish PCI tunnels...
+Dec 30 14:17:41 rollin kernel: [ 3373.576764] pcieport 0000:06:04.0: quirk: waiting for thunderbolt to reestablish PCI tunnels...
+Dec 30 14:17:41 rollin kernel: [ 3373.576767] pcieport 0000:06:05.0: quirk: waiting for thunderbolt to reestablish PCI tunnels...
+Dec 30 14:17:41 rollin kernel: [ 3373.576864] pcieport 0000:06:06.0: quirk: waiting for thunderbolt to reestablish PCI tunnels...
+Dec 30 14:17:41 rollin kernel: [ 3373.595800] thunderbolt 0000:07:00.0: control channel starting...
+Dec 30 14:17:41 rollin kernel: [ 3373.595804] thunderbolt 0000:07:00.0: starting TX ring 0
+Dec 30 14:17:41 rollin kernel: [ 3373.595815] thunderbolt 0000:07:00.0: enabling interrupt at register 0x38200 bit 0 (0x0 -> 0x1)
+Dec 30 14:17:41 rollin kernel: [ 3373.595818] thunderbolt 0000:07:00.0: starting RX ring 0
+Dec 30 14:17:41 rollin kernel: [ 3373.595829] thunderbolt 0000:07:00.0: enabling interrupt at register 0x38200 bit 12 (0x1 -> 0x1001)
+Dec 30 14:17:41 rollin kernel: [ 3373.595834] thunderbolt 0000:07:00.0: resuming...
+Dec 30 14:17:41 rollin kernel: [ 3373.595837] thunderbolt 0000:07:00.0: resetting switch at 0
+Dec 30 14:17:41 rollin kernel: [ 3373.596644] thunderbolt 0000:07:00.0: 0: resuming switch
+Dec 30 14:17:41 rollin kernel: [ 3373.628925] thunderbolt 0000:07:00.0: resume finished
+Dec 30 14:17:41 rollin kernel: [ 3373.640488] ACPI: EC: event unblocked
+Dec 30 14:17:41 rollin kernel: [ 3373.640746] facetimehd 0000:02:00.0: Found FaceTime HD camera with device id: 1570
+Dec 30 14:17:41 rollin kernel: [ 3373.641075] facetimehd 0000:02:00.0: Setting 64bit DMA mask
+Dec 30 14:17:41 rollin kernel: [ 3373.650499] facetimehd 0000:02:00.0: S2 PCIe link init succeeded
+Dec 30 14:17:41 rollin kernel: [ 3373.650547] facetimehd 0000:02:00.0: Refclk: 25MHz (0xa)
+Dec 30 14:17:41 rollin kernel: [ 3373.660497] facetimehd 0000:02:00.0: PLL reset finished
+Dec 30 14:17:41 rollin kernel: [ 3373.660498] facetimehd 0000:02:00.0: Waiting for S2 PLL to lock at 450 MHz
+Dec 30 14:17:41 rollin kernel: [ 3373.660510] facetimehd 0000:02:00.0: S2 PLL is locked after 10 us
+Dec 30 14:17:41 rollin kernel: [ 3373.670465] facetimehd 0000:02:00.0: S2 PLL is in bypass mode
+Dec 30 14:17:41 rollin kernel: [ 3373.690376] facetimehd 0000:02:00.0: DDR40 PHY PLL locked on safe settings
+Dec 30 14:17:41 rollin kernel: [ 3373.690407] facetimehd 0000:02:00.0: STRAP valid
+Dec 30 14:17:41 rollin kernel: [ 3373.690408] facetimehd 0000:02:00.0: Configuring DDR PLLs for 450 MHz
+Dec 30 14:17:41 rollin kernel: [ 3373.690421] facetimehd 0000:02:00.0: DDR40 PLL is locked after 0 us
+Dec 30 14:17:41 rollin kernel: [ 3373.690429] facetimehd 0000:02:00.0: First DDR40 VDL calibration completed after 1 us
+Dec 30 14:17:41 rollin kernel: [ 3373.690440] facetimehd 0000:02:00.0: Second DDR40 VDL calibration completed after 2 us
+Dec 30 14:17:41 rollin kernel: [ 3373.690441] facetimehd 0000:02:00.0: Using step size 154
+Dec 30 14:17:41 rollin kernel: [ 3373.690446] facetimehd 0000:02:00.0: VDL set to: coarse=0x10008, fine=0x1011c
+Dec 30 14:17:41 rollin kernel: [ 3373.690451] facetimehd 0000:02:00.0: Virtual VTT enabled
+Dec 30 14:17:41 rollin kernel: [ 3373.695647] nvme nvme0: detected Apple NVMe controller, set queue depth=2 to work around controller resets
+Dec 30 14:17:41 rollin kernel: [ 3373.697116] thunderbolt 0000:07:00.0: resetting error on 0:b.
+Dec 30 14:17:41 rollin kernel: [ 3373.697123] thunderbolt 0000:07:00.0: 0:b: hotplug: scanning
+Dec 30 14:17:41 rollin kernel: [ 3373.697125] thunderbolt 0000:07:00.0: 0:b: hotplug: no switch found
+Dec 30 14:17:41 rollin kernel: [ 3373.697236] thunderbolt 0000:07:00.0: resetting error on 0:c.
+Dec 30 14:17:41 rollin kernel: [ 3373.697240] thunderbolt 0000:07:00.0: 0:c: hotplug: scanning
+Dec 30 14:17:41 rollin kernel: [ 3373.697242] thunderbolt 0000:07:00.0: 0:c: hotplug: no switch found
+Dec 30 14:17:41 rollin kernel: [ 3373.697973] blk_queue_max_hw_sectors: set to minimum 8
+Dec 30 14:17:41 rollin kernel: [ 3373.710848] facetimehd 0000:02:00.0: S2 DRAM memory address: 0x22159559
+Dec 30 14:17:41 rollin kernel: [ 3373.710861] facetimehd 0000:02:00.0: Rewrite DDR mode registers succeeded
+Dec 30 14:17:41 rollin kernel: [ 3373.711061] facetimehd 0000:02:00.0: Full memory verification succeeded! (0)
+Dec 30 14:17:41 rollin kernel: [ 3374.180467] facetimehd 0000:02:00.0: Loaded firmware, size: 1392kb
+Dec 30 14:17:41 rollin kernel: [ 3374.339443] facetimehd 0000:02:00.0: ISP woke up after 0ms
+Dec 30 14:17:41 rollin kernel: [ 3374.339448] facetimehd 0000:02:00.0: Number of IPC channels: 7, queue size: 44865
+Dec 30 14:17:41 rollin kernel: [ 3374.339451] facetimehd 0000:02:00.0: Firmware requested heap size: 3072kb
+Dec 30 14:17:41 rollin kernel: [ 3374.349402] facetimehd 0000:02:00.0: ISP second int after 0ms
+Dec 30 14:17:41 rollin kernel: [ 3374.349405] facetimehd 0000:02:00.0: Channel description table at 00800000
+Dec 30 14:17:41 rollin kernel: [ 3374.359545] facetimehd 0000:02:00.0: magic value: 00000000 after 0 ms
+Dec 30 14:17:41 rollin kernel: [ 3374.359546] facetimehd 0000:02:00.0: Enabling interrupts
+Dec 30 14:17:41 rollin kernel: [ 3374.403695] FWMSG: 
+Dec 30 14:17:41 rollin kernel: [ 3374.403716] FWMSG: - APOLLO-ISP-APPLE ------------------------------------------------------------
+Dec 30 14:17:41 rollin kernel: [ 3374.403726] FWMSG: 
+Dec 30 14:17:41 rollin kernel: [ 3374.403740] FWMSG:   Restart count : 0
+Dec 30 14:17:41 rollin kernel: [ 3374.403761] FWMSG:   Platform : mode = TARGET, ID = 0x00000000, HW = 00020018.00000000
+Dec 30 14:17:41 rollin kernel: [ 3374.403774] FWMSG:   System Clock : 200000000 Hz
+Dec 30 14:17:41 rollin kernel: [ 3374.403788] FWMSG:   Processor mode : SUPERVISOR
+Dec 30 14:17:41 rollin kernel: [ 3374.403828] FWMSG:   Cache architecture type : SEPARATE
+Dec 30 14:17:41 rollin kernel: [ 3374.403841] FWMSG:   Cache type : WRITEBACK
+Dec 30 14:17:41 rollin kernel: [ 3374.403855] FWMSG:   Data Cache Line : 32 [0x20]
+Dec 30 14:17:41 rollin kernel: [ 3374.403890] FWMSG:   Boot arguments entries : 2
+Dec 30 14:17:41 rollin kernel: [ 3374.403927] FWMSG:     0000: 0x00000000 0x00000000
+Dec 30 14:17:41 rollin kernel: [ 3374.403946] FWMSG:   Physical memory base : 0x00000000 [TLB base 0x00160000]
+Dec 30 14:17:41 rollin kernel: [ 3374.403981] FWMSG:   Main memory :   base : 0x00000000
+Dec 30 14:17:41 rollin kernel: [ 3374.404043] FWMSG:                   size : 8388608 [0x00800000] [8.0 MB]
+Dec 30 14:17:41 rollin kernel: [ 3374.404060] FWMSG:   Extra heap :    base : 0x2080b000 [phy = 0x0080b000]
+Dec 30 14:17:41 rollin kernel: [ 3374.404098] FWMSG:                   size : 3145728 [0x00300000] [3.0 MB]
+Dec 30 14:17:41 rollin kernel: [ 3374.404115] FWMSG:   Shared window : base : 0x00800000 [static wiring]
+Dec 30 14:17:41 rollin kernel: [ 3374.404193] FWMSG:                   size : 125829120 [0x07800000] [120.0 MB]
+Dec 30 14:17:41 rollin kernel: [ 3374.404208] FWMSG:   Shared memory : base : 0x00800000
+Dec 30 14:17:41 rollin kernel: [ 3374.404268] FWMSG:                   size : 260046848 [0x0f800000] [248.0 MB]
+Dec 30 14:17:41 rollin kernel: [ 3374.404341] FWMSG:   TEXT : 1421992 [0x15b2a8] - text 667256, cstring  38749, const 715528
+Dec 30 14:17:41 rollin kernel: [ 3374.404362] FWMSG:   DATA : 8076 [0x1f8c] - data 0, bss 460, common 1452, noinit 6144
+Dec 30 14:17:41 rollin kernel: [ 3374.404427] FWMSG:   Heap free space : 10002626 [0x0098a0c2]
+Dec 30 14:17:41 rollin kernel: [ 3374.404443] FWMSG:   Heap allocated space : 94656 [0x000171c0]
+Dec 30 14:17:41 rollin kernel: [ 3374.404462] FWMSG:   Disclaimer : Copyright (c) APPLE Inc. All Rights Reserved.
+Dec 30 14:17:41 rollin kernel: [ 3374.404476] FWMSG:   Application : adc [release]
+Dec 30 14:17:41 rollin kernel: [ 3374.404519] FWMSG:   Linked on : Jul 25 2015 - 08:48:55
+Dec 30 14:17:41 rollin kernel: [ 3374.404533] FWMSG:   Release : S2ISP-01.43.00
+Dec 30 14:17:41 rollin kernel: [ 3374.404545] FWMSG:   H4ISPAPPLE : 11536
+Dec 30 14:17:41 rollin kernel: [ 3374.404558] FWMSG:   H4ISPCD : 4081
+Dec 30 14:17:41 rollin kernel: [ 3374.404593] FWMSG:   ffw : 4143
+Dec 30 14:17:41 rollin kernel: [ 3374.404648] FWMSG:   Tool-chain : iPhone OS - 7.0.3 [clang/clang++]
+Dec 30 14:17:41 rollin kernel: [ 3374.404658] FWMSG: 
+Dec 30 14:17:41 rollin kernel: [ 3374.404679] FWMSG: -------------------------------------------------------------------------------
+Dec 30 14:17:41 rollin kernel: [ 3374.404689] FWMSG: 
+Dec 30 14:17:41 rollin kernel: [ 3374.495775] FWMSG: [ISP] CMD = 0x0004 [CISP_CMD_PRINT_ENABLE]
+Dec 30 14:17:41 rollin kernel: [ 3374.495994] FWMSG: [ISP] CMD = 0x0003 [CISP_CMD_CONFIG_GET]
+Dec 30 14:17:41 rollin kernel: [ 3374.496268] FWMSG: [ISP] CH = 0 CMD = 0x010d [CISP_CMD_CH_INFO_GET]
+Dec 30 14:17:41 rollin kernel: [ 3374.496527] facetimehd 0000:02:00.0: Direct firmware load for facetimehd/1871_01XX.dat failed with error -2
+Dec 30 14:17:41 rollin kernel: [ 3374.497177] OOM killer enabled.
+Dec 30 14:17:41 rollin kernel: [ 3374.497178] Restarting tasks ... done.
+Dec 30 14:17:41 rollin systemd-sleep[5210]: System resumed.
+Dec 30 14:17:41 rollin kernel: [ 3374.624342] PM: suspend exit
+Dec 30 14:17:41 rollin kernel: [ 3374.635087] PM: Starting manual resume from disk
+Dec 30 14:17:41 rollin kernel: [ 3374.635299] PM: Image not found (code -22)
+Dec 30 14:17:41 rollin systemd-sleep[5210]: /lib/systemd/system-sleep/displaylink.sh: line 7: /tmp/PmMessagesPort_out: No such file or directory
+Dec 30 14:17:41 rollin systemd-sleep[5210]: Suspending system...
+Dec 30 14:17:41 rollin kernel: [ 3374.639064] PM: hibernation entry
+Dec 30 14:17:41 rollin kernel: [ 3374.639240] PM: Syncing filesystems ... 
+Dec 30 14:18:17 rollin kernel: [ 3374.707585] PM: done.
+Dec 30 14:18:17 rollin kernel: [ 3374.707587] Freezing user space processes ... (elapsed 0.001 seconds) done.
+Dec 30 14:18:17 rollin kernel: [ 3374.709552] OOM killer disabled.
+Dec 30 14:18:17 rollin kernel: [ 3374.709622] PM: Marking nosave pages: [mem 0x00000000-0x00000fff]
+Dec 30 14:18:17 rollin kernel: [ 3374.709624] PM: Marking nosave pages: [mem 0x00058000-0x00058fff]
+Dec 30 14:18:17 rollin kernel: [ 3374.709625] PM: Marking nosave pages: [mem 0x000a0000-0x000fffff]
+Dec 30 14:18:17 rollin kernel: [ 3374.709628] PM: Marking nosave pages: [mem 0x8ad01000-0x8ad48fff]
+Dec 30 14:18:17 rollin kernel: [ 3374.709631] PM: Marking nosave pages: [mem 0x8ad61000-0x8ad8efff]
+Dec 30 14:18:17 rollin kernel: [ 3374.709633] PM: Marking nosave pages: [mem 0x8ae3a000-0x8ae8efff]
+Dec 30 14:18:17 rollin kernel: [ 3374.709636] PM: Marking nosave pages: [mem 0x8aecc000-0x8aefefff]
+Dec 30 14:18:17 rollin kernel: [ 3374.709638] PM: Marking nosave pages: [mem 0x8afaa000-0x8afdefff]
+Dec 30 14:18:17 rollin kernel: [ 3374.709641] PM: Marking nosave pages: [mem 0x8b000000-0xffffffff]
+Dec 30 14:18:17 rollin kernel: [ 3374.711266] PM: Basic memory bitmaps created
+Dec 30 14:18:17 rollin kernel: [ 3374.711326] PM: Preallocating image memory... done (allocated 396145 pages)
+Dec 30 14:18:17 rollin kernel: [ 3378.070576] PM: Allocated 1584580 kbytes in 3.35 seconds (473.00 MB/s)
+Dec 30 14:18:17 rollin kernel: [ 3378.070577] Freezing remaining freezable tasks ... (elapsed 0.045 seconds) done.
+Dec 30 14:18:17 rollin kernel: [ 3378.116729] Suspending console(s) (use no_console_suspend to debug)
+Dec 30 14:18:17 rollin kernel: [ 3378.119364] FWMSG: [ISP] CMD = 0x0001 [CISP_CMD_STOP]
+Dec 30 14:18:17 rollin kernel: [ 3378.130371] facetimehd 0000:02:00.0: fthd_hw_deinit
+Dec 30 14:18:17 rollin kernel: [ 3378.592712] thunderbolt 0000:07:00.0: suspending...
+Dec 30 14:18:17 rollin kernel: [ 3378.592873] ACPI: EC: interrupt blocked
+Dec 30 14:18:17 rollin kernel: [ 3378.593752] thunderbolt 0000:07:00.0: suspend finished
+Dec 30 14:18:17 rollin kernel: [ 3378.593759] thunderbolt 0000:07:00.0: stopping RX ring 0
+Dec 30 14:18:17 rollin kernel: [ 3378.593773] thunderbolt 0000:07:00.0: disabling interrupt at register 0x38200 bit 12 (0x1001 -> 0x1)
+Dec 30 14:18:17 rollin kernel: [ 3378.593796] thunderbolt 0000:07:00.0: stopping TX ring 0
+Dec 30 14:18:17 rollin kernel: [ 3378.593807] thunderbolt 0000:07:00.0: disabling interrupt at register 0x38200 bit 0 (0x1 -> 0x0)
+Dec 30 14:18:17 rollin kernel: [ 3378.593830] thunderbolt 0000:07:00.0: control channel stopped
+Dec 30 14:18:17 rollin kernel: [ 3378.594896] ACPI: Preparing to enter system sleep state S4
+Dec 30 14:18:17 rollin kernel: [ 3378.704050] ACPI: EC: event blocked
+Dec 30 14:18:17 rollin kernel: [ 3378.704051] ACPI: EC: EC stopped
+Dec 30 14:18:17 rollin kernel: [ 3378.704053] PM: Saving platform NVS memory
+Dec 30 14:18:17 rollin kernel: [ 3378.704496] Disabling non-boot CPUs ...
+Dec 30 14:18:17 rollin kernel: [ 3378.722136] smpboot: CPU 1 is now offline
+Dec 30 14:18:17 rollin kernel: [ 3378.745337] smpboot: CPU 2 is now offline
+Dec 30 14:18:17 rollin kernel: [ 3378.769290] smpboot: CPU 3 is now offline
+Dec 30 14:18:17 rollin kernel: [ 3378.769844] PM: Creating hibernation image:
+Dec 30 14:18:17 rollin kernel: [ 3378.954348] PM: Need to copy 373675 pages
+Dec 30 14:18:17 rollin kernel: [ 3378.954354] PM: Normal pages needed: 373675 + 1024, available pages: 649802
+Dec 30 14:18:17 rollin kernel: [ 3378.770583] PM: Restoring platform NVS memory
+Dec 30 14:18:17 rollin kernel: [ 3378.770625] ACPI: EC: EC started
+Dec 30 14:18:17 rollin kernel: [ 3378.770983] Enabling non-boot CPUs ...
+Dec 30 14:18:17 rollin kernel: [ 3378.771023] x86: Booting SMP configuration:
+Dec 30 14:18:17 rollin kernel: [ 3378.771024] smpboot: Booting Node 0 Processor 1 APIC 0x2
+Dec 30 14:18:17 rollin kernel: [ 3378.771621]  cache: parent cpu1 should not be sleeping
+Dec 30 14:18:17 rollin kernel: [ 3378.771809] CPU1 is up
+Dec 30 14:18:17 rollin kernel: [ 3378.771837] smpboot: Booting Node 0 Processor 2 APIC 0x1
+Dec 30 14:18:17 rollin kernel: [ 3378.772349]  cache: parent cpu2 should not be sleeping
+Dec 30 14:18:17 rollin kernel: [ 3378.772551] CPU2 is up
+Dec 30 14:18:17 rollin kernel: [ 3378.772585] smpboot: Booting Node 0 Processor 3 APIC 0x3
+Dec 30 14:18:17 rollin kernel: [ 3378.773168]  cache: parent cpu3 should not be sleeping
+Dec 30 14:18:17 rollin kernel: [ 3378.773372] CPU3 is up
+Dec 30 14:18:17 rollin kernel: [ 3378.777160] ACPI: Waking up from system sleep state S4
+Dec 30 14:18:17 rollin kernel: [ 3378.779370] ACPI: EC: interrupt unblocked
+Dec 30 14:18:17 rollin kernel: [ 3378.780404] pcieport 0000:06:04.0: quirk: waiting for thunderbolt to reestablish PCI tunnels...
+Dec 30 14:18:17 rollin kernel: [ 3378.780405] pcieport 0000:06:03.0: quirk: waiting for thunderbolt to reestablish PCI tunnels...
+Dec 30 14:18:17 rollin kernel: [ 3378.780661] thunderbolt 0000:07:00.0: control channel starting...
+Dec 30 14:18:17 rollin kernel: [ 3378.780664] thunderbolt 0000:07:00.0: starting TX ring 0
+Dec 30 14:18:17 rollin kernel: [ 3378.780675] thunderbolt 0000:07:00.0: enabling interrupt at register 0x38200 bit 0 (0x0 -> 0x1)
+Dec 30 14:18:17 rollin kernel: [ 3378.780677] thunderbolt 0000:07:00.0: starting RX ring 0
+Dec 30 14:18:17 rollin kernel: [ 3378.780687] thunderbolt 0000:07:00.0: enabling interrupt at register 0x38200 bit 12 (0x1 -> 0x1001)
+Dec 30 14:18:17 rollin kernel: [ 3378.780691] thunderbolt 0000:07:00.0: resuming...
+Dec 30 14:18:17 rollin kernel: [ 3378.780693] thunderbolt 0000:07:00.0: resetting switch at 0
+Dec 30 14:18:17 rollin kernel: [ 3378.780696] pcieport 0000:06:06.0: quirk: waiting for thunderbolt to reestablish PCI tunnels...
+Dec 30 14:18:17 rollin kernel: [ 3378.780699] pcieport 0000:06:05.0: quirk: waiting for thunderbolt to reestablish PCI tunnels...
+Dec 30 14:18:17 rollin kernel: [ 3378.781448] thunderbolt 0000:07:00.0: 0: resuming switch
+Dec 30 14:18:17 rollin kernel: [ 3378.813622] thunderbolt 0000:07:00.0: resume finished
+Dec 30 14:18:17 rollin kernel: [ 3378.869670] usb usb1: root hub lost power or was reset
+Dec 30 14:18:17 rollin kernel: [ 3378.869672] usb usb2: root hub lost power or was reset
+Dec 30 14:18:17 rollin kernel: [ 3378.869721] ACPI: EC: event unblocked
+Dec 30 14:18:17 rollin kernel: [ 3378.869929] facetimehd 0000:02:00.0: Found FaceTime HD camera with device id: 1570
+Dec 30 14:18:17 rollin kernel: [ 3378.870080] facetimehd 0000:02:00.0: Setting 64bit DMA mask
+Dec 30 14:18:17 rollin kernel: [ 3378.875740] facetimehd 0000:02:00.0: S2 PCIe link init succeeded
+Dec 30 14:18:17 rollin kernel: [ 3378.875771] facetimehd 0000:02:00.0: Refclk: 25MHz (0xa)
+Dec 30 14:18:17 rollin kernel: [ 3378.885716] facetimehd 0000:02:00.0: PLL reset finished
+Dec 30 14:18:17 rollin kernel: [ 3378.885718] facetimehd 0000:02:00.0: Waiting for S2 PLL to lock at 450 MHz
+Dec 30 14:18:17 rollin kernel: [ 3378.885730] facetimehd 0000:02:00.0: S2 PLL is locked after 10 us
+Dec 30 14:18:17 rollin kernel: [ 3378.895691] facetimehd 0000:02:00.0: S2 PLL is in bypass mode
+Dec 30 14:18:17 rollin kernel: [ 3378.915666] facetimehd 0000:02:00.0: DDR40 PHY PLL locked on safe settings
+Dec 30 14:18:17 rollin kernel: [ 3378.915699] facetimehd 0000:02:00.0: STRAP valid
+Dec 30 14:18:17 rollin kernel: [ 3378.915700] facetimehd 0000:02:00.0: Configuring DDR PLLs for 450 MHz
+Dec 30 14:18:17 rollin kernel: [ 3378.915716] facetimehd 0000:02:00.0: DDR40 PLL is locked after 0 us
+Dec 30 14:18:17 rollin kernel: [ 3378.915727] facetimehd 0000:02:00.0: First DDR40 VDL calibration completed after 0 us
+Dec 30 14:18:17 rollin kernel: [ 3378.915744] facetimehd 0000:02:00.0: Second DDR40 VDL calibration completed after 0 us
+Dec 30 14:18:17 rollin kernel: [ 3378.915745] facetimehd 0000:02:00.0: Using step size 155
+Dec 30 14:18:17 rollin kernel: [ 3378.915756] facetimehd 0000:02:00.0: VDL set to: coarse=0x10008, fine=0x1011c
+Dec 30 14:18:17 rollin kernel: [ 3378.915770] facetimehd 0000:02:00.0: Virtual VTT enabled
+Dec 30 14:18:17 rollin kernel: [ 3378.923504] thunderbolt 0000:07:00.0: resetting error on 0:b.
+Dec 30 14:18:17 rollin kernel: [ 3378.923512] thunderbolt 0000:07:00.0: 0:b: hotplug: scanning
+Dec 30 14:18:17 rollin kernel: [ 3378.923514] thunderbolt 0000:07:00.0: 0:b: hotplug: no switch found
+Dec 30 14:18:17 rollin kernel: [ 3378.923516] thunderbolt 0000:07:00.0: resetting error on 0:c.
+Dec 30 14:18:17 rollin kernel: [ 3378.923521] thunderbolt 0000:07:00.0: 0:c: hotplug: scanning
+Dec 30 14:18:17 rollin kernel: [ 3378.923523] thunderbolt 0000:07:00.0: 0:c: hotplug: no switch found
+Dec 30 14:18:17 rollin kernel: [ 3378.936183] facetimehd 0000:02:00.0: S2 DRAM memory address: 0x22159559
+Dec 30 14:18:17 rollin kernel: [ 3378.936197] facetimehd 0000:02:00.0: Rewrite DDR mode registers succeeded
+Dec 30 14:18:17 rollin kernel: [ 3378.936393] facetimehd 0000:02:00.0: Full memory verification succeeded! (0)
+Dec 30 14:18:17 rollin kernel: [ 3378.936929] nvme nvme0: detected Apple NVMe controller, set queue depth=2 to work around controller resets
+Dec 30 14:18:17 rollin kernel: [ 3378.938003] blk_queue_max_hw_sectors: set to minimum 8
+Dec 30 14:18:17 rollin kernel: [ 3379.225131] usb 1-3: reset full-speed USB device number 2 using xhci_hcd
+Dec 30 14:18:17 rollin kernel: [ 3379.395437] facetimehd 0000:02:00.0: Loaded firmware, size: 1392kb
+Dec 30 14:18:17 rollin kernel: [ 3379.501107] usb 1-5: reset full-speed USB device number 3 using xhci_hcd
+Dec 30 14:18:17 rollin kernel: [ 3379.552863] facetimehd 0000:02:00.0: ISP woke up after 0ms
+Dec 30 14:18:17 rollin kernel: [ 3379.552869] facetimehd 0000:02:00.0: Number of IPC channels: 7, queue size: 44865
+Dec 30 14:18:17 rollin kernel: [ 3379.552871] facetimehd 0000:02:00.0: Firmware requested heap size: 3072kb
+Dec 30 14:18:17 rollin kernel: [ 3379.562821] facetimehd 0000:02:00.0: ISP second int after 0ms
+Dec 30 14:18:17 rollin kernel: [ 3379.562824] facetimehd 0000:02:00.0: Channel description table at 00800000
+Dec 30 14:18:17 rollin kernel: [ 3379.572926] facetimehd 0000:02:00.0: magic value: 00000000 after 0 ms
+Dec 30 14:18:17 rollin kernel: [ 3379.572927] facetimehd 0000:02:00.0: Enabling interrupts
+Dec 30 14:18:17 rollin kernel: [ 3379.573122] FWMSG: 
+Dec 30 14:18:17 rollin kernel: [ 3379.573143] FWMSG: - APOLLO-ISP-APPLE ------------------------------------------------------------
+Dec 30 14:18:17 rollin kernel: [ 3379.573152] FWMSG: 
+Dec 30 14:18:17 rollin kernel: [ 3379.573164] FWMSG:   Restart count : 0
+Dec 30 14:18:17 rollin kernel: [ 3379.573184] FWMSG:   Platform : mode = TARGET, ID = 0x00000000, HW = 00020018.00000000
+Dec 30 14:18:17 rollin kernel: [ 3379.573293] FWMSG:   System Clock : 200000000 Hz
+Dec 30 14:18:17 rollin kernel: [ 3379.573307] FWMSG:   Processor mode : SUPERVISOR
+Dec 30 14:18:17 rollin kernel: [ 3379.573321] FWMSG:   Cache architecture type : SEPARATE
+Dec 30 14:18:17 rollin kernel: [ 3379.573334] FWMSG:   Cache type : WRITEBACK
+Dec 30 14:18:17 rollin kernel: [ 3379.573347] FWMSG:   Data Cache Line : 32 [0x20]
+Dec 30 14:18:17 rollin kernel: [ 3379.573360] FWMSG:   Boot arguments entries : 2
+Dec 30 14:18:17 rollin kernel: [ 3379.573373] FWMSG:     0000: 0x00000000 0x00000000
+Dec 30 14:18:17 rollin kernel: [ 3379.573416] FWMSG:   Physical memory base : 0x00000000 [TLB base 0x00160000]
+Dec 30 14:18:17 rollin kernel: [ 3379.573430] FWMSG:   Main memory :   base : 0x00000000
+Dec 30 14:18:17 rollin kernel: [ 3379.573537] FWMSG:                   size : 8388608 [0x00800000] [8.0 MB]
+Dec 30 14:18:17 rollin kernel: [ 3379.573554] FWMSG:   Extra heap :    base : 0x2080b000 [phy = 0x0080b000]
+Dec 30 14:18:17 rollin kernel: [ 3379.573571] FWMSG:                   size : 3145728 [0x00300000] [3.0 MB]
+Dec 30 14:18:17 rollin kernel: [ 3379.573587] FWMSG:   Shared window : base : 0x00800000 [static wiring]
+Dec 30 14:18:17 rollin kernel: [ 3379.573630] FWMSG:                   size : 125829120 [0x07800000] [120.0 MB]
+Dec 30 14:18:17 rollin kernel: [ 3379.573644] FWMSG:   Shared memory : base : 0x00800000
+Dec 30 14:18:17 rollin kernel: [ 3379.573719] FWMSG:                   size : 260046848 [0x0f800000] [248.0 MB]
+Dec 30 14:18:17 rollin kernel: [ 3379.573792] FWMSG:   TEXT : 1421992 [0x15b2a8] - text 667256, cstring  38749, const 715528
+Dec 30 14:18:17 rollin kernel: [ 3379.573830] FWMSG:   DATA : 8076 [0x1f8c] - data 0, bss 460, common 1452, noinit 6144
+Dec 30 14:18:17 rollin kernel: [ 3379.573866] FWMSG:   Heap free space : 10002626 [0x0098a0c2]
+Dec 30 14:18:17 rollin kernel: [ 3379.573900] FWMSG:   Heap allocated space : 94656 [0x000171c0]
+Dec 30 14:18:17 rollin kernel: [ 3379.573918] FWMSG:   Disclaimer : Copyright (c) APPLE Inc. All Rights Reserved.
+Dec 30 14:18:17 rollin kernel: [ 3379.573931] FWMSG:   Application : adc [release]
+Dec 30 14:18:17 rollin kernel: [ 3379.573987] FWMSG:   Linked on : Jul 25 2015 - 08:48:55
+Dec 30 14:18:17 rollin kernel: [ 3379.574000] FWMSG:   Release : S2ISP-01.43.00
+Dec 30 14:18:17 rollin kernel: [ 3379.574012] FWMSG:   H4ISPAPPLE : 11536
+Dec 30 14:18:17 rollin kernel: [ 3379.574024] FWMSG:   H4ISPCD : 4081
+Dec 30 14:18:17 rollin kernel: [ 3379.574034] FWMSG:   ffw : 4143
+Dec 30 14:18:17 rollin kernel: [ 3379.574077] FWMSG:   Tool-chain : iPhone OS - 7.0.3 [clang/clang++]
+Dec 30 14:18:17 rollin kernel: [ 3379.574086] FWMSG: 
+Dec 30 14:18:17 rollin kernel: [ 3379.574149] FWMSG: -------------------------------------------------------------------------------
+Dec 30 14:18:17 rollin kernel: [ 3379.574159] FWMSG: 
+Dec 30 14:18:17 rollin kernel: [ 3379.647405] FWMSG: [ISP] CMD = 0x0004 [CISP_CMD_PRINT_ENABLE]
+Dec 30 14:18:17 rollin kernel: [ 3379.647628] FWMSG: [ISP] CMD = 0x0003 [CISP_CMD_CONFIG_GET]
+Dec 30 14:18:17 rollin kernel: [ 3379.647909] FWMSG: [ISP] CH = 0 CMD = 0x010d [CISP_CMD_CH_INFO_GET]
+Dec 30 14:18:17 rollin kernel: [ 3379.650507] facetimehd 0000:02:00.0: Direct firmware load for facetimehd/1871_01XX.dat failed with error -2
+Dec 30 14:18:17 rollin kernel: [ 3379.729117] usb 1-3.3: reset full-speed USB device number 6 using xhci_hcd
+Dec 30 14:18:17 rollin kernel: [ 3379.939195] PM: Basic memory bitmaps freed
+Dec 30 14:18:17 rollin kernel: [ 3379.939198] OOM killer enabled.
+Dec 30 14:18:17 rollin kernel: [ 3379.939199] Restarting tasks ... done.
+Dec 30 14:18:17 rollin kernel: [ 3379.941195] input: bcm5974 as /devices/pci0000:00/0000:00:14.0/usb1/1-5/1-5:1.2/input/input18
+Dec 30 14:18:17 rollin kernel: [ 3380.005610] PM: hibernation exit
+Dec 30 14:18:17 rollin kernel: [ 3380.049377] Bluetooth: hci0: BCM: chip id 73 build 0768
+Dec 30 14:18:17 rollin kernel: [ 3380.050371] Bluetooth: hci0: BCM: product 05ac:828f
+Dec 30 14:18:17 rollin kernel: [ 3380.051371] Bluetooth: hci0: BCM: features 0x07
+Dec 30 14:18:17 rollin kernel: [ 3380.067378] Bluetooth: hci0: rollin
+Dec 30 14:18:18 rollin kernel: [ 3381.692857] IPv6: ADDRCONF(NETDEV_UP): wlp3s0: link is not ready
+Dec 30 14:18:19 rollin kernel: [ 3382.807119] IPv6: ADDRCONF(NETDEV_UP): wlp3s0: link is not ready
+Dec 30 14:18:21 rollin systemd-sleep[5210]: System resumed.
+Dec 30 14:18:21 rollin rtkit-daemon[1167]: The canary thread is apparently starving. Taking action.
+Dec 30 14:18:21 rollin systemd[1]: bluetooth.target: Unit not needed anymore. Stopping.
+Dec 30 14:18:21 rollin rtkit-daemon[1167]: Demoting known real-time threads.
+Dec 30 14:18:21 rollin systemd[1]: Stopped target Bluetooth.
+Dec 30 14:18:21 rollin rtkit-daemon[1167]: Successfully demoted thread 1184 of process 1166 (n/a).
+Dec 30 14:18:21 rollin systemd[1]: Starting Load/Save RF Kill Switch Status...
+Dec 30 14:18:21 rollin rtkit-daemon[1167]: Successfully demoted thread 1183 of process 1166 (n/a).
+Dec 30 14:18:21 rollin upowerd[3712]: unhandled action 'unbind' on /sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3.3/1-3.3:1.2
+Dec 30 14:18:21 rollin rtkit-daemon[1167]: Successfully demoted thread 1166 of process 1166 (n/a).
+Dec 30 14:18:21 rollin upowerd[3712]: unhandled action 'unbind' on /sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3.3/1-3.3:1.1
+Dec 30 14:18:21 rollin rtkit-daemon[1167]: Demoted 3 threads.
+Dec 30 14:18:21 rollin upowerd[3712]: unhandled action 'unbind' on /sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3.3/1-3.3:1.0
+Dec 30 14:18:21 rollin bluetoothd[660]: Endpoint unregistered: sender=:1.41 path=/MediaEndpoint/A2DPSource
+Dec 30 14:18:21 rollin upowerd[3712]: unhandled action 'unbind' on /sys/devices/pci0000:00/0000:00:14.0/usb1/1-5/1-5:1.2
+Dec 30 14:18:21 rollin bluetoothd[660]: Endpoint unregistered: sender=:1.41 path=/MediaEndpoint/A2DPSink
+Dec 30 14:18:21 rollin upowerd[3712]: unhandled action 'bind' on /sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3.3/1-3.3:1.1
+Dec 30 14:18:21 rollin upowerd[3712]: unhandled action 'bind' on /sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3.3/1-3.3:1.0
+Dec 30 14:18:21 rollin upowerd[3712]: unhandled action 'bind' on /sys/devices/pci0000:00/0000:00:14.0/usb1/1-3/1-3.3/1-3.3:1.2
+Dec 30 14:18:21 rollin NetworkManager[669]: <info>  [1546175898.0561] bluez5: NAP: removed interface E0:AC:CB:90:1F:4D
+Dec 30 14:18:21 rollin NetworkManager[669]: <info>  [1546175898.2527] bluez5: NAP: added interface E0:AC:CB:90:1F:4D
+Dec 30 14:18:21 rollin bluetoothd[660]: Endpoint registered: sender=:1.41 path=/MediaEndpoint/A2DPSource
+Dec 30 14:18:21 rollin upowerd[3712]: unhandled action 'bind' on /sys/devices/pci0000:00/0000:00:14.0/usb1/1-5/1-5:1.2
+Dec 30 14:18:21 rollin bluetoothd[660]: Endpoint registered: sender=:1.41 path=/MediaEndpoint/A2DPSink
+Dec 30 14:18:21 rollin systemd[1]: Started Suspend; Idle into hibernate.
+Dec 30 14:18:21 rollin wpa_supplicant[655]: dbus: fill_dict_with_properties dbus_interface=fi.w1.wpa_supplicant1.Interface dbus_property=Stations getter failed
+Dec 30 14:18:21 rollin systemd[1]: sleep.target: Unit not needed anymore. Stopping.
+Dec 30 14:18:21 rollin wpa_supplicant[655]: dbus: wpa_dbus_get_object_properties: failed to get object properties: (none) none
+Dec 30 14:18:21 rollin systemd[1]: Stopped target Sleep.
+Dec 30 14:18:21 rollin wpa_supplicant[655]: dbus: Failed to construct signal
+Dec 30 14:18:21 rollin systemd[1]: Reached target Suspend; Idle into hibernate.
+Dec 30 14:18:21 rollin wpa_supplicant[655]: dbus: fill_dict_with_properties dbus_interface=fi.w1.wpa_supplicant1.Interface dbus_property=Stations getter failed
+Dec 30 14:18:21 rollin systemd[1]: suspend-then-hibernate.target: Unit not needed anymore. Stopping.
+Dec 30 14:18:21 rollin ModemManager[663]: <info>  Couldn't check support for device at '/sys/devices/pci0000:00/0000:00:1c.2/0000:03:00.0': not supported by any plugin
+Dec 30 14:18:21 rollin systemd[1]: Stopped target Suspend; Idle into hibernate.
+Dec 30 14:18:21 rollin NetworkManager[669]: <info>  [1546175898.7195] manager: sleep: wake requested (sleeping: yes  enabled: yes)
+Dec 30 14:18:21 rollin systemd-rfkill[5335]: Failed to open device rfkill4: No such device
+Dec 30 14:18:21 rollin systemd[1]: Started Load/Save RF Kill Switch Status.
+Dec 30 14:18:21 rollin NetworkManager[669]: <info>  [1546175898.8564] device (wlp3s0): state change: unmanaged -> unavailable (reason 'managed', sys-iface-state: 'managed')
+Dec 30 14:18:21 rollin NetworkManager[669]: <info>  [1546175899.0165] manager: NetworkManager state is now DISCONNECTED
+Dec 30 14:18:21 rollin NetworkManager[669]: <info>  [1546175899.9706] device (wlp3s0): supplicant interface state: starting -> ready
+Dec 30 14:18:21 rollin NetworkManager[669]: <info>  [1546175899.9707] device (wlp3s0): state change: unavailable -> disconnected (reason 'supplicant-available', sys-iface-state: 'managed')
+Dec 30 14:18:23 rollin systemd[1]: Created slice User Slice of lightdm.
+Dec 30 14:18:23 rollin systemd[1]: Starting User Manager for UID 110...
+Dec 30 14:18:23 rollin systemd[1]: Started Session c1 of user lightdm.
+Dec 30 14:18:23 rollin systemd[5364]: Reached target Paths.
+Dec 30 14:18:23 rollin systemd[5364]: Listening on GnuPG cryptographic agent and passphrase cache.
+Dec 30 14:18:23 rollin systemd[5364]: Reached target Timers.
+Dec 30 14:18:23 rollin systemd[5364]: Listening on GnuPG cryptographic agent (ssh-agent emulation).
+Dec 30 14:18:23 rollin systemd[5364]: Listening on GnuPG cryptographic agent and passphrase cache (access for web browsers).
+Dec 30 14:18:23 rollin systemd[5364]: Listening on GnuPG network certificate management daemon.
+Dec 30 14:18:23 rollin systemd[5364]: Listening on GnuPG cryptographic agent and passphrase cache (restricted).
+Dec 30 14:18:23 rollin systemd[5364]: Starting D-Bus User Message Bus Socket.
+Dec 30 14:18:23 rollin systemd[5364]: Listening on D-Bus User Message Bus Socket.
+Dec 30 14:18:23 rollin systemd[5364]: Reached target Sockets.
+Dec 30 14:18:23 rollin systemd[5364]: Reached target Basic System.
+Dec 30 14:18:23 rollin systemd[5364]: Reached target Default.
+Dec 30 14:18:23 rollin systemd[5364]: Startup finished in 122ms.
+Dec 30 14:18:23 rollin systemd[1]: Started User Manager for UID 110.
+Dec 30 14:18:23 rollin systemd[5364]: Started D-Bus User Message Bus.
+Dec 30 14:18:23 rollin dbus-daemon[5384]: [session uid=110 pid=5384] AppArmor D-Bus mediation is enabled
+Dec 30 14:18:23 rollin dbus-daemon[5384]: [session uid=110 pid=5384] Activating via systemd: service name='org.a11y.Bus' unit='at-spi-dbus-bus.service' requested by ':1.1' (uid=110 pid=5382 comm="/usr/sbin/lightdm-gtk-greeter " label="unconfined")
+Dec 30 14:18:23 rollin systemd[5364]: Starting Accessibility services bus...
+Dec 30 14:18:23 rollin dbus-daemon[5384]: [session uid=110 pid=5384] Successfully activated service 'org.a11y.Bus'
+Dec 30 14:18:23 rollin systemd[5364]: Started Accessibility services bus.
+Dec 30 14:18:23 rollin at-spi-bus-launcher[5385]: dbus-daemon[5391]: Activating service name='org.a11y.atspi.Registry' requested by ':1.0' (uid=110 pid=5382 comm="/usr/sbin/lightdm-gtk-greeter " label="unconfined")
+Dec 30 14:18:23 rollin at-spi-bus-launcher[5385]: dbus-daemon[5391]: Successfully activated service 'org.a11y.atspi.Registry'
+Dec 30 14:18:23 rollin at-spi-bus-launcher[5385]: SpiRegistry daemon is running with well-known name - org.a11y.atspi.Registry
+Dec 30 14:18:23 rollin dbus-daemon[5384]: [session uid=110 pid=5384] Activating via systemd: service name='org.gtk.vfs.Daemon' unit='gvfs-daemon.service' requested by ':1.5' (uid=110 pid=5382 comm="/usr/sbin/lightdm-gtk-greeter " label="unconfined")
+Dec 30 14:18:23 rollin systemd[5364]: Starting Virtual filesystem service...
+Dec 30 14:18:23 rollin dbus-daemon[5384]: [session uid=110 pid=5384] Successfully activated service 'org.gtk.vfs.Daemon'
+Dec 30 14:18:23 rollin systemd[5364]: Started Virtual filesystem service.
+Dec 30 14:18:23 rollin wpa_supplicant[655]: wlp3s0: CTRL-EVENT-REGDOM-CHANGE init=BEACON_HINT type=UNKNOWN
+Dec 30 14:18:23 rollin wpa_supplicant[655]: message repeated 3 times: [ wlp3s0: CTRL-EVENT-REGDOM-CHANGE init=BEACON_HINT type=UNKNOWN]
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7008] policy: auto-activating connection 'Linksys00816_5GHz'
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7020] device (wlp3s0): Activation: starting connection 'Linksys00816_5GHz' (542b2e42-bb3f-4d4b-9d1d-9e15a2660496)
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7023] device (wlp3s0): state change: disconnected -> prepare (reason 'none', sys-iface-state: 'managed')
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7025] manager: NetworkManager state is now CONNECTING
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7030] device (wlp3s0): state change: prepare -> config (reason 'none', sys-iface-state: 'managed')
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7033] device (wlp3s0): Activation: (wifi) access point 'Linksys00816_5GHz' has security, but secrets are required.
+Dec 30 14:18:23 rollin wpa_supplicant[655]: wlp3s0: Trying to associate with 58:ef:68:0e:f7:62 (SSID='Linksys00816_5GHz' freq=5220 MHz)
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7033] device (wlp3s0): state change: config -> need-auth (reason 'none', sys-iface-state: 'managed')
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7035] sup-iface[0x559c9c340cd0,wlp3s0]: wps: type pbc start...
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7082] device (wlp3s0): state change: need-auth -> prepare (reason 'none', sys-iface-state: 'managed')
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7087] device (wlp3s0): state change: prepare -> config (reason 'none', sys-iface-state: 'managed')
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7089] device (wlp3s0): Activation: (wifi) connection 'Linksys00816_5GHz' has security, and secrets exist.  No new secrets needed.
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7090] Config: added 'ssid' value 'Linksys00816_5GHz'
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7090] Config: added 'scan_ssid' value '1'
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7090] Config: added 'bgscan' value 'simple:30:-80:86400'
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7090] Config: added 'key_mgmt' value 'WPA-PSK'
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7090] Config: added 'auth_alg' value 'OPEN'
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7090] Config: added 'psk' value '<hidden>'
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.7253] device (wlp3s0): supplicant interface state: ready -> associating
+Dec 30 14:18:23 rollin wpa_supplicant[655]: wlp3s0: Associated with 58:ef:68:0e:f7:62
+Dec 30 14:18:23 rollin wpa_supplicant[655]: wlp3s0: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+Dec 30 14:18:23 rollin wpa_supplicant[655]: wlp3s0: WPA: Key negotiation completed with 58:ef:68:0e:f7:62 [PTK=CCMP GTK=CCMP]
+Dec 30 14:18:23 rollin wpa_supplicant[655]: wlp3s0: CTRL-EVENT-CONNECTED - Connection to 58:ef:68:0e:f7:62 completed [id=0 id_str=]
+Dec 30 14:18:23 rollin wpa_supplicant[655]: bgscan simple: Failed to enable signal strength monitoring
+Dec 30 14:18:23 rollin kernel: [ 3386.696430] IPv6: ADDRCONF(NETDEV_CHANGE): wlp3s0: link becomes ready
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.8695] device (wlp3s0): supplicant interface state: associating -> completed
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.8695] device (wlp3s0): Activation: (wifi) Stage 2 of 5 (Device Configure) successful.  Connected to wireless network 'Linksys00816_5GHz'.
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.8756] device (wlp3s0): state change: config -> ip-config (reason 'none', sys-iface-state: 'managed')
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.8798] dhcp4 (wlp3s0): activation: beginning transaction (timeout in 45 seconds)
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.8941] dhcp4 (wlp3s0): dhclient started with pid 5425
+Dec 30 14:18:23 rollin dhclient[5425]: DHCPREQUEST of 192.168.1.16 on wlp3s0 to 255.255.255.255 port 67 (xid=0x64b3fff7)
+Dec 30 14:18:23 rollin dhclient[5425]: DHCPACK of 192.168.1.16 from 192.168.1.1
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.9561] dhcp4 (wlp3s0):   address 192.168.1.16
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.9561] dhcp4 (wlp3s0):   plen 24 (255.255.255.0)
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.9562] dhcp4 (wlp3s0):   gateway 192.168.1.1
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.9562] dhcp4 (wlp3s0):   lease time 86400
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.9562] dhcp4 (wlp3s0):   hostname 'rollin'
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.9567] dhcp4 (wlp3s0):   nameserver '192.168.1.1'
+Dec 30 14:18:23 rollin NetworkManager[669]: <info>  [1546175903.9567] dhcp4 (wlp3s0): state changed unknown -> bound
+Dec 30 14:18:24 rollin NetworkManager[669]: <info>  [1546175903.9591] device (wlp3s0): state change: ip-config -> ip-check (reason 'none', sys-iface-state: 'managed')
+Dec 30 14:18:24 rollin avahi-daemon[678]: Joining mDNS multicast group on interface wlp3s0.IPv4 with address 192.168.1.16.
+Dec 30 14:18:24 rollin NetworkManager[669]: <info>  [1546175903.9614] device (wlp3s0): state change: ip-check -> secondaries (reason 'none', sys-iface-state: 'managed')
+Dec 30 14:18:24 rollin avahi-daemon[678]: New relevant interface wlp3s0.IPv4 for mDNS.
+Dec 30 14:18:24 rollin NetworkManager[669]: <info>  [1546175903.9620] device (wlp3s0): state change: secondaries -> activated (reason 'none', sys-iface-state: 'managed')
+Dec 30 14:18:24 rollin avahi-daemon[678]: Registering new address record for 192.168.1.16 on wlp3s0.IPv4.
+Dec 30 14:18:24 rollin NetworkManager[669]: <info>  [1546175903.9622] manager: NetworkManager state is now CONNECTED_LOCAL
+Dec 30 14:18:24 rollin dhclient[5425]: bound to 192.168.1.16 -- renewal in 32880 seconds.
+Dec 30 14:18:24 rollin NetworkManager[669]: <info>  [1546175904.0079] manager: NetworkManager state is now CONNECTED_SITE
+Dec 30 14:18:24 rollin dbus-daemon[638]: [system] Activating via systemd: service name='org.freedesktop.nm_dispatcher' unit='dbus-org.freedesktop.nm-dispatcher.service' requested by ':1.16' (uid=0 pid=669 comm="/usr/sbin/NetworkManager --no-daemon " label="unconfined")
+Dec 30 14:18:24 rollin NetworkManager[669]: <info>  [1546175904.0081] policy: set 'Linksys00816_5GHz' (wlp3s0) as default for IPv4 routing and DNS
+Dec 30 14:18:24 rollin NetworkManager[669]: <info>  [1546175904.0084] device (wlp3s0): Activation: successful, device activated.
+Dec 30 14:18:24 rollin NetworkManager[669]: <info>  [1546175904.0099] manager: NetworkManager state is now CONNECTED_GLOBAL
+Dec 30 14:18:24 rollin systemd[1]: Starting Network Manager Script Dispatcher Service...
+Dec 30 14:18:24 rollin dbus-daemon[638]: [system] Successfully activated service 'org.freedesktop.nm_dispatcher'
+Dec 30 14:18:24 rollin systemd[1]: Started Network Manager Script Dispatcher Service.
+Dec 30 14:18:24 rollin nm-dispatcher: req:1 'up' [wlp3s0]: new request (1 scripts)
+Dec 30 14:18:24 rollin nm-dispatcher: req:1 'up' [wlp3s0]: start running ordered scripts...
+Dec 30 14:18:24 rollin nm-dispatcher: req:2 'connectivity-change': new request (1 scripts)
+Dec 30 14:18:24 rollin systemd[1]: Reloading OpenBSD Secure Shell server.
+Dec 30 14:18:24 rollin systemd[1]: Reloaded OpenBSD Secure Shell server.
+Dec 30 14:18:24 rollin systemd[1]: Reloading OpenBSD Secure Shell server.
+Dec 30 14:18:24 rollin nm-dispatcher: req:2 'connectivity-change': start running ordered scripts...
+Dec 30 14:18:24 rollin systemd[1]: Reloaded OpenBSD Secure Shell server.
+Dec 30 14:18:25 rollin systemd-resolved[613]: Using degraded feature set (UDP) for DNS server 192.168.1.1.
+Dec 30 14:18:25 rollin avahi-daemon[678]: Joining mDNS multicast group on interface wlp3s0.IPv6 with address fe80::f7e1:ec2f:67b0:5704.
+Dec 30 14:18:25 rollin avahi-daemon[678]: New relevant interface wlp3s0.IPv6 for mDNS.
+Dec 30 14:18:25 rollin avahi-daemon[678]: Registering new address record for fe80::f7e1:ec2f:67b0:5704 on wlp3s0.*.
+Dec 30 14:18:25 rollin NetworkManager[669]: <info>  [1546175905.5551] dhcp6 (wlp3s0): activation: beginning transaction (timeout in 45 seconds)
+Dec 30 14:18:25 rollin NetworkManager[669]: <info>  [1546175905.5569] dhcp6 (wlp3s0): dhclient started with pid 5513
+Dec 30 14:18:25 rollin NetworkManager[669]: <info>  [1546175905.5588] policy: set 'Linksys00816_5GHz' (wlp3s0) as default for IPv6 routing and DNS
+Dec 30 14:18:26 rollin dhclient[5513]: XMT: Info-Request on wlp3s0, interval 1090ms.
+Dec 30 14:18:26 rollin dhclient[5513]: RCV: Reply message on wlp3s0 from fe80::5aef:68ff:fe0e:f760.
+Dec 30 14:18:26 rollin NetworkManager[669]: <info>  [1546175906.0335] dhcp6 (wlp3s0):   nameserver '2a02:a03f:5304:4a00:5aef:68ff:fe0e:f760'
+Dec 30 14:18:26 rollin NetworkManager[669]: <info>  [1546175906.0335] dhcp6 (wlp3s0): state changed unknown -> bound
+Dec 30 14:18:26 rollin NetworkManager[669]: <info>  [1546175906.0388] dhcp6 (wlp3s0): client pid 5513 exited with status 0
+Dec 30 14:18:26 rollin nm-dispatcher: req:3 'dhcp6-change' [wlp3s0]: new request (1 scripts)
+Dec 30 14:18:26 rollin NetworkManager[669]: <info>  [1546175906.0388] dhcp6 (wlp3s0): state changed bound -> done
+Dec 30 14:18:26 rollin nm-dispatcher: req:3 'dhcp6-change' [wlp3s0]: start running ordered scripts...
+Dec 30 14:18:26 rollin systemd[1]: session-c1.scope: Killing process 5358 (lightdm) with signal SIGTERM.
+Dec 30 14:18:26 rollin systemd[1]: session-c1.scope: Killing process 5378 (gnome-keyring-d) with signal SIGTERM.
+Dec 30 14:18:26 rollin systemd[1]: session-c1.scope: Killing process 5381 (lightdm-greeter) with signal SIGTERM.
+Dec 30 14:18:26 rollin systemd[1]: session-c1.scope: Killing process 5382 (lightdm-gtk-gre) with signal SIGTERM.
+Dec 30 14:18:26 rollin systemd[1]: Stopping Session c1 of user lightdm.
+Dec 30 14:18:26 rollin systemd[1]: Stopped Session c1 of user lightdm.
+Dec 30 14:18:26 rollin systemd[1]: Stopping User Manager for UID 110...
+Dec 30 14:18:26 rollin systemd[5364]: Stopped target Default.
+Dec 30 14:18:26 rollin systemd[5364]: Stopping D-Bus User Message Bus...
+Dec 30 14:18:26 rollin systemd[5364]: Stopping Virtual filesystem service...
+Dec 30 14:18:26 rollin systemd[5364]: Stopping Accessibility services bus...
+Dec 30 14:18:26 rollin systemd[5364]: Stopped D-Bus User Message Bus.
+Dec 30 14:18:26 rollin systemd[5364]: Stopped Accessibility services bus.
+Dec 30 14:18:26 rollin systemd[5364]: Stopped Virtual filesystem service.
+Dec 30 14:18:26 rollin systemd[5364]: Stopped target Basic System.
+Dec 30 14:18:26 rollin systemd[5364]: Stopped target Sockets.
+Dec 30 14:18:26 rollin systemd[5364]: Closed GnuPG network certificate management daemon.
+Dec 30 14:18:26 rollin systemd[5364]: Closed GnuPG cryptographic agent and passphrase cache (access for web browsers).
+Dec 30 14:18:26 rollin systemd[5364]: Closed GnuPG cryptographic agent (ssh-agent emulation).
+Dec 30 14:18:26 rollin systemd[5364]: Closed GnuPG cryptographic agent and passphrase cache (restricted).
+Dec 30 14:18:26 rollin systemd[5364]: Closed GnuPG cryptographic agent and passphrase cache.
+Dec 30 14:18:26 rollin systemd[5364]: Stopped target Paths.
+Dec 30 14:18:26 rollin systemd[5364]: Stopped target Timers.
+Dec 30 14:18:26 rollin systemd[5364]: Closed D-Bus User Message Bus Socket.
+Dec 30 14:18:26 rollin systemd[5364]: Reached target Shutdown.
+Dec 30 14:18:26 rollin systemd[5364]: Starting Exit the Session...
+Dec 30 14:18:26 rollin systemd[5364]: Received SIGRTMIN+24 from PID 5523 (kill).
+Dec 30 14:18:26 rollin systemd[1]: Stopped User Manager for UID 110.
+Dec 30 14:18:26 rollin systemd[1]: Removed slice User Slice of lightdm.
+Dec 30 14:18:26 rollin avahi-daemon[678]: Leaving mDNS multicast group on interface wlp3s0.IPv6 with address fe80::f7e1:ec2f:67b0:5704.
+Dec 30 14:18:26 rollin avahi-daemon[678]: Joining mDNS multicast group on interface wlp3s0.IPv6 with address 2a02:a03f:5304:4a00:7948:beb6:7078:7d9.
+Dec 30 14:18:26 rollin avahi-daemon[678]: Registering new address record for 2a02:a03f:5304:4a00:7948:beb6:7078:7d9 on wlp3s0.*.
+Dec 30 14:18:26 rollin avahi-daemon[678]: Withdrawing address record for fe80::f7e1:ec2f:67b0:5704 on wlp3s0.
+Dec 30 14:18:27 rollin avahi-daemon[678]: Registering new address record for 2a02:a03f:5304:4a00:e547:a46c:6a2:2326 on wlp3s0.*.
