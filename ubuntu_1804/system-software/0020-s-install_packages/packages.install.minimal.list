@@ -85,6 +85,7 @@ xsel xclip xdo xtitle
 wmctrl xdotool xautomation
 xserver-xephyr
 xfce4-settings
+libnotify-dev libnotify-doc #libnotify-bin should be installed from sources (fix on notification IDs)
 
 ##################################
 # Window manager & desktop tools
