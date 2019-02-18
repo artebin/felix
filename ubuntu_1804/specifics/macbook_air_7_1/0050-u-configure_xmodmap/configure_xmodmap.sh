@@ -18,10 +18,9 @@ configure_xmodmap(){
 	echo
 }
 
-BASEDIR="$(dirname ${BASH_SOURCE})"
 
 cd ${BASEDIR}
-configure_xmodmap 2>&1 | tee -a "$(retrieve_log_file_name ${BASH_SOURCE})"
+configure_xmodmap 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"

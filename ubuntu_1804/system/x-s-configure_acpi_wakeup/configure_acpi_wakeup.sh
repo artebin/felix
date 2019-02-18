@@ -2,6 +2,10 @@
 
 source ../../../felix.sh
 source ../../ubuntu_1804.conf
+
+BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
+
 is_bash
 exit_if_has_not_root_privileges
 
@@ -62,17 +66,17 @@ disable_all_acpi_wakeup_except_for_platform_subsystems(){
 	echo
 }
 
-BASEDIR="$(dirname ${BASH_SOURCE})"
+
 
 cd ${BASEDIR}
-extract_acpi_dsdt 2>&1 | tee -a "$(retrieve_log_file_name ${BASH_SOURCE})"
+extract_acpi_dsdt 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"
 fi
 
 cd ${BASEDIR}
-disable_all_acpi_wakeup_except_for_platform_subsystems 2>&1 | tee -a "$(retrieve_log_file_name ${BASH_SOURCE})"
+disable_all_acpi_wakeup_except_for_platform_subsystems 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"

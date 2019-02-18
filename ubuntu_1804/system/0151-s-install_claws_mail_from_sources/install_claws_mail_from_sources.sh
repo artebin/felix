@@ -3,7 +3,7 @@
 source ../../../felix.sh
 source ../../ubuntu_1804.conf
 
-BASEDIR="$(dirname ${BASH_SOURCE})"
+
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE})"
 
 is_bash
@@ -33,12 +33,12 @@ install_claws_mail_from_sources(){
 	cd "${BASEDIR}/${SOURCES_DIR}"
 	./configure
 	make
-	#~ make install
+	make install
 	
 	# Cleaning
-	#~ cd "${BASEDIR}"
-	#~ rm -fr "${SOURCES_DIR}"
-	#~ rm -fr "${SOURCES_PKG_FILE}"
+	cd "${BASEDIR}"
+	rm -fr "${SOURCES_DIR}"
+	rm -fr "${SOURCES_PKG_FILE}"
 	
 	echo
 }

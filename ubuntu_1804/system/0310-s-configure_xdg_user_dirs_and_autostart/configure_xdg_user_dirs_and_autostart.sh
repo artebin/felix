@@ -2,6 +2,10 @@
 
 source ../../../felix.sh
 source ../../ubuntu_1804.conf
+
+BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
+
 is_bash
 exit_if_has_not_root_privileges
 
@@ -80,24 +84,24 @@ disable_unwanted_xdg_autostart(){
 	echo
 }
 
-BASEDIR="$(dirname ${BASH_SOURCE})"
+
 
 cd ${BASEDIR}
-update_xdg_user_dirs_default 2>&1 | tee -a "$(retrieve_log_file_name ${BASH_SOURCE})"
+update_xdg_user_dirs_default 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"
 fi
 
 cd ${BASEDIR}
-list_xdg_autostart_desktop_files 2>&1 | tee -a "$(retrieve_log_file_name ${BASH_SOURCE})"
+list_xdg_autostart_desktop_files 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"
 fi
 
 cd ${BASEDIR}
-disable_unwanted_xdg_autostart 2>&1 | tee -a "$(retrieve_log_file_name ${BASH_SOURCE})"
+disable_unwanted_xdg_autostart 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"

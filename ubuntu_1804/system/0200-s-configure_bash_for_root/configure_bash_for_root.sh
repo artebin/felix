@@ -2,6 +2,10 @@
 
 source ../../../felix.sh
 source ../../ubuntu_1804.conf
+
+BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
+
 is_bash
 exit_if_has_not_root_privileges
 
@@ -15,10 +19,10 @@ configure_bash_for_root(){
 	echo
 }
 
-BASEDIR="$(dirname ${BASH_SOURCE})"
+
 
 cd ${BASEDIR}
-configure_bash_for_root 2>&1 | tee -a "$(retrieve_log_file_name ${BASH_SOURCE})"
+configure_bash_for_root 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"

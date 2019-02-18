@@ -2,6 +2,10 @@
 
 source ../../../felix.sh
 source ../../ubuntu_1804.conf
+
+BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
+
 is_bash
 exit_if_has_not_root_privileges
 
@@ -29,10 +33,10 @@ fix_tray_icon(){
 	cp app.asar /usr/share/skypeforlinux/resources/app.asar
 }
 
-BASEDIR="$(dirname ${BASH_SOURCE})"
+
 
 cd ${BASEDIR}
-install_skype 2>&1 | tee -a "$(retrieve_log_file_name ${BASH_SOURCE})"
+install_skype 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"

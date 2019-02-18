@@ -3,7 +3,7 @@
 source ../../../felix.sh
 source ../../ubuntu_1804.conf
 
-BASEDIR="$(dirname ${BASH_SOURCE})"
+
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE})"
 
 is_bash
