@@ -1,4 +1,5 @@
 # TODOS
+- [ ] github-clone should use https
 - [ ] Do not open SVG with gpic view because it is too slow, use inkscape instead.
 - [ ] systemd manager.
 - [ ] Special menu in rofi for the XF86S symbols.
