@@ -10,30 +10,42 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_pasystray(){
-	cd ${BASEDIR}
+	echo "Installing pasystray from sources ..."
 	
-	echo "Cloning pasystray from http://github.com/christophgysin/pasystray ..."
-	git clone http://github.com/christophgysin/pasystray
+	# Install dependencies
+	DEPENDENCIES=(  "libavahi-client-dev"
+					"libavahi-common-dev"
+					"libavahi-compat-libdnssd-dev"
+					"libavahi-core-dev"
+					"libavahi-glib-dev"
+					"libavahi-gobject-dev"
+					"libavahi-ui-gtk3-dev"
+					"libappindicator-dev"
+					"libappindicator3-dev" )
+	install_package_if_not_installed "${DEPENDENCIES[@]}"
 	
-	echo "Compiling pasystray ..."
+	# Clone git repository <https://github.com/christophgysin/pasystray>
+	cd "${BASEDIR}"
+	git clone https://github.com/christophgysin/pasystray
+	
+	# Compile and install
+	cd "${BASEDIR}"
 	cd pasystray
 	./bootstrap.sh
 	./configure
 	make
-	
-	echo "Installing pasystray ..."
 	make install
 	
 	# Cleanup
-	cd ${BASEDIR}
+	cd "${BASEDIR}"
 	rm -fr pasystray
+	
+	echo
 }
 
-
-
-cd ${BASEDIR}
+cd "${BASEDIR}"
 install_pasystray 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
