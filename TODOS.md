@@ -1,4 +1,5 @@
 # TODOS
+- [ ] pasystray shows duplicated notification. Maybe an answer in <https://github.com/christophgysin/pasystray/issues/75>
 - [ ] Missing polkit rules for cups see <https://wiki.archlinux.org/index.php/CUPS#Allowing_admin_authentication_through_PolicyKit>.
 - [ ] Cups server is not installed.
 - [ ] github-clone should use https
