@@ -436,7 +436,7 @@
 					<enabled>false</enabled>
 					<name>clipmenu</name>
 				</startupnotify>
-				<command>bash ~/.config/openbox/clipmenu_run.sh</command>
+				<command>bash ~/scripts/clipmenu_run.sh</command>
 			</action>
 		</keybind>
 		<keybind key="W-f">
@@ -619,7 +619,7 @@
 					<enabled>false</enabled>
 					<name>XF86PowerOff</name>
 				</startupnotify>
-				<command>python ~/.config/openbox/power_button_pressed.py</command>
+				<command>python ~/scripts/power_button_pressed.py</command>
 			</action>
 		</keybind>
 	</keyboard>

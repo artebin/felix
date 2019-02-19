@@ -75,7 +75,7 @@
 			<menu id="Tint2Config" label="tint2">
 				<item label="Edit config file"><action name="Execute"><command>geany_one_instance_per_workspace ~/.config/tint2/tint2rc</command></action></item>
 				<separator/>
-				<item label="Restart tint2"><action name="Execute"><command>bash ~/.config/openbox/tint2_restart.sh</command></action></item>
+				<item label="Restart tint2"><action name="Execute"><command>bash ~/scripts/tint2_restart.sh</command></action></item>
 			</menu>
 			<item label="User Interface Settings"><action name="Execute"><command>lxappearance</command></action></item>
 			<separator/>
@@ -99,8 +99,8 @@
 		<separator/>
 		<item label="Lock Session"><action name="Execute"><execute>dm-tool lock</execute></action></item>
 		<item label="Switch User"><action name="Execute"><execute>dm-tool switch-to-greeter</execute></action></item>
-		<item label="Suspend"><action name="Execute"><execute>sh ~/.config/openbox/dialog_command.sh "Suspend?" "xset dpms force off;systemctl suspend"</execute></action></item>
-		<item label="Hibernate"><action name="Execute"><execute>sh ~/.config/openbox/dialog_command.sh "Hibernate?" "xset dpms force off;systemctl hibernate"</execute></action></item>
-		<item label="Exit"><action name="Execute"><execute>python ~/.config/openbox/exit.py</execute></action></item>
+		<item label="Suspend"><action name="Execute"><execute>sh ~/scripts/dialog_command.sh "Suspend?" "xset dpms force off;systemctl suspend"</execute></action></item>
+		<item label="Hibernate"><action name="Execute"><execute>sh ~/scripts/dialog_command.sh "Hibernate?" "xset dpms force off;systemctl hibernate"</execute></action></item>
+		<item label="Exit"><action name="Execute"><execute>python ~/scripts/exit.py</execute></action></item>
 	</menu>
 </openbox_menu>

@@ -8,22 +8,20 @@ LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 
 exit_if_not_bash
 
-configure_sxhkd(){
-	echo "Configuring sxhkd ..."
-	
-	if [[ -d ~/.config/sxhkd ]]; then
-		backup_file rename ~/.config/sxhkd
-	fi
+install_user_scripts(){
+	echo "Install user scripts ..."
 	
 	cd "${BASEDIR}"
-	mkdir -p ~/.config/sxhkd
-	cp sxhkdrc ~/.config/sxhkd/sxhkdrc
+	if [[ -d ~/scripts ]]; then
+		backup_file rename ~/scripts
+	fi
+	cp scripts ~/scripts
 	
 	echo
 }
 
 cd "${BASEDIR}"
-configure_sxhkd 2>&1 | tee -a "${LOGFILE}"
+install_user_scripts 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"

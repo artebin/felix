@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 XPROP_KEY_VALUE_REGEX="([_A-Z]+) = (.+)"
 XPROP_CURRENT_DESKTOP=$(xprop -root -notype _NET_CURRENT_DESKTOP)
