@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Missing polkit rules for cups see <https://wiki.archlinux.org/index.php/CUPS#Allowing_admin_authentication_through_PolicyKit>.
+- [ ] Cups server is not installed.
 - [ ] github-clone should use https
 - [ ] Do not open SVG with gpic view because it is too slow, use inkscape instead.
 - [ ] systemd manager.
