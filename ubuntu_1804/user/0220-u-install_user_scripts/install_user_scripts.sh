@@ -15,7 +15,7 @@ install_user_scripts(){
 	if [[ -d ~/scripts ]]; then
 		backup_file rename ~/scripts
 	fi
-	cp scripts ~/scripts
+	cp -R scripts ~/scripts
 	
 	echo
 }
