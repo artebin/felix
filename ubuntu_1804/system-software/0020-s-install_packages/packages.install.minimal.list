@@ -153,6 +153,7 @@ wkhtmltopdf
 ############
 # Printing
 ############
+cups-common cups-browsed cups-server-common
 system-config-printer
 
 ###################
