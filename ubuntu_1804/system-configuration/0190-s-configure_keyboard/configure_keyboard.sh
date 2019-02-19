@@ -10,12 +10,10 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_keyboard(){
-	cd ${BASEDIR}
-	
 	echo "Configuring keyboard ..."
 	
-	if [ ! -f /etc/default/keyboard ]; then
-		echo "Can not find /etc/default/keyboard"
+	if [[ ! -f /etc/default/keyboard ]]; then
+		echo "Cannot find /etc/default/keyboard"
 		exit 1
 	fi
 	
@@ -36,9 +34,7 @@ configure_keyboard(){
 	echo
 }
 
-
-
-cd ${BASEDIR}
+cd "${BASEDIR}"
 configure_keyboard 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
