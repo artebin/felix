@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
 source "$(dirname ${BASH_SOURCE})/felix.sh"
+
+BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
+
 exit_if_not_bash
 
 FELIX_BANNER='  __      _ _      
@@ -73,7 +77,7 @@ execute_recipes(){
 }
 
 print_usage(){
-	printf "Usage: bash install.sh [OPTION...] <recipes parent directory>\n\n"
+	printf "Usage: bash install.sh [OPTIONS...] <recipes parent directory>\n\n"
 	printf -- "  -i interactive mode\n"
 }
 
@@ -138,4 +142,4 @@ fi
 echo
 
 # Execute the recipes
-execute_recipes 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+execute_recipes 2>&1 | tee -a "${LOGFILE}"
