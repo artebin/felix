@@ -9,10 +9,10 @@ LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 exit_if_not_bash
 
 configure_bash(){
-	cd ${BASEDIR}
-	
 	echo "Configuring bash ..."
-	if [ -f ~/.bashrc ]; then
+	
+	cd "${BASEDIR}"
+	if [[ -f ~/.bashrc ]]; then
 		backup_file rename ~/.bashrc
 	fi
 	cp ./bashrc ~/.bashrc
@@ -20,9 +20,7 @@ configure_bash(){
 	echo
 }
 
-
-
-cd ${BASEDIR}
+cd "${BASEDIR}"
 configure_bash 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
