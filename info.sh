@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 source ./common.sh
-is_bash
+exit_if_not_bash
 exit_if_has_not_root_privileges
 
 print_dmi_info_bios(){
