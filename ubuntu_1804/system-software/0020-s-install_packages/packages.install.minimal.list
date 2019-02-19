@@ -61,6 +61,11 @@ cifs-utils
 #######
 bareftp
 
+##############
+# BitTorrent
+##############
+transmission-gtk
+
 #######
 # VNC
 #######
