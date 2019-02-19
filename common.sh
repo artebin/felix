@@ -139,32 +139,34 @@ print_section_ending(){
 }
 
 backup_file(){
-	if [ "$#" -ne 2 ]; then
-		echo "backup_file() expects path in argument"
+	if [[ $# -ne 2 ]]; then
+		echo "Function backup_file() expects BACKUP_MODE and FILE path as parameter"
 		exit 1
 	fi
-	if [ ! -e "${2}" ]; then
-		echo "Can not find ${2}"
+	BACKUP_MODE="${1}"
+	FILE="${2}"
+	if [[ ! -e "${FILE}" ]]; then
+		echo "Cannot find FILE: ${FILE_BACKUP_PATH}"
 		exit 1
 	fi
-	FILE_BACKUP_PATH="${2}.bak.$(date -u +'%y%m%d-%H%M%S')"
-	case "${1}" in
+	FILE_BACKUP="${FILE}.bak.$(date -u +'%y%m%d-%H%M%S')"
+	case "${BACKUP_MODE}" in
 		"rename")
-			mv "${2}" "${FILE_BACKUP_PATH}"
-			if [ "$?" -ne 0 ]; then
-				echo "Can not backup file ${2}"
+			mv "${FILE}" "${FILE_BACKUP}"
+			if [[ $? -ne 0 ]]; then
+				echo "Cannot backup file: ${FILE}"
 				exit 1
 			fi
 			;;
 		"copy")
-			cp "${2}" "${FILE_BACKUP_PATH}"
-			if [ "$?" -ne 0 ]; then
-				echo "Can not backup file ${2}"
+			cp "${FILE}" "${FILE_BACKUP_PATH}"
+			if [[ $? -ne 0 ]]; then
+				echo "Cannot backup file: ${FILE}"
 				exit 1
 			fi
 			;;
 		*)
-			echo "Unkown argument ${1}"
+			echo "Unknown BACKUP_MODE: ${BACKUP_MODE}"
 			exit 1
 	esac
 }
