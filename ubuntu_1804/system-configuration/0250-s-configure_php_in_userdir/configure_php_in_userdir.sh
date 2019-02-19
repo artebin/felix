@@ -10,8 +10,6 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_php_in_userdir(){
-	cd ${BASEDIR}
-	
 	echo "Allowing PHP in userdir ..."
 	apt-get install -y apache2 libapache2-mod-php php php-mbstring php-xml
 	a2enmod userdir
@@ -24,9 +22,7 @@ configure_php_in_userdir(){
 	echo
 }
 
-
-
-cd ${BASEDIR}
+"cd ${BASEDIR}"
 configure_php_in_userdir 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
