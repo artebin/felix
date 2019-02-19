@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This caja script indent an XML file using XMLStarlet
+# This caja script calls XMLStarlet to indent an XML file
 
 INPUT_FILE=$(readlink -f "${1}")
 

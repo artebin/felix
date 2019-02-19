@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# This caja script indent an JSON file using jq
+# This caja script calls jq to indent a JSON file
 
 INPUT_FILE=$(readlink -f "${1}")
 
