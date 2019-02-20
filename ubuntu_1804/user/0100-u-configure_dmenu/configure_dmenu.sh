@@ -9,26 +9,22 @@ LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 exit_if_not_bash
 
 configure_dmenu(){
-	cd ${BASEDIR}
-	
 	echo "Configuring dmenu ..."
-	if [ -f ~/.config/dmenu ]; then
+	
+	if [[ -d ~/.config/dmenu ]]; then
 		backup_file rename ~/.config/dmenu
 	fi
-	if [ ! -f ~/.config/dmenu ]; then
-		mkdir -p ~/.config/dmenu
-	fi
-	cp ./dmenu-bind.sh ~/.config/dmenu
+	mkdir -p ~/.config/dmenu
+	cd "${BASEDIR}"
+	cp dmenu-bind.sh ~/.config/dmenu
 	chmod +x ~/.config/dmenu/dmenu-bind.sh
 	
 	echo
 }
 
-
-
-cd ${BASEDIR}
+cd "${BASEDIR}"
 configure_dmenu 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi

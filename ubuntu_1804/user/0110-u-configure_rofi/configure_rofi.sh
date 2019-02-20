@@ -3,8 +3,8 @@
 source ../../../felix.sh
 source ../../ubuntu_1804.conf
 
-
-LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE})"
+BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 
 exit_if_not_bash
 
@@ -12,17 +12,14 @@ configure_rofi(){
 	echo "Configure rofi ..."
 	
 	cd "${BASEDIR}"
-	if [[ -f ~/.config/rofi ]]; then
+	if [[ -d ~/.config/rofi ]]; then
 		backup_file rename ~/.config/rofi
 	fi
-	if [[ ! -f ~/.config/rofi ]]; then
-		mkdir -p ~/.config/rofi
-	fi
-	cp ./rofi_1.5.0_config ~/.config/rofi/config
+	mkdir -p ~/.config/rofi
+	cp rofi_1.5.0_config ~/.config/rofi/config
 	
 	echo
 }
-
 
 cd "${BASEDIR}"
 configure_rofi 2>&1 | tee -a "${LOGFILE}"
