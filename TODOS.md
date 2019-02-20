@@ -1,4 +1,8 @@
 # TODOS
+- [ ] Add a recipe (disabled by default, in extra) for installing virtualbox guest packages.
+- [ ] Remove aspell-fr from minimal.install.list
+- [ ] Add missing pulseaudio packages.
+- [ ] Retrieve FELIX_ROOT with the pwd.
 - [ ] Copy the felix banner in a file.
 - [ ] pasystray shows duplicated notification. Maybe an answer in <https://github.com/christophgysin/pasystray/issues/75>
 - [ ] Missing polkit rules for cups see <https://wiki.archlinux.org/index.php/CUPS#Allowing_admin_authentication_through_PolicyKit>.

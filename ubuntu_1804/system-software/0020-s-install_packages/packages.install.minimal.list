@@ -33,12 +33,20 @@ aspell-fr
 # Network tools
 #################
 network-manager-gnome
-blueman
-nethogs speedometer tcptrack bmon
 nmap traceroute
+nethogs speedometer tcptrack bmon
+wireshark wireshark-gtk wireshark-doc
 curl
 gigolo
-wireshark wireshark-gtk wireshark-doc
+
+#############
+# Bluetooth
+#############
+blueman
+
+########
+# SNMP
+########
 snmp snmp-mibs-downloader
 
 #######
@@ -189,7 +197,7 @@ chromium-browser
 ##########################
 # Audio and video player
 ##########################
-libpulse-dev
+pulseaudio pulseaudio-dlna pulseaudio-equalizer pulseaudio-esound-compat pulseaudio-module-bluetooth pulseaudio-module-gconf pulseaudio-module-jack pulseaudio-module-lirc pulseaudio-module-raop pulseaudio-module-zeroconf pulseaudio-module-utils pulsemixer libpulse-dev
 #paman #N/A in Ubuntu 18.04
 pavucontrol pavumeter paprefs
 flac
