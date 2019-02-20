@@ -68,6 +68,7 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network.
 
 # ISSUES
+- [ ] Pasystray: middle click on the tray icon is not muting the sound anymore + we can see 2 notification bubbles when using miniso instead of Xubuntu.
 - [ ] GPicView: very slow with SVG files.
 - [ ] Caja: bug when create new file (or directory) with name starting with a dot.
 - [ ] Caja: copying files is very slow compared to the command line (local or remote). => it can be because of GVFS
@@ -76,7 +77,7 @@
 - [ ] Geany/Mardown: plugin is not properly using the css specified (colors are not used and lines starting with the character `#` inside a blockcode are treated as a heading).
 - [ ] Geany/Mardown: when all the document are closed, the Markdown Preview still shows the last preview done.
 - [ ] Geany/Mardown: the links are clickable in the preview, if we click one link then the page is showed in the sidebar but there is no way to navigate and go back to the preview.
-- [ ] reboot/shutdown can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
+- [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
 - [x] Indent JSON command.
