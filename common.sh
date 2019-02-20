@@ -146,7 +146,7 @@ backup_file(){
 	BACKUP_MODE="${1}"
 	FILE="${2}"
 	if [[ ! -e "${FILE}" ]]; then
-		echo "Cannot find FILE: ${FILE_BACKUP_PATH}"
+		echo "Cannot find FILE: ${FILE}"
 		exit 1
 	fi
 	FILE_BACKUP="${FILE}.bak.$(date -u +'%y%m%d-%H%M%S')"
@@ -159,7 +159,7 @@ backup_file(){
 			fi
 			;;
 		"copy")
-			cp "${FILE}" "${FILE_BACKUP_PATH}"
+			cp "${FILE}" "${FILE_BACKUP}"
 			if [[ $? -ne 0 ]]; then
 				echo "Cannot backup file: ${FILE}"
 				exit 1
