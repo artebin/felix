@@ -101,6 +101,8 @@
 | --- | --- |
 | `<Ctrl>s`					| Scroll lock (XOFF) |
 | `<Ctrl>q`					| Scroll unlock (XON) |
+| `<Shift><PageUp>`			| Scroll up |
+| `<Shift><PageDown>`			| Scroll down |
 | `<Ctrl><Mouse drag>`		| Block selection |
 
 ## Caja
