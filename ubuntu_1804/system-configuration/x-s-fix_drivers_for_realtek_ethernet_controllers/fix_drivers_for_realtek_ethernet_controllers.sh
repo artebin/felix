@@ -40,11 +40,9 @@ fix_drivers_for_realtek_ethernet_controllers(){
 	echo
 }
 
-
-
-cd ${BASEDIR}
+cd "${BASEDIR}"
 fix_drivers_for_realtek_ethernet_controllers 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi

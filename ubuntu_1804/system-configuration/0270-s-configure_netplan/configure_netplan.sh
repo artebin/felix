@@ -9,9 +9,8 @@ source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-use_network_manager_as_renderer_in_netplan(){
-	echo "Use NetworkManager as renderer in NetPlan..."
-	
+configure_netplan(){
+	echo "Configuring NetPlan for using the NetworkManager as renderer ..."
 	add_or_update_line_based_on_prefix "  renderer: networkd" "  renderer: NetworkManager" /etc/netplan/01-netcfg.yaml
 	netplan generate
 	netplan apply
@@ -20,8 +19,8 @@ use_network_manager_as_renderer_in_netplan(){
 }
 
 cd "${BASEDIR}"
-use_network_manager_as_renderer_in_netplan 2>&1 | tee -a "${LOGFILE}"
+configure_netplan 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi

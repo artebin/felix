@@ -15,18 +15,21 @@ extract_acpi_dsdt(){
 	# ACPI Advanced Configuration and Power Interface
 	# DSDT Differentiated System Description Table
 	
-	cd ${BASEDIR}
 	install_package_if_not_installed "acpica-tools"
+	
+	cd "${BASEDIR}"
 	cat /sys/firmware/acpi/tables/DSDT > dsdt.dat
 	
 	# Decompile the table with the Intel's ASL compiler
 	iasl -d dsdt.dat
+	
+	echo
 }
 
 disable_all_acpi_wakeup_except_for_platform_subsystems(){
-	echo "Disable all ACPI wakeup except for SUBSYSTEM[platform] ..."
+	echo "Disabling all ACPI wakeup except for SUBSYSTEM[platform] ..."
 	
-	cd ${BASEDIR}
+	cd "${BASEDIR}"
 	ACPI_WAKEUP_FILE_NAME="acpi_wakeup.rules"
 	if [[ -f "${ACPI_WAKEUP_FILE_NAME}" ]]; then
 		rm -f "${ACPI_WAKEUP_FILE_NAME}"
@@ -60,24 +63,20 @@ disable_all_acpi_wakeup_except_for_platform_subsystems(){
 	cp acpi_wakeup.rules /etc/udev/rules.d/90-acpi_wakeup.rules
 	
 	# Cleaning
-	cd ${BASEDIR}
+	cd "${BASEDIR}"
 	rm -f dsdt.dat
 	rm -f acpi_wakeup.rules
 	echo
 }
 
-
-
-cd ${BASEDIR}
 extract_acpi_dsdt 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
 
-cd ${BASEDIR}
 disable_all_acpi_wakeup_except_for_platform_subsystems 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
