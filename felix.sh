@@ -4,8 +4,7 @@ source "$(dirname ${BASH_SOURCE})/common.sh"
 
 retrieve_log_file_name(){
 	if [[ $# -ne 1 ]]; then
-		echo "Function 'retrieve_log_file_name()' expects FILE_NAME in argument"
-		echo
+		printf "Function retrieve_log_file_name() expects FILE_NAME in parameter\n"
 		exit 1
 	fi
 	FILE_NAME="${1}"
@@ -21,12 +20,35 @@ delete_log_files(){
 	find . -name "*.log.*" -type f -exec rm -fr {} \; 
 }
 
+retrieve_recipe_family_dir(){
+	if [[ $# -ne 1 ]]; then
+		printf "Function retrieve_recipe_family_dir() expects RECIPE_DIR in parameter\n"
+		exit 1
+	fi
+	FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
+	RECIPE_FAMILY_DIR_NAME="${RECIPE_DIR##*/felix/}"
+	RECIPE_FAMILY_DIR_NAME="${RECIPE_FAMILY_DIR_NAME%%/*}"
+	RECIPE_FAMILY_DIR="${FELIX_ROOT}/${RECIPE_FAMILY_DIR_NAME}"
+	printf "${RECIPE_FAMILY_DIR}"
+}
+
+retrieve_recipe_family_conf_file(){
+	if [[ $# -ne 1 ]]; then
+		printf "Function retrieve_recipe_family_conf_file() expects RECIPE_DIR in parameter\n"
+		exit 1
+	fi
+	FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
+	RECIPE_FAMILY_DIR_NAME="${RECIPE_DIR##*/felix/}"
+	RECIPE_FAMILY_DIR_NAME="${RECIPE_FAMILY_DIR_NAME%%/*}"
+	RECIPE_FAMILY_DIR="${FELIX_ROOT}/${RECIPE_FAMILY_DIR_NAME}"
+	printf "${RECIPE_FAMILY_DIR}/${RECIPE_FAMILY_DIR_NAME}.conf"
+}
+
 RECIPE_NAME_REGEX="([0-9][0-9][0-9][0-9])-([us])-(.*)"
 
 list_recipes(){
 	if [[ $# -ne 1 ]]; then
-		printf "list_recipes() expects RECIPES_PARENT_DIRECTORY in argument\n"
-		printf "\n"
+		printf "Function list_recipes() expects RECIPES_PARENT_DIRECTORY in parameter\n"
 		exit 1
 	fi
 	RECIPES_PARENT_DIRECTORY="${1}"
