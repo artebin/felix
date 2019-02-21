@@ -10,6 +10,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_virtualbox_guest_additions(){
+	echo "Installing VirtualBox guest additions ..."
 	
 	DEPENDENCIES=(  "virtualbox-guest-dkms-hwe"
 					"virtualbox-guest-utils-hwe"
@@ -22,6 +23,6 @@ install_virtualbox_guest_additions(){
 cd "${BASEDIR}"
 install_virtualbox_guest_additions 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi

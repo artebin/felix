@@ -30,9 +30,8 @@ exit_if_has_not_root_privileges
 #
 
 install_snmp_deamon(){
-	cd ${BASEDIR}
+	echo "Installing snmp deamon ..."
 	
-	echo "Install snmp deamon ..."
 	apt install -y snmp snmp-mibs-downloader snmpd
 	
 	# Allow full access from localhost: uncomment the line "rocommunity public localhost"
@@ -52,9 +51,8 @@ install_snmp_deamon(){
 }
 
 install_zabbix(){
-	cd ${BASEDIR}
+	echo "Installing snmp client Zabbix ..."
 	
-	echo "Install snmp client Zabbix ..."
 	apt-get -y install apache2
 	
 	# ServerTokens only in the server HTTP response header 
@@ -94,10 +92,16 @@ install_zabbix(){
 	echo
 }
 
-cd ${BASEDIR}
-
-install_snmp_server_and_client 2>&1 | tee -a ./${CURRENT_SCRIPT_LOG_FILE_NAME}
+cd "${BASEDIR}"
+install_snmp_deamon 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
+	exit "${EXIT_CODE}"
+fi
+
+cd "${BASEDIR}"
+install_zabbix 2>&1 | tee -a "${LOGFILE}"
+EXIT_CODE="${PIPESTATUS[0]}"
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
