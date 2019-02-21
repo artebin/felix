@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -17,7 +17,7 @@ configure_lightdm_greeter(){
 	fi
 	
 	# Copy some backgrounds free of use from unsplash <https://unsplash.com> 
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cp backgrounds/*.jpg /usr/share/backgrounds
 	
 	# Copy GTK greeter.conf file

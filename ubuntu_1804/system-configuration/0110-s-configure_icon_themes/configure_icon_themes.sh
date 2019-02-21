@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -18,25 +18,25 @@ install_customized_faenza(){
 	fi
 	
 	echo "Cloning git repository: <http://github.com/Kazhnuz/faenza-vanilla-icon-theme> ..."
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	git clone https://github.com/Kazhnuz/faenza-vanilla-icon-theme
 	
 	echo "Fixing status icons in dark theme ..."
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	rm -fr faenza-vanilla-icon-theme/Faenza/status
 	cp -R faenza-vanilla-icon-theme/Faenza-Dark/status faenza-vanilla-icon-theme/Faenza/status
 	
 	echo "Fixing 'list-remove' icons ..."
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cp -R Faenza-fixed/actions/* faenza-vanilla-icon-theme/Faenza/actions
 	
 	echo "Fixing for Synaptic which persists to use its 16x16 icon => dirty fix: replace the 16x16 by the 32x32 icon ..."
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	backup_file rename faenza-vanilla-icon-theme/Faenza/apps/16/synaptic.png
 	cp faenza-vanilla-icon-theme/Faenza/apps/32/synaptic.png ./faenza-vanilla-icon-theme/Faenza/apps/16/synaptic.png
 	
 	echo "Installing our customized Faenza ..."
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	sed -i "/^Name=/s/.*/Name=Faenza-njames/" faenza-vanilla-icon-theme/Faenza/index.theme
 	ESCAPED_COMMENT=$(escape_sed_pattern "Comment=Icon theme project downloaded from https://github.com/Kazhnuz/faenza-vanilla-icon-theme and modified by njames")
 	sed -i "/^Comment=/s/.*/${ESCAPED_COMMENT}/" faenza-vanilla-icon-theme/Faenza/index.theme
@@ -47,7 +47,7 @@ install_customized_faenza(){
 	update-icon-caches /usr/share/icons
 	
 	# Cleanup
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	rm -fr faenza-vanilla-icon-theme
 	
 	echo

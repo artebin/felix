@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -13,7 +13,7 @@ enable_hibernation(){
 	echo "Enable hibernation ..."
 	
 	# Add polkit authority for upower and logind
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cp com.ubuntu.enable-hibernate.pkla /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
 	
 	echo
@@ -46,7 +46,7 @@ configure_suspend_sedation(){
 	# See <https://wiki.debian.org/SystemdSuspendSedation>
 	
 	# Adding service
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cp suspend-sedation.service /etc/systemd/system/suspend-sedation.service
 	systemctl start suspend-sedation
 	systemctl enable suspend-sedation

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -11,7 +11,7 @@ exit_if_has_not_root_privileges
 
 configure_gtk2(){
 	echo "Configuring GTK+ 2.0 ..."
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	if [[ ! -f /etc/gtk-2.0/gtkrc ]]; then
 		cp system.gtkrc-2.0 /etc/gtk-2.0/gtkrc
 		chmod 755 /etc/gtk-2.0/gtkrc
@@ -24,13 +24,13 @@ configure_gtk2(){
 	sed -i "/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"${GTK_ICON_THEME_NAME}\"/" /etc/gtk-2.0/gtkrc
 	
 	echo "Fixing theme Adwaita/gtk-2.0: menus have no borders ..."
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	patch /usr/share/themes/Adwaita/gtk-2.0/main.rc < fix_adwaita_gtk2_menu_with_no_border.patch
 }
 
 configure_gtk3(){
 	echo "Configuring GTK+ 3.0 ..."
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	if [[ ! -f /etc/gtk-3.0/settings.ini ]]; then
 		cp system.gtkrc-3.0 /etc/gtk-3.0/settings.ini
 		chmod 755 /etc/gtk-3.0/settings.ini
@@ -56,7 +56,7 @@ configure_gtk3(){
 	#echo "export SWT_GTK3=0" | sudo tee /etc/X11/Xsession.d/80swt-gtk
 	
 	echo "Adding gtk.css for root ..."
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	mkdir -p /root/.config/gtk-3.0
 	cp gtk.css /root/.config/gtk-3.0/gtk.css
 	

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -12,7 +12,7 @@ exit_if_has_not_root_privileges
 install_java_env_vars(){
 	echo "Installing Java environment variables ..."
 	
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cp java_env_vars.sh /etc/profile.d/java_env_vars.sh
 	
 	echo

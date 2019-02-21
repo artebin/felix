@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -16,7 +16,7 @@ force_numlock_tty(){
 		echo "/usr/bin/numlock already exists"
 		return 1
 	fi
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cp numlock /usr/bin/numlock
 	chmod a+x /usr/bin/numlock
 	
@@ -24,7 +24,7 @@ force_numlock_tty(){
 		echo "/etc/systemd/system/numlock_tty.service already exists"
 		return 1
 	fi
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cp numlock_tty.service /etc/systemd/system/numlock_tty.service
 	systemctl daemon-reload
 	systemctl start numlock_tty.service
@@ -46,7 +46,7 @@ force_numlock_xorg(){
 	if [[ ! -d /etc/lightdm/lightdm.conf.d ]]; then
 		mkdir /etc/lightdm/lightdm.conf.d
 	fi
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cp 60-numlockx.conf /etc/lightdm/lightdm.conf.d/60-numlockx.conf
 	
 	echo

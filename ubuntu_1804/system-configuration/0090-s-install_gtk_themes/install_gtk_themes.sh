@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -12,19 +12,19 @@ exit_if_has_not_root_privileges
 copy_themes(){
 	echo "Copying themes ..."
 	
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	tar xzf Erthe-njames.tar.gz
 	cp -R Erthe-njames /usr/share/themes
 	chmod -R go+r /usr/share/themes/Erthe-njames
 	find /usr/share/themes/Erthe-njames -type d | xargs chmod go+x
 	
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cp -R njames /usr/share/themes
 	chmod -R go+r /usr/share/themes/njames
 	find /usr/share/themes/njames -type d | xargs chmod go+x
 	
 	# Cleanup
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	rm -fr Erthe-njames
 	
 	echo

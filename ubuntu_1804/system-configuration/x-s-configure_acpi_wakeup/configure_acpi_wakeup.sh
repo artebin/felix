@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -17,7 +17,7 @@ extract_acpi_dsdt(){
 	
 	install_package_if_not_installed "acpica-tools"
 	
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cat /sys/firmware/acpi/tables/DSDT > dsdt.dat
 	
 	# Decompile the table with the Intel's ASL compiler
@@ -29,7 +29,7 @@ extract_acpi_dsdt(){
 disable_all_acpi_wakeup_except_for_platform_subsystems(){
 	echo "Disabling all ACPI wakeup except for SUBSYSTEM[platform] ..."
 	
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	ACPI_WAKEUP_FILE_NAME="acpi_wakeup.rules"
 	if [[ -f "${ACPI_WAKEUP_FILE_NAME}" ]]; then
 		rm -f "${ACPI_WAKEUP_FILE_NAME}"
@@ -63,7 +63,7 @@ disable_all_acpi_wakeup_except_for_platform_subsystems(){
 	cp acpi_wakeup.rules /etc/udev/rules.d/90-acpi_wakeup.rules
 	
 	# Cleaning
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	rm -f dsdt.dat
 	rm -f acpi_wakeup.rules
 	echo

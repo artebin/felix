@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -20,7 +20,7 @@ configure_ssh_welcome_text(){
 	chmod a-x ./*
 	
 	echo "Adding Tux Welcome Dude ..."
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cp 00-welcome-dude /etc/update-motd.d/00-welcome-dude
 	chmod 744 /etc/update-motd.d/00-welcome-dude
 	cp tux /etc/update-motd.d/tux

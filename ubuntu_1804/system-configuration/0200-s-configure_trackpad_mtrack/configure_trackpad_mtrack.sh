@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -27,7 +27,7 @@ configure_trackpad_mtrack(){
 	#
 	# See <http://xahlee.info/linux/linux_x11_mouse_button_number.html>.
 	
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cp 80-mtrack.conf /usr/share/X11/xorg.conf.d
 	
 	echo
