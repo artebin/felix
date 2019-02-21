@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -17,13 +17,13 @@ install_dokuwiki_in_userdir(){
 	sudo adduser www-data "${USERNAME}"
 	
 	mkdir -p "${HOME}/public_html"
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cp dokuwiki-stable.tgz "${HOME}/public_html/dokuwiki-stable.tgz"
 	
 	cd "${HOME}/public_html"
 	tar xzf dokuwiki-stable.tgz
 	
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cp dokubook-stable.tgz "${HOME}/public_html/${DOKUWIKI_STABLE}/lib/tpl"
 	cp conf/mime.local.conf "${HOME}/public_html/${DOKUWIKI_STABLE}/conf"
 	cp conf/entities.conf "${HOME}/public_html/${DOKUWIKI_STABLE}/conf"

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -30,7 +30,7 @@ configure_auto_login(){
 		mkdir /etc/lightdm/lightdm.conf.d
 	fi
 	
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	sed -i "/^autologin-user=/s/.*/autologin-user=${AUTO_LOGIN_USER_NAME}/" 50-autologin.conf
 	cp 50-autologin.conf /etc/lightdm/lightdm.conf.d/50-autologin.conf
 	
