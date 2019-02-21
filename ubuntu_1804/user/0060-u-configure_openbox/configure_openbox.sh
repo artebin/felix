@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -16,7 +16,7 @@ configure_openbox(){
 	fi
 	mkdir -p ~/.config/openbox
 	
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cp autostart ~/.config/openbox
 	cp rc.xml ~/.config/openbox
 	cp menu.xml ~/.config/openbox
@@ -25,7 +25,7 @@ configure_openbox(){
 	echo
 }
 
-cd "${BASEDIR}"
+cd "${RECIPE_DIR}"
 configure_openbox 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -9,7 +9,7 @@ source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
 exit_if_not_bash
 
 enable_exit_dialog_at_power_button_pressed(){
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	
 	echo "Enabling exit dialog at power button pressed ..."
 	cp /etc/systemd/logind.conf ./logind.conf
@@ -18,7 +18,7 @@ enable_exit_dialog_at_power_button_pressed(){
 	# Configuration in openbox rc.xml file should already be done
 	
 	# Cleaning
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	rm -f ./logind.conf
 	
 	echo
@@ -26,7 +26,7 @@ enable_exit_dialog_at_power_button_pressed(){
 
 
 
-cd ${BASEDIR}
+cd ${RECIPE_DIR}
 enable_exit_dialog_at_power_button_pressed 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
