@@ -13,7 +13,7 @@ enable_hibernation(){
 	echo "Enable hibernation ..."
 	
 	# Add polkit authority for upower and logind
-	cd ${BASEDIR}
+	cd "${BASEDIR}"
 	cp com.ubuntu.enable-hibernate.pkla /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
 	
 	echo
@@ -46,7 +46,7 @@ configure_suspend_sedation(){
 	# See <https://wiki.debian.org/SystemdSuspendSedation>
 	
 	# Adding service
-	cd ${BASEDIR}
+	cd "${BASEDIR}"
 	cp suspend-sedation.service /etc/systemd/system/suspend-sedation.service
 	systemctl start suspend-sedation
 	systemctl enable suspend-sedation
@@ -55,25 +55,20 @@ configure_suspend_sedation(){
 	echo
 }
 
-
-
-cd ${BASEDIR}
 enable_hibernation 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
 
-cd ${BASEDIR}
 configure_suspend_then_hibernation 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
 
-#~ cd ${BASEDIR}
 #~ configure_suspend_sedation 2>&1 | tee -a "${LOGFILE}"
 #~ EXIT_CODE="${PIPESTATUS[0]}"
-#~ if [ "${EXIT_CODE}" -ne 0 ]; then
+#~ if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	#~ exit "${EXIT_CODE}"
 #~ fi

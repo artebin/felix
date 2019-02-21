@@ -10,12 +10,11 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 update_xdg_user_dirs_default(){
-	cd ${BASEDIR}
-	
 	echo "Remove Templates as a XDG user directory ..."
+	
 	XDG_USER_DIRS_DEFAULT_FILE="/etc/xdg/user-dirs.defaults"
 	if [[ ! -f "${XDG_USER_DIRS_DEFAULT_FILE}" ]]; then
-		echo "Can not find file: ${XDG_USER_DIRS_DEFAULT_FILE}"
+		echo "Cannot find file: ${XDG_USER_DIRS_DEFAULT_FILE}"
 	else
 		sed -i.bak "s/^TEMPLATES=/#TEMPLATES=/g" "${XDG_USER_DIRS_DEFAULT_FILE}"
 	fi
@@ -24,8 +23,6 @@ update_xdg_user_dirs_default(){
 }
 
 list_xdg_autostart_desktop_files(){
-	cd ${BASEDIR}
-	
 	DESKTOP_FILE_NO_ONLYSHOWIN_ARRAY=()
 	declare -A DESKTOP_ONLYSHOWIN_MAP
 	
@@ -62,15 +59,11 @@ list_xdg_autostart_desktop_files(){
 }
 
 disable_unwanted_xdg_autostart(){
-	cd ${BASEDIR}
-	
 	echo "Disabling unwanted xdg autostart ..."
 	
-	XDG_AUTOSTART_DESKTOP_FILE_ARRAY=(
-		"nm-applet"
-		"blueman.desktop"
-		"xfce4-power-manager.desktop"
-	)
+	XDG_AUTOSTART_DESKTOP_FILE_ARRAY=(  "nm-applet"
+										"blueman.desktop"
+										"xfce4-power-manager.desktop" )
 	
 	for XDG_AUTOSTART_FILE_NAME in "${XDG_AUTOSTART_DESKTOP_FILE_ARRAY[@]}"; do
 		if [[ ! -f "/etc/xdg/autostart/${XDG_AUTOSTART_FILE_NAME}" ]]; then
@@ -84,25 +77,20 @@ disable_unwanted_xdg_autostart(){
 	echo
 }
 
-
-
-cd ${BASEDIR}
 update_xdg_user_dirs_default 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
 
-cd ${BASEDIR}
 list_xdg_autostart_desktop_files 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
 
-cd ${BASEDIR}
 disable_unwanted_xdg_autostart 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi

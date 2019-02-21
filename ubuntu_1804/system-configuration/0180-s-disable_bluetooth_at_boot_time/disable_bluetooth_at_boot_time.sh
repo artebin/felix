@@ -22,18 +22,16 @@ disable_bluetooth_adapter_at_boot_time(){
 	
 	# See <https://askubuntu.com/questions/67758/how-can-i-deactivate-bluetooth-on-system-startup>
 	
-	# Create '/etc/rc.local' if it does not exists yet
-	cd ${BASEDIR}
+	echo "Creating '/etc/rc.local' if it does not exist yet ..."
 	RC_LOCAL_FILE="/etc/rc.local"
 	if [[ ! -f "${RC_LOCAL_FILE}" ]]; then
 		touch "${RC_LOCAL_FILE}"
 	fi
 	
-	# Disable bluetooth at startup
-	cd ${BASEDIR}
+	echo "Disabling bluetooth at startup ..."
 	grep -Fxq "rfkill block bluetooth" "${RC_LOCAL_FILE}"
 	if [[ $? -eq 0 ]]; then
-		echo "${RC_LOCAL_FILE} is already configured to disable bluetooth adapter"
+		echo "${RC_LOCAL_FILE} is already configured with bluetooth adapter disabled"
 	else
 		backup_file copy "${RC_LOCAL_FILE}"
 		echo "rfkill block bluetooth" >> "${RC_LOCAL_FILE}"
@@ -42,18 +40,14 @@ disable_bluetooth_adapter_at_boot_time(){
 	echo
 }
 
-
-
-cd ${BASEDIR}
 blacklist_bluetooth_driver_module 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
 
-cd ${BASEDIR}
 disable_bluetooth_adapter_at_boot_time 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi

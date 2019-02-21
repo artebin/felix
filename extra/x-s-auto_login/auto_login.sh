@@ -37,7 +37,6 @@ configure_auto_login(){
 	echo
 }
 
-cd "${BASEDIR}"
 configure_auto_login 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then

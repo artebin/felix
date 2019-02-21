@@ -92,14 +92,12 @@ install_zabbix(){
 	echo
 }
 
-cd "${BASEDIR}"
 install_snmp_deamon 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
 
-cd "${BASEDIR}"
 install_zabbix 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then

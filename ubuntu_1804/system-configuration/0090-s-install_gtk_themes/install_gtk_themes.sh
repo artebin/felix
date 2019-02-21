@@ -10,31 +10,28 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 copy_themes(){
-	cd ${BASEDIR}
-	
 	echo "Copying themes ..."
+	
+	cd "${BASEDIR}"
 	tar xzf Erthe-njames.tar.gz
 	cp -R Erthe-njames /usr/share/themes
-	cd /usr/share/themes
-	chmod -R go+r ./Erthe-njames
-	find ./Erthe-njames -type d | xargs chmod go+x
+	chmod -R go+r /usr/share/themes/Erthe-njames
+	find /usr/share/themes/Erthe-njames -type d | xargs chmod go+x
 	
-	cd ${BASEDIR}
+	cd "${BASEDIR}"
 	cp -R njames /usr/share/themes
 	chmod -R go+r /usr/share/themes/njames
+	find /usr/share/themes/njames -type d | xargs chmod go+x
 	
 	# Cleanup
-	cd ${BASEDIR}
+	cd "${BASEDIR}"
 	rm -fr Erthe-njames
 	
 	echo
 }
 
-
-
-cd ${BASEDIR}
 copy_themes 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi

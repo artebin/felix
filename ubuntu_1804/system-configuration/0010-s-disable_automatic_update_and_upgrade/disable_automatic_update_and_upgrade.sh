@@ -24,16 +24,13 @@ disable_automatic_update_and_upgrade(){
 	echo
 	
 	echo "Remove unattended-upgrades ..."
-	apt-get remove -y --purge unattended-upgrades
+	remove_with_purge_package_if_installed "unattended-upgrades"
 	
 	echo
 }
 
-
-
-cd ${BASEDIR}
 disable_automatic_update_and_upgrade 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi

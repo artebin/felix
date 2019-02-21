@@ -10,7 +10,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_grub(){
-	cd ${BASEDIR}
+	echo "Configuring grub ..."
 	
 	# Backup grub configuration
 	echo "Backup current grub configuration ..."
@@ -48,11 +48,8 @@ configure_grub(){
 	echo
 }
 
-
-
-cd ${BASEDIR}
 configure_grub 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi

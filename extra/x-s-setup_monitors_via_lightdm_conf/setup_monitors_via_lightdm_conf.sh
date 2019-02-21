@@ -23,7 +23,6 @@ setup_monitors_via_lightdm_conf(){
 	echo
 }
 
-cd "${BASEDIR}"
 setup_monitors_via_lightdm_conf 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then

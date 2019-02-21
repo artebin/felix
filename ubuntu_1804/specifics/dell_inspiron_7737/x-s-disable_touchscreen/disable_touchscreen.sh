@@ -32,7 +32,6 @@ disable_touchscreen(){
 	echo
 }
 
-cd "${BASEDIR}"
 disable_touchscreen 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

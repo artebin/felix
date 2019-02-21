@@ -12,7 +12,7 @@ exit_if_has_not_root_privileges
 configure_trackpad_mtrack(){
 	echo "Configuring trackpad mtrack ..."
 	
-	apt-get install -y xserver-xorg-input-mtrack
+	install_package_if_not_installed "xserver-xorg-input-mtrack"
 	
 	# For reference, the X11 mouse button numbering:
 	#   1 = left button
@@ -27,17 +27,14 @@ configure_trackpad_mtrack(){
 	#
 	# See <http://xahlee.info/linux/linux_x11_mouse_button_number.html>.
 	
-	cd ${BASEDIR}
-	cp ./80-mtrack.conf /usr/share/X11/xorg.conf.d/
+	cd "${BASEDIR}"
+	cp 80-mtrack.conf /usr/share/X11/xorg.conf.d
 	
 	echo
 }
 
-
-
-cd ${BASEDIR}
 configure_trackpad_mtrack 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi

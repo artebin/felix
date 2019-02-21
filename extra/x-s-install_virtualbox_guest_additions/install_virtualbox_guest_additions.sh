@@ -20,7 +20,6 @@ install_virtualbox_guest_additions(){
 	echo
 }
 
-cd "${BASEDIR}"
 install_virtualbox_guest_additions 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
