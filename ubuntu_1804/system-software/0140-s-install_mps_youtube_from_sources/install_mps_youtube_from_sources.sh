@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -16,7 +16,7 @@ install_mps_youtube_from_sources(){
 	install_package_if_not_installed "python3-pip" "pandoc"
 	
 	# Install youtube-dl from sources
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	git clone https://github.com/rg3/youtube-dl
 	cd youtube-dl
 	make
@@ -29,7 +29,7 @@ install_mps_youtube_from_sources(){
 	pip3 install mps-youtube
 	
 	# Cleaning
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	rm -fr youtube-dl
 	
 	echo
@@ -37,7 +37,7 @@ install_mps_youtube_from_sources(){
 
 
 
-cd ${BASEDIR}
+cd ${RECIPE_DIR}
 install_mps_youtube_from_sources 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

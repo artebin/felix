@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -22,7 +22,7 @@ install_fdpowermon_from_sources(){
 	# Create a directory 'fdpowermon-build' because we will call
 	# 'dpkg-buildpackage' and its output directory is always the
 	# parent directory.
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	mkdir fdpowermon-build
 	cd fdpowermon-build
 	
@@ -34,7 +34,7 @@ install_fdpowermon_from_sources(){
 	dpkg-buildpackage
 	
 	# Install the package
-	cd "${BASEDIR}/fdpowermon-build"
+	cd "${RECIPE_DIR}/fdpowermon-build"
 	dpkg -i fdpowermon_*.deb
 	
 	# The package 'fdpowermon-icons' installs a few icons of the
@@ -44,13 +44,13 @@ install_fdpowermon_from_sources(){
 	fi
 	
 	# Cleaning
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	rm -fr fdpowermon-build
 	
 	echo
 }
 
-cd "${BASEDIR}"
+cd "${RECIPE_DIR}"
 install_fdpowermon_from_sources 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then

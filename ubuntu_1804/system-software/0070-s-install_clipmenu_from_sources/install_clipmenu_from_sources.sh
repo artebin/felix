@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -10,10 +10,10 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_clipmenu_from_sources(){
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	
 	# ClipNotify
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	echo "Installing ClipNotify from sources ..."
 	echo "GitHub repository: <https://github.com/cdown/clipnotify>"
 	git clone https://github.com/cdown/clipnotify
@@ -22,7 +22,7 @@ install_clipmenu_from_sources(){
 	cp ./clipnotify /usr/bin
 	
 	# ClipMenu
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	echo "Installing ClipMenu from sources ..."
 	echo "GitHub repository: <https://github.com/cdown/clipmenu>"
 	git clone https://github.com/cdown/clipmenu
@@ -40,7 +40,7 @@ install_clipmenu_from_sources(){
 	#systemctl enable clipmenud.service
 	
 	# Cleaning
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	rm -fr ./clipnotify
 	rm -fr ./clipmenu
 	
@@ -49,7 +49,7 @@ install_clipmenu_from_sources(){
 
 
 
-cd ${BASEDIR}
+cd ${RECIPE_DIR}
 install_clipmenu_from_sources 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

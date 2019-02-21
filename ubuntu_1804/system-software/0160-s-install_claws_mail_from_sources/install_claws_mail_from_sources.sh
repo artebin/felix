@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -43,7 +43,7 @@ install_claws_mail_from_sources(){
 	install_package_if_not_installed "${DEPENDENCIES[@]}"
 	
 	# Download and unpack the sources
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	SOURCES_URL="https://www.claws-mail.org/download.php?file=releases/claws-mail-3.17.3.tar.bz2"
 	SOURCES_PKG_FILE="claws-mail-3.17.3.tar.bz2"
 	SOURCES_DIR="claws-mail-3.17.3"
@@ -51,20 +51,20 @@ install_claws_mail_from_sources(){
 	tar xjf "${SOURCES_PKG_FILE}"
 	
 	# Compile and install
-	cd "${BASEDIR}/${SOURCES_DIR}"
+	cd "${RECIPE_DIR}/${SOURCES_DIR}"
 	./configure
 	make
 	make install
 	
 	# Cleaning
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	rm -fr "${SOURCES_DIR}"
 	rm -fr "${SOURCES_PKG_FILE}"
 	
 	echo
 }
 
-cd "${BASEDIR}"
+cd "${RECIPE_DIR}"
 install_claws_mail_from_sources 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

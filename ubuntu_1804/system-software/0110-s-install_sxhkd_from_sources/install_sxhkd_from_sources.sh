@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -24,7 +24,7 @@ install_sxhkd_from_sources(){
 	make install
 	
 	# Cleaning
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	rm -fr sxhkd
 	
 	echo
@@ -32,7 +32,7 @@ install_sxhkd_from_sources(){
 
 
 
-cd ${BASEDIR}
+cd ${RECIPE_DIR}
 install_sxhkd_from_sources 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

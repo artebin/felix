@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -17,11 +17,11 @@ install_geany_markdown_plugin_from_sources(){
 	apt-get install -y libwebkit2gtk-4.0-dev
 	
 	# Clone git repository
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	git clone http://github.com/geany/geany-plugins
 	
 	# Compile and install
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	cd geany-plugins
 	./autogen.sh
 	./configure
@@ -30,7 +30,7 @@ install_geany_markdown_plugin_from_sources(){
 	make install
 	
 	# Clean
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	rm -fr ./geany-plugins
 	
 	echo
@@ -38,7 +38,7 @@ install_geany_markdown_plugin_from_sources(){
 
 
 
-cd ${BASEDIR}
+cd ${RECIPE_DIR}
 install_geany_markdown_plugin_from_sources 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

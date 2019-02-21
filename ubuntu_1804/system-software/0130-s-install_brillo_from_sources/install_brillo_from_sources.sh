@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -18,11 +18,11 @@ install_brillo_from_sources(){
 	install_package_if_not_installed "go-md2man"
 	
 	# Clone repository
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	git clone https://gitlab.com/cameronnemo/brillo
 	
 	# Compile and install
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	cd brillo
 	make
 	make install
@@ -30,7 +30,7 @@ install_brillo_from_sources(){
 	make install-dist
 	
 	# Cleaning
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	rm -fr brillo
 	
 	echo
@@ -38,7 +38,7 @@ install_brillo_from_sources(){
 
 
 
-cd ${BASEDIR}
+cd ${RECIPE_DIR}
 install_brillo_from_sources 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

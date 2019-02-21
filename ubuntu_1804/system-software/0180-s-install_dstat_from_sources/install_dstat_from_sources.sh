@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -13,17 +13,17 @@ install_dstat_from_sources(){
 	echo "Installing dstat from sources ..."
 	
 	echo "Cloning git repository <https://github.com/dagwieers/dstat> ..."
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	git clone https://github.com/dagwieers/dstat
 	
 	echo "Compiling and installing ..."
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cd dstat
 	make
 	make install
 	
 	echo "Installing dstat service (but it will not be enabled or started) ..."
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cp dstat-start-service.sh /usr/share/dstat
 	cp dstat-stop-service.sh /usr/share/dstat
 	cp dstat.logrotate /etc/logrotate.d/dstat
@@ -31,7 +31,7 @@ install_dstat_from_sources(){
 	systemctl daemon-reload
 	
 	echo "Cleaning ..."
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	rm -fr dstat
 	
 	echo

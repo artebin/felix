@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -16,17 +16,17 @@ install_fixed_notify_send(){
 	remove_with_purge_package_if_installed "libnotify-bin"
 	
 	# Clone git repository
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	git clone https://github.com/vlevit/notify-send.sh
 	
 	# Install
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	cd notify-send.sh
 	cp notify-send.sh /usr/bin/notify-send
 	cp notify-action.sh /usr/bin/notify-action
 	
 	# Cleaning
-	cd ${BASEDIR}
+	cd ${RECIPE_DIR}
 	rm -fr notify-send.sh
 	
 	echo
@@ -34,7 +34,7 @@ install_fixed_notify_send(){
 
 
 
-cd ${BASEDIR}
+cd ${RECIPE_DIR}
 install_fixed_notify_send 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
