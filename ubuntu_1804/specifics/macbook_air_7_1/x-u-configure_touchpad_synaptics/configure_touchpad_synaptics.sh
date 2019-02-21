@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
-source ../../../../felix.sh
-source ../../../ubuntu_1804.conf
+BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+source "${FELIX_ROOT}/felix.sh"
+LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
+source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
+
 exit_if_not_bash
 
 configure_touchpad_synaptics(){
