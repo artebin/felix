@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -19,13 +19,13 @@ install_facetime_hd(){
 					"checkinstall" )
 	install_package_if_not_installed "${DEPENDENCIES[@]}"
 	
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	git clone https://github.com/patjak/bcwc_pcie.git
 	cd bcwc_pcie/firmware
 	make
 	make install
 	
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	cd bcwc_pcie
 	make
 	make install
@@ -38,7 +38,7 @@ install_facetime_hd(){
 	echo "Please test your setup with teh command \'mplayer tv://\'"
 	
 	# Cleaning
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	rm -fr bcwc_pcie
 	
 	echo

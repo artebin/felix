@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${BASEDIR%/felix/*}/felix"
+RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
 source "${FELIX_ROOT}/felix.sh"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 source "${FELIX_ROOT}/ubuntu_1804/ubuntu_1804.conf"
@@ -10,7 +10,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 disable_touchscreen(){
-	cd "${BASEDIR}"
+	cd "${RECIPE_DIR}"
 	
 	# For disabling the touchscreen we can use use:
 	#  - 'xinput' and 'xinput disable <device ID>', it can be done when we login via the '.xsession'
