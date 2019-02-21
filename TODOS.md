@@ -1,4 +1,5 @@
 # TODOS
+- [ ] BASEDIR in the recipes is actually RECIPE_DIRECTORY.
 - [ ] Use ncurse for showing a dialog and allow to select some recipes to install.
 - [ ] Add a recipe (disabled by default, in extra) for installing virtualbox guest packages.
 - [ ] Remove aspell-fr from minimal.install.list
