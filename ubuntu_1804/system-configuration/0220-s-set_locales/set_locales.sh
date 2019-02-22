@@ -21,7 +21,7 @@ exit_if_has_not_root_privileges
 
 set_locales(){
 	echo "Generating locales ..."
-	locale-gen "${LOCALES_TO_GENERATE}"
+	locale-gen ${LOCALES_TO_GENERATE}
 	
 	echo "Setting locales ..."
 	update-locale LANG="${LOCALE_TO_USE_LANG}"
@@ -38,9 +38,8 @@ set_locales(){
 	echo
 }
 
-cd "${RECIPE_DIR}"
 set_locales 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
