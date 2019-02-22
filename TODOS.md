@@ -1,23 +1,16 @@
 # TODOS
-- [ ] BASEDIR in the recipes is actually RECIPE_DIRECTORY.
+- [ ] Get a useful logging of all the paclages installed in the system (think about the version of the GTK libs for example, pasystray middle click on tray icon for mute is not working anymore).
 - [ ] Use ncurse for showing a dialog and allow to select some recipes to install.
-- [ ] Add a recipe (disabled by default, in extra) for installing virtualbox guest packages.
 - [ ] Remove aspell-fr from minimal.install.list
 - [ ] Add missing pulseaudio packages.
-- [ ] Retrieve FELIX_ROOT with the pwd.
 - [ ] Copy the felix banner in a file.
-- [ ] pasystray shows duplicated notification. Maybe an answer in <https://github.com/christophgysin/pasystray/issues/75>
+- [ ] pasystray shows duplicated notification. Maybe an answer in <https://github.com/christophgysin/pasystray/issues/75> and the middle-click on the tray icon for muting the sound is not working anymore. => Add a bug todo and use pnmixer while waiting for a fix.
 - [ ] Missing polkit rules for cups see <https://wiki.archlinux.org/index.php/CUPS#Allowing_admin_authentication_through_PolicyKit>.
 - [ ] Cups server is not installed.
-- [ ] github-clone should use https
 - [ ] Do not open SVG with gpic view because it is too slow, use inkscape instead.
 - [ ] systemd manager.
 - [ ] Special menu in rofi for the XF86S symbols.
-- [ ] Move the scripts (including the openbox scripts) in a script folder in the $HOME.
 - [ ] Add the screenshot scripts in the openbox menu.
-- [ ] Add a recipe for installing claws-mail from sources + plugins (fancy, vcalendar etc. ).
-- [ ] Use gliv or nomacs to replace GPicView.
-- [ ] Path to Felix project root should be global variable.
 - [ ] Improve console traces for install.sh and for recipe system OK/MISSING package.
 - [ ] Add an alias in bachrc or a menuitem in openbox menu for doing a screenshot of a window with 'xwd'.
 - [ ] Make changes allowing to run 'info.sh' without 'common.sh'.
@@ -27,12 +20,11 @@
 - [ ] pdf are opened with gimp.
 - [ ] "tint2rc": caja will open the file with "Tint2 Settings", how does it works?
 - [ ] Display switched off by fdpowermon or something else? (no powermanager from xfce or mate should be started anymore).
-- [ ] Do not start fdpowermon if no battery, test in openbox autostart.
 - [ ] Configure default difftoll for git, editor etc.
 - [ ] Brillo and Display|Keyboard backlight in console (keysym ?).
 - [ ] macbook air: acpi_osi in kernel pameters see <https://wiki.archlinux.org/index.php/Mac#Suspend_and_Hibernate>
 - [ ] macbook air: kernel parameter for acpi on macbook air (native).
-- [ ] macbook air: screenshot key.
+- [ ] macbook air: screenshot key => Rofi menu? Virtual keyboard?
 - [ ] Look at the vim Mardown styling.
 - [ ] cp asks for confirmation when overwrite.
 - [ ] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron.
@@ -81,6 +73,15 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Add a recipe for installing claws-mail from sources + plugins (fancy, vcalendar etc. ).
+- [x] alias github-clone should use https
+- [x] Do not start fdpowermon if no battery, test in openbox autostart.
+- [x] Move the scripts (including the openbox scripts) in a script folder in the $HOME.
+- [x] Improve recipe for configuring apt-mirror and adding local repository in apt sources.
+- [x] Add a recipe (disabled by default, in extra) for installing virtualbox guest packages.
+- [X] Add a 'dotfiles' folder in the RECIPE_FAMILY_DIR.
+- [x] BASEDIR in the recipes is actually RECIPE_DIR. Add RECIPE_FAMILY_DIR.
+- [x] Retrieve FELIX_ROOT with the pwd.
 - [x] Indent JSON command.
 - [x] Rename ubuntu_18.04.sh to ubuntu_18.04.conf.
 - [x] Replace dmenu by rofi? => not by default but it is installed now.

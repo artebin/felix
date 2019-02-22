@@ -21,18 +21,16 @@ exit_if_not_bash
 configure_bash(){
 	echo "Configuring bash ..."
 	
-	cd "${RECIPE_DIR}"
-	if [[ -f ~/.bashrc ]]; then
-		backup_file rename ~/.bashrc
+	if [[ -f "${HOME}/.bashrc" ]]; then
+		backup_file rename "${HOME}/.bashrc"
 	fi
-	cp ./bashrc ~/.bashrc
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/bashrc" "${HOME}/.bashrc"
 	
 	echo
 }
 
-cd "${RECIPE_DIR}"
 configure_bash 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
