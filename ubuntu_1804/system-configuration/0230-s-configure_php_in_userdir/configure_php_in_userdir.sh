@@ -23,7 +23,7 @@ configure_php_in_userdir(){
 	echo "Allowing PHP in userdir ..."
 	
 	echo "Installing apache2 and php ..."
-	install_packages_if_not_installed "apache2" "libapache2-mod-php" "php" "php-mbstring" "php-xml"
+	install_package_if_not_installed "apache2" "libapache2-mod-php" "php" "php-mbstring" "php-xml"
 	
 	echo "Enabling userdir module ..."
 	a2enmod userdir
