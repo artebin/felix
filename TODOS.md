@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Recipe for configuring grub with hibernate actived is buggy, if no swap partition when the startup hangs up for 30seconds, See <https://askubuntu.com/questions/1034359/boot-hangs-for-30-seconds-at-begin-running-scripts-local-premount>.
+- [ ] Cannot install ubuntu_1804/user from a tty. We should test is $DISPLAY is defined.
 - [ ] Get a useful logging of all the paclages installed in the system (think about the version of the GTK libs for example, pasystray middle click on tray icon for mute is not working anymore).
 - [ ] Use ncurse for showing a dialog and allow to select some recipes to install.
 - [ ] Remove aspell-fr from minimal.install.list
