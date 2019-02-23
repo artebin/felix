@@ -19,46 +19,31 @@ LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 exit_if_not_bash
 
 configure_geany(){
-	cd ${RECIPE_DIR}
-	
 	echo "Configuring Geany ..."
-	
-	# Backup pre-existing Geany config directory if it exists
-	if [ -d ~/.config/geany ]; then
-		backup_file rename ~/.config/geany
+	if [[ -d "${HOME}/.config/geany" ]]; then
+		backup_file rename "${HOME}/.config/geany"
 	fi
-	mkdir -p ~/.config/geany
+	mkdir -p "${HOME}/.config/geany"
 	
-	# Geany conf
-	cp ./geany_1.29.geany.conf ~/.config/geany/geany.conf
+	#Geany main configuration
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/geany/geany.conf" "${HOME}/.config/geany"
 	
 	# Geany keybindings
-	cp ./geany_1.29.keybindings.conf ~/.config/geany/keybindings.conf
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/geany/keybindings.conf" "${HOME}/.config/geany"
 	
 	# Geany filedefs
-	mkdir -p ~/.config/geany/filedefs
-	cp ./geany_1.29.filetypes.common ~/.config/geany/filedefs/filetypes.common
+	mkdir -p "${HOME}/.config/geany/filedefs"
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/geany/filedefs/filetypes.common" "${HOME}/.config/geany/filedefs"
 	
 	# GitHub markdown CSS
-	mkdir -p ~/.config/geany/plugins/markdown
-	cp ./github-markdown.html ~/.config/geany/plugins/markdown
-	
-	# Force Geany to re-use the same instance per desktop/workspace
-	# I can not make it work by overriding geany.desktop in ~/.local/share/applications
-	# I directly fix the /usr/share/applications/geany.desktop file
-	sudo cp ./geany_one_instance_per_workspace.sh /usr/bin/geany_one_instance_per_workspace
-	sudo chmod a+x /usr/bin/geany_one_instance_per_workspace
-	sudo sed -i "s/Exec=.*/Exec=bash geany_one_instance_per_workspace %F/" /usr/share/applications/geany.desktop
-	sudo update-desktop-database
+	mkdir -p "${HOME}/.config/geany/plugins/markdown"
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/geany/plugins/markdown/github-markdown.html" "${HOME}/.config/geany/plugins/markdown"
 	
 	echo
 }
 
-
-
-cd ${RECIPE_DIR}
 configure_geany 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
