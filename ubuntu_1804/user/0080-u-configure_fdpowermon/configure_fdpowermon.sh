@@ -20,19 +20,16 @@ exit_if_not_bash
 
 configure_fdpowermon(){
 	echo "Configuring fdpowermon ..."
-	
-	cd ${RECIPE_DIR}
-	mkdir -p ~/.config/fdpowermon
-	cp faenza_felix.theme.cfg ~/.config/fdpowermon/theme.cfg
-	
+	if [[ -d "${HOME}/.config/fdpowermon" ]]; then
+		backup_file rename "${HOME}/.config/fdpowermon"
+	fi
+	mkdir -p "${HOME}/.config/fdpowermon"
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/fdpowermon/theme.cfg" "${HOME}/.config/fdpowermon"
 	echo
 }
 
-
-
-cd ${RECIPE_DIR}
 configure_fdpowermon 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
