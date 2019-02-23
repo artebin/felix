@@ -20,14 +20,11 @@ exit_if_not_bash
 
 configure_pnmixer(){
 	echo "Configuring pnmixer ..."
-	
 	if [[ -d "${HOME}/.config/pnmixer" ]]; then
 		backup_file rename "${HOME}/.config/pnmixer"
 	fi
-	
 	mkdir -p "${HOME}/.config/pnmixer"
 	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/pnmixer/config" "${HOME}/.config/pnmixer"
-	
 	echo
 }
 

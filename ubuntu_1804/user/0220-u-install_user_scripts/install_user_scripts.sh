@@ -20,19 +20,15 @@ exit_if_not_bash
 
 install_user_scripts(){
 	echo "Install user scripts ..."
-	
-	cd "${RECIPE_DIR}"
-	if [[ -d ~/scripts ]]; then
-		backup_file rename ~/scripts
+	if [[ -d "${HOME}/scripts" ]]; then
+		backup_file rename "${HOME}/scripts"
 	fi
-	cp -R scripts ~/scripts
-	
+	cp -R "${RECIPE_DIR}/scripts" "${HOME}/scripts"
 	echo
 }
 
-cd "${RECIPE_DIR}"
 install_user_scripts 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
