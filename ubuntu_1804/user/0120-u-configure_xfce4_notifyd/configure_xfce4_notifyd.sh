@@ -19,32 +19,30 @@ LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 exit_if_not_bash
 
 configure_xfce4_notifyd(){
-	cd ${RECIPE_DIR}
+	echo "Configuring xfce4-notifyd ..."
 	
 	# 
 	# Xfce stores its config in ~/.config/xfce4/xfconf/xfce-perchannel-xml/
-	# These files should not be changed while logged in xfce (they will be overwritten).
-	# Should use xfconf-query applying changes during xfce runtime.
-	#
+	# These files should not be changed while logged in xfce (otherwise they 
+	# could be overwritten by xfce).
+	# 
+	# We should use xfconf-query for applying changes during xfce runtime.
 	# We can use xfce4-settings-editor to explore the database.
 	#
 	
-	echo "Configuring xfce4-notifyd ..."
 	CONFIG_FILE="xfce4-notifyd.xml"
-	if [ -f ~/.config/xfce4/xfconf/xfce-perchannel-xml/"${CONFIG_FILE}" ]; then
-		backup_file rename ~/.config/xfce4/xfconf/xfce-perchannel-xml/"${CONFIG_FILE}"
+	if [[ -f "${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml/${CONFIG_FILE}" ]]; then
+		backup_file rename "${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml/${CONFIG_FILE}"
 	fi
-	mkdir -p ~/.config/xfce4/xfconf/xfce-perchannel-xml
-	cp "${CONFIG_FILE}" ~/.config/xfce4/xfconf/xfce-perchannel-xml
-	
+	if [[ ! -d "${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml" ]]; then
+		mkdir -p "${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml"
+	fi
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/xfce4/xfconf/xfce-perchannel-xml/${CONFIG_FILE}" "${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml/${CONFIG_FILE}"
 	echo
 }
 
-
-
-cd ${RECIPE_DIR}
 configure_xfce4_notifyd 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
