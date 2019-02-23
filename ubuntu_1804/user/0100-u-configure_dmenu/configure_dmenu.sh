@@ -20,19 +20,15 @@ exit_if_not_bash
 
 configure_dmenu(){
 	echo "Configuring dmenu ..."
-	
-	if [[ -d ~/.config/dmenu ]]; then
-		backup_file rename ~/.config/dmenu
+	if [[ -d "${HOME}/.config/dmenu" ]]; then
+		backup_file rename "${HOME}/.config/dmenu"
 	fi
-	mkdir -p ~/.config/dmenu
-	cd "${RECIPE_DIR}"
-	cp dmenu-bind.sh ~/.config/dmenu
-	chmod +x ~/.config/dmenu/dmenu-bind.sh
-	
+	mkdir -p "${HOME}/.config/dmenu"
+	cp "${RECIPE_DIR}/dmenu-bind.sh" "${HOME}/.config/dmenu"
+	chmod +x "${HOME}/.config/dmenu/dmenu-bind.sh"
 	echo
 }
 
-cd "${RECIPE_DIR}"
 configure_dmenu 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
