@@ -20,18 +20,14 @@ exit_if_not_bash
 
 configure_rofi(){
 	echo "Configure rofi ..."
-	
-	cd "${RECIPE_DIR}"
-	if [[ -d ~/.config/rofi ]]; then
-		backup_file rename ~/.config/rofi
+	if [[ -d "${HOME}/.config/rofi" ]]; then
+		backup_file rename "${HOME}/.config/rofi"
 	fi
-	mkdir -p ~/.config/rofi
-	cp rofi_1.5.0_config ~/.config/rofi/config
-	
+	mkdir -p "${HOME}/.config/rofi"
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/rofi/config" "${HOME}/.config/rofi"
 	echo
 }
 
-cd "${RECIPE_DIR}"
 configure_rofi 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
