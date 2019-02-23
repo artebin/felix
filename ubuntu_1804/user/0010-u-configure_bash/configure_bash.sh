@@ -24,7 +24,7 @@ configure_bash(){
 	if [[ -f "${HOME}/.bashrc" ]]; then
 		backup_file rename "${HOME}/.bashrc"
 	fi
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/bashrc" "${HOME}/.bashrc"
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.bashrc" "${HOME}/.bashrc"
 	
 	echo
 }
