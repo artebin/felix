@@ -18,44 +18,51 @@ LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 
 exit_if_not_bash
 
-configure_gtk(){
-	cd ${RECIPE_DIR}
-	
-	echo "Configuring GTK ..."
-	
-	# GTK+ 2.0
-	if [ ! -f ~/.gtkrc-2.0 ]; then
-		cp ./user.gtkrc-2.0 ~/.gtkrc-2.0
+configure_gtk2(){
+	echo "Configuring GTK+ 2 ..."
+	if [[ -f "${HOME}/.gtkrc-2.0" ]]; then
+		backup_file rename "${HOME}/.gtkrc-2.0"
 	fi
-	sed -i "/^gtk-theme-name/s/.*/gtk-theme-name=\"${GTK_THEME_NAME}\"/" ~/.gtkrc-2.0
-	sed -i "/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"${GTK_ICON_THEME_NAME}\"/" ~/.gtkrc-2.0
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/user.gtkrc-2.0" "${HOME}/.gtkrc-2.0"
 	
-	# GTK+ 3.0
-	if [ ! -d ~/.config/gtk-3.0 ]; then
-		mkdir ~/.config/gtk-3.0
-	fi
-	if [ ! -f ~/.config/gtk-3.0/settings.ini ]; then
-		cp ./user.gtkrc-3.0 ~/.config/gtk-3.0/settings.ini
-	fi
-	sed -i "/^gtk-theme-name/s/.*/gtk-theme-name=${GTK_THEME_NAME}/" ~/.config/gtk-3.0/settings.ini
-	sed -i "/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=${GTK_ICON_THEME_NAME}/" ~/.config/gtk-3.0/settings.ini
+	echo "Setting gtk-theme-name ..."
+	sed -i "/^gtk-theme-name/s/.*/gtk-theme-name=\"${GTK_THEME_NAME}\"/" "${HOME}/.gtkrc-2.0"
 	
-	if [ -f ~/.config/gtk-3.0/gtk.css ]; then
-		backup_file rename ~/.config/gtk-3.0/gtk.css
+	echo "Setting gtk-icon-theme-name ..."
+	sed -i "/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"${GTK_ICON_THEME_NAME}\"/" "${HOME}/.gtkrc-2.0"
+}
+
+configure_gtk3(){
+	echo "Configuring GTK+ 3 ..."
+	if [[ -d "${HOME}/.config/gtk-3.0" ]]; then
+		backup_file rename "${HOME}/.config/gtk-3.0"
 	fi
-	cp ./gtk.css ~/.config/gtk-3.0/gtk.css
+	mkdir -p "${HOME}/.config/gtk-3.0"
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/user.gtkrc-3.0" "${HOME}/.config/gtk-3.0/settings.ini"
 	
-	# Fix the sharing of bookmarks between GTK2 and GTK3
-	if [ -f ~/.config/gtk-3.0/bookmarks ]; then
-		backup_file rename ~/.config/gtk-3.0/bookmarks
-	fi
-	touch ~/.gtk-bookmarks
-	ln -s ~/.gtk-bookmarks ~/.config/gtk-3.0/bookmarks
+	echo "Setting gtk-theme-name ..."
+	sed -i "/^gtk-theme-name/s/.*/gtk-theme-name=${GTK_THEME_NAME}/" "${HOME}/.config/gtk-3.0/settings.ini"
+	
+	echo "Setting gtk-icon-theme-name ..."
+	sed -i "/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=${GTK_ICON_THEME_NAME}/" "${HOME}/.config/gtk-3.0/settings.ini"
+	
+	echo "Adding gtk.css ..."
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/user.gtk.css" "${HOME}/.config/gtk-3.0/gtk.css"
+	
+	echo "Fix the sharing of bookmarks between GTK2 and GTK3 ..."
+	touch "${HOME}/.gtk-bookmarks"
+	ln -s "${HOME}/.gtk-bookmarks" "${HOME}/.config/gtk-3.0/bookmarks"
 	
 	echo
 }
 
-configure_gtk 2>&1 | tee -a "${LOGFILE}"
+configure_gtk2 2>&1 | tee -a "${LOGFILE}"
+EXIT_CODE="${PIPESTATUS[0]}"
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
+	exit "${EXIT_CODE}"
+fi
+
+configure_gtk3 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
