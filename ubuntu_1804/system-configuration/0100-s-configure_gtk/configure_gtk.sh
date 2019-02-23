@@ -24,7 +24,7 @@ configure_gtk2(){
 	if [[ -f /etc/gtk-2.0/gtkrc ]]; then
 		backup_file rename /etc/gtk-2.0/gtkrc
 	fi
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/system.gtkrc-2.0" /etc/gtk-2.0/gtkrc
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.gtkrc-2.0" /etc/gtk-2.0/gtkrc
 	chmod 755 /etc/gtk-2.0/gtkrc
 	
 	echo "Setting gtk-theme-name: ${GTK_THEME_NAME} ..."
@@ -44,7 +44,7 @@ configure_gtk3(){
 	if [[ -f /etc/gtk-3.0/settings.ini ]]; then
 		backup_file rename /etc/gtk-3.0/settings.ini
 	fi
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/system.gtkrc-3.0" /etc/gtk-3.0/settings.ini
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/gtk-3.0/settings.ini" /etc/gtk-3.0/settings.ini
 	chmod 755 /etc/gtk-3.0/settings.ini
 	
 	echo "Setting gtk-theme-name: ${GTK_THEME_NAME} ..."
@@ -58,7 +58,7 @@ configure_gtk3(){
 		backup_file rename /root/.config/gtk-3.0
 	fi
 	mkdir -p /root/.config/gtk-3.0
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/system.gtk.css" /root/.config/gtk-3.0/gtk.css
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/gtk-3.0/gtk.css" /root/.config/gtk-3.0/gtk.css
 	
 	echo "Disabling the scrollbar overlay introduced in GTK+ 3.16 ..."
 	# It is used for scrollbar undershoot/overshoot and line marker indicating scrollbar value is not 0 or 1 (dashed line)

@@ -23,7 +23,7 @@ configure_gtk2(){
 	if [[ -f "${HOME}/.gtkrc-2.0" ]]; then
 		backup_file rename "${HOME}/.gtkrc-2.0"
 	fi
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/user.gtkrc-2.0" "${HOME}/.gtkrc-2.0"
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.gtkrc-2.0" "${HOME}/.gtkrc-2.0"
 	
 	echo "Setting gtk-theme-name: ${GTK_THEME_NAME} ..."
 	sed -i "/^gtk-theme-name/s/.*/gtk-theme-name=\"${GTK_THEME_NAME}\"/" "${HOME}/.gtkrc-2.0"
@@ -38,7 +38,7 @@ configure_gtk3(){
 		backup_file rename "${HOME}/.config/gtk-3.0"
 	fi
 	mkdir -p "${HOME}/.config/gtk-3.0"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/user.gtkrc-3.0" "${HOME}/.config/gtk-3.0/settings.ini"
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/gtk-3.0/settings.ini" "${HOME}/.config/gtk-3.0/settings.ini"
 	
 	echo "Setting gtk-theme-name ..."
 	sed -i "/^gtk-theme-name/s/.*/gtk-theme-name=${GTK_THEME_NAME}/" "${HOME}/.config/gtk-3.0/settings.ini"
@@ -47,7 +47,7 @@ configure_gtk3(){
 	sed -i "/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=${GTK_ICON_THEME_NAME}/" "${HOME}/.config/gtk-3.0/settings.ini"
 	
 	echo "Adding gtk.css ..."
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/user.gtk.css" "${HOME}/.config/gtk-3.0/gtk.css"
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/gtk-3.0/gtk.css" "${HOME}/.config/gtk-3.0/gtk.css"
 	
 	echo "Fix the sharing of bookmarks between GTK2 and GTK3 ..."
 	touch "${HOME}/.gtk-bookmarks"
