@@ -19,33 +19,25 @@ LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 exit_if_not_bash
 
 configure_vlc(){
-	cd ${RECIPE_DIR}
-	
 	echo "Configuring vlc ..."
-	if [ -f ~/.config/vlc ]; then
-		backup_file rename ~/.config/vlc
+	if [[ -d "${HOME}/.config/vlc" ]]; then
+		backup_file rename "${HOME}/.config/vlc"
 	fi
-	if [ ! -f ~/.config/vlc ]; then
-		mkdir -p ~/.config/vlc
-	fi
-	cp ./vlcrc ~/.config/vlc/vlcrc
+	mkdir -p "${HOME}/.config/vlc"
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/vlc/vlcrc" "${HOME}/.config/vlc"
+	echo
 	
-	if [ -f ~/.local/share/vlc ]; then
-		backup_file rename ~/.local/share/vlc
+	echo "Adding default playlist ..."
+	if [[ -d "${HOME}/.local/share/vlc" ]]; then
+		backup_file rename "${HOME}/.local/share/vlc"
 	fi
-	if [ ! -f ~/.local/share/vlc ]; then
-		mkdir -p ~/.local/share/vlc
-	fi
-	cp ./ml.xspf ~/.local/share/vlc/ml.xspf
-	
+	mkdir -p "${HOME}/.local/share/vlc"
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.local/share/vlc/ml.xspf" "${HOME}/.local/share/vlc"
 	echo
 }
 
-
-
-cd ${RECIPE_DIR}
 configure_vlc 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
