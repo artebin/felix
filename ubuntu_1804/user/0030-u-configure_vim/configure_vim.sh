@@ -19,22 +19,16 @@ LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 exit_if_not_bash
 
 configure_vim(){
-	cd ${RECIPE_DIR}
-	
 	echo "Configuring vim ..."
-	if [ -f ~/.vimrc ]; then
-		backup_file rename ~/.vimrc
+	if [[ -f "${HOME}/.vimrc" ]]; then
+		backup_file rename "${HOME}/.vimrc"
 	fi
-	cp ./vimrc ~/.vimrc
-	
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.vimrc" "${HOME}/.vimrc"
 	echo
 }
 
-
-
-cd ${RECIPE_DIR}
 configure_vim 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi

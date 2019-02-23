@@ -55,11 +55,8 @@ configure_gtk(){
 	echo
 }
 
-
-
-cd ${RECIPE_DIR}
 configure_gtk 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi

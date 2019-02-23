@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Read doc about the DPMS <https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling> and allow to set it easily.
 - [ ] Add a caja script for playing a folder in Media player.
 - [ ] Replace pasystray by pnmixer + call paprefs + install dlna support.
 - [ ] Recipe for configuring grub with hibernate actived is buggy, if no swap partition when the startup hangs up for 30seconds, See <https://askubuntu.com/questions/1034359/boot-hangs-for-30-seconds-at-begin-running-scripts-local-premount>.

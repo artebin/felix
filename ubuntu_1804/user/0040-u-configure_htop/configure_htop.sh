@@ -19,22 +19,16 @@ LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 exit_if_not_bash
 
 configure_htop(){
-	cd ${RECIPE_DIR}
-	
 	echo "Configuring htop ..."
-	if [ -f ~/.htoprc ]; then
-		backup_file rename ~/.htoprc
+	if [[ -f "${HOME}/.htoprc" ]]; then
+		backup_file rename "${HOME}/.htoprc"
 	fi
-	cp htoprc ~/.htoprc
-	
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.htoprc" "${HOME}/.htoprc"
 	echo
 }
 
-
-
-cd ${RECIPE_DIR}
 configure_htop 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
