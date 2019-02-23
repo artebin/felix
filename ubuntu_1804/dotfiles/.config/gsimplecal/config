@@ -16,5 +16,5 @@ show_week_numbers = 1
 #mainwindow_yoffset = 0
 clock_label = UTC
 clock_tz = :UTC
-clock_label = Europe/Brussels
-clock_tz = :Europe/Brussels
+clock_label = LOCAL_TIME_ZONE
+clock_tz = :LOCAL_TIME_ZONE

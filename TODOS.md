@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Make TRRS connector works.
 - [ ] Read doc about the DPMS <https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling> and allow to set it easily.
 - [ ] Add a caja script for playing a folder in Media player.
 - [ ] Replace pasystray by pnmixer + call paprefs + install dlna support.
