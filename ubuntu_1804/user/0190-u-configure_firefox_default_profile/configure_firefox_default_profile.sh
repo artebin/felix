@@ -131,11 +131,8 @@ configure_firefox_default_profile(){
 	echo
 }
 
-
-
-cd ${RECIPE_DIR}
 configure_firefox_default_profile 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
