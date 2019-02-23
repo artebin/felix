@@ -20,21 +20,16 @@ exit_if_not_bash
 
 configure_sxhkd(){
 	echo "Configuring sxhkd ..."
-	
-	if [[ -d ~/.config/sxhkd ]]; then
-		backup_file rename ~/.config/sxhkd
+	if [[ -d "${HOME}/.config/sxhkd" ]]; then
+		backup_file rename "${HOME}/.config/sxhkd"
 	fi
-	
-	cd "${RECIPE_DIR}"
-	mkdir -p ~/.config/sxhkd
-	cp sxhkdrc ~/.config/sxhkd/sxhkdrc
-	
+	mkdir -p "${HOME}/.config/sxhkd"
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/sxhkd/sxhkdrc" "${HOME}/.config/sxhkd"
 	echo
 }
 
-cd "${RECIPE_DIR}"
 configure_sxhkd 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
