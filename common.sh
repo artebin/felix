@@ -31,14 +31,14 @@ is_cygwin_platform(){
 }
 
 exit_if_not_bash(){
-	if [ ! "${BASH_VERSION}" ] ; then
-		echo "This script should run with bash" 1>&2
+	if [[ ! "${BASH_VERSION}" ]] ; then
+		printf "This script should run with bash\n" 1>&2
 		exit 1
 	fi
 }
 
 has_root_privileges(){
-	if [ "${EUID}" -eq 0 ]; then
+	if [[ "${EUID}" -eq 0 ]]; then
 		return 0
 	else
 		return 1
@@ -47,7 +47,14 @@ has_root_privileges(){
 
 exit_if_has_not_root_privileges(){
 	if ! has_root_privileges; then
-		echo "This script needs the root priveleges"
+		printf "This script needs the root priveleges\n" 1>&2
+		exit 1
+	fi
+}
+
+exit_if_has_oot_privileges(){
+	if has_root_privileges; then
+		printf "This script should no be executed with the root priveleges\n" 1>&2
 		exit 1
 	fi
 }

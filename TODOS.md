@@ -1,8 +1,7 @@
 # TODOS
 - [ ] Add a way to detect a recipe from the user family is executed with xorg started (no DISPLAY).
 - [ ] Add function exit_is_has_root_privileges and use it in user family recipes.
-- [ ] Make TRRS connector works.
-- [ ] Read doc about the DPMS <https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling> and allow to set it easily.
+- [ ] Is it possible to make work the TRRS on Linux?
 - [ ] Add a caja script for playing a folder in Media player.
 - [ ] Replace pasystray by pnmixer + call paprefs + install dlna support.
 - [ ] Recipe for configuring grub with hibernate actived is buggy, if no swap partition when the startup hangs up for 30seconds, See <https://askubuntu.com/questions/1034359/boot-hangs-for-30-seconds-at-begin-running-scripts-local-premount>.
@@ -11,7 +10,6 @@
 - [ ] Use ncurse for showing a dialog and allow to select some recipes to install.
 - [ ] Remove aspell-fr from minimal.install.list
 - [ ] Add missing pulseaudio packages.
-- [ ] Copy the felix banner in a file.
 - [ ] pasystray shows duplicated notification. Maybe an answer in <https://github.com/christophgysin/pasystray/issues/75> and the middle-click on the tray icon for muting the sound is not working anymore. => Add a bug todo and use pnmixer while waiting for a fix.
 - [ ] Missing polkit rules for cups see <https://wiki.archlinux.org/index.php/CUPS#Allowing_admin_authentication_through_PolicyKit>.
 - [ ] Cups server is not installed.
@@ -23,7 +21,6 @@
 - [ ] Add an alias in bachrc or a menuitem in openbox menu for doing a screenshot of a window with 'xwd'.
 - [ ] Make changes allowing to run 'info.sh' without 'common.sh'.
 - [ ] Extract localisation FR from minimal.packages.list, it should only contains US locales.
-- [ ] Move hotkeys from openbox rc.xml to sxhkd.
 - [ ] "enter your password to unlock your login keyring".
 - [ ] pdf are opened with gimp.
 - [ ] "tint2rc": caja will open the file with "Tint2 Settings", how does it works?
@@ -81,6 +78,9 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Read doc about the DPMS <https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling> and add doc in openbox autostart.
+- [x] Move hotkeys from openbox rc.xml to sxhkd.
+- [x] Copy the felix banner in a file. => no but put it in felix.sh
 - [x] Add a recipe for installing claws-mail from sources + plugins (fancy, vcalendar etc. ).
 - [x] alias github-clone should use https
 - [x] Do not start fdpowermon if no battery, test in openbox autostart.
