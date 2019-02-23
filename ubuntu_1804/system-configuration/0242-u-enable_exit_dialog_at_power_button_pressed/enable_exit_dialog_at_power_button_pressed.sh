@@ -17,22 +17,15 @@ source "${RECIPE_FAMILY_CONF_FILE}"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 
 exit_if_not_bash
+exit_if_has_not_root_privileges
 
-enable_exit_dialog_at_power_button_pressed(){
-	echo "Enabling exit dialog at power button pressed ..."
-	cp /etc/systemd/logind.conf ./logind.conf
-	add_or_update_line_based_on_prefix "#*HandlePowerKey=" "HandlePowerKey=ignore" ./logind.conf
-	sudo cp ./logind.conf /etc/systemd/logind.conf
-	# Configuration in openbox rc.xml file should already be done
-	
-	# Cleaning
-	cd ${RECIPE_DIR}
-	rm -f ./logind.conf
-	
+configure_systemd_logind_ignore_power_key(){
+	echo "Configuring systemd-logind to ignore the power key ..."
+	add_or_update_line_based_on_prefix "#*HandlePowerKey=" "HandlePowerKey=ignore" /etc/systemd/logind.conf
 	echo
 }
 
-enable_exit_dialog_at_power_button_pressed 2>&1 | tee -a "${LOGFILE}"
+configure_systemd_logind_ignore_power_key 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
