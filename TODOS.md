@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Add a way to detect a recipe from the user family is executed with xorg started (no DISPLAY).
+- [ ] Add function exit_is_has_root_privileges and use it in user family recipes.
 - [ ] Make TRRS connector works.
 - [ ] Read doc about the DPMS <https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling> and allow to set it easily.
 - [ ] Add a caja script for playing a folder in Media player.
