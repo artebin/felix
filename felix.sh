@@ -2,6 +2,12 @@
 
 source "$(dirname ${BASH_SOURCE})/common.sh"
 
+FELIX_BANNER='  __      _ _      
+ / _| ___| (_)_  __
+| |_ / _ \ | \ \/ /
+|  _|  __/ | |>  < 
+|_|  \___|_|_/_/\_\'
+
 retrieve_log_file_name(){
 	if [[ $# -ne 1 ]]; then
 		printf "Function retrieve_log_file_name() expects FILE_NAME in parameter\n"

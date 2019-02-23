@@ -7,12 +7,6 @@ LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 
 exit_if_not_bash
 
-FELIX_BANNER='  __      _ _      
- / _| ___| (_)_  __
-| |_ / _ \ | \ \/ /
-|  _|  __/ | |>  < 
-|_|  \___|_|_/_/\_\'
-
 execute_recipes(){
 	printf "Executing recipes ...\n"
 	printf "Interactive mode=${INTERACTIVE_MODE}\n\n"
