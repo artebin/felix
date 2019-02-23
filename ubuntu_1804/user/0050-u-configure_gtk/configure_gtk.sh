@@ -25,10 +25,10 @@ configure_gtk2(){
 	fi
 	cp "${RECIPE_FAMILY_DIR}/dotfiles/user.gtkrc-2.0" "${HOME}/.gtkrc-2.0"
 	
-	echo "Setting gtk-theme-name ..."
+	echo "Setting gtk-theme-name: ${GTK_THEME_NAME} ..."
 	sed -i "/^gtk-theme-name/s/.*/gtk-theme-name=\"${GTK_THEME_NAME}\"/" "${HOME}/.gtkrc-2.0"
 	
-	echo "Setting gtk-icon-theme-name ..."
+	echo "Setting gtk-icon-theme-name: ${GTK_ICON_THEME_NAME} ..."
 	sed -i "/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"${GTK_ICON_THEME_NAME}\"/" "${HOME}/.gtkrc-2.0"
 }
 
