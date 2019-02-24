@@ -17,6 +17,7 @@ vbetool
 #################################
 # Terminal & command line tools
 #################################
+parallel
 colortest
 tree
 vim
