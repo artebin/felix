@@ -22,11 +22,20 @@ exit_if_has_not_root_privileges
 process_package_install_list(){
 	echo "Install packages ..."
 	
-	cd "${RECIPE_DIR}"
-	PACKAGES_LIST_FILE="./packages.install.minimal.list"
+	# Check that dpkg is not locked
+	DPKG_LOCK=$(fuser /var/lib/dpkg/lock 2>/dev/null)
+	if [[ ! -z "${DPKG_LOCK}" ]]; then
+		printf "Dpkg seems to be locked but it should not be during the execution of this script\n" 1>&2
+		exit 1
+	fi
 	
-	# Build apt input file, one package per line
-	APT_INPUT_FILE="./apt.pkg.list"
+	# Synchronized package index files from sources
+	apt-get update
+	
+	PACKAGES_LIST_FILE="${RECIPE_DIR}/packages.install.minimal.list"
+	
+	# Build the apt input from PACKAGES_LIST_FILE, one package per line
+	APT_INPUT_FILE="${RECIPE_DIR}/apt.pkg.list"
 	if [[ -f "${APT_INPUT_FILE}" ]]; then
 		rm -f "${APT_INPUT_FILE}"
 	fi
@@ -40,43 +49,39 @@ process_package_install_list(){
 		fi
 		PACKAGES_LINE=$(echo "${PACKAGES_LINE}"|awk '{$1=$1};1')
 		if [[ ! -z "${PACKAGES_LINE}" ]]; then
-			echo "${PACKAGES_LINE}" | tr " " "\n" >> "${APT_INPUT_FILE}"
+			echo "${PACKAGES_LINE}" | tr " " "\n" >>"${APT_INPUT_FILE}"
 		fi
-	done < "${PACKAGES_LIST_FILE}"
+	done <"${PACKAGES_LIST_FILE}"
 	
 	# Check package availability
-	# Currently using `aptitude search` which is very slow. 
-	# Furthermore it expects an argument which can follow a query language, i.e. `g++` will not work => for now only escaping '+'
-	# See <https://wiki.debian.org/Aptitude#Advanced_search_patterns>
-	# TODO: code should be improved later.
-	if [[ "${TEST_PACKAGE_AVAILABILITY}" == "true" ]]; then
-		apt-get install -y aptitude
-		PACKAGE_MISSING_LIST_FILE="./packages.missing.list"
-		if [[ -f "${PACKAGE_MISSING_LIST_FILE}" ]]; then
-			rm -f "${PACKAGE_MISSING_LIST_FILE}"
+	PACKAGE_MISSING_LIST_FILE="${RECIPE_DIR}/packages.missing.list"
+	if [[ -f "${PACKAGE_MISSING_LIST_FILE}" ]]; then
+		rm -f "${PACKAGE_MISSING_LIST_FILE}"
+	fi
+	while read PACKAGE_NAME; do
+		if [[ -z "${PACKAGE_NAME}" ]]; then
+			continue;
 		fi
-		while read LINE; do
-			if [[ -z "${LINE}" ]]; then
-				continue;
-			fi
-			ESCAPED_LINE=$(echo "${LINE}" | sed 's/\+/\\\+/g')
-			PACKAGE_AVAILABILITY=`aptitude search "^${ESCAPED_LINE}\$"`
-			if [[ $? -eq 0 ]]; then
-				printf "     [\e[92m%s\e[0m] %s\n" "OK" "${LINE}"
+		if is_package_available "${PACKAGE_NAME}"; then
+			PACKAGE_DESCRIPTION=$(retrieve_package_short_description "${PACKAGE_NAME}")
+			if is_package_installed "${PACKAGE_NAME}"; then
+				printf "[\e[92m%s\e[0m] [\e[92m%s\e[0m] %s\n" "AVAILABLE" "INSTALLED    " "${PACKAGE_NAME}: ${PACKAGE_DESCRIPTION}"
 			else
-				printf "[\e[91m%s\e[0m] %s\n" "MISSING" "${LINE}"
-				echo "${LINE}" >> "${PACKAGE_MISSING_LIST_FILE}"
+				printf "[\e[92m%s\e[0m] [%s] %s\n"            "AVAILABLE" "NOT INSTALLED" "${PACKAGE_NAME}: ${PACKAGE_DESCRIPTION}"
 			fi
-		done < "${APT_INPUT_FILE}"
-		if [[ -s "${PACKAGE_MISSING_LIST_FILE}" ]]; then
-			echo "Some packages are missing."
-			echo "See ${PACKAGE_MISSING_LIST_FILE}"
-			exit 1
-		 fi
+		else
+			printf     "[\e[91m%s\e[0m] [%s] %s\n"            "MISSING  " "             " "${PACKAGE_NAME}"
+			echo "${PACKAGE_NAME}" >>"${PACKAGE_MISSING_LIST_FILE}"
+		fi
+	done <"${APT_INPUT_FILE}"
+	if [[ -s "${PACKAGE_MISSING_LIST_FILE}" ]]; then
+		echo "Some packages are missing"
+		echo "See ${PACKAGE_MISSING_LIST_FILE}"
+		exit 1
 	fi
 	
 	# Proceed install
-	xargs apt-get -y install < "${APT_INPUT_FILE}"
+	xargs apt-get -y install <"${APT_INPUT_FILE}"
 	
 	# Cleaning
 	rm -f "${APT_INPUT_FILE}"
@@ -84,7 +89,6 @@ process_package_install_list(){
 	echo
 }
 
-cd "${RECIPE_DIR}"
 process_package_install_list 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then

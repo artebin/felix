@@ -202,15 +202,44 @@ remove_terminal_control_sequences(){
 }
 alias remove_terminal_control_sequences=remove_terminal_control_sequences
 
+is_package_available(){
+	if [[ $# -ne 1 ]]; then
+		printf "Function is_package_available() expects PACKAGE_NAME as argument\n" 1>&2
+		exit 1
+	fi
+	PACKAGE_NAME="${1}"
+	apt-cache showpkg "${PACKAGE_NAME}" 2>&1|grep -q 'Unable to locate package'
+	IS_PACKAGE_NOT_AVAILABLE=$?
+	if [[ ${IS_PACKAGE_NOT_AVAILABLE} -eq 0 ]]; then
+		return 1
+	else
+		return 0
+	fi
+}
+
+retrieve_package_short_description(){
+	if [[ $# -ne 1 ]]; then
+		printf "Function retrieve_package_short_description() expects PACKAGE_NAME as argument\n" 1>&2
+		exit 1
+	fi
+	PACKAGE_NAME="${1}"
+	PACKAGE_DESCRIPTION=$(apt-cache show "${PACKAGE_NAME}"|grep -m 1 "Description-en: "|sed 's/Description-en: //g'|sed 's/^\s\+//g'|sed 's/\s\+$//g')
+	printf "${PACKAGE_DESCRIPTION}"
+}
+
 is_package_installed(){
 	if [[ $# -ne 1 ]]; then
 		printf "Function is_package_installed() expects PACKAGE_NAME as argument\n" 1>&2
 		exit 1
 	fi
 	PACKAGE_NAME="${1}"
-	dpkg-query -W -f='${Status}' "${PACKAGE_NAME}" 2>/dev/null | grep -q "ok installed"
-	RETURN_CODE=$?
-	return "${RETURN_CODE}"
+	dpkg-query -W -f='${Status}' "${PACKAGE_NAME}" 2>&1|grep -q 'ok installed'
+	IS_PACKAGE_INSTALLED=$?
+	if [[ ${IS_PACKAGE_INSTALLED} -eq 0 ]]; then
+		return 0
+	else
+		return 1
+	fi
 }
 
 install_package_if_not_installed(){
