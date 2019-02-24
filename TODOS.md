@@ -1,11 +1,10 @@
 # TODOS
 - [ ] Analysis on the macbook air, battery consumption and CPU usage.
-- [ ] Add a way to detect a recipe from the user family is executed with xorg started (no DISPLAY).
 - [ ] Is it possible to make work the TRRS on Linux?
 - [ ] Add a caja script for playing a folder in Media player.
 - [ ] Replace pasystray by pnmixer + call paprefs + install dlna support.
 - [ ] Recipe for configuring grub with hibernate actived is buggy, if no swap partition when the startup hangs up for 30seconds, See <https://askubuntu.com/questions/1034359/boot-hangs-for-30-seconds-at-begin-running-scripts-local-premount>.
-- [ ] Cannot install ubuntu_1804/user from a tty. We should test is $DISPLAY is defined.
+- [ ] Cannot install ubuntu_1804/user from a tty. We should test is $DISPLAY is defined. Should be done via a function in common.sh exit_if_not_x_session()
 - [ ] Get a useful logging of all the paclages installed in the system (think about the version of the GTK libs for example, pasystray middle click on tray icon for mute is not working anymore).
 - [ ] Use ncurse for showing a dialog and allow to select some recipes to install.
 - [ ] Remove aspell-fr from minimal.install.list
@@ -17,14 +16,14 @@
 - [ ] systemd manager.
 - [ ] Special menu in rofi for the XF86S symbols.
 - [ ] Add the screenshot scripts in the openbox menu.
-- [ ] Improve console traces for install.sh and for recipe system OK/MISSING package.
 - [ ] Add an alias in bachrc or a menuitem in openbox menu for doing a screenshot of a window with 'xwd'.
 - [ ] Make changes allowing to run 'info.sh' without 'common.sh'.
 - [ ] Extract localisation FR from minimal.packages.list, it should only contains US locales.
 - [ ] "enter your password to unlock your login keyring".
 - [ ] pdf are opened with gimp.
 - [ ] "tint2rc": caja will open the file with "Tint2 Settings", how does it works?
-- [ ] Display switched off by fdpowermon or something else? (no powermanager from xfce or mate should be started anymore).
+- [ ] Check command to start by fdpowermon when reaching critical level of battery power.
+- [ ] Recipe configure git-cola: editor, comparator etc.
 - [ ] Configure default difftoll for git, editor etc.
 - [ ] Brillo and Display|Keyboard backlight in console (keysym ?).
 - [ ] macbook air: acpi_osi in kernel pameters see <https://wiki.archlinux.org/index.php/Mac#Suspend_and_Hibernate>
@@ -33,19 +32,16 @@
 - [ ] Look at the vim Mardown styling.
 - [ ] cp asks for confirmation when overwrite.
 - [ ] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron.
-- [ ] Clean recipe openbox clipmenud_run.sh should be removed? Check about that.
 - [ ] Check what is missing if we do not use a Power manager (multiple displays support in logind?).
 - [ ] Add recipe for suspend-then-hibernate, see <https://askubuntu.com/questions/12383/how-to-go-automatically-from-suspend-into-hibernate>
 - [ ] Command line git-flavored markdown-2-html? with pandoc or <http://daringfireball.net/projects/downloads/Markdown_1.0.1.zip>.
-- [ ] Check that we can open 2 window "File Properties" concurrently for 2 different files in Caja.
+- [ ] Check that we can open 2 window "File Properties" concurrently for 2 different files in Caja. It seems buggy in ubuntu18.04.0.
 - [ ] Use xdg-open from openbox (no panel no desktop). We can use "dex" but would be good to be able to use xdg-open (gtk-open, exo-open etc. ).
 - [ ] VNC through SSH.
 - [ ] Jar should not be associated to Java.
 - [ ] Use autofs for preventing caja to freeze when NFS/Samba is down or network problems. See <https://unix.stackexchange.com/questions/267138/preventing-broken-nfs-connection-from-freezing-the-client-system> and <https://help.ubuntu.com/community/Autofs>.
 - [ ] Add traces for monitoring the time taken for the installation.
 - [ ] When all the document are closed in Geany, the Markdown Preview still shows the last preview. Also the links are clickable in the preview and the page is showed in the sidebar but there is no way to navigate and go back to the preview.
-- [ ] When locked the name of the use is bold and ugly in lightdm, why? For indicating that session is locked? The button "unlock" is not enough?
-- [ ] Add caja script for indenting XML file
 - [ ] scroll by pixel/pc amount in LibreOffice Calc (rather by number of rows).
 - [ ] <https://bugs.launchpad.net/ubuntu/+source/gvfs/+bug/378783> 
 - [ ] locate panel-desktop-handler.desktop => this desktop file is called for creating a shortcut for each execution of one desktop file with exo-open, gvfs-open, xdg-open etc.
@@ -58,7 +54,6 @@
 - [ ] Need a way to do some settings regarding the sensitiviy of the touchpad/mouse a save these settings. The xfce4-mouse-settings is not saved and even worst it is reset during a session but it probably because I use it in a not-XFCE desktop.
 - [ ] Test if caja gets unresponsive when the NFS is mounter via a regular mount command rather via gvfs. Just test it by mount it, access it via caja, unplug the network and access it again via caja.
 - [ ] Thunderbird config do not mark read automatically.
-- [ ] Add recipe for updating the XDG default directory (remove "Templates" and "Music" should be default).
 - [ ] Compile from source <https://github.com/freedesktop/xdg-desktop-file-utils> because command "update-desktop-update" is bugged in Ubuntu 18.04.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>.
@@ -78,6 +73,9 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Clean recipe openbox clipmenud_run.sh should be removed? Check about that. => yes. Removed.
+- [x] Add caja script for indenting XML file
+- [x] Add recipe for updating the XDG default directory (remove "Templates" and "Music" should be default). => done as recipe in system-configuration.
 - [x] Add function exit_is_has_root_privileges and use it in user family recipes.
 - [x] Read doc about the DPMS <https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling> and add doc in openbox autostart.
 - [x] Move hotkeys from openbox rc.xml to sxhkd.
