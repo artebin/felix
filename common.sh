@@ -52,7 +52,7 @@ exit_if_has_not_root_privileges(){
 	fi
 }
 
-exit_if_has_oot_privileges(){
+exit_if_has_root_privileges(){
 	if has_root_privileges; then
 		printf "This script should not be executed with the root priveleges\n" 1>&2
 		exit 1

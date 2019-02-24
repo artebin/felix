@@ -19,13 +19,13 @@ LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 exit_if_not_bash
 exit_if_has_root_privileges
 
-install_java_env_vars(){
-	echo "Installing Java environment variables in ${HOME}/.xsessionrc ..."
-	cat "${RECIPE_DIR}/java_env_vars.xsessionrc" >> "${HOME}/.xsessionrc"
+configure_xsessionrc(){
+	echo "Configuring xsessionrc ..."
+	cat "${RECIPE_FAMILY_DIR}/dotfiles/.xsessionrc" >> "${HOME}/.xsessionrc"
 	echo
 }
 
-install_java_env_vars 2>&1 | tee -a "${LOGFILE}"
+configure_xsessionrc 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
