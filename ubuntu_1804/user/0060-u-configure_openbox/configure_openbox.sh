@@ -17,6 +17,7 @@ source "${RECIPE_FAMILY_CONF_FILE}"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 
 exit_if_not_bash
+exit_if_has_root_privileges
 
 configure_openbox(){
 	echo "Configuring openbox ..."

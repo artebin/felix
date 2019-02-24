@@ -17,6 +17,7 @@ source "${RECIPE_FAMILY_CONF_FILE}"
 LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 
 exit_if_not_bash
+exit_if_has_root_privileges
 
 blueman_applet_should_not_auto_enable_bluetooth_adapter(){
 	echo "Blueman applet should not auto enable the bluetooth adapter when starting (keep the saved state of the adapter) ..."

@@ -54,14 +54,14 @@ exit_if_has_not_root_privileges(){
 
 exit_if_has_oot_privileges(){
 	if has_root_privileges; then
-		printf "This script should no be executed with the root priveleges\n" 1>&2
+		printf "This script should not be executed with the root priveleges\n" 1>&2
 		exit 1
 	fi
 }
 
 retrieve_absolute_path(){
-	# The 'readlink' command can not be used on Mac platform to retrieve the absolute path of the current script.
-	# Internet says there's no simple way to do this and we have to invoke perl.
+	# The 'readlink' command can not be used on Mac platform to retrieve the absolute paths.
+	# Internet says there's no simple way to do this and best solution is to invoke perl.
 	if is_mac_platform; then
 		ABSOLUTE_PATH=$(perl -e 'use Cwd "abs_path";print abs_path(shift)' "${1}")
 		echo "${ABSOLUTE_PATH}"
@@ -204,8 +204,8 @@ alias remove_terminal_control_sequences=remove_terminal_control_sequences
 
 is_package_installed(){
 	if [[ $# -ne 1 ]]; then
-		echo "Function \"is_package_installed\" expects one argument"
-		return 1
+		printf "Function is_package_installed() expects PACKAGE_NAME as argument\n" 1>&2
+		exit 1
 	fi
 	PACKAGE_NAME="${1}"
 	dpkg-query -W -f='${Status}' "${PACKAGE_NAME}" 2>/dev/null | grep -q "ok installed"
@@ -215,14 +215,14 @@ is_package_installed(){
 
 install_package_if_not_installed(){
 	if [[ ! $# -ge 1 ]]; then
-		echo "Function \"install_package_if_not_installed\" expects at least one argument"
-		return 1
+		printf "Function install_package_if_not_installed() expects at least one package name as parameter\n" 1>&2
+		exit 1
 	fi
 	for PACKAGE_NAME in $@; do
 		if $(is_package_installed "${PACKAGE_NAME}"); then
-			printf "Package \"${PACKAGE_NAME}\" is already installed\n"
+			printf "Package is already installed: ${PACKAGE_NAME}\n"
 		else
-			printf "Installing \"${PACKAGE_NAME}\"\n"
+			printf "Installing package: ${PACKAGE_NAME} ...\n"
 			apt-get install -y "${PACKAGE_NAME}"
 		fi
 	done
@@ -230,14 +230,14 @@ install_package_if_not_installed(){
 
 remove_with_purge_package_if_installed(){
 	if [[ ! $# -ge 1 ]]; then
-		echo "Function \"remove_with_purge_package_if_installed\" expects at least one argument"
-		return 1
+		printf "Function remove_with_purge_package_if_installed() expects at least one package name as parameter\n" 1>&2
+		exit 1
 	fi
 	for PACKAGE_NAME in $@; do
 		if ! $(is_package_installed "${PACKAGE_NAME}"); then
-			printf "Package \"${PACKAGE_NAME}\" not removed because not installed\n"
+			printf "Package not removed because not installed: ${PACKAGE_NAME}\n"
 		else
-			printf "Removing \"${PACKAGE_NAME}\"\n"
+			printf "Removing package: ${PACKAGE_NAME} ...\n"
 			apt-get remove --purge -y "${PACKAGE_NAME}"
 		fi
 	done
