@@ -102,8 +102,13 @@
 | `<Ctrl>s`					| Scroll lock (XOFF) |
 | `<Ctrl>q`					| Scroll unlock (XON) |
 | `<Shift><PageUp>`			| Scroll up |
-| `<Shift><PageDown>`			| Scroll down |
+| `<Shift><PageDown>`		| Scroll down |
+| `<Mouse drag>`			| Selection |
 | `<Ctrl><Mouse drag>`		| Block selection |
+| `<Ctrl><Shift>c`			| Copy to clipboard |
+| `<Shift><Insert>`			| Paste from primary |
+| `<Ctrl><Shift>v`			| Paste from clipboard |
+| `<Ctrl><Shift><Insert>`	| Paste from clipboard |
 
 ## Caja
 

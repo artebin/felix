@@ -1,6 +1,6 @@
 # TODOS
+- [ ] Analysis on the macbook air, battery consumption and CPU usage.
 - [ ] Add a way to detect a recipe from the user family is executed with xorg started (no DISPLAY).
-- [ ] Add function exit_is_has_root_privileges and use it in user family recipes.
 - [ ] Is it possible to make work the TRRS on Linux?
 - [ ] Add a caja script for playing a folder in Media player.
 - [ ] Replace pasystray by pnmixer + call paprefs + install dlna support.
@@ -78,6 +78,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Add function exit_is_has_root_privileges and use it in user family recipes.
 - [x] Read doc about the DPMS <https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling> and add doc in openbox autostart.
 - [x] Move hotkeys from openbox rc.xml to sxhkd.
 - [x] Copy the felix banner in a file. => no but put it in felix.sh
