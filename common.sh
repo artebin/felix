@@ -208,7 +208,7 @@ is_package_available(){
 		exit 1
 	fi
 	PACKAGE_NAME="${1}"
-	apt-cache showpkg "${PACKAGE_NAME}" 2>&1|grep -q 'Unable to locate package'
+	apt-cache --quiet=0 showpkg "${PACKAGE_NAME}" 2>&1|grep -q 'Unable to locate package'
 	IS_PACKAGE_NOT_AVAILABLE=$?
 	if [[ ${IS_PACKAGE_NOT_AVAILABLE} -eq 0 ]]; then
 		return 1
@@ -225,6 +225,65 @@ retrieve_package_short_description(){
 	PACKAGE_NAME="${1}"
 	PACKAGE_DESCRIPTION=$(apt-cache show "${PACKAGE_NAME}"|grep -m 1 "Description-en: "|sed 's/Description-en: //g'|sed 's/^\s\+//g'|sed 's/\s\+$//g')
 	printf "${PACKAGE_DESCRIPTION}"
+}
+
+generate_apt_package_list_file(){
+	if [[ ! $# -ne 2 ]]; then
+		printf "Function generate_apt_package_list_file() expects PACKAGE_LIST_FILE, APT_PACKAGE_LIST_FILE and PACKAGE_MISSING_LIST_FILE as parameter\n" 1>&2
+		exit 1
+	fi
+	PACKAGE_LIST_FILE="${1}"
+	APT_PACKAGE_LIST_FILE="${2}"
+	PACKAGE_MISSING_LIST_FILE="${3}"
+	if [[ ! -f "${PACKAGE_LIST_FILE}" ]]; then
+		printf "Cannot find PACKAGE_LIST_FILE: ${PACKAGE_LIST_FILE}\n" 1>&2
+		exit 1
+	fi
+	if [[ -f "${APT_PACKAGE_LIST_FILE}" ]]; then
+		printf "File already exists: ${APT_PACKAGE_LIST_FILE}\n" 1>&2
+		exit 1
+	fi
+	if [[ -f "${PACKAGE_MISSING_LIST_FILE}" ]]; then
+		printf "File already exists: ${PACKAGE_MISSING_LIST_FILE}\n" 1>&2
+		exit 1
+	fi
+	while read LINE; do
+		# A line can contain a comment starting with the character hash '#'
+		PACKAGES_LINE="${LINE%%#*}"
+		PACKAGES_LINE=$(echo "${PACKAGES_LINE}"|awk '{$1=$1};1')
+		if [[ -z "${PACKAGES_LINE}" ]]; then
+			continue
+		fi
+		for PACKAGE_NAME in ${PACKAGES_LINE}; do
+			INFO_AVAILABLE=$'\e[39m\e[0m'
+			INFO_INSTALLATION_STATUS=$'\e[39m\e[0m'
+			INFO_PACKAGE_NAME="${PACKAGE_NAME}"
+			INFO_PACKAGE_DESCRIPTION=""
+			if is_package_available "${PACKAGE_NAME}"; then
+				printf "${PACKAGE_NAME}\n" >>"${APT_PACKAGE_LIST_FILE}"
+				INFO_AVAILABLE=$'\e[92mAVAILABLE\e[0m'
+				INFO_PACKAGE_DESCRIPTION=$(retrieve_package_short_description "${PACKAGE_NAME}")
+				if is_package_installed "${PACKAGE_NAME}"; then
+					INFO_INSTALLATION_STATUS=$'\e[92mINSTALLED\e[0m'
+				else
+					INFO_INSTALLATION_STATUS=$'\e[39mNOT INSTALLED\e[0m'
+				fi
+			else
+				printf "{PACKAGE_NAME}\n" >>"${PACKAGE_MISSING_LIST_FILE}"
+				INFO_AVAILABLE=$'\e[91mMISSING\e[0m'
+				INFO_INSTALLATION_STATUS=$'\e[39mNOT INSTALLED\e[0m'
+			fi
+			if [[ ! -z "${INFO_PACKAGE_DESCRIPTION}" ]]; then
+				INFO_PACKAGE_DESCRIPTION=": ${INFO_PACKAGE_DESCRIPTION}"
+			fi
+			printf "[%-25s] [%-25s] %s%s\n" "${INFO_AVAILABLE}" "${INFO_INSTALLATION_STATUS}" "${INFO_PACKAGE_NAME}" "${INFO_PACKAGE_DESCRIPTION}"
+		done
+	done <"${PACKAGE_LIST_FILE}"
+	if [[ -s "${PACKAGE_MISSING_LIST_FILE}" ]]; then
+		return 0
+	else
+		return 1
+	fi
 }
 
 is_package_installed(){
