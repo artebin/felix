@@ -1,39 +1,18 @@
-#export JDK_HOME=""
-#export JRE_HOME=""
-#export ANT_HOME=""
-#export MVN_HOME=""
-
-if [ ! -z "${JDK_HOME}" ]; then
-	export PATH=${JDK_HOME}/bin:${PATH}
-fi
-
-if [ ! -z "${ANT_HOME}" ]; then
-	export PATH=${ANT_HOME}/bin:${PATH}
-fi
-
-if [ ! -z "${MVN_HOME}" ]; then
-	export PATH=${MVN_HOME}/bin:${PATH}
-fi
-
-# Wallpaper setting
 xsetroot -solid "#303030" &
 
-# Re-configure the screens
 #xrandr --output LVDS-1 --off --output DP-1 --off --output HDMI-1 --mode 1360x768 --primary --pos 0x0 --rotate normal --output VGA-1 --off &
 
 tint2 &
-bash ~/scripts/fdpowermon_run.sh &
-nm-applet &
 
-# Wait a little bit for nm-applet to be started, just for the ordering of the icons in the system tray in tint2
+bash ~/scripts/fdpowermon_run.sh &
+
+nm-applet &
 sleep 1
 
-# Check that xfce4-volumed is not started via /etc/xdg/autostart/xfce4-volumed.desktop
+# xfce4-volumed could be started via /etc/xdg/autostart/xfce4-volumed.desktop but there is a parameter "OnlyShowIn=XFCE;"
 xfce4-volumed &
 
-# Volume icon
-pnmixer &
-#pasystray &
+pasystray &
 
 # Register Thunar in D-BUS
 #thunar --daemon &
@@ -52,7 +31,6 @@ pnmixer &
 
 bash ~/scripts/clipmenud_run.sh &
 
-# Hotkey daemon
 sxhkd &
 
 #
