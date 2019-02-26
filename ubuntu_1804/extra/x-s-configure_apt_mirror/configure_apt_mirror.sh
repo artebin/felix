@@ -27,9 +27,8 @@ configure_apt_mirror(){
 	if [[ -f /etc/apt/mirror.list ]]; then
 		backup_file rename /etc/apt/mirror.list
 	fi
-	cd "${RECIPE_DIR}"
-	sed -i "s|APT_MIRROR_BASE_PATH|${APT_MIRROR_BASE_PATH}|g" apt.mirror.list
-	cp apt.mirror.list /etc/apt/mirror.list
+	cp "${RECIPE_DIR}/apt.mirror.list" /etc/apt/mirror.list
+	sed -i "s|APT_MIRROR_BASE_PATH|${APT_MIRROR_BASE_PATH}|g" /etc/apt/mirror.list
 	
 	printf "Once the mirror is complete, start a http server for the repository:\n"
 	printf "  - go into APT_MIRROR_BASE_PATH/mirror/archive.ubuntu.com\n"
@@ -43,9 +42,8 @@ add_local_mirror_in_apt_sources(){
 	if [[ -f /etc/apt/sources.list.d/local_mirror.list ]]; then
 		backup_file rename /etc/apt/sources.list.d/local_mirror.list
 	fi
-	cd "${RECIPE_DIR}"
-	sed -i "s|LOCAL_MIRROR_ADDRESS|${LOCAL_MIRROR_ADDRESS}|g" apt.sources.list
-	cp apt.sources.list /etc/apt/sources.list.d/local_mirror.list
+	cp "${RECIPE_DIR}/apt.sources.list" /etc/apt/sources.list.d/local_mirror.list
+	sed -i "s|LOCAL_MIRROR_ADDRESS|${LOCAL_MIRROR_ADDRESS}|g" /etc/apt/sources.list.d/local_mirror.list
 	echo
 }
 
