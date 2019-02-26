@@ -28,7 +28,7 @@ configure_apt_mirror(){
 		backup_file rename /etc/apt/mirror.list
 	fi
 	cd "${RECIPE_DIR}"
-	sed -i "s/APT_MIRROR_BASE_PATH/${APT_MIRROR_BASE_PATH}/g" apt.mirror.list
+	sed -i "s|APT_MIRROR_BASE_PATH|${APT_MIRROR_BASE_PATH}|g" apt.mirror.list
 	cp apt.mirror.list /etc/apt/mirror.list
 	
 	printf "Once the mirror is complete, start a http server for the repository:\n"
@@ -44,9 +44,15 @@ add_local_mirror_in_apt_sources(){
 		backup_file rename /etc/apt/sources.list.d/local_mirror.list
 	fi
 	cd "${RECIPE_DIR}"
-	sed -i "s/LOCAL_MIRROR_ADDRESS/${LOCAL_MIRROR_ADDRESS}/g" apt.sources.list
+	sed -i "s|LOCAL_MIRROR_ADDRESS|${LOCAL_MIRROR_ADDRESS}|g" apt.sources.list
 	cp apt.sources.list /etc/apt/sources.list.d/local_mirror.list
 	echo
+}
+
+comment_all_default_apt_sources(){
+	printf "Commenting all default sources in /etc/apt/sources.list ...\n"
+	sed -i 's|^\([^#]\)|#\1|g' /etc/apt/sources.list
+	printf "\n"
 }
 
 cd "${RECIPE_DIR}"
@@ -58,6 +64,13 @@ fi
 
 cd "${RECIPE_DIR}"
 add_local_mirror_in_apt_sources 2>&1 | tee -a "${LOGFILE}"
+EXIT_CODE="${PIPESTATUS[0]}"
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
+	exit "${EXIT_CODE}"
+fi
+
+cd "${RECIPE_DIR}"
+comment_all_default_apt_sources 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
