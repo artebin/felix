@@ -53,7 +53,7 @@ process_package_install_list(){
 	fi
 	
 	# Proceed install
-	xargs apt-get -y install <"${APT_PACKAGE_LIST_FILE}"
+	xargs apt-get -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confnew -y install <"${APT_PACKAGE_LIST_FILE}"
 	
 	# Cleaning
 	rm -f "${APT_PACKAGE_LIST_FILE}"
