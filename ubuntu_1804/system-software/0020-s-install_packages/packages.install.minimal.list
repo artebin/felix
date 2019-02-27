@@ -28,7 +28,6 @@ ranger
 # Language and translation
 ############################
 translate-shell
-aspell-fr
 
 #################
 # Network tools

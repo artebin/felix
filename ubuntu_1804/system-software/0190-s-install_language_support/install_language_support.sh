@@ -21,13 +21,10 @@ exit_if_has_not_root_privileges
 
 install_language_support(){
 	echo "Installing language support ..."
-	
-	xargs apt-get -y install < ./packages.install.list
-	
+	xargs apt-get -y install <"${RECIPE_DIR}/packages.install.list"
 	echo
 }
 
-cd "${RECIPE_DIR}"
 install_language_support 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
