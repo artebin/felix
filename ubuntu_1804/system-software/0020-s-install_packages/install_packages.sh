@@ -46,7 +46,7 @@ process_package_install_list(){
 	generate_apt_package_list_file "${PACKAGE_LIST_FILE}" "${APT_PACKAGE_LIST_FILE}" "${PACKAGE_MISSING_LIST_FILE}"
 	
 	# Exit if some packages are missing
-	if [[ ! -s "PACKAGE_MISSING_LIST_FILE" ]]; then
+	if [[ ! -s "${PACKAGE_MISSING_LIST_FILE}" ]]; then
 		printf "Some packages are missing\n"
 		printf "See PACKAGE_MISSING_LIST_FILE: ${PACKAGE_MISSING_LIST_FILE}\n"
 		exit 1
