@@ -71,7 +71,8 @@ fill_array_with_recipe_directory_from_recipe_family_directory(){
 		if [[ ! "${RECIPE_DIR_NAME}" =~ ${RECIPE_NAME_REGEX} ]]; then
 			continue
 		fi
-		ARRAY+=( "${RECIPE_FAMILY_DIR}/${RECIPE_DIR_NAME}" )
+		RECIPE_DIR=$(readlink -f "${RECIPE_FAMILY_DIR}/${RECIPE_DIR_NAME}")
+		ARRAY+=( "${RECIPE_DIR}" )
 	done
 }
 
