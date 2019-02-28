@@ -23,7 +23,7 @@ list_log_files(){
 }
 
 delete_log_files(){
-	find . -name "*.log.*" -type f -exec rm -fr {} \; 
+	find . -name "*.log.*" -type f -exec rm -fr {} \;
 }
 
 retrieve_recipe_family_dir(){
@@ -51,6 +51,81 @@ retrieve_recipe_family_conf_file(){
 }
 
 RECIPE_NAME_REGEX="([0-9][0-9][0-9][0-9])-([us])-(.*)"
+
+fill_array_with_recipe_directory_from_recipe_family_directory(){
+	if [[ $# -ne 2 ]]; then
+		printf "Function fill_array_with_recipe_directory_from_recipe_family_directory() expects RECIPE_FAMILY_DIR and ARRAY_NAME as parameters\n"
+		exit 1
+	fi
+	local RECIPE_FAMILY_DIR="${1}"
+	if [[ ! -d "${RECIPE_FAMILY_DIR}" ]]; then
+		printf "Cannot find RECIPE_FAMILY_DIR: ${RECIPE_FAMILY_DIR}\n"
+		exit 1
+	fi
+	local ARRAY_NAME="${2}"
+	declare -n ARRAY="${ARRAY_NAME}"
+	for RECIPE_DIR_NAME in $(ls ${RECIPE_FAMILY_DIR}); do
+		if [[ ! -d "${RECIPE_FAMILY_DIR}/${RECIPE_DIR_NAME}" ]]; then
+			continue;
+		fi
+		if [[ ! "${RECIPE_DIR_NAME}" =~ ${RECIPE_NAME_REGEX} ]]; then
+			continue
+		fi
+		ARRAY+=( "${RECIPE_FAMILY_DIR}/${RECIPE_DIR_NAME}" )
+	done
+}
+
+fill_array_with_selected_recipe_directory_from_recipe_family_directory(){
+	if [[ $# -ne 2 ]]; then
+		printf "Function fill_array_with_selected_recipe_directory_from_recipe_family_directory() expects RECIPE_FAMILY_DIR and ARRAY_NAME as parameters\n"
+		exit 1
+	fi
+	local RECIPE_FAMILY_DIR="${1}"
+	if [[ ! -d "${RECIPE_FAMILY_DIR}" ]]; then
+		printf "Cannot find RECIPE_FAMILY_DIR: ${RECIPE_FAMILY_DIR}\n"
+		exit 1
+	fi
+	local ARRAY_NAME="${2}"
+	declare -n ARRAY="${ARRAY_NAME}"
+	local RECIPE_DIR_ARRAY=()
+	fill_array_with_recipe_directory_from_recipe_family_directory "${RECIPE_FAMILY_DIR}" "RECIPE_DIR_ARRAY"
+	declare -A RECIPE_DISPLAY_NAME_MAP
+	WHIPTAIL_CHECKLIST_ARRAY=()
+	for RECIPE_DIR in "${RECIPE_DIR_ARRAY[@]}"; do
+		RECIPE_DISPLAY_NAME="$(retrieve_recipe_display_name_from_recipe_directory ${RECIPE_DIR})"
+		RECIPE_DISPLAY_NAME_MAP[${RECIPE_DISPLAY_NAME}]="${RECIPE_DIR}"
+		WHIPTAIL_CHECKLIST_ARRAY+=( "${RECIPE_DISPLAY_NAME}" "" ON )
+	done
+	SELECTED_RECIPES=$(whiptail --separate-output --title "Felix" --checklist "Choose recipes to execute" 28 78 20 "${WHIPTAIL_CHECKLIST_ARRAY[@]}" 3>&1 1>&2 2>&3)
+	EXIT_CODE=$?
+	if [[ $EXIT_CODE = 0 ]]; then
+		while read RECIPE_DISPLAY_NAME; do
+			ARRAY+=( "${RECIPE_DISPLAY_NAME_MAP[${RECIPE_DISPLAY_NAME}]}" )
+		done <<< "${SELECTED_RECIPES}"
+	else
+		ARRAY=()
+	fi
+}
+
+retrieve_recipe_display_name_from_recipe_directory(){
+	if [[ $# -ne 1 ]]; then
+		printf "Function retrieve_recipe_display_name_from_recipe_directory() expects RECIPE_DIR as parameter\n"
+		exit 1
+	fi
+	RECIPE_DIRECTORY="${1}"
+	if [[ ! -d "${RECIPE_DIR}" ]]; then
+		printf "Cannot find RECIPE_DIR: ${RECIPE_DIR}\n"
+		exit 1
+	fi
+	RECIPE_DIR_NAME="$(basename "${RECIPE_DIR}")"
+	if [[ ! "${RECIPE_DIR_NAME}" =~ ${RECIPE_NAME_REGEX} ]]; then
+		printf "RECIPE_DIR_NAME is not well formed: ${RECIPE_DIR_NAME}\n"
+		exit 1
+	fi
+	RECIPE_NAME="${BASH_REMATCH[3]}"
+	RECIPE_DISPLAY_NAME="$(echo "${RECIPE_NAME}"|tr '_' ' ')"
+	printf "${RECIPE_DISPLAY_NAME}"
+}
 
 list_recipes(){
 	if [[ $# -ne 1 ]]; then

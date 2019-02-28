@@ -7,60 +7,73 @@ LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 
 exit_if_not_bash
 
-execute_recipes(){
-	printf "Executing recipes ...\n"
-	printf "Interactive mode=${INTERACTIVE_MODE}\n\n"
+execute_recipes_from_recipe_directory_array(){
+	if [[ $# -ne 2 ]]; then
+		printf "Function execute_recipes_from_recipe_directory_array() expects ARRAY_NAME and ASK_CONFIRMATION as parameters\n"
+		exit 1
+	fi
 	
-	for RECIPE_PATH in "${RECIPE_PATH_ARRAY[@]}"; do
-		RECIPE_NAME=$(basename ${RECIPE_PATH})
-		print_section_heading "RECIPE_NAME: ${RECIPE_NAME}"
+	local ARRAY_NAME="${1}"
+	declare -n RECIPE_DIR_ARRAY="${ARRAY_NAME}"
+	
+	local ASK_CONFIRMATION="${2}"
+	if [[  "${ASK_CONFIRMATION}" != 'true' && "${ASK_CONFIRMATION}" != 'false' ]]; then
+		printf "ASK_CONFIRMATION should be valued 'true' or 'false'"
+		exit 1
+	fi
+	
+	printf "Executing recipes ...\n"
+	printf "ASK_CONFIRMATION: ${ASK_CONFIRMATION}\n\n"
+	
+	for RECIPE_DIR in "${RECIPE_DIR_ARRAY[@]}"; do
+		RECIPE_DIR_NAME=$(basename ${RECIPE_DIR})
+		print_section_heading "RECIPE_DIR_NAME: ${RECIPE_DIR_NAME}"
 		
-		if [[ ! "${RECIPE_NAME}" =~ ${RECIPE_NAME_REGEX} ]]; then
-			echo "RECIPE_NAME is not well formed: ${RECIPE_NAME}"
-			print_section_ending
-			continue
+		if [[ ! "${RECIPE_DIR_NAME}" =~ ${RECIPE_NAME_REGEX} ]]; then
+			printf "RECIPE_DIR_NAME is not well formed: ${RECIPE_DIR_NAME}\n"
+			exit 1
 		fi
 		
 		RECIPE_ID="${BASH_REMATCH[1]}"
 		RECIPE_REQUIRED_RIGHTS="${BASH_REMATCH[2]}"
 		RECIPE_SCRIPT_FILE_NAME="${BASH_REMATCH[3]}.sh"
-		RECIPE_SCRIPT_FILE_PATH="${RECIPE_PATH}/${RECIPE_SCRIPT_FILE_NAME}"
+		RECIPE_SCRIPT_FILE="${RECIPE_DIR}/${RECIPE_SCRIPT_FILE_NAME}"
 		
 		# Check recipe script exists
-		if [ ! -f "${RECIPE_SCRIPT_FILE_PATH}" ]; then
-			echo "Can not find script for recipe: ${RECIPE_SCRIPT_FILE_PATH}"
+		if [[ ! -f "${RECIPE_SCRIPT_FILE}" ]]; then
+			echo "Cannot find RECIPE_SCRIPT_FILE: ${RECIPE_SCRIPT_FILE}"
 			print_section_ending
 			continue
 		fi
 		
 		EXECUTION_EXPECTED="true"
 		
-		# Interactive mode?
-		if [ "${INTERACTIVE_MODE}" == "true" ]; then
+		# Ask confirmation
+		if ${ASK_CONFIRMATION}; then
 			USER_ANSWER=$(yes_no_dialog "Execute this recipe?")
-			if [ "${USER_ANSWER}" != "yes" ]; then
+			if [[ "${USER_ANSWER}" != "yes" ]]; then
 				EXECUTION_EXPECTED="false"
 			fi
 		fi
 		
-		if [ "${EXECUTION_EXPECTED}" == "true" ]; then
-			cd "${RECIPE_PATH}"
+		if ${EXECUTION_EXPECTED}; then
+			cd "${RECIPE_DIR}"
 			
 			# Execute the recipe with the required rights
 			RECIPE_EXIT_CODE=0
-			if [ "${RECIPE_REQUIRED_RIGHTS}" = "u" ]; then
-				bash "./${RECIPE_SCRIPT_FILE_NAME}"
+			if [[ "${RECIPE_REQUIRED_RIGHTS}" == "u" ]]; then
+				bash "${RECIPE_SCRIPT_FILE_NAME}"
 				RECIPE_EXIT_CODE=$?
-			elif [ "${RECIPE_REQUIRED_RIGHTS}" = "s" ]; then
-				sudo -H bash "./${RECIPE_SCRIPT_FILE_NAME}"
+			elif [[ "${RECIPE_REQUIRED_RIGHTS}" == "s" ]]; then
+				sudo -H bash "${RECIPE_SCRIPT_FILE_NAME}"
 				RECIPE_EXIT_CODE=$?
 			else
-				echo "Can not retrieve execution rights for RECIPE_NAME: ${RECIPE_NAME}"
+				echo "Unknown execution rights \'${RECIPE_REQUIRED_RIGHTS}\' for RECIPE_DIR_NAME: ${RECIPE_DIR_NAME}"
 			fi
 			
-			# Stop execution of the recipes if current recipe return an error code
+			# Stop looping over RECIPE_DIR_ARRAY if the execution of the current recipe return an error code
 			if [ "${RECIPE_EXIT_CODE}" -ne 0 ]; then
-				echo "Recipe \"${RECIPE_NAME}\" returned an error code."
+				echo "Recipe \"${RECIPE_DIR_NAME}\" returned an error code."
 				echo "Exiting."
 				exit 1
 			fi
@@ -71,69 +84,80 @@ execute_recipes(){
 }
 
 print_usage(){
-	printf "Usage: bash install.sh [OPTIONS...] <recipes parent directory>\n\n"
-	printf -- "  -i interactive mode\n"
+	printf "Usage: bash ${0} [OPTIONS...] RECIPE_FAMILY_DIR\n"
+	printf "  -i show a dialog to select the recipes to execute\n"
+	printf "  -c ask for confirmation before recipe execution\n\n"
 }
 
 # Retrieve options
-INTERACTIVE_MODE="false"
-while getopts ":i" OPT; do
+SHOW_DIALOG_SELECT_RECIPES="false"
+ASK_CONFIRMATION="false"
+while getopts ":ic" OPT; do
 	case "${OPT}" in
 		i)
-			INTERACTIVE_MODE="true"
+			SHOW_DIALOG_SELECT_RECIPES="true"
+			;;
+		c)
+			ASK_CONFIRMATION="true"
 			;;
 		*)
 			print_usage
+			exit 1
 			;;
 	esac
 done
 shift $((OPTIND-1))
 
-# Only one argument is allowed and it is the parent directory for recipes
-if [ $# -ne 1 ]; then
+# Only one argument is allowed and it is the RECIPE_FAMILY_DIR
+if [[ $# -ne 1 ]]; then
 	print_usage
 	exit 1
 fi
-RECIPES_PARENT_DIRECTORY="${1}"
+RECIPE_FAMILY_DIR="${1}"
 
-echo "${FELIX_BANNER}"
-echo
-
-# Check existence of the parent directory for recipes
-if [ ! -d "${RECIPES_PARENT_DIRECTORY}" ]; then
-	echo "Can not find RECIPES_PARENT_DIRECTORY: ${RECIPES_PARENT_DIRECTORY}"
+# Check existence of RECIPE_FAMILY_DIR
+if [[ ! -d "${RECIPE_FAMILY_DIR}" ]]; then
+	printf "Cannot find RECIPE_FAMILY_DIR: ${RECIPE_FAMILY_DIR}\n"
 	print_usage
 	exit 1
 fi
 
-# Retrieve array of recipes
-RECIPES_PARENT_DIRECTORY=$(readlink -f "${RECIPES_PARENT_DIRECTORY}")
-readarray -t RECIPE_PATH_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_NAME_REGEX}" -exec readlink -f {} \;|sort)
-
-# Exit if no recipe found
-if [ "${#RECIPE_PATH_ARRAY[@]}" -eq 0 ]; then
-	echo "No recipes found in RECIPES_PARENT_DIRECTORY: ${RECIPES_PARENT_DIRECTORY}"
-	exit 0
-fi
-
-# Check Ubuntu version
+printf "${FELIX_BANNER}"
+printf "\n\n"
+printf "RECIPE_FAMILY_DIR: ${RECIPE_FAMILY_DIR}\n"
 if ! check_ubuntu_version; then
 	exit 1
 fi
+printf "\n"
 
-# List recipes
-printf "RECIPES_PARENT_DIRECTORY: ${RECIPES_PARENT_DIRECTORY}\n"
-echo
-list_recipes "${RECIPES_PARENT_DIRECTORY}"
+# Retrieve array of RECIPE_DIR
+RECIPE_DIR_TO_EXECUTE_ARRAY=()
+if ${SHOW_DIALOG_SELECT_RECIPES}; then
+	fill_array_with_selected_recipe_directory_from_recipe_family_directory "${RECIPE_FAMILY_DIR}" "RECIPE_DIR_TO_EXECUTE_ARRAY"
+else
+	fill_array_with_recipe_directory_from_recipe_family_directory "${RECIPE_FAMILY_DIR}" "RECIPE_DIR_TO_EXECUTE_ARRAY"
+fi
 
-# Ask user to continue
-echo
-USER_ANSWER=$(yes_no_dialog "Continue?")
-if [ "${USER_ANSWER}" != "yes" ]; then
-	echo "Exiting."
+# Exit if RECIPE_DIR_TO_EXECUTE_ARRAY is empty
+if [[ "${#RECIPE_DIR_TO_EXECUTE_ARRAY[@]}" -eq 0 ]]; then
+	printf "No recipes found\n"
 	exit 0
 fi
-echo
+
+# List to be executed
+printf "The recipes below will be executed:\n"
+for RECIPE_DIR in "${RECIPE_DIR_TO_EXECUTE_ARRAY[@]}"; do
+	RECIPE_DIR_NAME="$(basename ${RECIPE_DIR})"
+	printf "\t${RECIPE_DIR_NAME}\n"
+done
+
+# Ask user confirmation
+printf "\n"
+USER_ANSWER=$(yes_no_dialog "Continue?")
+if [[ "${USER_ANSWER}" != "yes" ]]; then
+	printf "User cancelled\n"
+	exit 0
+fi
 
 # Execute the recipes
-execute_recipes 2>&1 | tee -a "${LOGFILE}"
+execute_recipes_from_recipe_directory_array "RECIPE_DIR_TO_EXECUTE_ARRAY" "${ASK_CONFIRMATION}" 2>&1 | tee -a "${LOGFILE}"
