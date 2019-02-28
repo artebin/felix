@@ -64,35 +64,28 @@ fill_array_with_recipe_directory_from_recipe_family_directory(){
 	fi
 	local ARRAY_NAME="${2}"
 	declare -n ARRAY="${ARRAY_NAME}"
-	for RECIPE_DIR_NAME in $(ls ${RECIPE_FAMILY_DIR}); do
-		if [[ ! -d "${RECIPE_FAMILY_DIR}/${RECIPE_DIR_NAME}" ]]; then
-			continue;
-		fi
+	for RECIPE_DIR in $(find "${RECIPE_FAMILY_DIR}"/* -type d -exec readlink -f {} \;); do
+		RECIPE_DIR_NAME=$(basename "${RECIPE_DIR}")
 		if [[ ! "${RECIPE_DIR_NAME}" =~ ${RECIPE_NAME_REGEX} ]]; then
 			continue
 		fi
-		RECIPE_DIR=$(readlink -f "${RECIPE_FAMILY_DIR}/${RECIPE_DIR_NAME}")
 		ARRAY+=( "${RECIPE_DIR}" )
 	done
 }
 
-fill_array_with_selected_recipe_directory_from_recipe_family_directory(){
+select_recipes_and_fill_array_with_recipe_directory(){
 	if [[ $# -ne 2 ]]; then
-		printf "Function fill_array_with_selected_recipe_directory_from_recipe_family_directory() expects RECIPE_FAMILY_DIR and ARRAY_NAME as parameters\n"
+		printf "Function select_recipes_and_fill_array_with_recipe_directory() expects INPUT_ARRAY_NAME and OUTPUT_ARRAY_NAME as parameters\n"
 		exit 1
 	fi
-	local RECIPE_FAMILY_DIR="${1}"
-	if [[ ! -d "${RECIPE_FAMILY_DIR}" ]]; then
-		printf "Cannot find RECIPE_FAMILY_DIR: ${RECIPE_FAMILY_DIR}\n"
-		exit 1
-	fi
-	local ARRAY_NAME="${2}"
-	declare -n ARRAY="${ARRAY_NAME}"
-	local RECIPE_DIR_ARRAY=()
-	fill_array_with_recipe_directory_from_recipe_family_directory "${RECIPE_FAMILY_DIR}" "RECIPE_DIR_ARRAY"
+	local INPUT_ARRAY_NAME="${1}"
+	declare -n INPUT_ARRAY="${INPUT_ARRAY_NAME}"
+	local OUTPUT_ARRAY_NAME="${2}"
+	declare -n OUTPUT_ARRAY="${OUTPUT_ARRAY_NAME}"
+	OUTPUT_ARRAY=()
 	declare -A RECIPE_DISPLAY_NAME_MAP
 	WHIPTAIL_CHECKLIST_ARRAY=()
-	for RECIPE_DIR in "${RECIPE_DIR_ARRAY[@]}"; do
+	for RECIPE_DIR in "${INPUT_ARRAY[@]}"; do
 		RECIPE_DISPLAY_NAME="$(retrieve_recipe_display_name_from_recipe_directory ${RECIPE_DIR})"
 		RECIPE_DISPLAY_NAME_MAP[${RECIPE_DISPLAY_NAME}]="${RECIPE_DIR}"
 		WHIPTAIL_CHECKLIST_ARRAY+=( "${RECIPE_DISPLAY_NAME}" "" ON )
@@ -101,10 +94,8 @@ fill_array_with_selected_recipe_directory_from_recipe_family_directory(){
 	EXIT_CODE=$?
 	if [[ $EXIT_CODE = 0 ]]; then
 		while read RECIPE_DISPLAY_NAME; do
-			ARRAY+=( "${RECIPE_DISPLAY_NAME_MAP[${RECIPE_DISPLAY_NAME}]}" )
+			OUTPUT_ARRAY+=( "${RECIPE_DISPLAY_NAME_MAP[${RECIPE_DISPLAY_NAME}]}" )
 		done <<< "${SELECTED_RECIPES}"
-	else
-		ARRAY=()
 	fi
 }
 
