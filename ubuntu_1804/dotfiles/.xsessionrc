@@ -1,64 +1,76 @@
+#!/usr/bin/env bash
+
 #export JDK_HOME=""
 #export JRE_HOME=""
 #export ANT_HOME=""
 #export MVN_HOME=""
 
-if [ ! -z "${JDK_HOME}" ]; then
+if [[ ! -z "${JDK_HOME}" ]]; then
 	export PATH=${JDK_HOME}/bin:${PATH}
 fi
 
-if [ ! -z "${ANT_HOME}" ]; then
+if [[ ! -z "${ANT_HOME}" ]]; then
 	export PATH=${ANT_HOME}/bin:${PATH}
 fi
 
-if [ ! -z "${MVN_HOME}" ]; then
+if [[ ! -z "${MVN_HOME}" ]]; then
 	export PATH=${MVN_HOME}/bin:${PATH}
 fi
 
-# Wallpaper setting
-xsetroot -solid "#303030" &
+##################################
+# XDG_SESSION_DESKTOP == openbox
+##################################
+if [[ "${XDG_SESSION_DESKTOP}" == "openbox" ]]; then
+	# Wallpaper setting
+	xsetroot -solid "#303030" &
+	
+	tint2 &
+	bash ~/scripts/fdpowermon_run.sh &
+	nm-applet &
+	
+	# Wait a little bit for nm-applet to be started, just for the ordering of the icons in the system tray of tint2
+	sleep 1
+	
+	# Check that xfce4-volumed is not started via /etc/xdg/autostart/xfce4-volumed.desktop
+	xfce4-volumed &
+	
+	# Volume icon
+	pnmixer &
+	#pasystray &
+	
+	# Register Thunar in D-BUS
+	#thunar --daemon &
+	
+	# Keyboard should be set properly in /etc/default/keyboard
+	#setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &
+	
+	/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+	
+	# If distribution is Xubuntu then xfce4-power-manager may have been started via '/etc/xdg/autostart/xfce4-power-manager'
+	# => Check it is not the case!
+	#xfce4-power-manager
+	
+	bash ~/scripts/clipmenud_run.sh &
+	
+	# Hotkey daemon
+	sxhkd &
+fi
 
+############################
 # Re-configure the screens
+############################
 #xrandr --output LVDS-1 --off --output DP-1 --off --output HDMI-1 --mode 1360x768 --primary --pos 0x0 --rotate normal --output VGA-1 --off &
 
-tint2 &
-bash ~/scripts/fdpowermon_run.sh &
-nm-applet &
+###########
+# Xmodmap
+###########
+# Do not call `xmodmap` from here, it will not work.
+# Use `~/.xinitrc` instead.
 
-# Wait a little bit for nm-applet to be started, just for the ordering of the icons in the system tray in tint2
-sleep 1
-
-# Check that xfce4-volumed is not started via /etc/xdg/autostart/xfce4-volumed.desktop
-xfce4-volumed &
-
-# Volume icon
-pnmixer &
-#pasystray &
-
-# Register Thunar in D-BUS
-#thunar --daemon &
-
-# Keyboard should be set properly in /etc/default/keyboard
-#setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &
-
-/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
-
-# Do not call `xmodmap` from here, it will not work. Use `~/.xinitrc` instead.
-#xmodmap ~/.Xmodmap &
-
-# If distribution is Xubuntu then xfce4-power-manager may have been started via '/etc/xdg/autostart/xfce4-power-manager'
-# => Check it is not the case!
-#xfce4-power-manager
-
-bash ~/scripts/clipmenud_run.sh &
-
-# Hotkey daemon
-sxhkd &
-
-#
+#################################################################################
 # DPMS (Display Power Management Signaling) is controlled with the xset command
 # See <https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling>
-#
+#################################################################################
 # Query the current settings
 # xset q
 #
