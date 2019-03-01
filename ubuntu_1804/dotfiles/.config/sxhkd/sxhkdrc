@@ -1,3 +1,6 @@
+#######################
+# Application hotkeys
+#######################
 super + e
 	geany_one_instance_per_workspace
 
@@ -37,6 +40,9 @@ super + h
 super + v
 	pavucontrol
 
+################
+# XF86 symbols
+################
 XF86MonBrightnessDown
 	flock -n "/dev/shm/${USER}.brillo.backlight.notification_id" bash "${HOME}/scripts/brillo_backlight_notify.sh" -d
 
@@ -90,4 +96,4 @@ XF86WWW
 	x-www-browser
 
 XF86PowerOff
-	python ~/scripts/power_button_pressed.py
+	python "${HOME}/scripts/power_button_pressed.py"
