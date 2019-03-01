@@ -1,5 +1,4 @@
 # TODOS
-- [ ] Use whiptail to create a recipe selector.
 - [ ] Analysis on the macbook air, battery consumption and CPU usage.
 - [ ] Is it possible to make work the TRRS on Linux?
 - [ ] Add a caja script for playing a folder in Media player.
@@ -74,6 +73,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Use whiptail to create a recipe selector.
 - [x] Clean recipe openbox clipmenud_run.sh should be removed? Check about that. => yes. Removed.
 - [x] Add caja script for indenting XML file
 - [x] Add recipe for updating the XDG default directory (remove "Templates" and "Music" should be default). => done as recipe in system-configuration.
