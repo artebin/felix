@@ -32,7 +32,7 @@ if [[ "${XDG_SESSION_DESKTOP}" == "openbox" ]]; then
 	sleep 1
 	
 	# Check that xfce4-volumed is not started via /etc/xdg/autostart/xfce4-volumed.desktop
-	xfce4-volumed &
+	#xfce4-volumed &
 	
 	# Volume icon
 	pnmixer &
@@ -50,7 +50,7 @@ if [[ "${XDG_SESSION_DESKTOP}" == "openbox" ]]; then
 	# => Check it is not the case!
 	#xfce4-power-manager
 	
-	bash ~/scripts/clipmenud_run.sh &
+	bash "${HOME}/scripts/clipmenud_run.sh" &
 	
 	# Hotkey daemon
 	sxhkd &
