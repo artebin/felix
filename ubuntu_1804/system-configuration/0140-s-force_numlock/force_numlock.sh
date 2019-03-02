@@ -26,16 +26,14 @@ force_numlock_tty(){
 		echo "/usr/bin/numlock already exists"
 		return 1
 	fi
-	cd "${RECIPE_DIR}"
-	cp numlock /usr/bin/numlock
+	cp "${RECIPE_DIR}/numlock" /usr/bin/numlock
 	chmod a+x /usr/bin/numlock
 	
 	if [[ -f /etc/systemd/system/numlock_tty.service ]]; then
 		echo "/etc/systemd/system/numlock_tty.service already exists"
 		return 1
 	fi
-	cd "${RECIPE_DIR}"
-	cp numlock_tty.service /etc/systemd/system/numlock_tty.service
+	cp "${RECIPE_DIR}/numlock_tty.service" /etc/systemd/system/numlock_tty.service
 	systemctl daemon-reload
 	systemctl start numlock_tty.service
 	systemctl status numlock_tty.service
@@ -48,6 +46,11 @@ force_numlock_xorg(){
 	echo "Forcing numlock in X.org ..."
 	
 	install_package_if_not_installed "numlockx"
+	if [[ ! -f "/etc/default/numlockx" ]]; then
+		printf "Cannot find: /etc/default/numlockx\n"
+		return 1
+	fi
+	add_or_update_keyvalue "/etc/default/numlockx" "NUMLOCK" "on"
 	
 	if [[ -f /etc/lightdm/lightdm.conf.d/60-numlockx.conf ]]; then
 		echo "/etc/lightdm/lightdm.conf.d/60-numlockx.conf already exists"
@@ -56,8 +59,7 @@ force_numlock_xorg(){
 	if [[ ! -d /etc/lightdm/lightdm.conf.d ]]; then
 		mkdir /etc/lightdm/lightdm.conf.d
 	fi
-	cd "${RECIPE_DIR}"
-	cp 60-numlockx.conf /etc/lightdm/lightdm.conf.d/60-numlockx.conf
+	cp "${RECIPE_DIR}/60-numlockx.conf" /etc/lightdm/lightdm.conf.d
 	
 	echo
 }
