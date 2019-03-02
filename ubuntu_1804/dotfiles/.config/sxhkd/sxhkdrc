@@ -17,7 +17,7 @@ super + r
 	rofi -show run
 
 super + c
-	bash "${HOME}/scripts/clipmenu.sh"
+	bash "${HOME}/scripts/clipmenu_run.sh"
 
 super + f
 	caja --no-desktop
@@ -35,7 +35,7 @@ super + m
 	vlc
 
 super + h
-	htop
+	x-terminal-emulator -e "htop"
 
 super + v
 	pavucontrol
