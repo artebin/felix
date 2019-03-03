@@ -1,18 +1,21 @@
 #!/usr/bin/env bash
 
-# Kill all running instances of clipmenud
-SEARCH_PATTERN="^${USER}[[:blank:]].*[[:blank:]]/usr/bin/clipmenud$"
-while read LINE; do
-	PID=$(echo ${LINE}|cut -d ' ' -f2)
-	kill -9 "${PID}"
-done < <(ps -u "${USER}"|grep "${SEARCH_PATTERN}")
+# Kill all running instances of clipmenud or clipnotify
+CLIPMENUD_PIDS=$(ps -C clipmenud -o pid=)
+if [[ ! -z "${CLIPMENUD_PIDS}" ]]; then
+	kill -9 "${CLIPMENUD_PIDS}"
+fi
+CLIPNOTIFY_PIDS=$(ps -C clipnotify -o pid=)
+if [[ ! -z "${CLIPNOTIFY_PIDS}" ]]; then
+	kill -9 "${CLIPNOTIFY_PIDS}"
+fi
 
 # Take ownership of the clipboard
-CM_OWN_CLIPBOARD=0
+export CM_OWN_CLIPBOARD=1
 
 # Manage the clipboard only
-CM_SELECTIONS="clipboard"
+export CM_SELECTIONS="clipboard"
 
-CM_DEBUG=1
+export CM_DEBUG=1
 
 clipmenud >"${HOME}/clipmenud.log" 2>&1 &
