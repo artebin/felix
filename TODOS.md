@@ -1,4 +1,9 @@
 # TODOS
+- [ ] Bit of tiling: grow up window, i.e. increase width/height until reaching another window or screen edges or panels.
+- [ ] Fix Caja for opening executable scripts (bash, python): contextual menu is showing 'open'. Good UX would be 3 menu items: 'Run', 'Run in terminal' and 'Open with X', X being the default application for the mime type. However today there is only 'Open' which will open dialog a popup asking 'Display or run or run in terminal?'. The user does not know what is behind 'Display', display with what??? Even worst: the default application for the mime type is not listed in the 'Open with' maybe because, well... it is the application used for 'Display', erf...
+- [ ] Still have a problem with clipmenu, copy/paste not working correctly with file manager.
+- [ ] Only clipboard and not primary in clipmenu?
+- [ ] Doing the autostart with the openbox autostart is much faster than with .xsessionrc
 - [ ] Analysis on the macbook air, battery consumption and CPU usage.
 - [ ] Is it possible to make work the TRRS on Linux?
 - [ ] Add a caja script for playing a folder in Media player.
