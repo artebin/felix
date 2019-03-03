@@ -8,11 +8,11 @@ while read LINE; do
 done < <(ps -u "${USER}"|grep "${SEARCH_PATTERN}")
 
 # Take ownership of the clipboard
-export CM_OWN_CLIPBOARD=1
+CM_OWN_CLIPBOARD=0
 
 # Manage the clipboard only
-export CM_SELECTIONS=( "clipboard" )
+CM_SELECTIONS="clipboard"
 
-export CM_DEBUG=1
+CM_DEBUG=1
 
 clipmenud >"${HOME}/clipmenud.log" 2>&1 &
