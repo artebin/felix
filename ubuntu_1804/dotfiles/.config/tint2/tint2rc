@@ -157,7 +157,8 @@ execp_font_color = #ffffff 100
 execp_background_id = 3
 execp_tooltip = 
 execp_padding = 8 4
-	
+execp_interval = 0
+
 # Executor 2
 #execp = new 
 #execp_command = sh ~/scripts/mediaplayer2_title.sh
