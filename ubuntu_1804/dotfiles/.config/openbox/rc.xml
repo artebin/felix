@@ -295,9 +295,6 @@
 		  Keybindings for windows
 		###########################
 		-->
-		<keybind key="W-0x31">
-			<action name="ToggleShowDesktop"/>
-		</keybind>
 		<keybind key="W-1">
 			<action name="ToggleAlwaysOnTop"/>
 		</keybind>
@@ -307,6 +304,9 @@
 		<keybind key="W-3">
 			<action name="Iconify"/>
 		</keybind>
+		<keybind key="W-4">
+			<action name="ToggleShowDesktop"/>
+		</keybind>		
 		<keybind key="A-F4">
 			<action name="Close"/>
 		</keybind>
@@ -395,14 +395,20 @@
 		<keybind key="W-Right">
 			<action name="GrowToEdgeEast"/>
 		</keybind>
+		<keybind key="W-Up">
+			<action name="GrowToEdgeNorth"/>
+		</keybind>
 		<keybind key="W-Left">
 			<action name="GrowToEdgeWest"/>
 		</keybind>
 		<keybind key="W-Down">
 			<action name="GrowToEdgeSouth"/>
 		</keybind>
-		<keybind key="W-Up">
+		<keybind key="W-grave">
+			<action name="GrowToEdgeEast"/>
 			<action name="GrowToEdgeNorth"/>
+			<action name="GrowToEdgeWest"/>
+			<action name="GrowToEdgeSouth"/>
 		</keybind>
 		
 		<!--

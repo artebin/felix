@@ -25,6 +25,7 @@
 | `<Win>1`						| Toggle always on top |
 | `<Win>2`						| Toggle fullscreen |
 | `<Win>3`						| Iconify |
+| `<Win>4`						| Toogle show desktop |
 | `<Alt>F4`						| Close |
 | `<Alt><Esc>`					| Place one level below and unfocus it |
 | `<Alt><Space>`				| Show window menu |
@@ -57,9 +58,11 @@
 | Shorcut | Action |
 | --- | --- |
 | `<Win><Right>`			| Grow to edge east |
+| `<Win><Up>`				| Grow to edge north |
 | `<Win><Left>`				| Grow to edge west |
 | `<Win><Down>`				| Grow to edge south |
-| `<Win><Up>`				| Grow to edge north |
+| `<Win>grave`				| Grow to edge east/north/west/south |
+
 
 # Applications
 
