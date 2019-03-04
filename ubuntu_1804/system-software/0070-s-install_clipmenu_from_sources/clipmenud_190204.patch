@@ -1,0 +1,41 @@
+diff --git a/clipmenud b/clipmenud
+index d4e22e7..7ec2e7e 100755
+--- a/clipmenud
++++ b/clipmenud
+@@ -216,21 +216,21 @@ while true; do
+ 
+         last_cache_file_output[$selection]=$cache_file_output
+ 
+-        if (( CM_OWN_CLIPBOARD )) && [[ $selection != primary ]] &&
+-           element_in clipboard "${cm_selections[@]}"; then
+-            # Take ownership of the clipboard, in case the original application
+-            # is unable to serve the clipboard request (due to being suspended,
+-            # etc).
+-            #
+-            # Primary is excluded from the change of ownership as applications
+-            # sometimes act up if clipboard focus is taken away from them --
+-            # for example, urxvt will unhilight text, which is undesirable.
+-            #
+-            # We can't colocate this with the above copying code because
+-            # https://github.com/cdown/clipmenu/issues/34 requires knowing if
+-            # we would skip first.
+-            _xsel -o --clipboard | _xsel -i --clipboard
+-        fi
++        #~ if (( CM_OWN_CLIPBOARD )) && [[ $selection != primary ]] &&
++           #~ element_in clipboard "${cm_selections[@]}"; then
++            #~ # Take ownership of the clipboard, in case the original application
++            #~ # is unable to serve the clipboard request (due to being suspended,
++            #~ # etc).
++            #~ #
++            #~ # Primary is excluded from the change of ownership as applications
++            #~ # sometimes act up if clipboard focus is taken away from them --
++            #~ # for example, urxvt will unhilight text, which is undesirable.
++            #~ #
++            #~ # We can't colocate this with the above copying code because
++            #~ # https://github.com/cdown/clipmenu/issues/34 requires knowing if
++            #~ # we would skip first.
++            #~ _xsel -o --clipboard | _xsel -i --clipboard
++        #~ fi
+ 
+         if (( CM_MAX_CLIPS )) && [[ -f $cache_file ]]; then
+             mapfile -t to_remove < <(
