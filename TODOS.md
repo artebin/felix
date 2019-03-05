@@ -13,7 +13,6 @@
 - [ ] systemd manager.
 - [ ] Special menu in rofi for the XF86S symbols.
 - [ ] Add an alias in bachrc or a menuitem in openbox menu for doing a screenshot of a window with 'xwd'.
-- [ ] Make changes allowing to run 'info.sh' without 'common.sh'.
 - [ ] Extract localisation FR from minimal.packages.list, it should only contains US locales.
 - [ ] "enter your password to unlock your login keyring".
 - [ ] pdf are opened with gimp.
@@ -24,7 +23,8 @@
 - [ ] Brillo and Display|Keyboard backlight in console (keysym ?).
 - [ ] macbook air: acpi_osi in kernel pameters see <https://wiki.archlinux.org/index.php/Mac#Suspend_and_Hibernate>
 - [ ] macbook air: kernel parameter for acpi on macbook air (native).
-- [ ] macbook air: screenshot key => Rofi menu? Virtual keyboard?
+- [ ] macbook air: screenshot key => Rofi menu?
+- [ ] virtual keyboard: onboard or florence.
 - [ ] cp asks for confirmation when overwrite.
 - [ ] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron.
 - [ ] Check what is missing if we do not use a Power manager (multiple displays support in logind?).
@@ -65,6 +65,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Make changes allowing to run 'info.sh' without 'common.sh'.
 - [x] Add recipe for suspend-then-hibernate, see <https://askubuntu.com/questions/12383/how-to-go-automatically-from-suspend-into-hibernate>
 - [x] Bit of tiling: grow up window, i.e. increase width/height until reaching another window or screen edges or panels.
 - [x] Only clipboard and not primary in clipmenu?

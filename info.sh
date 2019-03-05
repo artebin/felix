@@ -1,8 +1,30 @@
 #!/usr/bin/env bash
 
-source ./common.sh
-exit_if_not_bash
-exit_if_has_not_root_privileges
+print_section_heading(){
+	printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =
+	printf "# ${1}\n"
+	printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =
+}
+
+print_section_ending(){
+	echo
+	echo
+	echo
+}
+
+exit_if_not_bash(){
+	if [[ ! "${BASH_VERSION}" ]] ; then
+		printf "This script should run with bash\n" 1>&2
+		exit 1
+	fi
+}
+
+exit_if_has_root_privileges(){
+	if has_root_privileges; then
+		printf "This script should not be executed with the root priveleges\n" 1>&2
+		exit 1
+	fi
+}
 
 print_dmi_info_bios(){
 	print_section_heading "DMI information BIOS (dmidecode)"
