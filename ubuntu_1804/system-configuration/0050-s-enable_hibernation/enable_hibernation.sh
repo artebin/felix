@@ -49,22 +49,6 @@ configure_suspend_then_hibernation(){
 	echo
 }
 
-configure_suspend_sedation(){
-	echo "Configuring suspend-sedation ..."
-	
-	# SystemdSuspendSedation
-	# See <https://wiki.debian.org/SystemdSuspendSedation>
-	
-	# Adding service
-	cd "${RECIPE_DIR}"
-	cp suspend-sedation.service /etc/systemd/system/suspend-sedation.service
-	systemctl start suspend-sedation
-	systemctl enable suspend-sedation
-	systemctl status suspend-sedation
-	
-	echo
-}
-
 enable_hibernation 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
@@ -76,9 +60,3 @@ EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
-
-#~ configure_suspend_sedation 2>&1 | tee -a "${LOGFILE}"
-#~ EXIT_CODE="${PIPESTATUS[0]}"
-#~ if [[ "${EXIT_CODE}" -ne 0 ]]; then
-	#~ exit "${EXIT_CODE}"
-#~ fi
