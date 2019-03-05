@@ -11,7 +11,6 @@
 - [ ] Missing polkit rules for cups see <https://wiki.archlinux.org/index.php/CUPS#Allowing_admin_authentication_through_PolicyKit>.
 - [ ] systemd manager.
 - [ ] Special menu in rofi for the XF86 symbols.
-- [ ] Add an alias in bachrc or a menuitem in openbox menu for doing a screenshot of a window with 'xwd'.
 - [ ] Extract localisation FR from minimal.packages.list, it should only contains US locales.
 - [ ] "enter your password to unlock your login keyring".
 - [ ] pdf are opened with gimp.
@@ -64,6 +63,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Add an alias in bachrc or a menuitem in openbox menu for doing a screenshot of a window with 'xwd'.
 - [x] Cannot install ubuntu_1804/user from a tty. We should test is $DISPLAY is defined. Should be done via a function in common.sh exit_if_not_x_session() => only do that for the recipe that need x session
 - [x] Make changes allowing to run 'info.sh' without 'common.sh'.
 - [x] Add recipe for suspend-then-hibernate, see <https://askubuntu.com/questions/12383/how-to-go-automatically-from-suspend-into-hibernate>

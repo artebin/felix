@@ -94,6 +94,7 @@ light-locker light-locker-settings
 ##############
 # Xorg tools
 ##############
+x11-apps
 xsel xclip xdo xtitle
 wmctrl xdotool xautomation
 xserver-xephyr

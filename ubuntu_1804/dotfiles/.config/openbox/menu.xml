@@ -20,9 +20,11 @@
 		</menu>
 		<menu id="graphics" label="Graphics">
 			<item label="Image Viewer (gpicview)"><action name="Execute"><command>gpicview</command></action></item>
-			<item label="Screenshooter"><action name="Execute"><command>xfce4-screenshooter</command></action></item>
 			<item label="Shotwell"><action name="Execute"><command>shotwell</command></action></item>
 			<item label="GIMP"><action name="Execute"><command>gimp</command></action></item>
+			<item label="Screenshooter"><action name="Execute"><command>xfce4-screenshooter</command></action></item>
+			<item label="Capture Window"><action name="Execute"><command>bash ~/scripts/screenshot_capture_window.sh -f</command></action></item>
+			<item label="Capture Window (no decoration)"><action name="Execute"><command>bash ~/scripts/screenshot_capture_window.sh</command></action></item>
 		</menu>
 		<menu id="multimedia" label="Multimedia">
 			<item label="Volume Control"><action name="Execute"><command>pavucontrol</command></action></item>
