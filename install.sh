@@ -34,6 +34,8 @@ execute_recipes_from_recipe_directory_array(){
 			exit 1
 		fi
 		
+		RECIPE_EXECUTION_FAILED=0
+		
 		RECIPE_ID="${BASH_REMATCH[1]}"
 		RECIPE_REQUIRED_RIGHTS="${BASH_REMATCH[2]}"
 		RECIPE_SCRIPT_FILE_NAME="${BASH_REMATCH[3]}.sh"
@@ -63,23 +65,23 @@ execute_recipes_from_recipe_directory_array(){
 			RECIPE_EXIT_CODE=0
 			if [[ "${RECIPE_REQUIRED_RIGHTS}" == "u" ]]; then
 				bash "${RECIPE_SCRIPT_FILE_NAME}"
-				RECIPE_EXIT_CODE=$?
+				RECIPE_EXECUTION_FAILED=$?
 			elif [[ "${RECIPE_REQUIRED_RIGHTS}" == "s" ]]; then
 				sudo -H bash "${RECIPE_SCRIPT_FILE_NAME}"
-				RECIPE_EXIT_CODE=$?
+				RECIPE_EXECUTION_FAILED=$?
 			else
 				echo "Unknown execution rights \'${RECIPE_REQUIRED_RIGHTS}\' for RECIPE_DIR_NAME: ${RECIPE_DIR_NAME}"
-			fi
-			
-			# Stop looping over RECIPE_DIR_ARRAY if the execution of the current recipe return an error code
-			if [ "${RECIPE_EXIT_CODE}" -ne 0 ]; then
-				echo "Recipe \"${RECIPE_DIR_NAME}\" returned an error code."
-				echo "Exiting."
-				exit 1
 			fi
 		fi
 		
 		print_section_ending
+		
+		# Stop looping over RECIPE_DIR_ARRAY if the execution of the current recipe return an error code
+		if [[ "${RECIPE_EXECUTION_FAILED}" -ne 0 ]]; then
+			printf "Recipe '${RECIPE_DIR_NAME}' returned an error code.\n"
+			printf "Exiting.\n"
+			exit 1
+		fi
 	done
 }
 

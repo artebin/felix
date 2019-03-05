@@ -37,6 +37,13 @@ exit_if_not_bash(){
 	fi
 }
 
+exit_if_no_x_session(){
+	if [[ -z "${DISPLAY}" ]] ; then
+		printf "This script should run within a X session\n" 1>&2
+		exit 1
+	fi
+}
+
 has_root_privileges(){
 	if [[ "${EUID}" -eq 0 ]]; then
 		return 0

@@ -18,6 +18,7 @@ LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 
 exit_if_not_bash
 exit_if_has_root_privileges
+exit_if_no_x_session
 
 configure_firefox_default_profile(){
 	cd ${RECIPE_DIR}
