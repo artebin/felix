@@ -4,7 +4,7 @@
 - [ ] Doing the autostart with the openbox autostart is much faster than with .xsessionrc
 - [ ] Analysis on the macbook air, battery consumption and CPU usage.
 - [ ] Is it possible to make work the TRRS on Linux?
-- [ ] Add a caja script for playing a folder in Media player.
+- [ ] Add a caja script for playing a folder in Media player => would be better to add mimetype inode/directory to VLC.
 - [ ] Install dlna support.
 - [ ] Get a useful logging of all the paclages installed in the system (think about the version of the GTK libs for example, pasystray middle click on tray icon for mute is not working anymore).
 - [ ] pasystray shows duplicated notification. Maybe an answer in <https://github.com/christophgysin/pasystray/issues/75> and the middle-click on the tray icon for muting the sound is not working anymore. => Add a bug todo and use pnmixer while waiting for a fix.
@@ -22,7 +22,6 @@
 - [ ] macbook air: acpi_osi in kernel pameters see <https://wiki.archlinux.org/index.php/Mac#Suspend_and_Hibernate>
 - [ ] macbook air: kernel parameter for acpi on macbook air (native).
 - [ ] macbook air: screenshot key => Rofi menu?
-- [ ] virtual keyboard: onboard or florence.
 - [ ] cp asks for confirmation when overwrite.
 - [ ] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron.
 - [ ] Check what is missing if we do not use a Power manager (multiple displays support in logind?).
@@ -63,6 +62,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] virtual keyboard: onboard or florence. => onboard
 - [x] Add an alias in bachrc or a menuitem in openbox menu for doing a screenshot of a window with 'xwd'.
 - [x] Cannot install ubuntu_1804/user from a tty. We should test is $DISPLAY is defined. Should be done via a function in common.sh exit_if_not_x_session() => only do that for the recipe that need x session
 - [x] Make changes allowing to run 'info.sh' without 'common.sh'.
