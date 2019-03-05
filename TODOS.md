@@ -1,26 +1,17 @@
 # TODOS
-- [ ] Bit of tiling: grow up window, i.e. increase width/height until reaching another window or screen edges or panels.
 - [ ] Fix Caja for opening executable scripts (bash, python): contextual menu is showing 'open'. Good UX would be 3 menu items: 'Run', 'Run in terminal' and 'Open with X', X being the default application for the mime type. However today there is only 'Open' which will open dialog a popup asking 'Display or run or run in terminal?'. The user does not know what is behind 'Display', display with what??? Even worst: the default application for the mime type is not listed in the 'Open with' maybe because, well... it is the application used for 'Display', erf...
 - [ ] Still have a problem with clipmenu, copy/paste not working correctly with file manager.
-- [ ] Only clipboard and not primary in clipmenu?
 - [ ] Doing the autostart with the openbox autostart is much faster than with .xsessionrc
 - [ ] Analysis on the macbook air, battery consumption and CPU usage.
 - [ ] Is it possible to make work the TRRS on Linux?
 - [ ] Add a caja script for playing a folder in Media player.
-- [ ] Replace pasystray by pnmixer + call paprefs + install dlna support.
-- [ ] Recipe for configuring grub with hibernate actived is buggy, if no swap partition when the startup hangs up for 30seconds, See <https://askubuntu.com/questions/1034359/boot-hangs-for-30-seconds-at-begin-running-scripts-local-premount>.
+- [ ] Install dlna support.
 - [ ] Cannot install ubuntu_1804/user from a tty. We should test is $DISPLAY is defined. Should be done via a function in common.sh exit_if_not_x_session()
 - [ ] Get a useful logging of all the paclages installed in the system (think about the version of the GTK libs for example, pasystray middle click on tray icon for mute is not working anymore).
-- [ ] Use ncurse for showing a dialog and allow to select some recipes to install.
-- [ ] Remove aspell-fr from minimal.install.list
-- [ ] Add missing pulseaudio packages.
 - [ ] pasystray shows duplicated notification. Maybe an answer in <https://github.com/christophgysin/pasystray/issues/75> and the middle-click on the tray icon for muting the sound is not working anymore. => Add a bug todo and use pnmixer while waiting for a fix.
 - [ ] Missing polkit rules for cups see <https://wiki.archlinux.org/index.php/CUPS#Allowing_admin_authentication_through_PolicyKit>.
-- [ ] Cups server is not installed.
-- [ ] Do not open SVG with gpic view because it is too slow, use inkscape instead.
 - [ ] systemd manager.
 - [ ] Special menu in rofi for the XF86S symbols.
-- [ ] Add the screenshot scripts in the openbox menu.
 - [ ] Add an alias in bachrc or a menuitem in openbox menu for doing a screenshot of a window with 'xwd'.
 - [ ] Make changes allowing to run 'info.sh' without 'common.sh'.
 - [ ] Extract localisation FR from minimal.packages.list, it should only contains US locales.
@@ -29,20 +20,17 @@
 - [ ] "tint2rc": caja will open the file with "Tint2 Settings", how does it works?
 - [ ] Check command to start by fdpowermon when reaching critical level of battery power.
 - [ ] Recipe configure git-cola: editor, comparator etc.
-- [ ] Configure default difftoll for git, editor etc.
+- [ ] Configure default difftool for git, editor etc.
 - [ ] Brillo and Display|Keyboard backlight in console (keysym ?).
 - [ ] macbook air: acpi_osi in kernel pameters see <https://wiki.archlinux.org/index.php/Mac#Suspend_and_Hibernate>
 - [ ] macbook air: kernel parameter for acpi on macbook air (native).
 - [ ] macbook air: screenshot key => Rofi menu? Virtual keyboard?
-- [ ] Look at the vim Mardown styling.
 - [ ] cp asks for confirmation when overwrite.
 - [ ] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron.
 - [ ] Check what is missing if we do not use a Power manager (multiple displays support in logind?).
-- [ ] Add recipe for suspend-then-hibernate, see <https://askubuntu.com/questions/12383/how-to-go-automatically-from-suspend-into-hibernate>
 - [ ] Command line git-flavored markdown-2-html? with pandoc or <http://daringfireball.net/projects/downloads/Markdown_1.0.1.zip>.
 - [ ] Check that we can open 2 window "File Properties" concurrently for 2 different files in Caja. It seems buggy in ubuntu18.04.0.
 - [ ] Use xdg-open from openbox (no panel no desktop). We can use "dex" but would be good to be able to use xdg-open (gtk-open, exo-open etc. ).
-- [ ] VNC through SSH.
 - [ ] Jar should not be associated to Java.
 - [ ] Use autofs for preventing caja to freeze when NFS/Samba is down or network problems. See <https://unix.stackexchange.com/questions/267138/preventing-broken-nfs-connection-from-freezing-the-client-system> and <https://help.ubuntu.com/community/Autofs>.
 - [ ] Add traces for monitoring the time taken for the installation.
@@ -58,7 +46,6 @@
 - [ ] Fix the Xmodmap for the macbook.
 - [ ] Need a way to do some settings regarding the sensitiviy of the touchpad/mouse a save these settings. The xfce4-mouse-settings is not saved and even worst it is reset during a session but it probably because I use it in a not-XFCE desktop.
 - [ ] Test if caja gets unresponsive when the NFS is mounter via a regular mount command rather via gvfs. Just test it by mount it, access it via caja, unplug the network and access it again via caja.
-- [ ] Thunderbird config do not mark read automatically.
 - [ ] Compile from source <https://github.com/freedesktop/xdg-desktop-file-utils> because command "update-desktop-update" is bugged in Ubuntu 18.04.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>.
@@ -78,6 +65,15 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Add recipe for suspend-then-hibernate, see <https://askubuntu.com/questions/12383/how-to-go-automatically-from-suspend-into-hibernate>
+- [x] Bit of tiling: grow up window, i.e. increase width/height until reaching another window or screen edges or panels.
+- [x] Only clipboard and not primary in clipmenu?
+- [x] Replace pasystray by pnmixer + call paprefs
+- [x] Cups server is not installed.
+- [x] Add missing pulseaudio packages.
+- [x] Recipe for configuring grub with hibernate actived is buggy, if no swap partition when the startup hangs up for 30seconds, See <https://askubuntu.com/questions/1034359/boot-hangs-for-30-seconds-at-begin-running-scripts-local-premount>.
+- [x] Use ncurse for showing a dialog and allow to select some recipes to install.
+- [x] Remove aspell-fr from minimal.install.list
 - [x] Use whiptail to create a recipe selector.
 - [x] Clean recipe openbox clipmenud_run.sh should be removed? Check about that. => yes. Removed.
 - [x] Add caja script for indenting XML file
