@@ -26,6 +26,12 @@ exit_if_has_root_privileges(){
 	fi
 }
 
+# Sed command for removing ANSI/VT100 control sequences
+# See <https://stackoverflow.com/questions/17998978/removing-colors-from-output>
+remove_terminal_control_sequences(){
+	sed -r "s/\x1B(\[[0-9;]*[JKmsu]|\(B)//g"
+}
+
 print_dmi_info_bios(){
 	print_section_heading "DMI information BIOS (dmidecode)"
 	echo "bios-vendor: $(dmidecode -s bios-vendor)"
@@ -114,15 +120,20 @@ print_key_codes(){
 	print_section_ending
 }
 
-print_dmi_info_bios
-print_dmi_info_system
-print_hardware_info_inxi | remove_terminal_control_sequences
-print_display_info_xrandr
-print_lsb_release
-print_linux_kernel_version
-print_memory_info
-print_free_memory
-print_swap_information
-print_temperature_sensors
-print_gtk_version
-print_key_codes
+print_all(){
+	print_dmi_info_bios
+	print_dmi_info_system
+	print_hardware_info_inxi
+	print_display_info_xrandr
+	print_lsb_release
+	print_linux_kernel_version
+	print_memory_info
+	print_free_memory
+	print_swap_information
+	print_temperature_sensors
+	print_gtk_version
+	print_key_codes
+}
+
+OUTPUT_FILE="info_${HOSTNAME}_$(date -u +'%y%m%d-%H%M%S')"
+print_all 2>&1|remove_terminal_control_sequences >"${OUTPUT_FILE}"
