@@ -57,10 +57,13 @@ configure_default_applications_with_mime_apps_list(){
 	# MIME types are defined in /etc/mime.types
 	# Set default applications per MIME types:
 	#  text/*		Geany
+	#  application/.*-xml	Geany
+	#  application/.*+xml	Geany
+	#  application/.*_xml	Geany
+	#  application/.*pdf.*	Atril
 	#  image/* 		GPicView
 	#  audio/*		VLC
 	#  video/*		VLC
-	# inode/directory	VLC
 	
 	while read LINE; do
 		MIME_TYPE=""
@@ -77,12 +80,20 @@ configure_default_applications_with_mime_apps_list(){
 			echo "${MIME_TYPE}=geany.desktop;" >>"${TEMP_MIME_APPS_LIST_FILE}"
 			continue
 		fi
-		if [[ "${MIME_TYPE}" =~ ^application/.*\+xml.* ]]; then
+		if [[ "${MIME_TYPE}" =~ ^application/.*\-xml ]]; then
 			echo "${MIME_TYPE}=geany.desktop;" >>"${TEMP_MIME_APPS_LIST_FILE}"
 			continue
 		fi
-		if [[ "${MIME_TYPE}" =~ ^application/xml-.* ]]; then
+		if [[ "${MIME_TYPE}" =~ ^application/.*\+xml ]]; then
 			echo "${MIME_TYPE}=geany.desktop;" >>"${TEMP_MIME_APPS_LIST_FILE}"
+			continue
+		fi
+		if [[ "${MIME_TYPE}" =~ ^application/.*_xml ]]; then
+			echo "${MIME_TYPE}=geany.desktop;" >>"${TEMP_MIME_APPS_LIST_FILE}"
+			continue
+		fi
+		if [[ "${MIME_TYPE}" =~ ^application/.*pdf.* ]]; then
+			echo "${MIME_TYPE}=atril.desktop;" >>"${TEMP_MIME_APPS_LIST_FILE}"
 			continue
 		fi
 		if [[ "${MIME_TYPE}" =~ ^image/ ]]; then
@@ -106,6 +117,7 @@ configure_default_applications_with_mime_apps_list(){
 	
 	printf "application/xml=geany.desktop;\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
 	printf "inode/directory=vlc.desktop;\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
+	printf "application/x-jar=engrampa.desktop;\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
 	
 	# See <https://wiki.archlinux.org/index.php/XDG_MIME_Applications>
 	# ${HOME}/.local/share/applications/mimeapps.list is deprecated

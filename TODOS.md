@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Improve rofi theme
 - [ ] Window frame icon for being on top of other windows.
 - [ ] Fix Caja for opening executable scripts (bash, python): contextual menu is showing 'open'. Good UX would be 3 menu items: 'Run', 'Run in terminal' and 'Open with X', X being the default application for the mime type. However today there is only 'Open' which will open dialog a popup asking 'Display or run or run in terminal?'. The user does not know what is behind 'Display', display with what??? Even worst: the default application for the mime type is not listed in the 'Open with' maybe because, well... it is the application used for 'Display', erf...
 - [ ] Still have a problem with clipmenu, copy/paste not working correctly with file manager.
@@ -7,14 +8,11 @@
 - [ ] Is it possible to make work the TRRS on Linux?
 - [ ] Add a caja script for playing a folder in Media player => would be better to add mimetype inode/directory to VLC.
 - [ ] Install dlna support.
-- [ ] Get a useful logging of all the paclages installed in the system (think about the version of the GTK libs for example, pasystray middle click on tray icon for mute is not working anymore).
-- [ ] pasystray shows duplicated notification. Maybe an answer in <https://github.com/christophgysin/pasystray/issues/75> and the middle-click on the tray icon for muting the sound is not working anymore. => Add a bug todo and use pnmixer while waiting for a fix.
 - [ ] Missing polkit rules for cups see <https://wiki.archlinux.org/index.php/CUPS#Allowing_admin_authentication_through_PolicyKit>.
 - [ ] systemd manager.
 - [ ] Special menu in rofi for the XF86 symbols.
 - [ ] Extract localisation FR from minimal.packages.list, it should only contains US locales.
 - [ ] "enter your password to unlock your login keyring".
-- [ ] pdf are opened with gimp.
 - [ ] "tint2rc": caja will open the file with "Tint2 Settings", how does it works?
 - [ ] Check command to start by fdpowermon when reaching critical level of battery power.
 - [ ] Recipe configure git-cola: editor, comparator etc.
@@ -23,13 +21,11 @@
 - [ ] macbook air: acpi_osi in kernel pameters see <https://wiki.archlinux.org/index.php/Mac#Suspend_and_Hibernate>
 - [ ] macbook air: kernel parameter for acpi on macbook air (native).
 - [ ] macbook air: screenshot key => Rofi menu?
-- [ ] cp asks for confirmation when overwrite.
 - [ ] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron.
 - [ ] Check what is missing if we do not use a Power manager (multiple displays support in logind?).
 - [ ] Command line git-flavored markdown-2-html? with pandoc or <http://daringfireball.net/projects/downloads/Markdown_1.0.1.zip>.
 - [ ] Check that we can open 2 window "File Properties" concurrently for 2 different files in Caja. It seems buggy in ubuntu18.04.0.
 - [ ] Use xdg-open from openbox (no panel no desktop). We can use "dex" but would be good to be able to use xdg-open (gtk-open, exo-open etc. ).
-- [ ] Jar should not be associated to Java.
 - [ ] Use autofs for preventing caja to freeze when NFS/Samba is down or network problems. See <https://unix.stackexchange.com/questions/267138/preventing-broken-nfs-connection-from-freezing-the-client-system> and <https://help.ubuntu.com/community/Autofs>.
 - [ ] Add traces for monitoring the time taken for the installation.
 - [ ] When all the document are closed in Geany, the Markdown Preview still shows the last preview. Also the links are clickable in the preview and the page is showed in the sidebar but there is no way to navigate and go back to the preview.
@@ -38,7 +34,6 @@
 - [ ] locate panel-desktop-handler.desktop => this desktop file is called for creating a shortcut for each execution of one desktop file with exo-open, gvfs-open, xdg-open etc.
 - [ ] Patch Caja: always show the file name (extension are hidden for .desktop files for example) See <https://github.com/mate-desktop/caja/issues/727> open ticket.
 - [ ] Set "mailto" for firefox or thunderbird or claws-mail.
-- [ ] Add a Caja script for executing a script into a terminal and "press a key" before exit the terminal.
 - [ ] It seems thunderbird is not using x-www-browser (chromium is used), "network.protocol-handler.warn-external.http" should be true for all. gnome-www-browser should be set too (not only x-www-browser).
 - [ ] A script at startup of openbox checking for the default application and notify the user about some changes. Have a look at Xfce4 MIME Type Editor.
 - [ ] Fix the Xmodmap for the macbook.
@@ -63,6 +58,10 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Jar should not be associated to Java.
+- [x] pdf are opened with gimp.
+- [x] Add a Caja script for executing a script into a terminal and "press a key" before exit the terminal.
+- [x] Get a useful logging of all the paclages installed in the system (think about the version of the GTK libs for example, pasystray middle click on tray icon for mute is not working anymore).
 - [x] virtual keyboard: onboard or florence. => onboard
 - [x] Add an alias in bachrc or a menuitem in openbox menu for doing a screenshot of a window with 'xwd'.
 - [x] Cannot install ubuntu_1804/user from a tty. We should test is $DISPLAY is defined. Should be done via a function in common.sh exit_if_not_x_session() => only do that for the recipe that need x session
