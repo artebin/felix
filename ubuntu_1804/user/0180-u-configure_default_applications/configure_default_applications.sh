@@ -74,38 +74,38 @@ configure_default_applications_with_mime_apps_list(){
 			continue
 		fi
 		if [[ "${MIME_TYPE}" =~ ^text/ ]]; then
-			echo "${MIME_TYPE}=geany.desktop" >>"${TEMP_MIME_APPS_LIST_FILE}"
+			echo "${MIME_TYPE}=geany.desktop;" >>"${TEMP_MIME_APPS_LIST_FILE}"
 			continue
 		fi
 		if [[ "${MIME_TYPE}" =~ ^application/.*\+xml.* ]]; then
-			echo "${MIME_TYPE}=geany.desktop" >>"${TEMP_MIME_APPS_LIST_FILE}"
+			echo "${MIME_TYPE}=geany.desktop;" >>"${TEMP_MIME_APPS_LIST_FILE}"
 			continue
 		fi
 		if [[ "${MIME_TYPE}" =~ ^application/xml-.* ]]; then
-			echo "${MIME_TYPE}=geany.desktop" >>"${TEMP_MIME_APPS_LIST_FILE}"
+			echo "${MIME_TYPE}=geany.desktop;" >>"${TEMP_MIME_APPS_LIST_FILE}"
 			continue
 		fi
 		if [[ "${MIME_TYPE}" =~ ^image/ ]]; then
-			echo "${MIME_TYPE}=gpicview.desktop" >>"${TEMP_MIME_APPS_LIST_FILE}"
+			echo "${MIME_TYPE}=gpicview.desktop;" >>"${TEMP_MIME_APPS_LIST_FILE}"
 			continue
 		fi
 		if [[ "${MIME_TYPE}" =~ ^audio/ ]]; then
-			echo "${MIME_TYPE}=vlc.desktop" >>"${TEMP_MIME_APPS_LIST_FILE}"
+			echo "${MIME_TYPE}=vlc.desktop;" >>"${TEMP_MIME_APPS_LIST_FILE}"
 			continue
 		fi
 		if [[ "${MIME_TYPE}" =~ ^video/ ]]; then
-			echo "${MIME_TYPE}=vlc.desktop" >>"${TEMP_MIME_APPS_LIST_FILE}"
+			echo "${MIME_TYPE}=vlc.desktop;" >>"${TEMP_MIME_APPS_LIST_FILE}"
 			continue
 		fi
 		if [[ "${MIME_TYPE}" == 'application/pdf' ]]; then
-			echo "${MIME_TYPE}=atril.desktop" >>"${TEMP_MIME_APPS_LIST_FILE}"
+			echo "${MIME_TYPE}=atril.desktop;" >>"${TEMP_MIME_APPS_LIST_FILE}"
 			continue
 		fi
-		echo "${MIME_TYPE}=" >>"${TEMP_MIME_APPS_LIST_FILE}"
+		#echo "${MIME_TYPE}=" >>"${TEMP_MIME_APPS_LIST_FILE}"
 	done < /etc/mime.types
 	
-	printf "application/xml=geany.desktop\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
-	printf "inode/directory=vlc.desktop\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
+	printf "application/xml=geany.desktop;\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
+	printf "inode/directory=vlc.desktop;\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
 	
 	# See <https://wiki.archlinux.org/index.php/XDG_MIME_Applications>
 	# ${HOME}/.local/share/applications/mimeapps.list is deprecated
