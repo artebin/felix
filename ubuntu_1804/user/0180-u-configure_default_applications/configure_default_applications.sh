@@ -62,7 +62,7 @@ configure_default_applications_with_mime_apps_list(){
 	#  video/*		VLC
 	# inode/directory	VLC
 	
-	while read LINE ; do
+	while read LINE; do
 		MIME_TYPE=""
 		if [[ "${LINE}" =~ ^#.* ]]; then
 			continue
