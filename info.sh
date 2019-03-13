@@ -120,6 +120,18 @@ print_key_codes(){
 	print_section_ending
 }
 
+extract_installed_packages_list(){
+	print_section_heading "List of installed packages"
+	
+	INSTALLED_PACKAGE_LIST=$(dpkg -l)
+	printf "%s\n" "${INSTALLED_PACKAGE_LIST}" >dpkg.installed.packages.list
+	
+	INSTALLED_PACKAGE_LIST=$(find /var/log -mindepth 1 -maxdepth 1 -name dpkg.log*|sort|xargs zgrep -E '( installed | remove )'|uniq)
+	printf "%s\n" "${INSTALLED_PACKAGE_LIST}" >dpkglogs.list
+	
+	print_section_ending
+}
+
 print_all(){
 	print_dmi_info_bios
 	print_dmi_info_system
@@ -133,6 +145,7 @@ print_all(){
 	print_temperature_sensors
 	print_gtk_version
 	print_key_codes
+	extract_installed_packages_list
 }
 
 OUTPUT_FILE="info_${HOSTNAME}_$(date -u +'%y%m%d-%H%M%S')"
