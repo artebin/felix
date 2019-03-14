@@ -115,6 +115,7 @@ configure_default_applications_with_mime_apps_list(){
 		#echo "${MIME_TYPE}=" >>"${TEMP_MIME_APPS_LIST_FILE}"
 	done < /etc/mime.types
 	
+	printf "application/x-shellscript;\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
 	printf "application/xml=geany.desktop;\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
 	printf "inode/directory=vlc.desktop;\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
 	printf "application/x-jar=engrampa.desktop;\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
