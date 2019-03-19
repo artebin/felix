@@ -91,13 +91,12 @@
 			<item label="MIME Settings"><action name="Execute"><command>xfce4-mime-settings</command></action></item>
 		</menu>
 		<menu id="system" label="System">
+			<item label="Software &amp; Updates"><action name="Execute"><command>software-properties-gtk</command></action></item>
+			<item label="Synaptic Package Manager"><action name="Execute"><command>pkexec synaptic</command></action></item>
+			<item label="User Login Settings"><action name="Execute"><command>pkexec lightdm-gtk-greeter-settings</command></action></item>
 			<menu id="SystemTools" label="Tools">
 				<item label="GParted"><action name="Execute"><command>pkexec gparted</command></action></item>
 			</menu>
-			<item label="User Login Settings"><action name="Execute"><command>pkexec lightdm-gtk-greeter-settings</command></action></item>
-			<separator/>
-			<item label="Software &amp; Updates"><action name="Execute"><command>software-properties-gtk</command></action></item>
-			<item label="Synaptic Package Manager"><action name="Execute"><command>pkexec synaptic</command></action></item>
 		</menu>
 		<separator/>
 		<item label="Lock Session"><action name="Execute"><execute>dm-tool lock</execute></action></item>
