@@ -1,8 +1,13 @@
 #!/usr/bin/env bash
 
 print_usage(){
-	echo "Usage:"
-	echo
+	printf "Usage: ${0} [OPTIONS...]"
+	pritnf "\n"
+	printf "   -d decrease volume"
+	printf "   -i increase volume"
+	printf "   -o mute output"
+	printf "   -m mute input"
+	printf "\n"
 }
 
 NOTIFICATION_ID_FILE="/dev/shm/${USER}.pulseaudioctl.volume.notification_id"
