@@ -55,17 +55,17 @@ XF86KbdBrightnessDown
 XF86KbdBrightnessUp
 	flock -n "/dev/shm/${USER}.brillo.keyboard.notification_id" bash "${HOME}/scripts/brillo_keyboard_notify.sh" -i
 
+XF86AudioMute
+	flock -n "/dev/shm/${USER}.pulseaudioctl.output.notification_id" bash "${HOME}/scripts/pulseaudioctl_notify.sh" -o -n "/dev/shm/${USER}.pulseaudioctl.output.notification_id"
+	
 XF86AudioLowerVolume
-	flock -n "/dev/shm/${USER}.pulseaudioctl.volume.notification_id" bash "${HOME}/scripts/pulseaudioctl_notify.sh" -d
+	flock -n "/dev/shm/${USER}.pulseaudioctl.output.notification_id" bash "${HOME}/scripts/pulseaudioctl_notify.sh" -d -n "/dev/shm/${USER}.pulseaudioctl.output.notification_id"
 
 XF86AudioRaiseVolume
-	flock -n "/dev/shm/${USER}.pulseaudioctl.volume.notification_id" bash "${HOME}/scripts/pulseaudioctl_notify.sh" -i
-
-XF86AudioMute
-	pulseaudio-ctl mute
+	flock -n "/dev/shm/${USER}.pulseaudioctl.output.notification_id" bash "${HOME}/scripts/pulseaudioctl_notify.sh" -i -n "/dev/shm/${USER}.pulseaudioctl.output.notification_id"
 
 XF86AudioMicMute
-	pulseaudio-ctl mute-input
+	flock -n "/dev/shm/${USER}.pulseaudioctl.input.notification_id" bash "${HOME}/scripts/pulseaudioctl_notify.sh" -m -n "/dev/shm/${USER}.pulseaudioctl.input.notification_id"
 
 XF86Search
 	caja --no-desktop
