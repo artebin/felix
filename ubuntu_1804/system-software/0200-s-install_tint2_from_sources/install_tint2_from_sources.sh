@@ -23,7 +23,7 @@ install_tint2_from_sources(){
 	printf "Installing tint2 from sources ...\n"
 	
 	# Install dependencies
-	DEPENDENCIES=()
+	DEPENDENCIES=( "libimlib2-dev" )
 	if [[ "${#DEPENDENCIES[@]}" -ne 0 ]]; then
 		install_package_if_not_installed "${DEPENDENCIES[@]}"
 	fi

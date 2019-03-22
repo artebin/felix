@@ -112,7 +112,6 @@ gconf-service gconf-editor
 mate-utils mate-system-monitor
 xfce4-volumed xfce4-notifyd xfce4-dict xfce4-screenshooter xfburn
 lxinput
-tint2
 suckless-tools
 rofi
 galternatives
