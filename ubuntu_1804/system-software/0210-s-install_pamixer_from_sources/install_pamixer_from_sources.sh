@@ -19,26 +19,26 @@ LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-install_pulseaudioctl_from_sources(){
-	echo "Installing pulseaudio-ctl from sources ..."
+install_pamixer_from_sources(){
+	printf "Installing pamixer from sources ...\n"
 	
 	# Clone git repository
-	git clone https://github.com/graysky2/pulseaudio-ctl.git
+	git clone https://github.com/cdemoulins/pamixer.git
 	
 	# Build and install
 	cd "${RECIPE_DIR}"
-	cd pulseaudio-ctl
+	cd pamixer
 	make
 	make install
 	
 	# Cleaning
 	cd "${RECIPE_DIR}"
-	rm -fr pulseaudio-ctl
+	rm -fr pamixer
 	
-	echo
+	printf "\n"
 }
 
-install_pulseaudioctl_from_sources 2>&1 | tee -a "${LOGFILE}"
+install_pamixer_from_sources 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
