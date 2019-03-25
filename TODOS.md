@@ -1,10 +1,8 @@
 # TODOS
-- [ ] Add recipe for building tint2 from sources.
 - [ ] Improve rofi theme
 - [ ] Window frame icon for being on top of other windows.
 - [ ] Fix Caja for opening executable scripts (bash, python): contextual menu is showing 'open'. Good UX would be 3 menu items: 'Run', 'Run in terminal' and 'Open with X', X being the default application for the mime type. However today there is only 'Open' which will open dialog a popup asking 'Display or run or run in terminal?'. The user does not know what is behind 'Display', display with what??? Even worst: the default application for the mime type is not listed in the 'Open with' maybe because, well... it is the application used for 'Display', erf...
 - [ ] Still have a problem with clipmenu, copy/paste not working correctly with file manager.
-- [ ] Doing the autostart with the openbox autostart is much faster than with .xsessionrc
 - [ ] Analysis on the macbook air, battery consumption and CPU usage.
 - [ ] Is it possible to make work the TRRS on Linux?
 - [ ] Add a caja script for playing a folder in Media player => would be better to add mimetype inode/directory to VLC.
@@ -14,7 +12,6 @@
 - [ ] Special menu in rofi for the XF86 symbols.
 - [ ] Extract localisation FR from minimal.packages.list, it should only contains US locales.
 - [ ] "enter your password to unlock your login keyring".
-- [ ] "tint2rc": caja will open the file with "Tint2 Settings", how does it works?
 - [ ] Check command to start by fdpowermon when reaching critical level of battery power.
 - [ ] Recipe configure git-cola: editor, comparator etc.
 - [ ] Configure default difftool for git, editor etc.
@@ -59,6 +56,8 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Doing the autostart with the openbox autostart is much faster than with .xsessionrc
+- [x] Add recipe for building tint2 from sources.
 - [x] Jar should not be associated to Java.
 - [x] pdf are opened with gimp.
 - [x] Add a Caja script for executing a script into a terminal and "press a key" before exit the terminal.
@@ -67,6 +66,7 @@
 - [x] Add an alias in bachrc or a menuitem in openbox menu for doing a screenshot of a window with 'xwd'.
 - [x] Cannot install ubuntu_1804/user from a tty. We should test is $DISPLAY is defined. Should be done via a function in common.sh exit_if_not_x_session() => only do that for the recipe that need x session
 - [x] Make changes allowing to run 'info.sh' without 'common.sh'.
+- [x] "tint2rc": caja will open the file with "Tint2 Settings", how does it works?
 - [x] Add recipe for suspend-then-hibernate, see <https://askubuntu.com/questions/12383/how-to-go-automatically-from-suspend-into-hibernate>
 - [x] Bit of tiling: grow up window, i.e. increase width/height until reaching another window or screen edges or panels.
 - [x] Only clipboard and not primary in clipmenu?
