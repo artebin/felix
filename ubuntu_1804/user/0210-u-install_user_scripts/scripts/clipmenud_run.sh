@@ -12,4 +12,8 @@ export CM_SELECTIONS="clipboard"
 
 export CM_DEBUG=1
 
-nohup clipmenud >"${HOME}/clipmenud.log" 2>&1 &
+if (( "${CM_DEBUG}" )); then
+	nohup clipmenud >"${HOME}/clipmenud.log" 2>&1 &
+else
+	nohup clipmenud &
+fi
