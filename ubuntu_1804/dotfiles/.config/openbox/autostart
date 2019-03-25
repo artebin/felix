@@ -11,5 +11,4 @@ nm-applet &
 sleep 1
 
 # Volume icon
-#pnmixer &
-pasystray &
+pasystray -t --notify=all &

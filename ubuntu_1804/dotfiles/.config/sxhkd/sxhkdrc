@@ -56,16 +56,16 @@ XF86KbdBrightnessUp
 	flock -n "/dev/shm/${USER}.brillo.keyboard.notification_id" bash "${HOME}/scripts/brillo_keyboard_notify.sh" -i
 
 XF86AudioMute
-	flock -n "/dev/shm/${USER}.pulseaudioctl.output.notification_id" bash "${HOME}/scripts/pulseaudioctl_notify.sh" -o -n "/dev/shm/${USER}.pulseaudioctl.output.notification_id"
-	
+	pulseaudio-ctl mute
+
 XF86AudioLowerVolume
-	flock -n "/dev/shm/${USER}.pulseaudioctl.output.notification_id" bash "${HOME}/scripts/pulseaudioctl_notify.sh" -d -n "/dev/shm/${USER}.pulseaudioctl.output.notification_id"
+	pulseaudio-ctl down
 
 XF86AudioRaiseVolume
-	flock -n "/dev/shm/${USER}.pulseaudioctl.output.notification_id" bash "${HOME}/scripts/pulseaudioctl_notify.sh" -i -n "/dev/shm/${USER}.pulseaudioctl.output.notification_id"
+	pulseaudio-ctl up
 
 XF86AudioMicMute
-	flock -n "/dev/shm/${USER}.pulseaudioctl.input.notification_id" bash "${HOME}/scripts/pulseaudioctl_notify.sh" -m -n "/dev/shm/${USER}.pulseaudioctl.input.notification_id"
+	pulseaudio-ctl mute-input
 
 XF86Search
 	caja --no-desktop
