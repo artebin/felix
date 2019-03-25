@@ -193,7 +193,7 @@ re_index_recipes(){
 		RECIPE_SCRIPT_FILE_NAME="${BASH_REMATCH[3]}"
 		RECIPE_SCRIPT_FILE_PATH="${RECIPES_PARENT_DIRECTORY}/${RECIPE_SCRIPT_FILE_NAME}"
 		
-		if [[ "${RECIPE_ID}" -ge 9000 ]]; then
+		if [[ $((10#${RECIPE_ID})) -ge 9000 ]]; then
 			continue;
 		fi
 		
