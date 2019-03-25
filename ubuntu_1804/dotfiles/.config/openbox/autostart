@@ -11,4 +11,4 @@ nm-applet &
 sleep 1
 
 # Volume icon
-pasystray -t --notify=all &
+pasystray -t --notify=sink_default --notify=source_default &
