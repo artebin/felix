@@ -181,8 +181,6 @@ re_index_recipes(){
 	ID=0
 	ID_INCREMENT=10
 	for RECIPE_PATH in "${RECIPE_PATH_ARRAY[@]}"; do
-		ID=$(( "${ID}" + "${ID_INCREMENT}" ))
-		
 		RECIPE_NAME=$(basename ${RECIPE_PATH})
 		
 		if [[ ! "${RECIPE_NAME}" =~ ${RECIPE_NAME_REGEX} ]]; then
@@ -195,6 +193,11 @@ re_index_recipes(){
 		RECIPE_SCRIPT_FILE_NAME="${BASH_REMATCH[3]}"
 		RECIPE_SCRIPT_FILE_PATH="${RECIPES_PARENT_DIRECTORY}/${RECIPE_SCRIPT_FILE_NAME}"
 		
+		if [[ "${RECIPE_ID}" -ge 9000 ]]; then
+			continue;
+		fi
+		
+		ID=$(( "${ID}" + "${ID_INCREMENT}" ))
 		RECIPE_NEW_ID=$(printf "%04d" ${ID})
 		RECIPE_NEW_NAME="${RECIPE_NEW_ID}-${RECIPE_REQUIRED_RIGHTS}-${RECIPE_SCRIPT_FILE_NAME}"
 		
