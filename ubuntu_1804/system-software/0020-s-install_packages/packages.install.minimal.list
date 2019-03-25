@@ -198,7 +198,6 @@ chromium-browser
 ##########################
 # Audio and video player
 ##########################
-pnmixer
 pulseaudio pulseaudio-dlna pulseaudio-equalizer pulseaudio-esound-compat pulseaudio-module-bluetooth pulseaudio-module-gconf pulseaudio-module-jack pulseaudio-module-lirc pulseaudio-module-raop pulseaudio-module-zeroconf pulseaudio-utils pulsemixer libpulse-dev
 #paman #N/A in Ubuntu 18.04
 pavucontrol pavumeter paprefs
