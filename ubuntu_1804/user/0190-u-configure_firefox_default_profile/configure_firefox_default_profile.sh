@@ -21,116 +21,108 @@ exit_if_has_root_privileges
 exit_if_no_x_session
 
 configure_firefox_default_profile(){
-	cd ${RECIPE_DIR}
-	
-	echo "Configuring Firefox ..."
+	printf "Configuring Firefox default profile...\n"
 	
 	# Retrieve path to the Firefox default profile
-	PREFS_JS_PATH=""
-	if [[ -d ~/.mozilla/firefox ]]; then
-		FIREFOX_DEFAULT_PROFILE_PATH=$(find ~/.mozilla/firefox -maxdepth 1 -iname "*\.default")
-		if [[ -f "${FIREFOX_DEFAULT_PROFILE_PATH}/prefs.js" ]]; then
-			PREFS_JS_PATH="${FIREFOX_DEFAULT_PROFILE_PATH}/prefs.js"
-		fi
+	FIREFOX_DEFAULT_PROFILE_PATH=""
+	if [[ -d "${HOME}/.mozilla/firefox" ]]; then
+		FIREFOX_DEFAULT_PROFILE_PATH=$(find "${HOME}/.mozilla/firefox" -maxdepth 1 -iname "*\.default")
+		printf "FIREFOX_DEFAULT_PROFILE_PATH: ${FIREFOX_DEFAULT_PROFILE_PATH}\n"
 	fi
-	
-	if [[ ! -f "${PREFS_JS_PATH}" ]]; then
-		echo "Can not find Firefox default profile => creating one ..."
+	if [[ -z "${FIREFOX_DEFAULT_PROFILE_PATH}" ]]; then
+		printf "Cannot find Firefox default profile => creating one ...\n"
 		firefox -CreateProfile "default"
-		
-		FIREFOX_DEFAULT_PROFILE_PATH=$(find ~/.mozilla/firefox -maxdepth 1 -iname "*\.default")
-		if [[ -f "${FIREFOX_DEFAULT_PROFILE_PATH}/prefs.js" ]]; then
-			PREFS_JS_PATH="${FIREFOX_DEFAULT_PROFILE_PATH}/prefs.js"
-		fi
-	
-		if [[ ! -f "${PREFS_JS_PATH}" ]]; then
-			echo "Can not find Firefox default profile"
-			exit 1
-		fi
+		FIREFOX_DEFAULT_PROFILE_PATH=$(find "${HOME}/.mozilla/firefox" -maxdepth 1 -iname "*\.default")
+		printf "FIREFOX_DEFAULT_PROFILE_PATH: ${FIREFOX_DEFAULT_PROFILE_PATH}\n"
 	fi
 	
-	echo "Configuring Firefox default profile ${PREFS_JS_PATH} ..."
+	FIREFOX_PREFS_JS_FILE="${FIREFOX_DEFAULT_PROFILE_PATH}/prefs.js"
+	if [[ ! -f "${FIREFOX_PREFS_JS_FILE}" ]]; then
+		printf "Cannot find FIREFOX_PREFS_JS_FILE: ${FIREFOX_PREFS_JS_FILE}\n"
+		printf "Creating an empty file ...\n"
+		touch "${FIREFOX_PREFS_JS_FILE}"
+	fi
 	
-	echo "Setting \"Show your windows and tabs from last time\" ..."
+	printf "=> Show your windows and tabs from last time ...\n"
 	KEY="browser.startup.page"
 	PREFIX_TO_SEARCH="user_pref(\"${KEY}\""
 	LINE_REPLACEMENT_VALUE="user_pref(\"${KEY}\", 3);"
-	if grep -q "${KEY}" "${PREFS_JS_PATH}"; then
-		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${PREFS_JS_PATH}"
+	if grep -q "${KEY}" "${FIREFOX_PREFS_JS_FILE}"; then
+		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FIREFOX_PREFS_JS_FILE}"
 	else
-		echo "${LINE_REPLACEMENT_VALUE}" >> "${PREFS_JS_PATH}"
+		echo "${LINE_REPLACEMENT_VALUE}" >>"${FIREFOX_PREFS_JS_FILE}"
 	fi
 	
-	echo "Setting \"Always ask you where to save files\" ..."
+	printf "=> Always ask you where to save files ...\n"
 	KEY="browser.download.useDownloadDir"
 	PREFIX_TO_SEARCH="user_pref(\"${KEY}\""
 	LINE_REPLACEMENT_VALUE="user_pref(\"${KEY}\", false);"
-	if grep -q "${KEY}" "${PREFS_JS_PATH}"; then
-		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${PREFS_JS_PATH}"
+	if grep -q "${KEY}" "${FIREFOX_PREFS_JS_FILE}"; then
+		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FIREFOX_PREFS_JS_FILE}"
 	else
-		echo "${LINE_REPLACEMENT_VALUE}" >> "${PREFS_JS_PATH}"
+		echo "${LINE_REPLACEMENT_VALUE}" >>"${FIREFOX_PREFS_JS_FILE}"
 	fi
 	
-	echo "Setting \"Do not remember logins and passwords\" ..."
+	printf "=> Do not remember logins and passwords ...\n"
 	KEY="signon.rememberSignons"
 	PREFIX_TO_SEARCH="user_pref(\"${KEY}\""
 	LINE_REPLACEMENT_VALUE="user_pref(\"${KEY}\", false);"
-	if grep -q "${KEY}" "${PREFS_JS_PATH}"; then
-		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${PREFS_JS_PATH}"
+	if grep -q "${KEY}" "${FIREFOX_PREFS_JS_FILE}"; then
+		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FIREFOX_PREFS_JS_FILE}"
 	else
-		echo "${LINE_REPLACEMENT_VALUE}" >> "${PREFS_JS_PATH}"
+		echo "${LINE_REPLACEMENT_VALUE}" >>"${FIREFOX_PREFS_JS_FILE}"
 	fi
 	
-	echo "Setting \"Do not trim URLs in the URL bar\" ..."
+	printf "=> Do not trim URLs in the URL bar ...\n"
 	KEY="browser.urlbar.trimURLs"
 	PREFIX_TO_SEARCH="user_pref(\"${KEY}\""
 	LINE_REPLACEMENT_VALUE="user_pref(\"${KEY}\", false);"
-	if grep -q "${KEY}" "${PREFS_JS_PATH}"; then
-		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${PREFS_JS_PATH}"
+	if grep -q "${KEY}" "${FIREFOX_PREFS_JS_FILE}"; then
+		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FIREFOX_PREFS_JS_FILE}"
 	else
-		echo "${LINE_REPLACEMENT_VALUE}" >> "${PREFS_JS_PATH}"
+		echo "${LINE_REPLACEMENT_VALUE}" >>"${FIREFOX_PREFS_JS_FILE}"
 	fi
 	
-	echo "Setting \"Do not show search engines in drop panel of the URL bar\" ..."
+	printf "=> Do not show search engines in drop panel of the URL bar ...\n"
 	KEY="browser.urlbar.oneOffSearches"
 	PREFIX_TO_SEARCH="user_pref(\"${KEY}\""
 	LINE_REPLACEMENT_VALUE="user_pref(\"${KEY}\", false);"
-	if grep -q "${KEY}" "${PREFS_JS_PATH}"; then
-		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${PREFS_JS_PATH}"
+	if grep -q "${KEY}" "${FIREFOX_PREFS_JS_FILE}"; then
+		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FIREFOX_PREFS_JS_FILE}"
 	else
-		echo "${LINE_REPLACEMENT_VALUE}" >> "${PREFS_JS_PATH}"
+		echo "${LINE_REPLACEMENT_VALUE}" >>"${FIREFOX_PREFS_JS_FILE}"
 	fi
 	
-	echo "Setting \"No search suggestions in the URL bar\" ..."
+	printf "=> No search suggestions in the URL bar ...\n"
 	# Part 1
 	KEY="browser.urlbar.searchSuggestionsChoice"
 	PREFIX_TO_SEARCH="user_pref(\"${KEY}\""
 	LINE_REPLACEMENT_VALUE="user_pref(\"${KEY}\", false);"
-	if grep -q "${KEY}" "${PREFS_JS_PATH}"; then
-		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${PREFS_JS_PATH}"
+	if grep -q "${KEY}" "${FIREFOX_PREFS_JS_FILE}"; then
+		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FIREFOX_PREFS_JS_FILE}"
 	else
-		echo "${LINE_REPLACEMENT_VALUE}" >> "${PREFS_JS_PATH}"
+		echo "${LINE_REPLACEMENT_VALUE}" >>"${FIREFOX_PREFS_JS_FILE}"
 	fi
 	# Part 2
 	KEY="browser.urlbar.suggest.searches"
 	PREFIX_TO_SEARCH="user_pref(\"${KEY}\""
 	LINE_REPLACEMENT_VALUE="user_pref(\"${KEY}\", false);"
-	if grep -q "${KEY}" "${PREFS_JS_PATH}"; then
-		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${PREFS_JS_PATH}"
+	if grep -q "${KEY}" "${FIREFOX_PREFS_JS_FILE}"; then
+		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FIREFOX_PREFS_JS_FILE}"
 	else
-		echo "${LINE_REPLACEMENT_VALUE}" >> "${PREFS_JS_PATH}"
+		echo "${LINE_REPLACEMENT_VALUE}" >>"${FIREFOX_PREFS_JS_FILE}"
 	fi
 	# Part 3
 	KEY="browser.urlbar.timesBeforeHidingSuggestionsHint"
 	PREFIX_TO_SEARCH="user_pref(\"${KEY}\""
 	LINE_REPLACEMENT_VALUE="user_pref(\"${KEY}\", 0);"
-	if grep -q "${KEY}" "${PREFS_JS_PATH}"; then
-		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${PREFS_JS_PATH}"
+	if grep -q "${KEY}" "${FIREFOX_PREFS_JS_FILE}"; then
+		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FIREFOX_PREFS_JS_FILE}"
 	else
-		echo "${LINE_REPLACEMENT_VALUE}" >> "${PREFS_JS_PATH}"
+		echo "${LINE_REPLACEMENT_VALUE}" >>"${FIREFOX_PREFS_JS_FILE}"
 	fi
 	
-	echo
+	printf "\n"
 }
 
 configure_firefox_default_profile 2>&1 | tee -a "${LOGFILE}"
