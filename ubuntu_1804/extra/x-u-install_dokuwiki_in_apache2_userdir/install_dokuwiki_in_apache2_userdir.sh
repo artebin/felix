@@ -29,9 +29,21 @@ install_dokuwiki_in_userdir(){
 		exit 1
 	fi
 	
-	# Clone git repository
+	# Download DokuWiki stable release
 	cd "${APACHE2_USERDIR}"
-	git clone "https://github.com/splitbrain/dokuwiki.git"
+	DOKUWIKI_ARCHIVE_NAME="dokuwiki-stable.tgz"
+	if [[ -f "${DOKUWIKI_ARCHIVE_NAME}" ]]; then
+		printf "DOKUWIKI_ARCHIVE_NAME already exists: ${DOKUWIKI_ARCHIVE_NAME}\n"
+		exit 1
+	fi
+	DOKUWIKI_URL="https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz"
+	wget --quiet "${DOKUWIKI_URL}"
+	
+	# Install
+	cd "${APACHE2_USERDIR}"
+	DOKUWIKI_DIR_NAME=$(tar -tzf "${DOKUWIKI_ARCHIVE_NAME}" | head -1 | cut -f1 -d"/")
+	tar xzf "${DOKUWIKI_ARCHIVE_NAME}"
+	mv "${DOKUWIKI_DIR_NAME}" dokuwiki
 	
 	# Adding template dokubook
 	cd "${RECIPE_DIR}"
@@ -49,6 +61,7 @@ install_dokuwiki_in_userdir(){
 	# Setting rights
 	sudo adduser www-data "${USER}"
 	chmod -R g+r "${HOME}/public_html"
+	chmod -R g+w "${DOKUWIKI_INSTALL_DIR}/conf"
 	chmod -R g+w "${DOKUWIKI_INSTALL_DIR}/data"
 	find "${HOME}/public_html" -type d | xargs chmod g+x
 	
