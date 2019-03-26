@@ -24,9 +24,9 @@
 - [ ] Command line git-flavored markdown-2-html? with pandoc or <http://daringfireball.net/projects/downloads/Markdown_1.0.1.zip>.
 - [ ] Use xdg-open from openbox (no panel no desktop). We can use "dex" but would be good to be able to use xdg-open (gtk-open, exo-open etc. ).
 - [ ] locate panel-desktop-handler.desktop => this desktop file is called for creating a shortcut for each execution of one desktop file with exo-open, gvfs-open, xdg-open etc.
+- [ ] Compile from source <https://github.com/freedesktop/xdg-desktop-file-utils> because command "update-desktop-update" is bugged in Ubuntu 18.04.
 - [ ] Use autofs for preventing caja to freeze when NFS/Samba is down or network problems. See <https://unix.stackexchange.com/questions/267138/preventing-broken-nfs-connection-from-freezing-the-client-system> and <https://help.ubuntu.com/community/Autofs>.
 - [ ] Add traces for monitoring the time taken for the installation.
-- [ ] When all the document are closed in Geany, the Markdown Preview still shows the last preview. Also the links are clickable in the preview and the page is showed in the sidebar but there is no way to navigate and go back to the preview.
 - [ ] scroll by pixel/pc amount in LibreOffice Calc (rather by number of rows).
 - [ ] <https://bugs.launchpad.net/ubuntu/+source/gvfs/+bug/378783> 
 - [ ] Set "mailto" for firefox or thunderbird or claws-mail.
@@ -35,10 +35,8 @@
 - [ ] Fix the Xmodmap for the macbook.
 - [ ] Need a way to do some settings regarding the sensitiviy of the touchpad/mouse a save these settings. The xfce4-mouse-settings is not saved and even worst it is reset during a session but it probably because I use it in a not-XFCE desktop.
 - [ ] Test if caja gets unresponsive when the NFS is mounter via a regular mount command rather via gvfs. Just test it by mount it, access it via caja, unplug the network and access it again via caja.
-- [ ] Compile from source <https://github.com/freedesktop/xdg-desktop-file-utils> because command "update-desktop-update" is bugged in Ubuntu 18.04.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
 - [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>.
-- [ ] Check the configuration of DokuWiki (entities etc.).
 - [ ] Add a note for the static route for accessing trevize.net from the local network.
 
 # ISSUES
@@ -50,12 +48,14 @@
 - [ ] Caja: opening 2 window of file Properties is buggy.
 - [ ] Caja: always show the file name (extension are hidden for .desktop files for example) See <https://github.com/mate-desktop/caja/issues/727> open ticket.
 - [ ] dmenu: dmenu appears on the monitor on which the currently focused window is located. It should use the mouse pointer location to determine the monitor.
-- [ ] Geany/Mardown: plugin is not properly using the css specified (colors are not used and lines starting with the character `#` inside a blockcode are treated as a heading).
-- [ ] Geany/Mardown: when all the document are closed, the Markdown Preview still shows the last preview done.
-- [ ] Geany/Mardown: the links are clickable in the preview, if we click one link then the page is showed in the sidebar but there is no way to navigate and go back to the preview.
+- [ ] Geany/Markdown: plugin is not properly using the css specified (colors are not used and lines starting with the character `#` inside a blockcode are treated as a heading).
+- [ ] Geany/Markdown: when all the document are closed, the Markdown Preview still shows the last preview done.
+- [ ] Geany/Markdown: the links are clickable in the preview, if we click one link then the page is showed in the sidebar but there is no way to navigate and go back to the preview.
+- [ ] Geany/Markdown: When all the document are closed in Geany, the Markdown Preview still shows the last preview. Also the links are clickable in the preview and the page is showed in the sidebar but there is no way to navigate and go back to the preview.
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Check the configuration of DokuWiki (entities etc.).
 - [x] Doing the autostart with the openbox autostart is much faster than with .xsessionrc
 - [x] Add recipe for building tint2 from sources.
 - [x] Jar should not be associated to Java.
