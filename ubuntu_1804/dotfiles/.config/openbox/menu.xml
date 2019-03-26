@@ -26,7 +26,7 @@
 			<item label="Screenshooter"><action name="Execute"><command>xfce4-screenshooter</command></action></item>
 			<item label="Capture Window"><action name="Execute"><command>bash ~/scripts/screenshot_capture_window.sh -f</command></action></item>
 			<item label="Capture Window (no decoration)"><action name="Execute"><command>bash ~/scripts/screenshot_capture_window.sh</command></action></item>
-			<item label="Screen Annotation (Gromit-MPX)" name="Execute"><command>gromit-mpx</command></action></item>
+			<item label="Screen Annotation (Gromit-MPX)"><action name="Execute"><command>gromit-mpx</command></action></item>
 			<item label="Color Picker (gpick)"><action name="Execute"><command>gpick</command></action></item>
 		</menu>
 		<menu id="multimedia" label="Multimedia">
