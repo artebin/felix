@@ -1,4 +1,6 @@
 # TODOS
+- [ ] List parameters useful to the user regarding dpms, lightlocker, suspend-then-hibernate.
+- [ ] For GDM and LightDM, the keyring must be named login to be automatically unlocked <https://wiki.archlinux.org/index.php/GNOME/Keyring>.
 - [ ] Improve rofi theme
 - [ ] Window frame icon for being on top of other windows.
 - [ ] Fix Caja for opening executable scripts (bash, python): contextual menu is showing 'open'. Good UX would be 3 menu items: 'Run', 'Run in terminal' and 'Open with X', X being the default application for the mime type. However today there is only 'Open' which will open dialog a popup asking 'Display or run or run in terminal?'. The user does not know what is behind 'Display', display with what??? Even worst: the default application for the mime type is not listed in the 'Open with' maybe because, well... it is the application used for 'Display', erf...
