@@ -18,36 +18,44 @@ LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 
 exit_if_not_bash
 
-DOKUWIKI_STABLE="dokuwiki-2017-02-19e"
-USERNAME=$(whoami)
-
 install_dokuwiki_in_userdir(){
-	echo "Installing DokuWiki in userdir ..."
+	printf "Installing DokuWiki in apache2 userdir ...\n"
 	
-	sudo adduser www-data "${USERNAME}"
+	APACHE2_USERDIR="${HOME}/public_html"
+	DOKUWIKI_INSTALL_DIR="${APACHE2_USERDIR}/dokuwiki"
 	
-	mkdir -p "${HOME}/public_html"
+	if [[ -d "${DOKUWIKI_INSTALL_DIR}" ]]; then
+		printf "DOKUWIKI_INSTALL_DIR already exists: ${DOKUWIKI_INSTALL_DIR}\n"
+		exit 1
+	fi
+	
+	# Clone git repository
+	cd "${APACHE2_USERDIR}"
+	git clone "https://github.com/splitbrain/dokuwiki.git"
+	
+	# Adding template dokubook
 	cd "${RECIPE_DIR}"
-	cp dokuwiki-stable.tgz "${HOME}/public_html/dokuwiki-stable.tgz"
-	
-	cd "${HOME}/public_html"
-	tar xzf dokuwiki-stable.tgz
-	
-	cd "${RECIPE_DIR}"
-	cp dokubook-stable.tgz "${HOME}/public_html/${DOKUWIKI_STABLE}/lib/tpl"
-	cp conf/mime.local.conf "${HOME}/public_html/${DOKUWIKI_STABLE}/conf"
-	cp conf/entities.conf "${HOME}/public_html/${DOKUWIKI_STABLE}/conf"
-	cp conf/userstyle.css "${HOME}/public_html/${DOKUWIKI_STABLE}/conf"
-	cp conf/userscript.js "${HOME}/public_html/${DOKUWIKI_STABLE}/conf"
-	
-	cd "${HOME}/public_html/${DOKUWIKI_STABLE}/lib/tpl"
+	cp dokubook-stable.tgz "${DOKUWIKI_INSTALL_DIR}/lib/tpl"
+	cd "${DOKUWIKI_INSTALL_DIR}/lib/tpl"
 	tar xzf dokubook-stable.tgz
+	
+	# Adding own configuration
+	cd "${RECIPE_DIR}"
+	cp conf/mime.local.conf "${DOKUWIKI_INSTALL_DIR}/conf"
+	cp conf/entities.conf "${DOKUWIKI_INSTALL_DIR}/conf"
+	cp conf/userstyle.css "${DOKUWIKI_INSTALL_DIR}/conf"
+	cp conf/userscript.js "${DOKUWIKI_INSTALL_DIR}/conf"
+	
+	# Setting rights
+	sudo adduser www-data "${USER}"
 	chmod -R g+r "${HOME}/public_html"
-	chmod -R g+w "${HOME}/public_html/${DOKUWIKI_STABLE}/data"
+	chmod -R g+w "${DOKUWIKI_INSTALL_DIR}/data"
 	find "${HOME}/public_html" -type d | xargs chmod g+x
+	
+	# Restart apache2
 	sudo service apache2 restart
 	
-	echo
+	printf "\n"
 }
 
 install_dokuwiki_in_userdir 2>&1 | tee -a "${LOGFILE}"
@@ -55,5 +63,3 @@ EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
-
-x-www-browser "http://localhost/~${USERNAME}/${DOKUWIKI_STABLE}/install.php" &
