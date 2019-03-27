@@ -1,9 +1,7 @@
 # TODOS
 - [ ] List parameters useful to the user regarding dpms, lightlocker, suspend-then-hibernate.
-- [ ] For GDM and LightDM, the keyring must be named login to be automatically unlocked <https://wiki.archlinux.org/index.php/GNOME/Keyring>.
-- [ ] Improve rofi theme
+- [ ] Rofi for clipmenu.
 - [ ] Window frame icon for being on top of other windows.
-- [ ] Fix Caja for opening executable scripts (bash, python): contextual menu is showing 'open'. Good UX would be 3 menu items: 'Run', 'Run in terminal' and 'Open with X', X being the default application for the mime type. However today there is only 'Open' which will open dialog a popup asking 'Display or run or run in terminal?'. The user does not know what is behind 'Display', display with what??? Even worst: the default application for the mime type is not listed in the 'Open with' maybe because, well... it is the application used for 'Display', erf...
 - [ ] Still have a problem with clipmenu, copy/paste not working correctly with file manager.
 - [ ] Analysis on the macbook air, battery consumption and CPU usage.
 - [ ] Is it possible to make work the TRRS on Linux?
@@ -13,7 +11,6 @@
 - [ ] systemd manager.
 - [ ] Special menu in rofi for the XF86 symbols.
 - [ ] Extract localisation FR from minimal.packages.list, it should only contains US locales.
-- [ ] "enter your password to unlock your login keyring".
 - [ ] Check command to start by fdpowermon when reaching critical level of battery power.
 - [ ] Recipe configure git-cola: editor, comparator etc.
 - [ ] Configure default difftool for git, editor etc.
@@ -49,6 +46,7 @@
 - [ ] Caja: create new directory with name starting with a dot is bugged.
 - [ ] Caja: opening 2 window of file Properties is buggy.
 - [ ] Caja: always show the file name (extension are hidden for .desktop files for example) See <https://github.com/mate-desktop/caja/issues/727> open ticket.
+- [ ] Caja: when opening executable scripts (bash, python) => contextual menu is showing 'open'. Good UX would be 3 menu items: 'Run', 'Run in terminal' and 'Open with X', X being the default application for the mime type. However today there is only 'Open' which will open dialog a popup asking 'Display or run or run in terminal?'. The user does not know what is behind 'Display', display with what??? Even worst: the default application for the mime type is not listed in the 'Open with' maybe because, well... it is the application used for 'Display', erf...
 - [ ] dmenu: dmenu appears on the monitor on which the currently focused window is located. It should use the mouse pointer location to determine the monitor.
 - [ ] Geany/Markdown: plugin is not properly using the css specified (colors are not used and lines starting with the character `#` inside a blockcode are treated as a heading).
 - [ ] Geany/Markdown: when all the document are closed, the Markdown Preview still shows the last preview done.
@@ -57,6 +55,9 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] "enter your password to unlock your login keyring". => it happens when the keyring is not named "Login". See <https://wiki.archlinux.org/index.php/GNOME/Keyring>.
+- [x] For GDM and LightDM, the keyring must be named login to be automatically unlocked <https://wiki.archlinux.org/index.php/GNOME/Keyring>.
+- [x] Add a Felix rofi theme inspired by the dmenu theme we already have.
 - [x] Check the configuration of DokuWiki (entities etc.).
 - [x] Doing the autostart with the openbox autostart is much faster than with .xsessionrc
 - [x] Add recipe for building tint2 from sources.
