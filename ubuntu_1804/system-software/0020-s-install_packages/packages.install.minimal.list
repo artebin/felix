@@ -233,7 +233,7 @@ gnuplot plotdrop
 # VCS
 #######
 subversion
-git giggle git-cola
+git git-gui giggle git-cola
 mercurial
 
 #####################
