@@ -5,7 +5,7 @@
 		<item label="File Manager"><action name="Execute"><command>caja --no-desktop</command></action></item>
 		<item label="Text Editor"><action name="Execute"><command>geany_one_instance_per_workspace</command></action></item>
 		<item label="Web Browser"><action name="Execute"><command>x-www-browser</command></action></item>
-		<item label="Mail Client"><action name="Execute"><command>thunderbird</command></action></item>
+		<item label="Mail Client"><action name="Execute"><command>claws-mail</command></action></item>
 		<item label="Media Player"><action name="Execute"><command>vlc</command></action></item>
 		<separator/>
 		<menu id="accessories" label="Accessories">
