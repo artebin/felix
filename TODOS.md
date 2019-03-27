@@ -1,6 +1,7 @@
 # TODOS
 - [ ] List parameters useful to the user regarding dpms, lightlocker, suspend-then-hibernate.
 - [ ] Rofi for clipmenu.
+- [ ] Special menu in rofi for the XF86 symbols.
 - [ ] Window frame icon for being on top of other windows.
 - [ ] Still have a problem with clipmenu, copy/paste not working correctly with file manager.
 - [ ] Analysis on the macbook air, battery consumption and CPU usage.
@@ -9,11 +10,8 @@
 - [ ] Install dlna support.
 - [ ] Missing polkit rules for cups see <https://wiki.archlinux.org/index.php/CUPS#Allowing_admin_authentication_through_PolicyKit>.
 - [ ] systemd manager.
-- [ ] Special menu in rofi for the XF86 symbols.
 - [ ] Extract localisation FR from minimal.packages.list, it should only contains US locales.
 - [ ] Check command to start by fdpowermon when reaching critical level of battery power.
-- [ ] Recipe configure git-cola: editor, comparator etc.
-- [ ] Configure default difftool for git, editor etc.
 - [ ] Brillo and Display|Keyboard backlight in console (keysym ?).
 - [ ] macbook air: acpi_osi in kernel pameters see <https://wiki.archlinux.org/index.php/Mac#Suspend_and_Hibernate>
 - [ ] macbook air: kernel parameter for acpi on macbook air (native).
@@ -55,6 +53,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Configure default difftool for git, editor etc.
 - [x] "enter your password to unlock your login keyring". => it happens when the keyring is not named "Login". See <https://wiki.archlinux.org/index.php/GNOME/Keyring>.
 - [x] For GDM and LightDM, the keyring must be named login to be automatically unlocked <https://wiki.archlinux.org/index.php/GNOME/Keyring>.
 - [x] Add a Felix rofi theme inspired by the dmenu theme we already have.
