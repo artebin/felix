@@ -1,35 +1,30 @@
 # TODOS
 - [ ] List parameters useful to the user regarding dpms, lightlocker, suspend-then-hibernate.
-- [ ] Rofi for clipmenu.
 - [ ] Special menu in rofi for the XF86 symbols.
 - [ ] Window frame icon for being on top of other windows.
 - [ ] Still have a problem with clipmenu, copy/paste not working correctly with file manager.
-- [ ] Analysis on the macbook air, battery consumption and CPU usage.
 - [ ] Is it possible to make work the TRRS on Linux?
 - [ ] Add a caja script for playing a folder in Media player => would be better to add mimetype inode/directory to VLC.
 - [ ] Install dlna support.
 - [ ] Missing polkit rules for cups see <https://wiki.archlinux.org/index.php/CUPS#Allowing_admin_authentication_through_PolicyKit>.
-- [ ] systemd manager.
 - [ ] Extract localisation FR from minimal.packages.list, it should only contains US locales.
 - [ ] Check command to start by fdpowermon when reaching critical level of battery power.
 - [ ] Brillo and Display|Keyboard backlight in console (keysym ?).
+- [ ] macbook air: analysis of battery consumption and CPU usage.
 - [ ] macbook air: acpi_osi in kernel pameters see <https://wiki.archlinux.org/index.php/Mac#Suspend_and_Hibernate>
 - [ ] macbook air: kernel parameter for acpi on macbook air (native).
 - [ ] macbook air: screenshot key => Rofi menu?
+- [ ] macbook air: fix the Xmodmap.
 - [ ] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron.
 - [ ] Check what is missing if we do not use a Power manager (multiple displays support in logind?).
 - [ ] Command line git-flavored markdown-2-html? with pandoc or <http://daringfireball.net/projects/downloads/Markdown_1.0.1.zip>.
 - [ ] Use xdg-open from openbox (no panel no desktop). We can use "dex" but would be good to be able to use xdg-open (gtk-open, exo-open etc. ).
 - [ ] locate panel-desktop-handler.desktop => this desktop file is called for creating a shortcut for each execution of one desktop file with exo-open, gvfs-open, xdg-open etc.
-- [ ] Compile from source <https://github.com/freedesktop/xdg-desktop-file-utils> because command "update-desktop-update" is bugged in Ubuntu 18.04.
 - [ ] Use autofs for preventing caja to freeze when NFS/Samba is down or network problems. See <https://unix.stackexchange.com/questions/267138/preventing-broken-nfs-connection-from-freezing-the-client-system> and <https://help.ubuntu.com/community/Autofs>.
 - [ ] Add traces for monitoring the time taken for the installation.
 - [ ] scroll by pixel/pc amount in LibreOffice Calc (rather by number of rows).
 - [ ] <https://bugs.launchpad.net/ubuntu/+source/gvfs/+bug/378783> 
-- [ ] Set "mailto" for firefox or thunderbird or claws-mail.
-- [ ] It seems thunderbird is not using x-www-browser (chromium is used), "network.protocol-handler.warn-external.http" should be true for all. gnome-www-browser should be set too (not only x-www-browser).
 - [ ] A script at startup of openbox checking for the default application and notify the user about some changes. Have a look at Xfce4 MIME Type Editor.
-- [ ] Fix the Xmodmap for the macbook.
 - [ ] Need a way to do some settings regarding the sensitiviy of the touchpad/mouse a save these settings. The xfce4-mouse-settings is not saved and even worst it is reset during a session but it probably because I use it in a not-XFCE desktop.
 - [ ] Test if caja gets unresponsive when the NFS is mounter via a regular mount command rather via gvfs. Just test it by mount it, access it via caja, unplug the network and access it again via caja.
 - [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
@@ -53,6 +48,10 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [X] It seems thunderbird is not using x-www-browser (chromium is used), "network.protocol-handler.warn-external.http" should be true for all. gnome-www-browser should be set too (not only x-www-browser). => stopped to use thunderbird.
+- [x] Rofi for clipmenu.
+- [x] Set "mailto" for thunderbird or claws-mail.
+- [x] Compile from source <https://github.com/freedesktop/xdg-desktop-file-utils> because command "update-desktop-database" is bugged in Ubuntu 18.04 => it is not a bug.
 - [x] Configure default difftool for git, editor etc.
 - [x] "enter your password to unlock your login keyring". => it happens when the keyring is not named "Login". See <https://wiki.archlinux.org/index.php/GNOME/Keyring>.
 - [x] For GDM and LightDM, the keyring must be named login to be automatically unlocked <https://wiki.archlinux.org/index.php/GNOME/Keyring>.
