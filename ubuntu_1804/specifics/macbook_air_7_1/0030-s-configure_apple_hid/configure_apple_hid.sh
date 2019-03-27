@@ -20,12 +20,10 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_apple_hid(){
-	echo "Configuring Apple HID (use fn key for special functions keys) ..."
-	
-	echo "options hid_apple fnmode=2" > /etc/modprobe.d/hid_apple.conf
+	printf "Configuring Apple HID (use fn key for special functions keys) ...\n"
+	printf "options hid_apple fnmode=2\n" > /etc/modprobe.d/hid_apple.conf
 	update-initramfs -u -k all
-	
-	echo
+	printf "\n"
 }
 
 configure_apple_hid 2>&1 | tee -a "${LOGFILE}"
