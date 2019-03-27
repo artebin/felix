@@ -20,11 +20,9 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_wifi(){
-	echo "Installing Wi-Fi ..."
-	
+	printf "Installing Wi-Fi ...\n"
 	install_package_if_not_installed "bcmwl-kernel-source"
-	
-	echo
+	printf "\n"
 }
 
 install_wifi 2>&1 | tee -a "${LOGFILE}"
