@@ -16,12 +16,12 @@
 	active-foreground:           rgba ( 220, 140, 160, 100 % );
 	active-background:           rgba ( 29, 31, 33, 17 % );
 	
-	selected-normal-foreground:  #000000;
-	selected-urgent-foreground:  #000000;
-	selected-active-foreground:  #000000;
-	selected-normal-background:  #FCE94F;
-	selected-urgent-background:  #FCE94F;
-	selected-active-background:  #FCE94F;
+	selected-normal-foreground:  rgba ( 0, 0, 0, 100 % );
+	selected-urgent-foreground:  rgba ( 0, 0, 0, 100 % );
+	selected-active-foreground:  rgba ( 0, 0, 0, 100 % );
+	selected-normal-background:  rgba(252, 233, 79, 100 % );
+	selected-urgent-background:  rgba(252, 233, 79, 100 % );
+	selected-active-background:  rgba(252, 233, 79, 100 % );
 	
 	alternate-normal-foreground: @foreground;
 	alternate-urgent-foreground: @urgent-foreground;
@@ -42,9 +42,8 @@
 #window {
 	background-color: @background;
 	padding:          5;
-	anchor: north;
-	border:2px;
-	border-color: LIGHTGRAY;
+	border:           2px;
+	border-color:     LIGHTGRAY;
 }
 #mainbox {
 	border:  0;
