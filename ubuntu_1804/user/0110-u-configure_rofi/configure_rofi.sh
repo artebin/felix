@@ -25,7 +25,7 @@ configure_rofi(){
 		backup_file rename "${HOME}/.config/rofi"
 	fi
 	mkdir -p "${HOME}/.config/rofi"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/rofi/config" "${HOME}/.config/rofi"
+	cp -r "${RECIPE_FAMILY_DIR}/dotfiles/.config/rofi" "${HOME}/.config"
 	echo
 }
 
