@@ -229,6 +229,7 @@ csvkit csvkit-doc
 libxml2-utils xmlstarlet tidy xmlto
 jq
 gnuplot plotdrop
+mmark
 
 #######
 # VCS
