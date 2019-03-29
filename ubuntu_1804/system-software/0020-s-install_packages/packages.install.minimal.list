@@ -94,12 +94,13 @@ light-locker light-locker-settings
 ##############
 # Xorg tools
 ##############
+ubuntu-drivers-common
+mesa-utils mesa-utils-extra
 xinput xinput-calibrator
 x11-apps
 xsel xclip xdo xtitle
 wmctrl xdotool xautomation
 xserver-xephyr
-xfce4-settings
 libnotify-dev libnotify-doc #libnotify-bin should be installed from sources (fix on notification IDs)
 onboard
 
@@ -111,7 +112,7 @@ lxappearance lxappearance-obconf
 dconf-cli dconf-editor dconf-tools
 gconf-service gconf-editor
 mate-utils mate-system-monitor
-xfce4-notifyd xfce4-dict xfce4-screenshooter xfburn
+xfce4-settings xfce4-notifyd xfce4-dict xfce4-screenshooter xfburn
 lxinput
 suckless-tools
 rofi
