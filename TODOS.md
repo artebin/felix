@@ -1,4 +1,8 @@
 # TODOS
+- [ ] Add a openbox menuitem for light-locker-settings.
+- [ ] It should be a choice to use mtrack or libinput.
+- [ ] Configuration libinput <https://unix.stackexchange.com/questions/337008/activate-tap-to-click-on-touchpad> it replaces synaptics.
+- [ ] mtrack configuration should check if there is already a \d+_mtrack.conf file in /usr/share/X11/xorg.conf.d/
 - [ ] List parameters useful to the user regarding dpms, lightlocker, suspend-then-hibernate.
 - [ ] Special menu in rofi for the XF86 symbols.
 - [ ] Window frame icon for being on top of other windows.
