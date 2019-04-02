@@ -125,6 +125,7 @@ synaptic
 gparted
 seahorse
 zenity
+mugshot
 
 ###################
 # Desktop theming
@@ -214,7 +215,7 @@ audacity
 # Chat and webcam
 ###################
 hexchat
-empathy
+pidgin pidgin-extprefs pidgin-plugin-pack pidgin-sipe pidgin-skype pidgin-themes
 guvcview
 
 ################
