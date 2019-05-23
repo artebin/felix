@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Add kdesvn in tools.
 - [ ] Add bash function in .bashrc for downloading a list of URLs from file.
 - [ ] Update openbox menu.xml for pidgin.
 - [ ] Rofi menu for session actions <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
