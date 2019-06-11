@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Action for naming a desktop with the name of an application + revert to default.
+- [ ] pipemenu in openbox for .desktop files in ad-hoc location, something like ~/.config/openbox/menu-apps/
 - [ ] Add kdesvn in tools.
 - [ ] Add bash function in .bashrc for downloading a list of URLs from file.
 - [ ] Update openbox menu.xml for pidgin.
