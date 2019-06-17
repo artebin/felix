@@ -1,4 +1,5 @@
 # TODOS
+- [ ] set the LC_COLLATING for a proper sorting in caja <https://askubuntu.com/questions/10896/nautilus-sorts-the-name-column-mysteriously-how-can-i-change-the-collating-se>
 - [ ] Action for naming a desktop with the name of an application + revert to default.
 - [ ] pipemenu in openbox for .desktop files in ad-hoc location, something like ~/.config/openbox/menu-apps/
 - [ ] Add kdesvn in tools.
