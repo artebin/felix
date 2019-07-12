@@ -34,6 +34,7 @@ set_locales(){
 	update-locale LC_TELEPHONE="${LOCALE_TO_USE_LC_TELEPHONE}"
 	update-locale LC_MEASUREMENT="${LOCALE_TO_USE_LC_MEASUREMENT}"
 	update-locale LC_IDENTIFICATION="${LOCALE_TO_USE_LC_IDENTIFICATION}"
+	update-locale LC_COLLATE=POSIX
 	
 	echo
 }
