@@ -1,6 +1,6 @@
 # TODOS
+- [ ] Title for terminal for htop started from the menu or from <WIN>h should be "htop".
 - [ ] Add a Caja script for unpacking archive with dtrx (because unpacking big archives with the Caja/Engrampa plugin makes Caja lagging a lot).
-- [ ] set the LC_COLLATING for a proper sorting in caja <https://askubuntu.com/questions/10896/nautilus-sorts-the-name-column-mysteriously-how-can-i-change-the-collating-se>
 - [ ] Action for naming a desktop with the name of an application + revert to default.
 - [ ] pipemenu in openbox for .desktop files in ad-hoc location, something like ~/.config/openbox/menu-apps/
 - [ ] Add kdesvn in tools.
@@ -61,6 +61,8 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Add nbtscan.
+- [X] set the LC_COLLATING for a proper sorting in caja <https://askubuntu.com/questions/10896/nautilus-sorts-the-name-column-mysteriously-how-can-i-change-the-collating-se>
 - [x] Command line git-flavored markdown-2-html? with pandoc or <http://daringfireball.net/projects/downloads/Markdown_1.0.1.zip>. => use mmark.
 - [x] Extract localisation FR from minimal.packages.list, it should only contains US locales.
 - [X] It seems thunderbird is not using x-www-browser (chromium is used), "network.protocol-handler.warn-external.http" should be true for all. gnome-www-browser should be set too (not only x-www-browser). => stopped to use thunderbird.
