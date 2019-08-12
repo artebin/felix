@@ -242,6 +242,7 @@ mercurial
 #####################
 # Development tools
 #####################
+flex bison
 build-essential
 gcc g++ make
 autoconf

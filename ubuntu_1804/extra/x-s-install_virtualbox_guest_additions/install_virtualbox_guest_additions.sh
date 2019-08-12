@@ -23,8 +23,8 @@ install_virtualbox_guest_additions(){
 	echo "Installing VirtualBox guest additions ..."
 	
 	DEPENDENCIES=(  "virtualbox-guest-dkms-hwe"
-					"virtualbox-guest-utils-hwe"
-					"virtualbox-guest-x11-hwe" )
+			"virtualbox-guest-utils"
+			"virtualbox-guest-x11" )
 	install_package_if_not_installed "${DEPENDENCIES[@]}"
 	
 	echo
