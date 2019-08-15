@@ -90,7 +90,7 @@
 | <kbd>XF86Search</kbd>                                                 | File Manager |
 | <kbd>XF86HomePage</kbd>                                               | File Manager |
 | <kbd>XF86Explorer</kbd>                                               | File Manager |
-| <kbd>XF86Mail</kbd>                                                   | Thunderbird |
+| <kbd>XF86Mail</kbd>                                                   | claws-mail |
 | <kbd>XF86Messenger</kbd>                                              | Empathy |
 | <kbd>XF86Music</kbd>                                                  | VLC |
 | <kbd>XF86Tools</kbd>                                                  | VLC |
@@ -147,13 +147,6 @@
 | --- | --- |
 | <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>t</kbd>                           | Undo last tab closure |
 | <kbd>Ctrl</kbd><kbd>Alt</kbd><kbd>r</kbd>                             | Toogle reader view |
-
-## Thunderbird
-
-| Shortcut | Action |
-| --- | --- |
-| <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>f</kbd>                           | Search messages |
-| <kbd>*</kbd>                                                          | Expand all conversations in the current view |
 
 ## Eclipse (shortcuts we may not already know ... )
 
