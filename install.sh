@@ -9,7 +9,7 @@ exit_if_not_bash
 
 execute_recipes_from_recipe_directory_array(){
 	if [[ $# -ne 2 ]]; then
-		printf "Function execute_recipes_from_recipe_directory_array() expects ARRAY_NAME and ASK_CONFIRMATION as parameters\n"
+		printf "execute_recipes_from_recipe_directory_array() expects ARRAY_NAME and ASK_CONFIRMATION as argument\n"
 		exit 1
 	fi
 	

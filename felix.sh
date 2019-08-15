@@ -10,7 +10,7 @@ FELIX_BANNER='  __      _ _
 
 retrieve_log_file_name(){
 	if [[ $# -ne 1 ]]; then
-		printf "Function retrieve_log_file_name() expects FILE_NAME in parameter\n"
+		printf "retrieve_log_file_name() expects FILE_NAME in argument\n"
 		exit 1
 	fi
 	FILE_NAME="${1}"
@@ -28,7 +28,7 @@ delete_log_files(){
 
 retrieve_recipe_family_dir(){
 	if [[ $# -ne 1 ]]; then
-		printf "Function retrieve_recipe_family_dir() expects RECIPE_DIR in parameter\n"
+		printf "retrieve_recipe_family_dir() expects RECIPE_DIR in argument\n"
 		exit 1
 	fi
 	FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
@@ -40,7 +40,7 @@ retrieve_recipe_family_dir(){
 
 retrieve_recipe_family_conf_file(){
 	if [[ $# -ne 1 ]]; then
-		printf "Function retrieve_recipe_family_conf_file() expects RECIPE_DIR in parameter\n"
+		printf "retrieve_recipe_family_conf_file() expects RECIPE_DIR in argument\n"
 		exit 1
 	fi
 	FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
@@ -54,7 +54,7 @@ RECIPE_NAME_REGEX="([0-9][0-9][0-9][0-9])-([us])-(.*)"
 
 fill_array_with_recipe_directory_from_recipe_family_directory(){
 	if [[ $# -ne 2 ]]; then
-		printf "Function fill_array_with_recipe_directory_from_recipe_family_directory() expects RECIPE_FAMILY_DIR and ARRAY_NAME as parameters\n"
+		printf "fill_array_with_recipe_directory_from_recipe_family_directory() expects RECIPE_FAMILY_DIR and ARRAY_NAME in argument\n"
 		exit 1
 	fi
 	local RECIPE_FAMILY_DIR="${1}"
@@ -75,7 +75,7 @@ fill_array_with_recipe_directory_from_recipe_family_directory(){
 
 select_recipes_and_fill_array_with_recipe_directory(){
 	if [[ $# -ne 2 ]]; then
-		printf "Function select_recipes_and_fill_array_with_recipe_directory() expects INPUT_ARRAY_NAME and OUTPUT_ARRAY_NAME as parameters\n"
+		printf "select_recipes_and_fill_array_with_recipe_directory() expects INPUT_ARRAY_NAME and OUTPUT_ARRAY_NAME in argument\n"
 		exit 1
 	fi
 	local INPUT_ARRAY_NAME="${1}"
@@ -101,7 +101,7 @@ select_recipes_and_fill_array_with_recipe_directory(){
 
 retrieve_recipe_display_name_from_recipe_directory(){
 	if [[ $# -ne 1 ]]; then
-		printf "Function retrieve_recipe_display_name_from_recipe_directory() expects RECIPE_DIR as parameter\n"
+		printf "retrieve_recipe_display_name_from_recipe_directory() expects RECIPE_DIR in argument\n"
 		exit 1
 	fi
 	RECIPE_DIRECTORY="${1}"
@@ -121,13 +121,12 @@ retrieve_recipe_display_name_from_recipe_directory(){
 
 list_recipes(){
 	if [[ $# -ne 1 ]]; then
-		printf "Function list_recipes() expects RECIPES_PARENT_DIRECTORY in parameter\n"
+		printf "list_recipes() expects RECIPES_PARENT_DIRECTORY in parameter\n"
 		exit 1
 	fi
 	RECIPES_PARENT_DIRECTORY="${1}"
 	if [[ ! -d "${RECIPES_PARENT_DIRECTORY}" ]]; then
 		printf "Cannot find RECIPES_PARENT_DIRECTORY: ${RECIPES_PARENT_DIRECTORY }\n"
-		printf "\n"
 		exit 1
 	fi
 	
@@ -163,13 +162,11 @@ list_recipes(){
 re_index_recipes(){
 	if [[ $# -ne 1 ]]; then
 		printf "re_index_recipes() expects RECIPES_PARENT_DIRECTORY in argument\n"
-		printf "\n"
 		exit 1
 	fi
 	RECIPES_PARENT_DIRECTORY="${1}"
 	if [[ ! -d "${RECIPES_PARENT_DIRECTORY}" ]]; then
 		printf "Cannot find RECIPES_PARENT_DIRECTORY: ${RECIPES_PARENT_DIRECTORY }\n"
-		printf "\n"
 		exit 1
 	fi
 	
@@ -214,13 +211,11 @@ check_ubuntu_version(){
 	if [[ ! -f "${LSB_RELEASE_FILE}" ]]; then
 		echo "Cannot find file: ${LSB_RELEASE_FILE}"
 		echo "Cannot check Ubuntu version"
-		echo
 		exit 1
 	fi
 	if ! grep -Fq "${SUPPORTED_UBUNTU_VERSION}" "${LSB_RELEASE_FILE}"; then
 		echo "This script has not been tested with:"
 		cat "${LSB_RELEASE_FILE}"
-		echo
 		exit 1
 	fi
 	echo "Check Ubuntu version: ${SUPPORTED_UBUNTU_VERSION} => OK"
