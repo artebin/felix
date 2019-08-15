@@ -106,7 +106,7 @@
 | <kbd>Ctrl</kbd><kbd>q</kbd>                                           | Scroll unlock (XON) |
 | <kbd>Shift</kbd><kbd>PageUp</kbd>                                     | Scroll up |
 | <kbd>Shift</kbd><kbd>PageDown</kbd>                                   | Scroll down |
-| <Mouse drag>                                                          | Selection |
+| <kbd>Mouse drag</kbd>                                                 | Selection |
 | <kbd>Ctrl</kbd><Mouse drag>                                           | Block selection |
 | <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>c</kbd>                           | Copy to clipboard |
 | <kbd>Shift</kbd><kbd>Insert</kbd>                                     | Paste from primary |
