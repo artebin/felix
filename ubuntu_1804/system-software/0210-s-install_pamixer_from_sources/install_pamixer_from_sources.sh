@@ -22,6 +22,9 @@ exit_if_has_not_root_privileges
 install_pamixer_from_sources(){
 	printf "Installing pamixer from sources ...\n"
 	
+	printf "Installing dependencies ...\n"
+	install_package_if_not_installed "libboost-all-dev"
+	
 	# Clone git repository
 	git clone https://github.com/cdemoulins/pamixer.git
 	
