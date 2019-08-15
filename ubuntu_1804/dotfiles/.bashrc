@@ -127,7 +127,14 @@ weather(){
 alias weather=weather
 
 github-clone(){
-	git clone "https://github.com/${1}/${2}"
+	if [[ $# -eq 1 ]]; then
+		git clone "${1}"
+	elif [[ $# -eq 2 ]]; then
+		git clone "https://github.com/${1}/${2}"
+	else 
+		printf "usage: github-clone [repository URL]\n"
+		printf "       github-clone [user name] [project name]\n"
+	fi
 }
 alias github-clone=github-clone
 
