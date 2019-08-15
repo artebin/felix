@@ -118,8 +118,8 @@ add_or_update_keyvalue(){
 
 yes_no_dialog(){
 	if [ "$#" -ne 1 ]; then
-		echo "ERROR! yes_no_dialog() expects one argument"
-		return 1
+		printf "Function yes_no_dialog() expects one argument\n"
+		exit 1
 	fi
 	DIALOG_TEXT="${1}"
 	while true; do
@@ -295,7 +295,7 @@ generate_apt_package_list_file(){
 
 is_package_installed(){
 	if [[ $# -ne 1 ]]; then
-		printf "Function is_package_installed() expects PACKAGE_NAME as argument\n" 1>&2
+		printf "Function is_package_installed() expects one package name in argument\n" 1>&2
 		exit 1
 	fi
 	PACKAGE_NAME="${1}"
@@ -310,7 +310,7 @@ is_package_installed(){
 
 install_package_if_not_installed(){
 	if [[ ! $# -ge 1 ]]; then
-		printf "Function install_package_if_not_installed() expects at least one package name as parameter\n" 1>&2
+		printf "Function install_package_if_not_installed() expects one or several package names in argument\n" 1>&2
 		exit 1
 	fi
 	for PACKAGE_NAME in $@; do
@@ -325,7 +325,7 @@ install_package_if_not_installed(){
 
 remove_with_purge_package_if_installed(){
 	if [[ ! $# -ge 1 ]]; then
-		printf "Function remove_with_purge_package_if_installed() expects at least one package name as parameter\n" 1>&2
+		printf "Function remove_with_purge_package_if_installed() expects one or several package names in argument\n" 1>&2
 		exit 1
 	fi
 	for PACKAGE_NAME in $@; do

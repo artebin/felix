@@ -1,36 +1,12 @@
 #!/usr/bin/env bash
 
-print_section_heading(){
-	printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =
-	printf "# ${1}\n"
-	printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' =
-}
+if [[ ! -f common.sh ]]; then
+	printf "Cannot find common.sh\n"
+	exit 1
+fi
+source common.sh
 
-print_section_ending(){
-	echo
-	echo
-	echo
-}
-
-exit_if_not_bash(){
-	if [[ ! "${BASH_VERSION}" ]] ; then
-		printf "This script should run with bash\n" 1>&2
-		exit 1
-	fi
-}
-
-exit_if_has_root_privileges(){
-	if has_root_privileges; then
-		printf "This script should not be executed with the root priveleges\n" 1>&2
-		exit 1
-	fi
-}
-
-# Sed command for removing ANSI/VT100 control sequences
-# See <https://stackoverflow.com/questions/17998978/removing-colors-from-output>
-remove_terminal_control_sequences(){
-	sed -r "s/\x1B(\[[0-9;]*[JKmsu]|\(B)//g"
-}
+exit_if_has_not_root_privileges
 
 print_dmi_info_bios(){
 	print_section_heading "DMI information BIOS (dmidecode)"
@@ -150,3 +126,5 @@ print_all(){
 
 OUTPUT_FILE="info_${HOSTNAME}_$(date -u +'%y%m%d-%H%M%S')"
 print_all 2>&1|remove_terminal_control_sequences >"${OUTPUT_FILE}"
+
+printf "Written file: ${OUTPUT_FILE}\n"
