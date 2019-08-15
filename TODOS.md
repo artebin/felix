@@ -1,4 +1,7 @@
 # TODOS
+- [ ] TLP and CpuFreq for lower average temperature? Thermald for logging? pcp?
+- [ ] Numeric keyboard disabled after wake from hibernation.
+- [ ] Change the format of file "Owner" in Caja? We don't want to se extended login "login - Name" but just "login".
 - [ ] Title for terminal for htop started from the menu or from <WIN>h should be "htop".
 - [ ] Add a Caja script for unpacking archive with dtrx (because unpacking big archives with the Caja/Engrampa plugin makes Caja lagging a lot).
 - [ ] Action for naming a desktop with the name of an application + revert to default.
@@ -61,6 +64,9 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Remove Thunderbird from openbox menu.xml.
+- [x] Add randr pipemenu <https://github.com/whiteinge/ob-randr>.
+- [x] recipe for configuring firefox seems to don't work anymore.
 - [x] Add nbtscan.
 - [X] set the LC_COLLATING for a proper sorting in caja <https://askubuntu.com/questions/10896/nautilus-sorts-the-name-column-mysteriously-how-can-i-change-the-collating-se>
 - [x] Command line git-flavored markdown-2-html? with pandoc or <http://daringfireball.net/projects/downloads/Markdown_1.0.1.zip>. => use mmark.
