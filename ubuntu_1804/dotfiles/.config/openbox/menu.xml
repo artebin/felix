@@ -46,7 +46,7 @@
 			<item label="Skype"><action name="Execute"><command>skypeforlinux</command></action></item>
 			<item label="IRC Client (hexchat)"><action name="Execute"><command>hexchat</command></action></item>
 			<item label="Remote Filesystems (gigolo)"><action name="Execute"><command>gigolo</command></action></item>
-			<item label="Thunderbird"><action name="Execute"><execute>thunderbird</execute></action></item>
+			<item label="Mail Client (claws-mail)"><action name="Execute"><execute>claws-mail</execute></action></item>
 			<item label="FTP Client (bareftp)"><action name="Execute"><command>bareftp</command></action></item>
 			<item label="BitTorrent Client (transmission)"><action name="Execute"><command>transmission-gtk</command></action></item>
 			<item label="VNC Client (remmina)"><action name="Execute"><command>remmina</command></action></item>
@@ -84,6 +84,7 @@
 			</menu>
 			<item label="User Interface Settings"><action name="Execute"><command>lxappearance</command></action></item>
 			<separator/>
+			<menu id="randr-menu" label="randr" execute="python ~/.config/openbox/ob-randr.py" />
 			<item label="Screen Layout (arandr)"><action name="Execute"><command>arandr</command></action></item>
 			<item label="Mouse Settings"><action name="Execute"><command>xfce4-mouse-settings</command></action></item>
 			<item label="Keyboard Settings"><action name="Execute"><command>xfce4-keyboard-settings</command></action></item>
