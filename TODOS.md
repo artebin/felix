@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Caja script compare should support one file compare with meld => revisioned file.
 - [ ] TLP and CpuFreq for lower average temperature? Thermald for logging? pcp?
 - [ ] Numeric keyboard disabled after wake from hibernation.
 - [ ] Change the format of file "Owner" in Caja? We don't want to se extended login "login - Name" but just "login".
