@@ -4,172 +4,172 @@
 
 | Shorcut | Action |
 | --- | --- |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Alt</kbd><kbd</kbd>Left</kbd>			| Go to desktop left |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Alt</kbd><kbd</kbd>Right</kbd>			| Go to desktop right |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Alt</kbd><kbd</kbd>Up</kbd>				| Go to desktop up |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Alt</kbd><kbd</kbd>Down</kbd>			| Go to desktop down |
-| <kbd</kbd>Win</kbd><kbd</kbd>F1</kbd>					| Go to desktop 1 |
-| <kbd</kbd>Win</kbd><kbd</kbd>F2</kbd>					| Go to desktop 2 |
-| <kbd</kbd>Win</kbd><kbd</kbd>F3</kbd>					| Go to desktop 3 |
-| <kbd</kbd>Win</kbd><kbd</kbd>F4</kbd>					| Go to desktop 4 |
-| <kbd</kbd>Win</kbd>d						| Toggle show desktop |
+| <kdb>Ctrl</kbd><kdb>Alt</kbd><kdb>Left</kbd>                          | Go to desktop left |
+| <kdb>Ctrl</kbd><kdb>Alt</kbd><kdb>Right</kbd>                         | Go to desktop right |
+| <kdb>Ctrl</kbd><kdb>Alt</kbd><kdb>Up</kbd>                            | Go to desktop up |
+| <kdb>Ctrl</kbd><kdb>Alt</kbd><kdb>Down</kbd>                          | Go to desktop down |
+| <kdb>Win</kbd><kdb>F1</kbd>                                           | Go to desktop 1 |
+| <kdb>Win</kbd><kdb>F2</kbd>                                           | Go to desktop 2 |
+| <kdb>Win</kbd><kdb>F3</kbd>                                           | Go to desktop 3 |
+| <kdb>Win</kbd><kdb>F4</kbd>                                           | Go to desktop 4 |
+| <kdb>Win</kbd><kdb>d</kdb>                                            | Toggle show desktop |
 
 # Windows navigation
 
 | Shorcut | Action |
 | --- | --- |
-| <kbd</kbd>Shift</kbd><kbd</kbd>Alt</kbd><kbd</kbd>Left</kbd>			| Send to desktop left |
-| <kbd</kbd>Shift</kbd><kbd</kbd>Alt</kbd><kbd</kbd>Right</kbd>			| Send to desktop right |
-| <kbd</kbd>Shift</kbd><kbd</kbd>Alt</kbd><kbd</kbd>Up</kbd>			| Send to desktop up |
-| <kbd</kbd>Shift</kbd><kbd</kbd>Alt</kbd><kbd</kbd>Down</kbd>			| Send to desktop down |
-| <kbd</kbd>Win</kbd>1						| Toggle always on top |
-| <kbd</kbd>Win</kbd>2						| Toggle fullscreen |
-| <kbd</kbd>Win</kbd>3						| Iconify |
-| <kbd</kbd>Win</kbd>4						| Toogle show desktop |
-| <kbd</kbd>Alt</kbd>F4						| Close |
-| <kbd</kbd>Alt</kbd><kbd</kbd>Esc</kbd>					| Place one level below and unfocus it |
-| <kbd</kbd>Alt</kbd><kbd</kbd>Space</kbd>				| Show window menu |
-| <kbd</kbd>Alt</kbd><kbd</kbd>Print</kbd>				| Take a screenshot with scrot |
-| <kbd</kbd>Alt</kbd><kbd</kbd>Tab</kbd>					| Switch to next window |
-| <kbd</kbd>Alt</kbd><kbd</kbd>Shift</kbd><kbd</kbd>Tab</kbd>			| Switch to previous window |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Alt</kbd><kbd</kbd>Tab</kbd>			||
-| <kbd</kbd>Win</kbd><kbd</kbd>Shift</kbd><kbd</kbd>Right</kbd>			| Switching to window right |
-| <kbd</kbd>Win</kbd><kbd</kbd>Shift</kbd><kbd</kbd>Left</kbd>			| Switching to window left |
-| <kbd</kbd>Win</kbd><kbd</kbd>Shift</kbd><kbd</kbd>Up</kbd>			| Switching to window up |
-| <kbd</kbd>Win</kbd><kbd</kbd>Shift</kbd><kbd</kbd>Down</kbd>			| Switching to window down |
-| <kbd</kbd>Win</kbd><kbd</kbd>Tab</kbd>					| Show window list |
+| <kdb>Shift</kbd><kdb>Alt</kbd><kdb>Left</kbd>                         | Send to desktop left |
+| <kdb>Shift</kbd><kdb>Alt</kbd><kdb>Right</kbd>                        | Send to desktop right |
+| <kdb>Shift</kbd><kdb>Alt</kbd><kdb>Up</kbd>                           | Send to desktop up |
+| <kdb>Shift</kbd><kdb>Alt</kbd><kdb>Down</kbd>                         | Send to desktop down |
+| <kdb>Win</kbd><kdb>1</kdb>                                            | Toggle always on top |
+| <kdb>Win</kbd><kdb>2</kdb>                                            | Toggle fullscreen |
+| <kdb>Win</kbd><kdb>3</kdb>                                            | Iconify |
+| <kdb>Win</kbd><kdb>4</kdb>                                            | Toogle show desktop |
+| <kdb>Alt</kbd><kdb>F4</kdb>                                           | Close |
+| <kdb>Alt</kbd><kdb>Esc</kbd>                                          | Place one level below and unfocus it |
+| <kdb>Alt</kbd><kdb>Space</kbd>                                        | Show window menu |
+| <kdb>Alt</kbd><kdb>Print</kbd>                                        | Take a screenshot with scrot |
+| <kdb>Alt</kbd><kdb>Tab</kbd>                                          | Switch to next window |
+| <kdb>Alt</kbd><kdb>Shift</kbd><kdb>Tab</kbd>                          | Switch to previous window |
+| <kdb>Ctrl</kbd><kdb>Alt</kbd><kdb>Tab</kbd>                           ||
+| <kdb>Win</kbd><kdb>Shift</kbd><kdb>Right</kbd>                        | Switching to window right |
+| <kdb>Win</kbd><kdb>Shift</kbd><kdb>Left</kbd>                         | Switching to window left |
+| <kdb>Win</kbd><kdb>Shift</kbd><kdb>Up</kbd>                           | Switching to window up |
+| <kdb>Win</kbd><kdb>Shift</kbd><kdb>Down</kbd>                         | Switching to window down |
+| <kdb>Win</kbd><kdb>Tab</kbd>                                          | Show window list |
 
 # Window editing
 
 | Shorcut | Action |
 | --- | --- |
-| <kbd</kbd>Win</kbd><kbd</kbd>Left Mouse Drag</kbd>			| Move |
-| <kbd</kbd>Win</kbd><kbd</kbd>Right Mouse Drag</kbd>			| Resize |
-| <kbd</kbd>Alt</kbd><kbd</kbd>Win</kbd><kbd</kbd>Right Mouse Drag</kbd>	| Resize |
-| <kbd</kbd>Win</kbd><kbd</kbd>Mouse Wheel Up</kbd>			| Maximize |
-| <kbd</kbd>Win</kbd><kbd</kbd>Mouse Wheel Down</kbd>			| Unmaximize |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Win</kbd><kbd</kbd>Mouse Wheel Up</kbd>		| Previous desktop |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Win</kbd><kbd</kbd>Mouse Wheel Down</kbd>	| Next desktop |
-| <kbd</kbd>Alt</kbd><kbd</kbd>Win</kbd><kbd</kbd>Mouse Wheel Up</kbd>		| Send to previous desktop |
-| <kbd</kbd>Alt</kbd><kbd</kbd>Win</kbd><kbd</kbd>Mouse Wheel Down</kbd>	| Send to next desktop |
+| <kdb>Win</kbd><Left Mouse Drag>                                       | Move |
+| <kdb>Win</kbd><Right Mouse Drag>                                      | Resize |
+| <kdb>Alt</kbd><kdb>Win</kbd><Right Mouse Drag>                        | Resize |
+| <kdb>Win</kbd><Mouse Wheel Up>                                        | Maximize |
+| <kdb>Win</kbd><Mouse Wheel Down>                                      | Unmaximize |
+| <kdb>Ctrl</kbd><kdb>Win</kbd><Mouse Wheel Up>                         | Previous desktop |
+| <kdb>Ctrl</kbd><kdb>Win</kbd><Mouse Wheel Down>                       | Next desktop |
+| <kdb>Alt</kbd><kdb>Win</kbd><Mouse Wheel Up>                          | Send to previous desktop |
+| <kdb>Alt</kbd><kdb>Win</kbd><Mouse Wheel Down>                        | Send to next desktop |
 
 # Windows tiling
 
 | Shorcut | Action |
 | --- | --- |
-| <kbd</kbd>Win</kbd><kbd</kbd>Right</kbd>			| Grow to edge east |
-| <kbd</kbd>Win</kbd><kbd</kbd>Up</kbd>				| Grow to edge north |
-| <kbd</kbd>Win</kbd><kbd</kbd>Left</kbd>				| Grow to edge west |
-| <kbd</kbd>Win</kbd><kbd</kbd>Down</kbd>				| Grow to edge south |
-| <kbd</kbd>Win</kbd>grave				| Grow to edge east/north/west/south |
+| <kdb>Win</kbd><kdb>Right</kbd>                                        | Grow to edge east |
+| <kdb>Win</kbd><kdb>Up</kbd>                                           | Grow to edge north |
+| <kdb>Win</kbd><kdb>Left</kbd>                                         | Grow to edge west |
+| <kdb>Win</kbd><kdb>Down</kbd>                                         | Grow to edge south |
+| <kdb>Win</kbd><kdb>grave</kdb>                                        | Grow to edge east/north/west/south |
 
 
 # Applications
 
 | Shorcut | Action |
 | --- | --- |
-| <kbd</kbd>Win</kbd>e					| Text editor |
-| <kbd</kbd>Print</kbd>					| Take a screenshot |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Alt</kbd>q			| xkill |
-| <kbd</kbd>Win</kbd>r					| dmenu |
-| <kbd</kbd>Win</kbd>a					| alltray |
-| <kbd</kbd>Win</kbd>c					| clipmenu |
-| <kbd</kbd>Win</kbd>f					| File manager |
-| <kbd</kbd>Win</kbd>z					| translate-notify |
-| <kbd</kbd>Win</kbd>t					| x-terminal-emulator |
-| <kbd</kbd>Win</kbd>w					| x-www-browser |
-| <kbd</kbd>Win</kbd>m					| Media player |
-| <kbd</kbd>Win</kbd>h					| htop |
-| <kbd</kbd>Win</kbd>v					| Volume control |
-| <kbd</kbd>Win</kbd><kbd</kbd>Space</kbd>			| Show menu |
+| <kdb>Win</kbd><kdb>e</kdb>                                            | Text editor |
+| <kdb>Print</kbd>                                                      | Take a screenshot |
+| <kdb>Ctrl</kbd><kdb>Alt</kbd><kdb>q</kdb>                             | xkill |
+| <kdb>Win</kbd><kdb>r</kdb>                                            | dmenu |
+| <kdb>Win</kbd><kdb>a</kdb>                                            | alltray |
+| <kdb>Win</kbd><kdb>c</kdb>                                            | clipmenu |
+| <kdb>Win</kbd><kdb>f</kdb>                                            | File manager |
+| <kdb>Win</kbd><kdb>z</kdb>                                            | translate-notify |
+| <kdb>Win</kbd><kdb>t</kdb>                                            | x-terminal-emulator |
+| <kdb>Win</kbd><kdb>w</kdb>                                            | x-www-browser |
+| <kdb>Win</kbd><kdb>m</kdb>                                            | Media player |
+| <kdb>Win</kbd><kdb>h</kdb>                                            | htop |
+| <kdb>Win</kbd><kdb>v</kdb>                                            | Volume control |
+| <kdb>Win</kbd><kdb>Space</kbd>                                        | Show menu |
 
 # XFree86 keyboard symbols
 
 | Shorcut | Action |
 | --- | --- |
-| <kbd</kbd>XF86Search</kbd>			| File Manager |
-| <kbd</kbd>XF86HomePage</kbd>			| File Manager |
-| <kbd</kbd>XF86Explorer</kbd>			| File Manager |
-| <kbd</kbd>XF86Mail</kbd>				| Thunderbird |
-| <kbd</kbd>XF86Messenger</kbd>			| Empathy |
-| <kbd</kbd>XF86Music</kbd>				| VLC |
-| <kbd</kbd>XF86Tools</kbd>				| VLC |
-| <kbd</kbd>XF86Terminal</kbd>			| x-terminal-emulator |
-| <kbd</kbd>XF86WWW</kbd>				| x-www-browser |
-| <kbd</kbd>XF86PowerOff</kbd>			| power_button_pressed.sh |
+| <kdb>XF86Search</kbd>                                                 | File Manager |
+| <kdb>XF86HomePage</kbd>                                               | File Manager |
+| <kdb>XF86Explorer</kbd>                                               | File Manager |
+| <kdb>XF86Mail</kbd>                                                   | Thunderbird |
+| <kdb>XF86Messenger</kbd>                                              | Empathy |
+| <kdb>XF86Music</kbd>                                                  | VLC |
+| <kdb>XF86Tools</kbd>                                                  | VLC |
+| <kdb>XF86Terminal</kbd>                                               | x-terminal-emulator |
+| <kdb>XF86WWW</kbd>                                                    | x-www-browser |
+| <kdb>XF86PowerOff</kbd>                                               | power_button_pressed.sh |
 
 ## Terminal
 
 | Shortcut | Action |
 | --- | --- |
-| <kbd</kbd>Ctrl</kbd>s					| Scroll lock (XOFF) |
-| <kbd</kbd>Ctrl</kbd>q					| Scroll unlock (XON) |
-| <kbd</kbd>Shift</kbd><kbd</kbd>PageUp</kbd>			| Scroll up |
-| <kbd</kbd>Shift</kbd><kbd</kbd>PageDown</kbd>		| Scroll down |
-| <kbd</kbd>Mouse drag</kbd>			| Selection |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Mouse drag</kbd>		| Block selection |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Shift</kbd>c			| Copy to clipboard |
-| <kbd</kbd>Shift</kbd><kbd</kbd>Insert</kbd>			| Paste from primary |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Shift</kbd>v			| Paste from clipboard |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Shift</kbd><kbd</kbd>Insert</kbd>	| Paste from clipboard |
+| <kdb>Ctrl</kbd><kdb>s</kdb>                                           | Scroll lock (XOFF) |
+| <kdb>Ctrl</kbd><kdb>q</kdb>                                           | Scroll unlock (XON) |
+| <kdb>Shift</kbd><kdb>PageUp</kbd>                                     | Scroll up |
+| <kdb>Shift</kbd><kdb>PageDown</kbd>                                   | Scroll down |
+| <Mouse drag>                                                          | Selection |
+| <kdb>Ctrl</kbd><Mouse drag>                                           | Block selection |
+| <kdb>Ctrl</kbd><kdb>Shift</kbd><kdb>c</kdb>                           | Copy to clipboard |
+| <kdb>Shift</kbd><kdb>Insert</kbd>                                     | Paste from primary |
+| <kdb>Ctrl</kbd><kdb>Shift</kbd><kdb>v</kdb>                           | Paste from clipboard |
+| <kdb>Ctrl</kbd><kdb>Shift</kbd><kdb>Insert</kbd>                      | Paste from clipboard |
 
 ## Caja
 
 | Shortcut | Action |
 | --- | --- |
-| <kbd</kbd>Ctrl</kbd>l					| Show editable location text field |
+| <kdb>Ctrl</kbd><kdb>l</kdb>                                           | Show editable location text field |
 
 ## Geany
 
 | Shortcut | Action |
 | --- | --- |
-| <kbd</kbd>F3</kbd>					| Go to search bar |
-| <kbd</kbd>F5</kbd>					| Switch scribble |
-| <kbd</kbd>F6</kbd>					| Toggle sidebar |
-| <kbd</kbd>F7</kbd>					| Toggle message window |
-| <kbd</kbd>Shift</kbd><kbd</kbd>F8</kbd>				| Build link |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Shift</kbd><kbd</kbd>F8</kbd>		| Build make |
-| <kbd</kbd>F9</kbd>					| Build run |
-| <kbd</kbd>Alt</kbd><kbd</kbd>PgUp</kbd>				| Move line up |
-| <kbd</kbd>Alt</kbd><kbd</kbd>PgDn</kbd>				| Move line down |
-| <kbd</kbd>Ctrl</kbd>d					| Delete line |
-| <kbd</kbd>Ctrl</kbd>k					| Duplicate line |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Mouse drag</kbd>		| Column mode edition (can be combine with a <kbd</kbd>Shift</kbd>) |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Shift</kbd>m			| Mark all occurences of the selection or the word under cursor if no seletion |
-| <kbd</kbd>Ctrl</kbd>e					| Toogle line commentation |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Alt</kbd>w			| Toogle line wrapping |
-| <kbd</kbd>Ctrl</kbd>w					| Close opened document |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Shift</kbd>w			| Close all opened documents |
+| <kdb>F3</kbd>                                                         | Go to search bar |
+| <kdb>F5</kbd>                                                         | Switch scribble |
+| <kdb>F6</kbd>                                                         | Toggle sidebar |
+| <kdb>F7</kbd>                                                         | Toggle message window |
+| <kdb>Shift</kbd><kdb>F8</kbd>                                         | Build link |
+| <kdb>Ctrl</kbd><kdb>Shift</kbd><kdb>F8</kbd>                          | Build make |
+| <kdb>F9</kbd>                                                         | Build run |
+| <kdb>Alt</kbd><kdb>PgUp</kbd>                                         | Move line up |
+| <kdb>Alt</kbd><kdb>PgDn</kbd>                                         | Move line down |
+| <kdb>Ctrl</kbd><kdb>d</kdb>                                           | Delete line |
+| <kdb>Ctrl</kbd><kdb>k</kdb>                                           | Duplicate line |
+| <kdb>Ctrl</kbd><Mouse drag>                                           | Column mode edition (can be combine with a <kdb>Shift</kbd>) |
+| <kdb>Ctrl</kbd><kdb>Shift</kbd><kdb>m</kdb>                           | Mark all occurences of the selection or the word under cursor if no seletion |
+| <kdb>Ctrl</kbd><kdb>e</kdb>                                           | Toogle line commentation |
+| <kdb>Ctrl</kbd><kdb>Alt</kbd><kdb>w</kdb>                             | Toogle line wrapping |
+| <kdb>Ctrl</kbd><kdb>w</kdb>                                           | Close opened document |
+| <kdb>Ctrl</kbd><kdb>Shift</kbd><kdb>w</kdb>                           | Close all opened documents |
 
 ## Firefox
 
 | Shortcut | Action |
 | --- | --- |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Shift</kbd>t			| Undo last tab closure |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Alt</kbd>r			| Toogle reader view |
+| <kdb>Ctrl</kbd><kdb>Shift</kbd><kdb>t</kdb>                           | Undo last tab closure |
+| <kdb>Ctrl</kbd><kdb>Alt</kbd><kdb>r</kdb>                             | Toogle reader view |
 
 ## Thunderbird
 
 | Shortcut | Action |
 | --- | --- |
-| <kbd</kbd>Ctrl</kbd><kbd</kbd>Shift</kbd>f			| Search messages |
-| *						| Expand all conversations in the current view |
+| <kdb>Ctrl</kbd><kdb>Shift</kbd><kdb>f</kdb>                           | Search messages |
+| <kdb>*</kdb>                                                          | Expand all conversations in the current view |
 
 ## Eclipse (shortcuts we may not already know ... )
 
 | Shortcut | Action |
 | --- | --- |
-| <kbd</kbd>Ctrl</kbd>.					| Next diff |
-| <kbd</kbd>Ctrl</kbd>,					| Previous diff |
-| <kbd</kbd>Shift</kbd><kbd</kbd>Alt</kbd>a			| Toggle block selection mode |
+| <kdb>Ctrl</kbd><kdb>.</kdb>                                           | Next diff |
+| <kdb>Ctrl</kbd><kdb>,</kdb>                                           | Previous diff |
+| <kdb>Shift</kbd><kdb>Alt</kbd><kdb>a</kdb>                            | Toggle block selection mode |
 
 ## MacBook Air
 
 | Shortcut | Action |
 | --- | --- |
-| <kbd</kbd>Fn</kbd><kbd</kbd>Up</kbd> 				| Page up |
-| <kbd</kbd>Fn</kbd>Down</kbd> 				| Page down |
-| <kbd</kbd>Fn</kbd><kbd</kbd>Left</kbd> 				| Home |
-| <kbd</kbd>Fn</kbd><kbd</kbd>Right</kbd> 			| End |
-| <kbd</kbd>Fn</kbd><kbd</kbd>Backspace</kbd> 		| Delete |
-| <kbd</kbd>Fn</kbd><kbd</kbd>Enter</kbd>				| Insert |
+| <kdb>Fn</kbd><kdb>Up</kbd>                                            | Page up |
+| <kdb>Fn</kbd><kdb>Down</kdb>                                          | Page down |
+| <kdb>Fn</kbd><kdb>Left</kbd>                                          | Home |
+| <kdb>Fn</kbd><kdb>Right</kbd>                                         | End |
+| <kdb>Fn</kbd><kdb>Backspace</kbd>                                     | Delete |
+| <kdb>Fn</kbd><kdb>Enter</kbd>                                         | Insert |
