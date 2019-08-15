@@ -30,7 +30,7 @@ configure_firefox_default_profile(){
 		printf "FIREFOX_DEFAULT_PROFILE_PATH: ${FIREFOX_DEFAULT_PROFILE_PATH}\n"
 	fi
 	if [[ -z "${FIREFOX_DEFAULT_PROFILE_PATH}" ]]; then
-		printf "Cannot find Firefox default profile => creating one ...\n"
+		printf "Cannot find Firefox default profile => creating one!\n"
 		firefox -CreateProfile "default"
 		FIREFOX_DEFAULT_PROFILE_PATH=$(find "${HOME}/.mozilla/firefox" -maxdepth 1 -iname "*\.default")
 		printf "FIREFOX_DEFAULT_PROFILE_PATH: ${FIREFOX_DEFAULT_PROFILE_PATH}\n"
@@ -121,6 +121,10 @@ configure_firefox_default_profile(){
 	else
 		echo "${LINE_REPLACEMENT_VALUE}" >>"${FIREFOX_PREFS_JS_FILE}"
 	fi
+	
+	# Since Firefox ESR 60 it is mandatory to force the profile at the first execution of firefox
+	# else it will create a new default profile.
+	firefox -p "default" "about:profiles"
 	
 	printf "\n"
 }
