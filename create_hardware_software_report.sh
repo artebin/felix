@@ -6,27 +6,25 @@ if [[ ! -f common.sh ]]; then
 fi
 source common.sh
 
-exit_if_has_not_root_privileges
-
 print_dmi_info_bios(){
 	print_section_heading "DMI information BIOS (dmidecode)"
-	echo "bios-vendor: $(dmidecode -s bios-vendor)"
-	echo "bios-version: $(dmidecode -s bios-version)"
-	echo "bios-release-date: $(dmidecode -s bios-release-date)"
+	echo "bios-vendor: $(sudo dmidecode -s bios-vendor)"
+	echo "bios-version: $(sudo dmidecode -s bios-version)"
+	echo "bios-release-date: $(sudo dmidecode -s bios-release-date)"
 	print_section_ending
 }
 
 print_dmi_info_system(){
 	print_section_heading "DMI information System (dmidecode)"
-	echo "system-manufacturer: $(dmidecode -s system-manufacturer)"
-	echo "system-product-name: $(dmidecode -s system-product-name)"
-	echo "system-version: $(dmidecode -s system-version)"
+	echo "system-manufacturer: $(sudo dmidecode -s system-manufacturer)"
+	echo "system-product-name: $(sudo dmidecode -s system-product-name)"
+	echo "system-version: $(sudo dmidecode -s system-version)"
 	print_section_ending
 }
 
 print_dmi_info_memory(){
 	print_section_heading "DMI table decoder (dmidecode)"
-	dmidecode
+	sudo dmidecode
 	print_section_ending
 }
 
@@ -97,15 +95,13 @@ print_key_codes(){
 }
 
 extract_installed_packages_list(){
-	print_section_heading "List of installed packages"
+	OUTPUT_DIRECTORY="${1}"
 	
 	INSTALLED_PACKAGE_LIST=$(dpkg -l)
-	printf "%s\n" "${INSTALLED_PACKAGE_LIST}" >dpkg.installed.packages.list
+	printf "%s\n" "${INSTALLED_PACKAGE_LIST}" >"${OUTPUT_DIRECTORY}/dpkg.installed.packages.list"
 	
 	INSTALLED_PACKAGE_LIST=$(find /var/log -mindepth 1 -maxdepth 1 -name dpkg.log*|sort|xargs zgrep -E '( installed | remove )'|uniq)
-	printf "%s\n" "${INSTALLED_PACKAGE_LIST}" >dpkglogs.list
-	
-	print_section_ending
+	printf "%s\n" "${INSTALLED_PACKAGE_LIST}" >"${OUTPUT_DIRECTORY}/dpkglogs.list"
 }
 
 print_all(){
@@ -121,10 +117,11 @@ print_all(){
 	print_temperature_sensors
 	print_gtk_version
 	print_key_codes
-	extract_installed_packages_list
 }
 
-OUTPUT_FILE="info_${HOSTNAME}_$(date -u +'%y%m%d-%H%M%S')"
-print_all 2>&1|remove_terminal_control_sequences >"${OUTPUT_FILE}"
+REPORT_NAME="hardware_software_report_${HOSTNAME}_$(date -u +'%y%m%d-%H%M%S')"
+mkdir "${REPORT_NAME}"
+print_all 2>&1|remove_terminal_control_sequences >"${REPORT_NAME}/${REPORT_NAME}"
+extract_installed_packages_list "${REPORT_NAME}"
 
-printf "Written file: ${OUTPUT_FILE}\n"
+printf "Report written in directory: ${REPORT_NAME}\n"
