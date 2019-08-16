@@ -38,93 +38,67 @@ configure_firefox_default_profile(){
 	
 	FIREFOX_PREFS_JS_FILE="${FIREFOX_DEFAULT_PROFILE_PATH}/prefs.js"
 	if [[ ! -f "${FIREFOX_PREFS_JS_FILE}" ]]; then
-		printf "Cannot find FIREFOX_PREFS_JS_FILE: ${FIREFOX_PREFS_JS_FILE}\n"
-		printf "Creating an empty file ...\n"
+		printf "Cannot find FIREFOX_PREFS_JS_FILE: ${FIREFOX_PREFS_JS_FILE} => creation one!\n"
 		touch "${FIREFOX_PREFS_JS_FILE}"
 	fi
 	
 	printf "=> Show your windows and tabs from last time ...\n"
-	KEY="browser.startup.page"
-	PREFIX_TO_SEARCH="user_pref(\"${KEY}\""
-	LINE_REPLACEMENT_VALUE="user_pref(\"${KEY}\", 3);"
-	if grep -q "${KEY}" "${FIREFOX_PREFS_JS_FILE}"; then
-		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FIREFOX_PREFS_JS_FILE}"
-	else
-		echo "${LINE_REPLACEMENT_VALUE}" >>"${FIREFOX_PREFS_JS_FILE}"
-	fi
+	FIREFOX_PREF_KEY="browser.startup.page"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", 3);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
 	
 	printf "=> Always ask you where to save files ...\n"
-	KEY="browser.download.useDownloadDir"
-	PREFIX_TO_SEARCH="user_pref(\"${KEY}\""
-	LINE_REPLACEMENT_VALUE="user_pref(\"${KEY}\", false);"
-	if grep -q "${KEY}" "${FIREFOX_PREFS_JS_FILE}"; then
-		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FIREFOX_PREFS_JS_FILE}"
-	else
-		echo "${LINE_REPLACEMENT_VALUE}" >>"${FIREFOX_PREFS_JS_FILE}"
-	fi
+	FIREFOX_PREF_KEY="browser.download.useDownloadDir"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", false);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
 	
 	printf "=> Do not remember logins and passwords ...\n"
-	KEY="signon.rememberSignons"
-	PREFIX_TO_SEARCH="user_pref(\"${KEY}\""
-	LINE_REPLACEMENT_VALUE="user_pref(\"${KEY}\", false);"
-	if grep -q "${KEY}" "${FIREFOX_PREFS_JS_FILE}"; then
-		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FIREFOX_PREFS_JS_FILE}"
-	else
-		echo "${LINE_REPLACEMENT_VALUE}" >>"${FIREFOX_PREFS_JS_FILE}"
-	fi
+	FIREFOX_PREF_KEY="signon.rememberSignons"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", false);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
 	
 	printf "=> Do not trim URLs in the URL bar ...\n"
-	KEY="browser.urlbar.trimURLs"
-	PREFIX_TO_SEARCH="user_pref(\"${KEY}\""
-	LINE_REPLACEMENT_VALUE="user_pref(\"${KEY}\", false);"
-	if grep -q "${KEY}" "${FIREFOX_PREFS_JS_FILE}"; then
-		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FIREFOX_PREFS_JS_FILE}"
-	else
-		echo "${LINE_REPLACEMENT_VALUE}" >>"${FIREFOX_PREFS_JS_FILE}"
-	fi
+	FIREFOX_PREF_KEY="browser.urlbar.trimURLs"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", false);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
 	
 	printf "=> Do not show search engines in drop panel of the URL bar ...\n"
-	KEY="browser.urlbar.oneOffSearches"
-	PREFIX_TO_SEARCH="user_pref(\"${KEY}\""
-	LINE_REPLACEMENT_VALUE="user_pref(\"${KEY}\", false);"
-	if grep -q "${KEY}" "${FIREFOX_PREFS_JS_FILE}"; then
-		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FIREFOX_PREFS_JS_FILE}"
-	else
-		echo "${LINE_REPLACEMENT_VALUE}" >>"${FIREFOX_PREFS_JS_FILE}"
-	fi
+	FIREFOX_PREF_KEY="browser.urlbar.oneOffSearches"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", false);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
 	
-	printf "=> No search suggestions in the URL bar ...\n"
-	# Part 1
-	KEY="browser.urlbar.searchSuggestionsChoice"
-	PREFIX_TO_SEARCH="user_pref(\"${KEY}\""
-	LINE_REPLACEMENT_VALUE="user_pref(\"${KEY}\", false);"
-	if grep -q "${KEY}" "${FIREFOX_PREFS_JS_FILE}"; then
-		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FIREFOX_PREFS_JS_FILE}"
-	else
-		echo "${LINE_REPLACEMENT_VALUE}" >>"${FIREFOX_PREFS_JS_FILE}"
-	fi
-	# Part 2
-	KEY="browser.urlbar.suggest.searches"
-	PREFIX_TO_SEARCH="user_pref(\"${KEY}\""
-	LINE_REPLACEMENT_VALUE="user_pref(\"${KEY}\", false);"
-	if grep -q "${KEY}" "${FIREFOX_PREFS_JS_FILE}"; then
-		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FIREFOX_PREFS_JS_FILE}"
-	else
-		echo "${LINE_REPLACEMENT_VALUE}" >>"${FIREFOX_PREFS_JS_FILE}"
-	fi
-	# Part 3
-	KEY="browser.urlbar.timesBeforeHidingSuggestionsHint"
-	PREFIX_TO_SEARCH="user_pref(\"${KEY}\""
-	LINE_REPLACEMENT_VALUE="user_pref(\"${KEY}\", 0);"
-	if grep -q "${KEY}" "${FIREFOX_PREFS_JS_FILE}"; then
-		sed -i "/^${PREFIX_TO_SEARCH}/s/.*/${LINE_REPLACEMENT_VALUE}/" "${FIREFOX_PREFS_JS_FILE}"
-	else
-		echo "${LINE_REPLACEMENT_VALUE}" >>"${FIREFOX_PREFS_JS_FILE}"
-	fi
+	printf "=> Do not search suggestions in drop panel of the URL bar ...\n"
+	FIREFOX_PREF_KEY="browser.urlbar.searchSuggestionsChoice"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", false);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
+	
+	printf "=> Do not suggest searches in drop panel of the URL bar ...\n"
+	FIREFOX_PREF_KEY="browser.urlbar.suggest.searches"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", false);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
+	
+	printf "=> Hide suggestions hint in drop panel of the URL bar ...\n"
+	FIREFOX_PREF_KEY="browser.urlbar.timesBeforeHidingSuggestionsHint"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", 0);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
+	
+	printf "=> Disable all web push notifications ...\n"
+	FIREFOX_PREF_KEY="permissions.default.desktop-notification"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", 2);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
 	
 	# Since Firefox ESR 60 it is mandatory to force the profile at the first execution of firefox
 	# else it will create a new default profile.
-	firefox -p "default" "about:profiles"
+	firefox -p "default" "about:profiles" >/dev/null 2>/dev/null &
 	
 	printf "\n"
 }
