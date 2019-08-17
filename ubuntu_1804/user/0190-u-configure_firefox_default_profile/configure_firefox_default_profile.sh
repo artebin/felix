@@ -96,11 +96,50 @@ configure_firefox_default_profile(){
 	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", 2);"
 	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
 	
+	install_addons_in_firefox_profile "${FIREFOX_DEFAULT_PROFILE_PATH}"
+	
 	# Since Firefox ESR 60 it is mandatory to force the profile at the first execution of firefox
 	# else it will create a new default profile.
 	firefox -p "default" "about:profiles" >/dev/null 2>/dev/null &
 	
 	printf "\n"
+}
+
+install_addons_in_firefox_profile(){
+	if [[ $# -ne 1 ]]; then
+		printf "install_addons_in_firefox_profile() expects FIREROX_PROFILE_PATH in argument\n"
+		exit 1
+	fi
+	FIREROX_PROFILE_PATH="${1}"
+	
+	printf "Pre-installing AdBlock Plus ...\n"
+	cd "${RECIPE_DIR}"
+	wget --quiet "https://eyeo.to/adblockplus/firefox_install/firefox" -O adblockplus.xpi
+	rename_xpi_file_with_web_extension_with_id adblockplus.xpi
+	
+	printf "Pre-installing Google Search Link Fix ...\n"
+	wget --quiet "https://addons.mozilla.org/firefox/downloads/file/3051379/google_search_link_fix-1.6.8-an+fx.xpi?src=dp-btn-primary" -O google_search_link_fix.xpi
+	rename_xpi_file_with_web_extension_with_id google_search_link_fix.xpi
+	
+	printf "Pre-installing Google Translator For Firefox ...\n"
+	wget --quiet "https://addons.mozilla.org/firefox/downloads/file/1167275/google_translator_for_firefox-3.0.3.3-fx.xpi?src=dp-btn-primary" -O google_translator_for_firefox.xpi
+	rename_xpi_file_with_web_extension_with_id google_translator_for_firefox.xpi
+	
+	mkdir -p "${FIREROX_PROFILE_PATH}/extensions"
+	mv *.xpi "${FIREROX_PROFILE_PATH}/extensions"
+}
+
+rename_xpi_file_with_web_extension_with_id(){
+	if [[ $# -ne 1 ]]; then
+		printf "rename_xpi_file_with_web_extension_with_id() expects XPI_FILE in argument\n"
+		exit 1
+	fi
+	XPI_FILE="${1}"
+	TMP_DIR=$(uuidgen)
+	unzip -qq "${XPI_FILE}" -d "${TMP_DIR}"
+	WEBEXTENSION_ID=$(cat ./${TMP_DIR}/manifest.json | jq '.applications.gecko.id' | sed 's/\"//g')
+	mv "${XPI_FILE}" "${WEBEXTENSION_ID}.xpi"
+	rm -fr "${TMP_DIR}"
 }
 
 configure_firefox_default_profile 2>&1 | tee -a "${LOGFILE}"
