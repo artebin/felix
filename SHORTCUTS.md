@@ -43,15 +43,15 @@
 
 | Shorcut | Action |
 | --- | --- |
-| <kbd>Win</kbd><Left Mouse Drag>                                       | Move |
-| <kbd>Win</kbd><Right Mouse Drag>                                      | Resize |
-| <kbd>Alt</kbd><kbd>Win</kbd><Right Mouse Drag>                        | Resize |
-| <kbd>Win</kbd><Mouse Wheel Up>                                        | Maximize |
-| <kbd>Win</kbd><Mouse Wheel Down>                                      | Unmaximize |
-| <kbd>Ctrl</kbd><kbd>Win</kbd><Mouse Wheel Up>                         | Previous desktop |
-| <kbd>Ctrl</kbd><kbd>Win</kbd><Mouse Wheel Down>                       | Next desktop |
-| <kbd>Alt</kbd><kbd>Win</kbd><Mouse Wheel Up>                          | Send to previous desktop |
-| <kbd>Alt</kbd><kbd>Win</kbd><Mouse Wheel Down>                        | Send to next desktop |
+| <kbd>Win</kbd><kbd>Left Mouse Drag</kbd>                              | Move |
+| <kbd>Win</kbd><kbd>Right Mouse Drag</kbd>                             | Resize |
+| <kbd>Alt</kbd><kbd>Win</kbd><kbd>Right Mouse Drag</kbd>               | Resize |
+| <kbd>Win</kbd><kbd>Mouse Wheel Up</kbd>                               | Maximize |
+| <kbd>Win</kbd><kbd>Mouse Wheel Down</kbd>                             | Unmaximize |
+| <kbd>Ctrl</kbd><kbd>Win</kbd><kbd>Mouse Wheel Up</kbd>                | Previous desktop |
+| <kbd>Ctrl</kbd><kbd>Win</kbd><kbd>Mouse Wheel Down</kbd>              | Next desktop |
+| <kbd>Alt</kbd><kbd>Win</kbd><kbd>Mouse Wheel Up</kbd>                 | Send to previous desktop |
+| <kbd>Alt</kbd><kbd>Win</kbd><kbd>Mouse Wheel Down</kbd>               | Send to next desktop |
 
 # Windows tiling
 
@@ -107,7 +107,7 @@
 | <kbd>Shift</kbd><kbd>PageUp</kbd>                                     | Scroll up |
 | <kbd>Shift</kbd><kbd>PageDown</kbd>                                   | Scroll down |
 | <kbd>Mouse drag</kbd>                                                 | Selection |
-| <kbd>Ctrl</kbd><Mouse drag>                                           | Block selection |
+| <kbd>Ctrl</kbd><kbd>Mouse drag</kbd>                                  | Block selection |
 | <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>c</kbd>                           | Copy to clipboard |
 | <kbd>Shift</kbd><kbd>Insert</kbd>                                     | Paste from primary |
 | <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>v</kbd>                           | Paste from clipboard |
@@ -134,7 +134,7 @@
 | <kbd>Alt</kbd><kbd>PgDn</kbd>                                         | Move line down |
 | <kbd>Ctrl</kbd><kbd>d</kbd>                                           | Delete line |
 | <kbd>Ctrl</kbd><kbd>k</kbd>                                           | Duplicate line |
-| <kbd>Ctrl</kbd><Mouse drag>                                           | Column mode edition (can be combine with a <kbd>Shift</kbd>) |
+| <kbd>Ctrl</kbd><kbd>Mouse drag</kbd>                                  | Column mode edition (can be combine with a <kbd>Shift</kbd>) |
 | <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>m</kbd>                           | Mark all occurences of the selection or the word under cursor if no seletion |
 | <kbd>Ctrl</kbd><kbd>e</kbd>                                           | Toogle line commentation |
 | <kbd>Ctrl</kbd><kbd>Alt</kbd><kbd>w</kbd>                             | Toogle line wrapping |
