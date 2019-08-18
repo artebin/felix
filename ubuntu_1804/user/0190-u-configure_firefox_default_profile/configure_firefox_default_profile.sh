@@ -96,7 +96,7 @@ configure_firefox_default_profile(){
 	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", 2);"
 	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
 	
-	install_addons_in_firefox_profile "${FIREFOX_DEFAULT_PROFILE_PATH}"
+	pre_install_extensions_in_firefox_profile "${FIREFOX_DEFAULT_PROFILE_PATH}"
 	
 	# Since Firefox ESR 60 it is mandatory to force the profile at the first execution of firefox
 	# else it will create a new default profile.
@@ -105,25 +105,29 @@ configure_firefox_default_profile(){
 	printf "\n"
 }
 
-install_addons_in_firefox_profile(){
+pre_install_extensions_in_firefox_profile(){
 	if [[ $# -ne 1 ]]; then
 		printf "install_addons_in_firefox_profile() expects FIREROX_PROFILE_PATH in argument\n"
 		exit 1
 	fi
 	FIREROX_PROFILE_PATH="${1}"
 	
-	printf "Pre-installing AdBlock Plus ...\n"
+	printf "Pre-installing extension: AdBlock Plus ...\n"
 	cd "${RECIPE_DIR}"
 	wget --quiet "https://eyeo.to/adblockplus/firefox_install/firefox" -O adblockplus.xpi
 	rename_xpi_file_with_web_extension_with_id adblockplus.xpi
 	
-	printf "Pre-installing Google Search Link Fix ...\n"
+	printf "Pre-installing extension: Google Search Link Fix ...\n"
 	wget --quiet "https://addons.mozilla.org/firefox/downloads/file/3051379/google_search_link_fix-1.6.8-an+fx.xpi?src=dp-btn-primary" -O google_search_link_fix.xpi
 	rename_xpi_file_with_web_extension_with_id google_search_link_fix.xpi
 	
-	printf "Pre-installing Google Translator For Firefox ...\n"
+	printf "Pre-installing extension: Google Translator For Firefox ...\n"
 	wget --quiet "https://addons.mozilla.org/firefox/downloads/file/1167275/google_translator_for_firefox-3.0.3.3-fx.xpi?src=dp-btn-primary" -O google_translator_for_firefox.xpi
 	rename_xpi_file_with_web_extension_with_id google_translator_for_firefox.xpi
+	
+	printf "Pre-installing extension: RSS Preview ...\n"
+	wget --quiet "https://addons.mozilla.org/firefox/downloads/file/3379752/rsspreview-3.10.1-an+fx.xpi?src=recommended" -O rss_preview.xpi
+	rename_xpi_file_with_web_extension_with_id rss_preview.xpi
 	
 	mkdir -p "${FIREROX_PROFILE_PATH}/extensions"
 	mv *.xpi "${FIREROX_PROFILE_PATH}/extensions"
