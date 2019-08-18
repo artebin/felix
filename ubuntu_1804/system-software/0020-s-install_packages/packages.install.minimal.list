@@ -184,7 +184,7 @@ pigz
 #######################################
 # Image viewer, browser, manipulation
 #######################################
-imagemagick
+imagemagick pqiv
 gpicview
 shotwell
 gimp gimp-data-extras
