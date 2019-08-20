@@ -28,6 +28,7 @@ configure_openbox(){
 	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/openbox/autostart" "${HOME}/.config/openbox"
 	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/openbox/rc.xml" "${HOME}/.config/openbox"
 	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/openbox/menu.xml" "${HOME}/.config/openbox"
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/openbox/ob-randr.py" "${HOME}/.config/openbox"
 	echo
 }
 
