@@ -184,6 +184,7 @@ pigz
 #######################################
 # Image viewer, browser, manipulation
 #######################################
+libimage-exiftool-perl #for exiftool
 imagemagick pqiv
 gpicview
 shotwell
