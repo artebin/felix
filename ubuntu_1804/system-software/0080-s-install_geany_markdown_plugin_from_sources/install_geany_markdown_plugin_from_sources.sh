@@ -23,8 +23,7 @@ install_geany_markdown_plugin_from_sources(){
 	echo "Install Geany / Markdown plugin from sources ..."
 	
 	# Install dependencies
-	apt-get install -y install intltool
-	apt-get install -y libwebkit2gtk-4.0-dev
+	install_package_if_not_installed "intltool" "libwebkit2gtk-4.0-dev"
 	
 	# Clone git repository
 	cd ${RECIPE_DIR}
