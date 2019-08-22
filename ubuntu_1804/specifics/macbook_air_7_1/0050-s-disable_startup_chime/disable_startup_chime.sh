@@ -26,8 +26,7 @@ disable_startup_chime(){
 	
 	SYSTEM_AUDIO_VOLUME_PATH="/sys/firmware/efi/efivars/SystemAudioVolume-7c436110-ab2a-4bbb-a880-fe41995c9f82"
 	if [[ ! -f "${SYSTEM_AUDIO_VOLUME_PATH}" ]]; then
-		echo "Cannot find variable at path: ${SYSTEM_AUDIO_VOLUME_PATH}"
-		exit 1
+		touch "${SYSTEM_AUDIO_VOLUME_PATH}"
 	fi
 	
 	# Some variable are immutable by default in /sys/firware/efi/efivars notably 'SystemAudioVolume-7c436110-ab2a-4bbb-a880-fe41995c9f82'
