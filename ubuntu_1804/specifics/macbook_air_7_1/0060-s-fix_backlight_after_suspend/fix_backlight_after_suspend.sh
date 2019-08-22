@@ -22,6 +22,9 @@ exit_if_has_not_root_privileges
 fix_backlight_after_suspend(){
 	echo "Fixing backlight after suspend ..."
 	
+	# Install dependencies
+	install_package_if_not_installed "elfutils" "libelf-dev"
+	
 	cd "${RECIPE_DIR}"
 	git clone https://github.com/patjak/mba6x_bl
 	cd ./mba6x_bl
