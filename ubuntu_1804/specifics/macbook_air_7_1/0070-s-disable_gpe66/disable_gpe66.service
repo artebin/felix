@@ -1,0 +1,8 @@
+[Unit]
+Description=Disable GPE 66 causing battery draining on Mac
+
+[Service]
+ExecStart=/usr/bin/env bash -c 'echo "disable" > /sys/firmware/acpi/interrupts/gpe66'
+
+[Install]
+WantedBy=multi-user.target
