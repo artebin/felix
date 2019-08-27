@@ -45,7 +45,7 @@ disable_all_acpi_wakeup_except_for_platform_subsystems(){
 		rm -f "${ACPI_WAKEUP_FILE_NAME}"
 	fi
 	
-	DEVICE_LINE_REGEX="^([0-9a-zA-Z]+)\s+([0-9a-zA-Z]+)\s+(.*[enabled|disabled])\s+([0-9a-ZA-Z:.]+)$"
+	DEVICE_LINE_REGEX="^([0-9a-zA-Z]+)\s+([0-9a-zA-Z]+)\s+(.*[enabled|disabled])\s+(.+)$"
 	while read -r LINE; do
 		if [[ "${LINE}" =~ ^Device ]]; then
 			continue
@@ -70,12 +70,12 @@ disable_all_acpi_wakeup_except_for_platform_subsystems(){
 		fi
 	done < /proc/acpi/wakeup
 	
-	cp acpi_wakeup.rules /etc/udev/rules.d/90-acpi_wakeup.rules
+	cp "${ACPI_WAKEUP_FILE_NAME}" /etc/udev/rules.d/90-acpi_wakeup.rules
 	
 	# Cleaning
 	cd "${RECIPE_DIR}"
 	rm -f dsdt.dat
-	rm -f acpi_wakeup.rules
+	rm -f "${ACPI_WAKEUP_FILE_NAME}"
 	echo
 }
 
