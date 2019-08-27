@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Recipe for dictionary and spelling (for example: US, FR). For Geany, we need hunspell.
 - [ ] Caja script compare should support one file compare with meld => revisioned file.
 - [ ] TLP and CpuFreq for lower average temperature? Thermald for logging? pcp?
 - [ ] Numeric keyboard disabled after wake from hibernation.
