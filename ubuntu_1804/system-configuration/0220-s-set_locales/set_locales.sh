@@ -25,6 +25,8 @@ set_locales(){
 	
 	echo "Setting locales ..."
 	update-locale LANG="${LOCALE_TO_USE_LANG}"
+	update-locale LC_ALL="${LOCALE_TO_USE_LC_ALL}"
+	update-locale LC_COLLATE="${LOCALE_TO_USE_LC_COLLATE}"
 	update-locale LC_NUMERIC="${LOCALE_TO_USE_LC_NUMERIC}"
 	update-locale LC_TIME="${LOCALE_TO_USE_LC_TIME}"
 	update-locale LC_MONETARY="${LOCALE_TO_USE_LC_MONETARY}"
@@ -34,7 +36,8 @@ set_locales(){
 	update-locale LC_TELEPHONE="${LOCALE_TO_USE_LC_TELEPHONE}"
 	update-locale LC_MEASUREMENT="${LOCALE_TO_USE_LC_MEASUREMENT}"
 	update-locale LC_IDENTIFICATION="${LOCALE_TO_USE_LC_IDENTIFICATION}"
-	update-locale LC_COLLATE=POSIX
+	
+	cat /etc/default/locale
 	
 	echo
 }
