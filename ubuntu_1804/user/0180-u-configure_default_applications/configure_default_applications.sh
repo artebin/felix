@@ -117,7 +117,6 @@ configure_default_applications_with_mime_apps_list(){
 	
 	printf "application/x-shellscript=geany.desktop;\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
 	printf "application/xml=geany.desktop;\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
-	printf "inode/directory=vlc.desktop;\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
 	printf "application/x-jar=engrampa.desktop;\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
 	
 	# See <https://wiki.archlinux.org/index.php/XDG_MIME_Applications>
