@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Add avahi-discover in openbox menu.
 - [ ] Brogexer.
 - [ ] Open GoogleDrive should pop up a new Forefox window.
 - [ ] Recipe for dictionary and spelling (for example: US, FR). For Geany, we need hunspell.
