@@ -38,6 +38,7 @@ curl
 wireshark wireshark-gtk wireshark-doc
 network-manager-gnome
 gigolo
+avahi-discover
 
 #############
 # Bluetooth
