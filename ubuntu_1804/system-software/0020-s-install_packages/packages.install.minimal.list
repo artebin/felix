@@ -4,11 +4,9 @@
 lsb-core
 psmisc #Includes fuser, killall, peekfd, pstree, prtstat
 hwinfo lshw inxi
-htop
-iotop
-dstat
+htop iotop smem #dstat is included in pcp
 glances
-smem
+cockpit #pcp should be installed with a recipe because version of the pcp from Ubuntu18.04 repositories does not contain dstat yet
 battery-stats
 fuseiso fuseiso9660
 inotify-hookable inotify-tools iwatch
