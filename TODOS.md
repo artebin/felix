@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Make avahi workstation published.
 - [ ] Add avahi-discover in openbox menu.
 - [ ] Brogexer.
 - [ ] Open GoogleDrive should pop up a new Forefox window.
