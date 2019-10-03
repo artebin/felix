@@ -75,7 +75,7 @@ disable_all_acpi_wakeup_except_for_platform_subsystems(){
 	# Cleaning
 	cd "${RECIPE_DIR}"
 	rm -f dsdt.dat
-	rm -f "${ACPI_WAKEUP_FILE_NAME}"
+	#rm -f "${ACPI_WAKEUP_FILE_NAME}"
 	echo
 }
 
