@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+TIMESTAMP="$(date -u +'%y%m%d-%H%M%S.%3N')"
+USER_INSTALLATION_DIR="/tmp/njames/soffice/${TIMESTAMP}"
+mkdir -p "${USER_INSTALLATION_DIR}"
+
+soffice --accept="pipe,name=soffice-pipe-uuid;urp;StarOffice.ServiceManager" -env:UserInstallation="file://${USER_INSTALLATION_DIR}" ${@}
