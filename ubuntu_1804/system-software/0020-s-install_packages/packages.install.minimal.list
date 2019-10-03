@@ -61,7 +61,7 @@ nfs-common nfs-kernel-server
 #########
 # Samba
 #########
-cifs-utils
+smbclient cifs-utils
 
 #######
 # FTP
