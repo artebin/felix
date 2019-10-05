@@ -6,7 +6,7 @@
 	</resistance>
 	
 	<focus>
-		<focusNew>no</focusNew>
+		<focusNew>yes</focusNew>
 		<!-- always try to focus new windows when they appear. other rules do
        apply -->
 		<followMouse>yes</followMouse>
@@ -25,7 +25,7 @@
 	</focus>
 	
 	<placement>
-		<policy>Smart</policy>
+		<policy>UnderMouse</policy>
 		<!-- 'Smart' or 'UnderMouse' -->
 		<center>yes</center>
 		<!-- whether to place windows in the center of the free area found or
