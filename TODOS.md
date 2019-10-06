@@ -1,4 +1,5 @@
 # TODOS
+- [ ] git preferences are not applied.
 - [ ] Make avahi workstation published.
 - [ ] Add avahi-discover in openbox menu.
 - [ ] Brogexer.
