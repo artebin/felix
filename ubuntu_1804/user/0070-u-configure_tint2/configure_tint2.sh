@@ -15,8 +15,8 @@ exit_if_has_root_privileges
 configure_tint2(){
 	printf "Configuring tint2 ...\n"
 	
-	if [[ ! -d "{$HOME}/.config/tint2" ]]; then
-		mkdir -p "{$HOME}/.config/tint2"
+	if [[ ! -d "${HOME}/.config/tint2" ]]; then
+		mkdir -p "${HOME}/.config/tint2"
 	fi
 	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/tint2/tint2rc" "${RECIPE_FAMILY_DIR}/dotfiles/.config/tint2/tint2rc"
 	
