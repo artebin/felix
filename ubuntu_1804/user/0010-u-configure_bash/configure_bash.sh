@@ -13,14 +13,11 @@ exit_if_not_bash
 exit_if_has_root_privileges
 
 configure_bash(){
-	echo "Configuring bash ..."
+	printf "Configuring bash ...\n"
 	
-	if [[ -f "${HOME}/.bashrc" ]]; then
-		backup_file rename "${HOME}/.bashrc"
-	fi
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.bashrc" "${HOME}/.bashrc"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.bashrc" "${RECIPE_FAMILY_DIR}/dotfiles/.bashrc"
 	
-	echo
+	printf "\n"
 }
 
 configure_bash 2>&1 | tee -a "${LOGFILE}"

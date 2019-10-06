@@ -13,9 +13,11 @@ exit_if_not_bash
 exit_if_has_root_privileges
 
 configure_xsessionrc(){
-	echo "Configuring xsessionrc ..."
-	cat "${RECIPE_FAMILY_DIR}/dotfiles/.xsessionrc" >> "${HOME}/.xsessionrc"
-	echo
+	printf "Configuring xsessionrc ...\n"
+	
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.xsessionrc" "${RECIPE_FAMILY_DIR}/dotfiles/.xsessionrc"
+	
+	printf "\n"
 }
 
 configure_xsessionrc 2>&1 | tee -a "${LOGFILE}"

@@ -13,12 +13,11 @@ exit_if_not_bash
 exit_if_has_root_privileges
 
 configure_htop(){
-	echo "Configuring htop ..."
-	if [[ -f "${HOME}/.htoprc" ]]; then
-		backup_file rename "${HOME}/.htoprc"
-	fi
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.htoprc" "${HOME}/.htoprc"
-	echo
+	printf "Configuring htop ...\n"
+	
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.htoprc" "${RECIPE_FAMILY_DIR}/dotfiles/.htoprc"
+	
+	printf "\n"
 }
 
 configure_htop 2>&1 | tee -a "${LOGFILE}"

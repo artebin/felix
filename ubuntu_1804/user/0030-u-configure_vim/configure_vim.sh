@@ -13,12 +13,11 @@ exit_if_not_bash
 exit_if_has_root_privileges
 
 configure_vim(){
-	echo "Configuring vim ..."
-	if [[ -f "${HOME}/.vimrc" ]]; then
-		backup_file rename "${HOME}/.vimrc"
-	fi
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.vimrc" "${HOME}/.vimrc"
-	echo
+	printf "Configuring vim ...\n"
+	
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.vimrc" "${RECIPE_FAMILY_DIR}/dotfiles/.vimrc"
+	
+	printf "\n"
 }
 
 configure_vim 2>&1 | tee -a "${LOGFILE}"
