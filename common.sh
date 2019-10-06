@@ -154,7 +154,7 @@ print_section_ending(){
 
 backup_file(){
 	if [[ $# -ne 2 ]]; then
-		echo "Function backup_file() expects BACKUP_MODE and FILE path as parameter"
+		echo "Function backup_file() expects BACKUP_MODE and FILE in parameters"
 		exit 1
 	fi
 	BACKUP_MODE="${1}"
@@ -183,6 +183,20 @@ backup_file(){
 			echo "Unknown BACKUP_MODE: ${BACKUP_MODE}"
 			exit 1
 	esac
+	printf "Created backup of: ${FILE}\n"
+}
+
+backup_by_rename_if_exists_and_copy_replacement(){
+	if [[ $# -ne 2 ]]; then
+		echo "Function backup_by_rename_if_exists_and_copy_replacement() expects SOURCE and REPLACEMENT in parameters"
+		exit 1
+	fi
+	SOURCE="${1}"
+	REPLACEMENT="${2}"
+	if [[ -e "${SOURCE}" ]]; then
+		backup_file rename "${SOURCE}"
+	fi
+	cp -r "${REPLACEMENT}" "${SOURCE}"
 }
 
 convert_yymmdd_to_epoch(){
