@@ -13,13 +13,14 @@ exit_if_not_bash
 exit_if_has_root_privileges
 
 configure_fdpowermon(){
-	echo "Configuring fdpowermon ..."
-	if [[ -d "${HOME}/.config/fdpowermon" ]]; then
-		backup_file rename "${HOME}/.config/fdpowermon"
+	printf "Configuring fdpowermon ...\n"
+	
+	if [[ ! -d "${HOME}/.config/fdpowermon" ]]; then
+		mkdir -p "${HOME}/.config/fdpowermon"
 	fi
-	mkdir -p "${HOME}/.config/fdpowermon"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/fdpowermon/theme.cfg" "${HOME}/.config/fdpowermon"
-	echo
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/fdpowermon" "${RECIPE_FAMILY_DIR}/dotfiles/.config/fdpowermon/theme.cfg"
+	
+	printf "\n"
 }
 
 configure_fdpowermon 2>&1 | tee -a "${LOGFILE}"
