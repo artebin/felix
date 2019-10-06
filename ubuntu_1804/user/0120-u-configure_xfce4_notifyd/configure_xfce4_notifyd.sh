@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_root_privileges
 
 configure_xfce4_notifyd(){
-	echo "Configuring xfce4-notifyd ..."
+	printf "Configuring xfce4-notifyd ...\n"
 	
 	# 
 	# Xfce stores its config in ~/.config/xfce4/xfconf/xfce-perchannel-xml/
@@ -32,7 +32,8 @@ configure_xfce4_notifyd(){
 		mkdir -p "${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml"
 	fi
 	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/xfce4/xfconf/xfce-perchannel-xml/${CONFIG_FILE}" "${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml/${CONFIG_FILE}"
-	echo
+	
+	printf "\n"
 }
 
 configure_xfce4_notifyd 2>&1 | tee -a "${LOGFILE}"

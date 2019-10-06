@@ -13,12 +13,14 @@ exit_if_not_bash
 exit_if_has_root_privileges
 
 install_user_scripts(){
-	echo "Install user scripts ..."
+	printf "Install user scripts ...\n"
+	
 	if [[ -d "${HOME}/scripts" ]]; then
 		backup_file rename "${HOME}/scripts"
 	fi
 	cp -R "${RECIPE_DIR}/scripts" "${HOME}/scripts"
-	echo
+	
+	printf "\n"
 }
 
 install_user_scripts 2>&1 | tee -a "${LOGFILE}"

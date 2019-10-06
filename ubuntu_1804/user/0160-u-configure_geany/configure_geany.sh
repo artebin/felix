@@ -13,7 +13,8 @@ exit_if_not_bash
 exit_if_has_root_privileges
 
 configure_geany(){
-	echo "Configuring Geany ..."
+	printf "Configuring Geany ...\n"
+	
 	if [[ -d "${HOME}/.config/geany" ]]; then
 		backup_file rename "${HOME}/.config/geany"
 	fi
@@ -33,7 +34,7 @@ configure_geany(){
 	mkdir -p "${HOME}/.config/geany/plugins/markdown"
 	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/geany/plugins/markdown/github-markdown.html" "${HOME}/.config/geany/plugins/markdown"
 	
-	echo
+	printf "\n"
 }
 
 configure_geany 2>&1 | tee -a "${LOGFILE}"

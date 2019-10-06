@@ -13,7 +13,8 @@ exit_if_not_bash
 exit_if_has_root_privileges
 
 configure_vlc(){
-	echo "Configuring vlc ..."
+	printf "Configuring vlc ...\n"
+	
 	if [[ -d "${HOME}/.config/vlc" ]]; then
 		backup_file rename "${HOME}/.config/vlc"
 	fi
@@ -27,7 +28,8 @@ configure_vlc(){
 	fi
 	mkdir -p "${HOME}/.local/share/vlc"
 	cp "${RECIPE_FAMILY_DIR}/dotfiles/.local/share/vlc/ml.xspf" "${HOME}/.local/share/vlc"
-	echo
+	
+	printf "\n"
 }
 
 configure_vlc 2>&1 | tee -a "${LOGFILE}"

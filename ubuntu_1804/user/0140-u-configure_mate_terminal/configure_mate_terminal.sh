@@ -13,9 +13,11 @@ exit_if_not_bash
 exit_if_has_root_privileges
 
 configure_mate_terminal(){
-	echo "Configuring mate-terminal ..."
+	printf "Configuring mate-terminal ...\n"
+	
 	dconf load /org/mate/terminal/ <"${RECIPE_DIR}/org.mate.terminal.dump"
-	echo
+	
+	printf "\n"
 }
 
 configure_mate_terminal 2>&1 | tee -a "${LOGFILE}"

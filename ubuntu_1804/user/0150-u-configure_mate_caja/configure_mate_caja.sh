@@ -13,7 +13,8 @@ exit_if_not_bash
 exit_if_has_root_privileges
 
 configure_mate_caja(){
-	echo "Configuring mate-caja ..."
+	printf "Configuring mate-caja ...\n"
+	
 	dconf load /org/mate/caja/ <"${RECIPE_DIR}/org.mate.caja.dump"
 	dconf load /org/mate/desktop/ <"${RECIPE_DIR}/org.mate.desktop.dump"
 	echo
@@ -35,7 +36,8 @@ configure_mate_caja(){
 	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/caja/scripts/tail_and_follow" "${HOME}/.config/caja/scripts"
 	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/caja/scripts/tail_entirely_and_follow" "${HOME}/.config/caja/scripts"
 	cp -R "${RECIPE_FAMILY_DIR}/dotfiles/.config/caja/scripts/indentation" "${HOME}/.config/caja/scripts"
-	echo
+	
+	printf "\n"
 }
 
 configure_mate_caja 2>&1 | tee -a "${LOGFILE}"
