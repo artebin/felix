@@ -13,13 +13,15 @@ exit_if_not_bash
 exit_if_has_root_privileges
 
 configure_rofi(){
-	echo "Configure rofi ..."
-	if [[ -d "${HOME}/.config/rofi" ]]; then
-		backup_file rename "${HOME}/.config/rofi"
+	printf "Configure rofi ...\n"
+	
+	if [[ ! -d "${HOME}/.config/rofi" ]]; then
+		mkdir -p "${HOME}/.config/rofi"
 	fi
-	mkdir -p "${HOME}/.config/rofi"
-	cp -r "${RECIPE_FAMILY_DIR}/dotfiles/.config/rofi" "${HOME}/.config"
-	echo
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/rofi/config.rasi" "${RECIPE_FAMILY_DIR}/dotfiles/.config/rofi/config.rasi"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/rofi/arc-felix.rasi" "${RECIPE_FAMILY_DIR}/dotfiles/.config/rofi/arc-felix.rasi"
+	
+	printf "\n"
 }
 
 configure_rofi 2>&1 | tee -a "${LOGFILE}"

@@ -13,13 +13,14 @@ exit_if_not_bash
 exit_if_has_root_privileges
 
 configure_sxhkd(){
-	echo "Configuring sxhkd ..."
-	if [[ -d "${HOME}/.config/sxhkd" ]]; then
-		backup_file rename "${HOME}/.config/sxhkd"
+	printf "Configuring sxhkd ...\n"
+	
+	if [[ ! -d "${HOME}/.config/sxhkd" ]]; then
+		mkdir -p "${HOME}/.config/sxhkd"
 	fi
-	mkdir -p "${HOME}/.config/sxhkd"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/sxhkd/sxhkdrc" "${HOME}/.config/sxhkd"
-	echo
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/sxhkd/sxhkdrc" "${RECIPE_FAMILY_DIR}/dotfiles/.config/sxhkd/sxhkdrc"
+	
+	printf "\n"
 }
 
 configure_sxhkd 2>&1 | tee -a "${LOGFILE}"
