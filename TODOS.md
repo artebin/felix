@@ -1,5 +1,6 @@
 # TODOS
-- [ ] git preferences are not applied.
+- [ ] move geany_one_instance_per_workspace to /usr/local/bin
+- [ ] Rework openbox menu.
 - [ ] Make avahi workstation published.
 - [ ] Add avahi-discover in openbox menu.
 - [ ] Brogexer.
@@ -71,6 +72,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] git preferences are not applied.
 - [x] Remove Thunderbird from openbox menu.xml.
 - [x] Add randr pipemenu <https://github.com/whiteinge/ob-randr>.
 - [x] recipe for configuring firefox seems to don't work anymore.
