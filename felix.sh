@@ -220,3 +220,19 @@ check_ubuntu_version(){
 	fi
 	echo "Check Ubuntu version: ${SUPPORTED_UBUNTU_VERSION} => OK"
 }
+
+init_recipe(){
+	declare -g RECIPE_FAMILY_DIR=$(retrieve_recipe_family_dir "${RECIPE_DIR}")
+	declare -g RECIPE_FAMILY_CONF_FILE=$(retrieve_recipe_family_conf_file "${RECIPE_DIR}")
+	if [[ ! -f "${RECIPE_FAMILY_CONF_FILE}" ]]; then
+		printf "Cannot find RECIPE_FAMILY_CONF_FILE: ${RECIPE_FAMILY_CONF_FILE}\n"
+		exit 1
+	fi
+	source "${RECIPE_FAMILY_CONF_FILE}"
+	declare -g LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
+	printf "FELIX_ROOT=${FELIX_ROOT}\n"
+	printf "RECIPE_FAMILY_DIR=${RECIPE_FAMILY_DIR}\n"
+	printf "RECIPE_FAMILY_CONF_FILE=${RECIPE_FAMILY_CONF_FILE}\n"
+	printf "RECIPE_DIR=${RECIPE_DIR}\n"
+	printf "LOGFILE=${LOGFILE}\n"
+}
