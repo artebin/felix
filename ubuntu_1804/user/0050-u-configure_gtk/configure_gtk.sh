@@ -13,41 +13,44 @@ exit_if_not_bash
 exit_if_has_root_privileges
 
 configure_gtk2(){
-	echo "Configuring GTK+ 2 ..."
-	if [[ -f "${HOME}/.gtkrc-2.0" ]]; then
-		backup_file rename "${HOME}/.gtkrc-2.0"
-	fi
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.gtkrc-2.0" "${HOME}/.gtkrc-2.0"
+	printf "Configuring GTK+ 2 ...\n"
 	
-	echo "Setting gtk-theme-name: ${GTK_THEME_NAME} ..."
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.gtkrc-2.0" "${RECIPE_FAMILY_DIR}/dotfiles/.gtkrc-2.0"
+	
+	printf "Setting gtk-theme-name: ${GTK_THEME_NAME} ...\n"
 	sed -i "/^gtk-theme-name/s/.*/gtk-theme-name=\"${GTK_THEME_NAME}\"/" "${HOME}/.gtkrc-2.0"
 	
-	echo "Setting gtk-icon-theme-name: ${GTK_ICON_THEME_NAME} ..."
+	printf "Setting gtk-icon-theme-name: ${GTK_ICON_THEME_NAME} ...\n"
 	sed -i "/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"${GTK_ICON_THEME_NAME}\"/" "${HOME}/.gtkrc-2.0"
+	
+	printf "\n"
 }
 
 configure_gtk3(){
-	echo "Configuring GTK+ 3 ..."
-	if [[ -d "${HOME}/.config/gtk-3.0" ]]; then
-		backup_file rename "${HOME}/.config/gtk-3.0"
-	fi
-	mkdir -p "${HOME}/.config/gtk-3.0"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/gtk-3.0/settings.ini" "${HOME}/.config/gtk-3.0/settings.ini"
+	printf "Configuring GTK+ 3 ...\n"
 	
-	echo "Setting gtk-theme-name ..."
+	if [[ ! -d "${HOME}/.config/gtk-3.0" ]]; then
+		mkdir -p "${HOME}/.config/gtk-3.0"
+	fi
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/gtk-3.0/settings.ini" "${RECIPE_FAMILY_DIR}/dotfiles/.config/gtk-3.0/settings.ini"
+	
+	printf "Setting gtk-theme-name ...\n"
 	sed -i "/^gtk-theme-name/s/.*/gtk-theme-name=${GTK_THEME_NAME}/" "${HOME}/.config/gtk-3.0/settings.ini"
 	
-	echo "Setting gtk-icon-theme-name ..."
+	printf "Setting gtk-icon-theme-name ...\n"
 	sed -i "/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=${GTK_ICON_THEME_NAME}/" "${HOME}/.config/gtk-3.0/settings.ini"
 	
-	echo "Adding gtk.css ..."
+	printf "Adding gtk.css ...\n"
 	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/gtk-3.0/gtk.css" "${HOME}/.config/gtk-3.0/gtk.css"
 	
-	echo "Fix the sharing of bookmarks between GTK2 and GTK3 ..."
+	printf "Fix the sharing of bookmarks between GTK2 and GTK3 ...\n"
 	touch "${HOME}/.gtk-bookmarks"
+	if [[ -e "${HOME}/.config/gtk-3.0/bookmarks" ]]; then
+		rm -f "${HOME}/.config/gtk-3.0/bookmarks"
+	fi
 	ln -s "${HOME}/.gtk-bookmarks" "${HOME}/.config/gtk-3.0/bookmarks"
 	
-	echo
+	printf "\n"
 }
 
 configure_gtk2 2>&1 | tee -a "${LOGFILE}"
