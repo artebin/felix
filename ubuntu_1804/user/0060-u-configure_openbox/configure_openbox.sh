@@ -13,16 +13,18 @@ exit_if_not_bash
 exit_if_has_root_privileges
 
 configure_openbox(){
-	echo "Configuring openbox ..."
-	if [[ -d "${HOME}/.config/openbox" ]]; then
-		backup_file rename "${HOME}/.config/openbox"
+	printf "Configuring openbox ...\n"
+	
+	if [[ ! -d "${HOME}/.config/openbox" ]]; then
+		mkdir -p "${HOME}/.config/openbox"
 	fi
-	mkdir -p "${HOME}/.config/openbox"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/openbox/autostart" "${HOME}/.config/openbox"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/openbox/rc.xml" "${HOME}/.config/openbox"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/openbox/menu.xml" "${HOME}/.config/openbox"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/openbox/ob-randr.py" "${HOME}/.config/openbox"
-	echo
+	
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/openbox/autostart" "${RECIPE_FAMILY_DIR}/dotfiles/.config/openbox/autostart"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/openbox/rc.xml" "${RECIPE_FAMILY_DIR}/dotfiles/.config/openbox/rc.xml"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/openbox/menu.xml" "${RECIPE_FAMILY_DIR}/dotfiles/.config/openbox/menu.xml"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/openbox/ob-randr.py" "${RECIPE_FAMILY_DIR}/dotfiles/.config/openbox/ob-randr.py"
+	
+	printf "\n"
 }
 
 configure_openbox 2>&1 | tee -a "${LOGFILE}"
