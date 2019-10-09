@@ -36,6 +36,7 @@ configure_mate_caja(){
 	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/caja/scripts/tail_and_follow" "${HOME}/.config/caja/scripts"
 	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/caja/scripts/tail_entirely_and_follow" "${HOME}/.config/caja/scripts"
 	cp -R "${RECIPE_FAMILY_DIR}/dotfiles/.config/caja/scripts/indentation" "${HOME}/.config/caja/scripts"
+	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/caja/scripts/unpack_in_terminal" "${HOME}/.config/caja/scripts"
 	
 	printf "\n"
 }

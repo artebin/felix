@@ -4,15 +4,13 @@
 - [ ] Make avahi workstation published.
 - [ ] Add avahi-discover in openbox menu.
 - [ ] Brogexer.
-- [ ] Open GoogleDrive should pop up a new Forefox window.
 - [ ] Recipe for dictionary and spelling (for example: US, FR). For Geany, we need hunspell.
 - [ ] Caja script compare should support one file compare with meld => revisioned file.
 - [ ] TLP and CpuFreq for lower average temperature? Thermald for logging? pcp?
 - [ ] Numeric keyboard disabled after wake from hibernation.
 - [ ] Change the format of file "Owner" in Caja? We don't want to se extended login "login - Name" but just "login".
 - [ ] Title for terminal for htop started from the menu or from <WIN>h should be "htop".
-- [ ] Add a Caja script for unpacking archive with dtrx (because unpacking big archives with the Caja/Engrampa plugin makes Caja lagging a lot).
-- [ ] Action for naming a desktop with the name of an application + revert to default.
+- [ ] Action for naming the current desktop with the name of an application + revert to default.
 - [ ] pipemenu in openbox for .desktop files in ad-hoc location, something like ~/.config/openbox/menu-apps/
 - [ ] Add kdesvn in tools.
 - [ ] Add bash function in .bashrc for downloading a list of URLs from file.
@@ -72,6 +70,8 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Add a Caja script for unpacking archive with unp (because unpacking big archives with the Caja/Engrampa plugin makes Caja lagging a lot).
+- [x] Open GoogleDrive should pop up a new Forefox window.
 - [x] git preferences are not applied.
 - [x] Remove Thunderbird from openbox menu.xml.
 - [x] Add randr pipemenu <https://github.com/whiteinge/ob-randr>.
