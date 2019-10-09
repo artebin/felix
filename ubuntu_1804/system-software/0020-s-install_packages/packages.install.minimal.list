@@ -78,6 +78,11 @@ transmission-gtk
 #######
 remmina
 
+########
+# Mail
+########
+offlineimap maildir-utils
+
 ###################
 # Package manager
 ###################
