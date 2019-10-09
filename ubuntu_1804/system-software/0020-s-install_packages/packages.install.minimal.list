@@ -168,8 +168,8 @@ regexxer
 # PDF viewer & PDF manipulation tools
 #######################################
 atril
-#pdftk #N/A in Ubuntu 18.04
 wkhtmltopdf
+poppler-utils
 
 ############
 # Printing
