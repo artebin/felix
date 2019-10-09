@@ -17,7 +17,6 @@ if [[ ! -f "${INPUT_FILE}" ]]; then
 	exit 1
 fi
 
-
 COMMAND=$(printf "cd '%s';unp '%s';printf '\n\n';read -p 'Press enter to exit.'" "${INPUT_DIRNAME}" "${INPUT_FILENAME}")
 x-terminal-emulator -e "bash -c \"${COMMAND}\""
 RETURN_CODE=$?
