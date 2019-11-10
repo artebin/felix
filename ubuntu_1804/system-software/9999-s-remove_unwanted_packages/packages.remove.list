@@ -23,3 +23,5 @@ ubuntu-release-upgrader-core ubuntu-release-upgrader-gtk
 # Remove Ubuntu Error Reporter (it sends to Canonical the crash reports created by Apport)
 # NJ:18-12-09: must not be removed in Xubuntu because xorg and xserver-xorg depend on it
 #whoopsie libwhoopsie0
+
+popularity-contest
