@@ -1,4 +1,7 @@
 # TODOS
+- [ ] Add a doc for managing security updates: server => email with apticron, or automatic install (with unattended-update https://www.cyberciti.biz/faq/how-to-keep-debian-linux-patched-with-latest-security-updates-automatically/), desktop => icon in the window manager and SSH motd (this is done in motd configuration already).
+- [ ] Recipe for configuring apticron (setting the email).
+- [ ] Should activate apt.daily.
 - [ ] Create an openbox pipe menu for enabling/disabling the bluetooth.
 - [ ] Use autorandr to change lightdm resolution.
 - [ ] Woud be useful to have a short program putting a icon in the tray and click-left="show a dialog" and click-right="Contextual menu with one item: Exit". Would be also useful if a notification could be shown when then icon appears. Could be also the dialog to be showed automatically.
