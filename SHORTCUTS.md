@@ -113,6 +113,12 @@
 | <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>v</kbd>                           | Paste from clipboard |
 | <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>Insert</kbd>                      | Paste from clipboard |
 
+## Rofi
+
+| Shortcut | Action |
+| --- | --- |
+| <kbd>Ctrl</kbd><kbd>Tab</kbd>                                         | Loop over Rofi mode |
+
 ## Caja
 
 | Shortcut | Action |
