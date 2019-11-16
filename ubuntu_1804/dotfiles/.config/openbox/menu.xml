@@ -68,10 +68,15 @@
 		<separator/>
 		<menu id="settings" label="Settings">
 			<menu id="DisplaySettings" label="Display">
-				<menu id="randr-menu" label="randr" execute="python ~/.config/openbox/ob-randr.py" />
-				<item label="Screen Layout (arandr)"><action name="Execute"><command>arandr</command></action></item>
+				<menu id="randr-menu" label="Screen Layout" execute="python ~/.config/openbox/ob-randr.py" />
+				<item label="Screen Layout Editor"><action name="Execute"><command>arandr</command></action></item>
 				<item id="DPMS" label="DPMS"><action name="Execute"><command>gtkxset</command></action></item>
 			</menu>
+			<item id="MouseSettings" label="Mouse"><action name="Execute"><command>xfce4-mouse-settings</command></action></item>
+			<item id="KeyboardSettings" label="Keyboard"><action name="Execute"><command>xfce4-keyboard-settings</command></action></item>
+			<separator/>
+			<item label="User Interface Settings"><action name="Execute"><command>lxappearance</command></action></item>
+			<separator/>
 			<menu id="OpenboxConfig" label="Openbox">
 				<item label="GUI Config Tool"><action name="Execute"><command>obconf</command></action></item>
 				<separator/>
@@ -87,21 +92,15 @@
 				<separator/>
 				<item label="Restart tint2"><action name="Execute"><command>bash ~/scripts/tint2_restart.sh</command></action></item>
 			</menu>
-			<item label="User Interface Settings"><action name="Execute"><command>lxappearance</command></action></item>
-			<separator/>
-			<item label="Mouse Settings"><action name="Execute"><command>xfce4-mouse-settings</command></action></item>
-			<item label="Keyboard Settings"><action name="Execute"><command>xfce4-keyboard-settings</command></action></item>
-			<separator/>
-			<item label="Update Alternatives"><action name="Execute"><command>x-terminal-emulator -e "sudo update-alternatives --all"</command></action></item>
-			<item label="Update Alternatives GUI"><action name="Execute"><command>galternatives</command></action></item>
-			<item label="MIME Settings"><action name="Execute"><command>xfce4-mime-settings</command></action></item>
 		</menu>
 		<menu id="system" label="System">
 			<item label="Software &amp; Updates"><action name="Execute"><command>software-properties-gtk</command></action></item>
 			<item label="Synaptic Package Manager"><action name="Execute"><command>pkexec synaptic</command></action></item>
 			<item label="User Login Settings"><action name="Execute"><command>pkexec lightdm-gtk-greeter-settings</command></action></item>
-			<menu id="SystemTools" label="Tools">
-				<item label="GParted"><action name="Execute"><command>pkexec gparted</command></action></item>
+			<menu id="DefaultApplications" label="Default Applications">
+				<item label="Update Alternatives"><action name="Execute"><command>x-terminal-emulator -e "sudo update-alternatives --all"</command></action></item>
+				<item label="Update Alternatives GUI"><action name="Execute"><command>galternatives</command></action></item>
+				<item label="MIME Settings"><action name="Execute"><command>xfce4-mime-settings</command></action></item>
 			</menu>
 		</menu>
 		<separator/>
