@@ -22,9 +22,11 @@ This is wanted on a server, the admin wants to be notified of the avaibility of 
 
 - Re-configure `unattended-upgrades` with `sudo dpkg-reconfigure unattended-upgrades`
 - Disactivate and stop apt-daily-upgrade:
-```systemctl stop apt-daily-upgrade.timer
+```
+systemctl stop apt-daily-upgrade.timer
 systemctl disable apt-daily-upgrade.timer
-systemctl disable apt-daily-upgrade.service```
+systemctl disable apt-daily-upgrade.service
+```
 
 ## Send email to admin when updates are available
 Install `apticron` which requires `apt-daily.service` to be activated and started.
