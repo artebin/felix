@@ -67,6 +67,11 @@
 		<item label="Printers"><action name="Execute"><command>system-config-printer</command></action></item>
 		<separator/>
 		<menu id="settings" label="Settings">
+			<menu id="DisplaySettings" label="Display">
+				<menu id="randr-menu" label="randr" execute="python ~/.config/openbox/ob-randr.py" />
+				<item label="Screen Layout (arandr)"><action name="Execute"><command>arandr</command></action></item>
+				<item id="DPMS" label="DPMS"><action name="Execute"><command>gtkxset</command></action></item>
+			</menu>
 			<menu id="OpenboxConfig" label="Openbox">
 				<item label="GUI Config Tool"><action name="Execute"><command>obconf</command></action></item>
 				<separator/>
@@ -84,8 +89,6 @@
 			</menu>
 			<item label="User Interface Settings"><action name="Execute"><command>lxappearance</command></action></item>
 			<separator/>
-			<menu id="randr-menu" label="randr" execute="python ~/.config/openbox/ob-randr.py" />
-			<item label="Screen Layout (arandr)"><action name="Execute"><command>arandr</command></action></item>
 			<item label="Mouse Settings"><action name="Execute"><command>xfce4-mouse-settings</command></action></item>
 			<item label="Keyboard Settings"><action name="Execute"><command>xfce4-keyboard-settings</command></action></item>
 			<separator/>
