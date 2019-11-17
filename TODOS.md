@@ -7,7 +7,6 @@
 - [ ] Use autorandr to change lightdm resolution.
 - [ ] Woud be useful to have a short program putting a icon in the tray and click-left="show a dialog" and click-right="Contextual menu with one item: Exit". Would be also useful if a notification could be shown when then icon appears. Could be also the dialog to be showed automatically.
 - [ ] move geany_one_instance_per_workspace to /usr/local/bin
-- [ ] Rework openbox menu.
 - [ ] Make avahi workstation published.
 - [ ] Add avahi-discover in openbox menu.
 - [ ] Brogexer.
@@ -33,7 +32,6 @@
 - [ ] List parameters useful to the user regarding dpms, lightlocker, suspend-then-hibernate.
 - [ ] Special menu in rofi for the XF86 symbols.
 - [ ] Window frame icon for being on top of other windows.
-- [ ] Still have a problem with clipmenu, copy/paste not working correctly with file manager.
 - [ ] Is it possible to make work the TRRS on Linux?
 - [ ] Add a caja script for playing a folder in Media player => would be better to add mimetype inode/directory to VLC.
 - [ ] Install dlna support.
@@ -77,6 +75,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Rework openbox menu.
 - [x] Add recipe for gtkxset and add openbox menuitem for it.
 - [x] Add a Caja script for unpacking archive with unp (because unpacking big archives with the Caja/Engrampa plugin makes Caja lagging a lot).
 - [x] Open GoogleDrive should pop up a new Forefox window.
