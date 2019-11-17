@@ -158,6 +158,7 @@ execp_background_id = 3
 execp_tooltip = 
 execp_padding = 8 4
 execp_interval = 0
+execp_lclick_command = bash ~/.config/tint2/toggle_avahi_discover.sh
 
 # Executor 2
 #execp = new 
