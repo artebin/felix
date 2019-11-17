@@ -18,7 +18,9 @@ configure_tint2(){
 	if [[ ! -d "${HOME}/.config/tint2" ]]; then
 		mkdir -p "${HOME}/.config/tint2"
 	fi
+	
 	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/tint2/tint2rc" "${RECIPE_FAMILY_DIR}/dotfiles/.config/tint2/tint2rc"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/tint2/toggle_avahi_discover.sh" "${RECIPE_FAMILY_DIR}/dotfiles/.config/tint2/toggle_avahi_discover.sh"
 	
 	printf "\n"
 }
