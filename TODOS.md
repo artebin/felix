@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Add a note for encrypted USB key.
 - [ ] Filter the resolution below 500px width in openbox pipemenu randr
 - [ ] Add a doc for managing security updates: server => email with apticron, or automatic install (with unattended-update https://www.cyberciti.biz/faq/how-to-keep-debian-linux-patched-with-latest-security-updates-automatically/), desktop => icon in the window manager and SSH motd (this is done in motd configuration already).
 - [ ] Recipe for configuring apticron (setting the email).
@@ -25,7 +26,6 @@
 - [ ] Better documentation in openbox rc.xml (with "Window Actions" section) see <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
 - [ ] Openbox application shotcuts "restart openbox" and "quit openbox".
 - [ ] change pidgin icon for using the stock icon.
-- [ ] Add a openbox menuitem for light-locker-settings.
 - [ ] It should be a choice to use mtrack or libinput.
 - [ ] Configuration libinput <https://unix.stackexchange.com/questions/337008/activate-tap-to-click-on-touchpad> it replaces synaptics.
 - [ ] mtrack configuration should check if there is already a \d+_mtrack.conf file in /usr/share/X11/xorg.conf.d/
@@ -75,6 +75,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Add a openbox menuitem for light-locker-settings.
 - [x] Rework openbox menu.
 - [x] Add recipe for gtkxset and add openbox menuitem for it.
 - [x] Add a Caja script for unpacking archive with unp (because unpacking big archives with the Caja/Engrampa plugin makes Caja lagging a lot).
