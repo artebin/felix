@@ -223,7 +223,7 @@ audacity
 # Chat and webcam
 ###################
 hexchat
-pidgin pidgin-extprefs pidgin-plugin-pack pidgin-sipe pidgin-skype pidgin-themes
+@--no-install-recommends@ empathy telepathy-haze pidgin-sipe
 guvcview
 
 ################
