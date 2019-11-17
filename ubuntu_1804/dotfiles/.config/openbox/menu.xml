@@ -36,19 +36,21 @@
 			<item label="Xfburn"><action name="Execute"><command>xfburn</command></action></item>
 		</menu>
 		<menu id="network" label="Network">
-			<item label="Bluetooth (blueman-applet)"><action name="Execute"><command>bash -c "pkexec modprobe btusb;blueman-applet"</command></action></item>
 			<menu id="wwwbrowsers" label="WWW Browsers">
 				<item label="Firefox"><action name="Execute"><execute>firefox</execute></action></item>
 				<item label="Chromium"><action name="Execute"><execute>chromium-browser</execute></action></item>
 				<item label="Google Chrome"><action name="Execute"><execute>google-chrome</execute></action></item>
 			</menu>
-			<item label="Empathy"><action name="Execute"><command>empathy</command></action></item>
-			<item label="Skype"><action name="Execute"><command>skypeforlinux</command></action></item>
-			<item label="IRC Client (hexchat)"><action name="Execute"><command>hexchat</command></action></item>
-			<item label="Remote Filesystems (gigolo)"><action name="Execute"><command>gigolo</command></action></item>
 			<item label="Mail Client (claws-mail)"><action name="Execute"><execute>claws-mail</execute></action></item>
+			<menu id="Messaging" label="Messaging">
+				<item label="Empathy"><action name="Execute"><command>empathy</command></action></item>
+				<item label="Skype"><action name="Execute"><command>skypeforlinux</command></action></item>
+				<item label="IRC Client (hexchat)"><action name="Execute"><command>hexchat</command></action></item>
+			</menu>
+			<item label="Remote Filesystems (gigolo)"><action name="Execute"><command>gigolo</command></action></item>
 			<item label="FTP Client (bareftp)"><action name="Execute"><command>bareftp</command></action></item>
 			<item label="BitTorrent Client (transmission)"><action name="Execute"><command>transmission-gtk</command></action></item>
+			<item label="Bluetooth (blueman-applet)"><action name="Execute"><command>bash -c "pkexec modprobe btusb;blueman-applet"</command></action></item>
 			<item label="VNC Client (remmina)"><action name="Execute"><command>remmina</command></action></item>
 		</menu>
 		<menu id="office" label="Office">
