@@ -290,7 +290,7 @@ generate_apt_package_list_file(){
 					INFO_INSTALLATION_STATUS=$'\e[39mNOT INSTALLED\e[0m'
 				fi
 			else
-				printf "{PACKAGE_NAME}\n" >>"${PACKAGE_MISSING_LIST_FILE}"
+				printf "${PACKAGE_NAME}\n" >>"${PACKAGE_MISSING_LIST_FILE}"
 				INFO_AVAILABLE=$'\e[91mMISSING\e[0m'
 				INFO_INSTALLATION_STATUS=$'\e[39mNOT INSTALLED\e[0m'
 			fi
