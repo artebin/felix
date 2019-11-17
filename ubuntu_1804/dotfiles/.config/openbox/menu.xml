@@ -89,9 +89,9 @@
 				<item label="Restart"><action name="Restart"/></item>
 			</menu>
 			<menu id="Tint2Config" label="tint2">
-				<item label="Edit config file"><action name="Execute"><command>geany_one_instance_per_workspace ~/.config/tint2/tint2rc</command></action></item>
+				<item label="Edit tint2rc"><action name="Execute"><command>geany_one_instance_per_workspace ~/.config/tint2/tint2rc</command></action></item>
 				<separator/>
-				<item label="Restart tint2"><action name="Execute"><command>bash ~/scripts/tint2_restart.sh</command></action></item>
+				<item label="Restart"><action name="Execute"><command>bash ~/scripts/tint2_restart.sh</command></action></item>
 			</menu>
 		</menu>
 		<menu id="system" label="System">
