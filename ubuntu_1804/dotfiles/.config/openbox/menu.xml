@@ -54,7 +54,7 @@
 			<item label="VNC Client (remmina)"><action name="Execute"><command>remmina</command></action></item>
 		</menu>
 		<menu id="office" label="Office">
-			<menu id="libreoffice" label="LibreOffice">
+			<menu id="libreoffice" label="Libre Office">
 				<item label="Writer"><action name="Execute"><command>/usr/lib/libreoffice/program/swriter</command></action></item>
 				<item label="Calc"><action name="Execute"><command>/usr/lib/libreoffice/program/scalc</command></action></item>
 				<item label="Impress"><action name="Execute"><command>/usr/lib/libreoffice/program/simpress</command></action></item>
