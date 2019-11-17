@@ -18,7 +18,6 @@
 - [ ] pipemenu in openbox for .desktop files in ad-hoc location, something like ~/.config/openbox/menu-apps/
 - [ ] Add kdesvn in tools.
 - [ ] Add bash function in .bashrc for downloading a list of URLs from file.
-- [ ] Update openbox menu.xml for pidgin.
 - [ ] Rofi menu for session actions <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
 - [ ] Better documentation in openbox rc.xml (with "Window Actions" section) see <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
 - [ ] Openbox application shotcuts "restart openbox" and "quit openbox".
@@ -71,6 +70,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Update openbox menu.xml for pidgin.
 - [x] move geany_one_instance_per_workspace to /usr/local/bin
 - [x] Title for terminal for htop started from the menu or from <WIN>h should be "htop".
 - [x] Add avahi-discover in openbox menu.
