@@ -1,4 +1,5 @@
 # TODOS
+- [ ] How to get the list of recommended packages for a package to install?
 - [ ] Add a note for encrypted USB key.
 - [ ] Add a doc for managing security updates: server => email with apticron, or automatic install (with unattended-update https://www.cyberciti.biz/faq/how-to-keep-debian-linux-patched-with-latest-security-updates-automatically/), desktop => icon in the window manager and SSH motd (this is done in motd configuration already).
 - [ ] Recipe for configuring apticron (setting the email).
@@ -32,7 +33,7 @@
 - [ ] Special menu in rofi for the XF86 symbols.
 - [ ] Window frame icon for being on top of other windows.
 - [ ] Is it possible to make work the TRRS on Linux?
-- [ ] Add a caja script for playing a folder in Media player => would be better to add mimetype inode/directory to VLC.
+- [ ] Add a caja script for playing a folder in Media player "play all media in VLC"
 - [ ] Install dlna support.
 - [ ] Check command to start by fdpowermon when reaching critical level of battery power.
 - [ ] Brillo and Display|Keyboard backlight in console (keysym ?).
