@@ -248,63 +248,93 @@ retrieve_package_short_description(){
 	printf "${PACKAGE_DESCRIPTION}"
 }
 
-generate_apt_package_list_file(){
+generate_apt_package_list_files(){
 	if [[ ! $# -ne 2 ]]; then
-		printf "Function generate_apt_package_list_file() expects PACKAGE_LIST_FILE, APT_PACKAGE_LIST_FILE and PACKAGE_MISSING_LIST_FILE as parameter\n" 1>&2
+		printf "Function generate_apt_package_list_files() expects PACKAGE_LIST_FILE, APT_PACKAGE_LIST_FILE_NAME_PREFIX and MISSING_PACKAGE_LIST_FILE in parameters\n" 1>&2
 		exit 1
 	fi
 	PACKAGE_LIST_FILE="${1}"
 	APT_PACKAGE_LIST_FILE="${2}"
-	PACKAGE_MISSING_LIST_FILE="${3}"
+	MISSING_PACKAGE_LIST_FILE="${3}"
 	if [[ ! -f "${PACKAGE_LIST_FILE}" ]]; then
 		printf "Cannot find PACKAGE_LIST_FILE: ${PACKAGE_LIST_FILE}\n" 1>&2
 		exit 1
 	fi
-	if [[ -f "${APT_PACKAGE_LIST_FILE}" ]]; then
-		printf "File already exists: ${APT_PACKAGE_LIST_FILE}\n" 1>&2
-		exit 1
-	fi
-	if [[ -f "${PACKAGE_MISSING_LIST_FILE}" ]]; then
-		printf "File already exists: ${PACKAGE_MISSING_LIST_FILE}\n" 1>&2
-		exit 1
-	fi
+	
+	# Collect the packages per APT options
+	# If APT_OPTIONS is specified in PACKAGES_LINE then we creates a package list file especially for PACKAGES_LINE
+	declare -A APT_OPTIONS_AND_PACKAGE_LIST_ARRAY
+	KEY_APT_OPTIONS="0_NO_APT_APTIONS" # The prefix "0_" will ensure this package list file to be written first
+	MISSING_PACKAGE_LIST=""
 	while read LINE; do
+		# Remove extra spaces
+		LINE=$(echo "${LINE}"|awk '{$1=$1};1')
+		
 		# A line can contain a comment starting with the character hash '#'
-		PACKAGES_LINE="${LINE%%#*}"
-		PACKAGES_LINE=$(echo "${PACKAGES_LINE}"|awk '{$1=$1};1')
-		if [[ -z "${PACKAGES_LINE}" ]]; then
+		LINE="${LINE%%#*}"
+		
+		# A line can contain APT options
+		APT_OPTIONS="${KEY_APT_OPTIONS}"
+		if [[ "${LINE}" == @* ]]; then
+			APT_OPTIONS="${LINE%@*}"
+			APT_OPTIONS="${APT_OPTIONS:1}"
+			LINE="${LINE##*@}"
+		fi
+		
+		# Skip empty lines
+		if [[ -z "${LINE}" ]]; then
 			continue
 		fi
+		
+		PACKAGES_LINE="${LINE}"
+		
 		for PACKAGE_NAME in ${PACKAGES_LINE}; do
+			IS_PACKAGE_AVAILABLE=$(is_package_available "${PACKAGE_NAME}";echo $?)
+			
+			# Fill APT_OPTIONS_AND_PACKAGE_LIST_ARRAY or MISSING_PACKAGE_LIST
+			if [[ ${IS_PACKAGE_AVAILABLE} -eq 0 ]]; then
+				APT_OPTIONS_AND_PACKAGE_LIST_ARRAY[${APT_OPTIONS}]+="${PACKAGE_NAME} "
+			else
+				MISSING_PACKAGE_LIST+="${PACKAGE_NAME} "
+			fi
+			
+			# Print a report in the console for PACKAGE_NAME
 			INFO_AVAILABLE=$'\e[39m\e[0m'
 			INFO_INSTALLATION_STATUS=$'\e[39m\e[0m'
-			INFO_PACKAGE_NAME="${PACKAGE_NAME}"
 			INFO_PACKAGE_DESCRIPTION=""
-			if is_package_available "${PACKAGE_NAME}"; then
-				printf "${PACKAGE_NAME}\n" >>"${APT_PACKAGE_LIST_FILE}"
+			if [[ ${IS_PACKAGE_AVAILABLE} -eq 0 ]]; then
 				INFO_AVAILABLE=$'\e[92mAVAILABLE\e[0m'
-				INFO_PACKAGE_DESCRIPTION=$(retrieve_package_short_description "${PACKAGE_NAME}")
-				if is_package_installed "${PACKAGE_NAME}"; then
+				IS_PACKAGE_INSTALLED=$(is_package_installed "${PACKAGE_NAME}";echo $?)
+				if [[ ${IS_PACKAGE_INSTALLED} -eq 0 ]]; then
 					INFO_INSTALLATION_STATUS=$'\e[92mINSTALLED\e[0m'
 				else
 					INFO_INSTALLATION_STATUS=$'\e[39mNOT INSTALLED\e[0m'
 				fi
+				INFO_PACKAGE_DESCRIPTION=$(retrieve_package_short_description "${PACKAGE_NAME}")
 			else
-				printf "${PACKAGE_NAME}\n" >>"${PACKAGE_MISSING_LIST_FILE}"
 				INFO_AVAILABLE=$'\e[91mMISSING\e[0m'
 				INFO_INSTALLATION_STATUS=$'\e[39mNOT INSTALLED\e[0m'
 			fi
 			if [[ ! -z "${INFO_PACKAGE_DESCRIPTION}" ]]; then
 				INFO_PACKAGE_DESCRIPTION=": ${INFO_PACKAGE_DESCRIPTION}"
 			fi
-			printf "[%-25s] [%-25s] %s%s\n" "${INFO_AVAILABLE}" "${INFO_INSTALLATION_STATUS}" "${INFO_PACKAGE_NAME}" "${INFO_PACKAGE_DESCRIPTION}"
+			printf "[%-25s] [%-25s] %s%s\n" "${INFO_AVAILABLE}" "${INFO_INSTALLATION_STATUS}" "${PACKAGE_NAME}" "${INFO_PACKAGE_DESCRIPTION}"
 		done
 	done <"${PACKAGE_LIST_FILE}"
-	if [[ -s "${PACKAGE_MISSING_LIST_FILE}" ]]; then
-		return 0
-	else
-		return 1
-	fi
+	
+	# Write the package list files
+	rm -f "./${APT_PACKAGE_LIST_FILE_NAME_PREFIX}*"
+	APT_PACKAGE_LIST_INDEX=0
+	for APT_OPTIONS in "${!APT_OPTIONS_AND_PACKAGE_LIST_ARRAY[@]}"; do
+		APT_PACKAGE_LIST_FILE="${APT_PACKAGE_LIST_FILE_NAME_PREFIX}_${APT_PACKAGE_LIST_INDEX}"
+		if [[ "${APT_OPTIONS}" != "${KEY_APT_OPTIONS}" ]]; then
+			printf "%s\n" "${APT_OPTIONS}" >"${APT_PACKAGE_LIST_FILE}"
+		fi
+		for PACKAGE_NAME in ${APT_OPTIONS_AND_PACKAGE_LIST_ARRAY[${APT_OPTIONS}]}; do
+			printf "%s\n" "${PACKAGE_NAME}" >>"${APT_PACKAGE_LIST_FILE}"
+		done
+		((++APT_PACKAGE_LIST_INDEX))
+	done
 }
 
 is_package_installed(){

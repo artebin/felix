@@ -25,29 +25,26 @@ process_package_install_list(){
 	# Synchronized package index files from sources
 	apt-get update
 	
-	# Generate APT_PACKAGE_LIST_FILE from PACKAGE_LIST_FILE
-	# It will also fill PACKAGE_MISSING_LIST_FILE
+	# Generate APT_PACKAGE_LIST_FILES from PACKAGE_LIST_FILE
+	# It will also fill MISSING_PACKAGE_LIST_FILE
 	PACKAGE_LIST_FILE="${RECIPE_DIR}/packages.install.minimal.list"
-	APT_PACKAGE_LIST_FILE="${RECIPE_DIR}/apt.list"
-	if [[ -f "${APT_PACKAGE_LIST_FILE}" ]]; then
-		rm -f "${APT_PACKAGE_LIST_FILE}"
-	fi
-	PACKAGE_MISSING_LIST_FILE="${RECIPE_DIR}/packages.missing.list"
-	if [[ -f "${PACKAGE_MISSING_LIST_FILE}" ]]; then
-		rm -f "${PACKAGE_MISSING_LIST_FILE}"
-	fi
-	generate_apt_package_list_file "${PACKAGE_LIST_FILE}" "${APT_PACKAGE_LIST_FILE}" "${PACKAGE_MISSING_LIST_FILE}"
+	APT_PACKAGE_LIST_FILE_NAME_PREFIX="apt_package_list"
+	MISSING_PACKAGE_LIST_FILE="${RECIPE_DIR}/packages.missing.list"
+	cd "${RECIPE_DIR}"
+	generate_apt_package_list_files "${PACKAGE_LIST_FILE}" "${APT_PACKAGE_LIST_FILE_NAME_PREFIX}" "${MISSING_PACKAGE_LIST_FILE}"
 	
 	# Exit if some packages are missing
-	if [[ -f "${PACKAGE_MISSING_LIST_FILE}" && ! -s "${PACKAGE_MISSING_LIST_FILE}" ]]; then
+	if [[ -f "${MISSING_PACKAGE_LIST_FILE}" && ! -s "${MISSING_PACKAGE_LIST_FILE}" ]]; then
 		printf "Some packages are missing\n"
-		printf "See PACKAGE_MISSING_LIST_FILE: ${PACKAGE_MISSING_LIST_FILE}\n"
+		printf "See MISSING_PACKAGE_LIST_FILE: ${MISSING_PACKAGE_LIST_FILE}\n"
 		exit 1
 	fi
 	
 	# Proceed install with --force-confnew
 	# Always install the new version of the configuration file, the current version is kept in a file with the .dpkg-old suffix
-	xargs apt-get -o Dpkg::Options::=--force-confnew -y install <"${APT_PACKAGE_LIST_FILE}"
+	for APT_PACKAGE_FILE_LIST in "${APT_PACKAGE_LIST_FILE_NAME_PREFIX}"*; do
+		xargs apt-get -o Dpkg::Options::=--force-confnew -y install <"${APT_PACKAGE_FILE_LIST}"
+	done
 	
 	# Cleaning
 	rm -f "${APT_PACKAGE_LIST_FILE}"
