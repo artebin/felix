@@ -7,7 +7,6 @@
 - [ ] Create an openbox pipe menu for enabling/disabling the bluetooth.
 - [ ] Use autorandr to change lightdm resolution.
 - [ ] Woud be useful to have a short program putting a icon in the tray and click-left="show a dialog" and click-right="Contextual menu with one item: Exit". Would be also useful if a notification could be shown when then icon appears. Could be also the dialog to be showed automatically.
-- [ ] move geany_one_instance_per_workspace to /usr/local/bin
 - [ ] Make avahi workstation published.
 - [ ] Brogexer.
 - [ ] Recipe for dictionary and spelling (for example: US, FR). For Geany, we need hunspell.
@@ -72,6 +71,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] move geany_one_instance_per_workspace to /usr/local/bin
 - [x] Title for terminal for htop started from the menu or from <WIN>h should be "htop".
 - [x] Add avahi-discover in openbox menu.
 - [x] Missing polkit rules for cups see <https://wiki.archlinux.org/index.php/CUPS#Allowing_admin_authentication_through_PolicyKit>.

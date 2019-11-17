@@ -18,7 +18,7 @@ force_geany_to_reuse_same_instance_per_workspace(){
 	# I cannot make it work by overriding geany.desktop in ${HOME}/.local/share/applications
 	# Here we fix /usr/share/applications/geany.desktop
 	
-	cp "${RECIPE_DIR}/geany_one_instance_per_workspace.sh" /usr/bin/geany_one_instance_per_workspace
+	cp "${RECIPE_DIR}/geany_one_instance_per_workspace.sh" /usr/local/bin/geany_one_instance_per_workspace
 	chmod a+x /usr/bin/geany_one_instance_per_workspace
 	sed -i "s/Exec=.*/Exec=bash geany_one_instance_per_workspace %F/" /usr/share/applications/geany.desktop
 	update-desktop-database
