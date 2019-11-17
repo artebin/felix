@@ -1,6 +1,7 @@
 # Offline IMAP
 
 ## Configuration file
+
 	# Sample minimal config file.  Copy this to ~/.offlineimaprc and edit to
 	# get started fast.
 	
