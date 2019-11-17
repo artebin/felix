@@ -34,7 +34,6 @@
 - [ ] Is it possible to make work the TRRS on Linux?
 - [ ] Add a caja script for playing a folder in Media player => would be better to add mimetype inode/directory to VLC.
 - [ ] Install dlna support.
-- [ ] Missing polkit rules for cups see <https://wiki.archlinux.org/index.php/CUPS#Allowing_admin_authentication_through_PolicyKit>.
 - [ ] Check command to start by fdpowermon when reaching critical level of battery power.
 - [ ] Brillo and Display|Keyboard backlight in console (keysym ?).
 - [ ] macbook air: analysis of battery consumption and CPU usage.
@@ -74,6 +73,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Missing polkit rules for cups see <https://wiki.archlinux.org/index.php/CUPS#Allowing_admin_authentication_through_PolicyKit>.
 - [x] Do not show resolution below SVGA in openbox pipemenu randr
 - [x] Add a openbox menuitem for light-locker-settings.
 - [x] Rework openbox menu.

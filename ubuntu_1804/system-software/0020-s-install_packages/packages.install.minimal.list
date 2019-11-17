@@ -113,6 +113,7 @@ onboard
 ##################################
 # Window manager & desktop tools
 ##################################
+policykit-desktop-privileges
 openbox openbox-menu obconf obmenu
 lxappearance lxappearance-obconf
 dconf-cli dconf-editor dconf-tools
