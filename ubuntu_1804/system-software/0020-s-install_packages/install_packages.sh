@@ -45,7 +45,8 @@ process_package_install_list(){
 		exit 1
 	fi
 	
-	# Proceed install
+	# Proceed install with --force-confnew
+	# Always install the new version of the configuration file, the current version is kept in a file with the .dpkg-old suffix
 	xargs apt-get -o Dpkg::Options::=--force-confnew -y install <"${APT_PACKAGE_LIST_FILE}"
 	
 	# Cleaning
