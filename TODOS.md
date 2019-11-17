@@ -9,7 +9,6 @@
 - [ ] Woud be useful to have a short program putting a icon in the tray and click-left="show a dialog" and click-right="Contextual menu with one item: Exit". Would be also useful if a notification could be shown when then icon appears. Could be also the dialog to be showed automatically.
 - [ ] move geany_one_instance_per_workspace to /usr/local/bin
 - [ ] Make avahi workstation published.
-- [ ] Add avahi-discover in openbox menu.
 - [ ] Brogexer.
 - [ ] Recipe for dictionary and spelling (for example: US, FR). For Geany, we need hunspell.
 - [ ] Caja script compare should support one file compare with meld => revisioned file.
@@ -74,6 +73,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Add avahi-discover in openbox menu.
 - [x] Missing polkit rules for cups see <https://wiki.archlinux.org/index.php/CUPS#Allowing_admin_authentication_through_PolicyKit>.
 - [x] Do not show resolution below SVGA in openbox pipemenu randr
 - [x] Add a openbox menuitem for light-locker-settings.
