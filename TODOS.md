@@ -1,6 +1,5 @@
 # TODOS
 - [ ] Add a note for encrypted USB key.
-- [ ] Filter the resolution below 500px width in openbox pipemenu randr
 - [ ] Add a doc for managing security updates: server => email with apticron, or automatic install (with unattended-update https://www.cyberciti.biz/faq/how-to-keep-debian-linux-patched-with-latest-security-updates-automatically/), desktop => icon in the window manager and SSH motd (this is done in motd configuration already).
 - [ ] Recipe for configuring apticron (setting the email).
 - [ ] Should activate apt.daily.
@@ -75,6 +74,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Do not show resolution below SVGA in openbox pipemenu randr
 - [x] Add a openbox menuitem for light-locker-settings.
 - [x] Rework openbox menu.
 - [x] Add recipe for gtkxset and add openbox menuitem for it.

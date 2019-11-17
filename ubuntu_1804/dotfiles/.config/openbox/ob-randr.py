@@ -186,8 +186,12 @@ def get_xml():
                 #   1440x900       59.9*+   59.9*
                 text = j.strip()
                 text = text.split(' ')[0]
-
-                modes.append(mk_exe_node(output, text, '--mode %s' % text))
+                
+                # Do not show resolution below SVGA
+                width = text.split('x')[0];
+                height = text.split('x')[1];
+                if int(width) >= 800 and int(height) >= 600:
+                    modes.append(mk_exe_node(output, text, '--mode %s' % text))
 
             for action in actions:
                 if not action:
