@@ -35,7 +35,7 @@ super + m
 	vlc
 
 super + h
-	x-terminal-emulator -e "htop"
+	x-terminal-emulator -T "Task Manager (htop)" -e "htop"
 
 super + v
 	pavucontrol

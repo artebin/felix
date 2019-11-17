@@ -9,9 +9,9 @@
 		<item label="Media Player"><action name="Execute"><command>vlc</command></action></item>
 		<separator/>
 		<menu id="accessories" label="Accessories">
-			<item label="Task Manager (htop)"><action name="Execute"><command>x-terminal-emulator -e "htop"</command></action></item>
-			<item label="System Monitor (glances)"><action name="Execute"><command>x-terminal-emulator -e "glances"</command></action></item>
-			<item label="Disk Usage Analyzer (ncdu)"><action name="Execute"><command>x-terminal-emulator -e "ncdu"</command></action></item>
+			<item label="Task Manager (htop)"><action name="Execute"><command>x-terminal-emulator -T "Task Manager (htop)" -e "htop"</command></action></item>
+			<item label="System Monitor (glances)"><action name="Execute"><command>x-terminal-emulator -T "System Monitor (glances)" -e "glances"</command></action></item>
+			<item label="Disk Usage Analyzer (ncdu)"><action name="Execute"><command>x-terminal-emulator -T "Disk Usage Analyzer (ncdu)" -e "ncdu"</command></action></item>
 			<item label="Log Explorer (glogg)"><action name="Execute"><command>glogg</command></action></item>
 			<item label="GVim"><action name="Execute"><command>gvim</command></action></item>
 			<item label="Hexadecimal Editor (bless)"><action name="Execute"><command>bless</command></action></item>
@@ -31,7 +31,7 @@
 		</menu>
 		<menu id="multimedia" label="Multimedia">
 			<item label="Volume Control"><action name="Execute"><command>pavucontrol</command></action></item>
-			<item label="MPS YouTube"><action name="Execute"><command>x-terminal-emulator -e "mpsyt"</command></action></item>
+			<item label="MPS YouTube"><action name="Execute"><command>x-terminal-emulator -T "MPS YouTube" -e "mpsyt"</command></action></item>
 			<item label="VLC"><action name="Execute"><command>vlc</command></action></item>
 			<item label="Xfburn"><action name="Execute"><command>xfburn</command></action></item>
 		</menu>
@@ -101,7 +101,7 @@
 			<item label="Synaptic Package Manager"><action name="Execute"><command>pkexec synaptic</command></action></item>
 			<item label="User Login Settings"><action name="Execute"><command>pkexec lightdm-gtk-greeter-settings</command></action></item>
 			<menu id="DefaultApplications" label="Default Applications">
-				<item label="Update Alternatives CLI"><action name="Execute"><command>x-terminal-emulator -e "sudo update-alternatives --all"</command></action></item>
+				<item label="Update Alternatives CLI"><action name="Execute"><command>x-terminal-emulator -T "Update Alternatives CLI" -e "sudo update-alternatives --all"</command></action></item>
 				<item label="Update Alternatives GUI"><action name="Execute"><command>galternatives</command></action></item>
 				<item label="MIME Settings"><action name="Execute"><command>xfce4-mime-settings</command></action></item>
 			</menu>

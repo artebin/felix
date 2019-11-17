@@ -15,7 +15,6 @@
 - [ ] TLP and CpuFreq for lower average temperature? Thermald for logging? pcp?
 - [ ] Numeric keyboard disabled after wake from hibernation.
 - [ ] Change the format of file "Owner" in Caja? We don't want to se extended login "login - Name" but just "login".
-- [ ] Title for terminal for htop started from the menu or from <WIN>h should be "htop".
 - [ ] Action for naming the current desktop with the name of an application + revert to default.
 - [ ] pipemenu in openbox for .desktop files in ad-hoc location, something like ~/.config/openbox/menu-apps/
 - [ ] Add kdesvn in tools.
@@ -73,6 +72,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Title for terminal for htop started from the menu or from <WIN>h should be "htop".
 - [x] Add avahi-discover in openbox menu.
 - [x] Missing polkit rules for cups see <https://wiki.archlinux.org/index.php/CUPS#Allowing_admin_authentication_through_PolicyKit>.
 - [x] Do not show resolution below SVGA in openbox pipemenu randr
