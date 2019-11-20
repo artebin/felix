@@ -202,3 +202,7 @@ remove_terminal_control_sequences(){
 	sed -r "s/\x1B(\[[0-9;]*[JKmsu]|\(B)//g"
 }
 alias remove_terminal_control_sequences=remove_terminal_control_sequences
+
+millisToDate() {
+	date -d @$(echo "${1}/1000"|bc)
+}
