@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Allow the execution of extra recipes direcly from the openbox menu? And when recipe executed then do not show the recipe in the menu? It should git pull felix, maybe a menu Felix should have a "Update Felix from github" menuitem.
 - [ ] How to get the list of recommended packages for a package to install?
 - [ ] Add a note for encrypted USB key.
 - [ ] Add a doc for managing security updates: server => email with apticron, or automatic install (with unattended-update https://www.cyberciti.biz/faq/how-to-keep-debian-linux-patched-with-latest-security-updates-automatically/), desktop => icon in the window manager and SSH motd (this is done in motd configuration already).
