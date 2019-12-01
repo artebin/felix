@@ -11,21 +11,23 @@ create_snapshot_mime_types_and_applications(){
 		exit 1
 	fi
 	
-	printf "Creating a snapshot of the MIME types and applications ...\n"
+	printf "Creating snapshot of MIME types and applications ...\n"
 	printf "SNAPSHOT_DIR: ${SNAPSHOT_DIR}\n"
 	
 	# See <https://unix.stackexchange.com/questions/114075/how-to-get-a-list-of-applications-associated-with-a-file-using-command-line>
 	
-	# Copy global settings
+	# Copy global settings on MIME types
 	cp /usr/share/applications/mimeinfo.cache "${SNAPSHOT_DIR}"
 	sed -e 's/=/\n\t/' -e 's/;/\n\t/g' /usr/share/applications/mimeinfo.cache >"${SNAPSHOT_DIR}/mimeinfo.cache.info"
 	
-	# Copy local settings
+	# Copy local settings on MIME types
 	cp "${HOME}/.config/mimeapps.list" "${SNAPSHOT_DIR}"
 	sed -e 's/=/\n\t/' -e 's/;/\n\t/g' "${HOME}/.config/mimeapps.list" >"${SNAPSHOT_DIR}/mimeapps.list.info"
 	
 	# Copy .desktop files for application autostart
-	cp -r "${HOME}/.config/autostart" "${SNAPSHOT_DIR}"
+	if [[ -d "${HOME}/.config/autostart" ]]; then
+	    cp -r "${HOME}/.config/autostart" "${SNAPSHOT_DIR}"
+	fi
 	
 	printf "\n"
 }
