@@ -1,4 +1,7 @@
 # TODOS
+- [ ] add menuitem for showing battery performance (battery-graph or our own gnuplot script).
+- [ ] dialog_command v2 and v3 are not used => in the end it will be replaced by yad, delete them?
+- [ ] Rofi gray out the screen behind.
 - [ ] Allow the execution of extra recipes direcly from the openbox menu? And when recipe executed then do not show the recipe in the menu? It should git pull felix, maybe a menu Felix should have a "Update Felix from github" menuitem.
 - [ ] How to get the list of recommended packages for a package to install?
 - [ ] Add a note for encrypted USB key.
@@ -10,7 +13,7 @@
 - [ ] Woud be useful to have a short program putting a icon in the tray and click-left="show a dialog" and click-right="Contextual menu with one item: Exit". Would be also useful if a notification could be shown when then icon appears. Could be also the dialog to be showed automatically.
 - [ ] Make avahi workstation published.
 - [ ] Brogexer.
-- [ ] Recipe for dictionary and spelling (for example: US, FR). For Geany, we need hunspell.
+- [ ] Recipe for dictionary and spelling (for example: US, FR). For Geany, we need hunspell => have a openbox menu for installing dictionary, use yad for selecting the language.
 - [ ] Caja script compare should support one file compare with meld => revisioned file.
 - [ ] TLP and CpuFreq for lower average temperature? Thermald for logging? pcp?
 - [ ] Numeric keyboard disabled after wake from hibernation.
@@ -19,21 +22,23 @@
 - [ ] pipemenu in openbox for .desktop files in ad-hoc location, something like ~/.config/openbox/menu-apps/
 - [ ] Add kdesvn in tools.
 - [ ] Add bash function in .bashrc for downloading a list of URLs from file.
+- [ ] Do not add alias and function to .bashrc but source .bashrc.d files
 - [ ] Rofi menu for session actions <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
 - [ ] Better documentation in openbox rc.xml (with "Window Actions" section) see <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
 - [ ] Openbox application shotcuts "restart openbox" and "quit openbox".
 - [ ] change pidgin icon for using the stock icon.
-- [ ] It should be a choice to use mtrack or libinput.
+- [ ] make skype for business work with audio call (telepathy sipe?)
+- [ ] It should be a choice to use mtrack or libinput, and put the default on libinput.
 - [ ] Configuration libinput <https://unix.stackexchange.com/questions/337008/activate-tap-to-click-on-touchpad> it replaces synaptics.
 - [ ] mtrack configuration should check if there is already a \d+_mtrack.conf file in /usr/share/X11/xorg.conf.d/
-- [ ] List parameters useful to the user regarding dpms, lightlocker, suspend-then-hibernate.
+- [ ] List parameters useful to the user regarding dpms, lightlocker, suspend-then-hibernate => check if there is a yad panel for dpms.
 - [ ] Special menu in rofi for the XF86 symbols.
 - [ ] Window frame icon for being on top of other windows.
 - [ ] Is it possible to make work the TRRS on Linux?
 - [ ] Add a caja script for playing a folder in Media player "play all media in VLC"
-- [ ] Install dlna support.
-- [ ] Check command to start by fdpowermon when reaching critical level of battery power.
-- [ ] Brillo and Display|Keyboard backlight in console (keysym ?).
+- [ ] Install dlna support
+- [ ] Check command to start by fdpowermon when reaching critical level of battery power => should be a script asking the user what do you + a timer "going to hibernate... ".
+- [ ] Brillo and Display: keyboard backlight in console (keysym ?).
 - [ ] macbook air: analysis of battery consumption and CPU usage.
 - [ ] macbook air: acpi_osi in kernel pameters see <https://wiki.archlinux.org/index.php/Mac#Suspend_and_Hibernate>
 - [ ] macbook air: kernel parameter for acpi on macbook air (native).
@@ -55,10 +60,9 @@
 - [ ] Add a note for the static route for accessing trevize.net from the local network.
 
 # ISSUES
-- [ ] Pasystray: middle click on the tray icon is not muting the sound anymore + we can see 2 notification bubbles when using miniso instead of Xubuntu.
+- [ ] Pasystray: middle click on the tray icon is not muting the sound anymore.
 - [ ] GPicView: very slow with SVG files.
-- [ ] Caja: bug when create new file (or directory) with name starting with a dot.
-- [ ] Caja: copying files is very slow compared to the command line (local or remote). => it can be because of GVFS
+- [ ] Caja: copying files is very slow compared to the command line (local or remote) => it can be because of GVFS
 - [ ] Caja: create new directory with name starting with a dot is bugged.
 - [ ] Caja: opening 2 window of file Properties is buggy.
 - [ ] Caja: always show the file name (extension are hidden for .desktop files for example) See <https://github.com/mate-desktop/caja/issues/727> open ticket.
