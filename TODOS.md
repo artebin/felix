@@ -11,7 +11,7 @@
 - [ ] Create an openbox pipe menu for enabling/disabling the bluetooth.
 - [ ] Use autorandr to change lightdm resolution.
 - [ ] Woud be useful to have a short program putting a icon in the tray and click-left="show a dialog" and click-right="Contextual menu with one item: Exit". Would be also useful if a notification could be shown when then icon appears. Could be also the dialog to be showed automatically.
-- [ ] Make avahi workstation published.
+- [ ] Make avahi workstation published (publish-workstation=yes in /etc/avahi/avahi-daemon.conf)
 - [ ] Brogexer.
 - [ ] Recipe for dictionary and spelling (for example: US, FR). For Geany, we need hunspell => have a openbox menu for installing dictionary, use yad for selecting the language.
 - [ ] Caja script compare should support one file compare with meld => revisioned file.
