@@ -44,6 +44,9 @@ KeyRelease event, serial 48, synthetic NO, window 0x3000001,
 
 ```
 
+## List of XF86 symbols
+<https://askubuntu.com/questions/93772/where-do-i-find-a-list-of-all-x-keysyms-these-days>
+
 ## Screenshot a specific window from the command line with xwd
 ```
 xwd > screenshot.xwd;convert screenshot.xwd screenshot.png
