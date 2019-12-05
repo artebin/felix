@@ -85,6 +85,15 @@ XF86Messenger
 XF86Music
 	vlc
 
+XF86AudioPlay
+	flock -n "/dev/shm/${USER}.user_playlist" bash "${HOME}/scripts/user_playlist.sh" toggle
+
+XF86AudioPrev
+	flock -n "/dev/shm/${USER}.user_playlist" bash "${HOME}/scripts/user_playlist.sh" next
+
+XF86AudioNext
+	flock -n "/dev/shm/${USER}.user_playlist" bash "${HOME}/scripts/user_playlist.sh" prev
+
 # Rii i8: XF86Tools symbol is sent for the Media Player key
 XF86Tools
 	vlc
