@@ -13,7 +13,7 @@
 - [ ] Woud be useful to have a short program putting a icon in the tray and click-left="show a dialog" and click-right="Contextual menu with one item: Exit". Would be also useful if a notification could be shown when then icon appears. Could be also the dialog to be showed automatically.
 - [ ] Make avahi workstation published (publish-workstation=yes in /etc/avahi/avahi-daemon.conf)
 - [ ] Brogexer.
-- [ ] Recipe for dictionary and spelling (for example: US, FR). For Geany, we need hunspell => have a openbox menu for installing dictionary, use yad for selecting the language.
+- [ ] Recipe for dictionary and spelling (for example: US, FR). For Geany, we need hunspell => have a openbox menu for installing dictionary, use yad for selecting the language. It could be a bash function and one alias.
 - [ ] Caja script compare should support one file compare with meld => revisioned file.
 - [ ] TLP and CpuFreq for lower average temperature? Thermald for logging? pcp?
 - [ ] Numeric keyboard disabled after wake from hibernation.
@@ -22,7 +22,7 @@
 - [ ] pipemenu in openbox for .desktop files in ad-hoc location, something like ~/.config/openbox/menu-apps/
 - [ ] Add kdesvn in tools.
 - [ ] Add bash function in .bashrc for downloading a list of URLs from file.
-- [ ] Do not add alias and function to .bashrc but source .bashrc.d files
+- [ ] Add bash library scripts via the .bashrc.d
 - [ ] Rofi menu for session actions <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
 - [ ] Better documentation in openbox rc.xml (with "Window Actions" section) see <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
 - [ ] Openbox application shotcuts "restart openbox" and "quit openbox".
@@ -75,6 +75,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Do not add alias and function to .bashrc but source .bashrc.d files
 - [x] Update openbox menu.xml for pidgin.
 - [x] move geany_one_instance_per_workspace to /usr/local/bin
 - [x] Title for terminal for htop started from the menu or from <WIN>h should be "htop".
