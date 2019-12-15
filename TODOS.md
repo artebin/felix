@@ -5,7 +5,6 @@
 - [ ] Allow the execution of extra recipes direcly from the openbox menu? And when recipe executed then do not show the recipe in the menu? It should git pull felix, maybe a menu Felix should have a "Update Felix from github" menuitem.
 - [ ] How to get the list of recommended packages for a package to install?
 - [ ] Add a note for encrypted USB key.
-- [ ] Recipe for configuring apticron (setting the email).
 - [ ] Create an openbox pipe menu for enabling/disabling the bluetooth.
 - [ ] Use autorandr to change lightdm resolution.
 - [ ] Woud be useful to have a short program putting a icon in the tray and click-left="show a dialog" and click-right="Contextual menu with one item: Exit". Would be also useful if a notification could be shown when then icon appears. Could be also the dialog to be showed automatically.
@@ -70,6 +69,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Recipe for configuring apticron (setting the email).
 - [x] Should keep apt.daily actived.
 - [x] Make avahi workstation published (publish-workstation=yes in /etc/avahi/avahi-daemon.conf)
 - [x] It should be a choice to use mtrack or libinput, and put the default on libinput.
