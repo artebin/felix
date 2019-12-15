@@ -142,24 +142,6 @@ sudo udevadm trigger
 ```
 - start dump1090 with `./dump1090 --interactive --net` and visit `http://localhost:8080`
 
-## Offline repository
-- create a mirror of the repository with `apt-mirror` (configure `/etc/apt/mirror.list` and execute `apt-mirror`)
-- add a sources list in `/etc/apt/sources.list.d/local_mirror.list` with something like the content below:
-```
-deb [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic main restricted universe multiverse
-# deb-src [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic main restricted universe multiverse
-
-deb [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic-updates main restricted universe multiverse
-# deb-src [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic-updates main restricted universe multiverse
-
-# deb [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic-backports main restricted universe multiverse
-# deb-src [ arch=amd64 ] http://localhost:10001/ubuntu/ bionic-backports main restricted universe multiverse
-
-deb [ arch=amd64 ] http://localhost:10001/ubuntu bionic-security main restricted universe multiverse
-# deb-src [ arch=amd64 ] http://localhost:10001/ubuntu bionic-security main restricted universe multiverse
-```
-- start a http server for the repository, go into `<mirror directory>/mirror/archive.ubuntu.com` and execute `python -m SimpleHTTPServer 10001`
-
 ## MIME types and default application
 - retrieve the MIME type: `xdg-mime query filetype <some file>`
 - retrieve the current default application: `xdg-mime query default <mime type>`
