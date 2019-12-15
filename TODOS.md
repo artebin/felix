@@ -5,7 +5,6 @@
 - [ ] Allow the execution of extra recipes direcly from the openbox menu? And when recipe executed then do not show the recipe in the menu? It should git pull felix, maybe a menu Felix should have a "Update Felix from github" menuitem.
 - [ ] How to get the list of recommended packages for a package to install?
 - [ ] Add a note for encrypted USB key.
-- [ ] Add a doc for managing security updates: server => email with apticron, or automatic install (with unattended-update https://www.cyberciti.biz/faq/how-to-keep-debian-linux-patched-with-latest-security-updates-automatically/), desktop => icon in the window manager and SSH motd (this is done in motd configuration already).
 - [ ] Recipe for configuring apticron (setting the email).
 - [ ] Should activate apt.daily.
 - [ ] Create an openbox pipe menu for enabling/disabling the bluetooth.
@@ -14,7 +13,6 @@
 - [ ] Make avahi workstation published (publish-workstation=yes in /etc/avahi/avahi-daemon.conf)
 - [ ] Brogexer.
 - [ ] Recipe for dictionary and spelling (for example: US, FR). For Geany, we need hunspell => have a openbox menu for installing dictionary, use yad for selecting the language. It could be a bash function and one alias.
-- [ ] Caja script compare should support one file compare with meld => revisioned file.
 - [ ] TLP and CpuFreq for lower average temperature? Thermald for logging? pcp?
 - [ ] Numeric keyboard disabled after wake from hibernation.
 - [ ] Change the format of file "Owner" in Caja? We don't want to se extended login "login - Name" but just "login".
@@ -28,14 +26,13 @@
 - [ ] Openbox application shotcuts "restart openbox" and "quit openbox".
 - [ ] change pidgin icon for using the stock icon.
 - [ ] make skype for business work with audio call (telepathy sipe?)
-- [ ] It should be a choice to use mtrack or libinput, and put the default on libinput.
 - [ ] Configuration libinput <https://unix.stackexchange.com/questions/337008/activate-tap-to-click-on-touchpad> it replaces synaptics.
 - [ ] mtrack configuration should check if there is already a \d+_mtrack.conf file in /usr/share/X11/xorg.conf.d/
 - [ ] List parameters useful to the user regarding dpms, lightlocker, suspend-then-hibernate => check if there is a yad panel for dpms.
 - [ ] Special menu in rofi for the XF86 symbols.
 - [ ] Window frame icon for being on top of other windows.
 - [ ] Is it possible to make work the TRRS on Linux?
-- [ ] Add a caja script for playing a folder in Media player "play all media in VLC"
+- [ ] Add a caja script for playing a folder in Media player "play all media in VLC", retrieve extension for audio/ media/ mime types.
 - [ ] Install dlna support
 - [ ] Check command to start by fdpowermon when reaching critical level of battery power => should be a script asking the user what do you + a timer "going to hibernate... ".
 - [ ] Brillo and Display: keyboard backlight in console (keysym ?).
@@ -75,6 +72,9 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] It should be a choice to use mtrack or libinput, and put the default on libinput.
+- [x] Caja script compare should support one file compare with meld => revisioned file.
+- [x] Add a doc for managing security updates: server => email with apticron, or automatic install (with unattended-update https://www.cyberciti.biz/faq/how-to-keep-debian-linux-patched-with-latest-security-updates-automatically/), desktop => icon in the window manager and SSH motd (this is done in motd configuration already).
 - [x] Do not add alias and function to .bashrc but source .bashrc.d files
 - [x] Update openbox menu.xml for pidgin.
 - [x] move geany_one_instance_per_workspace to /usr/local/bin
