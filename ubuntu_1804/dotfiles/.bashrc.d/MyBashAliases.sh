@@ -88,3 +88,8 @@ alias remove_terminal_control_sequences=remove_terminal_control_sequences
 millisToDate() {
 	date -d @$(echo "${1}/1000"|bc)
 }
+
+reinstall_and_revert_conf_files(){
+	apt-get install --reinstall -o Dpkg::Options::="--force-confask,confnew,confmiss" "${@}"
+}
+alias reinstall_and_revert_conf_files=reinstall_and_revert_conf_files
