@@ -10,10 +10,9 @@
 - [ ] Create an openbox pipe menu for enabling/disabling the bluetooth.
 - [ ] Use autorandr to change lightdm resolution.
 - [ ] Woud be useful to have a short program putting a icon in the tray and click-left="show a dialog" and click-right="Contextual menu with one item: Exit". Would be also useful if a notification could be shown when then icon appears. Could be also the dialog to be showed automatically.
-- [ ] Make avahi workstation published (publish-workstation=yes in /etc/avahi/avahi-daemon.conf)
 - [ ] Brogexer.
 - [ ] Recipe for dictionary and spelling (for example: US, FR). For Geany, we need hunspell => have a openbox menu for installing dictionary, use yad for selecting the language. It could be a bash function and one alias.
-- [ ] TLP and CpuFreq for lower average temperature? Thermald for logging? pcp?
+- [ ] TLP and CpuFreq for lower average temperatgure? Thermald for logging? pcp?
 - [ ] Numeric keyboard disabled after wake from hibernation.
 - [ ] Change the format of file "Owner" in Caja? We don't want to se extended login "login - Name" but just "login".
 - [ ] Action for naming the current desktop with the name of an application + revert to default.
@@ -72,6 +71,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] Make avahi workstation published (publish-workstation=yes in /etc/avahi/avahi-daemon.conf)
 - [x] It should be a choice to use mtrack or libinput, and put the default on libinput.
 - [x] Caja script compare should support one file compare with meld => revisioned file.
 - [x] Add a doc for managing security updates: server => email with apticron, or automatic install (with unattended-update https://www.cyberciti.biz/faq/how-to-keep-debian-linux-patched-with-latest-security-updates-automatically/), desktop => icon in the window manager and SSH motd (this is done in motd configuration already).

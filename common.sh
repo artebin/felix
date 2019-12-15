@@ -82,6 +82,24 @@ escape_sed_pattern(){
 	printf "${1}" | sed -e 's/[\\&]/\\&/g' | sed -e 's/[\/&]/\\&/g'
 }
 
+update_line_based_on_prefix(){
+	PREFIX_TO_SEARCH="${1}"
+	LINE_REPLACEMENT_VALUE="${2}"
+	FILE_PATH="${3}"
+	if grep -q -E "^${PREFIX_TO_SEARCH}" "${FILE_PATH}"; then
+		ESCAPED_PREFIX_TO_SEARCH=$(escape_sed_pattern "${PREFIX_TO_SEARCH}")
+		ESCAPED_LINE_REPLACEMENT_VALUE=$(escape_sed_pattern "${LINE_REPLACEMENT_VALUE}")
+		if is_mac_platform; then
+			sed -i '' "/^${ESCAPED_PREFIX_TO_SEARCH}/s/.*/${ESCAPED_LINE_REPLACEMENT_VALUE}/" "${FILE_PATH}"
+		else
+			sed -i "/^${ESCAPED_PREFIX_TO_SEARCH}/s/.*/${ESCAPED_LINE_REPLACEMENT_VALUE}/" "${FILE_PATH}"
+		fi
+		return 0
+	else
+		return 1
+	fi
+}
+
 add_or_update_line_based_on_prefix(){
 	PREFIX_TO_SEARCH="${1}"
 	LINE_REPLACEMENT_VALUE="${2}"
