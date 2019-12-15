@@ -27,7 +27,7 @@ retrieve_status(){
 }
 
 start_vlc(){
-	nohup cvlc -I rc --no-rc-fake-tty --rc-host ${VLC_HOST}:${VLC_PORT_NUMBER} >/dev/null 2>/dev/null </dev/null &
+	cvlc -I rc --no-rc-fake-tty --rc-host ${VLC_HOST}:${VLC_PORT_NUMBER} 0>&- 1>&- 2>&- 3>&- &
 	VLC_PID=$!
 	printf "%s\n%s" "${VLC_PID}" "${PLAYLIST_ITEM_CURRENT_INDEX}" >"${STATUS_FILE}"
 	sleep 1
