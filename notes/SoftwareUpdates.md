@@ -1,5 +1,9 @@
 # Software updates
 
+## List security updates from command line
+
+	apt-get -s upgrade | grep -i securi | awk -F " " {'print $2'}
+
 ## Automatic & periodic update of the package list
 Activate and start `apt-daily service`:
 
