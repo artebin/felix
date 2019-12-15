@@ -13,7 +13,12 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_trackpad_mtrack(){
-	echo "Configuring trackpad mtrack ..."
+	if [[ "${DRIVER_INPUT_DEVICES}" != "mtrack" ]]; then
+		printf "This recipe is not applicable (DRIVER_INPUT_DEVICES: ${DRIVER_INPUT_DEVICES})\n"
+		return
+	fi
+	
+	printf "Configuring trackpad mtrack ...\n"
 	
 	install_package_if_not_installed "xserver-xorg-input-mtrack"
 	
@@ -33,7 +38,7 @@ configure_trackpad_mtrack(){
 	cd "${RECIPE_DIR}"
 	cp 80-mtrack.conf /usr/share/X11/xorg.conf.d
 	
-	echo
+	printf "\n"
 }
 
 configure_trackpad_mtrack 2>&1 | tee -a "${LOGFILE}"
