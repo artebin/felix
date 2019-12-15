@@ -17,9 +17,11 @@ disable_automatic_update_and_upgrade(){
 	
 	# See <https://askubuntu.com/questions/1057458/how-to-remove-ubuntus-automatic-internet-connection-needs/1057463#1057463>
 	
-	systemctl stop apt-daily.timer
-	systemctl disable apt-daily.timer
-	systemctl disable apt-daily.service
+	# apt-daily must not be disabled for the detection of security updates
+	#systemctl stop apt-daily.timer
+	#systemctl disable apt-daily.timer
+	#systemctl disable apt-daily.service
+	
 	systemctl stop apt-daily-upgrade.timer
 	systemctl disable apt-daily-upgrade.timer
 	systemctl disable apt-daily-upgrade.service
