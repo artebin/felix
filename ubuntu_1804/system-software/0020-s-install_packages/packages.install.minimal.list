@@ -90,6 +90,7 @@ offlineimap maildir-utils
 ###################
 aptitude
 apt-mirror
+apticron
 
 ###################
 # Display Manager
@@ -218,6 +219,7 @@ gaupol subtitleeditor
 mplayer
 gpodder
 audacity
+espeak
 
 ###################
 # Chat and webcam
