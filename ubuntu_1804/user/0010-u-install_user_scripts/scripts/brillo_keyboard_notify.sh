@@ -33,19 +33,19 @@ if [[ $# -ne 0 ]]; then
 	exit 1
 fi
 
-BRIGHTNESS_VALUE=$(brillo -G)
+BRIGHTNESS_VALUE=$(brillo -k -G)
 BRIGHTNESS_VALUE=$(printf "%.0f\n" "${BRIGHTNESS_VALUE}")
 
 if [[ "${VARIATION}" == "${VARIATION_INCREMENT}" ]]; then
 	if [[ "${BRIGHTNESS_VALUE}" -lt 100 ]]; then
 		pkexec brillo -k -A 5
-		BRIGHTNESS_VALUE=$(brillo -G)
+		BRIGHTNESS_VALUE=$(brillo -k -G)
 		BRIGHTNESS_VALUE=$(printf "%.0f\n" "${BRIGHTNESS_VALUE}")
 	fi
 elif [[ "${VARIATION}" == "${VARIATION_DECREMENT}" ]]; then
 	if [[ "${BRIGHTNESS_VALUE}" -gt 0 ]]; then
 		pkexec brillo -k -U 5
-		BRIGHTNESS_VALUE=$(brillo -G)
+		BRIGHTNESS_VALUE=$(brillo -k -G)
 		BRIGHTNESS_VALUE=$(printf "%.0f\n" "${BRIGHTNESS_VALUE}")
 	fi
 else
