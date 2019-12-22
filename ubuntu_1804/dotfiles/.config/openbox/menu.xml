@@ -72,8 +72,7 @@
 			<menu id="DisplaySettings" label="Display">
 				<menu id="randr-menu" label="Screen Layout" execute="python ~/.config/openbox/ob-randr.py" />
 				<item label="Screen Layout Editor"><action name="Execute"><command>arandr</command></action></item>
-				<item id="LightLocker" label="Light Locker"><action name="Execute"><command>light-locker-settings</command></action></item>
-				<item id="DPMS" label="DPMS"><action name="Execute"><command>gtkxset</command></action></item>
+				<item label="DPMS"><action name="Execute"><command>light-locker-settings</command></action></item>
 			</menu>
 			<item id="MouseSettings" label="Mouse"><action name="Execute"><command>xfce4-mouse-settings</command></action></item>
 			<item id="KeyboardSettings" label="Keyboard"><action name="Execute"><command>xfce4-keyboard-settings</command></action></item>
