@@ -31,12 +31,7 @@ configure_mate_caja(){
 		backup_file rename "${HOME}/.config/caja/scripts"
 	fi
 	mkdir -p "${HOME}/.config/caja/scripts"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/caja/scripts/execute_in_terminal" "${HOME}/.config/caja/scripts"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/caja/scripts/compare" "${HOME}/.config/caja/scripts"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/caja/scripts/tail_and_follow" "${HOME}/.config/caja/scripts"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/caja/scripts/tail_entirely_and_follow" "${HOME}/.config/caja/scripts"
-	cp -R "${RECIPE_FAMILY_DIR}/dotfiles/.config/caja/scripts/indentation" "${HOME}/.config/caja/scripts"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/caja/scripts/unpack_in_terminal" "${HOME}/.config/caja/scripts"
+	cp -R "${RECIPE_FAMILY_DIR}/dotfiles/.config/caja/scripts" "${HOME}/.config/caja"
 	
 	printf "\n"
 }
