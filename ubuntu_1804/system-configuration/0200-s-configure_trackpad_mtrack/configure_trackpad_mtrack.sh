@@ -13,8 +13,8 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_trackpad_mtrack(){
-	if [[ "${DRIVER_INPUT_DEVICES}" != "mtrack" ]]; then
-		printf "This recipe is not applicable (DRIVER_INPUT_DEVICES: ${DRIVER_INPUT_DEVICES})\n"
+	if [[ "${XORG_INPUT_DRIVER}" != "mtrack" ]]; then
+		printf "This recipe is not applicable (XORG_INPUT_DRIVER: ${XORG_INPUT_DRIVER})\n"
 		return
 	fi
 	
