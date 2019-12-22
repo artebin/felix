@@ -38,13 +38,17 @@ configure_grub(){
 	
 	# Update kernel parameters:
 	#  - add swap partition for resume from hibernate
-	#  - disable the ACPI Operating System Identification function (_OSI). See <https://unix.stackexchange.com/questions/246672/how-to-set-acpi-osi-parameter-in-the-grub>
+	#  - use acpi_backlight=native
+	
+	# Before there was here a code for disabling the ACPI Operating System Identification function (OSI), but I don't think it is still needed.
+	# See <https://unix.stackexchange.com/questions/246672/how-to-set-acpi-osi-parameter-in-the-grub>
+	
 	FIRST_SWAP_PARTITION_DEVICE_NAME=$(swapon --noheadings --raw --show=NAME|head -n1)
 	if [[ ! -z "${FIRST_SWAP_PARTITION_DEVICE_NAME}" ]]; then
 		FIRST_SWAP_PARTITION_UUID=$(blkid -s UUID -o value ${FIRST_SWAP_PARTITION_DEVICE_NAME})
 		echo "Adding swap partition for resume from hibernate: ${FIRST_SWAP_PARTITION_UUID}"
-		echo "Disablingthe ACPI Operating System Identification function"
-		sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=\"resume=UUID=${FIRST_SWAP_PARTITION_UUID}\"/" /etc/default/grub
+		echo "Using acpi_backlight=native"
+		sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=\"resume=UUID=${FIRST_SWAP_PARTITION_UUID}\" acpi_backlight=native/" /etc/default/grub
 		echo
 	fi
 	
