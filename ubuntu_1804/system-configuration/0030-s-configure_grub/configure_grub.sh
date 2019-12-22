@@ -48,7 +48,7 @@ configure_grub(){
 		FIRST_SWAP_PARTITION_UUID=$(blkid -s UUID -o value ${FIRST_SWAP_PARTITION_DEVICE_NAME})
 		echo "Adding swap partition for resume from hibernate: ${FIRST_SWAP_PARTITION_UUID}"
 		echo "Using acpi_backlight=native"
-		sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=\"resume=UUID=${FIRST_SWAP_PARTITION_UUID}\" acpi_backlight=native/" /etc/default/grub
+		sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=\"resume=UUID=${FIRST_SWAP_PARTITION_UUID} acpi_backlight=native\"/" /etc/default/grub
 		echo
 	fi
 	
