@@ -1,4 +1,6 @@
 # TODOS
+- [ ] .user_playlist.txt should allow comment with char #
+- [ ] all calls to rename_for_backup should use a suffix (felix_install_yyMMDD_HHmmss.SSS)
 - [ ] add menuitem for showing battery performance (battery-graph or our own gnuplot script).
 - [ ] dialog_command v2 and v3 are not used => in the end it will be replaced by yad, delete them?
 - [ ] Rofi gray out the screen behind.
@@ -69,6 +71,8 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] backlight value at boot time can be too low (20 on the macbook) => fixed by using acpi_backlight=native
+- [x] kernel acpi_backlight=native for macbook air (and don't need the fix for backlight after suspend).
 - [x] Recipe for configuring apticron (setting the email).
 - [x] Should keep apt.daily actived.
 - [x] Make avahi workstation published (publish-workstation=yes in /etc/avahi/avahi-daemon.conf)
