@@ -55,7 +55,6 @@ disable_all_acpi_wakeup_except_for_platform_subsystems(){
 			if [[ "${SUBSYSTEM}" != "platform" ]]; then
 				ATTR_VALUE="disabled"
 			fi
-			ATTR_VALUE="disabled"
 			
 			echo "DEVICE[${DEVICE}] S_STATE[${S_STATE}] STATUS[${STATUS}] SYSFS_NODE[${SYSFS_NODE}] SUBSYSTEM=[${SUBSYSTEM}] KERNEL[${KERNEL}]"
 			
