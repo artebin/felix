@@ -51,14 +51,16 @@ disable_all_acpi_wakeup_except_for_platform_subsystems(){
 			SUBSYSTEM="${SYSFS_NODE%%:*}"
 			KERNEL="${SYSFS_NODE#*:}"
 			
-			if [[ "${SUBSYSTEM}" == "platform" ]]; then
-				continue
+			ATTR_VALUE="${STATUS:1}"
+			if [[ "${SUBSYSTEM}" != "platform" ]]; then
+				ATTR_VALUE="disabled"
 			fi
+			ATTR_VALUE="disabled"
 			
 			echo "DEVICE[${DEVICE}] S_STATE[${S_STATE}] STATUS[${STATUS}] SYSFS_NODE[${SYSFS_NODE}] SUBSYSTEM=[${SUBSYSTEM}] KERNEL[${KERNEL}]"
 			
 			echo "# Disable DEVICE[${DEVICE}] from S_STATE[${S_STATE}]" >> "${ACPI_WAKEUP_FILE_NAME}"
-			echo "SUBSYSTEM==\"${SUBSYSTEM}\", KERNEL==\"${KERNEL}\", ATTR{power/wakeup}=\"disabled\"" >> "${ACPI_WAKEUP_FILE_NAME}"
+			echo "SUBSYSTEM==\"${SUBSYSTEM}\", KERNEL==\"${KERNEL}\", ATTR{power/wakeup}=\"${ATTR_VALUE}\"" >> "${ACPI_WAKEUP_FILE_NAME}"
 			echo "" >> "${ACPI_WAKEUP_FILE_NAME}"
 		fi
 	done < /proc/acpi/wakeup

@@ -13,28 +13,33 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_grub(){
-	echo "Configuring grub ..."
+	printf "Configuring grub ...\n"
 	
 	# Backup grub configuration
-	echo "Backup current grub configuration ..."
+	printf "Backup current grub configuration ...\n"
 	backup_file copy /etc/default/grub
 	echo
 	
 	# Show grub and set timeout
-	echo "Show grub and set timeout ..."
+	printf "Showing grub and set timeout ...\n"
 	sed -i "/^GRUB_TIMEOUT_STYLE/s/.*/#GRUB_TIMEOUT_STYLE=/" /etc/default/grub
 	sed -i "/^GRUB_TIMEOUT/s/.*/GRUB_TIMEOUT=10/" /etc/default/grub
-	echo
+	printf "\n"
 	
-	# Remove boot option 'quiet' and 'splash'
-	echo "Remove boot option 'quiet' and 'splash' ..."
+	# Remove boot options 'quiet' and 'splash'
+	printf "Removing boot options 'quiet' and 'splash' ...\n"
 	sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=\"\"/" /etc/default/grub
-	echo
+	printf "\n"
+	
+	# Disable submenu
+	printf "Disabling submenu ...\n"
+	add_or_update_keyvalue /etc/default/grub "GRUB_DISABLE_SUBMENU" "GRUB_DISABLE_SUBMENU=y"
+	printf "\n"
 	
 	# Disable graphical terminal
-	echo "Disable graphical terminal ..."
+	printf "Disabling graphical terminal ...\n"
 	sed -i "/^#GRUB_TERMINAL=/s/.*/GRUB_TERMINAL=console/" /etc/default/grub
-	echo
+	printf "\n"
 	
 	# Update kernel parameters:
 	#  - add swap partition for resume from hibernate
@@ -54,7 +59,7 @@ configure_grub(){
 	
 	update-grub
 	
-	echo
+	printf "\n"
 }
 
 configure_grub 2>&1 | tee -a "${LOGFILE}"

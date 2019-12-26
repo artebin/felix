@@ -34,7 +34,14 @@ start_vlc(){
 }
 
 play_previous_playlist_item(){
-	retrieve_status
+	if [[ -z "${VLC_PID}" ]]; then
+		printf "Playback is not running\n"
+		exit 1
+	fi
+	if [[ "${PLAYLIST_ITEM_COUNT}" -eq 1 ]]; then
+		printf "Nothing previous PLAYLIST_ITEM_COUNT[%s]\n"
+		exit 1
+	fi
 	if [[ -z "${PLAYLIST_ITEM_CURRENT_INDEX}" ]]; then
 		PLAYLIST_ITEM_TO_PLAY_INDEX=$((PLAYLIST_ITEM_COUNT - 2))
 	else
@@ -45,7 +52,14 @@ play_previous_playlist_item(){
 }
 
 play_next_playlist_item(){
-	retrieve_status
+	if [[ -z "${VLC_PID}" ]]; then
+		printf "Playback is not running\n"
+		exit 1
+	fi
+	if [[ "${PLAYLIST_ITEM_COUNT}" -eq 1 ]]; then
+		printf "Nothing next PLAYLIST_ITEM_COUNT[%s]\n"
+		exit 1
+	fi
 	if [[ -z "${PLAYLIST_ITEM_CURRENT_INDEX}" ]]; then
 		PLAYLIST_ITEM_TO_PLAY_INDEX="0"
 	else
