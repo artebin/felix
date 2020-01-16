@@ -110,6 +110,7 @@ wmctrl xdotool xautomation
 xserver-xephyr
 libnotify-dev libnotify-doc #libnotify-bin should be installed from sources (fix on notification IDs)
 onboard
+xtrlock xprintidle
 
 ##################################
 # Window manager & desktop tools
