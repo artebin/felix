@@ -17,7 +17,7 @@ install_xlockscreen(){
 	install_package_if_not_installed "xtrlock xprintidle"
 	
 	printf "Installing xlockscreen ...\n"
-	cp xlockscreen.sh /usr/local/bin
+	cp xlockscreen.sh /usr/local/bin/xlockscreen
 	chmod a+x /usr/local/bin/xlockscreen
 	cp xlockscreen.desktop /usr/share/applications
 	
