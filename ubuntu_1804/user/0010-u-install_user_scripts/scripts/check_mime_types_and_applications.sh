@@ -11,23 +11,21 @@ create_snapshot_mime_types_and_applications(){
 		exit 1
 	fi
 	
-	printf "Creating snapshot of MIME types and applications ...\n"
+	printf "Creating a snapshot of the MIME types and applications ...\n"
 	printf "SNAPSHOT_DIR: ${SNAPSHOT_DIR}\n"
 	
 	# See <https://unix.stackexchange.com/questions/114075/how-to-get-a-list-of-applications-associated-with-a-file-using-command-line>
 	
-	# Copy global settings on MIME types
+	# Copy global settings
 	cp /usr/share/applications/mimeinfo.cache "${SNAPSHOT_DIR}"
 	sed -e 's/=/\n\t/' -e 's/;/\n\t/g' /usr/share/applications/mimeinfo.cache >"${SNAPSHOT_DIR}/mimeinfo.cache.info"
 	
-	# Copy local settings on MIME types
+	# Copy local settings
 	cp "${HOME}/.config/mimeapps.list" "${SNAPSHOT_DIR}"
 	sed -e 's/=/\n\t/' -e 's/;/\n\t/g' "${HOME}/.config/mimeapps.list" >"${SNAPSHOT_DIR}/mimeapps.list.info"
 	
 	# Copy .desktop files for application autostart
-	if [[ -d "${HOME}/.config/autostart" ]]; then
-	    cp -r "${HOME}/.config/autostart" "${SNAPSHOT_DIR}"
-	fi
+	cp -r "${HOME}/.config/autostart" "${SNAPSHOT_DIR}"
 	
 	printf "\n"
 }
@@ -105,11 +103,16 @@ compare_snapshots_and_delete_if_no_changes(){
 
 SNAPSHOTS_DIR="${HOME}/.MimeTypeAndApplicationSnapshots"
 
+if [[ ! -d "${SNAPSHOTS_DIR}" ]]; then
+	printf "SNAPSHOTS_DIR does not exists\n"
+	printf "Create SNAPSHOTS_DIR: %s\n" "${SNAPSHOTS_DIR}"
+fi
+
 # Retrieve previous snapshot
 PREVIOUS_SNAPSHOT_DIR=$(find "${SNAPSHOTS_DIR}" -maxdepth 1 -mindepth 1 -type d|grep -E '[0-9]{6}-[0-9]{6}'|sort|tail -n1)
 
-# Create snapshot directory
-SNAPSHOT_DIR="${HOME}/.MimeTypeAndApplicationSnapshots/$(date -u +'%y%m%d-%H%M%S')"
+# Create snapshot directory for current run
+SNAPSHOT_DIR="${SNAPSHOTS_DIR}/$(date -u +'%y%m%d-%H%M%S')"
 if [[ -d "${SNAPSHOT_DIR}" ]]; then
 	printf "SNAPSHOT_DIR already exists: ${SNAPSHOT_DIR}"
 	exit 1
