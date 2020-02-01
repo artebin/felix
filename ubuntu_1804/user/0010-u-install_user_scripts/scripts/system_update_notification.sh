@@ -7,7 +7,8 @@ SECURITY_UPDATE_PACKAGE_NAME_ARRAY=""
 SECURITY_UPDATE_PACKAGE_COUNT=0
 
 retrieve_security_updates(){
-	apt-get -s upgrade | grep -i 'security' | awk -F " " {'print $2'} > "${SECURITY_UPDATE_PACKAGE_LIST_FILE}"
+	apt-get -s upgrade | grep -i 'security' | awk -F " " {'print $2'} | uniq > "${SECURITY_UPDATE_PACKAGE_LIST_FILE}"
+	sort -u -o "${SECURITY_UPDATE_PACKAGE_LIST_FILE}" "${SECURITY_UPDATE_PACKAGE_LIST_FILE}"
 	readarray SECURITY_UPDATE_PACKAGE_NAME_ARRAY < <(cat "${SECURITY_UPDATE_PACKAGE_LIST_FILE}")
 	SECURITY_UPDATE_PACKAGE_COUNT="${#SECURITY_UPDATE_PACKAGE_NAME_ARRAY[@]}"
 }
