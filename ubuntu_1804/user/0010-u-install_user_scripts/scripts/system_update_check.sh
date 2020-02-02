@@ -36,7 +36,7 @@ retrieve_security_updates(){
 }
 
 function system_update_check_exit() {
-	source "${SYSTEM_UPDATE_CHECK_STATUS_FILE}"
+	YAD_NOTIFICATION_PID=$(crudini --get "${SYSTEM_UPDATE_CHECK_STATUS_FILE}" "General" "YAD_NOTIFICATION_PID")
 	kill -9 "${YAD_NOTIFICATION_PID}"
 }
 export -f system_update_check_exit
@@ -50,6 +50,13 @@ export -f system_update_check_exit_from_systray
 # YAD callback for button "Install Updates"
 function system_update_check_install_security_updates() {
 	# Close YAD dialog and change status of security_update_checker: icon in systray is still visible but icon changed because installing updates...
+	YAD_DIALOG_PID=$(crudini --get "${SYSTEM_UPDATE_CHECK_STATUS_FILE}" "General" "YAD_DIALOG_PID" 2>/dev/null)
+	if [[ ! -z "${YAD_DIALOG_PID}" ]]; then
+		kill -9 "${YAD_DIALOG_PID}"
+		crudini --del "${SYSTEM_UPDATE_CHECK_STATUS_FILE}" "General" "YAD_DIALOG_PID"
+		return
+	fi
+	
 	# Do not use -hold but a "Press <enter> to continue."
 	xterm -hold -T "Installing Security Updates ..." -e "cat ${SECURITY_UPDATE_PACKAGE_LIST_FILE} | xargs sudo apt-get install --dry-run"
 	# after the end of the xterm, terminate the security_update_checker
@@ -58,6 +65,13 @@ export -f system_update_check_install_security_updates
 
 # YAD callback for button "Install Updates"
 function system_update_check_show_dialog_security_updates() {
+	YAD_DIALOG_PID=$(crudini --get "${SYSTEM_UPDATE_CHECK_STATUS_FILE}" "General" "YAD_DIALOG_PID" 2>/dev/null)
+	if [[ ! -z "${YAD_DIALOG_PID}" ]]; then
+		kill -9 "${YAD_DIALOG_PID}"
+		crudini --del "${SYSTEM_UPDATE_CHECK_STATUS_FILE}" "General" "YAD_DIALOG_PID"
+		return
+	fi
+	
 	# There is a bug in YAD with the option --center
 	# It shows rendering artifacts when resizing the window (blinking windows as centered and modified/resized)
 	YAD_DIALOG_GEOMETRY_WIDTH="600"
@@ -81,10 +95,11 @@ function system_update_check_show_dialog_security_updates() {
 	--window-icon="software-update-urgent" \
 	--geometry="${YAD_DIALOG_GEOMETRY_WIDTH}x${YAD_DIALOG_GEOMETRY_HEIGHT}+${YAD_DIALOG_GEOMETRY_X}+${YAD_DIALOG_GEOMETRY_Y}" \
 	--title="Security Updates Available" \
-	--button="Install Updates:bash -c system_update_check_install_security_updates" \
+	--button="Install Updates:bash -c system_update_check_install_security_updates &" \
 	--button="gtk-close:1" \
 	--on-top &
 	YAD_DIALOG_PID=$!
+	crudini --set "${SYSTEM_UPDATE_CHECK_STATUS_FILE}" "General" "YAD_DIALOG_PID" "${YAD_DIALOG_PID}"
 	
 	# There should be a way to register a callback to run when the YAD window is visible instead of the sleep below
 	sleep 0.2
@@ -102,7 +117,7 @@ show_yad_systray_notification(){
 		--menu="Quit!bash -c system_update_check_exit_from_systray" \
 		--no-middle &
 	YAD_NOTIFICATION_PID=$!
-	add_or_update_keyvalue "${SYSTEM_UPDATE_CHECK_STATUS_FILE}" "YAD_NOTIFICATION_PID" "${YAD_NOTIFICATION_PID}"
+	crudini --set "${SYSTEM_UPDATE_CHECK_STATUS_FILE}" "General" "YAD_NOTIFICATION_PID" "${YAD_NOTIFICATION_PID}"
 }
 
 # Retrieve options
@@ -127,8 +142,7 @@ if [[ $? -ne 0 ]]; then
 	printf "$0 is already running\n\n"
 	exit 1
 fi
-source "${SYSTEM_UPDATE_CHECK_STATUS_FILE}"
-add_or_update_keyvalue "${SYSTEM_UPDATE_CHECK_STATUS_FILE}" "SYSTEM_UPDATE_CHECK_PID" "$$"
+crudini --set "${SYSTEM_UPDATE_CHECK_STATUS_FILE}" "General" "SYSTEM_UPDATE_CHECK_PID" "$$"
 
 retrieve_security_updates
 #if ! ${CHECK_SECURITY_UPDATES_ONLY}; then
