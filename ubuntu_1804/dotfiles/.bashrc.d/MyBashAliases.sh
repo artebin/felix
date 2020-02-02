@@ -139,3 +139,8 @@ retrieve_geometry_of_primary_monitor(){
 	xrandr | grep ' connected primary' | cut -d" " -f4
 }
 alias retrieve_geometry_of_primary_monitor=retrieve_geometry_of_primary_monitor
+
+retrieve_distro_codename(){
+	lsb_release --codename --short
+}
+alias retrieve_distro_codename=retrieve_distro_codename

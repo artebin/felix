@@ -1,12 +1,31 @@
 #!/usr/bin/env bash
 
+print_usage(){
+	printf "Usage: ${0} [OPTIONS...]\n"
+	printf "  -s     check security updates only\n"
+	printf "\n"
+}
+
+add_or_update_keyvalue(){
+	FILE_PATH="${1}"
+	KEY="${2}"
+	NEW_VALUE="${3}"
+	if grep -q "^${KEY}" "${FILE_PATH}"; then
+		sed -i "/^${KEY}=/s/.*/${KEY}=${NEW_VALUE}/" "${FILE_PATH}"
+	else
+		echo "${KEY}=${NEW_VALUE}" >> "${FILE_PATH}"
+	fi
+}
+
 export SYSTEM_UPDATE_CHECK_STATUS_FILE="/dev/shm/${USER}.system_update_check.status"
+export NOT_SECURITY_UPDATE_PACKAGE_LIST_FILE="/dev/shm/${USER}.system_update_check.not_security_update_package_list"
 export SECURITY_UPDATE_PACKAGE_LIST_FILE="/dev/shm/${USER}.system_update_check.security_update_package_list"
 
 SECURITY_UPDATE_PACKAGE_NAME_ARRAY=""
 SECURITY_UPDATE_PACKAGE_COUNT=0
 
 retrieve_security_updates(){
+	# TODO: grepping below is not correct to retrieve security updates only
 	apt-get -s upgrade | grep -i 'security' | awk -F " " {'print $2'} | uniq > "${SECURITY_UPDATE_PACKAGE_LIST_FILE}"
 	sort -u -o "${SECURITY_UPDATE_PACKAGE_LIST_FILE}" "${SECURITY_UPDATE_PACKAGE_LIST_FILE}"
 	readarray SECURITY_UPDATE_PACKAGE_NAME_ARRAY < <(cat "${SECURITY_UPDATE_PACKAGE_LIST_FILE}")
@@ -14,8 +33,8 @@ retrieve_security_updates(){
 }
 
 function system_update_check_exit() {
-	YAD_PID=$(cat "${SYSTEM_UPDATE_CHECK_STATUS_FILE}")
-	kill -9 "${YAD_PID}"
+	source "${SYSTEM_UPDATE_CHECK_STATUS_FILE}"
+	kill -9 "${YAD_NOTIFICATION_PID}"
 }
 export -f system_update_check_exit
 
@@ -75,15 +94,44 @@ show_yad_systray_notification(){
 	yad --notification \
 		--listen \
 		--image="software-update-urgent" \
-		--text="Notification tooltip" \
+		--text="${SECURITY_UPDATE_PACKAGE_COUNT} security updates available" \
 		--command="bash -c system_update_check_show_dialog_security_updates" \
 		--menu="Quit!bash -c system_update_check_exit_from_systray" \
 		--no-middle &
-	YAD_PID=$!
-	echo "${YAD_PID}" >"${SYSTEM_UPDATE_CHECK_STATUS_FILE}"
+	YAD_NOTIFICATION_PID=$!
+	add_or_update_keyvalue "${SYSTEM_UPDATE_CHECK_STATUS_FILE}" "YAD_NOTIFICATION_PID" "${YAD_NOTIFICATION_PID}"
 }
 
+# Retrieve options
+CHECK_SECURITY_UPDATES_ONLY="false"
+while getopts "s" OPT; do
+	case "${OPT}" in
+		s)
+			CHECK_SECURITY_UPDATES_ONLY="true"
+			;;
+		*)
+			print_usage
+			exit 1
+			;;
+	esac
+done
+shift $((OPTIND-1))
+
+# Get lock on SYSTEM_UPDATE_CHECK_STATUS_FILE 
+exec 100>"${SYSTEM_UPDATE_CHECK_STATUS_FILE}"
+flock -n 100
+if [[ $? -ne 0 ]]; then
+	printf "$0 is already running\n\n"
+	exit 1
+fi
+source "${SYSTEM_UPDATE_CHECK_STATUS_FILE}"
+add_or_update_keyvalue "${SYSTEM_UPDATE_CHECK_STATUS_FILE}" "SYSTEM_UPDATE_CHECK_PID" "$$"
+
 retrieve_security_updates
+#if ! ${CHECK_SECURITY_UPDATES_ONLY}; then
+#	
+#fi
+
 if [[ "${SECURITY_UPDATE_PACKAGE_COUNT}" != 0 ]]; then
 	show_yad_systray_notification
 fi
