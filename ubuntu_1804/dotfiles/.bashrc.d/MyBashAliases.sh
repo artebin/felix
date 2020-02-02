@@ -124,3 +124,18 @@ package_reinstall_and_revert_conf_files(){
 	apt-get install --reinstall -o Dpkg::Options::="--force-confask,confnew,confmiss" "${@}"
 }
 alias package_reinstall_and_revert_conf_files=package_reinstall_and_revert_conf_files
+
+screen_dimension(){
+	xdpyinfo | grep -oP 'dimensions:\s+\K\S+'
+}
+alias screen_dimension=screen_dimension
+
+show_connected_monitors(){
+	xrandr | grep ' connected'
+}
+alias show_connected_monitors=show_connected_monitors
+
+retrieve_geometry_of_primary_monitor(){
+	xrandr | grep ' connected primary' | cut -d" " -f4
+}
+alias retrieve_geometry_of_primary_monitor=retrieve_geometry_of_primary_monitor
