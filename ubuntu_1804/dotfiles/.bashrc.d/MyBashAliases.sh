@@ -4,6 +4,7 @@
 alias bc='bc -l'
 
 weather(){
+	# wttr.in guesses the location from the request originator if no indicated location
 	curl "wttr.in/${1}"
 }
 alias weather=weather
@@ -14,66 +15,100 @@ github-clone(){
 	elif [[ $# -eq 2 ]]; then
 		git clone "https://github.com/${1}/${2}"
 	else 
-		printf "usage: github-clone [repository URL]\n"
-		printf "       github-clone [user name] [project name]\n"
+		printf "Usage: %s REPOSITORY_URL\n" "${FUNCNAME[0]}"
+		printf "       %s USER_NAME REPOSITY_NAME\n" "${FUNCNAME[0]}"
+		return
 	fi
 }
 alias github-clone=github-clone
 
 git-config-global-user-name-email(){
-	git config --global user.name "${1}"
-	git config --global user.email "${2}"
+	NAME="${1}"
+	EMAIL="${2}"
+	if [[ -z "${NAME}" ]] | [[ -z "${EMAIL}" ]]; then
+		printf "Usage: %s NAME EMAIL\n" "${FUNCNAME[0]}"
+		return
+	fi
+	git config --global user.name "${NAME}"
+	git config --global user.email "${EMAIL}"
 }
 alias git-config-global-user-name-email=git-config-global-user-name-email
 
-datetime2seconds(){
-	date -d "${1}" %s
+dateInSeconds(){
+	date +%s
 }
-alias datetime2seconds=datetime2seconds
+alias dateInSeconds=dateInSeconds
 
-dates_diff(){
-	LEFT_DATE_IN_SECONDS=$(date -d "${1}" +%s)
-	RIGHT_DATE_IN_SECONDS=$(date -d "${2}" +%s)
+dateInMillis(){
+	date +%s%N | cut -b1-13
+}
+alias dateInMillis=dateInMillis
+
+millis2date() {
+	DATE_IN_MILLIS="${1}"
+	if [[ -z "${DATE_IN_MILLIS}" ]]; then
+		printf "Usage: %s DATE_IN_MILLIS\n" "${FUNCNAME[0]}"
+		return
+	fi
+	DATE_IN_SECONDS=$(( "${DATE_IN_MILLIS}" / 1000 ))
+	date -d @${DATE_IN_SECONDS}
+}
+alias millis2date=millis2date
+
+date2seconds(){
+	DATE_AS_STRING="${1}"
+	if [[ -z "${DATE_AS_STRING}" ]]; then
+		printf "Usage: %s DATE_AS_STRING\n" "${FUNCNAME[0]}"
+		return
+	fi
+	date -d "${DATE_AS_STRING}" %s
+}
+alias date2seconds=date2seconds
+
+dates2duration(){
+	LEFT_DATE_AS_STRING="${1}"
+	RIGHT_DATE_AS_STRING="${2}"
+	if [[ -z "${LEFT_DATE_AS_STRING}" ]] | [[ -z "${RIGHT_DATE_AS_STRING}" ]]; then
+		printf "Usage: %s LEFT_DATE_AS_STRING RIGHT_DATE_AS_STRING\n" "${FUNCNAME[0]}"
+		return
+	fi
+	LEFT_DATE_IN_SECONDS=$(date -d "${LEFT_DATE_AS_STRING}" +%s)
+	RIGHT_DATE_IN_SECONDS=$(date -d "${RIGHT_DATE_AS_STRING}" +%s)
 	DIFF_IN_SECONDS=$(( ${RIGHT_DATE_IN_SECONDS} - ${LEFT_DATE_IN_SECONDS} ))
 	DAY_COUNT=$(( ${DIFF_IN_SECONDS} / 86400 ))
 	SECONDS_FROM_MIDNIGHT_COUNT=$(( ${DIFF_IN_SECONDS} % 86400  ))
 	TIME_OF_DAY=$(date -u -d @"${DIFF_IN_SECONDS}" +"%T")
-	echo "${DAY_COUNT}d ${TIME_OF_DAY}"
+	printf "%sd %s\n" "${DAY_COUNT}" "${TIME_OF_DAY}"
 }
-alias dates_diff=dates_diff
+alias dates2duration=dates2duration
 
 backup_file(){
-	if [ "$#" -ne 2 ]; then
-		echo "Usage: backup_file mode path"
-		echo "  arguments:"
-		echo "    mode\t\t'rename' or 'copy'"
-		exit 1
+	BACKUP_MODE="${1}"
+	FILE="${2}"
+	if [[ "${BACKUP_MODE}" != "-r"  && "${BACKUP_MODE}" != "-c" ]]; then
+		printf "Usage: %s [-r | -c] FILE\n" "${FUNCNAME[0]}"
+		return
 	fi
-	MODE="${1}"
-	FILE_TO_BACKUP="${2}"
-	if [ ! -e "${FILE_TO_BACKUP}" ]; then
-		echo "Can not find ${FILE_TO_BACKUP}"
-		exit 1
+	if [[ -z "${FILE}" || ! -e "${FILE}" ]]; then
+		printf "Usage: %s [-r | -c] FILE\n" "${FUNCNAME[0]}"
+		return
 	fi
-	FILE_BACKUP="${FILE_TO_BACKUP}.bak.$(date -u +'%y%m%d-%H%M%S')"
-	case "${MODE}" in
-		"rename")
-			mv "${FILE_TO_BACKUP}" "${FILE_BACKUP}"
-			if [ "$?" -ne 0 ]; then
-				echo "Can not backup: ${FILE_TO_BACKUP}"
-				exit 1
+	FILE_BACKUP="${FILE}.bak.$(date -u +'%y%m%d-%H%M%S')"
+	case "${BACKUP_MODE}" in
+		"-r")
+			mv "${FILE}" "${FILE_BACKUP}"
+			if [[ "$?" -ne 0 ]]; then
+				printf "!ERROR! Cannot backup: %s\n" "${FILE}"
+				return
 			fi
 			;;
-		"copy")
-			cp "${FILE_TO_BACKUP}" "${FILE_BACKUP}"
+		"-c")
+			cp "${FILE}" "${FILE_BACKUP}"
 			if [ "$?" -ne 0 ]; then
-				echo "Can not backup: ${FILE_TO_BACKUP}"
-				exit 1
+				printf "!ERROR! Cannot backup: %s\n" "${FILE}"
+				return
 			fi
 			;;
-		*)
-			echo "Unkown mode \"${MODE}\""
-			exit 1
 	esac
 }
 alias backup_file=backup_file
@@ -85,11 +120,7 @@ remove_terminal_control_sequences(){
 }
 alias remove_terminal_control_sequences=remove_terminal_control_sequences
 
-millisToDate() {
-	date -d @$(echo "${1}/1000"|bc)
-}
-
-reinstall_and_revert_conf_files(){
+package_reinstall_and_revert_conf_files(){
 	apt-get install --reinstall -o Dpkg::Options::="--force-confask,confnew,confmiss" "${@}"
 }
-alias reinstall_and_revert_conf_files=reinstall_and_revert_conf_files
+alias package_reinstall_and_revert_conf_files=package_reinstall_and_revert_conf_files
