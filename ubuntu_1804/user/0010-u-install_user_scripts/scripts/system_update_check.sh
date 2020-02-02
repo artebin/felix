@@ -26,6 +26,8 @@ SECURITY_UPDATE_PACKAGE_COUNT=0
 
 retrieve_security_updates(){
 	# TODO: grepping below is not correct to retrieve security updates only
+	# Follow <https://wiki.debian.org/SourcesList>
+	# The updates treated as "security updates" should be be ones provided by a list of (distribution,component)
 	apt-get -s upgrade | grep -i 'security' | awk -F " " {'print $2'} | uniq > "${SECURITY_UPDATE_PACKAGE_LIST_FILE}"
 	sort -u -o "${SECURITY_UPDATE_PACKAGE_LIST_FILE}" "${SECURITY_UPDATE_PACKAGE_LIST_FILE}"
 	readarray SECURITY_UPDATE_PACKAGE_NAME_ARRAY < <(cat "${SECURITY_UPDATE_PACKAGE_LIST_FILE}")
