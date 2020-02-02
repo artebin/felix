@@ -1,4 +1,4 @@
-# Software updates
+# System Updates
 
 ## List security updates from command line
 
