@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Add an minimal image viewer such as "edisplay" (good to have one image viewer with no scale smoothing)
 - [ ] How to set the primary monitor from the command line and add it in ob-randr.py 
 - [ ] Bugs in user_playlist.sh: next is not working on macbook air + should not prev/next if only one item in the playlist.
 - [ ] .user_playlist.txt should allow comment with char #
