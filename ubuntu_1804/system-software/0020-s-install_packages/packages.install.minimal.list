@@ -2,6 +2,7 @@
 # System tools
 ################
 lsb-core
+moreutils
 psmisc #Includes fuser, killall, peekfd, pstree, prtstat
 hwinfo lshw inxi
 htop iotop smem #dstat is included in pcp
