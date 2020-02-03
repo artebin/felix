@@ -151,6 +151,6 @@ ls_socket_for_pid(){
 		printf "Usage: %s PID\n" "${FUNCNAME[0]}"
 		return
 	fi
-	ss -l -p -n | grep "pid=${PID},"
+	lsof -Pan -p ${PID} -i
 }
 alias ls_socket_for_pid=ls_socket_for_pid
