@@ -154,3 +154,13 @@ ls_socket_for_pid(){
 	lsof -Pan -p ${PID} -i
 }
 alias ls_socket_for_pid=ls_socket_for_pid
+
+desc_for_pid(){
+	PID="${1}"
+	if [[ -z "${PID}" ]]; then
+		printf "Usage: %s PID\n" "${FUNCNAME[0]}"
+		return
+	fi
+	ps -p ${PID} -o pid,vsz=MEMORY -o user,group=GROUP -o comm,args=ARGS
+}
+alias desc_for_pid=desc_for_pid
