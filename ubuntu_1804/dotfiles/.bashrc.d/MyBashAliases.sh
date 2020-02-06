@@ -156,11 +156,13 @@ ls_socket_for_pid(){
 alias ls_socket_for_pid=ls_socket_for_pid
 
 desc_for_pid(){
-	PID="${1}"
-	if [[ -z "${PID}" ]]; then
-		printf "Usage: %s PID\n" "${FUNCNAME[0]}"
+	PID_LIST="${1}"
+	if [[ -z "${PID_LIST}" ]]; then
+		printf "Usage: %s PID_LIST\n" "${FUNCNAME[0]}"
 		return
 	fi
-	ps -p ${PID} -o pid,vsz=MEMORY -o user,group=GROUP -o comm,args=ARGS
+	for PID in ${PID_LIST}; do
+		ps -p ${PID} -o pid,vsz=MEMORY -o user,group=GROUP -o comm,args=ARGS
+	done
 }
 alias desc_for_pid=desc_for_pid
