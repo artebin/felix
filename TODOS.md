@@ -1,4 +1,6 @@
 # TODOS
+- [ ] Update CSS for Geany Markdown plugin + configure properly the plugin during install.
+- [ ] Geany Markdown plugin is not resetting the vertical scroll
 - [ ] The scripts folder should be renamed lib
 - [ ] Add an minimal image viewer such as "edisplay" (good to have one image viewer with no scale smoothing)
 - [ ] How to set the primary monitor from the command line and add it in ob-randr.py 
@@ -61,7 +63,7 @@
 
 # ISSUES
 - [ ] Pasystray: middle click on the tray icon is not muting the sound anymore.
-- [ ] GPicView: very slow with SVG files.
+- [ ] GPicView: slow at rendering SVG files.
 - [ ] Caja: copying files is very slow compared to the command line (local or remote) => it can be because of GVFS
 - [ ] Caja: create new directory with name starting with a dot is bugged.
 - [ ] Caja: opening 2 window of file Properties is buggy.
@@ -71,7 +73,6 @@
 - [ ] Geany/Markdown: plugin is not properly using the css specified (colors are not used and lines starting with the character `#` inside a blockcode are treated as a heading).
 - [ ] Geany/Markdown: when all the document are closed, the Markdown Preview still shows the last preview done.
 - [ ] Geany/Markdown: the links are clickable in the preview, if we click one link then the page is showed in the sidebar but there is no way to navigate and go back to the preview.
-- [ ] Geany/Markdown: When all the document are closed in Geany, the Markdown Preview still shows the last preview. Also the links are clickable in the preview and the page is showed in the sidebar but there is no way to navigate and go back to the preview.
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
