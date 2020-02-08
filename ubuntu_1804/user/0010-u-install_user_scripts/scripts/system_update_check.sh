@@ -49,6 +49,8 @@ export -f system_update_check_exit_from_systray
 
 # YAD callback for button "Install Updates"
 function system_update_check_install_security_updates() {
+	xterm -T "Installing Security Updates ..." -e "cat ${SECURITY_UPDATE_PACKAGE_LIST_FILE} | xargs sudo apt-get install --dry-run;printf '\n\n';read -p 'Press enter to exit.'" &
+	
 	# Close YAD dialog and change status of security_update_checker: icon in systray is still visible but icon changed because installing updates...
 	YAD_DIALOG_PID=$(crudini --get "${SYSTEM_UPDATE_CHECK_STATUS_FILE}" "General" "YAD_DIALOG_PID" 2>/dev/null)
 	if [[ ! -z "${YAD_DIALOG_PID}" ]]; then
@@ -57,8 +59,6 @@ function system_update_check_install_security_updates() {
 		return
 	fi
 	
-	# Do not use -hold but a "Press <enter> to continue."
-	xterm -hold -T "Installing Security Updates ..." -e "cat ${SECURITY_UPDATE_PACKAGE_LIST_FILE} | xargs sudo apt-get install --dry-run"
 	# after the end of the xterm, terminate the security_update_checker
 }
 export -f system_update_check_install_security_updates
@@ -95,7 +95,7 @@ function system_update_check_show_dialog_security_updates() {
 	--window-icon="software-update-urgent" \
 	--geometry="${YAD_DIALOG_GEOMETRY_WIDTH}x${YAD_DIALOG_GEOMETRY_HEIGHT}+${YAD_DIALOG_GEOMETRY_X}+${YAD_DIALOG_GEOMETRY_Y}" \
 	--title="Security Updates Available" \
-	--button="Install Updates:bash -c system_update_check_install_security_updates &" \
+	--button="Install Updates:bash -c system_update_check_install_security_updates" \
 	--button="gtk-close:1" \
 	--on-top &
 	YAD_DIALOG_PID=$!
