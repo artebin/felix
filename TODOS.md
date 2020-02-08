@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Additional fiels in recipe ID for stated install by default
 - [ ] Update CSS for Geany Markdown plugin + configure properly the plugin during install.
 - [ ] Geany Markdown plugin is not resetting the vertical scroll
 - [ ] The scripts folder should be renamed lib
