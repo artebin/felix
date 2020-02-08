@@ -121,26 +121,9 @@ I have problems with resolution 1360x768 but maybe because of my TV device: some
 It happens only the first time I switch to this resolution, if I set 1920x1080 and then go back to 1360x768 then it is properly displayed. No problem with other resolutions.
 I can fix the problem by setup the monitors via lightdm configuration (with a resolution like 1280x720 - not 1360x768), and then use a second xrandr command executed via openbox autostart which will set wanted the resolution.
 
-## FlightRadar24
-- retrieve fr24feed from <https://www.flightradar24.com/share-your-data>
-- the binary executable is not perfoming a usable configuration on Ubuntu (at least Ubuntu 18.04). Maybe the install procedure failed, or it expects to find dump1090 in `/usr/lib/fr24`. It is no problem: (1) copy fr24feed in `/usr/bin`, (2) compile dump1090 and then copy dump1090 and gmap.html to `/usr/lib/fr24`. The systemd service file is also missing but it is no difficulty to write one.
-- the argument `--interactive` of dump1090 prevent the feeding of FR24 for an unknown reason. Just use `--net` for having the map but remove `--interactive`.
-
 ## Disable X.org
 - `sudo systemctl set-default multi-user.target`
 - `sudo systemctl set-default graphical.target`
-
-## Dump1090
-- Dump1090 can not work if there is no udev rule for the DVB-T. Retrieve the VendorID and the ProductID with `lsusb` and create/update `/etc/udev/rules.d/rtl-sdr.rules`:
-```
-SUBSYSTEMS=="usb", ATTRS{idVendor}=="0bda", ATTRS{idProduct}=="2832", MODE:="0666" -
-```
-- make udev reload the rules with:
-```
-sudo udevadm control --reload-rules
-sudo udevadm trigger
-```
-- start dump1090 with `./dump1090 --interactive --net` and visit `http://localhost:8080`
 
 ## MIME types and default application
 - retrieve the MIME type: `xdg-mime query filetype <some file>`
