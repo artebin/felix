@@ -13,14 +13,14 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_geany_markdown_plugin_from_sources(){
-	echo "Install Geany / Markdown plugin from sources ..."
+	printf "Install Geany / Markdown plugin from sources ...\n"
 	
 	# Install dependencies
 	install_package_if_not_installed "intltool" "libwebkit2gtk-4.0-dev"
 	
 	# Clone git repository
 	cd ${RECIPE_DIR}
-	git clone http://github.com/geany/geany-plugins
+	git clone https://github.com/geany/geany-plugins
 	
 	# Compile and install
 	cd ${RECIPE_DIR}
@@ -35,7 +35,7 @@ install_geany_markdown_plugin_from_sources(){
 	cd ${RECIPE_DIR}
 	rm -fr ./geany-plugins
 	
-	echo
+	printf "\n"
 }
 
 
