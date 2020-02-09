@@ -235,4 +235,5 @@ init_recipe(){
 	printf "RECIPE_FAMILY_CONF_FILE=${RECIPE_FAMILY_CONF_FILE}\n"
 	printf "RECIPE_DIR=${RECIPE_DIR}\n"
 	printf "LOGFILE=${LOGFILE}\n"
+	printf "\n"
 }

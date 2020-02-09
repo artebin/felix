@@ -12,21 +12,42 @@ init_recipe "${RECIPE_DIR}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-install_additional_fonts(){
-	echo "Installing additional fonts ..."
-	
+install_fonts(){
+	# Install font JetBrainsMono
+	printf "%-50s : %s\n" "Installing font" "Droid"
 	cd "${RECIPE_DIR}"
 	cp fonts/Droid/*.ttf /usr/local/share/fonts/
+	
+	# Install font JetBrainsMono
+	printf "%-50s : %s\n" "Installing font" "Montserrat"
+	cd "${RECIPE_DIR}"
 	cp fonts/Montserrat/*.otf /usr/local/share/fonts/
+	
+	# Install font JetBrainsMono
+	printf "%-50s : %s\n" "Installing font" "Roboto"
+	cd "${RECIPE_DIR}"
 	cp fonts/Roboto/*.ttf /usr/local/share/fonts/
 	
-	echo "Updating font cache ..."
+	# Install font JetBrainsMono
+	printf "%-50s : %s\n" "Installing font" "JetBrains Mono"
+	git clone https://github.com/JetBrains/JetBrainsMono
+	cp "${RECIPE_DIR}"/JetBrainsMono/ttf/*.ttf /usr/local/share/fonts
+	cp -r "${RECIPE_DIR}"/JetBrainsMono/web/eot /usr/local/share/fonts
+	cp -r "${RECIPE_DIR}"/JetBrainsMono/web/woff /usr/local/share/fonts
+	cp -r "${RECIPE_DIR}"/JetBrainsMono/web/woff2 /usr/local/share/fonts
+	
+	# Update fond cache
+	printf "Updating font cache ...\n"
 	fc-cache -f -v 1>/dev/null
 	
-	echo
+	# Clean
+	cd "${RECIPE_DIR}"
+	rm -fr JetBrainsMono
+	
+	printf "\n"
 }
 
-install_additional_fonts 2>&1 | tee -a "${LOGFILE}"
+install_fonts 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
