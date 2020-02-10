@@ -380,7 +380,12 @@ install_package_if_not_installed(){
 			printf "Package is already installed: ${PACKAGE_NAME}\n"
 		else
 			printf "Installing package: ${PACKAGE_NAME} ...\n"
-			apt-get install -y "${PACKAGE_NAME}"
+			if [[ ${EUID} -ne 0 ]]; then
+				printf "Current user is not root => using sudo\n"
+				sudo apt-get install -y "${PACKAGE_NAME}"
+			else
+				apt-get install -y "${PACKAGE_NAME}"
+			fi
 		fi
 	done
 }

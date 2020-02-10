@@ -15,7 +15,7 @@ exit_if_has_root_privileges
 install_kpie_from_sources(){
 	# Install dependencies
 	printf "Installing dependencies ...\n"
-	sudo install_package_if_not_installed "lua5.1 liblua5.1-0-dev"
+	install_package_if_not_installed "lua5.1 liblua5.1-0-dev libwnck-dev"
 	
 	# Clone the github repository
 	printf "Cloning <https://github.com/skx/kpie> ...\n"
