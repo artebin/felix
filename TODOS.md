@@ -1,5 +1,10 @@
 # TODOS
-- [ ] Additional fiels in recipe ID for stated install by default
+- [ ] Add notes about bash completion
+- [ ] Reworked remote desktop software and use tiger VNC
+- [ ] locate and sshpass not installed by default
+- [ ] tint2 is not listening to changes in monitors: which one is primary?
+- [ ] kpie does not listen to window title change.
+- [ ] Additional fields in recipe ID for stated install by default
 - [ ] Update CSS for Geany Markdown plugin + configure properly the plugin during install.
 - [ ] Geany Markdown plugin is not resetting the vertical scroll
 - [ ] The scripts folder should be renamed lib

@@ -1,5 +1,9 @@
-# Command Line Sheet Chear
+# Command Line Sheet Cheat
 
 * List sockets created by pid number: `ss -l -p -n | grep "pid=${PID},"`
+
+* Mark missing files in a subversion project as deleted: `svn st | grep ^! | awk '{print " --force "$2}' | xargs svn rm`
+
+* Removing an old SSH key: `ssh-keygen -R [hostname|address]`
 
 * Extract a mp3 from a youtube video URL: `youtube-dl --extract-audio --audio-format mp3 <video URL>`
