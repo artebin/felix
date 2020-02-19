@@ -1,5 +1,7 @@
 # Command Line Sheet Cheat
 
+* Show the command arguments in ps: `ps -f -u USER`
+
 * List sockets created by pid number: `ss -l -p -n | grep "pid=${PID},"`
 
 * Mark missing files in a subversion project as deleted: `svn st | grep ^! | awk '{print " --force "$2}' | xargs svn rm`
