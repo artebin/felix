@@ -13,13 +13,30 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_xlockscreen(){
-	printf "Installing dependencies ...\n"
-	install_package_if_not_installed "xtrlock xprintidle"
+	printf "\nInstalling dependency packages ...\n\n"
+	cd "${RECIPE_DIR}"
+	install_package_if_not_installed "xtrlock"
 	
-	printf "Installing xlockscreen ...\n"
+	printf "\nUninstall xprintidle because it will be re-installed from the sources\n\n"
+	remove_with_purge_package_if_installed "xprintidle"
+	
+	printf "\nInstalling xprintidle from sources\n\n"
+	cd "${RECIPE_DIR}"
+	git clone https://github.com/lucianposton/xprintidle
+	cd xprintidle
+	./configure
+	make
+	make install
+	
+	printf "\nInstalling xlockscreen ...\n\n"
+	cd "${RECIPE_DIR}"
 	cp xlockscreen.sh /usr/local/bin/xlockscreen
 	chmod a+x /usr/local/bin/xlockscreen
 	cp xlockscreen.desktop /usr/share/applications
+	
+	# Cleanup
+	cd "${RECIPE_DIR}"
+	rm -fr xprintidle
 	
 	printf "\n"
 }

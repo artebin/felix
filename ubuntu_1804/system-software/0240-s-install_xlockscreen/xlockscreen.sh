@@ -1,24 +1,36 @@
 #!/usr/bin/env bash
 
-# From <https://askubuntu.com/questions/929562/is-there-a-way-to-lock-user-access-on-ubuntu-without-disabling-the-screen>
+print_usage(){
+	printf "Usage: ${0} TIMEOUT_IN_MINUTES\n\n"
+}
 
-# The lock timoeout defaults to 15 minutes.
-# Enter an argument on the commanline to for a different timeout.
-# xptintidle needs to be installed for the script to work
+# Default timeout is 15 minutes
+DEFAULT_TIMEOUT_IN_MILLIS=$(( 15 * 60 * 1000 ))
+TIMEOUT_IN_MILLIS="${DEFAULT_TIMEOUT_IN_MILLIS}"
 
 if [[ ! $(type xprintidle 2>/dev/null) ]]; then
-	notify-send "xlockscreen cannot be started\nReason: xprintidle is not installed"
-	exit
+	printf "xprintidle is required for ${0} to run\n\n"
+	print_usage
+	exit 1
 fi
+
 if [[ ! $(type xtrlock 2>/dev/null) ]]; then
-	notify-send "xlockscreen cannot be started\nReason: xtrlock is not installed"
-	exit
+	printf "xtrlock is required for ${0} to run\n\n"
+	print_usage
+	exit 1
 fi
-idle=15
-[[ "$1" ]] && idle=$1
+
+if [[ "${#}" -eq 1 ]]; then
+	TIMEOUT_IN_MILLIS=$(( "${1}" * 60 * 1000 ))
+fi
+
 while :; do
-	if (($(xprintidle) > idle * 60000)); then
+	IDLE_IN_MILLIS=$(xprintidle)
+	if [[ "${IDLE_IN_MILLIS}" -gt  "${TIMEOUT_IN_MILLIS}" ]]; then
 		[[ $(ps h -C xtrlock) ]] || xtrlock
 	fi
+	printf "IDLE_IN_MILLIS: %s\n" "${IDLE_IN_MILLIS}"
+	printf "TIMEOUT_IN_MILLIS: %s\n" "${TIMEOUT_IN_MILLIS}"
+	printf "\n"
 	sleep 10
 done
