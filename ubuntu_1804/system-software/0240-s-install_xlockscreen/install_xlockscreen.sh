@@ -15,7 +15,7 @@ exit_if_has_not_root_privileges
 install_xlockscreen(){
 	printf "\nInstalling dependency packages ...\n\n"
 	cd "${RECIPE_DIR}"
-	install_package_if_not_installed "xtrlock"
+	install_package_if_not_installed "xorg-dev xtrlock"
 	
 	printf "\nUninstall xprintidle because it will be re-installed from the sources\n\n"
 	remove_with_purge_package_if_installed "xprintidle"
