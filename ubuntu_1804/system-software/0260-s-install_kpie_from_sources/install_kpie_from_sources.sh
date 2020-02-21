@@ -31,6 +31,7 @@ install_kpie_from_sources(){
 	cp kpie "/usr/local/bin"
 	
 	# Add a desktop file
+	cd "${RECIPE_DIR}"
 	cp kpie.desktop /usr/share/applications
 	
 	# Cleaning
