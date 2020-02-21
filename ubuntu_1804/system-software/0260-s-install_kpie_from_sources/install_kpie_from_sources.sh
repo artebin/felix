@@ -10,7 +10,7 @@ source "${FELIX_ROOT}/felix.sh"
 init_recipe "${RECIPE_DIR}"
 
 exit_if_not_bash
-exit_if_has_root_privileges
+exit_if_has_not_root_privileges
 
 install_kpie_from_sources(){
 	# Install dependencies
@@ -28,7 +28,7 @@ install_kpie_from_sources(){
 	if [[ ! -d "${HOME}/bin" ]]; then
 		mkdir -p "${HOME}/bin"
 	fi
-	cp kpie "${HOME}/bin"
+	cp kpie "/usr/local/bin"
 	
 	# Add a desktop file
 	cp kpie.desktop /usr/share/applications
