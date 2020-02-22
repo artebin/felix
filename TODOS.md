@@ -1,4 +1,7 @@
 # TODOS
+- [ ] Key shortcut for applying geometry to a window something line 512x512 on the left-bottom corner of the screen. It would be even better if it could be to3ggable.
+- [ ] Mirage or GPicView? GPicView is slower at rendering SVG graphics.
+- [ ] Create better graphs with gnuplot and battery-stats-collector
 - [ ] Add notes about bash completion
 - [ ] Reworked remote desktop software and use tiger VNC
 - [ ] locate and sshpass not installed by default
@@ -72,6 +75,7 @@
 - [ ] GPicView: slow at rendering SVG files.
 - [ ] Caja: copying files is very slow compared to the command line (local or remote) => it can be because of GVFS
 - [ ] Caja: create new directory with name starting with a dot is bugged.
+- [ ] Caja: renaming a .desktop file is bugged.
 - [ ] Caja: opening 2 window of file Properties is buggy.
 - [ ] Caja: always show the file name (extension are hidden for .desktop files for example) See <https://github.com/mate-desktop/caja/issues/727> open ticket.
 - [ ] Caja: when opening executable scripts (bash, python) => contextual menu is showing 'open'. Good UX would be 3 menu items: 'Run', 'Run in terminal' and 'Open with X', X being the default application for the mime type. However today there is only 'Open' which will open dialog a popup asking 'Display or run or run in terminal?'. The user does not know what is behind 'Display', display with what??? Even worst: the default application for the mime type is not listed in the 'Open with' maybe because, well... it is the application used for 'Display', erf...
