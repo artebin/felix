@@ -7,3 +7,4 @@ foreground-color='#FFFFFFFFFFFF'
 visible-name='Default'
 use-theme-colors=false
 default-show-menubar=false
+scrollback-lines=4096
