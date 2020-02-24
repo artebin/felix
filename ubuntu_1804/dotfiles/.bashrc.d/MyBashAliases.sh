@@ -168,3 +168,10 @@ desc_for_pid(){
 	ps ${PS_ARGS} -o pid,vsz=MEMORY -o user,group=GROUP -o comm,args=ARGS
 }
 alias desc_for_pid=desc_for_pid
+
+svn_mark_missing_as_deletions(){
+	if [[ ! -z "$(svn st | grep ^! | awk '{print " --force "$2}')" ]]; then
+		svn st | grep ^! | awk '{print " --force "$2}' | xargs svn rm
+	fi
+}
+alias svn_mark_missing_as_deletions=svn_mark_missing_as_deletions
