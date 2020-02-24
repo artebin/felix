@@ -14,8 +14,11 @@ xset -display :0 s 0 0
 xset -display :0 s noblank
 xset -display :0 s noexpose
 
+# Configure DPMS: completely disable it
+xset -display :0 -dpms
+
 # Configure DPMS
 #   - Standby: 2 hours
 #   - Suspend: 2 hours
 #   - Off: never
-xset -display :0 dpms 7200 7200 0
+#xset -display :0 dpms 7200 7200 0
