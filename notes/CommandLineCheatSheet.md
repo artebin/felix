@@ -6,6 +6,8 @@
 
 * Mark missing files in a subversion project as deleted: `svn st | grep ^! | awk '{print " --force "$2}' | xargs svn rm`
 
+* Revert to base revision one file in a git project: `git checkout -- FILE`
+
 * Removing an old SSH key: `ssh-keygen -R [hostname|address]`
 
 * Extract a mp3 from a youtube video URL: `youtube-dl --extract-audio --audio-format mp3 <video URL>`
