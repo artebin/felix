@@ -4,5 +4,8 @@
   * <https://medium.com/@laurynas.karvelis_95228/install-arch-linux-on-macbook-pro-11-2-retina-install-guide-for-year-2017-2034ceed4cb2>
 
 ## Boot screen has wrong display resolution
-Type <kbd>Command</kbd><kbd>Option</kbd><kbd>P</kbd><kbd>R</kbd> to reset the macbook PRAM.
+Type <kbd>Command</kbd><kbd>Option</kbd><kbd>P</kbd><kbd>R</kbd> at boot time to reset the macbook PRAM.
 See <https://apple.stackexchange.com/questions/104696/boot-screen-has-wrong-display-resolution>.
+
+## Battery Life
+  * <https://github.com/Dunedan/mbp-2016-linux/issues/24>
