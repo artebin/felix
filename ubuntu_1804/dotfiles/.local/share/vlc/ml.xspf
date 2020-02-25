@@ -167,11 +167,11 @@
 		</track>
 		<track>
 			<location>http://broadcast.infomaniak.net/novazz-128.mp3</location>
-			<title>novazz</title>
+			<title>Radio Nova</title>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
 				<vlc:id>18</vlc:id>
 				<vlc:option>network-caching=1000</vlc:option>
-				<vlc:option>meta-title=novazz</vlc:option>
+				<vlc:option>meta-title=Radio Nova</vlc:option>
 			</extension>
 		</track>
 		<track>
@@ -181,15 +181,6 @@
 				<vlc:id>19</vlc:id>
 				<vlc:option>network-caching=1000</vlc:option>
 				<vlc:option>meta-title=Radio Libertaire</vlc:option>
-			</extension>
-		</track>
-		<track>
-			<location>http://hivane01.frequence3.net:8000/perfecto-64.aac</location>
-			<title>Radio Perfecto, La seule radio classic rock !</title>
-			<extension application="http://www.videolan.org/vlc/playlist/0">
-				<vlc:id>20</vlc:id>
-				<vlc:option>network-caching=1000</vlc:option>
-				<vlc:option>meta-title=Radio Perfecto, La seule radio classic rock !</vlc:option>
 			</extension>
 		</track>
 		<track>
