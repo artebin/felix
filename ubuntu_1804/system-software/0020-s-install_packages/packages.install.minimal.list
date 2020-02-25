@@ -114,6 +114,7 @@ xserver-xephyr
 libnotify-dev libnotify-doc #libnotify-bin should be installed from sources (fix on notification IDs)
 onboard
 xtrlock xprintidle
+trash-cli
 
 ##################################
 # Window manager & desktop tools
