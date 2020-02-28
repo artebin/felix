@@ -1,6 +1,8 @@
 # Command Line Sheet Cheat
 
-* Show the command arguments in ps: `ps -f -u USER`
+* List files in column: `ls -1`
+
+* Show the command arguments in ps: `ps -f -u ${USER}`
 
 * List sockets created by pid number: `ss -l -p -n | grep "pid=${PID},"`
 
@@ -8,6 +10,6 @@
 
 * Revert to base revision one file in a git project: `git checkout -- FILE`
 
-* Removing an old SSH key: `ssh-keygen -R [hostname|address]`
+* Removing an old SSH key: `ssh-keygen -R [HOSTNAME|ADDRESS]`
 
-* Extract a mp3 from a youtube video URL: `youtube-dl --extract-audio --audio-format mp3 <video URL>`
+* Extract a mp3 from a youtube video URL: `youtube-dl --extract-audio --audio-format mp3 VIDEO_URL`
