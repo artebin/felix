@@ -157,10 +157,19 @@
 			</extension>
 		</track>
 		<track>
+			<location>http://live.wostreaming.net/direct/ppm-jazz24mp3-ibc1</location>
+			<title>KNKX: Jazz24</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>17</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+				<vlc:option>meta-title=KNKX: Jazz24</vlc:option>
+			</extension>
+		</track>
+		<track>
 			<location>http://swingfm.ice.infomaniak.ch:80/swingfm-128</location>
 			<title>Swing FM</title>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
-				<vlc:id>17</vlc:id>
+				<vlc:id>18</vlc:id>
 				<vlc:option>network-caching=1000</vlc:option>
 				<vlc:option>meta-title=Swing FM</vlc:option>
 			</extension>
@@ -169,7 +178,7 @@
 			<location>http://broadcast.infomaniak.net/novazz-128.mp3</location>
 			<title>Radio Nova</title>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
-				<vlc:id>18</vlc:id>
+				<vlc:id>19</vlc:id>
 				<vlc:option>network-caching=1000</vlc:option>
 				<vlc:option>meta-title=Radio Nova</vlc:option>
 			</extension>
@@ -178,7 +187,7 @@
 			<location>http://163.172.94.169:8080/radiolib</location>
 			<title>Radio Libertaire</title>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
-				<vlc:id>19</vlc:id>
+				<vlc:id>20</vlc:id>
 				<vlc:option>network-caching=1000</vlc:option>
 				<vlc:option>meta-title=Radio Libertaire</vlc:option>
 			</extension>
