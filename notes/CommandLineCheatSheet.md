@@ -12,4 +12,9 @@
 
 * Removing an old SSH key: `ssh-keygen -R [HOSTNAME|ADDRESS]`
 
+* Set the clock:
+    * Enable/disable synchonization of the machine clock with NTP: `timedatectl set-ntp no`
+    * Set machine clock: `timedatectl set-time 23:59:00`
+
+
 * Extract a mp3 from a youtube video URL: `youtube-dl --extract-audio --audio-format mp3 VIDEO_URL`
