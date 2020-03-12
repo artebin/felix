@@ -14,7 +14,7 @@
 
 * Set the clock:
     * Enable/disable synchonization of the machine clock with NTP: `timedatectl set-ntp no`
-    * Set machine clock: `timedatectl set-time 23:59:00`
+    * Set machine clock: `timedatectl set-time '2020-03-13 23:59:00'`
 
 
 * Extract a mp3 from a youtube video URL: `youtube-dl --extract-audio --audio-format mp3 VIDEO_URL`
