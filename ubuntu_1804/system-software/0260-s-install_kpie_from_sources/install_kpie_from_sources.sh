@@ -25,9 +25,6 @@ install_kpie_from_sources(){
 	printf "Compiling and installing ...\n"
 	cd kpie
 	make
-	if [[ ! -d "${HOME}/bin" ]]; then
-		mkdir -p "${HOME}/bin"
-	fi
 	cp kpie "/usr/local/bin"
 	
 	# Add a desktop file
