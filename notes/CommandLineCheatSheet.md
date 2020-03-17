@@ -16,5 +16,6 @@
     * Enable/disable synchonization of the machine clock with NTP: `timedatectl set-ntp no`
     * Set machine clock: `timedatectl set-time '2020-03-13 23:59:00'`
 
+* Identify Linux distribution with file `/etc/os-release`
 
 * Extract a mp3 from a youtube video URL: `youtube-dl --extract-audio --audio-format mp3 VIDEO_URL`

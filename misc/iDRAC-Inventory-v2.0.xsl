@@ -192,4 +192,5 @@ $xmlstarlet tr iDRAC-Inventory-v2.0.xsl 10.240.2.230-7QCLV03-HardwareInventory.x
 			</xsl:for-each>
 		</xsl:for-each>
 	</xsl:template>
+	
 </xsl:stylesheet>

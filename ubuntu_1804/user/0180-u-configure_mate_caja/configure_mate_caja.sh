@@ -26,7 +26,7 @@ configure_mate_caja(){
 	gsettings set org.mate.applications-terminal exec x-terminal-emulator
 	echo
 	
-	echo "Adding caja scripts ..."
+	printf "Adding caja scripts ...\n"
 	if [[ -d "${HOME}/.config/caja/scripts" ]]; then
 		backup_file rename "${HOME}/.config/caja/scripts"
 	fi
