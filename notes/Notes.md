@@ -236,6 +236,7 @@ Minimal installation of Eclipse:
   - everything in "Automatically insert at correct position"
   - everything in "When pasting"
   - everything in "In string literals"
+- Disallow GNOME Keyring in svnkit: `-Dsvnkit.library.gnome-keyring.enabled=false`
 
 ## Sidebar of GTK3 filechooserdialog is not using the icon from the GTK theme
 - <https://forum.xfce.org/viewtopic.php?id=10958>
