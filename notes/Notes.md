@@ -72,10 +72,6 @@ sudo service lightdm stop
 sudo apt-get install xserver-xorg-video-nouveau
 ```
 
-## Eclipse font rendering buggy with GTK3
-It is because of "Use mixed fonts and color labels" settings 
-See <https://bugs.eclipse.org/bugs/show_bug.cgi?id=465054>
-
 ## Shared clipboard between host/guest in Virtualbox
 Must install `virtualbox-guest-x11`.
 
@@ -222,21 +218,6 @@ Java is not using ld.so.conf files we can check default value of java.library.pa
 - Show the menu bar with <F10>
 - Stop auto mark as read when a message is selected: "mailnews.mark_message_read.auto=false"
 - Stop to wrap the lines in not-HTML composition: "mail.wrap_long_lines=false" and "mailnews.wraplength=0"
-
-## Eclipse
-Minimal installation of Eclipse:
-
-- Download the Eclipse platform <http://download.eclipse.org/eclipse/downloads/drops4/R-4.7.2-201711300510/>
-- Go to `Help>Install New Software` and install the Eclipse Marketplace
-- Install Java Development Tools (JDT) and Subversive using the Eclipse Marketplace
-- Add the SVNKit repository <http://community.polarion.com/projects/subversive/download/eclipse/6.0/update-site/> from Polarion (see the Polarion website).
-- Go to `Preferences>Java>Compiler>Building` and check `Circular dependencies=Warning`
-- Go to `Preferences>Java>Editor` and disable "Smart caret positioning in Java names (overrides platform behavior)"
-- Go to `Preferences>Java>Editor>Content Assist>Typing` and disable:
-  - everything in "Automatically insert at correct position"
-  - everything in "When pasting"
-  - everything in "In string literals"
-- Disallow GNOME Keyring in svnkit: `-Dsvnkit.library.gnome-keyring.enabled=false`
 
 ## Sidebar of GTK3 filechooserdialog is not using the icon from the GTK theme
 - <https://forum.xfce.org/viewtopic.php?id=10958>
