@@ -1,4 +1,9 @@
 # TODOS
+- [ ] Deactivate Rofi modi ssh and try to add rofi-buku.
+- [ ] Find a good portal for firefox or a Web Bookmarks application.
+- [ ] Add recipe for configuring Atril.
+- [ ] Rule for VLC which save the window dimensions between 2 runs.
+- [ ] Find an image browser which can copy the path of the currently displayed image, or do drag'n'drop.
 - [ ] Check good usage of `xdg-settings set default-url-scheme-handler`. See <https://wiki.archlinux.org/index.php/Xdg-utils>
 - [ ] Add a recipe for Evolution.
 - [ ] Improve Remmina recipe: notification icon, tree view.
