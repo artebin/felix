@@ -26,6 +26,7 @@ ncdu
 ranger
 cryptsetup
 paperkey qrencode
+screen
 
 ############################
 # Language and translation
@@ -115,6 +116,7 @@ libnotify-dev libnotify-doc #libnotify-bin should be installed from sources (fix
 onboard
 xtrlock xprintidle
 trash-cli
+hsetroot
 
 ##################################
 # Window manager & desktop tools
