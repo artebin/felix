@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Would be perfect to be able to choose the mail client: claws-mail, Evolution, Thunderbird. Can suceed in doing that today when Thunderbird and Evolution are installed, the change is not detected.
 - [ ] Deactivate Rofi modi ssh and try to add rofi-buku.
 - [ ] Find a good portal for firefox or a Web Bookmarks application.
 - [ ] Add recipe for configuring Atril.
