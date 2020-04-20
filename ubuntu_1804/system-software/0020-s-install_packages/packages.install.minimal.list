@@ -152,6 +152,7 @@ greybird-gtk-theme human-theme
 #########
 faenza-icon-theme
 fonts-font-awesome
+fontforge
 
 #############################
 # Virtual Terminal Emulator
@@ -201,7 +202,8 @@ unp
 # Image viewer, browser, manipulation
 #######################################
 libimage-exiftool-perl #for exiftool
-imagemagick pqiv
+imagemagick
+pqiv
 gpicview
 shotwell
 gimp gimp-data-extras
