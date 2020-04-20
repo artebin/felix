@@ -1,4 +1,7 @@
 # TODOS
+- [ ] Caja script for sorting file, same for removing duplicates.
+- [ ] Find the project on github for reminding shortcuts (command line and rofi).
+- [ ] WWw Browser in incognito mode in the openbox menu, use a font with icons to add sunglasses icons.
 - [ ] Would be perfect to be able to choose the mail client: claws-mail, Evolution, Thunderbird. Can suceed in doing that today when Thunderbird and Evolution are installed, the change is not detected.
 - [ ] Deactivate Rofi modi ssh and try to add rofi-buku.
 - [ ] Find a good portal for firefox or a Web Bookmarks application.
