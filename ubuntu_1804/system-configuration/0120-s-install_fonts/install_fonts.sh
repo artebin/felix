@@ -16,17 +16,17 @@ install_fonts(){
 	# Install font JetBrainsMono
 	printf "%-50s : %s\n" "Installing font" "Droid"
 	cd "${RECIPE_DIR}"
-	cp fonts/Droid/*.ttf /usr/local/share/fonts/
+	cp fonts/Droid/* /usr/local/share/fonts/
 	
 	# Install font JetBrainsMono
 	printf "%-50s : %s\n" "Installing font" "Montserrat"
 	cd "${RECIPE_DIR}"
-	cp fonts/Montserrat/*.otf /usr/local/share/fonts/
+	cp fonts/Montserrat/* /usr/local/share/fonts/
 	
 	# Install font JetBrainsMono
 	printf "%-50s : %s\n" "Installing font" "Roboto"
 	cd "${RECIPE_DIR}"
-	cp fonts/Roboto/*.ttf /usr/local/share/fonts/
+	cp fonts/Roboto/* /usr/local/share/fonts/
 	
 	# Install font JetBrainsMono
 	printf "%-50s : %s\n" "Installing font" "JetBrains Mono"
