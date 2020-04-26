@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# df human readable
+alias df="df -h"
+
 # Add standard math library to bc
 alias bc='bc -l'
 
