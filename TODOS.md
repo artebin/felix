@@ -1,7 +1,8 @@
 # TODOS
+- [ ] On the Dell the switch to headset microphone is not done after pluggin the headset.
+- [ ] Add a "File processing" menu in openbox and shortcut to trash-empty directly in the openbox menu. Also add compare etc.
 - [ ] Caja script for sorting file, same for removing duplicates.
 - [ ] Find the project on github for reminding shortcuts (command line and rofi).
-- [ ] WWw Browser in incognito mode in the openbox menu, use a font with icons to add sunglasses icons.
 - [ ] Would be perfect to be able to choose the mail client: claws-mail, Evolution, Thunderbird. Can suceed in doing that today when Thunderbird and Evolution are installed, the change is not detected.
 - [ ] Deactivate Rofi modi ssh and try to add rofi-buku.
 - [ ] Find a good portal for firefox or a Web Bookmarks application.
@@ -98,6 +99,7 @@
 - [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
+- [x] WWw Browser in incognito mode in the openbox menu, use a font with icons to add sunglasses icons.
 - [x] backlight value at boot time can be too low (20 on the macbook) => fixed by using acpi_backlight=native
 - [x] kernel acpi_backlight=native for macbook air (and don't need the fix for backlight after suspend).
 - [x] Recipe for configuring apticron (setting the email).
