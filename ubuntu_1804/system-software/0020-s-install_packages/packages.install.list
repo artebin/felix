@@ -57,7 +57,7 @@ snmp snmp-mibs-downloader
 #######
 # SSH
 #######
-ssh
+ssh sshpass
 
 #######
 # NFS
@@ -82,6 +82,7 @@ transmission-gtk
 #######
 # VNC
 #######
+tigervnc-standalone-server tigervnc-scraping-server
 remmina
 
 ########
