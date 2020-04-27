@@ -1,4 +1,5 @@
 # TODOS
+- [ ] Add regexer and http://mathew-kurian.github.io/CharacterMap/ in a bookmark tools.
 - [ ] On the Dell the switch to headset microphone is not done after pluggin the headset.
 - [ ] Add a "File processing" menu in openbox and shortcut to trash-empty directly in the openbox menu. Also add compare etc.
 - [ ] Caja script for sorting file, same for removing duplicates.
