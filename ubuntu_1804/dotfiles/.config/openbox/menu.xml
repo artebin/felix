@@ -9,14 +9,18 @@
 		<item label="Mail Client"><action name="Execute"><command>claws-mail</command></action></item>
 		<item label="Media Player"><action name="Execute"><command>vlc</command></action></item>
 		<separator/>
+		<menu id="file_utils" label="File Utils">
+			<item label="GVim"><action name="Execute"><command>gvim</command></action></item>
+			<item label="Hexadecimal Editor (bless)"><action name="Execute"><command>bless</command></action></item>
+			<item label="Diff &amp; Merge Tool (meld)"><action name="Execute"><command>meld</command></action></item>
+			<item label="Log Explorer (glogg)"><action name="Execute"><command>glogg</command></action></item>
+			<item label="Empty Trash"><action name="Execute"><command>trash-empty</command></action></item>
+		</menu>
+		<separator/>
 		<menu id="accessories" label="Accessories">
 			<item label="Task Manager (htop)"><action name="Execute"><command>x-terminal-emulator -T "Task Manager (htop)" -e "htop"</command></action></item>
 			<item label="System Monitor (glances)"><action name="Execute"><command>x-terminal-emulator -T "System Monitor (glances)" -e "glances"</command></action></item>
 			<item label="Disk Usage Analyzer (ncdu)"><action name="Execute"><command>x-terminal-emulator -T "Disk Usage Analyzer (ncdu)" -e "ncdu"</command></action></item>
-			<item label="Log Explorer (glogg)"><action name="Execute"><command>glogg</command></action></item>
-			<item label="GVim"><action name="Execute"><command>gvim</command></action></item>
-			<item label="Hexadecimal Editor (bless)"><action name="Execute"><command>bless</command></action></item>
-			<item label="Diff &amp; Merge Tool (meld)"><action name="Execute"><command>meld</command></action></item>
 			<item label="Encryption Keys Manager (seahorse)"><action name="Execute"><command>seahorse</command></action></item>
 			<item label="Virtual Keyboard (onboard)"><action name="Execute"><command>onboard</command></action></item>
 			<item label="Battery Usage"><action name="Execute"><command>battery-graph</command></action></item>
