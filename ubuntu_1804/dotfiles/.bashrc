@@ -118,6 +118,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
-for FILE in ${HOME}/.bashrc.d/*; do
-	source "${FILE}"
-done
+if [[ -d ${HOME}/.bashrc.d ]]; then
+	for FILE in ${HOME}/.bashrc.d/*; do
+		source "${FILE}"
+	done
+fi
