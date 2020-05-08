@@ -7,7 +7,7 @@ psmisc #Includes fuser, killall, peekfd, pstree, prtstat
 hwinfo lshw inxi
 htop iotop smem #dstat is included in pcp
 glances
-cockpit #pcp should be installed with a recipe because version of the pcp from Ubuntu18.04 repositories does not contain dstat yet
+cockpit pcp pcp-gui
 battery-stats
 fuseiso fuseiso9660
 inotify-hookable inotify-tools iwatch
