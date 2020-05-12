@@ -39,3 +39,7 @@
 ## Miscellaneous
 
 * Extract a mp3 from a youtube video URL: `youtube-dl --extract-audio --audio-format mp3 VIDEO_URL`
+
+## Xorg
+
+* Retrieve the name and class of a window: `xprop WM_CLASS`

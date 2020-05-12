@@ -11,7 +11,7 @@
     
 - Enable the SSH server by adding an empty file `SSH` in the boot partition. The default SSH credentials are `login=pi` and `passwd=raspberry`.
     
-- Configure a WiFi network with a file `wpa_supplicant.conf`:
+- Configure a WiFi network with a file `wpa_supplicant.conf` in `/boot`:
     
     	ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
     	update_config=1
