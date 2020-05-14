@@ -1,44 +1,40 @@
 # TODOS
 
-- [ ] Log file name changes with time and we call the function for each recipe.
+- [ ] On the Dell the switch to headset microphone is not done after pluggin the headset. <https://superuser.com/questions/1312970/headset-microphone-not-detected-by-pulse-und-alsa>
+- [ ] Improve Remmina recipe: notification icon, tree view => added the configuration in dotfiles directory, should not do a recipe for that.
+- [ ] Add recipe for configuring Atril => added the configuration in dotfiles directory, should not do a recipe for that.
 - [ ] Desktop font should be configurable via recipe family .conf file.
 - [ ] Add a recipe for SetWorkspaceLayout.
-- [ ] Caja script "Execute script" but not with a terminal.
 - [ ] Extract archive in terminal shows an error dialog even if unpacking sucessful.
 - [ ] Add a convertWebpToPng caja script.
 - [ ] Something is installing PackageKit, what? check with clean install if PackageKit is installed.
 - [ ] Open browser quarter of the screen, lower-right corner of the screen.
 - [ ] Add regexer and http://mathew-kurian.github.io/CharacterMap/ in a bookmark tools.
-- [ ] On the Dell the switch to headset microphone is not done after pluggin the headset.
 - [ ] Caja script for sorting file, same for removing duplicates.
 - [ ] Find the project on github for reminding shortcuts (command line and rofi).
 - [ ] Would be perfect to be able to choose the mail client: claws-mail, Evolution, Thunderbird. Can suceed in doing that today when Thunderbird and Evolution are installed, the change is not detected.
 - [ ] Deactivate Rofi modi ssh and try to add rofi-buku.
 - [ ] Find a good portal for firefox or a Web Bookmarks application.
-- [ ] Add recipe for configuring Atril.
 - [ ] Rule for VLC which save the window dimensions between 2 runs.
 - [ ] Find an image browser which can copy the path of the currently displayed image, or do drag'n'drop.
 - [ ] Check good usage of `xdg-settings set default-url-scheme-handler`. See <https://wiki.archlinux.org/index.php/Xdg-utils>
-- [ ] Add a recipe for Evolution.
-- [ ] Improve Remmina recipe: notification icon, tree view.
+- [ ] Recipe family conf should contain a variable for the mail client (claws, evolution etc. ), it should be installed by install.sh and set in openbox menu.
 - [ ] Key shortcut for applying geometry to a window something line 512x512 on the left-bottom corner of the screen. It would be even better if it could be to3ggable.
 - [ ] Mirage or GPicView? GPicView is slower at rendering SVG graphics.
 - [ ] Create better graphs with gnuplot and battery-stats-collector
 - [ ] Add notes about bash completion
 - [ ] Reworked remote desktop software and use tiger VNC
-- [ ] locate and sshpass not installed by default
 - [ ] tint2 is not listening to changes in monitors: which one is primary?
 - [ ] kpie does not listen to window title change.
-- [ ] Additional fields in recipe ID for stated install by default
 - [ ] Update CSS for Geany Markdown plugin + configure properly the plugin during install.
-- [ ] Geany Markdown plugin is not resetting the vertical scroll
+- [ ] Geany Markdown plugin is not resetting the vertical scroll.
 - [ ] The scripts folder should be renamed lib
 - [ ] Add an minimal image viewer such as "edisplay" (good to have one image viewer with no scale smoothing)
 - [ ] How to set the primary monitor from the command line and add it in ob-randr.py 
 - [ ] Bugs in user_playlist.sh: next is not working on macbook air + should not prev/next if only one item in the playlist.
 - [ ] .user_playlist.txt should allow comment with char #
 - [ ] all calls to rename_for_backup should use a suffix (felix_install_yyMMDD_HHmmss.SSS)
-- [ ] add menuitem for showing battery performance (battery-graph or our own gnuplot script).
+- [ ] add menuitem for showing battery performance (battery-graph or our own gnuplot script). It can happen that the battery level is off the chart with battery-graph.
 - [ ] dialog_command v2 and v3 are not used => in the end it will be replaced by yad, delete them?
 - [ ] Rofi gray out the screen behind.
 - [ ] Allow the execution of extra recipes direcly from the openbox menu? And when recipe executed then do not show the recipe in the menu? It should git pull felix, maybe a menu Felix should have a "Update Felix from github" menuitem.
@@ -47,7 +43,6 @@
 - [ ] Create an openbox pipe menu for enabling/disabling the bluetooth.
 - [ ] Use autorandr to change lightdm resolution.
 - [ ] Woud be useful to have a short program putting a icon in the tray and click-left="show a dialog" and click-right="Contextual menu with one item: Exit". Would be also useful if a notification could be shown when then icon appears. Could be also the dialog to be showed automatically.
-- [ ] Brogexer.
 - [ ] Recipe for dictionary and spelling (for example: US, FR). For Geany, we need hunspell => have a openbox menu for installing dictionary, use yad for selecting the language. It could be a bash function and one alias.
 - [ ] TLP and CpuFreq for lower average temperatgure? Thermald for logging? pcp?
 - [ ] Numeric keyboard disabled after wake from hibernation.
@@ -61,7 +56,6 @@
 - [ ] Better documentation in openbox rc.xml (with "Window Actions" section) see <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
 - [ ] Openbox application shotcuts "restart openbox" and "quit openbox".
 - [ ] change pidgin icon for using the stock icon.
-- [ ] make skype for business work with audio call (telepathy sipe?)
 - [ ] Configuration libinput <https://unix.stackexchange.com/questions/337008/activate-tap-to-click-on-touchpad> it replaces synaptics.
 - [ ] mtrack configuration should check if there is already a \d+_mtrack.conf file in /usr/share/X11/xorg.conf.d/
 - [ ] List parameters useful to the user regarding dpms, lightlocker, suspend-then-hibernate => check if there is a yad panel for dpms.
@@ -110,6 +104,10 @@
 
 # DONE
 
+- [x] Additional fields in recipe ID for stated install by default => RECIPE_CATEGORY
+- [x] locate and sshpass not installed by default
+- [x] Caja script "Execute script" but not with a terminal (double-click the file in caja does not work if the file is not set as executable).
+- [x] Default configuration in Geany: symbol view should be ordered by appearance, not lexicographic order.
 - [x] Add a "File processing" menu in openbox and shortcut to trash-empty directly in the openbox menu => "File Utils"
 - [x] WWw Browser in incognito mode in the openbox menu, use a font with icons to add sunglasses icons.
 - [x] backlight value at boot time can be too low (20 on the macbook) => fixed by using acpi_backlight=native
