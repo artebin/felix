@@ -14,7 +14,7 @@ execute_recipes_from_recipe_directory_array(){
 	fi
 	
 	local ARRAY_NAME="${1}"
-	declare -n RECIPE_DIR_ARRAY="${ARRAY_NAME}"
+	declare -n RECIPE_DIRECTORY_ARRAY="${ARRAY_NAME}"
 	
 	local ASK_CONFIRMATION="${2}"
 	if [[  "${ASK_CONFIRMATION}" != 'true' && "${ASK_CONFIRMATION}" != 'false' ]]; then
