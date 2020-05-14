@@ -1,0 +1,74 @@
+
+Installing dependency packages ...
+
+Package is already installed: xorg-dev
+Installing package: xtrlock ...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following packages were automatically installed and are no longer required:
+  libappstream4 libllvm8 libllvm8:i386 libstd-rust-1.36 libstemmer0d
+  linux-headers-4.15.0-64 linux-headers-4.15.0-64-generic
+  linux-image-4.15.0-64-generic linux-modules-4.15.0-64-generic
+  linux-modules-extra-4.15.0-64-generic
+Use 'sudo apt autoremove' to remove them.
+The following NEW packages will be installed:
+  xtrlock
+0 upgraded, 1 newly installed, 0 to remove and 169 not upgraded.
+Need to get 8,024 B of archives.
+After this operation, 35.8 kB of additional disk space will be used.
+Get:1 http://fr.archive.ubuntu.com/ubuntu bionic/universe amd64 xtrlock amd64 2.8 [8,024 B]
+Fetched 8,024 B in 10s (793 B/s)
+Selecting previously unselected package xtrlock.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 448142 files and directories currently installed.)
+Preparing to unpack .../archives/xtrlock_2.8_amd64.deb ...
+Unpacking xtrlock (2.8) ...
+Setting up xtrlock (2.8) ...
+Processing triggers for menu (2.1.47ubuntu2.1) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+
+Uninstall xprintidle because it will be re-installed from the sources
+
+Package not removed because not installed: xprintidle
+
+Installing xprintidle from sources
+
+Cloning into 'xprintidle'...
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking whether gcc understands -c and -o together... yes
+checking for style of include used by make... GNU
+checking dependency style of gcc... gcc3
+checking how to run the C preprocessor... gcc -E
+checking for X... libraries , headers 
+checking for XOpenDisplay in -lX11... yes
+checking for XScreenSaverQueryExtension in -lXss... yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: executing depfiles commands
+gcc -DPACKAGE_NAME=\"xprintidle\" -DPACKAGE_TARNAME=\"xprintidle\" -DPACKAGE_VERSION=\"2.1\" -DPACKAGE_STRING=\"xprintidle\ 2.1\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE_URL=\"\" -DPACKAGE=\"xprintidle\" -DVERSION=\"2.1\" -DHAVE_LIBX11=1 -DHAVE_LIBXSS=1 -I.     -g -O2 -MT xprintidle.o -MD -MP -MF .deps/xprintidle.Tpo -c -o xprintidle.o xprintidle.c
+mv -f .deps/xprintidle.Tpo .deps/xprintidle.Po
+gcc  -g -O2   -o xprintidle xprintidle.o  -lX11 -lXss -lXext
+make[1]: Entering directory '/home/njames/Projects/felix/felix_ubuntu_1804/system-software/0240-d-s-install_xlockscreen/xprintidle'
+ /bin/mkdir -p '/usr/local/bin'
+  /usr/bin/install -c xprintidle '/usr/local/bin'
+make[1]: Nothing to be done for 'install-data-am'.
+make[1]: Leaving directory '/home/njames/Projects/felix/felix_ubuntu_1804/system-software/0240-d-s-install_xlockscreen/xprintidle'
+
+Installing xlockscreen ...
+
+
