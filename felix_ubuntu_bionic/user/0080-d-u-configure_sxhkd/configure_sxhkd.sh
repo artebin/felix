@@ -18,7 +18,7 @@ configure_sxhkd(){
 	if [[ ! -d "${HOME}/.config/sxhkd" ]]; then
 		mkdir -p "${HOME}/.config/sxhkd"
 	fi
-	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/sxhkd/sxhkdrc" "${RECIPE_FAMILY_DIR}/dotfiles/.config/sxhkd/sxhkdrc"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/sxhkd/sxhkdrc" "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/sxhkd/sxhkdrc"
 	
 	printf "\n"
 }

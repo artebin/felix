@@ -18,8 +18,8 @@ configure_rofi(){
 	if [[ ! -d "${HOME}/.config/rofi" ]]; then
 		mkdir -p "${HOME}/.config/rofi"
 	fi
-	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/rofi/config.rasi" "${RECIPE_FAMILY_DIR}/dotfiles/.config/rofi/config.rasi"
-	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/rofi/arc-felix.rasi" "${RECIPE_FAMILY_DIR}/dotfiles/.config/rofi/arc-felix.rasi"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/rofi/config.rasi" "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/rofi/config.rasi"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/rofi/arc-felix.rasi" "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/rofi/arc-felix.rasi"
 	
 	printf "\n"
 }

@@ -19,7 +19,7 @@ configure_fdpowermon(){
 		mkdir -p "${HOME}/.config/fdpowermon"
 	fi
 	
-	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/fdpowermon/theme.cfg" "${RECIPE_FAMILY_DIR}/dotfiles/.config/fdpowermon/theme.cfg"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/fdpowermon/theme.cfg" "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/fdpowermon/theme.cfg"
 	
 	printf "\n"
 }

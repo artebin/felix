@@ -31,7 +31,7 @@ configure_mate_caja(){
 		backup_file rename "${HOME}/.config/caja/scripts"
 	fi
 	mkdir -p "${HOME}/.config/caja/scripts"
-	cp -R "${RECIPE_FAMILY_DIR}/dotfiles/.config/caja/scripts" "${HOME}/.config/caja"
+	cp -R "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/caja/scripts" "${HOME}/.config/caja"
 	
 	printf "\n"
 }

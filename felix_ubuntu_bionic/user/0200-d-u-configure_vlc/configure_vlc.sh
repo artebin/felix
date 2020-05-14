@@ -19,7 +19,7 @@ configure_vlc(){
 		backup_file rename "${HOME}/.config/vlc"
 	fi
 	mkdir -p "${HOME}/.config/vlc"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/vlc/vlcrc" "${HOME}/.config/vlc"
+	cp "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/vlc/vlcrc" "${HOME}/.config/vlc"
 	echo
 	
 	echo "Adding default playlist ..."
@@ -27,7 +27,7 @@ configure_vlc(){
 		backup_file rename "${HOME}/.local/share/vlc"
 	fi
 	mkdir -p "${HOME}/.local/share/vlc"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.local/share/vlc/ml.xspf" "${HOME}/.local/share/vlc"
+	cp "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.local/share/vlc/ml.xspf" "${HOME}/.local/share/vlc"
 	
 	printf "\n"
 }

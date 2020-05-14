@@ -31,7 +31,7 @@ configure_xfce4_notifyd(){
 	if [[ ! -d "${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml" ]]; then
 		mkdir -p "${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml"
 	fi
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/xfce4/xfconf/xfce-perchannel-xml/${CONFIG_FILE}" "${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml/${CONFIG_FILE}"
+	cp "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/xfce4/xfconf/xfce-perchannel-xml/${CONFIG_FILE}" "${HOME}/.config/xfce4/xfconf/xfce-perchannel-xml/${CONFIG_FILE}"
 	
 	printf "\n"
 }

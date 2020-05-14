@@ -18,10 +18,10 @@ configure_openbox(){
 	if [[ ! -d "${HOME}/.config/openbox" ]]; then
 		mkdir -p "${HOME}/.config/openbox"
 	fi
-	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/openbox/autostart" "${RECIPE_FAMILY_DIR}/dotfiles/.config/openbox/autostart"
-	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/openbox/rc.xml" "${RECIPE_FAMILY_DIR}/dotfiles/.config/openbox/rc.xml"
-	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/openbox/menu.xml" "${RECIPE_FAMILY_DIR}/dotfiles/.config/openbox/menu.xml"
-	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/openbox/ob-randr.py" "${RECIPE_FAMILY_DIR}/dotfiles/.config/openbox/ob-randr.py"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/openbox/autostart" "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/openbox/autostart"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/openbox/rc.xml" "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/openbox/rc.xml"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/openbox/menu.xml" "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/openbox/menu.xml"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/openbox/ob-randr.py" "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/openbox/ob-randr.py"
 	
 	printf "\n"
 }

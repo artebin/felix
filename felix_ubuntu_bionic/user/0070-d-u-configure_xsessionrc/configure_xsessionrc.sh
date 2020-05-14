@@ -15,7 +15,7 @@ exit_if_has_root_privileges
 configure_xsessionrc(){
 	printf "Configuring xsessionrc ...\n"
 	
-	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.xsessionrc" "${RECIPE_FAMILY_DIR}/dotfiles/.xsessionrc"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.xsessionrc" "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.xsessionrc"
 	
 	printf "\n"
 }

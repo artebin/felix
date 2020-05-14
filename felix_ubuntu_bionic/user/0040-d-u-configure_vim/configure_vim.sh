@@ -15,7 +15,7 @@ exit_if_has_root_privileges
 configure_vim(){
 	printf "Configuring vim ...\n"
 	
-	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.vimrc" "${RECIPE_FAMILY_DIR}/dotfiles/.vimrc"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.vimrc" "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.vimrc"
 	
 	printf "\n"
 }

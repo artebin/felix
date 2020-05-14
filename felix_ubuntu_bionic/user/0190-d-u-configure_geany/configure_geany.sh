@@ -21,18 +21,18 @@ configure_geany(){
 	mkdir -p "${HOME}/.config/geany"
 	
 	#Geany main configuration
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/geany/geany.conf" "${HOME}/.config/geany"
+	cp "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/geany/geany.conf" "${HOME}/.config/geany"
 	
 	# Geany keybindings
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/geany/keybindings.conf" "${HOME}/.config/geany"
+	cp "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/geany/keybindings.conf" "${HOME}/.config/geany"
 	
 	# Geany filedefs
 	mkdir -p "${HOME}/.config/geany/filedefs"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/geany/filedefs/filetypes.common" "${HOME}/.config/geany/filedefs"
+	cp "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/geany/filedefs/filetypes.common" "${HOME}/.config/geany/filedefs"
 	
 	# GitHub markdown CSS
 	mkdir -p "${HOME}/.config/geany/plugins/markdown"
-	cp "${RECIPE_FAMILY_DIR}/dotfiles/.config/geany/plugins/markdown/github-markdown.html" "${HOME}/.config/geany/plugins/markdown"
+	cp "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/geany/plugins/markdown/github-markdown.html" "${HOME}/.config/geany/plugins/markdown"
 	
 	printf "\n"
 }

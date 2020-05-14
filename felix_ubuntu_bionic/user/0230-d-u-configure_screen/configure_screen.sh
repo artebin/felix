@@ -15,7 +15,7 @@ exit_if_has_root_privileges
 configure_screen(){
 	printf "Configuring screen ...\n"
 	
-	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.screenrc" "${RECIPE_FAMILY_DIR}/dotfiles/.screenrc"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.screenrc" "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.screenrc"
 	
 	printf "\n"
 }

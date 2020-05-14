@@ -15,8 +15,8 @@ exit_if_has_root_privileges
 configure_bash(){
 	printf "Configuring bash ...\n"
 	
-	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.bashrc" "${RECIPE_FAMILY_DIR}/dotfiles/.bashrc"
-	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.bashrc.d" "${RECIPE_FAMILY_DIR}/dotfiles/.bashrc.d"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.bashrc" "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.bashrc"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.bashrc.d" "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.bashrc.d"
 	
 	printf "\n"
 }

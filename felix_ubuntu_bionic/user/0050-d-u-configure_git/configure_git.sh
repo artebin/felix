@@ -15,7 +15,7 @@ exit_if_has_root_privileges
 configure_git(){
 	printf "Configuring git ...\n"
 	
-	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.gitconfig" "${RECIPE_FAMILY_DIR}/dotfiles/.gitconfig"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.gitconfig" "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.gitconfig"
 	
 	printf "\n"
 }

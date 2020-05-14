@@ -19,7 +19,7 @@ configure_claws_mail(){
 	if [[ ! -d "${HOME}/.claws-mail" ]]; then
 	    mkdir -p "${HOME}/.claws-mail"
 	fi
-	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.claws-mail/clawsrc" "${RECIPE_FAMILY_DIR}/dotfiles/.claws-mail/clawsrc"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.claws-mail/clawsrc" "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.claws-mail/clawsrc"
 	
 	printf "\n"
 }
