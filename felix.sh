@@ -126,7 +126,7 @@ list_recipes(){
 			continue
 		fi
 		
-		printf "  ${RECIPE_ID}\n"
+		printf "# ${RECIPE_ID}\n"
 		
 		RECIPE_NUMBER=$(retrieve_recipe_number "${RECIPE_ID}")
 		RECIPE_CATEGORY=$(retrieve_recipe_category "${RECIPE_ID}")
@@ -135,13 +135,67 @@ list_recipes(){
 		RECIPE_DISPLAY_NAME=$(retrieve_recipe_display_name "${RECIPE_ID}")
 		RECIPE_SCRIPT_FILE_PATH=$(retrieve_recipe_script_file "${RECIPE_ID}")
 		
-		printf "    %-30s: %s\n" "RECIPE_ID" "${RECIPE_ID}"
-		printf "    %-30s: %s\n" "RECIPE_NUMBER" "${RECIPE_NUMBER}"
-		printf "    %-30s: %s\n" "RECIPE_CATEGORY" "${RECIPE_CATEGORY}"
-		printf "    %-30s: %s\n" "RECIPE_RIGHTS" "${RECIPE_RIGHTS}"
-		printf "    %-30s: %s\n" "RECIPE_NAME" "${RECIPE_NAME}"
-		printf "    %-30s: %s\n" "RECIPE_DISPLAY_NAME" "${RECIPE_DISPLAY_NAME}"
-		printf "    %-30s: %s\n" "RECIPE_SCRIPT_FILE_PATH" "${RECIPE_SCRIPT_FILE_PATH}"
+		printf "  %-30s: %s\n" "RECIPE_ID" "${RECIPE_ID}"
+		printf "  %-30s: %s\n" "RECIPE_NUMBER" "${RECIPE_NUMBER}"
+		printf "  %-30s: %s\n" "RECIPE_CATEGORY" "${RECIPE_CATEGORY}"
+		printf "  %-30s: %s\n" "RECIPE_RIGHTS" "${RECIPE_RIGHTS}"
+		printf "  %-30s: %s\n" "RECIPE_NAME" "${RECIPE_NAME}"
+		printf "  %-30s: %s\n" "RECIPE_DISPLAY_NAME" "${RECIPE_DISPLAY_NAME}"
+		printf "  %-30s: %s\n" "RECIPE_SCRIPT_FILE_PATH" "${RECIPE_SCRIPT_FILE_PATH}"
+	done
+}
+
+re_index_recipes(){
+	if [[ $# -ne 1 ]]; then
+		printf "${FUNCNAME[0]}() expects RECIPES_PARENT_DIRECTORY in argument\n"
+		exit 1
+	fi
+	RECIPES_PARENT_DIRECTORY="${1}"
+	if [[ ! -d "${RECIPES_PARENT_DIRECTORY}" ]]; then
+		printf "Cannot find RECIPES_PARENT_DIRECTORY[%s]\n" "${RECIPES_PARENT_DIRECTORY}"
+		exit 1
+	fi
+	
+	# Retrieve array of recipes
+	RECIPES_PARENT_DIRECTORY=$(readlink -f "${RECIPES_PARENT_DIRECTORY}")
+	readarray -t RECIPE_DIRECTORY_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_ID_REGEX}" -exec readlink -f {} \;|sort)
+	
+	# Re-index the recipes
+	CURRENT_RECIPE_NUMBER=0
+	RECIPE_NUMBER_INCREMENT=10
+	for RECIPE_DIRECTORY in "${RECIPE_DIRECTORY_ARRAY[@]}"; do
+		RECIPE_ID=$(basename ${RECIPE_DIRECTORY})
+		
+		if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
+			printf "\tRECIPE_ID[%s] is not well formed => it will be ignored!\n" "${RECIPE_ID}"
+			continue
+		fi
+		
+		printf "# ${RECIPE_ID}\n"
+		
+		RECIPE_NUMBER=$(retrieve_recipe_number "${RECIPE_ID}")
+		RECIPE_CATEGORY=$(retrieve_recipe_category "${RECIPE_ID}")
+		RECIPE_RIGHTS=$(retrieve_recipe_rights "${RECIPE_ID}")
+		RECIPE_NAME=$(retrieve_recipe_name "${RECIPE_ID}")
+		RECIPE_DISPLAY_NAME=$(retrieve_recipe_display_name "${RECIPE_ID}")
+		RECIPE_SCRIPT_FILE_PATH=$(retrieve_recipe_script_file "${RECIPE_ID}")
+		
+		# Ignore all recipes with number above 9000
+		if [[ $((10#${RECIPE_NUMBER})) -ge 9000 ]]; then
+			printf "  => RECIPE_NUMBER greater or equal to 9000 are ignored\n\n"
+			continue;
+		fi
+		
+		CURRENT_RECIPE_NUMBER=$(( 10#"${CURRENT_RECIPE_NUMBER}" + "${RECIPE_NUMBER_INCREMENT}" ))
+		CURRENT_RECIPE_NUMBER=$(printf "%04d" ${CURRENT_RECIPE_NUMBER})
+		RECIPE_NEW_ID="${CURRENT_RECIPE_NUMBER}-${RECIPE_CATEGORY}-${RECIPE_RIGHTS}-${RECIPE_NAME}"
+		
+		if [[ "${RECIPE_ID}" = "${RECIPE_NEW_ID}" ]]; then
+			printf "  => no changes\n\n"
+		else
+			printf "  => renamed with RECIPE_ID[%s]\n\n" "${RECIPE_NEW_ID}"
+			mv "${RECIPES_PARENT_DIRECTORY}/${RECIPE_ID}" "${RECIPES_PARENT_DIRECTORY}/${RECIPE_NEW_ID}"
+		fi
 	done
 }
 
@@ -252,54 +306,6 @@ retrieve_recipe_display_name_from_recipe_directory(){
 	RECIPE_NAME="${BASH_REMATCH[${RECIPE_NAME_GROUP_DISPLAY_NAME_INDEX}]}"
 	RECIPE_DISPLAY_NAME="$(echo "${RECIPE_NAME}"|tr '_' ' ')"
 	printf "${RECIPE_DISPLAY_NAME}"
-}
-
-re_index_recipes(){
-	if [[ $# -ne 1 ]]; then
-		printf "re_index_recipes() expects RECIPES_PARENT_DIRECTORY in argument\n"
-		exit 1
-	fi
-	RECIPES_PARENT_DIRECTORY="${1}"
-	if [[ ! -d "${RECIPES_PARENT_DIRECTORY}" ]]; then
-		printf "Cannot find RECIPES_PARENT_DIRECTORY: ${RECIPES_PARENT_DIRECTORY }\n"
-		exit 1
-	fi
-	
-	# Retrieve array of recipes
-	RECIPES_PARENT_DIRECTORY=$(readlink -f "${RECIPES_PARENT_DIRECTORY}")
-	readarray -t RECIPE_PATH_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_ID_REGEX}" -exec readlink -f {} \;|sort)
-	
-	# Re-index the recipes
-	ID=0
-	ID_INCREMENT=10
-	for RECIPE_PATH in "${RECIPE_PATH_ARRAY[@]}"; do
-		RECIPE_NAME=$(basename ${RECIPE_PATH})
-		
-		if [[ ! "${RECIPE_NAME}" =~ ${RECIPE_ID_REGEX} ]]; then
-			printf "\tRECIPE_NAME is not well formed: ${RECIPE_NAME} => it will be ignored!\n"
-			continue
-		fi
-		
-		RECIPE_NUMBER="${BASH_REMATCH[${RECIPE_NAME_GROUP_NUMBER_INDEX}]}"
-		RECIPE_CATEGORY="${BASH_REMATCH[${RECIPE_NAME_GROUP_CATEGORY_INDEX}]}"
-		RECIPE_RIGHTS="${BASH_REMATCH[${RECIPE_NAME_GROUP_RIGHTS_INDEX}]}"
-		RECIPE_SCRIPT_FILE_NAME="${BASH_REMATCH[${RECIPE_NAME_GROUP_DISPLAY_NAME_INDEX}]}"
-		RECIPE_SCRIPT_FILE_PATH="${RECIPES_PARENT_DIRECTORY}/${RECIPE_SCRIPT_FILE_NAME}"
-		
-		if [[ $((10#${RECIPE_NUMBER})) -ge 9000 ]]; then
-			continue;
-		fi
-		
-		ID=$(( "${ID}" + "${ID_INCREMENT}" ))
-		RECIPE_NEW_ID=$(printf "%04d" ${ID})
-		RECIPE_NEW_NAME="${RECIPE_NEW_ID}-${RECIPE_CATEGORY}-${RECIPE_RIGHTS}-${RECIPE_SCRIPT_FILE_NAME}"
-		
-		if [[ "${RECIPE_NAME}" = "${RECIPE_NEW_NAME}" ]]; then
-			continue
-		fi
-		
-		mv "${RECIPE_PATH}" "$(dirname ${RECIPE_PATH})/${RECIPE_NEW_NAME}"
-	done
 }
 
 check_ubuntu_version(){
