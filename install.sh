@@ -3,7 +3,7 @@
 source "$(dirname ${BASH_SOURCE})/felix.sh"
 
 BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
+INSTALL_LOG_FILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
 
 exit_if_not_bash
 
@@ -86,7 +86,7 @@ execute_recipes_from_recipe_directory_array(){
 }
 
 print_usage(){
-	printf "Usage: bash ${0} [OPTIONS...] RECIPE_FAMILY_DIR\n"
+	printf "Usage: bash ${0} [OPTIONS...] RECIPE_FAMILY_DIRECTORY\n"
 	printf "  -i show a dialog to select the recipes to execute\n"
 	printf "  -c ask for confirmation before recipe execution\n\n"
 }
@@ -165,4 +165,4 @@ if [[ "${USER_ANSWER}" != "yes" ]]; then
 fi
 
 # Execute the recipes
-execute_recipes_from_recipe_directory_array "RECIPE_DIR_TO_EXECUTE_ARRAY" "${ASK_CONFIRMATION}" 2>&1 | tee -a "${LOGFILE}"
+execute_recipes_from_recipe_directory_array "RECIPE_DIR_TO_EXECUTE_ARRAY" "${ASK_CONFIRMATION}" 2>&1 | tee -a "${INSTALL_LOG_FILE}"
