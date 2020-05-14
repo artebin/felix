@@ -8,6 +8,13 @@ FELIX_BANNER='  __      _ _
 |  _|  __/ | |>  < 
 |_|  \___|_|_/_/\_\'
 
+RECIPE_NAME_REGEX="([0-9][0-9][0-9][0-9])-([a-z]+)-([us])-(.*)"
+RECIPE_NAME_GROUP_ID_INDEX=1
+RECIPE_NAME_GROUP_CATEGORY_INDEX=2
+RECIPE_NAME_GROUP_RIGHTS_INDEX=3
+RECIPE_NAME_GROUP_DISPLAY_NAME_INDEX=4
+RECIPE_CATEGORY_DEFAULT="d"
+
 retrieve_log_file_name(){
 	if [[ $# -ne 1 ]]; then
 		printf "retrieve_log_file_name() expects FILE_NAME in argument\n"
@@ -49,12 +56,6 @@ retrieve_recipe_family_conf_file(){
 	RECIPE_FAMILY_DIR="${FELIX_ROOT}/${RECIPE_FAMILY_DIR_NAME}"
 	printf "${RECIPE_FAMILY_DIR}/${RECIPE_FAMILY_DIR_NAME}.conf"
 }
-
-RECIPE_NAME_REGEX="([0-9][0-9][0-9][0-9])-([a-z]+)-([us])-(.*)"
-RECIPE_NAME_GROUP_ID_INDEX=1
-RECIPE_NAME_GROUP_CATEGORY_INDEX=2
-RECIPE_NAME_GROUP_RIGHTS_INDEX=3
-RECIPE_NAME_GROUP_DISPLAY_NAME_INDEX=4
 
 fill_array_with_recipe_directory_from_recipe_family_directory(){
 	if [[ $# -ne 2 ]]; then

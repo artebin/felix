@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] Log file name changes with time and we call the function for each recipe.
 - [ ] Desktop font should be configurable via recipe family .conf file.
 - [ ] Add a recipe for SetWorkspaceLayout.
 - [ ] Caja script "Execute script" but not with a terminal.
