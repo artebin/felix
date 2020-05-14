@@ -288,24 +288,6 @@ select_from_recipe_directories_array(){
 	fi
 }
 
-retrieve_log_file_name(){
-	if [[ $# -ne 1 ]]; then
-		printf "${FUNCNAME[0]}() expects FILE_NAME in argument\n"
-		exit 1
-	fi
-	FILE_NAME="${1}"
-	LOG_FILE_NAME="${FILE_NAME}.log.$(date -u +'%y%m%d-%H%M%S')"
-	echo "${LOG_FILE_NAME}"
-}
-
-list_log_files(){
-	find . -iname "*.log.*" -type f
-}
-
-delete_log_files(){
-	find . -name "*.log.*" -type f -exec rm -fr {} \;
-}
-
 retrieve_recipe_family_dir(){
 	if [[ $# -ne 1 ]]; then
 		printf "retrieve_recipe_family_dir() expects RECIPE_DIR in argument\n"
@@ -330,21 +312,6 @@ retrieve_recipe_family_conf_file(){
 	printf "${RECIPE_FAMILY_DIR}/${RECIPE_FAMILY_DIR_NAME}.conf"
 }
 
-check_ubuntu_version(){
-	LSB_RELEASE_FILE="/etc/lsb-release"
-	if [[ ! -f "${LSB_RELEASE_FILE}" ]]; then
-		echo "Cannot find file: ${LSB_RELEASE_FILE}"
-		echo "Cannot check Ubuntu version"
-		exit 1
-	fi
-	if ! grep -Fq "${SUPPORTED_UBUNTU_VERSION}" "${LSB_RELEASE_FILE}"; then
-		echo "This script has not been tested with:"
-		cat "${LSB_RELEASE_FILE}"
-		exit 1
-	fi
-	echo "Check Ubuntu version: ${SUPPORTED_UBUNTU_VERSION} => OK"
-}
-
 init_recipe(){
 	declare -g RECIPE_FAMILY_DIR=$(retrieve_recipe_family_dir "${RECIPE_DIR}")
 	declare -g RECIPE_FAMILY_CONF_FILE=$(retrieve_recipe_family_conf_file "${RECIPE_DIR}")
@@ -360,4 +327,37 @@ init_recipe(){
 	printf "RECIPE_DIR=${RECIPE_DIR}\n"
 	printf "LOGFILE=${LOGFILE}\n"
 	printf "\n"
+}
+
+retrieve_log_file_name(){
+	if [[ $# -ne 1 ]]; then
+		printf "${FUNCNAME[0]}() expects FILE_NAME in argument\n"
+		exit 1
+	fi
+	FILE_NAME="${1}"
+	LOG_FILE_NAME="${FILE_NAME}.log.$(date -u +'%y%m%d-%H%M%S')"
+	echo "${LOG_FILE_NAME}"
+}
+
+list_log_files(){
+	find . -iname "*.log.*" -type f
+}
+
+delete_log_files(){
+	find . -name "*.log.*" -type f -exec rm -fr {} \;
+}
+
+check_ubuntu_version(){
+	LSB_RELEASE_FILE="/etc/lsb-release"
+	if [[ ! -f "${LSB_RELEASE_FILE}" ]]; then
+		echo "Cannot find file: ${LSB_RELEASE_FILE}"
+		echo "Cannot check Ubuntu version"
+		exit 1
+	fi
+	if ! grep -Fq "${SUPPORTED_UBUNTU_VERSION}" "${LSB_RELEASE_FILE}"; then
+		echo "This script has not been tested with:"
+		cat "${LSB_RELEASE_FILE}"
+		exit 1
+	fi
+	echo "Check Ubuntu version: ${SUPPORTED_UBUNTU_VERSION} => OK"
 }
