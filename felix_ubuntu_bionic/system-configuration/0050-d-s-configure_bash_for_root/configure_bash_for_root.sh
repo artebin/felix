@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_bash_for_root(){
-	echo "Configuring bash for root ..."
+	printf "Configuring bash for root ...\n"
 	
 	if [[ -f /root/.bashrc ]]; then
 		backup_file rename /root/.bashrc
@@ -21,7 +21,7 @@ configure_bash_for_root(){
 	
 	cp "${RECIPE_FAMILY_DIR}/dotfiles/.bashrc" /root/.bashrc
 	
-	echo
+	printf "\n"
 }
 
 configure_bash_for_root 2>&1 | tee -a "${RECIPE_LOG_FILE}"
