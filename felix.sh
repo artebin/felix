@@ -253,7 +253,7 @@ filter_recipe_directories_array_by_category(){
 	RECIPE_DIRECTORY_ARRAY=("${FILTERED_RECIPE_DIRECTORY_ARRAY[@]}")
 }
 
-select_recipe_directories_from_array(){
+select_from_recipe_directories_array(){
 	if [[ $# -ne 2 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPE_DIRECTORY_ARRAY_NAME and SELECTED_RECIPE_DIRECTORY_ARRAY_NAME in arguments\n"
 		exit 1
