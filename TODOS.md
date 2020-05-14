@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] Desktop font should be configurable via recipe family .conf file.
 - [ ] Add a recipe for SetWorkspaceLayout.
 - [ ] Caja script "Execute script" but not with a terminal.
 - [ ] Extract archive in terminal shows an error dialog even if unpacking sucessful.
