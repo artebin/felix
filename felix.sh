@@ -288,44 +288,53 @@ select_from_recipe_directories_array(){
 	fi
 }
 
-retrieve_recipe_family_dir(){
-	if [[ $# -ne 1 ]]; then
-		printf "retrieve_recipe_family_dir() expects RECIPE_DIR in argument\n"
+retrieve_recipe_family_directory(){
+	if [[ -z "${RECIPE_DIRECTORY}" ]]; then
+		printf "RECIPE_DIRECTORY should not be empty"
 		exit 1
 	fi
-	FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
-	RECIPE_FAMILY_DIR_NAME="${RECIPE_DIR##*/felix/}"
-	RECIPE_FAMILY_DIR_NAME="${RECIPE_FAMILY_DIR_NAME%%/*}"
-	RECIPE_FAMILY_DIR="${FELIX_ROOT}/${RECIPE_FAMILY_DIR_NAME}"
-	printf "${RECIPE_FAMILY_DIR}"
+	if [[ -z "${FELIX_ROOT}" ]]; then
+		printf "FELIX_ROOT should not be empty"
+		exit 1
+	fi
+	RECIPE_FAMILY_DIRECTORY_NAME="${RECIPE_DIRECTORY##*/felix/}"
+	RECIPE_FAMILY_DIRECTORY_NAME="${RECIPE_FAMILY_DIRECTORY_NAME%%/*}"
+	RECIPE_FAMILY_DIRECTORY="${FELIX_ROOT}/${RECIPE_FAMILY_DIRECTORY_NAME}"
+	printf "${RECIPE_FAMILY_DIRECTORY}"
 }
 
 retrieve_recipe_family_conf_file(){
-	if [[ $# -ne 1 ]]; then
-		printf "retrieve_recipe_family_conf_file() expects RECIPE_DIR in argument\n"
+	if [[ -z "${RECIPE_DIRECTORY}" ]]; then
+		printf "RECIPE_DIRECTORY should not be empty"
 		exit 1
 	fi
-	FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
-	RECIPE_FAMILY_DIR_NAME="${RECIPE_DIR##*/felix/}"
-	RECIPE_FAMILY_DIR_NAME="${RECIPE_FAMILY_DIR_NAME%%/*}"
-	RECIPE_FAMILY_DIR="${FELIX_ROOT}/${RECIPE_FAMILY_DIR_NAME}"
-	printf "${RECIPE_FAMILY_DIR}/${RECIPE_FAMILY_DIR_NAME}.conf"
+	RECIPE_FAMILY_DIRECTORY=$(retrieve_recipe_family_directory)
+	RECIPE_FAMILY_DIRECTORY_NAME=$(basename "${RECIPE_FAMILY_DIRECTORY}")
+	printf "${RECIPE_FAMILY_DIRECTORY}/${RECIPE_FAMILY_DIRECTORY_NAME}.conf"
 }
 
-init_recipe(){
-	declare -g RECIPE_FAMILY_DIR=$(retrieve_recipe_family_dir "${RECIPE_DIR}")
-	declare -g RECIPE_FAMILY_CONF_FILE=$(retrieve_recipe_family_conf_file "${RECIPE_DIR}")
+initialize_recipe(){
+	if [[ -z "${RECIPE_DIRECTORY}" ]]; then
+		printf "RECIPE_DIRECTORY should not be empty"
+		exit 1
+	fi
+	declare -g RECIPE_FAMILY_DIRECTORY=$(retrieve_recipe_family_directory "${RECIPE_DIRECTORY}")
+	declare -g RECIPE_FAMILY_CONF_FILE=$(retrieve_recipe_family_conf_file "${RECIPE_DIRECTORY}")
 	if [[ ! -f "${RECIPE_FAMILY_CONF_FILE}" ]]; then
-		printf "Cannot find RECIPE_FAMILY_CONF_FILE: ${RECIPE_FAMILY_CONF_FILE}\n"
+		printf "Cannot find RECIPE_FAMILY_CONF_FILE[%s]\n" "${RECIPE_FAMILY_CONF_FILE}"
 		exit 1
 	fi
 	source "${RECIPE_FAMILY_CONF_FILE}"
-	declare -g LOGFILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
-	printf "FELIX_ROOT=${FELIX_ROOT}\n"
-	printf "RECIPE_FAMILY_DIR=${RECIPE_FAMILY_DIR}\n"
-	printf "RECIPE_FAMILY_CONF_FILE=${RECIPE_FAMILY_CONF_FILE}\n"
-	printf "RECIPE_DIR=${RECIPE_DIR}\n"
-	printf "LOGFILE=${LOGFILE}\n"
+	declare -g RECIPE_LOG_FILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
+	
+	# Print current recipe information
+	RECIPE_ID=$(basename "${RECIPE_DIRECTORY}")
+	printf "# %s\n" "${RECIPE_ID}"
+	printf "%-30s: %s\n" "FELIX_ROOT" "${FELIX_ROOT}"
+	printf "%-30s: %s\n" "RECIPE_FAMILY_DIRECTORY" "${RECIPE_FAMILY_DIRECTORY}"
+	printf "%-30s: %s\n" "RECIPE_FAMILY_CONF_FILE" "${RECIPE_FAMILY_CONF_FILE}"
+	printf "%-30s: %s\n" "RECIPE_DIRECTORY" "${RECIPE_DIRECTORY}"
+	printf "%-30s: %s\n" "RECIPE_LOG_FILE" "${RECIPE_LOG_FILE}"
 	printf "\n"
 }
 
