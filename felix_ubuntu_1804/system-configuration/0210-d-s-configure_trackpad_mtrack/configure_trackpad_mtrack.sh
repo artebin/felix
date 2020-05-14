@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -35,7 +35,7 @@ configure_trackpad_mtrack(){
 	#
 	# See <http://xahlee.info/linux/linux_x11_mouse_button_number.html>.
 	
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cp 80-mtrack.conf /usr/share/X11/xorg.conf.d
 	
 	printf "\n"

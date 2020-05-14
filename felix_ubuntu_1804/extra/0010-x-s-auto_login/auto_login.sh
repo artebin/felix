@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -33,7 +33,7 @@ configure_auto_login(){
 		mkdir /etc/lightdm/lightdm.conf.d
 	fi
 	
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	sed -i "/^autologin-user=/s/.*/autologin-user=${AUTO_LOGIN_USER_NAME}/" 50-autologin.conf
 	cp 50-autologin.conf /etc/lightdm/lightdm.conf.d/50-autologin.conf
 	

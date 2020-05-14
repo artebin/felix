@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_root_privileges
@@ -106,7 +106,7 @@ pre_install_extensions_in_firefox_profile(){
 	FIREROX_PROFILE_PATH="${1}"
 	
 	printf "Pre-installing extension: AdBlock Plus ...\n"
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	wget --quiet "https://eyeo.to/adblockplus/firefox_install/firefox" -O adblockplus.xpi
 	rename_xpi_file_with_web_extension_with_id adblockplus.xpi
 	

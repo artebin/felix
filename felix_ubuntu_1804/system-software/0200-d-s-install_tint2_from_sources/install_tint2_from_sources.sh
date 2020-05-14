@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -22,11 +22,11 @@ install_tint2_from_sources(){
 	fi
 	
 	# Clone git repository <https://gitlab.com/o9000/tint2.git>
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	git clone https://gitlab.com/o9000/tint2.git
 	
 	# Compile and install
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cd tint2
 	git checkout 16.6.1
 	mkdir build
@@ -38,7 +38,7 @@ install_tint2_from_sources(){
 	update-mime-database /usr/local/share/mime
 	
 	# Cleanup
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	rm -fr tint2
 	
 	printf "\n"

@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -20,12 +20,12 @@ install_pass_1_7_3_from_sources(){
 	tar xf password-store-1.7.3.tar.xz
 	
 	# Install
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cd password-store-1.7.3
 	make install
 	
 	# Cleaning
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	rm -fr password-store-1.7.3
 	rm -fr password-store-1.7.3.tar.xz
 	

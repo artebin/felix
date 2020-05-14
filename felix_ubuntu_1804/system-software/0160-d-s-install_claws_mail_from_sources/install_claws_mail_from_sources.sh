@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -46,7 +46,7 @@ install_claws_mail_from_sources(){
 	install_package_if_not_installed "${DEPENDENCIES[@]}"
 	
 	# Download and unpack the sources
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	SOURCES_URL="https://www.claws-mail.org/download.php?file=releases/claws-mail-3.17.3.tar.bz2"
 	SOURCES_PKG_FILE="claws-mail-3.17.3.tar.bz2"
 	SOURCES_DIR="claws-mail-3.17.3"
@@ -54,20 +54,20 @@ install_claws_mail_from_sources(){
 	tar xjf "${SOURCES_PKG_FILE}"
 	
 	# Compile and install
-	cd "${RECIPE_DIR}/${SOURCES_DIR}"
+	cd "${RECIPE_DIRECTORY}/${SOURCES_DIR}"
 	./configure
 	make
 	make install
 	
 	# Cleaning
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	rm -fr "${SOURCES_DIR}"
 	rm -fr "${SOURCES_PKG_FILE}"
 	
 	echo
 }
 
-cd "${RECIPE_DIR}"
+cd "${RECIPE_DIRECTORY}"
 install_claws_mail_from_sources 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

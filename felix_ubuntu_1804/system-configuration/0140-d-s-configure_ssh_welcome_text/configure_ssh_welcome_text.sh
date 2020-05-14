@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -23,7 +23,7 @@ configure_ssh_welcome_text(){
 	chmod a-x ./*
 	
 	echo "Adding Tux Welcome Dude ..."
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cp 00-welcome-dude /etc/update-motd.d/00-welcome-dude
 	chmod 744 /etc/update-motd.d/00-welcome-dude
 	cp tux /etc/update-motd.d/tux

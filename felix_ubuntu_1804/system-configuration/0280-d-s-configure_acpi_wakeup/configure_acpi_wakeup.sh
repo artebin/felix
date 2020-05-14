@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -20,7 +20,7 @@ extract_acpi_dsdt(){
 	
 	install_package_if_not_installed "acpica-tools"
 	
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cat /sys/firmware/acpi/tables/DSDT > dsdt.dat
 	
 	# Decompile the table with the Intel's ASL compiler
@@ -32,7 +32,7 @@ extract_acpi_dsdt(){
 disable_all_acpi_wakeup_except_for_platform_subsystems(){
 	echo "Disabling all ACPI wakeup except for SUBSYSTEM[platform] ..."
 	
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	ACPI_WAKEUP_FILE_NAME="acpi_wakeup.rules"
 	if [[ -f "${ACPI_WAKEUP_FILE_NAME}" ]]; then
 		rm -f "${ACPI_WAKEUP_FILE_NAME}"
@@ -67,7 +67,7 @@ disable_all_acpi_wakeup_except_for_platform_subsystems(){
 	cp "${ACPI_WAKEUP_FILE_NAME}" /etc/udev/rules.d/90-acpi_wakeup.rules
 	
 	# Cleaning
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	rm -f dsdt.dat
 	#rm -f "${ACPI_WAKEUP_FILE_NAME}"
 	echo

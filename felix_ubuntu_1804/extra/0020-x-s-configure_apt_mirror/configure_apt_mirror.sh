@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -19,7 +19,7 @@ configure_apt_mirror(){
 	if [[ -f /etc/apt/mirror.list ]]; then
 		backup_file rename /etc/apt/mirror.list
 	fi
-	cp "${RECIPE_DIR}/apt.mirror.list" /etc/apt/mirror.list
+	cp "${RECIPE_DIRECTORY}/apt.mirror.list" /etc/apt/mirror.list
 	sed -i "s|APT_MIRROR_BASE_PATH|${APT_MIRROR_BASE_PATH}|g" /etc/apt/mirror.list
 	
 	printf "Once the mirror is complete, start a http server for the repository:\n"
@@ -29,7 +29,7 @@ configure_apt_mirror(){
 	echo
 }
 
-cd "${RECIPE_DIR}"
+cd "${RECIPE_DIRECTORY}"
 configure_apt_mirror 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then

@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -19,14 +19,14 @@ force_numlock_tty(){
 		echo "/usr/bin/numlock already exists"
 		return 1
 	fi
-	cp "${RECIPE_DIR}/numlock" /usr/bin/numlock
+	cp "${RECIPE_DIRECTORY}/numlock" /usr/bin/numlock
 	chmod a+x /usr/bin/numlock
 	
 	if [[ -f /etc/systemd/system/numlock_tty.service ]]; then
 		echo "/etc/systemd/system/numlock_tty.service already exists"
 		return 1
 	fi
-	cp "${RECIPE_DIR}/numlock_tty.service" /etc/systemd/system/numlock_tty.service
+	cp "${RECIPE_DIRECTORY}/numlock_tty.service" /etc/systemd/system/numlock_tty.service
 	systemctl daemon-reload
 	systemctl start numlock_tty.service
 	systemctl status numlock_tty.service
@@ -52,7 +52,7 @@ force_numlock_xorg(){
 	if [[ ! -d /etc/lightdm/lightdm.conf.d ]]; then
 		mkdir /etc/lightdm/lightdm.conf.d
 	fi
-	cp "${RECIPE_DIR}/60-numlockx.conf" /etc/lightdm/lightdm.conf.d
+	cp "${RECIPE_DIRECTORY}/60-numlockx.conf" /etc/lightdm/lightdm.conf.d
 	
 	echo
 }

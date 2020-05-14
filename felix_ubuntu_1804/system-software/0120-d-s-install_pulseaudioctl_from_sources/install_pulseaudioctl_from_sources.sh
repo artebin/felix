@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -19,13 +19,13 @@ install_pulseaudioctl_from_sources(){
 	git clone https://github.com/graysky2/pulseaudio-ctl.git
 	
 	# Build and install
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cd pulseaudio-ctl
 	make
 	make install
 	
 	# Cleaning
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	rm -fr pulseaudio-ctl
 	
 	echo

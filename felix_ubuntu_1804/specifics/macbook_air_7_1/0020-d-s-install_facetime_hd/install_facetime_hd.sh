@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -22,13 +22,13 @@ install_facetime_hd(){
 					"checkinstall" )
 	install_package_if_not_installed "${DEPENDENCIES[@]}"
 	
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/patjak/bcwc_pcie.git
 	cd bcwc_pcie/firmware
 	make
 	make install
 	
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cd bcwc_pcie
 	make
 	make install
@@ -41,7 +41,7 @@ install_facetime_hd(){
 	echo "Please test your setup with teh command \'mplayer tv://\'"
 	
 	# Cleaning
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	rm -fr bcwc_pcie
 	
 	echo

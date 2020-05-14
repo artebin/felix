@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 
@@ -39,13 +39,13 @@ install_dokuwiki_in_userdir(){
 	mv "${DOKUWIKI_DIR_NAME}" dokuwiki
 	
 	# Adding template dokubook
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cp dokubook-stable.tgz "${DOKUWIKI_INSTALL_DIR}/lib/tpl"
 	cd "${DOKUWIKI_INSTALL_DIR}/lib/tpl"
 	tar xzf dokubook-stable.tgz
 	
 	# Adding own configuration
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cp conf/mime.local.conf "${DOKUWIKI_INSTALL_DIR}/conf"
 	cp conf/entities.conf "${DOKUWIKI_INSTALL_DIR}/conf"
 	cp conf/userstyle.css "${DOKUWIKI_INSTALL_DIR}/conf"

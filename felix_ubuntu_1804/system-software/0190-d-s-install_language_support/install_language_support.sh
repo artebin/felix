@@ -7,14 +7,14 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_language_support(){
 	echo "Installing language support ..."
-	xargs apt-get -y install <"${RECIPE_DIR}/packages.install.list"
+	xargs apt-get -y install <"${RECIPE_DIRECTORY}/packages.install.list"
 	echo
 }
 

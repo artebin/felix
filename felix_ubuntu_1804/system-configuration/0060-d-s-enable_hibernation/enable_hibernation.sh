@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -16,7 +16,7 @@ enable_hibernation(){
 	echo "Enable hibernation ..."
 	
 	# Add polkit authority for upower and logind
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cp com.ubuntu.enable-hibernate.pkla /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
 	
 	echo

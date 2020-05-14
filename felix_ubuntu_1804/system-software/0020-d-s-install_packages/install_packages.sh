@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 
-RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
+RECIPE_DIRECTORY="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIRECTORY%/felix/*}/felix"
 if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	printf "Cannot find ${FELIX_ROOT}/felix.sh\n"
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+initialize_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -27,10 +27,10 @@ process_package_install_list(){
 	
 	# Generate APT_PACKAGE_LIST_FILES from PACKAGE_LIST_FILE
 	# It will also fill MISSING_PACKAGE_LIST_FILE
-	PACKAGE_LIST_FILE="${RECIPE_DIR}/packages.install.list"
+	PACKAGE_LIST_FILE="${RECIPE_DIRECTORY}/packages.install.list"
 	APT_PACKAGE_LIST_FILE_NAME_PREFIX="apt_package_list"
-	MISSING_PACKAGE_LIST_FILE="${RECIPE_DIR}/packages.missing.list"
-	cd "${RECIPE_DIR}"
+	MISSING_PACKAGE_LIST_FILE="${RECIPE_DIRECTORY}/packages.missing.list"
+	cd "${RECIPE_DIRECTORY}"
 	generate_apt_package_list_files "${PACKAGE_LIST_FILE}" "${APT_PACKAGE_LIST_FILE_NAME_PREFIX}" "${MISSING_PACKAGE_LIST_FILE}"
 	
 	# Exit if some packages are missing
@@ -52,7 +52,7 @@ process_package_install_list(){
 	echo
 }
 
-process_package_install_list 2>&1 | tee -a "${LOGFILE}"
+process_package_install_list 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 
@@ -18,7 +18,7 @@ configure_xmodmap(){
 		backup_file rename "${HOME}/.Xmodmap"
 	fi
 	
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cp Xmodmap "${HOME}/.Xmodmap"
 	echo "xmodmap ${HOME}/.Xmodmap" >> ~/.xinitrc
 	

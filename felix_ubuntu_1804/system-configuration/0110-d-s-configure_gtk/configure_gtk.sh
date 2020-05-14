@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -27,7 +27,7 @@ configure_gtk2(){
 	sed -i "/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"${GTK_ICON_THEME_NAME}\"/" /etc/gtk-2.0/gtkrc
 	
 	echo "Fixing theme Adwaita/gtk-2.0: menus have no borders ..."
-	patch /usr/share/themes/Adwaita/gtk-2.0/main.rc <"${RECIPE_DIR}/fix_adwaita_gtk2_menu_with_no_border.patch"
+	patch /usr/share/themes/Adwaita/gtk-2.0/main.rc <"${RECIPE_DIRECTORY}/fix_adwaita_gtk2_menu_with_no_border.patch"
 	
 	echo
 }

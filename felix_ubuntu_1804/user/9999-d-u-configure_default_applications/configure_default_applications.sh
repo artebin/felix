@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_root_privileges
@@ -30,10 +30,10 @@ configure_default_applications_with_desktop_file_overridings(){
 	mkdir -p "${HOME}/.local/share/applications"
 	
 	printf "  - Caja: should to be started with a script assuring one instance per workspace\n"
-	cp "${RECIPE_DIR}/caja.desktop" "${HOME}/.local/share/applications"
+	cp "${RECIPE_DIRECTORY}/caja.desktop" "${HOME}/.local/share/applications"
 	
 	printf "  - GPicView: gpicview.desktop which is installed with the package gives 'Image Viewer' as application name but we don't want to see that. The name should be 'GPicView'\n"
-	cp "${RECIPE_DIR}/gpicview.desktop" "${HOME}/.local/share/applications"
+	cp "${RECIPE_DIRECTORY}/gpicview.desktop" "${HOME}/.local/share/applications"
 	
 	printf "\n"
 }
@@ -42,7 +42,7 @@ configure_default_applications_with_mime_apps_list(){
 	printf "Configuring default applications with mimeapp.list ...\n"
 	
 	# We will work on a temporary file
-	TEMP_MIME_APPS_LIST_FILE="${RECIPE_DIR}/mymimeapps.list"
+	TEMP_MIME_APPS_LIST_FILE="${RECIPE_DIRECTORY}/mymimeapps.list"
 	if [[ -f "${TEMP_MIME_APPS_LIST_FILE}" ]]; then
 		rm -f "${TEMP_MIME_APPS_LIST_FILE}"
 	fi

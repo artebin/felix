@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -15,7 +15,7 @@ exit_if_has_not_root_privileges
 install_java_env_vars(){
 	echo "Installing Java environment variables ..."
 	
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cp java_env_vars.sh /etc/profile.d/java_env_vars.sh
 	
 	echo

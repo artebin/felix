@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -15,19 +15,19 @@ exit_if_has_not_root_privileges
 copy_themes(){
 	echo "Copying themes ..."
 	
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	tar xzf Erthe-njames.tar.gz
 	cp -R Erthe-njames /usr/share/themes
 	chmod -R go+r /usr/share/themes/Erthe-njames
 	find /usr/share/themes/Erthe-njames -type d | xargs chmod go+x
 	
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cp -R njames /usr/share/themes
 	chmod -R go+r /usr/share/themes/njames
 	find /usr/share/themes/njames -type d | xargs chmod go+x
 	
 	# Cleanup
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	rm -fr Erthe-njames
 	
 	echo

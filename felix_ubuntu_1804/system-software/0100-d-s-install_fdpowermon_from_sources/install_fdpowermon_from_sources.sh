@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -25,7 +25,7 @@ install_fdpowermon_from_sources(){
 	# Create a directory 'fdpowermon-build' because we will call
 	# 'dpkg-buildpackage' and its output directory is always the
 	# parent directory.
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	mkdir fdpowermon-build
 	cd fdpowermon-build
 	
@@ -37,7 +37,7 @@ install_fdpowermon_from_sources(){
 	dpkg-buildpackage
 	
 	# Install the package
-	cd "${RECIPE_DIR}/fdpowermon-build"
+	cd "${RECIPE_DIRECTORY}/fdpowermon-build"
 	dpkg -i fdpowermon_*.deb
 	
 	# The package 'fdpowermon-icons' installs a few icons of the
@@ -47,13 +47,13 @@ install_fdpowermon_from_sources(){
 	fi
 	
 	# Cleaning
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	rm -fr fdpowermon-build
 	
 	echo
 }
 
-cd "${RECIPE_DIR}"
+cd "${RECIPE_DIRECTORY}"
 install_fdpowermon_from_sources 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then

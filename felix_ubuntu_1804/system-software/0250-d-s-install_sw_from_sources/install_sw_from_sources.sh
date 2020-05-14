@@ -7,19 +7,19 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_sw_from_sources(){
 	printf "\nInstalling sw (StopWatch) from sources ...\n\n"
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/artebin/sw
 	cp sw/sw /usr/local/bin
 	
 	# Cleanup
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	rm -fr sw
 	
 	printf "\n"

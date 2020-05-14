@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -28,11 +28,11 @@ install_pasystray(){
 	install_package_if_not_installed "${DEPENDENCIES[@]}"
 	
 	# Clone git repository <https://github.com/christophgysin/pasystray>
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/christophgysin/pasystray
 	
 	# Compile and install
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cd pasystray
 	./bootstrap.sh
 	./configure
@@ -40,13 +40,13 @@ install_pasystray(){
 	make install
 	
 	# Cleanup
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	rm -fr pasystray
 	
 	echo
 }
 
-cd "${RECIPE_DIR}"
+cd "${RECIPE_DIRECTORY}"
 install_pasystray 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then

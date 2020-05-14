@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -20,7 +20,7 @@ configure_lightdm_greeter(){
 	fi
 	
 	# Copy some backgrounds free of use from unsplash <https://unsplash.com> 
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cp backgrounds/*.jpg /usr/share/backgrounds
 	
 	# Copy GTK greeter.conf file

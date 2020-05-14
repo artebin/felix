@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -16,12 +16,12 @@ install_clipnotify_from_sources(){
 	echo "Installing ClipNotify from sources ..."
 	echo "GitHub repository: <https://github.com/cdown/clipnotify>"
 	git clone https://github.com/cdown/clipnotify
-	cd "${RECIPE_DIR}/clipnotify"
+	cd "${RECIPE_DIRECTORY}/clipnotify"
 	make
 	cp clipnotify /usr/bin
 	
 	# Cleaning
-	rm -fr "${RECIPE_DIR}/clipnotify"
+	rm -fr "${RECIPE_DIRECTORY}/clipnotify"
 	
 	echo
 }
@@ -30,7 +30,7 @@ install_clipmenu_from_sources(){
 	echo "Installing ClipMenu from sources ..."
 	echo "GitHub repository: <https://github.com/cdown/clipmenu>"
 	git clone https://github.com/cdown/clipmenu
-	cd "${RECIPE_DIR}/clipmenu"
+	cd "${RECIPE_DIRECTORY}/clipmenu"
 	printf "Applying patch on clipmenud for copy/paste in file managers ...\n"
 	patch < ../clipmenud_190204.patch
 	cp clipdel /usr/bin
@@ -38,7 +38,7 @@ install_clipmenu_from_sources(){
 	cp clipmenud /usr/bin
 	
 	# Cleaning
-	rm -fr "${RECIPE_DIR}/clipmenu"
+	rm -fr "${RECIPE_DIRECTORY}/clipmenu"
 	
 	echo
 }

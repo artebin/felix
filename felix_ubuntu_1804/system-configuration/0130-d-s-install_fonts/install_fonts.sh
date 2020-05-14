@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -15,33 +15,33 @@ exit_if_has_not_root_privileges
 install_fonts(){
 	# Install font JetBrainsMono
 	printf "%-50s : %s\n" "Installing font" "Droid"
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cp fonts/Droid/* /usr/local/share/fonts/
 	
 	# Install font JetBrainsMono
 	printf "%-50s : %s\n" "Installing font" "Montserrat"
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cp fonts/Montserrat/* /usr/local/share/fonts/
 	
 	# Install font JetBrainsMono
 	printf "%-50s : %s\n" "Installing font" "Roboto"
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cp fonts/Roboto/* /usr/local/share/fonts/
 	
 	# Install font JetBrainsMono
 	printf "%-50s : %s\n" "Installing font" "JetBrains Mono"
 	git clone https://github.com/JetBrains/JetBrainsMono
-	cp "${RECIPE_DIR}"/JetBrainsMono/ttf/*.ttf /usr/local/share/fonts
-	cp -r "${RECIPE_DIR}"/JetBrainsMono/web/eot /usr/local/share/fonts
-	cp -r "${RECIPE_DIR}"/JetBrainsMono/web/woff /usr/local/share/fonts
-	cp -r "${RECIPE_DIR}"/JetBrainsMono/web/woff2 /usr/local/share/fonts
+	cp "${RECIPE_DIRECTORY}"/JetBrainsMono/ttf/*.ttf /usr/local/share/fonts
+	cp -r "${RECIPE_DIRECTORY}"/JetBrainsMono/web/eot /usr/local/share/fonts
+	cp -r "${RECIPE_DIRECTORY}"/JetBrainsMono/web/woff /usr/local/share/fonts
+	cp -r "${RECIPE_DIRECTORY}"/JetBrainsMono/web/woff2 /usr/local/share/fonts
 	
 	# Update fond cache
 	printf "Updating font cache ...\n"
 	fc-cache -f -v 1>/dev/null
 	
 	# Clean
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	rm -fr JetBrainsMono
 	
 	printf "\n"

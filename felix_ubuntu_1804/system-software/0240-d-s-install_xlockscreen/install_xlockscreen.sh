@@ -7,21 +7,21 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_xlockscreen(){
 	printf "\nInstalling dependency packages ...\n\n"
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	install_package_if_not_installed "xorg-dev xtrlock"
 	
 	printf "\nUninstall xprintidle because it will be re-installed from the sources\n\n"
 	remove_with_purge_package_if_installed "xprintidle"
 	
 	printf "\nInstalling xprintidle from sources\n\n"
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/lucianposton/xprintidle
 	cd xprintidle
 	./configure
@@ -29,13 +29,13 @@ install_xlockscreen(){
 	make install
 	
 	printf "\nInstalling xlockscreen ...\n\n"
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cp xlockscreen.sh /usr/local/bin/xlockscreen
 	chmod a+x /usr/local/bin/xlockscreen
 	cp xlockscreen.desktop /usr/share/applications
 	
 	# Cleanup
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	rm -fr xprintidle
 	
 	printf "\n"

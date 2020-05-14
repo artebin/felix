@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -19,11 +19,11 @@ install_pcp_from_sources(){
 	apt-get build-dep pcp
 	
 	echo "Cloning git repository <https://github.com/performancecopilot/pcp> ..."
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/performancecopilot/pcp
 	
 	echo "Compiling and installing ..."
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	cd pcp
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-webapi 
 	make
@@ -35,7 +35,7 @@ install_pcp_from_sources(){
 	service pmcd start
 	
 	echo "Cleaning ..."
-	cd "${RECIPE_DIR}"
+	cd "${RECIPE_DIRECTORY}"
 	rm -fr pcp
 	
 	echo

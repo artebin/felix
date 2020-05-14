@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_root_privileges
@@ -18,7 +18,7 @@ install_user_scripts(){
 	if [[ -d "${HOME}/scripts" ]]; then
 		backup_file rename "${HOME}/scripts"
 	fi
-	cp -R "${RECIPE_DIR}/scripts" "${HOME}/scripts"
+	cp -R "${RECIPE_DIRECTORY}/scripts" "${HOME}/scripts"
 	
 	printf "\n"
 }

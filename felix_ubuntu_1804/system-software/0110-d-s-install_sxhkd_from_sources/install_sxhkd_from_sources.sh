@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -27,7 +27,7 @@ install_sxhkd_from_sources(){
 	make install
 	
 	# Cleaning
-	cd ${RECIPE_DIR}
+	cd ${RECIPE_DIRECTORY}
 	rm -fr sxhkd
 	
 	echo
@@ -35,7 +35,7 @@ install_sxhkd_from_sources(){
 
 
 
-cd ${RECIPE_DIR}
+cd ${RECIPE_DIRECTORY}
 install_sxhkd_from_sources 2>&1 | tee -a "${LOGFILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

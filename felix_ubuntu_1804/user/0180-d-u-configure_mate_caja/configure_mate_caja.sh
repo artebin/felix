@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_root_privileges
@@ -15,8 +15,8 @@ exit_if_has_root_privileges
 configure_mate_caja(){
 	printf "Configuring mate-caja ...\n"
 	
-	dconf load /org/mate/caja/ <"${RECIPE_DIR}/org.mate.caja.dump"
-	dconf load /org/mate/desktop/ <"${RECIPE_DIR}/org.mate.desktop.dump"
+	dconf load /org/mate/caja/ <"${RECIPE_DIRECTORY}/org.mate.caja.dump"
+	dconf load /org/mate/desktop/ <"${RECIPE_DIRECTORY}/org.mate.desktop.dump"
 	echo
 	
 	echo "Use x-terminal-emulator for the action 'Open in Terminal' ..."

@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIR}"
+init_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 exit_if_has_not_root_privileges
@@ -15,7 +15,7 @@ exit_if_has_not_root_privileges
 disable_gpe66(){
 	echo "Disable gpe66 (causing battery draining) ..."
 	
-	cp "${RECIPE_DIR}/disable_gpe66.service" /etc/systemd/system/disable_gpe66.service
+	cp "${RECIPE_DIRECTORY}/disable_gpe66.service" /etc/systemd/system/disable_gpe66.service
 	systemctl daemon-reload
 	systemctl start disable_gpe66.service
 	systemctl status disable_gpe66.service
