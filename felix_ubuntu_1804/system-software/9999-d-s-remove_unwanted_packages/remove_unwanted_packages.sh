@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 process_package_remove_list(){
-	cd ${RECIPE_DIRECTORY}
+	cd "${RECIPE_DIRECTORY}"
 	
 	echo "Remove unwanted packages ..."
 	
@@ -42,7 +42,7 @@ process_package_remove_list(){
 	apt-get -y autoremove
 	
 	# Cleaning
-	cd ${RECIPE_DIRECTORY}
+	cd "${RECIPE_DIRECTORY}"
 	rm -f "${APT_INPUT_FILE}"
 	
 	echo
@@ -50,7 +50,7 @@ process_package_remove_list(){
 
 
 
-cd ${RECIPE_DIRECTORY}
+cd "${RECIPE_DIRECTORY}"
 process_package_remove_list 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

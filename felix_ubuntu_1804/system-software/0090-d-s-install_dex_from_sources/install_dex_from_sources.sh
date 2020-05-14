@@ -19,7 +19,7 @@ install_dex_from_sources(){
 	install_package_if_not_installed "python3-sphinx"
 	
 	# Clone git repository
-	cd ${RECIPE_DIRECTORY}
+	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/jceb/dex
 	
 	# Patch dex for supporting 'Terminal=(true|false)' property in .desktop files
@@ -31,7 +31,7 @@ install_dex_from_sources(){
 	make install
 	
 	# Cleaning
-	cd ${RECIPE_DIRECTORY}
+	cd "${RECIPE_DIRECTORY}"
 	rm -fr dex
 	
 	echo
@@ -39,7 +39,7 @@ install_dex_from_sources(){
 
 
 
-cd ${RECIPE_DIRECTORY}
+cd "${RECIPE_DIRECTORY}"
 install_dex_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

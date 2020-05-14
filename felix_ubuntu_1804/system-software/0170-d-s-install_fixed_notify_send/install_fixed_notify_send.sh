@@ -19,17 +19,17 @@ install_fixed_notify_send(){
 	remove_with_purge_package_if_installed "libnotify-bin"
 	
 	# Clone git repository
-	cd ${RECIPE_DIRECTORY}
+	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/vlevit/notify-send.sh
 	
 	# Install
-	cd ${RECIPE_DIRECTORY}
+	cd "${RECIPE_DIRECTORY}"
 	cd notify-send.sh
 	cp notify-send.sh /usr/bin/notify-send
 	cp notify-action.sh /usr/bin/notify-action
 	
 	# Cleaning
-	cd ${RECIPE_DIRECTORY}
+	cd "${RECIPE_DIRECTORY}"
 	rm -fr notify-send.sh
 	
 	echo
@@ -37,7 +37,7 @@ install_fixed_notify_send(){
 
 
 
-cd ${RECIPE_DIRECTORY}
+cd "${RECIPE_DIRECTORY}"
 install_fixed_notify_send 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

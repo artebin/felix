@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_translate_notify(){
-	cd ${RECIPE_DIRECTORY}
+	cd "${RECIPE_DIRECTORY}"
 	
 	echo "Install Translate-Notify ..."
 	cp ./translate-notify.sh /usr/bin/translate-notify
@@ -24,7 +24,7 @@ install_translate_notify(){
 
 
 
-cd ${RECIPE_DIRECTORY}
+cd "${RECIPE_DIRECTORY}"
 install_translate_notify 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

@@ -19,7 +19,7 @@ install_mps_youtube_from_sources(){
 	install_package_if_not_installed "python3-pip" "pandoc"
 	
 	# Install youtube-dl from sources
-	cd ${RECIPE_DIRECTORY}
+	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/rg3/youtube-dl
 	cd youtube-dl
 	make
@@ -32,7 +32,7 @@ install_mps_youtube_from_sources(){
 	pip3 install mps-youtube
 	
 	# Cleaning
-	cd ${RECIPE_DIRECTORY}
+	cd "${RECIPE_DIRECTORY}"
 	rm -fr youtube-dl
 	
 	echo
@@ -40,7 +40,7 @@ install_mps_youtube_from_sources(){
 
 
 
-cd ${RECIPE_DIRECTORY}
+cd "${RECIPE_DIRECTORY}"
 install_mps_youtube_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

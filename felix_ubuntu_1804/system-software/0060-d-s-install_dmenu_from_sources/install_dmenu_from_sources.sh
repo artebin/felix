@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_dmenu_from_sources(){
-	cd ${RECIPE_DIRECTORY}
+	cd "${RECIPE_DIRECTORY}"
 	
 	echo "Installing dmenu from sources ..."
 	tar xzf dmenu-4.7.tar.gz
@@ -27,7 +27,7 @@ install_dmenu_from_sources(){
 	make install
 	
 	# Cleanup
-	cd ${RECIPE_DIRECTORY}
+	cd "${RECIPE_DIRECTORY}"
 	rm -fr ./dmenu-4.7/
 	
 	echo
@@ -35,7 +35,7 @@ install_dmenu_from_sources(){
 
 
 
-cd ${RECIPE_DIRECTORY}
+cd "${RECIPE_DIRECTORY}"
 install_dmenu_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
