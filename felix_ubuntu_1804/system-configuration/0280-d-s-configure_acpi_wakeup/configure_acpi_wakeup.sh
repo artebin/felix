@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 RECIPE_DIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_ROOT="${RECIPE_DIR%/felix/*}/felix"
+FELIX_ROOT="${RECIPE_DIRECTORY\%/felix/*}/felix"
 if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	printf "Cannot find ${FELIX_ROOT}/felix.sh\n"
 	exit 1
