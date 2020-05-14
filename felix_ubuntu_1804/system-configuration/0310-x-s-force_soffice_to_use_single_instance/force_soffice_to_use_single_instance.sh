@@ -7,7 +7,7 @@ if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
 	exit 1
 fi
 source "${FELIX_ROOT}/felix.sh"
-init_recipe "${RECIPE_DIRECTORY}"
+initialize_recipe "${RECIPE_DIRECTORY}"
 
 force_soffice_to_use_single_instance(){
 	printf "Force soffice to use single instance ...\n"
