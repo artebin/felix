@@ -199,7 +199,7 @@ re_index_recipes(){
 	done
 }
 
-fill_array_with_recipe_directory(){
+fill_array_with_recipe_directories(){
 	if [[ $# -ne 2 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPES_PARENT_DIRECTORY and ARRAY_NAME in arguments\n"
 		exit 1
@@ -217,7 +217,7 @@ fill_array_with_recipe_directory(){
 	readarray -t RECIPE_DIRECTORY_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_ID_REGEX}" -exec readlink -f {} \;|sort)
 }
 
-select_recipes_and_fill_array_with_recipe_directory(){
+select_recipe_directories_from_array(){
 	if [[ $# -ne 2 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPE_DIRECTORY_ARRAY_NAME and SELECTED_RECIPE_DIRECTORY_ARRAY_NAME in arguments\n"
 		exit 1
