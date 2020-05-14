@@ -26,7 +26,7 @@ execute_recipes_from_recipe_directory_array(){
 	printf "ASK_CONFIRMATION: ${ASK_CONFIRMATION}\n\n"
 	
 	for RECIPE_DIRECTORY in "${RECIPE_DIRECTORY_ARRAY[@]}"; do
-		RECIPE_ID=$(basename ${RECIPE_DIR})
+		RECIPE_ID=$(basename ${RECIPE_DIRECTORY})
 		print_section_heading "RECIPE_ID: ${RECIPE_ID}"
 		
 		if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
