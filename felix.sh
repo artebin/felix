@@ -199,7 +199,7 @@ re_index_recipes(){
 	done
 }
 
-fill_array_with_recipe_directories(){
+fill_recipe_directories_array(){
 	if [[ $# -ne 2 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPES_PARENT_DIRECTORY and ARRAY_NAME in arguments\n"
 		exit 1
