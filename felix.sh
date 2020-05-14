@@ -86,6 +86,65 @@ retrieve_recipe_display_name(){
 	printf "${RECIPE_DISPLAY_NAME}"
 }
 
+retrieve_recipe_script_file(){
+	if [[ $# -ne 1 ]]; then
+		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
+		exit 1
+	fi
+	RECIPE_ID="${1}"
+	if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
+		printf "RECIPE_ID[%s] is not well formed\n"
+		exit 1
+	fi
+	RECIPE_NAME="${BASH_REMATCH[${RECIPE_ID_REGEX_GROUP_NAME_INDEX}]}"
+	RECIPE_SCRIPT_FILE="${RECIPE_NAME}.sh"
+	printf "${RECIPE_SCRIPT_FILE}"
+}
+
+list_recipes(){
+	if [[ $# -ne 1 ]]; then
+		printf "${FUNCNAME[0]}() expects RECIPES_PARENT_DIRECTORY in argument\n"
+		exit 1
+	fi
+	RECIPES_PARENT_DIRECTORY="${1}"
+	if [[ ! -d "${RECIPES_PARENT_DIRECTORY}" ]]; then
+		printf "Cannot find RECIPES_PARENT_DIRECTORY[%s]\n" "${RECIPES_PARENT_DIRECTORY}"
+		exit 1
+	fi
+	
+	# Retrieve array of recipes
+	RECIPES_PARENT_DIRECTORY=$(readlink -f "${RECIPES_PARENT_DIRECTORY}")
+	readarray -t RECIPE_DIRECTORY_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_ID_REGEX}" -exec readlink -f {} \;|sort)
+	
+	# List the recipes
+	printf "Recipes found:\n"
+	for RECIPE_DIRECTORY in "${RECIPE_DIRECTORY_ARRAY[@]}"; do
+		RECIPE_ID=$(basename "${RECIPE_DIRECTORY}")
+		
+		if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
+			printf "\tRECIPE_ID[%s] is not well formed => it will be ignored!\n" "${RECIPE_ID}"
+			continue
+		fi
+		
+		printf "  ${RECIPE_ID}\n"
+		
+		RECIPE_NUMBER=$(retrieve_recipe_number "${RECIPE_ID}")
+		RECIPE_CATEGORY=$(retrieve_recipe_category "${RECIPE_ID}")
+		RECIPE_RIGHTS=$(retrieve_recipe_rights "${RECIPE_ID}")
+		RECIPE_NAME=$(retrieve_recipe_name "${RECIPE_ID}")
+		RECIPE_DISPLAY_NAME=$(retrieve_recipe_display_name "${RECIPE_ID}")
+		RECIPE_SCRIPT_FILE_PATH=$(retrieve_recipe_script_file "${RECIPE_ID}")
+		
+		printf "    %-30s: %s\n" "RECIPE_ID" "${RECIPE_ID}"
+		printf "    %-30s: %s\n" "RECIPE_NUMBER" "${RECIPE_NUMBER}"
+		printf "    %-30s: %s\n" "RECIPE_CATEGORY" "${RECIPE_CATEGORY}"
+		printf "    %-30s: %s\n" "RECIPE_RIGHTS" "${RECIPE_RIGHTS}"
+		printf "    %-30s: %s\n" "RECIPE_NAME" "${RECIPE_NAME}"
+		printf "    %-30s: %s\n" "RECIPE_DISPLAY_NAME" "${RECIPE_DISPLAY_NAME}"
+		printf "    %-30s: %s\n" "RECIPE_SCRIPT_FILE_PATH" "${RECIPE_SCRIPT_FILE_PATH}"
+	done
+}
+
 retrieve_log_file_name(){
 	if [[ $# -ne 1 ]]; then
 		printf "${FUNCNAME[0]}() expects FILE_NAME in argument\n"
@@ -193,48 +252,6 @@ retrieve_recipe_display_name_from_recipe_directory(){
 	RECIPE_NAME="${BASH_REMATCH[${RECIPE_NAME_GROUP_DISPLAY_NAME_INDEX}]}"
 	RECIPE_DISPLAY_NAME="$(echo "${RECIPE_NAME}"|tr '_' ' ')"
 	printf "${RECIPE_DISPLAY_NAME}"
-}
-
-list_recipes(){
-	if [[ $# -ne 1 ]]; then
-		printf "list_recipes() expects RECIPES_PARENT_DIRECTORY in parameter\n"
-		exit 1
-	fi
-	RECIPES_PARENT_DIRECTORY="${1}"
-	if [[ ! -d "${RECIPES_PARENT_DIRECTORY}" ]]; then
-		printf "Cannot find RECIPES_PARENT_DIRECTORY: ${RECIPES_PARENT_DIRECTORY }\n"
-		exit 1
-	fi
-	
-	# Retrieve array of recipes
-	RECIPES_PARENT_DIRECTORY=$(readlink -f "${RECIPES_PARENT_DIRECTORY}")
-	readarray -t RECIPE_PATH_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_ID_REGEX}" -exec readlink -f {} \;|sort)
-	
-	# List the recipes
-	printf "Recipes found:\n"
-	for RECIPE_PATH in "${RECIPE_PATH_ARRAY[@]}"; do
-		RECIPE_NAME=$(basename ${RECIPE_PATH})
-		
-		if [[ ! "${RECIPE_NAME}" =~ ${RECIPE_ID_REGEX} ]]; then
-			printf "\tRECIPE_NAME is not well formed: ${RECIPE_NAME} => it will be ignored!\n"
-			continue
-		fi
-		
-		printf "  ${RECIPE_NAME}\n"
-		
-		RECIPE_NUMBER="${BASH_REMATCH[${RECIPE_NAME_GROUP_NUMBER_INDEX}]}"
-		RECIPE_CATEGORY="${BASH_REMATCH[${RECIPE_NAME_GROUP_CATEGORY_INDEX}]}"
-		RECIPE_RIGHTS="${BASH_REMATCH[${RECIPE_NAME_GROUP_RIGHTS_INDEX}]}"
-		RECIPE_SCRIPT_FILE_NAME="${BASH_REMATCH[${RECIPE_NAME_GROUP_DISPLAY_NAME_INDEX}]}"
-		RECIPE_SCRIPT_FILE_PATH="${RECIPES_PARENT_DIRECTORY}/${RECIPE_SCRIPT_FILE_NAME}"
-		
-		#printf "    RECIPE_NAME: ${RECIPE_NAME}\n"
-		#printf "    RECIPE_NUMBER: ${RECIPE_NUMBER}\n"
-		#printf "    RECIPE_CATEGORY: ${RECIPE_CATEGORY}\n"
-		#printf "    RECIPE_RIGHTS: ${RECIPE_REQUIRED_RIGHTS}\n"
-		#printf "    RECIPE_SCRIPT_FILE_NAME: ${RECIPE_SCRIPT_FILE_NAME}\n"
-		#printf "    RECIPE_SCRIPT_FILE_PATH: ${RECIPE_SCRIPT_FILE_PATH}\n"
-	done
 }
 
 re_index_recipes(){
