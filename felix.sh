@@ -8,16 +8,87 @@ FELIX_BANNER='  __      _ _
 |  _|  __/ | |>  < 
 |_|  \___|_|_/_/\_\'
 
-RECIPE_NAME_REGEX="([0-9][0-9][0-9][0-9])-([a-z]+)-([us])-(.*)"
-RECIPE_NAME_GROUP_NUMBER_INDEX=1
-RECIPE_NAME_GROUP_CATEGORY_INDEX=2
-RECIPE_NAME_GROUP_RIGHTS_INDEX=3
-RECIPE_NAME_GROUP_DISPLAY_NAME_INDEX=4
+RECIPE_ID_REGEX="([0-9][0-9][0-9][0-9])-([a-z]+)-([us])-(.*)"
+RECIPE_ID_REGEX_GROUP_NUMBER_INDEX=1
+RECIPE_ID_REGEX_GROUP_CATEGORY_INDEX=2
+RECIPE_ID_REGEX_GROUP_RIGHTS_INDEX=3
+RECIPE_ID_REGEX_GROUP_NAME_INDEX=4
 RECIPE_CATEGORY_DEFAULT="d"
+
+retrieve_recipe_number(){
+	if [[ $# -ne 1 ]]; then
+		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
+		exit 1
+	fi
+	RECIPE_ID="${1}"
+	if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
+		printf "RECIPE_ID[%s] is not well formed\n"
+		exit 1
+	fi
+	RECIPE_NUMBER="${BASH_REMATCH[${RECIPE_ID_REGEX_GROUP_NUMBER_INDEX}]}"
+	printf "${RECIPE_NUMBER}"
+}
+
+retrieve_recipe_category(){
+	if [[ $# -ne 1 ]]; then
+		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
+		exit 1
+	fi
+	RECIPE_ID="${1}"
+	if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
+		printf "RECIPE_ID[%s] is not well formed\n"
+		exit 1
+	fi
+	RECIPE_CATEGORY="${BASH_REMATCH[${RECIPE_ID_REGEX_GROUP_CATEGORY_INDEX}]}"
+	printf "${RECIPE_CATEGORY}"
+}
+
+retrieve_recipe_rights(){
+	if [[ $# -ne 1 ]]; then
+		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
+		exit 1
+	fi
+	RECIPE_ID="${1}"
+	if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
+		printf "RECIPE_ID[%s] is not well formed\n"
+		exit 1
+	fi
+	RECIPE_RIGHTS="${BASH_REMATCH[${RECIPE_ID_REGEX_GROUP_RIGHTS_INDEX}]}"
+	printf "${RECIPE_RIGHTS}"
+}
+
+retrieve_recipe_name(){
+	if [[ $# -ne 1 ]]; then
+		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
+		exit 1
+	fi
+	RECIPE_ID="${1}"
+	if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
+		printf "RECIPE_ID[%s] is not well formed\n"
+		exit 1
+	fi
+	RECIPE_NAME="${BASH_REMATCH[${RECIPE_ID_REGEX_GROUP_NAME_INDEX}]}"
+	printf "${RECIPE_NAME}"
+}
+
+retrieve_recipe_display_name(){
+	if [[ $# -ne 1 ]]; then
+		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
+		exit 1
+	fi
+	RECIPE_ID="${1}"
+	if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
+		printf "RECIPE_ID[%s] is not well formed\n"
+		exit 1
+	fi
+	RECIPE_NAME="${BASH_REMATCH[${RECIPE_ID_REGEX_GROUP_NAME_INDEX}]}"
+	RECIPE_DISPLAY_NAME="$(echo "${RECIPE_NAME}"|tr '_' ' ')"
+	printf "${RECIPE_DISPLAY_NAME}"
+}
 
 retrieve_log_file_name(){
 	if [[ $# -ne 1 ]]; then
-		printf "retrieve_log_file_name() expects FILE_NAME in argument\n"
+		printf "${FUNCNAME[0]}() expects FILE_NAME in argument\n"
 		exit 1
 	fi
 	FILE_NAME="${1}"
@@ -71,7 +142,7 @@ fill_array_with_recipe_directory_from_recipe_family_directory(){
 	declare -n ARRAY="${ARRAY_NAME}"
 	for RECIPE_DIR in $(find "${RECIPE_FAMILY_DIR}"/* -type d -exec readlink -f {} \;); do
 		RECIPE_DIR_NAME=$(basename "${RECIPE_DIR}")
-		if [[ ! "${RECIPE_DIR_NAME}" =~ ${RECIPE_NAME_REGEX} ]]; then
+		if [[ ! "${RECIPE_DIR_NAME}" =~ ${RECIPE_ID_REGEX} ]]; then
 			continue
 		fi
 		ARRAY+=( "${RECIPE_DIR}" )
@@ -115,7 +186,7 @@ retrieve_recipe_display_name_from_recipe_directory(){
 		exit 1
 	fi
 	RECIPE_DIR_NAME="$(basename "${RECIPE_DIR}")"
-	if [[ ! "${RECIPE_DIR_NAME}" =~ ${RECIPE_NAME_REGEX} ]]; then
+	if [[ ! "${RECIPE_DIR_NAME}" =~ ${RECIPE_ID_REGEX} ]]; then
 		printf "RECIPE_DIR_NAME is not well formed: ${RECIPE_DIR_NAME}\n"
 		exit 1
 	fi
@@ -137,14 +208,14 @@ list_recipes(){
 	
 	# Retrieve array of recipes
 	RECIPES_PARENT_DIRECTORY=$(readlink -f "${RECIPES_PARENT_DIRECTORY}")
-	readarray -t RECIPE_PATH_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_NAME_REGEX}" -exec readlink -f {} \;|sort)
+	readarray -t RECIPE_PATH_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_ID_REGEX}" -exec readlink -f {} \;|sort)
 	
 	# List the recipes
 	printf "Recipes found:\n"
 	for RECIPE_PATH in "${RECIPE_PATH_ARRAY[@]}"; do
 		RECIPE_NAME=$(basename ${RECIPE_PATH})
 		
-		if [[ ! "${RECIPE_NAME}" =~ ${RECIPE_NAME_REGEX} ]]; then
+		if [[ ! "${RECIPE_NAME}" =~ ${RECIPE_ID_REGEX} ]]; then
 			printf "\tRECIPE_NAME is not well formed: ${RECIPE_NAME} => it will be ignored!\n"
 			continue
 		fi
@@ -179,7 +250,7 @@ re_index_recipes(){
 	
 	# Retrieve array of recipes
 	RECIPES_PARENT_DIRECTORY=$(readlink -f "${RECIPES_PARENT_DIRECTORY}")
-	readarray -t RECIPE_PATH_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_NAME_REGEX}" -exec readlink -f {} \;|sort)
+	readarray -t RECIPE_PATH_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_ID_REGEX}" -exec readlink -f {} \;|sort)
 	
 	# Re-index the recipes
 	ID=0
@@ -187,7 +258,7 @@ re_index_recipes(){
 	for RECIPE_PATH in "${RECIPE_PATH_ARRAY[@]}"; do
 		RECIPE_NAME=$(basename ${RECIPE_PATH})
 		
-		if [[ ! "${RECIPE_NAME}" =~ ${RECIPE_NAME_REGEX} ]]; then
+		if [[ ! "${RECIPE_NAME}" =~ ${RECIPE_ID_REGEX} ]]; then
 			printf "\tRECIPE_NAME is not well formed: ${RECIPE_NAME} => it will be ignored!\n"
 			continue
 		fi

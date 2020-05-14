@@ -29,7 +29,7 @@ execute_recipes_from_recipe_directory_array(){
 		RECIPE_DIR_NAME=$(basename ${RECIPE_DIR})
 		print_section_heading "RECIPE_DIR_NAME: ${RECIPE_DIR_NAME}"
 		
-		if [[ ! "${RECIPE_DIR_NAME}" =~ ${RECIPE_NAME_REGEX} ]]; then
+		if [[ ! "${RECIPE_DIR_NAME}" =~ ${RECIPE_ID_REGEX} ]]; then
 			printf "RECIPE_DIR_NAME is not well formed: ${RECIPE_DIR_NAME}\n"
 			exit 1
 		fi
