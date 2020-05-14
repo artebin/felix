@@ -25,21 +25,21 @@ execute_recipes_from_recipe_directory_array(){
 	printf "Executing recipes ...\n"
 	printf "ASK_CONFIRMATION: ${ASK_CONFIRMATION}\n\n"
 	
-	for RECIPE_DIR in "${RECIPE_DIR_ARRAY[@]}"; do
-		RECIPE_DIR_NAME=$(basename ${RECIPE_DIR})
-		print_section_heading "RECIPE_DIR_NAME: ${RECIPE_DIR_NAME}"
+	for RECIPE_DIRECTORY in "${RECIPE_DIRECTORY_ARRAY[@]}"; do
+		RECIPE_ID=$(basename ${RECIPE_DIR})
+		print_section_heading "RECIPE_ID: ${RECIPE_ID}"
 		
-		if [[ ! "${RECIPE_DIR_NAME}" =~ ${RECIPE_ID_REGEX} ]]; then
-			printf "RECIPE_DIR_NAME is not well formed: ${RECIPE_DIR_NAME}\n"
+		if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
+			printf "RECIPE_ID is not well formed: ${RECIPE_ID}\n"
 			exit 1
 		fi
 		
 		RECIPE_EXECUTION_FAILED=0
 		
-		RECIPE_NUMBER="${BASH_REMATCH[1]}"
-		RECIPE_REQUIRED_RIGHTS="${BASH_REMATCH[2]}"
-		RECIPE_SCRIPT_FILE_NAME="${BASH_REMATCH[3]}.sh"
-		RECIPE_SCRIPT_FILE="${RECIPE_DIR}/${RECIPE_SCRIPT_FILE_NAME}"
+		RECIPE_RIGHTS=$(retrieve_recipe_rights "${RECIPE_ID}")
+		RECIPE_NAME=$(retrieve_recipe_name "${RECIPE_ID}")
+		RECIPE_SCRIPT_FILE_NAME=$(retrieve_recipe_script_file "${RECIPE_ID}")
+		RECIPE_SCRIPT_FILE="${RECIPE_DIRECTORY}/${RECIPE_SCRIPT_FILE_NAME}"
 		
 		# Check recipe script exists
 		if [[ ! -f "${RECIPE_SCRIPT_FILE}" ]]; then
@@ -59,18 +59,18 @@ execute_recipes_from_recipe_directory_array(){
 		fi
 		
 		if ${EXECUTION_EXPECTED}; then
-			cd "${RECIPE_DIR}"
+			cd "${RECIPE_DIRECTORY}"
 			
 			# Execute the recipe with the required rights
 			RECIPE_EXIT_CODE=0
-			if [[ "${RECIPE_REQUIRED_RIGHTS}" == "u" ]]; then
+			if [[ "${RECIPE_RIGHTS}" == "u" ]]; then
 				bash "${RECIPE_SCRIPT_FILE_NAME}"
 				RECIPE_EXECUTION_FAILED=$?
-			elif [[ "${RECIPE_REQUIRED_RIGHTS}" == "s" ]]; then
+			elif [[ "${RECIPE_RIGHTS}" == "s" ]]; then
 				sudo -H bash "${RECIPE_SCRIPT_FILE_NAME}"
 				RECIPE_EXECUTION_FAILED=$?
 			else
-				echo "Unknown execution rights \'${RECIPE_REQUIRED_RIGHTS}\' for RECIPE_DIR_NAME: ${RECIPE_DIR_NAME}"
+				echo "Unknown execution rights \'${RECIPE_RIGHTS}\' for RECIPE_ID: ${RECIPE_ID}"
 			fi
 		fi
 		
@@ -78,7 +78,7 @@ execute_recipes_from_recipe_directory_array(){
 		
 		# Stop looping over RECIPE_DIR_ARRAY if the execution of the current recipe return an error code
 		if [[ "${RECIPE_EXECUTION_FAILED}" -ne 0 ]]; then
-			printf "Recipe '${RECIPE_DIR_NAME}' returned an error code.\n"
+			printf "Recipe '${RECIPE_ID}' returned an error code.\n"
 			printf "Exiting.\n"
 			exit 1
 		fi
