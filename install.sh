@@ -135,6 +135,7 @@ printf "\n"
 # Retrieve array of RECIPE_DIR
 RECIPE_DIR_TO_EXECUTE_ARRAY=()
 fill_array_with_recipe_directories "${RECIPE_FAMILY_DIR}" "RECIPE_DIR_TO_EXECUTE_ARRAY"
+filter_recipe_directories_array_by_category "RECIPE_DIR_TO_EXECUTE_ARRAY" "${RECIPE_CATEGORY_DEFAULT}"
 if ${SHOW_DIALOG_SELECT_RECIPES}; then
 	SELECTED_RECIPE_DIR_TO_EXECUTE_ARRAY=()
 	select_recipe_directories_from_array "RECIPE_DIR_TO_EXECUTE_ARRAY" "SELECTED_RECIPE_DIR_TO_EXECUTE_ARRAY"

@@ -217,6 +217,42 @@ fill_array_with_recipe_directories(){
 	readarray -t RECIPE_DIRECTORY_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_ID_REGEX}" -exec readlink -f {} \;|sort)
 }
 
+filter_recipe_directories_array_by_category(){
+	if [[ $# -ne 2 ]]; then
+		printf "${FUNCNAME[0]}() expects RECIPE_DIRECTORY_ARRAY_NAME and RECIPE_CATEGORY_TO_MATCH in arguments\n"
+		exit 1
+	fi
+	
+	# Retrieve recipe directories
+	RECIPE_DIRECTORY_ARRAY_NAME="${1}"
+	declare -n RECIPE_DIRECTORY_ARRAY="${RECIPE_DIRECTORY_ARRAY_NAME}"
+	
+	# Retrive recipe category
+	RECIPE_CATEGORY_TO_MATCH="${2}"
+	
+	# If RECIPE_CATEGORY_TO_MATCH is empty then nothing to do
+	if [[ -z "${RECIPE_CATEGORY_TO_MATCH}" ]]; then
+		return;
+	fi
+	
+	# Filter RECIPE_DIRECTORY_ARRAY into a local array
+	FILTERED_RECIPE_DIRECTORY_ARRAY=()
+	for RECIPE_DIRECTORY in "${RECIPE_DIRECTORY_ARRAY[@]}"; do
+		RECIPE_ID=$(basename "${RECIPE_DIRECTORY}")
+		if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
+			printf "\tRECIPE_ID[%s] is not well formed => it will be ignored!\n" "${RECIPE_ID}"
+			continue
+		fi
+		RECIPE_CATEGORY=$(retrieve_recipe_category "${RECIPE_ID}")
+		if [[ "${RECIPE_CATEGORY}" = "${RECIPE_CATEGORY_TO_MATCH}" ]]; then
+			FILTERED_RECIPE_DIRECTORY_ARRAY+=( "${RECIPE_DIRECTORY}" )
+		fi
+	done
+	
+	# Copy FILTERED_RECIPE_DIRECTORY_ARRAY into RECIPE_DIRECTORY_ARRAY
+	RECIPE_DIRECTORY_ARRAY=("${FILTERED_RECIPE_DIRECTORY_ARRAY[@]}")
+}
+
 select_recipe_directories_from_array(){
 	if [[ $# -ne 2 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPE_DIRECTORY_ARRAY_NAME and SELECTED_RECIPE_DIRECTORY_ARRAY_NAME in arguments\n"
