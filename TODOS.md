@@ -24,7 +24,7 @@
 - [ ] Create better graphs with gnuplot and battery-stats-collector
 - [ ] Add notes about bash completion
 - [ ] Reworked remote desktop software and use tiger VNC
-- [ ] tint2 is not listening to changes in monitors: which one is primary?
+- [ ] tint2 is not listening to changes in monitors: which one is primary? Add detection of primary in starter script and set tint2 configuration file.
 - [ ] kpie does not listen to window title change.
 - [ ] Update CSS for Geany Markdown plugin + configure properly the plugin during install.
 - [ ] Geany Markdown plugin is not resetting the vertical scroll.
@@ -32,6 +32,7 @@
 - [ ] Add an minimal image viewer such as "edisplay" (good to have one image viewer with no scale smoothing)
 - [ ] How to set the primary monitor from the command line and add it in ob-randr.py 
 - [ ] Bugs in user_playlist.sh: next is not working on macbook air + should not prev/next if only one item in the playlist.
+- [ ] UserPlaylist should not use multimedia keys because some applications use PAUSE/PLAY for pausing momentarily the playback, the PLAY will start the playlist. UserPlaylist should be a Rofi plugin.
 - [ ] .user_playlist.txt should allow comment with char #
 - [ ] all calls to rename_for_backup should use a suffix (felix_install_yyMMDD_HHmmss.SSS)
 - [ ] add menuitem for showing battery performance (battery-graph or our own gnuplot script). It can happen that the battery level is off the chart with battery-graph.
