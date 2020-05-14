@@ -199,6 +199,59 @@ re_index_recipes(){
 	done
 }
 
+fill_array_with_recipe_directory(){
+	if [[ $# -ne 2 ]]; then
+		printf "${FUNCNAME[0]}() expects RECIPES_PARENT_DIRECTORY and ARRAY_NAME in arguments\n"
+		exit 1
+	fi
+	RECIPES_PARENT_DIRECTORY="${1}"
+	if [[ ! -d "${RECIPES_PARENT_DIRECTORY}" ]]; then
+		printf "Cannot find RECIPES_PARENT_DIRECTORY[%s]\n" "${RECIPES_PARENT_DIRECTORY}"
+		exit 1
+	fi
+	
+	# Retrieve and fill array of recipes
+	RECIPE_DIRECTORY_ARRAY_NAME="${2}"
+	declare -n RECIPE_DIRECTORY_ARRAY="${RECIPE_DIRECTORY_ARRAY_NAME}"
+	RECIPES_PARENT_DIRECTORY=$(readlink -f "${RECIPES_PARENT_DIRECTORY}")
+	readarray -t RECIPE_DIRECTORY_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_ID_REGEX}" -exec readlink -f {} \;|sort)
+}
+
+select_recipes_and_fill_array_with_recipe_directory(){
+	if [[ $# -ne 2 ]]; then
+		printf "${FUNCNAME[0]}() expects RECIPE_DIRECTORY_ARRAY_NAME and SELECTED_RECIPE_DIRECTORY_ARRAY_NAME in arguments\n"
+		exit 1
+	fi
+	
+	# Retrieve recipe directories
+	RECIPE_DIRECTORY_ARRAY_NAME="${1}"
+	declare -n RECIPE_DIRECTORY_ARRAY="${RECIPE_DIRECTORY_ARRAY_NAME}"
+	
+	# Prepare whiptail data, in particular we want display name of recipes
+	declare -A RECIPE_DISPLAY_NAME_MAP
+	WHIPTAIL_CHECKLIST_ARRAY=()
+	for RECIPE_DIRECTORY in "${RECIPE_DIRECTORY_ARRAY[@]}"; do
+		RECIPE_ID=$(basename "${RECIPE_DIRECTORY}")
+		RECIPE_DISPLAY_NAME="$(retrieve_recipe_display_name ${RECIPE_ID})"
+		RECIPE_DISPLAY_NAME_MAP[${RECIPE_DISPLAY_NAME}]="${RECIPE_DIRECTORY}"
+		WHIPTAIL_CHECKLIST_ARRAY+=( "${RECIPE_DISPLAY_NAME}" "" ON )
+	done
+	
+	# Retrieve selected recipe directories and clear it
+	SELECTED_RECIPE_DIRECTORY_ARRAY_NAME="${2}"
+	declare -n SELECTED_RECIPE_DIRECTORY_ARRAY="${SELECTED_RECIPE_DIRECTORY_ARRAY_NAME}"
+	SELECTED_RECIPE_DIRECTORY_ARRAY=()
+	
+	# Call the whiptail
+	SELECTED_RECIPE_DISPLAY_NAME_ARRAY=$(whiptail --separate-output --title "Felix" --checklist "Choose recipes to execute" 28 78 20 "${WHIPTAIL_CHECKLIST_ARRAY[@]}" 3>&1 1>&2 2>&3)
+	EXIT_CODE=$?
+	if [[ ${EXIT_CODE} = 0 ]]; then
+		while read RECIPE_DISPLAY_NAME; do
+			SELECTED_RECIPE_DIRECTORY_ARRAY+=( "${RECIPE_DISPLAY_NAME_MAP[${RECIPE_DISPLAY_NAME}]}" )
+		done <<< "${SELECTED_RECIPE_DISPLAY_NAME_ARRAY}"
+	fi
+}
+
 retrieve_log_file_name(){
 	if [[ $# -ne 1 ]]; then
 		printf "${FUNCNAME[0]}() expects FILE_NAME in argument\n"
@@ -239,73 +292,6 @@ retrieve_recipe_family_conf_file(){
 	RECIPE_FAMILY_DIR_NAME="${RECIPE_FAMILY_DIR_NAME%%/*}"
 	RECIPE_FAMILY_DIR="${FELIX_ROOT}/${RECIPE_FAMILY_DIR_NAME}"
 	printf "${RECIPE_FAMILY_DIR}/${RECIPE_FAMILY_DIR_NAME}.conf"
-}
-
-fill_array_with_recipe_directory_from_recipe_family_directory(){
-	if [[ $# -ne 2 ]]; then
-		printf "fill_array_with_recipe_directory_from_recipe_family_directory() expects RECIPE_FAMILY_DIR and ARRAY_NAME in argument\n"
-		exit 1
-	fi
-	local RECIPE_FAMILY_DIR="${1}"
-	if [[ ! -d "${RECIPE_FAMILY_DIR}" ]]; then
-		printf "Cannot find RECIPE_FAMILY_DIR: ${RECIPE_FAMILY_DIR}\n"
-		exit 1
-	fi
-	local ARRAY_NAME="${2}"
-	declare -n ARRAY="${ARRAY_NAME}"
-	for RECIPE_DIR in $(find "${RECIPE_FAMILY_DIR}"/* -type d -exec readlink -f {} \;); do
-		RECIPE_DIR_NAME=$(basename "${RECIPE_DIR}")
-		if [[ ! "${RECIPE_DIR_NAME}" =~ ${RECIPE_ID_REGEX} ]]; then
-			continue
-		fi
-		ARRAY+=( "${RECIPE_DIR}" )
-	done
-}
-
-select_recipes_and_fill_array_with_recipe_directory(){
-	if [[ $# -ne 2 ]]; then
-		printf "select_recipes_and_fill_array_with_recipe_directory() expects INPUT_ARRAY_NAME and OUTPUT_ARRAY_NAME in argument\n"
-		exit 1
-	fi
-	local INPUT_ARRAY_NAME="${1}"
-	declare -n INPUT_ARRAY="${INPUT_ARRAY_NAME}"
-	local OUTPUT_ARRAY_NAME="${2}"
-	declare -n OUTPUT_ARRAY="${OUTPUT_ARRAY_NAME}"
-	OUTPUT_ARRAY=()
-	declare -A RECIPE_DISPLAY_NAME_MAP
-	WHIPTAIL_CHECKLIST_ARRAY=()
-	for RECIPE_DIR in "${INPUT_ARRAY[@]}"; do
-		RECIPE_DISPLAY_NAME="$(retrieve_recipe_display_name_from_recipe_directory ${RECIPE_DIR})"
-		RECIPE_DISPLAY_NAME_MAP[${RECIPE_DISPLAY_NAME}]="${RECIPE_DIR}"
-		WHIPTAIL_CHECKLIST_ARRAY+=( "${RECIPE_DISPLAY_NAME}" "" ON )
-	done
-	SELECTED_RECIPES=$(whiptail --separate-output --title "Felix" --checklist "Choose recipes to execute" 28 78 20 "${WHIPTAIL_CHECKLIST_ARRAY[@]}" 3>&1 1>&2 2>&3)
-	EXIT_CODE=$?
-	if [[ $EXIT_CODE = 0 ]]; then
-		while read RECIPE_DISPLAY_NAME; do
-			OUTPUT_ARRAY+=( "${RECIPE_DISPLAY_NAME_MAP[${RECIPE_DISPLAY_NAME}]}" )
-		done <<< "${SELECTED_RECIPES}"
-	fi
-}
-
-retrieve_recipe_display_name_from_recipe_directory(){
-	if [[ $# -ne 1 ]]; then
-		printf "retrieve_recipe_display_name_from_recipe_directory() expects RECIPE_DIR in argument\n"
-		exit 1
-	fi
-	RECIPE_DIRECTORY="${1}"
-	if [[ ! -d "${RECIPE_DIR}" ]]; then
-		printf "Cannot find RECIPE_DIR: ${RECIPE_DIR}\n"
-		exit 1
-	fi
-	RECIPE_DIR_NAME="$(basename "${RECIPE_DIR}")"
-	if [[ ! "${RECIPE_DIR_NAME}" =~ ${RECIPE_ID_REGEX} ]]; then
-		printf "RECIPE_DIR_NAME is not well formed: ${RECIPE_DIR_NAME}\n"
-		exit 1
-	fi
-	RECIPE_NAME="${BASH_REMATCH[${RECIPE_NAME_GROUP_DISPLAY_NAME_INDEX}]}"
-	RECIPE_DISPLAY_NAME="$(echo "${RECIPE_NAME}"|tr '_' ' ')"
-	printf "${RECIPE_DISPLAY_NAME}"
 }
 
 check_ubuntu_version(){

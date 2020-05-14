@@ -134,7 +134,7 @@ printf "\n"
 
 # Retrieve array of RECIPE_DIR
 RECIPE_DIR_TO_EXECUTE_ARRAY=()
-fill_array_with_recipe_directory_from_recipe_family_directory "${RECIPE_FAMILY_DIR}" "RECIPE_DIR_TO_EXECUTE_ARRAY"
+fill_array_with_recipe_directory "${RECIPE_FAMILY_DIR}" "RECIPE_DIR_TO_EXECUTE_ARRAY"
 if ${SHOW_DIALOG_SELECT_RECIPES}; then
 	SELECTED_RECIPE_DIR_TO_EXECUTE_ARRAY=()
 	select_recipes_and_fill_array_with_recipe_directory "RECIPE_DIR_TO_EXECUTE_ARRAY" "SELECTED_RECIPE_DIR_TO_EXECUTE_ARRAY"
