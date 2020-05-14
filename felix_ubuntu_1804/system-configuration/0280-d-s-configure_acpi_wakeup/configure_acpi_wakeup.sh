@@ -73,13 +73,13 @@ disable_all_acpi_wakeup_except_for_platform_subsystems(){
 	echo
 }
 
-extract_acpi_dsdt 2>&1 | tee -a "${LOGFILE}"
+extract_acpi_dsdt 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
 
-disable_all_acpi_wakeup_except_for_platform_subsystems 2>&1 | tee -a "${LOGFILE}"
+disable_all_acpi_wakeup_except_for_platform_subsystems 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

@@ -23,7 +23,7 @@ install_virtualbox_guest_additions(){
 	echo
 }
 
-install_virtualbox_guest_additions 2>&1 | tee -a "${LOGFILE}"
+install_virtualbox_guest_additions 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

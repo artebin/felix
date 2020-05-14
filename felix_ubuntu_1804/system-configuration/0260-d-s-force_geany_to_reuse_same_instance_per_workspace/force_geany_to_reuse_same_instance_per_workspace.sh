@@ -26,7 +26,7 @@ force_geany_to_reuse_same_instance_per_workspace(){
 	printf "\n"
 }
 
-force_geany_to_reuse_same_instance_per_workspace 2>&1 | tee -a "${LOGFILE}"
+force_geany_to_reuse_same_instance_per_workspace 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

@@ -21,7 +21,7 @@ blueman_applet_should_not_auto_enable_bluetooth_adapter(){
 	printf "\n"
 }
 
-blueman_applet_should_not_auto_enable_bluetooth_adapter 2>&1 | tee -a "${LOGFILE}"
+blueman_applet_should_not_auto_enable_bluetooth_adapter 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

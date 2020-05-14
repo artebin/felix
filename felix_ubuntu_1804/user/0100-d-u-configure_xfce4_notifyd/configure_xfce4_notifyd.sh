@@ -36,7 +36,7 @@ configure_xfce4_notifyd(){
 	printf "\n"
 }
 
-configure_xfce4_notifyd 2>&1 | tee -a "${LOGFILE}"
+configure_xfce4_notifyd 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

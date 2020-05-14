@@ -41,7 +41,7 @@ install_geany_markdown_plugin_from_sources(){
 
 
 cd ${RECIPE_DIRECTORY}
-install_geany_markdown_plugin_from_sources 2>&1 | tee -a "${LOGFILE}"
+install_geany_markdown_plugin_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"

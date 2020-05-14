@@ -34,7 +34,7 @@ disable_automatic_update_and_upgrade(){
 	echo
 }
 
-disable_automatic_update_and_upgrade 2>&1 | tee -a "${LOGFILE}"
+disable_automatic_update_and_upgrade 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

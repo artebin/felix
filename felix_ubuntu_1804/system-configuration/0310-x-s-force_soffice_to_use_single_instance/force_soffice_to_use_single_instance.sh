@@ -22,7 +22,7 @@ force_soffice_to_use_single_instance(){
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-force_soffice_to_use_single_instance 2>&1 | tee -a "${LOGFILE}"
+force_soffice_to_use_single_instance 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

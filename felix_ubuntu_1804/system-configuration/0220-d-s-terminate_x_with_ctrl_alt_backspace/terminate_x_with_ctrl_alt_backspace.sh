@@ -21,7 +21,7 @@ terminate_x_with_ctrl_alt_backspace(){
 	echo
 }
 
-terminate_x_with_ctrl_alt_backspace 2>&1 | tee -a "${LOGFILE}"
+terminate_x_with_ctrl_alt_backspace 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

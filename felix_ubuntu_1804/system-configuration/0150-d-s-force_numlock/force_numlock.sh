@@ -57,13 +57,13 @@ force_numlock_xorg(){
 	echo
 }
 
-force_numlock_tty 2>&1 | tee -a "${LOGFILE}"
+force_numlock_tty 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
 
-force_numlock_xorg 2>&1 | tee -a "${LOGFILE}"
+force_numlock_xorg 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

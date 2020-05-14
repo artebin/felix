@@ -139,7 +139,7 @@ rename_xpi_file_with_web_extension_with_id(){
 	rm -fr "${TMP_DIR}"
 }
 
-configure_firefox_default_profile 2>&1 | tee -a "${LOGFILE}"
+configure_firefox_default_profile 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

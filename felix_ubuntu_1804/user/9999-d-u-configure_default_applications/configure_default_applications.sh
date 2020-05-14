@@ -131,19 +131,19 @@ configure_default_applications_with_mime_apps_list(){
 	printf "\n"
 }
 
-configure_default_applications_with_xdg_mime 2>&1 | tee -a "${LOGFILE}"
+configure_default_applications_with_xdg_mime 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
 
-configure_default_applications_with_desktop_file_overridings 2>&1 | tee -a "${LOGFILE}"
+configure_default_applications_with_desktop_file_overridings 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
 
-configure_default_applications_with_mime_apps_list 2>&1 | tee -a "${LOGFILE}"
+configure_default_applications_with_mime_apps_list 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

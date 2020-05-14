@@ -62,7 +62,7 @@ configure_grub(){
 	printf "\n"
 }
 
-configure_grub 2>&1 | tee -a "${LOGFILE}"
+configure_grub 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

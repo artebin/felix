@@ -31,7 +31,7 @@ install_pulseaudioctl_from_sources(){
 	echo
 }
 
-install_pulseaudioctl_from_sources 2>&1 | tee -a "${LOGFILE}"
+install_pulseaudioctl_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

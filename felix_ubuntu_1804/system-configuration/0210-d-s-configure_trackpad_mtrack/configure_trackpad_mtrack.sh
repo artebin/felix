@@ -41,7 +41,7 @@ configure_trackpad_mtrack(){
 	printf "\n"
 }
 
-configure_trackpad_mtrack 2>&1 | tee -a "${LOGFILE}"
+configure_trackpad_mtrack 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

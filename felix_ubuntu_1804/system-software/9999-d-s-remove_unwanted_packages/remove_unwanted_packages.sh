@@ -51,7 +51,7 @@ process_package_remove_list(){
 
 
 cd ${RECIPE_DIRECTORY}
-process_package_remove_list 2>&1 | tee -a "${LOGFILE}"
+process_package_remove_list 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"

@@ -32,7 +32,7 @@ configure_ssh_welcome_text(){
 	echo
 }
 
-configure_ssh_welcome_text 2>&1 | tee -a "${LOGFILE}"
+configure_ssh_welcome_text 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

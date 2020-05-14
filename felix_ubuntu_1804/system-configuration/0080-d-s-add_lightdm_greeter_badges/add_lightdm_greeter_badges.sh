@@ -24,7 +24,7 @@ add_lightdm_greeter_badges(){
 	echo
 }
 
-add_lightdm_greeter_badges 2>&1 | tee -a "${LOGFILE}"
+add_lightdm_greeter_badges 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

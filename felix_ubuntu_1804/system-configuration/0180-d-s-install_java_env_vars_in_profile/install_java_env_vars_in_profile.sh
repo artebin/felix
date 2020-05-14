@@ -21,7 +21,7 @@ install_java_env_vars(){
 	echo
 }
 
-install_java_env_vars 2>&1 | tee -a "${LOGFILE}"
+install_java_env_vars 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

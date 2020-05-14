@@ -68,13 +68,13 @@ configure_gtk3(){
 	echo
 }
 
-configure_gtk2 2>&1 | tee -a "${LOGFILE}"
+configure_gtk2 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
 
-configure_gtk3 2>&1 | tee -a "${LOGFILE}"
+configure_gtk3 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

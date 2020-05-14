@@ -43,13 +43,13 @@ disable_bluetooth_adapter_at_boot_time(){
 	echo
 }
 
-blacklist_bluetooth_driver_module 2>&1 | tee -a "${LOGFILE}"
+blacklist_bluetooth_driver_module 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
 
-disable_bluetooth_adapter_at_boot_time 2>&1 | tee -a "${LOGFILE}"
+disable_bluetooth_adapter_at_boot_time 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

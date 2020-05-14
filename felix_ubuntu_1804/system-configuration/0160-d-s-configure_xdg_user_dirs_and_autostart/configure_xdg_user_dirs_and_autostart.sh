@@ -80,19 +80,19 @@ disable_unwanted_xdg_autostart(){
 	echo
 }
 
-update_xdg_user_dirs_default 2>&1 | tee -a "${LOGFILE}"
+update_xdg_user_dirs_default 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
 
-list_xdg_autostart_desktop_files 2>&1 | tee -a "${LOGFILE}"
+list_xdg_autostart_desktop_files 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
 
-disable_unwanted_xdg_autostart 2>&1 | tee -a "${LOGFILE}"
+disable_unwanted_xdg_autostart 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
