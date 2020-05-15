@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] re_index_recipe should re-number recipes which are not defaults, keep order but put them after the defaults.
 - [ ] On the Dell the switch to headset microphone is not done after pluggin the headset. <https://superuser.com/questions/1312970/headset-microphone-not-detected-by-pulse-und-alsa>
 - [ ] Improve Remmina recipe: notification icon, tree view => added the configuration in dotfiles directory, should not do a recipe for that.
 - [ ] Add recipe for configuring Atril => added the configuration in dotfiles directory, should not do a recipe for that.
@@ -17,20 +18,20 @@
 - [ ] Find a good portal for firefox or a Web Bookmarks application.
 - [ ] Rule for VLC which save the window dimensions between 2 runs.
 - [ ] Find an image browser which can copy the path of the currently displayed image, or do drag'n'drop.
-- [ ] Check good usage of `xdg-settings set default-url-scheme-handler`. See <https://wiki.archlinux.org/index.php/Xdg-utils>
+- [ ] Check good usage of `xdg-settings set default-url-scheme-handler`. See <https://wiki.archlinux.org/index.php/Xdg-utils>.
 - [ ] Recipe family conf should contain a variable for the mail client (claws, evolution etc. ), it should be installed by install.sh and set in openbox menu.
 - [ ] Key shortcut for applying geometry to a window something line 512x512 on the left-bottom corner of the screen. It would be even better if it could be to3ggable.
 - [ ] Mirage or GPicView? GPicView is slower at rendering SVG graphics.
-- [ ] Create better graphs with gnuplot and battery-stats-collector
-- [ ] Add notes about bash completion
-- [ ] Reworked remote desktop software and use tiger VNC
+- [ ] Create better graphs with gnuplot and battery-stats-collector.
+- [ ] Add notes about bash completion.
+- [ ] Reworked remote desktop software and use tiger VNC.
 - [ ] tint2 is not listening to changes in monitors: which one is primary? Add detection of primary in starter script and set tint2 configuration file.
 - [ ] kpie does not listen to window title change.
 - [ ] Update CSS for Geany Markdown plugin + configure properly the plugin during install.
 - [ ] Geany Markdown plugin is not resetting the vertical scroll.
-- [ ] The scripts folder should be renamed lib
-- [ ] Add an minimal image viewer such as "edisplay" (good to have one image viewer with no scale smoothing)
-- [ ] How to set the primary monitor from the command line and add it in ob-randr.py 
+- [ ] The scripts folder should be renamed lib.
+- [ ] Add an minimal image viewer such as "edisplay" (good to have one image viewer with no scale smoothing).
+- [ ] How to set the primary monitor from the command line and add it in `ob-randr.py`.
 - [ ] Bugs in user_playlist.sh: next is not working on macbook air + should not prev/next if only one item in the playlist.
 - [ ] UserPlaylist should not use multimedia keys because some applications use PAUSE/PLAY for pausing momentarily the playback, the PLAY will start the playlist. UserPlaylist should be a Rofi plugin.
 - [ ] .user_playlist.txt should allow comment with char #

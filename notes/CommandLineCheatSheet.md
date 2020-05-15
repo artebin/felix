@@ -8,6 +8,10 @@
     * Enable/disable synchonization of the machine clock with NTP: `timedatectl set-ntp no`
     * Set machine clock: `timedatectl set-time '2020-03-13 23:59:00'`
 
+## ACPI
+
+* `acpi_listen`
+
 ## Terminal
 
 * List files in column: `ls -1`
@@ -17,6 +21,14 @@
 * List sockets created by pid number: `ss -l -p -n | grep "pid=${PID},"`
 
 * Removing an old SSH key: `ssh-keygen -R [HOSTNAME|ADDRESS]`
+
+## Convert values
+
+* Convert value from base 16 to base 2: `echo 'obase=2;ibase=16;3F'|bc`
+
+* Extract time duration with dateutils: `dateutils.ddiff 08:31:10 08:32:26 -f"%H:%M:%S"`
+
+* Seconds to hours: `date -d@48480 -u +%H:%M:%S`
 
 ## File Processing
 
@@ -28,18 +40,11 @@
 
 * Revert to base revision one file in a git project: `git checkout -- FILE`
 
-## Convert values
+## Xorg
 
-* Convert value from base 16 to base 2: `echo 'obase=2;ibase=16;3F'|bc`
-
-* Extract time duration with dateutils: `dateutils.ddiff 08:31:10 08:32:26 -f"%H:%M:%S"`
-
-* Seconds to hours: `date -d@48480 -u +%H:%M:%S`
+* Retrieve the name and class of a window: `xprop WM_CLASS`
 
 ## Miscellaneous
 
 * Extract a mp3 from a youtube video URL: `youtube-dl --extract-audio --audio-format mp3 VIDEO_URL`
 
-## Xorg
-
-* Retrieve the name and class of a window: `xprop WM_CLASS`
