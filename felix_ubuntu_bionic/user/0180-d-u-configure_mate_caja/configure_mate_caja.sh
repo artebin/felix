@@ -14,24 +14,16 @@ exit_if_has_root_privileges
 
 configure_mate_caja(){
 	printf "Configuring mate-caja ...\n"
+	cd "${RECIPE_DIRECTORY}"
+	dconf load /org/mate/caja/ < "org.mate.caja.dump"
+	dconf load /org/mate/desktop/ < "org.mate.desktop.dump"
+	printf "\n"
 	
-	dconf load /org/mate/caja/ <"${RECIPE_DIRECTORY}/org.mate.caja.dump"
-	dconf load /org/mate/desktop/ <"${RECIPE_DIRECTORY}/org.mate.desktop.dump"
-	echo
-	
-	echo "Use x-terminal-emulator for the action 'Open in Terminal' ..."
-	# For an unkown reason caja-open-terminal plugin is not using
-	# x-terminal-emulator by default.
+	printf "Use x-terminal-emulator for the action 'Open in Terminal' ...\n"
+	# For an unkown reason caja-open-terminal plugin is not using x-terminal-emulator by default.
 	# See <https://github.com/mate-desktop/caja-extensions/blob/master/open-terminal/caja-open-terminal.c>
 	gsettings set org.mate.applications-terminal exec x-terminal-emulator
-	echo
-	
-	printf "Adding caja scripts ...\n"
-	if [[ -d "${HOME}/.config/caja/scripts" ]]; then
-		backup_file rename "${HOME}/.config/caja/scripts"
-	fi
-	mkdir -p "${HOME}/.config/caja/scripts"
-	cp -R "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/caja/scripts" "${HOME}/.config/caja"
+	printf "\n"
 	
 	printf "\n"
 }
