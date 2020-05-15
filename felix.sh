@@ -318,6 +318,11 @@ initialize_recipe(){
 		printf "RECIPE_DIRECTORY should not be empty"
 		exit 1
 	fi
+	RECIPE_ID=$(basename ${RECIPE_DIRECTORY})
+	if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
+		printf "RECIPE_ID[%s] is not well formed\n" "${RECIPE_ID}"
+		exit 1
+	fi
 	declare -g RECIPE_FAMILY_DIRECTORY=$(retrieve_recipe_family_directory "${RECIPE_DIRECTORY}")
 	declare -g RECIPE_FAMILY_CONF_FILE=$(retrieve_recipe_family_conf_file "${RECIPE_DIRECTORY}")
 	if [[ ! -f "${RECIPE_FAMILY_CONF_FILE}" ]]; then
@@ -325,7 +330,8 @@ initialize_recipe(){
 		exit 1
 	fi
 	source "${RECIPE_FAMILY_CONF_FILE}"
-	declare -g RECIPE_LOG_FILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"
+	RECIPE_SCRIPT_FILE=$(retrieve_recipe_script_file "${RECIPE_ID}")
+	declare -g RECIPE_LOG_FILE="$(retrieve_log_file_name ${RECIPE_SCRIPT_FILE}|xargs readlink -f)"
 	
 	# Print current recipe information
 	RECIPE_ID=$(basename "${RECIPE_DIRECTORY}")
