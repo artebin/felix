@@ -15,19 +15,12 @@ exit_if_has_root_privileges
 configure_vlc(){
 	printf "Configuring vlc ...\n"
 	
-	if [[ -d "${HOME}/.config/vlc" ]]; then
-		backup_file rename "${HOME}/.config/vlc"
+	printf "Adding default playlist ...\n"
+	cd "${RECIPE_DIRECTORY}"
+	if [[ ! -d "${HOME}/.local/share/vlc" ]]; then
+		mkdir -p "${HOME}/.local/share/vlc"
 	fi
-	mkdir -p "${HOME}/.config/vlc"
-	cp "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/vlc/vlcrc" "${HOME}/.config/vlc"
-	echo
-	
-	echo "Adding default playlist ..."
-	if [[ -d "${HOME}/.local/share/vlc" ]]; then
-		backup_file rename "${HOME}/.local/share/vlc"
-	fi
-	mkdir -p "${HOME}/.local/share/vlc"
-	cp "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.local/share/vlc/ml.xspf" "${HOME}/.local/share/vlc"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.local/share/vlc/ml.xspf" "ml.xspf"
 	
 	printf "\n"
 }
