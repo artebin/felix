@@ -226,7 +226,7 @@ chromium-browser
 ##########################
 pulseaudio pulseaudio-dlna pulseaudio-equalizer pulseaudio-esound-compat
 pulseaudio-module-bluetooth pulseaudio-module-jack pulseaudio-module-lirc pulseaudio-module-raop pulseaudio-module-zeroconf pulseaudio-utils pulsemixer libpulse-dev
-pulseaudio-module-gconf #Missing in Debian Buster
+#pulseaudio-module-gconf #Missing in Debian Buster
 #paman #N/A in Ubuntu 18.04
 pavucontrol pavumeter paprefs
 flac
