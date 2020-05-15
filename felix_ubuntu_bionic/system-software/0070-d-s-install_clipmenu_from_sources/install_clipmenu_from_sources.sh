@@ -13,8 +13,8 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_clipnotify_from_sources(){
-	echo "Installing ClipNotify from sources ..."
-	echo "GitHub repository: <https://github.com/cdown/clipnotify>"
+	printf "Installing ClipNotify from sources ...\n"
+	printf "GitHub repository: <https://github.com/cdown/clipnotify>\n"
 	git clone https://github.com/cdown/clipnotify
 	cd "${RECIPE_DIRECTORY}/clipnotify"
 	make
@@ -23,16 +23,19 @@ install_clipnotify_from_sources(){
 	# Cleaning
 	rm -fr "${RECIPE_DIRECTORY}/clipnotify"
 	
-	echo
+	printf "\n"
 }
 
 install_clipmenu_from_sources(){
-	echo "Installing ClipMenu from sources ..."
-	echo "GitHub repository: <https://github.com/cdown/clipmenu>"
+	printf "Installing ClipMenu from sources ...\n"
+	printf "GitHub repository: <https://github.com/cdown/clipmenu>\n"
 	git clone https://github.com/cdown/clipmenu
 	cd "${RECIPE_DIRECTORY}/clipmenu"
-	printf "Applying patch on clipmenud for copy/paste in file managers ...\n"
-	patch < ../clipmenud_190204.patch
+	
+	#NJ:20-05-15: patch is not applicable on most recent version of clipmenud
+	#printf "Applying patch on clipmenud for copy/paste in file managers ...\n"
+	#patch < ../clipmenud_190204.patch
+	
 	cp clipdel /usr/bin
 	cp clipmenu /usr/bin
 	cp clipmenud /usr/bin
@@ -40,7 +43,7 @@ install_clipmenu_from_sources(){
 	# Cleaning
 	rm -fr "${RECIPE_DIRECTORY}/clipmenu"
 	
-	echo
+	printf "\n"
 }
 
 install_clipnotify_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
