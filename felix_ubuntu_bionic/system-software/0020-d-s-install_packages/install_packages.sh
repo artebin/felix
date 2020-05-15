@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 process_package_install_list(){
-	echo "Install packages ..."
+	printf "Install packages ...\n"
 	
 	# Check that dpkg is not locked
 	DPKG_LOCK=$(fuser /var/lib/dpkg/lock 2>/dev/null)
@@ -49,7 +49,7 @@ process_package_install_list(){
 	# Cleaning
 	rm -f "${APT_PACKAGE_LIST_FILE}"
 	
-	echo
+	printf "\n"
 }
 
 process_package_install_list 2>&1 | tee -a "${RECIPE_LOG_FILE}"
