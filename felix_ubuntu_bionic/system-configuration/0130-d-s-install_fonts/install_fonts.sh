@@ -14,22 +14,22 @@ exit_if_has_not_root_privileges
 
 install_fonts(){
 	# Install font JetBrainsMono
-	printf "%-50s : %s\n" "Installing font" "Droid"
+	printf "%-30s : %s\n" "Installing font" "Droid"
 	cd "${RECIPE_DIRECTORY}"
 	cp fonts/Droid/* /usr/local/share/fonts/
 	
 	# Install font JetBrainsMono
-	printf "%-50s : %s\n" "Installing font" "Montserrat"
+	printf "%-30s : %s\n" "Installing font" "Montserrat"
 	cd "${RECIPE_DIRECTORY}"
 	cp fonts/Montserrat/* /usr/local/share/fonts/
 	
 	# Install font JetBrainsMono
-	printf "%-50s : %s\n" "Installing font" "Roboto"
+	printf "%-30s : %s\n" "Installing font" "Roboto"
 	cd "${RECIPE_DIRECTORY}"
 	cp fonts/Roboto/* /usr/local/share/fonts/
 	
 	# Install font JetBrainsMono
-	printf "%-50s : %s\n" "Installing font" "JetBrains Mono"
+	printf "%-30s : %s\n" "Installing font" "JetBrains Mono"
 	git clone https://github.com/JetBrains/JetBrainsMono
 	cp "${RECIPE_DIRECTORY}"/JetBrainsMono/ttf/*.ttf /usr/local/share/fonts
 	cp -r "${RECIPE_DIRECTORY}"/JetBrainsMono/web/eot /usr/local/share/fonts

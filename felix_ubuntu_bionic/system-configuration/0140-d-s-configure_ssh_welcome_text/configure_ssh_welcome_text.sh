@@ -18,7 +18,7 @@ configure_ssh_welcome_text(){
 	echo "Disabling all previous 'message of the day' ..."
 	cd /etc/update-motd.d
 	for FILE in ./*; do
-		backup_file rename ./"${FILE}"
+		backup_file rename "${FILE}"
 	done
 	chmod a-x ./*
 	
