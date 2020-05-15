@@ -1,7 +1,7 @@
 ################
 # System tools
 ################
-lsb-core
+#lsb-core #Missing in Debian Buster
 moreutils
 psmisc #Includes fuser, killall, peekfd, pstree, prtstat
 hwinfo lshw inxi
@@ -143,7 +143,7 @@ synaptic
 gparted
 seahorse
 zenity
-mugshot
+#mugshot #Missing in Debian Buster
 
 ###################
 # Desktop theming
@@ -218,13 +218,13 @@ icc-profiles
 ###############
 # Web browser
 ###############
-firefox
-chromium-browser
+#firefox chromium-browser #Missing in Debian Buster
 
 ##########################
 # Audio and video player
 ##########################
-pulseaudio pulseaudio-dlna pulseaudio-equalizer pulseaudio-esound-compat
+pulseaudio pulseaudio-dlna pulseaudio-equalizer
+#pulseaudio-esound-compat #Missing in Debian Buster
 pulseaudio-module-bluetooth pulseaudio-module-jack pulseaudio-module-lirc pulseaudio-module-raop pulseaudio-module-zeroconf pulseaudio-utils pulsemixer libpulse-dev
 #pulseaudio-module-gconf #Missing in Debian Buster
 #paman #N/A in Ubuntu 18.04
@@ -282,5 +282,4 @@ golang
 ##############
 # VirtualBox
 ##############
-virtualbox
-virtualbox-ext-pack
+#virtualbox virtualbox-ext-pack #Missing in Debian Buster
