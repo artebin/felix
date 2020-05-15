@@ -12,19 +12,30 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-upgrade_system(){
-	echo "Upgrading the system ..."
+install_sxhkd_from_sources(){
+	echo "Installing sxhkd from sources ..."
 	
-	apt-get update
-	apt-get -y upgrade
-	apt-get -y dist-upgrade
+	# Install dependencies
+	install_package_if_not_installed "libxcb-util0-dev" "libxcb-keysyms1-dev"
+	
+	# Clone git repository
+	git clone https://github.com/baskerville/sxhkd
+	
+	# Build and install
+	cd sxhkd
+	make
+	make install
+	
+	# Cleaning
+	cd "${RECIPE_DIRECTORY}"
+	rm -fr sxhkd
 	
 	echo
 }
 
 cd "${RECIPE_DIRECTORY}"
-upgrade_system 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+install_sxhkd_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [[ "${EXIT_CODE}" -ne 0 ]]; then
+if [ "${EXIT_CODE}" -ne 0 ]; then
 	exit "${EXIT_CODE}"
 fi

@@ -33,8 +33,6 @@ install_sxhkd_from_sources(){
 	echo
 }
 
-
-
 cd "${RECIPE_DIRECTORY}"
 install_sxhkd_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
