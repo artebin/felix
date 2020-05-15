@@ -124,6 +124,6 @@ mkdir "${REPORT_NAME}"
 print_all 2>&1|remove_terminal_control_sequences >"${REPORT_NAME}/${REPORT_NAME}"
 extract_installed_packages_list "${REPORT_NAME}"
 
-chown -R "${SUDO_USER}:${SUDO_USER}" "${REPORT_NAME}"
+chown -R "${SUDO_USER}:${SUDO_GROUP}" "${REPORT_NAME}"
 
 printf "Report written in directory: ${REPORT_NAME}\n"

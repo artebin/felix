@@ -14,6 +14,8 @@
 
 ## Terminal
 
+* Environment variable: `SUDO_USER` and `SUDO_GROUP`
+
 * List files in column: `ls -1`
 
 * Show the command arguments in ps: `ps -f -u ${USER}`
