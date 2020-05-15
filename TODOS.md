@@ -1,5 +1,7 @@
 # TODOS
 
+- [ ] install.sh should use `lsb_release -d` instead of `cat /etc/lsb-release`.
+- [ ] Create recipe for patching apt-mirror <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=932379>.
 - [ ] re_index_recipe should re-number recipes which are not defaults, keep order but put them after the defaults.
 - [ ] On the Dell the switch to headset microphone is not done after pluggin the headset. <https://superuser.com/questions/1312970/headset-microphone-not-detected-by-pulse-und-alsa>
 - [ ] Improve Remmina recipe: notification icon, tree view => added the configuration in dotfiles directory, should not do a recipe for that.
