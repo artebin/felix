@@ -353,7 +353,7 @@ initialize_recipe(){
 	source "${FELIX_CONF_FILE}"
 	
 	# Retrieve and declare RECIPE_FAMILY_DIRECTORY
-	declare -g RECIPE_FAMILY_DIRECTORY="${FELIX_ROOT}/felix"
+	declare -g RECIPE_FAMILY_DIRECTORY="${FELIX_ROOT}/default"
 	
 	# Check RECIPE_DIRECTORY
 	if [[ -z "${RECIPE_DIRECTORY}" ]]; then
