@@ -374,8 +374,8 @@ initialize_recipe(){
 	RECIPE_ID=$(basename "${RECIPE_DIRECTORY}")
 	printf "# %s\n" "${RECIPE_ID}"
 	printf "%-30s: %s\n" "FELIX_ROOT" "${FELIX_ROOT}"
+	printf "%-30s: %s\n" "FELIX_CONF_FILE" "${FELIX_CONF_FILE}"
 	printf "%-30s: %s\n" "RECIPE_FAMILY_DIRECTORY" "${RECIPE_FAMILY_DIRECTORY}"
-	printf "%-30s: %s\n" "RECIPE_FAMILY_CONF_FILE" "${RECIPE_FAMILY_CONF_FILE}"
 	printf "%-30s: %s\n" "RECIPE_DIRECTORY" "${RECIPE_DIRECTORY}"
 	printf "%-30s: %s\n" "RECIPE_LOG_FILE" "${RECIPE_LOG_FILE}"
 	printf "\n"
