@@ -339,32 +339,23 @@ select_from_recipe_directories_array(){
 	fi
 }
 
-retrieve_recipe_family_directory(){
-	if [[ -z "${RECIPE_DIRECTORY}" ]]; then
-		printf "RECIPE_DIRECTORY should not be empty"
-		exit 1
-	fi
+initialize_recipe(){
+	# Retrieve and source FELIX_CONF_FILE
 	if [[ -z "${FELIX_ROOT}" ]]; then
 		printf "FELIX_ROOT should not be empty"
 		exit 1
 	fi
-	RECIPE_FAMILY_DIRECTORY_NAME="${RECIPE_DIRECTORY##*/felix/}"
-	RECIPE_FAMILY_DIRECTORY_NAME="${RECIPE_FAMILY_DIRECTORY_NAME%%/*}"
-	RECIPE_FAMILY_DIRECTORY="${FELIX_ROOT}/${RECIPE_FAMILY_DIRECTORY_NAME}"
-	printf "${RECIPE_FAMILY_DIRECTORY}"
-}
-
-retrieve_recipe_family_conf_file(){
-	if [[ -z "${RECIPE_DIRECTORY}" ]]; then
-		printf "RECIPE_DIRECTORY should not be empty"
+	declare -g FELIX_CONF_FILE="${FELIX_ROOT}/felix.conf"
+	if [[ ! -f "${FELIX_CONF_FILE}" ]]; then
+		printf "Cannot find FELIX_CONF_FILE[%s]\n" "${FELIX_CONF_FILE}"
 		exit 1
 	fi
-	RECIPE_FAMILY_DIRECTORY=$(retrieve_recipe_family_directory)
-	RECIPE_FAMILY_DIRECTORY_NAME=$(basename "${RECIPE_FAMILY_DIRECTORY}")
-	printf "${RECIPE_FAMILY_DIRECTORY}/${RECIPE_FAMILY_DIRECTORY_NAME}.conf"
-}
-
-initialize_recipe(){
+	source "${FELIX_CONF_FILE}"
+	
+	# Retrieve and declare RECIPE_FAMILY_DIRECTORY
+	declare -g RECIPE_FAMILY_DIRECTORY="${FELIX_ROOT}/felix"
+	
+	# Check RECIPE_DIRECTORY
 	if [[ -z "${RECIPE_DIRECTORY}" ]]; then
 		printf "RECIPE_DIRECTORY should not be empty"
 		exit 1
@@ -374,17 +365,12 @@ initialize_recipe(){
 		printf "RECIPE_ID[%s] is not well formed\n" "${RECIPE_ID}"
 		exit 1
 	fi
-	declare -g RECIPE_FAMILY_DIRECTORY=$(retrieve_recipe_family_directory "${RECIPE_DIRECTORY}")
-	declare -g RECIPE_FAMILY_CONF_FILE=$(retrieve_recipe_family_conf_file "${RECIPE_DIRECTORY}")
-	if [[ ! -f "${RECIPE_FAMILY_CONF_FILE}" ]]; then
-		printf "Cannot find RECIPE_FAMILY_CONF_FILE[%s]\n" "${RECIPE_FAMILY_CONF_FILE}"
-		exit 1
-	fi
-	source "${RECIPE_FAMILY_CONF_FILE}"
+	
+	# Retrieve and declare RECIPE_LOG_FILE
 	RECIPE_SCRIPT_FILE=$(retrieve_recipe_script_file "${RECIPE_ID}")
 	declare -g RECIPE_LOG_FILE="$(retrieve_log_file_name ${RECIPE_SCRIPT_FILE}|xargs readlink -f)"
 	
-	# Print current recipe information
+	# Print recipe information
 	RECIPE_ID=$(basename "${RECIPE_DIRECTORY}")
 	printf "# %s\n" "${RECIPE_ID}"
 	printf "%-30s: %s\n" "FELIX_ROOT" "${FELIX_ROOT}"
