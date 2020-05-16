@@ -61,7 +61,7 @@ install_clipmenu_from_archived_sources(){
 	cp clipmenud /usr/bin
 	
 	# Cleaning
-	#rm -fr "${RECIPE_DIRECTORY}/clipmenu"
+	rm -fr "${RECIPE_DIRECTORY}/clipmenu-develop"
 	
 	printf "\n"
 }
