@@ -17,7 +17,7 @@ configure_apticron(){
 	
 	APTICRON_CONF_FILE="/etc/apticron/apticron.conf"
 	if [[ ! -f "${APTICRON_CONF_FILE}" ]]; then
-		cp /usr/lib/apticron/apticon.conf "${APTICRON_CONF_FILE}"
+		cp /usr/lib/apticron/apticron.conf "${APTICRON_CONF_FILE}"
 	fi
 	backup_file copy "${APTICRON_CONF_FILE}"
 	update_line_based_on_prefix 'EMAIL=' "EMAIL=\"${USER_EMAIL_ADDRESS}\"" "${APTICRON_CONF_FILE}"
