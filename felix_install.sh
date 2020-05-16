@@ -127,9 +127,6 @@ fi
 printf "${FELIX_BANNER}"
 printf "\n\n"
 printf "RECIPE_FAMILY_DIR: ${RECIPE_FAMILY_DIR}\n"
-if ! check_ubuntu_version; then
-	exit 1
-fi
 printf "\n"
 
 # Retrieve array of RECIPE_DIR

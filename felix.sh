@@ -379,18 +379,3 @@ list_log_files(){
 delete_log_files(){
 	find . -name "*.log.*" -type f -exec rm -fr {} \;
 }
-
-check_ubuntu_version(){
-	LSB_RELEASE_FILE="/etc/lsb-release"
-	if [[ ! -f "${LSB_RELEASE_FILE}" ]]; then
-		echo "Cannot find file: ${LSB_RELEASE_FILE}"
-		echo "Cannot check Ubuntu version"
-		exit 1
-	fi
-	if ! grep -Fq "${SUPPORTED_UBUNTU_VERSION}" "${LSB_RELEASE_FILE}"; then
-		echo "This script has not been tested with:"
-		cat "${LSB_RELEASE_FILE}"
-		exit 1
-	fi
-	echo "Check Ubuntu version: ${SUPPORTED_UBUNTU_VERSION} => OK"
-}
