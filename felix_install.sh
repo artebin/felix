@@ -133,6 +133,8 @@ printf "\n"
 RECIPE_DIR_TO_EXECUTE_ARRAY=()
 fill_recipe_directories_array "${RECIPE_FAMILY_DIR}" "RECIPE_DIR_TO_EXECUTE_ARRAY"
 filter_recipe_directories_array_by_category "RECIPE_DIR_TO_EXECUTE_ARRAY" "${RECIPE_CATEGORY_DEFAULT}"
+DISTRIBUTION=$(lsb_release -sc)
+filter_recipe_directories_array_by_distribution "RECIPE_DIR_TO_EXECUTE_ARRAY" "${DISTRIBUTION}"
 if ${SHOW_DIALOG_SELECT_RECIPES}; then
 	SELECTED_RECIPE_DIR_TO_EXECUTE_ARRAY=()
 	select_from_recipe_directories_array "RECIPE_DIR_TO_EXECUTE_ARRAY" "SELECTED_RECIPE_DIR_TO_EXECUTE_ARRAY"

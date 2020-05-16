@@ -245,7 +245,7 @@ filter_recipe_directories_array_by_category(){
 	RECIPE_DIRECTORY_ARRAY_NAME="${1}"
 	declare -n RECIPE_DIRECTORY_ARRAY="${RECIPE_DIRECTORY_ARRAY_NAME}"
 	
-	# Retrive recipe category
+	# Retrive recipe category to match
 	RECIPE_CATEGORY_TO_MATCH="${2}"
 	
 	# If RECIPE_CATEGORY_TO_MATCH is empty then nothing to do
@@ -263,6 +263,37 @@ filter_recipe_directories_array_by_category(){
 		fi
 		RECIPE_CATEGORY=$(retrieve_recipe_category "${RECIPE_ID}")
 		if [[ "${RECIPE_CATEGORY}" = "${RECIPE_CATEGORY_TO_MATCH}" ]]; then
+			FILTERED_RECIPE_DIRECTORY_ARRAY+=( "${RECIPE_DIRECTORY}" )
+		fi
+	done
+	
+	# Copy FILTERED_RECIPE_DIRECTORY_ARRAY into RECIPE_DIRECTORY_ARRAY
+	RECIPE_DIRECTORY_ARRAY=("${FILTERED_RECIPE_DIRECTORY_ARRAY[@]}")
+}
+
+filter_recipe_directories_array_by_distribution(){
+	if [[ $# -ne 2 ]]; then
+		printf "${FUNCNAME[0]}() expects RECIPE_DIRECTORY_ARRAY_NAME and RECIPE_DISTRIBUTION_TO_MATCH in arguments\n"
+		exit 1
+	fi
+	
+	# Retrieve recipe directories
+	RECIPE_DIRECTORY_ARRAY_NAME="${1}"
+	declare -n RECIPE_DIRECTORY_ARRAY="${RECIPE_DIRECTORY_ARRAY_NAME}"
+	
+	# Retrive recipe distribution to match
+	RECIPE_DISTRIBUTION_TO_MATCH="${2}"
+	
+	# Filter RECIPE_DIRECTORY_ARRAY into a local array
+	FILTERED_RECIPE_DIRECTORY_ARRAY=()
+	for RECIPE_DIRECTORY in "${RECIPE_DIRECTORY_ARRAY[@]}"; do
+		RECIPE_ID=$(basename "${RECIPE_DIRECTORY}")
+		if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
+			printf "\tRECIPE_ID[%s] is not well formed => it will be ignored!\n" "${RECIPE_ID}"
+			continue
+		fi
+		RECIPE_DISTRIBUTION=$(retrieve_recipe_distribution "${RECIPE_ID}")
+		if [[ -z "${RECIPE_DISTRIBUTION}" || "${RECIPE_DISTRIBUTION}" = "${RECIPE_DISTRIBUTION_TO_MATCH}" ]]; then
 			FILTERED_RECIPE_DIRECTORY_ARRAY+=( "${RECIPE_DIRECTORY}" )
 		fi
 	done
