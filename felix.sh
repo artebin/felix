@@ -8,11 +8,12 @@ FELIX_BANNER='  __      _ _
 |  _|  __/ | |>  < 
 |_|  \___|_|_/_/\_\'
 
-RECIPE_ID_REGEX="([0-9][0-9][0-9][0-9])-([a-z]+)-([us])-(.*)"
+RECIPE_ID_REGEX="([0-9][0-9][0-9][0-9])-([a-z])-([us])-([a-zA-Z0-9_\.]*)(#([a-zA-Z0-9]+))?"
 RECIPE_ID_REGEX_GROUP_NUMBER_INDEX=1
 RECIPE_ID_REGEX_GROUP_CATEGORY_INDEX=2
 RECIPE_ID_REGEX_GROUP_RIGHTS_INDEX=3
 RECIPE_ID_REGEX_GROUP_NAME_INDEX=4
+RECIPE_ID_REGEX_GROUP_DISTRIBUTION_INDEX=6
 RECIPE_CATEGORY_DEFAULT="d"
 
 retrieve_recipe_number(){
@@ -86,6 +87,20 @@ retrieve_recipe_display_name(){
 	printf "${RECIPE_DISPLAY_NAME}"
 }
 
+retrieve_recipe_distribution(){
+	if [[ $# -ne 1 ]]; then
+		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
+		exit 1
+	fi
+	RECIPE_ID="${1}"
+	if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
+		printf "RECIPE_ID[%s] is not well formed\n"
+		exit 1
+	fi
+	RECIPE_DISTRIBUTION="${BASH_REMATCH[${RECIPE_ID_REGEX_GROUP_DISTRIBUTION_INDEX}]}"
+	printf "${RECIPE_DISTRIBUTION}"
+}
+
 retrieve_recipe_script_file(){
 	if [[ $# -ne 1 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
@@ -133,6 +148,7 @@ list_recipes(){
 		RECIPE_RIGHTS=$(retrieve_recipe_rights "${RECIPE_ID}")
 		RECIPE_NAME=$(retrieve_recipe_name "${RECIPE_ID}")
 		RECIPE_DISPLAY_NAME=$(retrieve_recipe_display_name "${RECIPE_ID}")
+		RECIPE_DISTRIBUTION=$(retrieve_recipe_distribution "${RECIPE_ID}")
 		RECIPE_SCRIPT_FILE_PATH=$(retrieve_recipe_script_file "${RECIPE_ID}")
 		
 		printf "  %-30s: %s\n" "RECIPE_ID" "${RECIPE_ID}"
@@ -141,7 +157,9 @@ list_recipes(){
 		printf "  %-30s: %s\n" "RECIPE_RIGHTS" "${RECIPE_RIGHTS}"
 		printf "  %-30s: %s\n" "RECIPE_NAME" "${RECIPE_NAME}"
 		printf "  %-30s: %s\n" "RECIPE_DISPLAY_NAME" "${RECIPE_DISPLAY_NAME}"
+		printf "  %-30s: %s\n" "RECIPE_DISTRIBUTION" "${RECIPE_DISTRIBUTION}"
 		printf "  %-30s: %s\n" "RECIPE_SCRIPT_FILE_PATH" "${RECIPE_SCRIPT_FILE_PATH}"
+		printf "\n"
 	done
 }
 
