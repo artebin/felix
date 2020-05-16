@@ -110,28 +110,28 @@ while getopts ":ic" OPT; do
 done
 shift $((OPTIND-1))
 
-# Only one argument is allowed and it is the RECIPE_FAMILY_DIR
+# Only one argument is allowed and it is the RECIPE_FAMILY_DIRECTORY
 if [[ $# -ne 1 ]]; then
 	print_usage
 	exit 1
 fi
-RECIPE_FAMILY_DIR="${1}"
+RECIPE_FAMILY_DIRECTORY="${1}"
 
-# Check existence of RECIPE_FAMILY_DIR
-if [[ ! -d "${RECIPE_FAMILY_DIR}" ]]; then
-	printf "Cannot find RECIPE_FAMILY_DIR: ${RECIPE_FAMILY_DIR}\n"
+# Check existence of RECIPE_FAMILY_DIRECTORY
+if [[ ! -d "${RECIPE_FAMILY_DIRECTORY}" ]]; then
+	printf "Cannot find RECIPE_FAMILY_DIRECTORY: ${RECIPE_FAMILY_DIRECTORY}\n"
 	print_usage
 	exit 1
 fi
 
 printf "${FELIX_BANNER}"
 printf "\n\n"
-printf "RECIPE_FAMILY_DIR: ${RECIPE_FAMILY_DIR}\n"
+printf "RECIPE_FAMILY_DIRECTORY: ${RECIPE_FAMILY_DIRECTORY}\n"
 printf "\n"
 
 # Retrieve array of RECIPE_DIR
 RECIPE_DIR_TO_EXECUTE_ARRAY=()
-fill_recipe_directories_array "${RECIPE_FAMILY_DIR}" "RECIPE_DIR_TO_EXECUTE_ARRAY"
+fill_recipe_directories_array "${RECIPE_FAMILY_DIRECTORY}" "RECIPE_DIR_TO_EXECUTE_ARRAY"
 filter_recipe_directories_array_by_category "RECIPE_DIR_TO_EXECUTE_ARRAY" "${RECIPE_CATEGORY_DEFAULT}"
 DISTRIBUTION=$(lsb_release -sc)
 filter_recipe_directories_array_by_distribution "RECIPE_DIR_TO_EXECUTE_ARRAY" "${DISTRIBUTION}"
