@@ -16,7 +16,7 @@ configure_apticron(){
 	printf "Configuring apticron ...\n"
 	
 	APTICRON_CONF_FILE="/etc/apticron/apticron.conf"
-	if [[ ! -f "${}" ]]; then
+	if [[ ! -f "${APTICRON_CONF_FILE}" ]]; then
 		cp /usr/lib/apticron/apticon.conf "${APTICRON_CONF_FILE}"
 	fi
 	backup_file copy "${APTICRON_CONF_FILE}"
