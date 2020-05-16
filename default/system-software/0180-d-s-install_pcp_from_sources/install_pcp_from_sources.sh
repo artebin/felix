@@ -13,16 +13,16 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_pcp_from_sources(){
-	echo "Installing pcp from sources ..."
+	printf "Installing pcp from sources ...\n"
 	
-	echo "Installing dependencies ..."
-	apt-get build-dep pcp
+	printf "Installing dependencies ...\n"
+	install_package_if_not_installed "build-dep pcp"
 	
-	echo "Cloning git repository <https://github.com/performancecopilot/pcp> ..."
+	printf "Cloning git repository <https://github.com/performancecopilot/pcp> ...\n"
 	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/performancecopilot/pcp
 	
-	echo "Compiling and installing ..."
+	printf "Compiling and installing ...\n"
 	cd "${RECIPE_DIRECTORY}"
 	cd pcp
 	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --with-webapi 
@@ -34,11 +34,11 @@ install_pcp_from_sources(){
 	echo "Starting pmcd service ..."
 	service pmcd start
 	
-	echo "Cleaning ..."
+	printf "Cleaning ...\n"
 	cd "${RECIPE_DIRECTORY}"
 	rm -fr pcp
 	
-	echo
+	printf "\n"
 }
 
 install_pcp_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
