@@ -125,7 +125,7 @@ if [[ ! -d "${RECIPE_FAMILY_DIRECTORY}" ]]; then
 fi
 
 printf "${FELIX_BANNER}"
-printf "\n\n"
+printf "\n"
 printf "RECIPE_FAMILY_DIRECTORY: ${RECIPE_FAMILY_DIRECTORY}\n"
 printf "\n"
 
