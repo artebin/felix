@@ -28,10 +28,10 @@ install_tint2_from_sources(){
 	# Compile and install
 	cd "${RECIPE_DIRECTORY}"
 	cd tint2
-	git checkout 16.6.1
+	git checkout 16.7
 	mkdir build
 	cd build
-	cmake ..
+	cmake .. -DENABLE_TINT2CONF=OFF
 	make -j4
 	make install
 	update-icon-caches /usr/share/icons/hicolor
