@@ -44,6 +44,8 @@
 
 ## Xorg
 
+* List client applications running on a display: `xlsclients -l`
+
 * Retrieve the name and class of a window: `xprop WM_CLASS`
 
 ## Miscellaneous

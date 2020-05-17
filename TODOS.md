@@ -1,6 +1,7 @@
 # TODOS
 
-- [ ] install.sh should use `lsb_release -d` instead of `cat /etc/lsb-release`.
+- [ ] Update gtk configuration with the light variant in theme name and add "gtk-application-prefer-dark-theme=false". See <https://unix.stackexchange.com/questions/14129/gtk-enable-set-dark-theme-on-a-per-application-basis>.
+- [ ] Add configuration for GIMP to use system instead of the dark theme.
 - [ ] Create recipe for patching apt-mirror <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=932379>.
 - [ ] re_index_recipe should re-number recipes which are not defaults, keep order but put them after the defaults.
 - [ ] On the Dell the switch to headset microphone is not done after pluggin the headset. <https://superuser.com/questions/1312970/headset-microphone-not-detected-by-pulse-und-alsa>
@@ -108,6 +109,7 @@
 
 # DONE
 
+- [x] install.sh should use `lsb_release -d` instead of `cat /etc/lsb-release`.
 - [x] Additional fields in recipe ID for stated install by default => RECIPE_CATEGORY
 - [x] locate and sshpass not installed by default
 - [x] Caja script "Execute script" but not with a terminal (double-click the file in caja does not work if the file is not set as executable).
