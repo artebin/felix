@@ -104,8 +104,8 @@
 		</menu>
 		<menu id="system" label="System">
 			<item label="Software &amp; Updates"><action name="Execute"><command>software-properties-gtk</command></action></item>
-			<item label="Synaptic Package Manager"><action name="Execute"><command>pkexec synaptic</command></action></item>
-			<item label="User Login Settings"><action name="Execute"><command>pkexec lightdm-gtk-greeter-settings</command></action></item>
+			<item label="Synaptic Package Manager"><action name="Execute"><command>synaptic-pkexec</command></action></item>
+			<item label="User Login Settings"><action name="Execute"><command>lightdm-gtk-greeter-settings-pkexec</command></action></item>
 			<menu id="DefaultApplications" label="Default Applications">
 				<item label="Update Alternatives CLI"><action name="Execute"><command>x-terminal-emulator -T "Update Alternatives CLI" -e "sudo update-alternatives --all"</command></action></item>
 				<item label="Update Alternatives GUI"><action name="Execute"><command>galternatives</command></action></item>
