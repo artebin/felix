@@ -10,7 +10,7 @@ FELIX_BANNER='
 ██      ███████ ███████ ██ ██   ██ 
 '
 
-RECIPE_ID_REGEX="([0-9][0-9][0-9][0-9])-([a-z])-([us])-([a-zA-Z0-9_\.]*)(#([a-zA-Z0-9]+))?"
+RECIPE_ID_REGEX="([0-9][0-9][0-9][0-9])-([a-z])-([us])-([a-zA-Z0-9_\.]*)(#([a-zA-Z0-9_]+))?"
 RECIPE_ID_REGEX_GROUP_NUMBER_INDEX=1
 RECIPE_ID_REGEX_GROUP_CATEGORY_INDEX=2
 RECIPE_ID_REGEX_GROUP_RIGHTS_INDEX=3
@@ -271,6 +271,12 @@ filter_recipe_directories_array_by_category(){
 	
 	# Copy FILTERED_RECIPE_DIRECTORY_ARRAY into RECIPE_DIRECTORY_ARRAY
 	RECIPE_DIRECTORY_ARRAY=("${FILTERED_RECIPE_DIRECTORY_ARRAY[@]}")
+}
+
+retrieve_distribution(){
+	LSB_RELEASE_DISTRIBUTOR=$(lsb_release -si)
+	LSB_RELEASE_CODENAME=$(lsb_release -sc)
+	printf "${LSB_RELEASE_DISTRIBUTOR,,}_${LSB_RELEASE_CODENAME,,}"
 }
 
 filter_recipe_directories_array_by_distribution(){
