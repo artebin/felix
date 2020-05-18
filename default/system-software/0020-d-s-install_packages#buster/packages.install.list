@@ -198,8 +198,7 @@ system-config-printer
 # Archive manager
 ###################
 engrampa
-unrar
-p7zip-rar
+p7zip-full
 pigz
 unp
 
