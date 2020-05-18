@@ -133,9 +133,7 @@ printf "\n"
 RECIPE_DIR_TO_EXECUTE_ARRAY=()
 fill_recipe_directories_array "${RECIPE_FAMILY_DIRECTORY}" "RECIPE_DIR_TO_EXECUTE_ARRAY"
 filter_recipe_directories_array_by_category "RECIPE_DIR_TO_EXECUTE_ARRAY" "${RECIPE_CATEGORY_DEFAULT}"
-DISTRIBUTION=$(retrieve_distribution)
-echo "${DISTRIBUTION}"
-filter_recipe_directories_array_by_distribution "RECIPE_DIR_TO_EXECUTE_ARRAY" "${DISTRIBUTION}"
+filter_recipe_directories_array_by_linux_distribution "RECIPE_DIR_TO_EXECUTE_ARRAY"
 if ${SHOW_DIALOG_SELECT_RECIPES}; then
 	SELECTED_RECIPE_DIR_TO_EXECUTE_ARRAY=()
 	select_from_recipe_directories_array "RECIPE_DIR_TO_EXECUTE_ARRAY" "SELECTED_RECIPE_DIR_TO_EXECUTE_ARRAY"
