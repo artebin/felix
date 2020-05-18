@@ -13,10 +13,17 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 set_locales(){
-	printf "Generating locales ...\n"
-	locale-gen ${LOCALES_TO_GENERATE}
+	printf "Setting the locales ...\n"
+	for LOCALE in ${LOCALES_TO_GENERATE}; do
+		printf "  ${LOCALE}%s\n"
+		update_line_based_on_prefix "# ${LOCALE}" "${LOCALE} UTF-8" /etc/locale.gen 
+	done
+	printf "\n"
 	
-	printf "Setting locales ...\n"
+	locale-gen
+	printf "\n"
+	
+	printf "Updating /etc/default/locale ...\n"
 	update-locale LANGUAGE="${LOCALE_TO_USE_LANGUAGE}"
 	update-locale LANG="${LOCALE_TO_USE_LANG}"
 	update-locale LC_ALL="${LOCALE_TO_USE_LC_ALL}"
@@ -30,8 +37,11 @@ set_locales(){
 	update-locale LC_TELEPHONE="${LOCALE_TO_USE_LC_TELEPHONE}"
 	update-locale LC_MEASUREMENT="${LOCALE_TO_USE_LC_MEASUREMENT}"
 	update-locale LC_IDENTIFICATION="${LOCALE_TO_USE_LC_IDENTIFICATION}"
+	printf "\n"
 	
+	printf "/etc/default/locale:\n"
 	cat /etc/default/locale
+	printf  "\n"
 	
 	printf "\n"
 }
