@@ -13,10 +13,11 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 set_locales(){
-	echo "Generating locales ..."
+	printf "Generating locales ...\n"
 	locale-gen ${LOCALES_TO_GENERATE}
 	
-	echo "Setting locales ..."
+	printf "Setting locales ...\n"
+	update-locale LANGUAGE="${LOCALE_TO_USE_LANGUAGE}"
 	update-locale LANG="${LOCALE_TO_USE_LANG}"
 	update-locale LC_ALL="${LOCALE_TO_USE_LC_ALL}"
 	update-locale LC_COLLATE="${LOCALE_TO_USE_LC_COLLATE}"
@@ -32,7 +33,7 @@ set_locales(){
 	
 	cat /etc/default/locale
 	
-	echo
+	printf "\n"
 }
 
 set_locales 2>&1 | tee -a "${RECIPE_LOG_FILE}"
