@@ -10,13 +10,16 @@ FELIX_BANNER='
 ██      ███████ ███████ ██ ██   ██ 
 '
 
-RECIPE_ID_REGEX="([0-9][0-9][0-9][0-9])-([a-z])-([us])-([a-zA-Z0-9_\.]*)(#([a-zA-Z0-9_]+))?"
+RECIPE_ID_REGEX="([0-9][0-9][0-9][0-9])-([a-z])-([us])-([a-zA-Z0-9_\.]*)((#|@)([a-zA-Z0-9_]+))?"
 RECIPE_ID_REGEX_GROUP_NUMBER_INDEX=1
 RECIPE_ID_REGEX_GROUP_CATEGORY_INDEX=2
 RECIPE_ID_REGEX_GROUP_RIGHTS_INDEX=3
 RECIPE_ID_REGEX_GROUP_NAME_INDEX=4
-RECIPE_ID_REGEX_GROUP_LINUX_DISTRIBUTION_INDEX=6
+RECIPE_ID_REGEX_GROUP_LINUX_DISTRIBUTION_OPERATOR_INDEX=6
+RECIPE_ID_REGEX_GROUP_LINUX_DISTRIBUTION_INDEX=7
 RECIPE_CATEGORY_DEFAULT="d"
+LINUX_DISTRIBUTION_OPERATOR_EQUAL="@"
+LINUX_DISTRIBUTION_OPERATOR_NOT_EQUAL="#"
 
 retrieve_recipe_number(){
 	if [[ $# -ne 1 ]]; then
@@ -89,6 +92,20 @@ retrieve_recipe_display_name(){
 	printf "${RECIPE_DISPLAY_NAME}"
 }
 
+retrieve_recipe_linux_distribution_operator(){
+	if [[ $# -ne 1 ]]; then
+		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
+		exit 1
+	fi
+	RECIPE_ID="${1}"
+	if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
+		printf "RECIPE_ID[%s] is not well formed\n"
+		exit 1
+	fi
+	RECIPE_LINUX_DISTRIBUTION_OPERATOR="${BASH_REMATCH[${RECIPE_ID_REGEX_GROUP_LINUX_DISTRIBUTION_OPERATOR_INDEX}]}"
+	printf "${RECIPE_LINUX_DISTRIBUTION_OPERATOR}"
+}
+
 retrieve_recipe_linux_distribution(){
 	if [[ $# -ne 1 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
@@ -150,6 +167,7 @@ list_recipes(){
 		RECIPE_RIGHTS=$(retrieve_recipe_rights "${RECIPE_ID}")
 		RECIPE_NAME=$(retrieve_recipe_name "${RECIPE_ID}")
 		RECIPE_DISPLAY_NAME=$(retrieve_recipe_display_name "${RECIPE_ID}")
+		RECIPE_LINUX_DISTRIBUTION_OPERATOR=$(retrieve_recipe_linux_distribution_operator "${RECIPE_ID}")
 		RECIPE_LINUX_DISTRIBUTION=$(retrieve_recipe_linux_distribution "${RECIPE_ID}")
 		RECIPE_SCRIPT_FILE_PATH=$(retrieve_recipe_script_file "${RECIPE_ID}")
 		
@@ -159,7 +177,7 @@ list_recipes(){
 		printf "  %-40s: %s\n" "RECIPE_RIGHTS" "${RECIPE_RIGHTS}"
 		printf "  %-40s: %s\n" "RECIPE_NAME" "${RECIPE_NAME}"
 		printf "  %-40s: %s\n" "RECIPE_DISPLAY_NAME" "${RECIPE_DISPLAY_NAME}"
-		printf "  %-40s: %s\n" "RECIPE_LINUX_DISTRIBUTION" "${RECIPE_LINUX_DISTRIBUTION}"
+		printf "  %-40s: %s\n" "RECIPE_LINUX_DISTRIBUTION" "${RECIPE_LINUX_DISTRIBUTION_OPERATOR}${RECIPE_LINUX_DISTRIBUTION}"
 		printf "  %-40s: %s\n" "RECIPE_SCRIPT_FILE_PATH" "${RECIPE_SCRIPT_FILE_PATH}"
 		printf "\n"
 	done
@@ -307,27 +325,27 @@ filter_recipe_directories_array_by_linux_distribution(){
 			printf "\tRECIPE_ID[%s] is not well formed => it will be ignored!\n" "${RECIPE_ID}"
 			continue
 		fi
+		RECIPE_LINUX_DISTRIBUTION_OPERATOR=$(retrieve_recipe_linux_distribution_operator "${RECIPE_ID}")
 		RECIPE_LINUX_DISTRIBUTION=$(retrieve_recipe_linux_distribution "${RECIPE_ID}")
 		
 		LINUX_DISTRIBUTION_MATCHES="false"
 		
 		if [[ -z "${RECIPE_LINUX_DISTRIBUTION}" ]]; then
 			LINUX_DISTRIBUTION_MATCHES="true"
-		fi
-		
-		# Check distributor
-		if [[ ! -z "${RECIPE_LINUX_DISTRIBUTION}" && "${RECIPE_LINUX_DISTRIBUTION}" = "${LINUX_DISTRIBUTION_DISTRIBUTOR_TO_MATCH}" ]]; then
-			LINUX_DISTRIBUTION_MATCHES="true"
-		fi
-		
-		# Check codename
-		if [[ ! -z "${RECIPE_LINUX_DISTRIBUTION}" && "${RECIPE_LINUX_DISTRIBUTION}" = "${LINUX_DISTRIBUTION_CODENAME_TO_MATCH}" ]]; then
-			LINUX_DISTRIBUTION_MATCHES="true"
-		fi
-		
-		# Check distributor and codename
-		if [[ ! -z "${RECIPE_LINUX_DISTRIBUTION}" && "${RECIPE_LINUX_DISTRIBUTION}" = "${LINUX_DISTRIBUTION_TO_MATCH}" ]]; then
-			LINUX_DISTRIBUTION_MATCHES="true"
+		else
+			if [[ "${RECIPE_LINUX_DISTRIBUTION_OPERATOR}" = "${LINUX_DISTRIBUTION_OPERATOR_EQUAL}" ]]; then
+				if [[ "${RECIPE_LINUX_DISTRIBUTION}" = "${LINUX_DISTRIBUTION_DISTRIBUTOR_TO_MATCH}" 
+				|| "${RECIPE_LINUX_DISTRIBUTION}" = "${LINUX_DISTRIBUTION_CODENAME_TO_MATCH}"
+				|| "${RECIPE_LINUX_DISTRIBUTION}" = "${LINUX_DISTRIBUTION_TO_MATCH}" ]]; then
+					LINUX_DISTRIBUTION_MATCHES="true"
+				fi
+			elif [[ "${RECIPE_LINUX_DISTRIBUTION_OPERATOR}" = "${LINUX_DISTRIBUTION_OPERATOR_NOT_EQUAL}" ]]; then
+				if [[ "${RECIPE_LINUX_DISTRIBUTION}" = "${LINUX_DISTRIBUTION_DISTRIBUTOR_TO_MATCH}" 
+				|| "${RECIPE_LINUX_DISTRIBUTION}" = "${LINUX_DISTRIBUTION_CODENAME_TO_MATCH}"
+				|| "${RECIPE_LINUX_DISTRIBUTION}" = "${LINUX_DISTRIBUTION_TO_MATCH}" ]]; then
+					LINUX_DISTRIBUTION_MATCHES="false"
+				fi
+			fi
 		fi
 		
 		if "${LINUX_DISTRIBUTION_MATCHES}"; then
