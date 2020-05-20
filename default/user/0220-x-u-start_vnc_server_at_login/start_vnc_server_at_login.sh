@@ -22,7 +22,7 @@ start_vnc_server_at_login(){
 	cd "${RECIPE_DIRECTORY}"
 	cp "SetScreenLayoutAndStartVNCServer.desktop" "${HOME}/.config/autostart"
 	
-	printf "Please execute `vncpasswd` in order to set your VNC password\n"
+	printf "Please execute 'vncpasswd' in order to set your VNC password\n"
 	
 	printf "\n"
 }
