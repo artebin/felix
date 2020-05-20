@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Set screen layout and start VNC server
+Type=Application
+Exec=bash -c "if [[ -f '${HOME}/.screenlayout/MyScreenLayout.sh' ]];then bash ${HOME}/.screenlayout/MyScreenLayout.sh fi;killall -s 9 x0tigervncserver;x0tigervncserver -display :0 -passwordfile ${HOME}/.vnc/passwd"
+Terminal=false
