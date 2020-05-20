@@ -217,7 +217,7 @@ icc-profiles
 ###############
 # Web browser
 ###############
-#firefox chromium-browser #Missing in Debian Buster
+firefox chromium-browser
 
 ##########################
 # Audio and video player
