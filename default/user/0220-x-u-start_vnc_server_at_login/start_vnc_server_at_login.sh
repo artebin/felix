@@ -15,12 +15,14 @@ exit_if_has_root_privileges
 start_vnc_server_at_login(){
 	printf "Start VNC server at login ...\n"
 	
-	printf "Set VNC password ...\n"
-	vncpasswd
-	
 	printf "Adding .desktop file for starting VNC server at login ...\n"
+	if [[ ! -d "${HOME}/.config/autostart" ]]; then
+		mkdir -p "${HOME}/.config/autostart"
+	fi
 	cd "${RECIPE_DIRECTORY}"
 	cp "SetScreenLayoutAndStartVNCServer.desktop" "${HOME}/.config/autostart"
+	
+	printf "Please execute `vncpasswd` in order to set your VNC password\n"
 	
 	printf "\n"
 }
