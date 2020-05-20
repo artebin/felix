@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] Add network scan command in bash aliases.
 - [ ] Seconde recipe should check depot in sources.list.
 - [ ] Update gtk configuration with the light variant in theme name and add "gtk-application-prefer-dark-theme=false". See <https://unix.stackexchange.com/questions/14129/gtk-enable-set-dark-theme-on-a-per-application-basis>.
 - [ ] Add configuration for GIMP to use system instead of the dark theme.
@@ -110,6 +111,7 @@
 
 # DONE
 
+- [x] Alias `ls -lh` for `ll`.
 - [x] First recipe in system-software should be re-generating the locales. See <https://www.thomas-krenn.com/en/wiki/Perl_warning_Setting_locale_failed_in_Debian>.
 - [x] install.sh should use `lsb_release -d` instead of `cat /etc/lsb-release`.
 - [x] Additional fields in recipe ID for stated install by default => RECIPE_CATEGORY
