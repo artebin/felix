@@ -15,8 +15,11 @@ exit_if_has_not_root_privileges
 install_pcp_from_sources(){
 	printf "Installing pcp from sources ...\n"
 	
+	printf "Removing 'pcp' if already installed ...\n"
+	remove_with_purge_package_if_installed "pcp"
+	
 	printf "Installing dependencies ...\n"
-	install_package_if_not_installed "build-dep pcp"
+	install_package_if_not_installed "build-dep"
 	
 	printf "Cloning git repository <https://github.com/performancecopilot/pcp> ...\n"
 	cd "${RECIPE_DIRECTORY}"
