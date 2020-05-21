@@ -1,7 +1,8 @@
 ################
 # System tools
 ################
-#lsb-core #Missing in Debian Buster
+lsb-base
+lsb-release
 moreutils
 psmisc #Includes fuser, killall, peekfd, pstree, prtstat
 hwinfo lshw inxi
@@ -73,7 +74,7 @@ smbclient cifs-utils
 #######
 # FTP
 #######
-#bareftp #Missing in debian buster
+filezilla
 
 ##############
 # BitTorrent
@@ -103,12 +104,11 @@ apticron
 ###################
 lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
 light-locker
-#light-locker-settings #Missing in Debian Buster
 
 ##############
 # Xorg tools
 ##############
-#ubuntu-drivers-common #Missing in Debian Buster
+firmware-misc-nonfree
 mesa-utils mesa-utils-extra
 xinput xinput-calibrator
 x11-apps
@@ -124,11 +124,11 @@ hsetroot
 ##################################
 # Window manager & desktop tools
 ##################################
-#policykit-desktop-privileges #Missing in Debian Buster
+#policykit-desktop-privileges #Not available in Debian Buster
 openbox openbox-menu obconf obmenu
 lxappearance lxappearance-obconf
-dconf-cli dconf-editor
-#dconf-tools #Missing in Debian Buster
+dconf-cli
+dconf-editor
 gconf-service gconf-editor
 mate-utils mate-system-monitor
 xfce4-settings xfce4-notifyd xfce4-dict xfce4-screenshooter xfburn
@@ -150,7 +150,6 @@ zenity
 # Desktop theming
 ###################
 greybird-gtk-theme
-#human-theme #Missing in Debian Buster
 
 #########
 # Fonts
@@ -218,20 +217,33 @@ icc-profiles
 ###############
 # Web browser
 ###############
-#firefox chromium-browser #Missing in Debian Buster
+firefox
+chromium-browser
+
+##############
+# PulseAudio
+##############
+pulseaudio
+pulseaudio-dlna
+pulseaudio-equalizer
+pulseaudio-module-bluetooth
+pulseaudio-module-lirc
+pulseaudio-module-raop
+pulseaudio-module-zeroconf
+pulseaudio-utils
+pulsemixer
+libpulse-dev
+pavucontrol
+pavumeter
+paprefs
 
 ##########################
 # Audio and video player
 ##########################
-pulseaudio pulseaudio-dlna pulseaudio-equalizer
-#pulseaudio-esound-compat #Missing in Debian Buster
-pulseaudio-module-bluetooth pulseaudio-module-jack pulseaudio-module-lirc pulseaudio-module-raop pulseaudio-module-zeroconf pulseaudio-utils pulsemixer libpulse-dev
-#pulseaudio-module-gconf #Missing in Debian Buster
-#paman #N/A in Ubuntu 18.04
-pavucontrol pavumeter paprefs
 flac
 vlc
-gaupol subtitleeditor
+gaupol
+subtitleeditor
 mplayer
 gpodder
 audacity
@@ -282,4 +294,5 @@ golang
 ##############
 # VirtualBox
 ##############
-#virtualbox virtualbox-ext-pack #Missing in Debian Buster
+#virtualbox #Not available in Debian Buster
+#virtualbox-ext-pack #Not available in Debian Buster

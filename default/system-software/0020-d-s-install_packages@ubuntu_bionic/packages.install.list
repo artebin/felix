@@ -1,7 +1,8 @@
 ################
 # System tools
 ################
-lsb-core
+lsb-base
+lsb-release
 moreutils
 psmisc #Includes fuser, killall, peekfd, pstree, prtstat
 hwinfo lshw inxi
@@ -73,7 +74,7 @@ smbclient cifs-utils
 #######
 # FTP
 #######
-bareftp
+filezilla
 
 ##############
 # BitTorrent
@@ -102,7 +103,7 @@ apticron
 # Display Manager
 ###################
 lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
-light-locker light-locker-settings
+light-locker
 
 ##############
 # Xorg tools
@@ -126,7 +127,8 @@ hsetroot
 policykit-desktop-privileges
 openbox openbox-menu obconf obmenu
 lxappearance lxappearance-obconf
-dconf-cli dconf-editor dconf-tools
+dconf-cli
+dconf-editor
 gconf-service gconf-editor
 mate-utils mate-system-monitor
 xfce4-settings xfce4-notifyd xfce4-dict xfce4-screenshooter xfburn
@@ -147,7 +149,7 @@ mugshot
 ###################
 # Desktop theming
 ###################
-greybird-gtk-theme human-theme
+greybird-gtk-theme
 
 #########
 # Fonts
@@ -218,15 +220,30 @@ icc-profiles
 firefox
 chromium-browser
 
+##############
+# PulseAudio
+##############
+pulseaudio
+pulseaudio-dlna
+pulseaudio-equalizer
+pulseaudio-module-bluetooth
+pulseaudio-module-lirc
+pulseaudio-module-raop
+pulseaudio-module-zeroconf
+pulseaudio-utils
+pulsemixer
+libpulse-dev
+pavucontrol
+pavumeter
+paprefs
+
 ##########################
 # Audio and video player
 ##########################
-pulseaudio pulseaudio-dlna pulseaudio-equalizer pulseaudio-esound-compat pulseaudio-module-bluetooth pulseaudio-module-gconf pulseaudio-module-jack pulseaudio-module-lirc pulseaudio-module-raop pulseaudio-module-zeroconf pulseaudio-utils pulsemixer libpulse-dev
-#paman #N/A in Ubuntu 18.04
-pavucontrol pavumeter paprefs
 flac
 vlc
-gaupol subtitleeditor
+gaupol
+subtitleeditor
 mplayer
 gpodder
 audacity
