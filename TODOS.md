@@ -1,5 +1,8 @@
 # TODOS
 
+- [ ] Remove PulseAudio for Raspbian.
+- [ ] Fix ssh welcome for Raspbian.
+- [ ] Add mugshot to the openbox menu or find another application.
 - [ ] ddg default search engine in firefox.
 - [ ] Add network scan command in bash aliases.
 - [ ] Seconde recipe should check depot in sources.list.
@@ -112,6 +115,8 @@
 
 # DONE
 
+- [x] Add the env. var for disabling CSD, and check over variables too <https://developer.gnome.org/gtk3/stable/gtk-running.html>.
+- [x] Add a recipe to fix timezone.
 - [x] Alias `ls -lh` for `ll`.
 - [x] First recipe in system-software should be re-generating the locales. See <https://www.thomas-krenn.com/en/wiki/Perl_warning_Setting_locale_failed_in_Debian>.
 - [x] install.sh should use `lsb_release -d` instead of `cat /etc/lsb-release`.
