@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] ddg default search engine in firefox.
 - [ ] Add network scan command in bash aliases.
 - [ ] Seconde recipe should check depot in sources.list.
 - [ ] Update gtk configuration with the light variant in theme name and add "gtk-application-prefer-dark-theme=false". See <https://unix.stackexchange.com/questions/14129/gtk-enable-set-dark-theme-on-a-per-application-basis>.

@@ -45,7 +45,7 @@
 
 ## Configure WiFi access
 
-1. Edit `/etc/wpa_supplicant.conf` like below:
+1. Edit `/etc/wpa_supplicant/wpa_supplicant.conf` like below:
     
     	network={
     	ssid="ssid_name"
@@ -54,12 +54,14 @@
 
 - Run the commands:
     
-    	sudo wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf -D wext
+    	sudo wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant.conf
     	sudo dhclient wlan0
-    
+
 - If the network is blocked "Operation not possible due to RF-Kill":
     * `$sudo rfkill list`
     * `$sudo rfkill unblock wifi`
+
+- If the `wpa_supplicant` returns an error `Could not read interface p2p-dev-wlan0 flags: No such device` then it is most probably because there is already a `wpa_supplicant` running, and they must be killed `killall wpa_supplicant`.
 
 ## Performance monitoring
 
