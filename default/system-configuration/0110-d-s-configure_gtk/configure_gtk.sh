@@ -53,6 +53,12 @@ configure_gtk3(){
 	mkdir -p /root/.config/gtk-3.0
 	cp "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/gtk-3.0/gtk.css" /root/.config/gtk-3.0/gtk.css
 	
+	printf "Forcing GTK+ to use GDK backend x11 ...\n"
+	echo "GDK_BACKEND=x11" >>/etc/environment
+	
+	printf "Disabling the default use of client-side decorations (CSD) on GTK+ windows ...\n"
+	echo "GTK_CSD=0" >>/etc/environment
+	
 	printf "Disabling the scrollbar overlay introduced in GTK+ 3.16 ...\n"
 	# It is used for scrollbar undershoot/overshoot and line marker indicating scrollbar value is not 0 or 1 (dashed line)
 	# Can not find a property in gtkrc-3.0 for that...
