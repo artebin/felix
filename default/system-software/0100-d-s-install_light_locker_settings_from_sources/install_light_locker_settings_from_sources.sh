@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_light_locker_settings_from_sources(){
-	printf "Install Light Locker Settings from sources ..."
+	printf "Install Light Locker Settings from sources ...\n"
 	
 	printf "Cloning GIT repository <https://github.com/Antergos/light-locker-settings> ...\n"
 	cd "${RECIPE_DIRECTORY}"
