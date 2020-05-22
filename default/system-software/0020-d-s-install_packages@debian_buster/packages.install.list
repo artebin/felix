@@ -10,7 +10,8 @@ htop iotop smem #dstat is included in pcp
 glances
 cockpit pcp pcp-gui
 battery-stats
-fuseiso fuseiso9660
+fuseiso
+fuseiso9660
 inotify-hookable inotify-tools iwatch
 vbetool
 locate
@@ -124,7 +125,7 @@ hsetroot
 ##################################
 # Window manager & desktop tools
 ##################################
-#policykit-desktop-privileges #Not available in Debian Buster
+#policykit-desktop-privileges #Not available in debian_buster
 openbox openbox-menu obconf obmenu
 lxappearance lxappearance-obconf
 dconf-cli
@@ -294,5 +295,5 @@ golang
 ##############
 # VirtualBox
 ##############
-#virtualbox #Not available in Debian Buster
-#virtualbox-ext-pack #Not available in Debian Buster
+#virtualbox #Not available in debian_buster
+#virtualbox-ext-pack #Not available in debian_buster
