@@ -55,14 +55,14 @@ XF86KbdBrightnessDown
 XF86KbdBrightnessUp
 	flock -n "/dev/shm/${USER}.brillo.keyboard.notification_id" bash "${HOME}/scripts/brillo_keyboard_notify.sh" -i
 
-XF86AudioMute
-	pulseaudio-ctl mute
-
-XF86AudioLowerVolume
-	pulseaudio-ctl down
-
-XF86AudioRaiseVolume
-	pulseaudio-ctl up
+# XF86AudioMute, XF86AudioLowerVolume and XF86AudioRaiseVolume are binded by
+# pasystray if PulseAudio, or volumeicon if ALSA.
+#XF86AudioMute
+#	pulseaudio-ctl mute
+#XF86AudioLowerVolume
+#	pulseaudio-ctl down
+#XF86AudioRaiseVolume
+#	pulseaudio-ctl up
 
 XF86AudioMicMute
 	pulseaudio-ctl mute-input
