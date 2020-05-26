@@ -63,6 +63,10 @@
 
 - If the `wpa_supplicant` returns an error `Could not read interface p2p-dev-wlan0 flags: No such device` then it is most probably because there is already a `wpa_supplicant` running, and they must be killed `killall wpa_supplicant`.
 
+## Web Browser Vivaldi with DRM
+
+Follow <https://help.vivaldi.com/article/raspberry-pi/> and <https://gist.github.com/ruario/19a28d98d29d34ec9b184c42e5f8bf29>.
+
 ## Performance monitoring
 
 - `dstat` written on a remote location (NFS) ?

@@ -1,11 +1,15 @@
 # TODOS
 
-- [ ] Remove PulseAudio for Raspbian.
+- [ ] Bash script with respawn for VNC server.
+- [ ] Add recipe for monitoring vnc server and restart it if it crashes.
+- [ ] Setting icon automatically with devil's pie <https://unix.stackexchange.com/questions/16774/how-to-assign-an-icon-to-a-program-in-openbox>
+- [ ] Add recipe for xseticon <https://github.com/xeyownt/xseticon>.
+- [ ] Add recipe for installing vivaldi + update libwidevine amd and arm.
 - [ ] Fix ssh welcome for Raspbian.
 - [ ] Add mugshot to the openbox menu or find another application.
 - [ ] ddg default search engine in firefox.
 - [ ] Add network scan command in bash aliases.
-- [ ] Seconde recipe should check depot in sources.list.
+- [ ] Seconde recipe should check depot in sources.list, recipe for installing software may fail if not.
 - [ ] Update gtk configuration with the light variant in theme name and add "gtk-application-prefer-dark-theme=false". See <https://unix.stackexchange.com/questions/14129/gtk-enable-set-dark-theme-on-a-per-application-basis>.
 - [ ] Add configuration for GIMP to use system instead of the dark theme.
 - [ ] Create recipe for patching apt-mirror <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=932379>.
@@ -115,6 +119,9 @@
 
 # DONE
 
+- [x] Remove PulseAudio for Raspbian.
+- [x] Key binding for XF86 mute, lower and raise volume should be managed by pasystray if pulseaudio, or volumeicon if alsa.
+- [x] Key binding for pulseaudio in sxhkd should be disabled for raspbian.
 - [x] Add the env. var for disabling CSD, and check over variables too <https://developer.gnome.org/gtk3/stable/gtk-running.html>.
 - [x] Add a recipe to fix timezone.
 - [x] Alias `ls -lh` for `ll`.
