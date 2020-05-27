@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] Rework gandi-dyndns, the project is obsolete and does not work anymore.
 - [ ] Bash script with respawn for VNC server.
 - [ ] Add recipe for monitoring vnc server and restart it if it crashes.
 - [ ] Setting icon automatically with devil's pie <https://unix.stackexchange.com/questions/16774/how-to-assign-an-icon-to-a-program-in-openbox>
