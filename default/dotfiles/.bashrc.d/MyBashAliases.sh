@@ -6,6 +6,11 @@ alias df="df -h"
 # Add standard math library to bc
 alias bc='bc -l'
 
+public_ip(){
+	curl ipinfo.io/ip
+}
+alias public_ip=public_ip
+
 weather(){
 	# wttr.in guesses the location from the request originator if no indicated location
 	curl "wttr.in/${1}"
