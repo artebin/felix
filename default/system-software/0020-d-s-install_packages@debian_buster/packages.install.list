@@ -10,6 +10,7 @@ htop iotop smem #dstat is included in pcp
 glances
 cockpit pcp pcp-gui
 battery-stats
+autofs
 fuseiso
 fuseiso9660
 inotify-hookable inotify-tools iwatch
