@@ -28,13 +28,13 @@ install_clipnotify_from_sources(){
 
 install_clipmenu_from_sources(){
 	printf "Installing ClipMenu from sources ...\n"
+	
 	printf "GitHub repository: <https://github.com/cdown/clipmenu>\n"
 	git clone https://github.com/cdown/clipmenu
 	cd "${RECIPE_DIRECTORY}/clipmenu"
 	
-	#NJ:20-05-15: patch is not applicable on most recent version of clipmenud
-	#printf "Applying patch on clipmenud for copy/paste in file managers ...\n"
-	#patch < ../clipmenud_190204.patch
+	# Disallow clipmenud to own the clipboard as file managers does not like it
+	sed -i 's|${CM_OWN_CLIPBOARD=0}|${CM_OWN_CLIPBOARD=1}|' clipmenud
 	
 	cp clipdel /usr/bin
 	cp clipmenu /usr/bin
