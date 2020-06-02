@@ -234,6 +234,7 @@ alsamixergui
 ##########################
 # Audio and video player
 ##########################
+ffmpeg
 flac
 vlc
 gaupol
