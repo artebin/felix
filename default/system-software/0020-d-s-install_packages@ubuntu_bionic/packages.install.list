@@ -155,6 +155,15 @@ greybird-gtk-theme
 #########
 # Fonts
 #########
+fonts-liberation
+fonts-liberation2
+fonts-noto
+fonts-noto-cjk
+fonts-noto-cjk-extra 
+fonts-noto-color-emoji
+fonts-noto-hinted
+fonts-noto-mono
+fonts-noto-unhinted
 faenza-icon-theme
 fonts-font-awesome
 fontforge
