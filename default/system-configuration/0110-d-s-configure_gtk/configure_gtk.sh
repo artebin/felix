@@ -66,10 +66,6 @@ configure_gtk3(){
 	
 	printf "Configuring GTK3 in SWT ...\n"
 	echo "SWT_GTK3=1" >>/etc/environment
-	# It would be better to put the 2 env. variables above in Xsession.d as it will be less likely to conflict 
-	# with updates made by the packaging system but sudo/root would not have them => cannot use the 2 lines below:
-	#echo "export GTK_OVERLAY_SCROLLING=0" >>/etc/X11/Xsession.d/80gtk-overlay-scrolling
-	#echo "export SWT_GTK3=0" >>/etc/X11/Xsession.d/80swt-gtk
 	
 	printf "\n"
 }

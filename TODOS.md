@@ -3,7 +3,6 @@
 - [ ] XF86 keys for audio should be managed by sxhkd if pasystray.
 - [ ] Do the settings for the firefox megabar off <https://support.mozilla.org/en-US/questions/1274579>.
 - [ ] PCP in avahi-discovery?.
-- [ ] Rework gandi-dyndns, the project is obsolete and does not work anymore.
 - [ ] Bash script with respawn for VNC server.
 - [ ] Add recipe for monitoring vnc server and restart it if it crashes.
 - [ ] Setting icon automatically with devil's pie <https://unix.stackexchange.com/questions/16774/how-to-assign-an-icon-to-a-program-in-openbox>
@@ -122,6 +121,7 @@
 
 # DONE
 
+- [x] Rework gandi-dyndns, the project is obsolete and does not work anymore. => replaced by gandi-automatic-dns.
 - [x] Use autofs for preventing caja to freeze when NFS/Samba is down or network problems. See <https://unix.stackexchange.com/questions/267138/preventing-broken-nfs-connection-from-freezing-the-client-system> and <https://help.ubuntu.com/community/Autofs>.
 - [x] Remove PulseAudio for Raspbian.
 - [x] Key binding for XF86 mute, lower and raise volume should be managed by pasystray if pulseaudio, or volumeicon if alsa.
