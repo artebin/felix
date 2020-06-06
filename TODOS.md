@@ -1,5 +1,8 @@
 # TODOS
 
+- [ ] XF86 keys for audio should be managed by sxhkd if pasystray.
+- [ ] Do the settings for the firefox megabar off <https://support.mozilla.org/en-US/questions/1274579>.
+- [ ] PCP in avahi-discovery?.
 - [ ] Rework gandi-dyndns, the project is obsolete and does not work anymore.
 - [ ] Bash script with respawn for VNC server.
 - [ ] Add recipe for monitoring vnc server and restart it if it crashes.
