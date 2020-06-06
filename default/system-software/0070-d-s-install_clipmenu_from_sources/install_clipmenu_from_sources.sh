@@ -18,7 +18,7 @@ install_clipnotify_from_sources(){
 	git clone https://github.com/cdown/clipnotify
 	cd "${RECIPE_DIRECTORY}/clipnotify"
 	make
-	cp clipnotify /usr/bin
+	cp clipnotify /usr/local/bin
 	
 	# Cleaning
 	rm -fr "${RECIPE_DIRECTORY}/clipnotify"
@@ -33,12 +33,10 @@ install_clipmenu_from_sources(){
 	git clone https://github.com/cdown/clipmenu
 	cd "${RECIPE_DIRECTORY}/clipmenu"
 	
-	# Disallow clipmenud to own the clipboard as file managers does not like it
-	sed -i 's|${CM_OWN_CLIPBOARD=0}|${CM_OWN_CLIPBOARD=1}|' clipmenud
-	
-	cp clipdel /usr/bin
-	cp clipmenu /usr/bin
-	cp clipmenud /usr/bin
+	# Installing
+	cp clipdel /usr/local/bin
+	cp clipmenu /usr/local/bin
+	cp clipmenud /usr/local/bin
 	
 	# Cleaning
 	rm -fr "${RECIPE_DIRECTORY}/clipmenu"
