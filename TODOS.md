@@ -3,14 +3,9 @@
 - [ ] XF86 keys for audio should be managed by sxhkd if pasystray.
 - [ ] Do the settings for the firefox megabar off <https://support.mozilla.org/en-US/questions/1274579>.
 - [ ] PCP in avahi-discovery?.
-- [ ] Bash script with respawn for VNC server.
-- [ ] Add recipe for monitoring vnc server and restart it if it crashes.
-- [ ] Setting icon automatically with devil's pie <https://unix.stackexchange.com/questions/16774/how-to-assign-an-icon-to-a-program-in-openbox>
-- [ ] Add recipe for xseticon <https://github.com/xeyownt/xseticon>.
 - [ ] Add recipe for installing vivaldi + update libwidevine amd and arm.
 - [ ] Fix ssh welcome for Raspbian.
 - [ ] Add mugshot to the openbox menu or find another application.
-- [ ] ddg default search engine in firefox.
 - [ ] Add network scan command in bash aliases.
 - [ ] Seconde recipe should check depot in sources.list, recipe for installing software may fail if not.
 - [ ] Update gtk configuration with the light variant in theme name and add "gtk-application-prefer-dark-theme=false". See <https://unix.stackexchange.com/questions/14129/gtk-enable-set-dark-theme-on-a-per-application-basis>.
@@ -19,12 +14,11 @@
 - [ ] re_index_recipe should re-number recipes which are not defaults, keep order but put them after the defaults.
 - [ ] On the Dell the switch to headset microphone is not done after pluggin the headset. <https://superuser.com/questions/1312970/headset-microphone-not-detected-by-pulse-und-alsa>
 - [ ] Improve Remmina recipe: notification icon, tree view => added the configuration in dotfiles directory, should not do a recipe for that.
-- [ ] Add recipe for configuring Atril => added the configuration in dotfiles directory, should not do a recipe for that.
 - [ ] Desktop font should be configurable via recipe family .conf file.
 - [ ] Add a recipe for SetWorkspaceLayout.
 - [ ] Extract archive in terminal shows an error dialog even if unpacking sucessful.
 - [ ] Add a convertWebpToPng caja script.
-- [ ] Something is installing PackageKit, what? check with clean install if PackageKit is installed.
+- [ ] Something is installing PackageKit, what? check with clean install if PackageKit is installed. => Cockpit is installing packagekit. Should be removed, we don't want that.
 - [ ] Open browser quarter of the screen, lower-right corner of the screen.
 - [ ] Add regexer and http://mathew-kurian.github.io/CharacterMap/ in a bookmark tools.
 - [ ] Caja script for sorting file, same for removing duplicates.
@@ -121,6 +115,8 @@
 
 # DONE
 
+- [x] Add recipe for configuring Atril => added the configuration in dotfiles directory, should not do a recipe for that.
+- [x] Bash script with respawn for VNC server.
 - [x] Rework gandi-dyndns, the project is obsolete and does not work anymore. => replaced by gandi-automatic-dns.
 - [x] Use autofs for preventing caja to freeze when NFS/Samba is down or network problems. See <https://unix.stackexchange.com/questions/267138/preventing-broken-nfs-connection-from-freezing-the-client-system> and <https://help.ubuntu.com/community/Autofs>.
 - [x] Remove PulseAudio for Raspbian.
