@@ -8,7 +8,8 @@ psmisc #Includes fuser, killall, peekfd, pstree, prtstat
 hwinfo lshw inxi
 htop iotop smem #dstat is included in pcp
 glances
-cockpit pcp pcp-gui
+pcp pcp-gui
+@--no-install-recommends@ cockpit
 battery-stats
 autofs
 fuseiso
