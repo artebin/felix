@@ -1,6 +1,7 @@
 ################
 # System tools
 ################
+apt-rdepends
 lsb-base
 lsb-release
 moreutils
