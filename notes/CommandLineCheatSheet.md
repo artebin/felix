@@ -8,6 +8,13 @@
     * Enable/disable synchonization of the machine clock with NTP: `timedatectl set-ntp no`
     * Set machine clock: `timedatectl set-time '2020-03-13 23:59:00'`
 
+## APT
+
+* `apt-cache rdepends --installed jetty`
+* `aptitude why jetty`
+* `apt-rdepends jetty | pager`
+* `apt-rdepends --reverse jetty | pager`
+
 ## ACPI
 
 * `acpi_listen`

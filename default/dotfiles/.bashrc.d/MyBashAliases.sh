@@ -183,3 +183,12 @@ svn_mark_missing_as_deletions(){
 	fi
 }
 alias svn_mark_missing_as_deletions=svn_mark_missing_as_deletions
+
+set_terminal_title() {
+	if [[ -z "$ORIG" ]]; then
+		ORIG=$PS1
+	fi
+	TITLE="\[\e]2;$*\a\]"
+	PS1=${ORIG}${TITLE}
+}
+alias set_terminal_title=set_terminal_title
