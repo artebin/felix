@@ -1,5 +1,9 @@
 # TODOS
 
+- [ ] Font size seems different with the resolution.
+- [ ] tmux instead of screen.
+- [ ] Always active dbus interface in VLC.
+- [ ] Add an action "Edit screenshot with PowerPoint"
 - [ ] XF86 keys for audio should be managed by sxhkd if pasystray.
 - [ ] Do the settings for the firefox megabar off <https://support.mozilla.org/en-US/questions/1274579>.
 - [ ] PCP in avahi-discovery?.
