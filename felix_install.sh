@@ -86,7 +86,7 @@ execute_recipes_from_recipe_directory_array(){
 }
 
 print_usage(){
-	printf "Usage: bash ${0} [OPTIONS...] RECIPE_FAMILY_DIRECTORY\n"
+	printf "Usage: bash ${0} [OPTIONS...] RECIPE_LIST_FILE\n"
 	printf "  -i show a dialog to select the recipes to execute\n"
 	printf "  -c ask for confirmation before recipe execution\n\n"
 }
@@ -110,30 +110,29 @@ while getopts ":ic" OPT; do
 done
 shift $((OPTIND-1))
 
-# Only one argument is allowed and it is the RECIPE_FAMILY_DIRECTORY
+# Only one argument is allowed and it is the RECIPE_LIST_FILE
 if [[ $# -ne 1 ]]; then
 	print_usage
 	exit 1
 fi
-RECIPE_FAMILY_DIRECTORY="${1}"
+RECIPE_LIST_FILE="${1}"
 
-# Check existence of RECIPE_FAMILY_DIRECTORY
-if [[ ! -d "${RECIPE_FAMILY_DIRECTORY}" ]]; then
-	printf "Cannot find RECIPE_FAMILY_DIRECTORY: ${RECIPE_FAMILY_DIRECTORY}\n"
+# Check existence of RECIPE_LIST_FILE
+if [[ ! -f "${RECIPE_LIST_FILE}" ]]; then
+	printf "ERROR: cannot find RECIPE_LIST_FILE[%s]\n" "${RECIPE_LIST_FILE}"
 	print_usage
 	exit 1
 fi
 
 printf "${FELIX_BANNER}"
 printf "\n"
-printf "RECIPE_FAMILY_DIRECTORY: ${RECIPE_FAMILY_DIRECTORY}\n"
+printf "RECIPE_LIST_FILE: ${RECIPE_LIST_FILE}\n"
 printf "\n"
 
-# Retrieve array of RECIPE_DIR
+# Retrieve array of recipes from recipe list file
 RECIPE_DIR_TO_EXECUTE_ARRAY=()
-fill_recipe_directories_array "${RECIPE_FAMILY_DIRECTORY}" "RECIPE_DIR_TO_EXECUTE_ARRAY"
-filter_recipe_directories_array_by_category "RECIPE_DIR_TO_EXECUTE_ARRAY" "${RECIPE_CATEGORY_DEFAULT}"
-filter_recipe_directories_array_by_linux_distribution "RECIPE_DIR_TO_EXECUTE_ARRAY"
+fill_recipe_array_with_recipe_list_file "${RECIPE_LIST_FILE}" "RECIPE_DIR_TO_EXECUTE_ARRAY"
+
 if ${SHOW_DIALOG_SELECT_RECIPES}; then
 	SELECTED_RECIPE_DIR_TO_EXECUTE_ARRAY=()
 	select_from_recipe_directories_array "RECIPE_DIR_TO_EXECUTE_ARRAY" "SELECTED_RECIPE_DIR_TO_EXECUTE_ARRAY"

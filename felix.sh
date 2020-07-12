@@ -10,16 +10,10 @@ FELIX_BANNER='
 ██      ███████ ███████ ██ ██   ██ 
 '
 
-RECIPE_ID_REGEX="([0-9][0-9][0-9][0-9])-([a-z])-([us])-([a-zA-Z0-9_\.]*)((#|@)([a-zA-Z0-9_]+))?"
+RECIPE_ID_REGEX="([0-9][0-9][0-9][0-9])-([us])-([a-zA-Z0-9_#]*)"
 RECIPE_ID_REGEX_GROUP_NUMBER_INDEX=1
-RECIPE_ID_REGEX_GROUP_CATEGORY_INDEX=2
-RECIPE_ID_REGEX_GROUP_RIGHTS_INDEX=3
-RECIPE_ID_REGEX_GROUP_NAME_INDEX=4
-RECIPE_ID_REGEX_GROUP_LINUX_DISTRIBUTION_OPERATOR_INDEX=6
-RECIPE_ID_REGEX_GROUP_LINUX_DISTRIBUTION_INDEX=7
-RECIPE_CATEGORY_DEFAULT="d"
-LINUX_DISTRIBUTION_OPERATOR_EQUAL="@"
-LINUX_DISTRIBUTION_OPERATOR_NOT_EQUAL="#"
+RECIPE_ID_REGEX_GROUP_RIGHTS_INDEX=2
+RECIPE_ID_REGEX_GROUP_NAME_INDEX=3
 
 retrieve_recipe_number(){
 	if [[ $# -ne 1 ]]; then
@@ -33,20 +27,6 @@ retrieve_recipe_number(){
 	fi
 	RECIPE_NUMBER="${BASH_REMATCH[${RECIPE_ID_REGEX_GROUP_NUMBER_INDEX}]}"
 	printf "${RECIPE_NUMBER}"
-}
-
-retrieve_recipe_category(){
-	if [[ $# -ne 1 ]]; then
-		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
-		exit 1
-	fi
-	RECIPE_ID="${1}"
-	if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
-		printf "RECIPE_ID[%s] is not well formed\n"
-		exit 1
-	fi
-	RECIPE_CATEGORY="${BASH_REMATCH[${RECIPE_ID_REGEX_GROUP_CATEGORY_INDEX}]}"
-	printf "${RECIPE_CATEGORY}"
 }
 
 retrieve_recipe_rights(){
@@ -92,34 +72,6 @@ retrieve_recipe_display_name(){
 	printf "${RECIPE_DISPLAY_NAME}"
 }
 
-retrieve_recipe_linux_distribution_operator(){
-	if [[ $# -ne 1 ]]; then
-		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
-		exit 1
-	fi
-	RECIPE_ID="${1}"
-	if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
-		printf "RECIPE_ID[%s] is not well formed\n"
-		exit 1
-	fi
-	RECIPE_LINUX_DISTRIBUTION_OPERATOR="${BASH_REMATCH[${RECIPE_ID_REGEX_GROUP_LINUX_DISTRIBUTION_OPERATOR_INDEX}]}"
-	printf "${RECIPE_LINUX_DISTRIBUTION_OPERATOR}"
-}
-
-retrieve_recipe_linux_distribution(){
-	if [[ $# -ne 1 ]]; then
-		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
-		exit 1
-	fi
-	RECIPE_ID="${1}"
-	if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
-		printf "RECIPE_ID[%s] is not well formed\n"
-		exit 1
-	fi
-	RECIPE_LINUX_DISTRIBUTION="${BASH_REMATCH[${RECIPE_ID_REGEX_GROUP_LINUX_DISTRIBUTION_INDEX}]}"
-	printf "${RECIPE_LINUX_DISTRIBUTION}"
-}
-
 retrieve_recipe_script_file(){
 	if [[ $# -ne 1 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
@@ -131,7 +83,7 @@ retrieve_recipe_script_file(){
 		exit 1
 	fi
 	RECIPE_NAME="${BASH_REMATCH[${RECIPE_ID_REGEX_GROUP_NAME_INDEX}]}"
-	RECIPE_SCRIPT_FILE="${RECIPE_NAME}.sh"
+	RECIPE_SCRIPT_FILE="${RECIPE_NAME%%#*}.sh"
 	printf "${RECIPE_SCRIPT_FILE}"
 }
 
@@ -163,21 +115,16 @@ list_recipes(){
 		printf "# ${RECIPE_ID}\n"
 		
 		RECIPE_NUMBER=$(retrieve_recipe_number "${RECIPE_ID}")
-		RECIPE_CATEGORY=$(retrieve_recipe_category "${RECIPE_ID}")
 		RECIPE_RIGHTS=$(retrieve_recipe_rights "${RECIPE_ID}")
 		RECIPE_NAME=$(retrieve_recipe_name "${RECIPE_ID}")
 		RECIPE_DISPLAY_NAME=$(retrieve_recipe_display_name "${RECIPE_ID}")
-		RECIPE_LINUX_DISTRIBUTION_OPERATOR=$(retrieve_recipe_linux_distribution_operator "${RECIPE_ID}")
-		RECIPE_LINUX_DISTRIBUTION=$(retrieve_recipe_linux_distribution "${RECIPE_ID}")
 		RECIPE_SCRIPT_FILE_PATH=$(retrieve_recipe_script_file "${RECIPE_ID}")
 		
 		printf "  %-40s: %s\n" "RECIPE_ID" "${RECIPE_ID}"
 		printf "  %-40s: %s\n" "RECIPE_NUMBER" "${RECIPE_NUMBER}"
-		printf "  %-40s: %s\n" "RECIPE_CATEGORY" "${RECIPE_CATEGORY}"
 		printf "  %-40s: %s\n" "RECIPE_RIGHTS" "${RECIPE_RIGHTS}"
 		printf "  %-40s: %s\n" "RECIPE_NAME" "${RECIPE_NAME}"
 		printf "  %-40s: %s\n" "RECIPE_DISPLAY_NAME" "${RECIPE_DISPLAY_NAME}"
-		printf "  %-40s: %s\n" "RECIPE_LINUX_DISTRIBUTION" "${RECIPE_LINUX_DISTRIBUTION_OPERATOR}${RECIPE_LINUX_DISTRIBUTION}"
 		printf "  %-40s: %s\n" "RECIPE_SCRIPT_FILE_PATH" "${RECIPE_SCRIPT_FILE_PATH}"
 		printf "\n"
 	done
@@ -255,106 +202,57 @@ fill_recipe_directories_array(){
 	readarray -t RECIPE_DIRECTORY_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_ID_REGEX}" -exec readlink -f {} \;|sort)
 }
 
-filter_recipe_directories_array_by_category(){
+fill_recipe_array_with_recipe_list_file(){
 	if [[ $# -ne 2 ]]; then
-		printf "${FUNCNAME[0]}() expects RECIPE_DIRECTORY_ARRAY_NAME and RECIPE_CATEGORY_TO_MATCH in arguments\n"
+		printf "${FUNCNAME[0]}() expects RECIPE_LIST_FILE and RECIPE_ARRAY_NAME in arguments\n"
+		exit 1
+	fi
+	RECIPE_LIST_FILE="${1}"
+	if [[ ! -f "${RECIPE_LIST_FILE}" ]]; then
+		printf "Cannot find RECIPE_LIST_FILE[%s]\n" "${RECIPE_LIST_FILE}"
 		exit 1
 	fi
 	
-	# Retrieve recipe directories
-	RECIPE_DIRECTORY_ARRAY_NAME="${1}"
-	declare -n RECIPE_DIRECTORY_ARRAY="${RECIPE_DIRECTORY_ARRAY_NAME}"
-	
-	# Retrive recipe category to match
-	RECIPE_CATEGORY_TO_MATCH="${2}"
-	
-	# If RECIPE_CATEGORY_TO_MATCH is empty then nothing to do
-	if [[ -z "${RECIPE_CATEGORY_TO_MATCH}" ]]; then
-		return;
-	fi
-	
-	# Filter RECIPE_DIRECTORY_ARRAY into a local array
-	FILTERED_RECIPE_DIRECTORY_ARRAY=()
-	for RECIPE_DIRECTORY in "${RECIPE_DIRECTORY_ARRAY[@]}"; do
-		RECIPE_ID=$(basename "${RECIPE_DIRECTORY}")
-		if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
-			printf "\tRECIPE_ID[%s] is not well formed => it will be ignored!\n" "${RECIPE_ID}"
+	# Retrieve and fill array of recipes
+	RECIPE_ARRAY_NAME="${2}"
+	declare -n RECIPE_ARRAY="${RECIPE_ARRAY_NAME}"
+	RECIPE_ARRAY=()
+	while read LINE; do
+		# Remove extra spaces
+		LINE=$(echo "${LINE}"|awk '{$1=$1};1')
+		
+		# Skip lines starting with the character hash '#'
+		if [[ "${LINE}" =~ ^#.* ]]; then
 			continue
 		fi
-		RECIPE_CATEGORY=$(retrieve_recipe_category "${RECIPE_ID}")
-		if [[ "${RECIPE_CATEGORY}" = "${RECIPE_CATEGORY_TO_MATCH}" ]]; then
-			FILTERED_RECIPE_DIRECTORY_ARRAY+=( "${RECIPE_DIRECTORY}" )
+		
+		# Skip empty lines
+		if [[ -z "${LINE}" ]]; then
+			continue
 		fi
-	done
-	
-	# Copy FILTERED_RECIPE_DIRECTORY_ARRAY into RECIPE_DIRECTORY_ARRAY
-	RECIPE_DIRECTORY_ARRAY=("${FILTERED_RECIPE_DIRECTORY_ARRAY[@]}")
+		
+		# Check recipe directory does exist
+		RECIPE_DIRECTORY="${LINE}"
+		if [[ ! -d "${RECIPE_DIRECTORY}" ]]; then
+			printf "ERROR: cannot find RECIPE_DIRECTORY[%s]\n" "${RECIPE_DIRECTORY}"
+			exit 1
+		fi
+		
+		# Check recipe ID is well formed
+		RECIPE_ID=$(basename "${RECIPE_DIRECTORY}")
+		if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
+			printf "ERROR: RECIPE_ID[%s] is not well formed\n" "${RECIPE_ID}"
+			exit 1
+		fi
+		
+		RECIPE_ARRAY+=( "${RECIPE_DIRECTORY}" )
+	done < "${RECIPE_LIST_FILE}"
 }
 
 retrieve_distribution(){
 	LSB_RELEASE_DISTRIBUTOR=$(lsb_release -si)
 	LSB_RELEASE_CODENAME=$(lsb_release -sc)
 	printf "${LSB_RELEASE_DISTRIBUTOR,,}_${LSB_RELEASE_CODENAME,,}"
-}
-
-filter_recipe_directories_array_by_linux_distribution(){
-	if [[ $# -ne 1 ]]; then
-		printf "${FUNCNAME[0]}() expects RECIPE_DIRECTORY_ARRAY_NAME in arguments\n"
-		exit 1
-	fi
-	
-	# Retrieve recipe directories
-	RECIPE_DIRECTORY_ARRAY_NAME="${1}"
-	declare -n RECIPE_DIRECTORY_ARRAY="${RECIPE_DIRECTORY_ARRAY_NAME}"
-	
-	# Retrieve LINUX_DISTRIBUTION_DISTRIBUTOR_TO_MATCH and LINUX_DISTRIBUTION_CODENAME_TO_MATCH
-	LINUX_DISTRIBUTION_DISTRIBUTOR_TO_MATCH=$(lsb_release -si | tr '[:upper:]' '[:lower:]')
-	LINUX_DISTRIBUTION_CODENAME_TO_MATCH=$(lsb_release -sc | tr '[:upper:]' '[:lower:]')
-	if [[ -z "${LINUX_DISTRIBUTION_DISTRIBUTOR_TO_MATCH}" || -z "${LINUX_DISTRIBUTION_CODENAME_TO_MATCH}" ]]; then
-		printf "Cannot retrieve LINUX_DISTRIBUTION_DISTRIBUTOR_TO_MATCH[%s] or LINUX_DISTRIBUTION_CODENAME_TO_MATCH[%s]\n" "${LINUX_DISTRIBUTION_DISTRIBUTOR_TO_MATCH}" "${LINUX_DISTRIBUTION_CODENAME_TO_MATCH}"
-		exit 1
-	fi
-	LINUX_DISTRIBUTION_TO_MATCH="${LINUX_DISTRIBUTION_DISTRIBUTOR_TO_MATCH}_${LINUX_DISTRIBUTION_CODENAME_TO_MATCH}"
-	
-	# Filter RECIPE_DIRECTORY_ARRAY into a local array
-	# Here we can match the distributor only, or the codename only, or both
-	FILTERED_RECIPE_DIRECTORY_ARRAY=()
-	for RECIPE_DIRECTORY in "${RECIPE_DIRECTORY_ARRAY[@]}"; do
-		RECIPE_ID=$(basename "${RECIPE_DIRECTORY}")
-		if [[ ! "${RECIPE_ID}" =~ ${RECIPE_ID_REGEX} ]]; then
-			printf "\tRECIPE_ID[%s] is not well formed => it will be ignored!\n" "${RECIPE_ID}"
-			continue
-		fi
-		RECIPE_LINUX_DISTRIBUTION_OPERATOR=$(retrieve_recipe_linux_distribution_operator "${RECIPE_ID}")
-		RECIPE_LINUX_DISTRIBUTION=$(retrieve_recipe_linux_distribution "${RECIPE_ID}")
-		
-		LINUX_DISTRIBUTION_MATCHES="false"
-		
-		if [[ -z "${RECIPE_LINUX_DISTRIBUTION}" ]]; then
-			LINUX_DISTRIBUTION_MATCHES="true"
-		else
-			if [[ "${RECIPE_LINUX_DISTRIBUTION_OPERATOR}" = "${LINUX_DISTRIBUTION_OPERATOR_EQUAL}" ]]; then
-				if [[ "${RECIPE_LINUX_DISTRIBUTION}" = "${LINUX_DISTRIBUTION_DISTRIBUTOR_TO_MATCH}" 
-				|| "${RECIPE_LINUX_DISTRIBUTION}" = "${LINUX_DISTRIBUTION_CODENAME_TO_MATCH}"
-				|| "${RECIPE_LINUX_DISTRIBUTION}" = "${LINUX_DISTRIBUTION_TO_MATCH}" ]]; then
-					LINUX_DISTRIBUTION_MATCHES="true"
-				fi
-			elif [[ "${RECIPE_LINUX_DISTRIBUTION_OPERATOR}" = "${LINUX_DISTRIBUTION_OPERATOR_NOT_EQUAL}" ]]; then
-				if [[ "${RECIPE_LINUX_DISTRIBUTION}" = "${LINUX_DISTRIBUTION_DISTRIBUTOR_TO_MATCH}" 
-				|| "${RECIPE_LINUX_DISTRIBUTION}" = "${LINUX_DISTRIBUTION_CODENAME_TO_MATCH}"
-				|| "${RECIPE_LINUX_DISTRIBUTION}" = "${LINUX_DISTRIBUTION_TO_MATCH}" ]]; then
-					LINUX_DISTRIBUTION_MATCHES="false"
-				fi
-			fi
-		fi
-		
-		if "${LINUX_DISTRIBUTION_MATCHES}"; then
-			FILTERED_RECIPE_DIRECTORY_ARRAY+=( "${RECIPE_DIRECTORY}" )
-		fi
-	done
-	
-	# Copy FILTERED_RECIPE_DIRECTORY_ARRAY into RECIPE_DIRECTORY_ARRAY
-	RECIPE_DIRECTORY_ARRAY=("${FILTERED_RECIPE_DIRECTORY_ARRAY[@]}")
 }
 
 select_from_recipe_directories_array(){
@@ -425,11 +323,11 @@ initialize_recipe(){
 	
 	# Print recipe information
 	RECIPE_ID=$(basename "${RECIPE_DIRECTORY}")
-	printf "# %s\n" "${RECIPE_ID}"
 	printf "%-30s: %s\n" "FELIX_ROOT" "${FELIX_ROOT}"
 	printf "%-30s: %s\n" "FELIX_CONF_FILE" "${FELIX_CONF_FILE}"
 	printf "%-30s: %s\n" "RECIPE_FAMILY_DIRECTORY" "${RECIPE_FAMILY_DIRECTORY}"
 	printf "%-30s: %s\n" "RECIPE_DIRECTORY" "${RECIPE_DIRECTORY}"
+	printf "%-30s: %s\n" "RECIPE_SCRIPT_FILE" "${RECIPE_DIRECTORY}/${RECIPE_SCRIPT_FILE}"
 	printf "%-30s: %s\n" "RECIPE_LOG_FILE" "${RECIPE_LOG_FILE}"
 	printf "\n"
 }
@@ -462,8 +360,15 @@ create_recipe_list_file_from_directory(){
 		printf "ERROR: cannot find SOURCE_DIRECTORY[${SOURCE_DIRECTORY}]\n"
 		exit 1
 	fi
+	FELIX_ROOT=$(dirname ${BASH_SOURCE})
+	SOURCE_DIRECTORY_RELATIVE_TO_FELIX_ROOT=$(realpath --relative-to="${FELIX_ROOT}" "${SOURCE_DIRECTORY}")
 	RECIPE_LIST_FILE="${2}"
-	for FILE in "${SOURCE_DIRECTORY}"/*; do
+	printf "\n\n" >> "${RECIPE_LIST_FILE}"
+	printf "%80s" | tr " " "#" >> "${RECIPE_LIST_FILE}"
+	printf "\n# Recipes from ${SOURCE_DIRECTORY_RELATIVE_TO_FELIX_ROOT}\n" >> "${RECIPE_LIST_FILE}"
+	printf "%80s" | tr " " "#" >> "${RECIPE_LIST_FILE}"
+	printf "\n" >> "${RECIPE_LIST_FILE}"
+	for FILE in "${SOURCE_DIRECTORY_RELATIVE_TO_FELIX_ROOT}"/*; do
 		if [[ ! -d "${FILE}" ]]; then
 			continue;
 		fi
@@ -471,8 +376,7 @@ create_recipe_list_file_from_directory(){
 		if [[ ! "${DIRECTORY_NAME}" =~ ${RECIPE_ID_REGEX} ]]; then
 			continue
 		fi
-		FELIX_ROOT_DIRECTORY=$(dirname ${BASH_SOURCE})
-		RECIPE_DIRECTORY_ABSOLUTE_PATH=$(realpath --relative-to="${FELIX_ROOT_DIRECTORY}" "${FILE}")
-		printf "${RECIPE_DIRECTORY_ABSOLUTE_PATH}\n" >> "${RECIPE_LIST_FILE}"
+		RECIPE_DIRECTORY_RELATIVE_TO_FELIX_ROOT=$(realpath --relative-to="${FELIX_ROOT}" "${FILE}")
+		printf "${RECIPE_DIRECTORY_RELATIVE_TO_FELIX_ROOT}\n" >> "${RECIPE_LIST_FILE}"
 	done
 }

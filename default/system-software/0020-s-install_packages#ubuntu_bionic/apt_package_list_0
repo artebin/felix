@@ -1,0 +1,4 @@
+--no-install-recommends
+empathy
+telepathy-haze
+pidgin-sipe
