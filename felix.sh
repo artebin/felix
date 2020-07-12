@@ -451,3 +451,28 @@ list_log_files(){
 delete_log_files(){
 	find . -name "*.log.*" -type f -exec rm -fr {} \;
 }
+
+create_recipe_list_file_from_directory(){
+	if [[ $# -ne 2 ]]; then
+		printf "${FUNCNAME[0]}() expects SOURCE_DIRECTORY and RECIPE_LIST_FILE in argument\n"
+		exit 1
+	fi
+	SOURCE_DIRECTORY="${1}"
+	if [[ ! -d "${SOURCE_DIRECTORY}" ]]; then
+		printf "ERROR: cannot find SOURCE_DIRECTORY[${SOURCE_DIRECTORY}]\n"
+		exit 1
+	fi
+	RECIPE_LIST_FILE="${2}"
+	for FILE in "${SOURCE_DIRECTORY}"/*; do
+		if [[ ! -d "${FILE}" ]]; then
+			continue;
+		fi
+		DIRECTORY_NAME=$(basename "${FILE}")
+		if [[ ! "${DIRECTORY_NAME}" =~ ${RECIPE_ID_REGEX} ]]; then
+			continue
+		fi
+		FELIX_ROOT_DIRECTORY=$(dirname ${BASH_SOURCE})
+		RECIPE_DIRECTORY_ABSOLUTE_PATH=$(realpath --relative-to="${FELIX_ROOT_DIRECTORY}" "${FILE}")
+		printf "${RECIPE_DIRECTORY_ABSOLUTE_PATH}\n" >> "${RECIPE_LIST_FILE}"
+	done
+}
