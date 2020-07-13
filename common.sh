@@ -284,6 +284,10 @@ generate_apt_package_list_files(){
 	declare -A APT_OPTIONS_AND_PACKAGE_LIST_ARRAY
 	KEY_APT_OPTIONS="00_NO_APT_APTIONS" # The prefix "00_" will ensure this package list file to be written first
 	MISSING_PACKAGE_LIST=""
+	DEBUG_DEPENDENCIES_FILE="dependencies.txt"
+	if [[ -f "${DEBUG_DEPENDENCIES_FILE}" ]]; then
+		rm -f "${DEBUG_DEPENDENCIES_FILE}"
+	fi
 	while read LINE; do
 		# Remove extra spaces
 		LINE=$(echo "${LINE}"|awk '{$1=$1};1')
@@ -338,6 +342,9 @@ generate_apt_package_list_files(){
 				INFO_PACKAGE_DESCRIPTION=": ${INFO_PACKAGE_DESCRIPTION}"
 			fi
 			printf "[%-25s] [%-25s] %s%s\n" "${INFO_AVAILABLE}" "${INFO_INSTALLATION_STATUS}" "${PACKAGE_NAME}" "${INFO_PACKAGE_DESCRIPTION}"
+			
+			# Fill DEBUG_DEPENDENCIES_FILE with dependencies of PACKAGE_NAME
+			apt-cache depends "${PACKAGE_NAME}" >> "${DEBUG_DEPENDENCIES_FILE}"
 		done
 	done <"${PACKAGE_LIST_FILE}"
 	
