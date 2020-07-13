@@ -243,7 +243,7 @@ alias remove_terminal_control_sequences=remove_terminal_control_sequences
 
 is_package_available(){
 	if [[ $# -ne 1 ]]; then
-		printf "Function is_package_available() expects PACKAGE_NAME as argument\n" 1>&2
+		printf "${FUNCNAME[0]}() expects PACKAGE_NAME in arguments\n" 1>&2
 		exit 1
 	fi
 	PACKAGE_NAME="${1}"
@@ -258,7 +258,7 @@ is_package_available(){
 
 retrieve_package_short_description(){
 	if [[ $# -ne 1 ]]; then
-		printf "Function retrieve_package_short_description() expects PACKAGE_NAME as argument\n" 1>&2
+		printf "${FUNCNAME[0]}() expects PACKAGE_NAME in arguments\n" 1>&2
 		exit 1
 	fi
 	PACKAGE_NAME="${1}"
@@ -268,27 +268,28 @@ retrieve_package_short_description(){
 
 generate_apt_package_list_files(){
 	if [[ ! $# -ne 2 ]]; then
-		printf "Function generate_apt_package_list_files() expects PACKAGE_LIST_FILE, APT_PACKAGE_LIST_FILE_NAME_PREFIX and MISSING_PACKAGE_LIST_FILE in parameters\n" 1>&2
+		printf "${FUNCNAME[0]}() expects PACKAGE_LIST_FILE, APT_PACKAGE_LIST_FILE_NAME_PREFIX and MISSING_PACKAGE_LIST_FILE in arguments\n" 1>&2
 		exit 1
 	fi
 	PACKAGE_LIST_FILE="${1}"
 	APT_PACKAGE_LIST_FILE="${2}"
 	MISSING_PACKAGE_LIST_FILE="${3}"
 	if [[ ! -f "${PACKAGE_LIST_FILE}" ]]; then
-		printf "Cannot find PACKAGE_LIST_FILE: ${PACKAGE_LIST_FILE}\n" 1>&2
+		printf "Cannot find PACKAGE_LIST_FILE[%s]\n" 1>&2 "${PACKAGE_LIST_FILE}"
 		exit 1
 	fi
 	
 	# Collect the packages per APT options
-	# If APT_OPTIONS is specified in PACKAGES_LINE then we creates a package list file especially for PACKAGES_LINE
+	# If APT_OPTIONS is specified in LINE then we creates a package list file especially for this LINE
 	declare -A APT_OPTIONS_AND_PACKAGE_LIST_ARRAY
-	KEY_APT_OPTIONS="0_NO_APT_APTIONS" # The prefix "0_" will ensure this package list file to be written first
+	KEY_APT_OPTIONS="00_NO_APT_APTIONS" # The prefix "00_" will ensure this package list file to be written first
 	MISSING_PACKAGE_LIST=""
 	while read LINE; do
 		# Remove extra spaces
 		LINE=$(echo "${LINE}"|awk '{$1=$1};1')
 		
 		# A line can contain a comment starting with the character hash '#'
+		# Remove the comment part
 		LINE="${LINE%%#*}"
 		
 		# A line can contain APT options
@@ -357,7 +358,7 @@ generate_apt_package_list_files(){
 
 is_package_installed(){
 	if [[ $# -ne 1 ]]; then
-		printf "Function is_package_installed() expects one package name in argument\n" 1>&2
+		printf "${FUNCNAME[0]}() expects PACKAGE_NAME in arguments\n" 1>&2
 		exit 1
 	fi
 	PACKAGE_NAME="${1}"
@@ -372,7 +373,7 @@ is_package_installed(){
 
 install_package_if_not_installed(){
 	if [[ ! $# -ge 1 ]]; then
-		printf "Function install_package_if_not_installed() expects one or several package names in argument\n" 1>&2
+		printf "${FUNCNAME[0]}() expects one or several package name in argument\n" 1>&2
 		exit 1
 	fi
 	for PACKAGE_NAME in $@; do
