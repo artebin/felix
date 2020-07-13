@@ -26,6 +26,8 @@ execute_recipes_from_recipe_directory_array(){
 	printf "ASK_CONFIRMATION: ${ASK_CONFIRMATION}\n\n"
 	
 	for RECIPE_DIRECTORY in "${RECIPE_DIRECTORY_ARRAY[@]}"; do
+		cd $"{BASEDIR}"
+		
 		RECIPE_ID=$(basename ${RECIPE_DIRECTORY})
 		print_section_heading "RECIPE_ID: ${RECIPE_ID}"
 		
