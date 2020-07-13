@@ -15,7 +15,6 @@ battery-stats
 autofs
 fuseiso
 #fuseiso9660 #Missing in raspbian_buster
-inotify-hookable inotify-tools iwatch
 locate
 crudini
 uuid-runtime

@@ -13,8 +13,8 @@ pcp pcp-gui
 @--no-install-recommends@ cockpit
 battery-stats
 autofs
-fuseiso fuseiso9660
-inotify-hookable inotify-tools iwatch
+fuseiso
+fuseiso9660
 vbetool
 locate
 crudini

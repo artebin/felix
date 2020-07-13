@@ -15,7 +15,6 @@ battery-stats
 autofs
 fuseiso
 fuseiso9660
-inotify-hookable inotify-tools iwatch
 vbetool
 locate
 crudini
