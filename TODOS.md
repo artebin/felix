@@ -1,5 +1,7 @@
 # TODOS
 
+- [ ] Replace apticron by cron-apt which does not install postfix as dependency.
+- [ ] Add bash_apt.sh in .bashrc.d with apt functions
 - [ ] Font size seems different with the resolution.
 - [ ] tmux instead of screen.
 - [ ] Always active dbus interface in VLC.
@@ -119,6 +121,7 @@
 
 # DONE
 
+- [x] Add create_dependencies_file_from_package_list_file() bash function using 'apt-cache depends package-name' and/or 'apt-rdepends'.
 - [x] Add recipe for configuring Atril => added the configuration in dotfiles directory, should not do a recipe for that.
 - [x] Bash script with respawn for VNC server.
 - [x] Rework gandi-dyndns, the project is obsolete and does not work anymore. => replaced by gandi-automatic-dns.

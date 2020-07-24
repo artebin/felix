@@ -99,7 +99,6 @@ offlineimap maildir-utils
 ###################
 aptitude
 apt-mirror
-apticron
 
 ###################
 # Display Manager
