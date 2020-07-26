@@ -16,7 +16,11 @@ install_tint2_from_sources(){
 	printf "Installing tint2 from sources ...\n"
 	
 	# Install dependencies
-	DEPENDENCIES=( "libimlib2-dev" "librsvg2-dev" )
+	DEPENDENCIES=(
+		"libimlib2-dev" 
+		"librsvg2-dev"
+		"libstartup-notification0-dev"
+	)
 	if [[ "${#DEPENDENCIES[@]}" -ne 0 ]]; then
 		install_package_if_not_installed "${DEPENDENCIES[@]}"
 	fi
@@ -39,7 +43,7 @@ install_tint2_from_sources(){
 	
 	# Cleanup
 	cd "${RECIPE_DIRECTORY}"
-	rm -fr tint2
+	#rm -fr tint2
 	
 	printf "\n"
 }
