@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] There is a bug in grub configuration, if no swap partition then the recipe indicates UUID of another partition.
 - [ ] Replace apticron by cron-apt which does not install postfix as dependency.
 - [ ] Add bash_apt.sh in .bashrc.d with apt functions
 - [ ] Font size seems different with the resolution.
