@@ -12,7 +12,7 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-install_telegraf_influxdb(){
+install_grafana(){
 	printf "Installing grafana ...\n"
 	
 	# See <https://kifarunix.com/install-and-setup-tig-stack-on-ubuntu-20-04>
