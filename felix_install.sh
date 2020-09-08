@@ -17,7 +17,7 @@ execute_recipes_from_recipe_directory_array(){
 	declare -n RECIPE_DIRECTORY_ARRAY="${ARRAY_NAME}"
 	
 	local ASK_CONFIRMATION="${2}"
-	if [[  "${ASK_CONFIRMATION}" != 'true' && "${ASK_CONFIRMATION}" != 'false' ]]; then
+	if [[ "${ASK_CONFIRMATION}" != 'true' && "${ASK_CONFIRMATION}" != 'false' ]]; then
 		printf "ASK_CONFIRMATION should be valued 'true' or 'false'"
 		exit 1
 	fi
