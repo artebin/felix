@@ -378,29 +378,122 @@
 		  A bit of tiling
 		###################
 		-->
-    <keybind key="W-Right">
-      <action name="GrowToEdgeEast"/>
-    </keybind>
-    <keybind key="W-Up">
-      <action name="GrowToEdgeNorth"/>
-    </keybind>
-    <keybind key="W-Left">
-      <action name="GrowToEdgeWest"/>
-    </keybind>
-    <keybind key="W-Down">
-      <action name="GrowToEdgeSouth"/>
-    </keybind>
-    <keybind key="W-grave">
-      <action name="GrowToEdgeEast"/>
-      <action name="GrowToEdgeNorth"/>
-      <action name="GrowToEdgeWest"/>
-      <action name="GrowToEdgeSouth"/>
-    </keybind>
-    <!--
-		###############################
-		  Keybinding for Openbox menu
-		###############################
-		-->
+		
+	<!-- MoveResizeTo Bottom left quarter -->
+	<keybind key="W-S-z">
+		<action name="UnmaximizeFull"/>
+		<action name="Raise"/>
+		<action name="MoveResizeTo">
+			<x>0</x>
+			<y>50%</y>
+			<width>50%</width>
+			<height>50%</height>
+		</action>
+	</keybind>
+	
+	<!--MoveResizeTo Bottom half of screen -->
+	<keybind key="W-S-x">
+		<action name="UnmaximizeFull"/>
+		<action name="Raise"/>
+		<action name="MoveResizeTo">
+			<x>0</x>
+			<y>50%</y>
+			<width>100%</width>
+			<height>50%</height>
+		</action>
+	</keybind>
+	
+	<!--MoveResizeTo Bottom right quarter -->
+	<keybind key="W-S-c">
+		<action name="UnmaximizeFull"/>
+		<action name="Raise"/>
+		<action name="MoveResizeTo">
+			<x>50%</x>
+			<y>50%</y>
+			<width>50%</width>
+			<height>50%</height>
+		</action>
+	</keybind>
+	
+	
+	<!-- MoveResizeTo Left half of screen -->
+	<keybind key="W-S-a">
+		<action name="UnmaximizeFull"/>
+		<action name="MaximizeVert"/>
+		<action name="Raise"/>
+		<action name="MoveResizeTo">
+			<width>50%</width>
+			<x>0</x>
+			<y>0</y>
+		</action>
+	</keybind>
+	
+	<!-- Move windows to the center -->
+	<keybind key="W-S-s">
+		<action name="UnmaximizeFull"/>
+		<action name="Raise"/>
+		<action name="MoveResizeTo">
+			<x>center</x>
+			<y>center</y>
+			<width>current</width>
+			<height>current</height>
+		</action>
+	</keybind>
+	
+	<!--MoveResizeTo Right half of screen -->
+	<keybind key="W-S-d">
+		<action name="UnmaximizeFull"/>
+		<action name="MaximizeVert"/>
+		<action name="Raise"/>
+		<action name="MoveResizeTo">
+			<width>50%</width>
+			<x>50%</x>
+			<y>0</y>
+		</action>
+	</keybind>
+	
+	<!--MoveResizeTo Top left quarter -->
+	<keybind key="W-S-q">
+		<action name="UnmaximizeFull"/>
+		<action name="Raise"/>
+		<action name="MoveResizeTo">
+			<x>0</x>
+			<y>0</y>
+			<width>50%</width>
+			<height>50%</height>
+		</action>
+	</keybind>
+	
+	<!--MoveResizeTo Top half of screen -->
+	<keybind key="W-S-w">
+		<action name="UnmaximizeFull"/>
+		<action name="Raise"/>
+		<action name="MoveResizeTo">
+			<x>0</x>
+			<y>0</y>
+			<width>100%</width>
+			<height>50%</height>
+		</action>
+	</keybind>
+	
+	<!--MoveResizeTo Top right quarter -->
+	<keybind key="W-S-e">
+		<action name="UnmaximizeFull"/>
+		<action name="Raise"/>
+		<action name="MoveResizeTo">
+			<x>50%</x>
+			<y>0</y>
+			<width>50%</width>
+			<height>50%</height>
+		</action>
+	</keybind>
+	
+	
+	<!--
+	###############################
+	  Keybinding for Openbox menu
+	###############################
+	-->
     <keybind key="W-space">
       <action name="ShowMenu">
         <menu>root-menu</menu>
