@@ -31,10 +31,10 @@ install_fonts(){
 	# Install font JetBrainsMono
 	printf "%-30s : %s\n" "Installing font" "JetBrains Mono"
 	git clone https://github.com/JetBrains/JetBrainsMono
-	cp "${RECIPE_DIRECTORY}"/JetBrainsMono/ttf/*.ttf /usr/local/share/fonts
-	cp -r "${RECIPE_DIRECTORY}"/JetBrainsMono/web/eot /usr/local/share/fonts
-	cp -r "${RECIPE_DIRECTORY}"/JetBrainsMono/web/woff /usr/local/share/fonts
-	cp -r "${RECIPE_DIRECTORY}"/JetBrainsMono/web/woff2 /usr/local/share/fonts
+	cp "${RECIPE_DIRECTORY}"/JetBrainsMono/fonts/otf/*.otf /usr/local/share/fonts
+	cp "${RECIPE_DIRECTORY}"/JetBrainsMono/fonts/ttf/*.ttf /usr/local/share/fonts
+	cp -r "${RECIPE_DIRECTORY}"/JetBrainsMono/fonts/webfonts/*.woff /usr/local/share/fonts
+	cp -r "${RECIPE_DIRECTORY}"/JetBrainsMono/fonts/webfonts/*.woff2 /usr/local/share/fonts
 	
 	# Update fond cache
 	printf "Updating font cache ...\n"
