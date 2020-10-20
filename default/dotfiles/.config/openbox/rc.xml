@@ -435,8 +435,8 @@
 		<action name="MoveResizeTo">
 			<x>center</x>
 			<y>center</y>
-			<width>current</width>
-			<height>current</height>
+			<width>75%</width>
+			<height>75%</height>
 		</action>
 	</keybind>
 	
