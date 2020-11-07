@@ -154,7 +154,7 @@
 | <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>t</kbd>                           | Undo last tab closure |
 | <kbd>Ctrl</kbd><kbd>Alt</kbd><kbd>r</kbd>                             | Toogle reader view |
 
-## Eclipse (shortcuts we may not already know ... )
+## Eclipse
 
 | Shortcut | Action |
 | --- | --- |
