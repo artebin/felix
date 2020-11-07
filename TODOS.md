@@ -1,5 +1,7 @@
 # TODOS
 
+- [ ] Can I replace clipmenu by <https://github.com/mrichar1/clipster>?
+- [ ] Rofi menu <https://gitlab.com/vahnrr/rofi-menus>.
 - [ ] Add lua extension for VLC for shuffle playlist <https://addons.videolan.org/p/1154030/>.
 - [ ] Cannot use pkexec in rofi.
 - [ ] Review bash aliases for time conversion and millis2date should return UTC.
