@@ -171,4 +171,4 @@
 | <kbd>Fn</kbd><kbd>Left</kbd>                                          | Home |
 | <kbd>Fn</kbd><kbd>Right</kbd>                                         | End |
 | <kbd>Fn</kbd><kbd>Backspace</kbd>                                     | Delete |
-| <kbd>Fn</kbd><kdb>Shift></kdb><kbd>Enter</kbd>                        | Insert |
+| <kbd>Fn</kbd><kdb>Shift</kdb><kbd>Enter</kbd>                        | Insert |
