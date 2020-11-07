@@ -1,5 +1,16 @@
 # TODOS
 
+- [ ] Add lua extension for VLC for shuffle playlist <https://addons.videolan.org/p/1154030/>.
+- [ ] Cannot use pkexec in rofi.
+- [ ] Review bash aliases for time conversion and millis2date should return UTC.
+- [ ] Configure firefox with https://support.mozilla.org/gl/questions/1241294 for not allowing website to override Firefox UI shortcuts.
+- [ ] remove gromit and gkxset and xfce4-mouse and keyboard.
+- [ ] Better tiling in rc.xml <win>- adn <win>+ for (un)maximizing the window, switch current window follow mouse cursor or not.
+- [ ] Add an action in openbox menu for editing the crontab.
+- [ ] Add a .desktop for Impress that can be used directly after making a screenshot for adding annotation.
+- [ ] firefox addons for wikipedia CSS <https://addons.mozilla.org/fr/firefox/addon/full-width-wikipedia/>
+- [ ] .desktop with Term=true is not using x-terminal-emulator, could it be it is using $TERM instead?
+- [ ] Make sure 'xdg-mime default caja.default inode/directory" is done, it seems it is not.
 - [ ] Install todotxt-cli and <https://github.com/hugokernel/todofi.sh>. add the todofi as a mod for the rofi.
 - [ ] There is a bug in grub configuration, if no swap partition then the recipe indicates UUID of another partition.
 - [ ] Replace apticron by cron-apt which does not install postfix as dependency.
@@ -123,6 +134,7 @@
 
 # DONE
 
+- [x] Add in VLC config "one-instance-when-started-from-file=0".
 - [x] Add create_dependencies_file_from_package_list_file() bash function using 'apt-cache depends package-name' and/or 'apt-rdepends'.
 - [x] Add recipe for configuring Atril => added the configuration in dotfiles directory, should not do a recipe for that.
 - [x] Bash script with respawn for VNC server.
