@@ -65,6 +65,7 @@ declare -A REMOTE_PROTOCOL_ARRAY
 
 declare -A MENU_TREE_ARRAY
 declare -A MENU_NODE_KEY_ARRAY
+declare -A MENU_NODE_REMMINA_FILE_ARRAY
 declare -A MENU_NODE_DISPLAY_NAME_ARRAY
 
 MENU_ROOT_NODE_KEY="ROOT"
@@ -118,6 +119,7 @@ build_menu_tree_array(){
 				
 				if [[ "${#MENU_ELEMENT_ARRAY[@]}" -eq 0 ]]; then
 					MENU_NODE_DISPLAY_NAME_ARRAY["${CURRENT_MENU_CHILD_NODE_KEY}"]="${REMOTE_NAME_ARRAY[${CURRENT_MENU_CHILD_ELEMENT}]}"
+					MENU_NODE_REMMINA_FILE_ARRAY["${CURRENT_MENU_CHILD_NODE_KEY}"]="${CURRENT_MENU_CHILD_ELEMENT}"
 				else
 					MENU_NODE_DISPLAY_NAME_ARRAY["${CURRENT_MENU_CHILD_NODE_KEY}"]="${CURRENT_MENU_CHILD_ELEMENT}"
 				fi
@@ -186,7 +188,8 @@ print_openbox_pipe_menu_rec(){
 		done
 	else
 		if [[ "${#CHILDREN_FOR_CURRENT_MENU_NODE_KEY_ARRAY[@]}" -eq 0 ]]; then
-			OPENBOX_MENU+="<item label=\"${CURRENT_MENU_NODE_DISPLAY_NAME}\"><action name=\"Execute\"><command>remmina -c ${MENU}</command></action></item>\n"
+			local REMMINA_FILE="${MENU_NODE_REMMINA_FILE_ARRAY[${CURRENT_MENU_NODE_KEY}]}"
+			OPENBOX_MENU+="<item label=\"${CURRENT_MENU_NODE_DISPLAY_NAME}\"><action name=\"Execute\"><command>remmina -c \'${REMMINA_FILE}\'</command></action></item>\n"
 		else
 			OPENBOX_MENU+="<menu id=\"${CURRENT_MENU_NODE_DISPLAY_NAME}\" label=\"${CURRENT_MENU_NODE_DISPLAY_NAME}\">\n"
 			for CURRENT_MENU_CHILD_NODE_KEY in "${CHILDREN_FOR_CURRENT_MENU_NODE_KEY_ARRAY[@]}"; do
