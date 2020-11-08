@@ -148,6 +148,7 @@ debug_menu_tree_array_rec(){
 	fi
 	
 	local CURRENT_MENU_NODE_DISPLAY_NAME="${MENU_NODE_DISPLAY_NAME_ARRAY[${CURRENT_MENU_NODE_KEY}]}"
+	
 	if [[ "${CURRENT_MENU_NODE_DEPTH}" -ne 0 ]]; then
 		printf '%0.s    ' $( seq 1 ${CURRENT_MENU_NODE_DEPTH} )
 	fi
@@ -191,7 +192,7 @@ print_openbox_pipe_menu_rec(){
 			local REMMINA_FILE="${MENU_NODE_REMMINA_FILE_ARRAY[${CURRENT_MENU_NODE_KEY}]}"
 			OPENBOX_MENU+="<item label=\"${CURRENT_MENU_NODE_DISPLAY_NAME}\"><action name=\"Execute\"><command>remmina -c \'${REMMINA_FILE}\'</command></action></item>\n"
 		else
-			OPENBOX_MENU+="<menu id=\"${CURRENT_MENU_NODE_DISPLAY_NAME}\" label=\"${CURRENT_MENU_NODE_DISPLAY_NAME}\">\n"
+			OPENBOX_MENU+="<menu id=\"${CURRENT_MENU_NODE_KEY}\" label=\"${CURRENT_MENU_NODE_DISPLAY_NAME}\">\n"
 			for CURRENT_MENU_CHILD_NODE_KEY in "${CHILDREN_FOR_CURRENT_MENU_NODE_KEY_ARRAY[@]}"; do
 				print_openbox_pipe_menu_rec "$((++CURRENT_MENU_NODE_DEPTH))" "${CURRENT_MENU_CHILD_NODE_KEY}"
 			done
