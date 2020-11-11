@@ -13,34 +13,34 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 blacklist_bluetooth_driver_module(){
-	echo "Blacklist bluetooth driver module ..."
+	printf "Blacklist bluetooth driver module...\n"
 	
-	echo "blacklist btusb" >> /etc/modprobe.d/blacklist.conf
+	printf "blacklist btusb\n" >> /etc/modprobe.d/blacklist.conf
 	
-	echo
+	printf "\n"
 }
 
 disable_bluetooth_adapter_at_boot_time(){
-	echo "Disabling bluetooth adapter at boot time ..."
+	printf "Disabling bluetooth adapter at boot time...\n"
 	
 	# See <https://askubuntu.com/questions/67758/how-can-i-deactivate-bluetooth-on-system-startup>
 	
-	echo "Creating '/etc/rc.local' if it does not exist yet ..."
+	printf "Creating '/etc/rc.local' if it does not exist yet...\n"
 	RC_LOCAL_FILE="/etc/rc.local"
 	if [[ ! -f "${RC_LOCAL_FILE}" ]]; then
 		touch "${RC_LOCAL_FILE}"
 	fi
 	
-	echo "Disabling bluetooth at startup ..."
+	printf "Disabling bluetooth at startup...\n"
 	grep -Fxq "rfkill block bluetooth" "${RC_LOCAL_FILE}"
 	if [[ $? -eq 0 ]]; then
-		echo "${RC_LOCAL_FILE} is already configured with bluetooth adapter disabled"
+		printf "${RC_LOCAL_FILE} is already configured with bluetooth adapter disabled\n"
 	else
 		backup_file copy "${RC_LOCAL_FILE}"
-		echo "rfkill block bluetooth" >> "${RC_LOCAL_FILE}"
+		printf "rfkill block bluetooth\n" >> "${RC_LOCAL_FILE}"
 	fi
 	
-	echo
+	printf "\n"
 }
 
 blacklist_bluetooth_driver_module 2>&1 | tee -a "${RECIPE_LOG_FILE}"

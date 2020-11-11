@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 extract_acpi_dsdt(){
-	echo "Extracting ACPI DSDT table ..."
+	printf "Extracting ACPI DSDT table...\n"
 	
 	# ACPI Advanced Configuration and Power Interface
 	# DSDT Differentiated System Description Table
@@ -26,11 +26,11 @@ extract_acpi_dsdt(){
 	# Decompile the table with the Intel's ASL compiler
 	iasl -d dsdt.dat
 	
-	echo
+	printf "\n"
 }
 
 disable_all_acpi_wakeup_except_for_platform_subsystems(){
-	echo "Disabling all ACPI wakeup except for SUBSYSTEM[platform] ..."
+	printf "Disabling all ACPI wakeup except for SUBSYSTEM[platform]...\n"
 	
 	cd "${RECIPE_DIRECTORY}"
 	ACPI_WAKEUP_FILE_NAME="acpi_wakeup.rules"
@@ -56,11 +56,11 @@ disable_all_acpi_wakeup_except_for_platform_subsystems(){
 				ATTR_VALUE="disabled"
 			fi
 			
-			echo "DEVICE[${DEVICE}] S_STATE[${S_STATE}] STATUS[${STATUS}] SYSFS_NODE[${SYSFS_NODE}] SUBSYSTEM=[${SUBSYSTEM}] KERNEL[${KERNEL}]"
+			printf "DEVICE[${DEVICE}] S_STATE[${S_STATE}] STATUS[${STATUS}] SYSFS_NODE[${SYSFS_NODE}] SUBSYSTEM=[${SUBSYSTEM}] KERNEL[${KERNEL}]\n"
 			
-			echo "# Disable DEVICE[${DEVICE}] from S_STATE[${S_STATE}]" >> "${ACPI_WAKEUP_FILE_NAME}"
-			echo "SUBSYSTEM==\"${SUBSYSTEM}\", KERNEL==\"${KERNEL}\", ATTR{power/wakeup}=\"${ATTR_VALUE}\"" >> "${ACPI_WAKEUP_FILE_NAME}"
-			echo "" >> "${ACPI_WAKEUP_FILE_NAME}"
+			printf "# Disable DEVICE[${DEVICE}] from S_STATE[${S_STATE}]\n" >> "${ACPI_WAKEUP_FILE_NAME}"
+			printf "SUBSYSTEM==\"${SUBSYSTEM}\", KERNEL==\"${KERNEL}\", ATTR{power/wakeup}=\"${ATTR_VALUE}\"\n" >> "${ACPI_WAKEUP_FILE_NAME}"
+			printf "\n" >> "${ACPI_WAKEUP_FILE_NAME}"
 		fi
 	done < /proc/acpi/wakeup
 	
@@ -70,7 +70,7 @@ disable_all_acpi_wakeup_except_for_platform_subsystems(){
 	cd "${RECIPE_DIRECTORY}"
 	rm -f dsdt.dat
 	#rm -f "${ACPI_WAKEUP_FILE_NAME}"
-	echo
+	printf "\n"
 }
 
 extract_acpi_dsdt 2>&1 | tee -a "${RECIPE_LOG_FILE}"

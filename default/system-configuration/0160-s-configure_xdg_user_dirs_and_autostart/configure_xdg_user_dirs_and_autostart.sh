@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 update_xdg_user_dirs_default(){
-	echo "Remove Templates as a XDG user directory ..."
+	printf "Remove Templates as a XDG user directory...\n"
 	
 	XDG_USER_DIRS_DEFAULT_FILE="/etc/xdg/user-dirs.defaults"
 	if [[ ! -f "${XDG_USER_DIRS_DEFAULT_FILE}" ]]; then
@@ -22,7 +22,7 @@ update_xdg_user_dirs_default(){
 		sed -i.bak "s/^TEMPLATES=/#TEMPLATES=/g" "${XDG_USER_DIRS_DEFAULT_FILE}"
 	fi
 	
-	echo
+	printf "\n"
 }
 
 list_xdg_autostart_desktop_files(){
@@ -42,42 +42,44 @@ list_xdg_autostart_desktop_files(){
 		fi
 	done
 	
-	echo "Desktop files for all desktops:"
+	printf "Desktop files for all desktops:\n"
 	for DESKTOP_FILE in "${DESKTOP_FILE_NO_ONLYSHOWIN_ARRAY[@]}"; do
-		echo "  ${DESKTOP_FILE}"
+		printf "  ${DESKTOP_FILE}\n"
 	done
 	
-	echo
+	printf "\n"
 	
 	for DESKTOP_NAME in "${!DESKTOP_ONLYSHOWIN_MAP[@]}"; do
-		echo "Desktop files for ${DESKTOP_NAME}:"
+		printf "Desktop files for ${DESKTOP_NAME}:\n"
 		DESKTOP_FILE_ARRAY=( ${DESKTOP_ONLYSHOWIN_MAP[${DESKTOP_NAME}]} )
 		for DESKTOP_FILE in "${DESKTOP_FILE_ARRAY[@]}"; do
-			echo "  ${DESKTOP_FILE}"
+			printf "  ${DESKTOP_FILE}\n"
 		done
-		echo
+		printf "\n"
 	done
 	
-	echo
+	printf "\n"
 }
 
 disable_unwanted_xdg_autostart(){
-	echo "Disabling unwanted xdg autostart ..."
+	printf "Disabling unwanted xdg autostart...\n"
 	
-	XDG_AUTOSTART_DESKTOP_FILE_ARRAY=(  "nm-applet"
-										"blueman.desktop"
-										"xfce4-power-manager.desktop" )
+	XDG_AUTOSTART_DESKTOP_FILE_ARRAY=(
+		"nm-applet"
+		"blueman.desktop"
+		"xfce4-power-manager.desktop"
+	)
 	
 	for XDG_AUTOSTART_FILE_NAME in "${XDG_AUTOSTART_DESKTOP_FILE_ARRAY[@]}"; do
 		if [[ ! -f "/etc/xdg/autostart/${XDG_AUTOSTART_FILE_NAME}" ]]; then
-			echo "Can not find file: ${XDG_AUTOSTART_FILE_NAME}"
+			printf "Cannot find file: ${XDG_AUTOSTART_FILE_NAME}\n"
 		else
-			echo "Disabling autostart for ${XDG_AUTOSTART_FILE_NAME} ..."
+			printf "Disabling autostart for ${XDG_AUTOSTART_FILE_NAME}...\n"
 			backup_file rename "/etc/xdg/autostart/${XDG_AUTOSTART_FILE_NAME}"
 		fi
 	done
 	
-	echo
+	printf "\n"
 }
 
 update_xdg_user_dirs_default 2>&1 | tee -a "${RECIPE_LOG_FILE}"
