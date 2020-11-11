@@ -1,5 +1,7 @@
 # TODOS
 
+- [ ] Caja seems to mount ftp without unicode support.
+- [ ] Activate by default "Addons" plugin in Geany.
 - [ ] Can I replace clipmenu by <https://github.com/mrichar1/clipster>?
 - [ ] Rofi menu <https://gitlab.com/vahnrr/rofi-menus>.
 - [ ] Add lua extension for VLC for shuffle playlist <https://addons.videolan.org/p/1154030/>.

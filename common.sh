@@ -412,3 +412,30 @@ remove_with_purge_package_if_installed(){
 		fi
 	done
 }
+
+contains_element() {
+	ARRAY_NAME="${1}"
+	if [[ -z "${ARRAY_NAME}" ]]; then
+		printf "ERROR: ARRAY_NAME should not be empty\n"
+		return
+	fi
+	local -n ARRAY="${ARRAY_NAME}"
+	SEARCHED_VALUE="${2}"
+	if [[ -z "${SEARCHED_VALUE}" ]]; then
+		printf "ERROR: SEARCHED_VALUE should not be empty\n"
+		return
+	fi
+	VALUE_VARNAME="${3}"
+	if [[ -z "${VALUE_VARNAME}" ]]; then
+		printf "ERROR: VALUE_VARNAME should not be empty\n"
+		return
+	fi
+	CONTAINS_ELEMENT="false"
+	for VALUE in "${ARRAY[@]}"; do
+		if [[ "${VALUE}" == "${SEARCHED_VALUE}" ]]; then
+			CONTAINS_ELEMENT="true"
+			break;
+		fi
+	done
+	export "${VALUE_VARNAME}"="${CONTAINS_ELEMENT}"
+}
