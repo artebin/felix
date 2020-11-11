@@ -146,7 +146,7 @@ synaptic
 gparted
 seahorse
 zenity
-#mugshot #Missing in Debian Buster
+#mugshot #Not available in debian_buster
 
 ###################
 # Desktop theming
@@ -228,7 +228,7 @@ icc-profiles
 ###############
 # Web browser
 ###############
-firefox
+firefox-esr
 chromium-browser
 
 ##############
