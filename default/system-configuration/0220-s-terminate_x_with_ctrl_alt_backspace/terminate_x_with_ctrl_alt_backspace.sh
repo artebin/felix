@@ -13,12 +13,12 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 terminate_x_with_ctrl_alt_backspace(){
-	echo "Allow terminate X server with <Ctrl><Alt>Backspace ..."
+	printf "Allow terminate X server with <Ctrl><Alt>Backspace...\n"
 	
 	cd "${RECIPE_DIRECTORY}"
 	cp 90-zap.conf /usr/share/X11/xorg.conf.d/90-zap.conf
 	
-	echo
+	printf "\n"
 }
 
 terminate_x_with_ctrl_alt_backspace 2>&1 | tee -a "${RECIPE_LOG_FILE}"

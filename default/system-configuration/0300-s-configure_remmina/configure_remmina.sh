@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_remmina(){
-	printf "Configuring remmina ...\n"
+	printf "Configuring remmina...\n"
 	
 	REMMINA_EXTERNAL_TOOLS_DIRECTORY="/usr/share/remmina/external_tools"
 	REMMINA_CAJA_SFTP_SCRIPT_NAME="remmina_caja_sftp.sh"

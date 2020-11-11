@@ -13,9 +13,9 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_systemd_logind_ignore_power_key(){
-	echo "Configuring systemd-logind to ignore the power key ..."
+	printf "Configuring systemd-logind to ignore the power key...\n"
 	add_or_update_line_based_on_prefix "#*HandlePowerKey=" "HandlePowerKey=ignore" /etc/systemd/logind.conf
-	echo
+	printf "\n"
 }
 
 configure_systemd_logind_ignore_power_key 2>&1 | tee -a "${RECIPE_LOG_FILE}"

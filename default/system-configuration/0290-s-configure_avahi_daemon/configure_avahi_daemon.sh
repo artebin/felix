@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_avahi_daemon(){
-	printf "Configuring avahi-daemon ...\n"
+	printf "Configuring avahi-daemon...\n"
 	
 	AVAHI_DAEMON_CONF_FILE="/etc/avahi/avahi-daemon.conf"
 	backup_file copy "${AVAHI_DAEMON_CONF_FILE}"

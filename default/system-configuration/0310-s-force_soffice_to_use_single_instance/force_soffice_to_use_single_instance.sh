@@ -10,7 +10,7 @@ source "${FELIX_ROOT}/felix.sh"
 initialize_recipe "${RECIPE_DIRECTORY}"
 
 force_soffice_to_use_single_instance(){
-	printf "Force soffice to use single instance ...\n"
+	printf "Force soffice to use single instance...\n"
 	
 	cp soffice_single_instance.sh /usr/local/bin
 	chmod 755 /usr/local/bin/soffice_single_instance.sh

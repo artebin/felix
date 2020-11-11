@@ -13,23 +13,23 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_ssh_welcome_text(){
-	echo "Setting SSH welcome text ..."
+	printf "Setting SSH welcome text...\n"
 	
-	echo "Disabling all previous 'message of the day' ..."
+	printf "Disabling all previous 'message of the day'...\n"
 	cd /etc/update-motd.d
 	for FILE in ./*; do
 		backup_file rename "${FILE}"
 	done
 	chmod a-x ./*
 	
-	echo "Adding Tux Welcome Dude ..."
+	printf "Adding Tux Welcome Dude...\n"
 	cd "${RECIPE_DIRECTORY}"
 	cp 00-welcome-dude /etc/update-motd.d/00-welcome-dude
 	chmod 744 /etc/update-motd.d/00-welcome-dude
 	cp tux /etc/update-motd.d/tux
 	chmod 644 /etc/update-motd.d/tux
 	
-	echo
+	printf "\n"
 }
 
 configure_ssh_welcome_text 2>&1 | tee -a "${RECIPE_LOG_FILE}"

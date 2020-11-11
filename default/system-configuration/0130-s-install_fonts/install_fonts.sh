@@ -37,7 +37,7 @@ install_fonts(){
 	cp -r "${RECIPE_DIRECTORY}"/JetBrainsMono/fonts/webfonts/*.woff2 /usr/local/share/fonts
 	
 	# Update fond cache
-	printf "Updating font cache ...\n"
+	printf "Updating font cache...\n"
 	fc-cache -f -v 1>/dev/null
 	
 	# Clean

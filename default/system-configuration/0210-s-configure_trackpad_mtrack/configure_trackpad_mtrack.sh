@@ -18,7 +18,7 @@ configure_trackpad_mtrack(){
 		return
 	fi
 	
-	printf "Configuring trackpad mtrack ...\n"
+	printf "Configuring trackpad mtrack...\n"
 	
 	install_package_if_not_installed "xserver-xorg-input-mtrack"
 	

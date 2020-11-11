@@ -13,12 +13,12 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_netplan(){
-	echo "Configuring NetPlan for using the NetworkManager as renderer ..."
+	printf "Configuring NetPlan for using the NetworkManager as renderer...\n"
 	add_or_update_line_based_on_prefix "  renderer: networkd" "  renderer: NetworkManager" /etc/netplan/01-netcfg.yaml
 	netplan generate
 	netplan apply
 	
-	echo
+	printf "\n"
 }
 
 cd "${RECIPE_DIRECTORY}"

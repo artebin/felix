@@ -13,12 +13,12 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 nfs_samba_shares(){
-	echo "nfs samba shares ..."
+	printf "nfs samba shares...\n"
 	
 	cd "${RECIPE_DIRECTORY}"
 	cat fstab_comments >>/etc/fstab
 	
-	echo
+	printf "\n"
 }
 
 nfs_samba_shares 2>&1 | tee -a "${RECIPE_LOG_FILE}"

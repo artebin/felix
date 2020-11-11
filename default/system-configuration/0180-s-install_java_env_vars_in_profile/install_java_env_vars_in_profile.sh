@@ -13,12 +13,12 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_java_env_vars(){
-	echo "Installing Java environment variables ..."
+	printf "Installing Java environment variables...\n"
 	
 	cd "${RECIPE_DIRECTORY}"
 	cp java_env_vars.sh /etc/profile.d/java_env_vars.sh
 	
-	echo
+	printf "\n"
 }
 
 install_java_env_vars 2>&1 | tee -a "${RECIPE_LOG_FILE}"

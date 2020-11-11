@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 force_geany_to_reuse_same_instance_per_workspace(){
-	printf "Force Geany to reuse same instance per workspace ...\n"
+	printf "Force Geany to reuse same instance per workspace...\n"
 	
 	cp "${RECIPE_DIRECTORY}/geany_one_instance_per_workspace.sh" /usr/local/bin/geany_one_instance_per_workspace
 	chmod a+x /usr/local/bin/geany_one_instance_per_workspace

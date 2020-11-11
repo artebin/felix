@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 force_numlock_tty(){
-	printf "Forcing numlock in tty ...\n"
+	printf "Forcing numlock in tty...\n"
 	
 	cd "${RECIPE_DIRECTORY}"
 	cp numlock /usr/bin/numlock
@@ -30,7 +30,7 @@ force_numlock_tty(){
 }
 
 force_numlock_xorg(){
-	printf "Forcing numlock in X.org ...\n"
+	printf "Forcing numlock in X.org...\n"
 	
 	install_package_if_not_installed "numlockx"
 	if [[ ! -f "/etc/default/numlockx" ]]; then
