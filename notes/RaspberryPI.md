@@ -14,17 +14,18 @@
     	update_config=1
     	country=#ISO 3166
     	network={
-    	ssid=""
-    	psk=""
-    	key_mgmt=WPA-PSK
+    		ssid=""
+    		psk=""
+    		key_mgmt=WPA-PSK
     	}
 
 - Secure the access:
     * <https://www.raspberrypi.org/documentation/configuration/security.md>
     * delete `/etc/sudoers.d/010_pi-nopasswd`
     * `passwd` and `sudo passwd`
-    * add a user with `adduser` and add it to the `sudo` group
-    * Delete the user `pi` with `deluser -remove-home pi`
+    * `adduser <new_user>`
+    * `usermod -a -G sudo <new_user>`
+    * `deluser --remove-home pi`
 
 - Locales and keyboard:
     * `sudo dpkg-reconfigure locales` and keep only `en_US.UTF-8`
