@@ -23,7 +23,6 @@ default/system-software/0160-s-install_claws_mail_from_sources
 default/system-software/0170-s-install_fixed_notify_send
 default/system-software/0180-s-install_pcp_from_sources
 default/system-software/0190-s-install_language_support#debian_buster
-default/system-software/0200-s-install_collectd_collectdweb
 default/system-software/0200-s-install_tint2_from_sources#debian_buster
 default/system-software/0210-s-install_pamixer_from_sources
 default/system-software/0220-s-install_gromit_mpx_from_sources
