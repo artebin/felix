@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_apticron(){
-	printf "Configuring apticron ...\n"
+	printf "Configuring apticron...\n"
 	
 	APTICRON_CONF_FILE="/etc/apticron/apticron.conf"
 	if [[ ! -f "${APTICRON_CONF_FILE}" ]]; then

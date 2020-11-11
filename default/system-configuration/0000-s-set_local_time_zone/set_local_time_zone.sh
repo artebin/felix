@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 set_local_time_zone(){
-	printf "Set local time zone ...\n"
+	printf "Set local time zone...\n"
 	
 	timedatectl set-timezone "${LOCAL_TIME_ZONE}"
 	

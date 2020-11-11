@@ -13,10 +13,10 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 disable_apport(){
-	echo "Disabling apport ..."
+	printf "Disabling apport...\n"
 	APPORT_FILE="/etc/default/apport"
 	if [[ ! -f "${APPORT_FILE}" ]]; then
-		echo "Can not find file: ${APPORT_FILE}"
+		printf "Cannot find file: ${APPORT_FILE}\n"
 		exit 1
 	else
 		add_or_update_line_based_on_prefix "enabled=" "enabled=0" "${APPORT_FILE}"
@@ -25,11 +25,11 @@ disable_apport(){
 	systemctl stop apport.service
 	systemctl disable apport.service
 	
-	echo
+	printf "\n"
 }
 
 disable_whoopsie(){
-	echo "Disabling whoopsie ..."
+	printf "Disabling whoopsie...\n"
 	
 	# See <https://askubuntu.com/questions/135540/what-is-the-whoopsie-process-and-how-can-i-remove-it>
 	
@@ -43,7 +43,7 @@ disable_whoopsie(){
 	systemctl stop whoopsie.service
 	systemctl disable whoopsie.service
 	
-	echo
+	printf "\n"
 }
 
 disable_apport 2>&1 | tee -a "${RECIPE_LOG_FILE}"

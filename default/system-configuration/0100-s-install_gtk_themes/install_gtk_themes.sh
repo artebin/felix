@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 copy_themes(){
-	echo "Copying themes ..."
+	printf "Copying themes...\n"
 	
 	cd "${RECIPE_DIRECTORY}"
 	tar xzf Erthe-njames.tar.gz
@@ -30,7 +30,7 @@ copy_themes(){
 	cd "${RECIPE_DIRECTORY}"
 	rm -fr Erthe-njames
 	
-	echo
+	printf "\n"
 }
 
 copy_themes 2>&1 | tee -a "${RECIPE_LOG_FILE}"

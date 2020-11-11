@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_bash_for_root(){
-	printf "Configuring bash for root ...\n"
+	printf "Configuring bash for root...\n"
 	
 	if [[ -f /root/.bashrc ]]; then
 		backup_file rename /root/.bashrc

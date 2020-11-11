@@ -13,17 +13,17 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_alternatives(){
-	echo "Configuring alternatives ..."
+	printf "Configuring alternatives...\n"
 	
-	echo "Setting mate-terminal as x-terminal-emulator ..."
+	printf "Setting mate-terminal as x-terminal-emulator...\n"
 	update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/mate-terminal.wrapper 900
 	update-alternatives --set x-terminal-emulator /usr/bin/mate-terminal.wrapper
-	echo
+	printf "\n"
 	
-	echo "Setting firefox as x-www-browser ..."
+	printf "Setting firefox as x-www-browser...\n"
 	update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/firefox 900
 	update-alternatives --set x-www-browser /usr/bin/firefox
-	echo
+	printf "\n"
 }
 
 configure_alternatives 2>&1 | tee -a "${RECIPE_LOG_FILE}"

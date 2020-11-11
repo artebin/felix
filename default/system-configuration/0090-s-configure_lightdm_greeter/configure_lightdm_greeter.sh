@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_lightdm_greeter(){
-	echo "Configuring LightDM greeter ..."
+	printf "Configuring LightDM greeter...\n"
 	
 	if [[ -f /etc/lightdm/lightdm-gtk-greeter.conf ]]; then
 		backup_file rename /etc/lightdm/lightdm-gtk-greeter.conf
@@ -26,7 +26,7 @@ configure_lightdm_greeter(){
 	# Copy GTK greeter.conf file
 	cp lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 	
-	echo
+	printf "\n"
 }
 
 configure_lightdm_greeter 2>&1 | tee -a "${RECIPE_LOG_FILE}"

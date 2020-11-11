@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_grub(){
-	printf "Configuring grub ...\n"
+	printf "Configuring grub...\n"
 	
 	# Backup grub configuration
 	printf "Backup current grub configuration ...\n"
@@ -21,23 +21,23 @@ configure_grub(){
 	echo
 	
 	# Show grub and set timeout
-	printf "Showing grub and set timeout ...\n"
+	printf "Showing grub and set timeout...\n"
 	sed -i "/^GRUB_TIMEOUT_STYLE/s/.*/#GRUB_TIMEOUT_STYLE=/" /etc/default/grub
 	sed -i "/^GRUB_TIMEOUT/s/.*/GRUB_TIMEOUT=10/" /etc/default/grub
 	printf "\n"
 	
 	# Remove boot options 'quiet' and 'splash'
-	printf "Removing boot options 'quiet' and 'splash' ...\n"
+	printf "Removing boot options 'quiet' and 'splash'...\n"
 	sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=\"\"/" /etc/default/grub
 	printf "\n"
 	
 	# Disable submenu
-	printf "Disabling submenu ...\n"
+	printf "Disabling submenu...\n"
 	add_or_update_keyvalue /etc/default/grub "GRUB_DISABLE_SUBMENU" "GRUB_DISABLE_SUBMENU=y"
 	printf "\n"
 	
 	# Disable graphical terminal
-	printf "Disabling graphical terminal ...\n"
+	printf "Disabling graphical terminal...\n"
 	sed -i "/^#GRUB_TERMINAL=/s/.*/GRUB_TERMINAL=console/" /etc/default/grub
 	printf "\n"
 	

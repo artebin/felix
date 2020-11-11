@@ -13,14 +13,14 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_systemd(){
-	printf "Configuring systemd ...\n"
+	printf "Configuring systemd...\n"
 	
 	SYSTEMD_CONF_FILE="/etc/systemd/system.conf"
 	
 	printf "Default timeout for stop operations 10 seconds ...\n"
 	add_or_update_keyvalue "${SYSTEMD_CONF_FILE}" "DefaultTimeoutStopSec" "10s"
 	
-	printf "Reloading systemd daemon ...\n"
+	printf "Reloading systemd daemon...\n"
 	systemctl daemon-reload
 	
 	printf "\n"
