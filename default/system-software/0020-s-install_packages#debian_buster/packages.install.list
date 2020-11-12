@@ -229,7 +229,7 @@ icc-profiles
 # Web browser
 ###############
 firefox-esr
-chromium-browser
+chromium
 
 ##############
 # PulseAudio
