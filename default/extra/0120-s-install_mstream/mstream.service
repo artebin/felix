@@ -1,0 +1,12 @@
+[Unit]
+Description=mstream
+After=multi-user.target
+
+[Service]
+Type=simple
+User=mstream
+WorkingDirectory=/home/mstream
+ExecStart=/home/mstream/start_mstream.sh
+
+[Install]
+WantedBy=multi-user.target

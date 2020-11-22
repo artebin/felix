@@ -1,0 +1,45 @@
+{
+  "port": 3030,
+  "webAppDirectory": "public",
+  "secret": "b6j7j5e6u5g36ubn536uyn536unm5m67u5365vby435y54ymn",
+  "writeLogs": true,
+  "noUpload": false,
+  "scanOptions": {
+    "skipImg": true,
+    "scanInterval": 1.5,
+    "pause": 50,
+    "saveInterval": 500,
+    "bootScanDelay": 15
+  },
+  "storage": {
+    "albumArtDirectory": "/media/album-art",
+    "dbDirectory": "/media/db",
+    "logsDirectory": "/media/logs"
+  },
+  "folders": {
+    "rock": { "root": "/media/music/rock"},
+    "blues": { "root": "/media/music/blues"}
+  },
+  "users": {
+    "paul": {
+      "password":"p@ssword",
+      "vpaths": ["blues", "rock"]
+    },
+    "james": {
+      "password": "qwerty",
+      "vpaths": "rock",
+      "lastfm-user": "username",
+      "lastfm-password": "password"
+    }
+  },
+  "transcode": {
+    "enabled": true,
+    "ffmpegDirectory": "/path/to/ffmpeg-dir",
+    "defaultCodec": "opus",
+    "defaultBitrate": "128k"
+  },
+  "ssl": {
+    "key": "/path/to/key.pem",
+    "cert": "/path/to/cert.pem"
+  }
+}

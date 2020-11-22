@@ -13,25 +13,29 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_mstream(){
-	printf "Installing NodeJS and git...\n"
-	curl -sL "https://deb.nodesource.com/setup_12.x" | bash -
-	apt-get install -y nodejs git
+	#printf "Installing NodeJS and git...\n"
+	#curl -sL "https://deb.nodesource.com/setup_12.x" | bash -
+	#apt-get install -y nodejs git
 	
-	printf "Installing mstream...\n"
-	git clone https://github.com/IrosTheBeggar/mStream.git
-	cd mStream
-	npm install --only=production
-	npm link
+	#printf "Installing mstream...\n"
+	#git clone https://github.com/IrosTheBeggar/mStream.git
+	#cd mStream
+	#npm install --only=production
+	#npm link
 	
-	printf "Installing start_stream.sh\n"
-	mkdir /opt/mstream
-	cp ./start_mstream.properties /opt/mstream
-	cp ./start_mstream.sh /opt/mstream
-	chmod -R 0700 /opt/mstream
+	printf "Adding mstream user and installing start_stream.sh...\n"
+	useradd mstream
+	mkdir /home/mstream
+	cp ./config.json /home/mstream/config.json
+	cp ./start_mstream.sh /home/mstream
+	chown -R mstream:mstream /home/mstream
+	chmod 0700 /home/mstream/start_mstream.sh
 	
-	printf "Autostarting mstream at boot time\n"
-	backup_file copy /etc/rc.local
-	add_or_update_line_based_on_prefix 'bash /opt/mstream/start_mstrearm.sh' 'bash /opt/mstream/start_mstrearm.sh' /etc/rc.local
+	printf "Autostarting mstream at boot time...\n"
+	cp ./mstream.service /etc/systemd/system
+	systemctl --system daemon-reload
+	systemctl enable mstream.service
+	systemctl status mstream.service
 	
 	# Cleaning
 	rm -fr mStream
