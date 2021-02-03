@@ -158,7 +158,7 @@
 		</track>
 		<track>
 			<location>http://live.wostreaming.net/direct/ppm-jazz24mp3-ibc1</location>
-			<title>KNKX: Jazz24</title>
+			<title>Jazz24</title>
 			<extension application="http://www.videolan.org/vlc/playlist/0">
 				<vlc:id>17</vlc:id>
 				<vlc:option>network-caching=1000</vlc:option>
@@ -210,6 +210,14 @@
 				<vlc:option>meta-title=Nectarine Demoscene Radio</vlc:option>
 			</extension>
 		</track>
+		<track>
+			<location>http://streaming.radionomy.com/JamendoLounge?lang=en_US</location>
+			<title>JamendoLounge</title>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>23</vlc:id>
+				<vlc:option>network-caching=1000</vlc:option>
+			</extension>
+		</track>
 	</trackList>
 	<extension application="http://www.videolan.org/vlc/playlist/0">
 		<vlc:node title="Radios">
@@ -236,6 +244,7 @@
 			<vlc:item tid="20"/>
 			<vlc:item tid="21"/>
 			<vlc:item tid="22"/>
+			<vlc:item tid="23"/>
 		</vlc:node>
 	</extension>
 </playlist>
