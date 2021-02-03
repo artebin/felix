@@ -1,5 +1,15 @@
 # TODOS
 
+- [ ] Cannot programatically use rc.local in debian because the file ends with 'exit 0'.
+- [ ] Documentation and tool to log incoming traffic.
+- [ ] Add configuration recipe for xpad + change icon.
+- [ ] Command for picking a window a apply a kpie rule.
+- [ ] Terminal with support for images (mlterm).
+- [ ] Use hsetroot instead of xsetroot which is not compatible with xcompmgr/compton.
+- [ ] Maybe use arc thene <https://www.reddit.com/r/pop_os/comments/hnxgzv/i_have_been_trying_for_hours_to_get_rid_of_the/>
+- [ ] Remove rounded corner in NewAdwaita <https://blog.gtk.org/2019/01/14/theme-changes-in-gtk-3/>.
+- [ ] Add a recipe for unified remote for the PI4 <https://www.unifiedremote.com/tutorials/how-to-install-unified-remote-server-deb-via-terminal>.
+- [ ] Add a recipe for the PI4 WiFi hotspot <https://www.raspberryconnect.com/projects/65-raspberrypi-hotspot-accesspoints/183-raspberry-pi-automatic-hotspot-and-static-hotspot-installer>.
 - [ ] Caja seems to mount ftp without unicode support.
 - [ ] Activate by default "Addons" plugin in Geany.
 - [ ] Can I replace clipmenu by <https://github.com/mrichar1/clipster>?

@@ -71,8 +71,7 @@
 | <kbd>Win</kbd><kbd>e</kbd>                                            | Text editor |
 | <kbd>Print</kbd>                                                      | Take a screenshot |
 | <kbd>Ctrl</kbd><kbd>Alt</kbd><kbd>q</kbd>                             | xkill |
-| <kbd>Win</kbd><kbd>r</kbd>                                            | dmenu |
-| <kbd>Win</kbd><kbd>a</kbd>                                            | alltray |
+| <kbd>Win</kbd><kbd>r</kbd>                                            | rofi |
 | <kbd>Win</kbd><kbd>c</kbd>                                            | clipmenu |
 | <kbd>Win</kbd><kbd>f</kbd>                                            | File manager |
 | <kbd>Win</kbd><kbd>z</kbd>                                            | translate-notify |
