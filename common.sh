@@ -439,3 +439,20 @@ contains_element() {
 	done
 	export "${VALUE_VARNAME}"="${CONTAINS_ELEMENT}"
 }
+
+clean_ssh_keys(){
+	REMOTE_ADDRESS="${1}"
+	if [[ -z "${REMOTE_ADDRESS}" ]]; then
+		printf "REMOTE_ADDRESS[%s] should not be empty\n"
+		return
+	fi
+	
+	# Remove REMOTE_ADDRESS from "${HOME}"/.ssh/known_hosts
+	ssh-keygen -R "${REMOTE_ADDRESS}"
+	
+	# Remove REMOTE_IP_ADDRESS from "${HOME}"/.ssh/known_hosts
+	REMOTE_IP_ADDRESS=$(getent hosts "${REMOTE_ADDRESS}" | awk '{ print $1 }')
+	if [[ ! -z "${REMOTE_IP_ADDRESS}" ]]; then
+		ssh-keygen -R "${REMOTE_IP_ADDRESS}"
+	fi
+}
