@@ -46,7 +46,7 @@ default/system-software/9999-s-remove_unwanted_packages#debian_buster
 default/system-configuration/0000-s-set_local_time_zone
 default/system-configuration/0010-s-disable_automatic_update_and_upgrade
 #default/system-configuration/0020-s-disable_apport_whoopsie
-default/system-configuration/0030-s-configure_apticron#debian_buster
+#default/system-configuration/0030-s-configure_apticron#debian_buster
 #default/system-configuration/0030-s-configure_apticron#ubuntu_bionic
 #default/system-configuration/0040-s-configure_grub
 default/system-configuration/0050-s-configure_bash_for_root
