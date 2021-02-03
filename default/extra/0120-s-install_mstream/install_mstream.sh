@@ -13,15 +13,15 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_mstream(){
-	#printf "Installing NodeJS and git...\n"
-	#curl -sL "https://deb.nodesource.com/setup_12.x" | bash -
-	#apt-get install -y nodejs git
+	printf "Installing NodeJS and git...\n"
+	curl -sL "https://deb.nodesource.com/setup_12.x" | bash -
+	apt-get install -y nodejs git
 	
-	#printf "Installing mstream...\n"
-	#git clone https://github.com/IrosTheBeggar/mStream.git
-	#cd mStream
-	#npm install --only=production
-	#npm link
+	printf "Installing mstream...\n"
+	git clone https://github.com/IrosTheBeggar/mStream.git
+	cd mStream
+	npm install --only=production
+	npm link
 	
 	printf "Adding mstream user and installing start_stream.sh...\n"
 	useradd mstream
