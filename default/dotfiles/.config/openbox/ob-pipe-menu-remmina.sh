@@ -208,7 +208,9 @@ print_openbox_pipe_menu(){
 	printf "${OPENBOX_MENU}"
 }
 
+if [[ -d "${REMMINA_FILES_PARENT_DIRECTORY}" ]]; then
 build_menu_tree_array
 #debug_menu_tree_array
 print_openbox_pipe_menu
 #rename_remmina_files
+fi
