@@ -127,7 +127,7 @@ hsetroot
 # Window manager & desktop tools
 ##################################
 #policykit-desktop-privileges #Not available in debian_buster
-openbox openbox-menu obconf obmenu
+openbox openbox-menu obconf
 lxappearance lxappearance-obconf
 dconf-cli
 dconf-editor
