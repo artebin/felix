@@ -38,7 +38,7 @@ install_customized_faenza(){
 	backup_file rename faenza-vanilla-icon-theme/Faenza/apps/16/synaptic.png
 	cp faenza-vanilla-icon-theme/Faenza/apps/32/synaptic.png ./faenza-vanilla-icon-theme/Faenza/apps/16/synaptic.png
 	
--	printf "Installing our customized Faenza...\n"
+	printf "Installing our customized Faenza...\n"
 	cd "${RECIPE_DIRECTORY}"
 	sed -i "/^Name=/s/.*/Name=Faenza-njames/" faenza-vanilla-icon-theme/Faenza/index.theme
 	ESCAPED_COMMENT=$(escape_sed_pattern "Comment=Icon theme project downloaded from https://github.com/Kazhnuz/faenza-vanilla-icon-theme and modified by njames")
