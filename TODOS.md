@@ -1,5 +1,13 @@
 # TODOS
 
+- [ ] bash alias "ls --full-time"
+- [ ] Add a recipe for adding /sbin in the path of regular users in debian
+- [ ] Add a recipe for Debian Buster and another one for minimal Ubuntu
+- [ ] Unpack is console script should be nice +10.
+- [ ] VLC plugin shuffle and SongList <https://addons.videolan.org/p/1154018/>.
+- [ ] Move from Faenza to Obsidian or Delft (they are both based on Faenza).
+- [ ] Add a VLC Media Library script manager, can take a list file in argument.
+- [ ] VLC song logger <https://askubuntu.com/questions/922418/how-can-i-automatically-log-the-names-of-songs-i-play-in-a-vlc-player-window>.
 - [ ] Cannot programatically use rc.local in debian because the file ends with 'exit 0'.
 - [ ] Documentation and tool to log incoming traffic.
 - [ ] Add configuration recipe for xpad + change icon.
