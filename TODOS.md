@@ -1,8 +1,9 @@
 # TODOS
 
-- [ ] bash alias "ls --full-time"
-- [ ] Add a recipe for adding /sbin in the path of regular users in debian
-- [ ] Add a recipe for Debian Buster and another one for minimal Ubuntu
+- [ ] MoveRelative for W-Left|Right|Up|down and MovetoEdge with A-W-Left|Right|Up|Down.
+- [ ] bash alias "ls --full-time".
+- [ ] Add a recipe for adding /sbin in the path of regular users in debian.
+- [ ] Add a recipe for Debian Buster and another one for minimal Ubuntu.
 - [ ] Unpack is console script should be nice +10.
 - [ ] VLC plugin shuffle and SongList <https://addons.videolan.org/p/1154018/>.
 - [ ] Move from Faenza to Obsidian or Delft (they are both based on Faenza).
@@ -14,7 +15,7 @@
 - [ ] Command for picking a window a apply a kpie rule.
 - [ ] Terminal with support for images (mlterm).
 - [ ] Use hsetroot instead of xsetroot which is not compatible with xcompmgr/compton.
-- [ ] Maybe use arc thene <https://www.reddit.com/r/pop_os/comments/hnxgzv/i_have_been_trying_for_hours_to_get_rid_of_the/>
+- [ ] Maybe use arc thene <https://www.reddit.com/r/pop_os/comments/hnxgzv/i_have_been_trying_for_hours_to_get_rid_of_the/>.
 - [ ] Remove rounded corner in NewAdwaita <https://blog.gtk.org/2019/01/14/theme-changes-in-gtk-3/>.
 - [ ] Add a recipe for unified remote for the PI4 <https://www.unifiedremote.com/tutorials/how-to-install-unified-remote-server-deb-via-terminal>.
 - [ ] Add a recipe for the PI4 WiFi hotspot <https://www.raspberryconnect.com/projects/65-raspberrypi-hotspot-accesspoints/183-raspberry-pi-automatic-hotspot-and-static-hotspot-installer>.
@@ -30,13 +31,13 @@
 - [ ] Better tiling in rc.xml <win>- adn <win>+ for (un)maximizing the window, switch current window follow mouse cursor or not.
 - [ ] Add an action in openbox menu for editing the crontab.
 - [ ] Add a .desktop for Impress that can be used directly after making a screenshot for adding annotation.
-- [ ] firefox addons for wikipedia CSS <https://addons.mozilla.org/fr/firefox/addon/full-width-wikipedia/>
+- [ ] firefox addons for wikipedia CSS <https://addons.mozilla.org/fr/firefox/addon/full-width-wikipedia/>.
 - [ ] .desktop with Term=true is not using x-terminal-emulator, could it be it is using $TERM instead?
 - [ ] Make sure 'xdg-mime default caja.default inode/directory" is done, it seems it is not.
 - [ ] Install todotxt-cli and <https://github.com/hugokernel/todofi.sh>. add the todofi as a mod for the rofi.
 - [ ] There is a bug in grub configuration, if no swap partition then the recipe indicates UUID of another partition.
 - [ ] Replace apticron by cron-apt which does not install postfix as dependency.
-- [ ] Add bash_apt.sh in .bashrc.d with apt functions
+- [ ] Add bash_apt.sh in .bashrc.d with apt functions.
 - [ ] Font size seems different with the resolution.
 - [ ] tmux instead of screen.
 - [ ] Always active dbus interface in VLC.
