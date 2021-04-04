@@ -151,7 +151,7 @@ zenity
 ###################
 # Desktop theming
 ###################
-adwaita-icon-theme-full
+#adwaita-icon-theme-full #Not available in raspbian_buster
 blackbird-gtk-theme
 bluebird-gtk-theme
 greybird-gtk-theme
