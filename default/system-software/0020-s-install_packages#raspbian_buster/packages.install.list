@@ -30,7 +30,7 @@ vim
 ncdu
 ranger
 cryptsetup
-paperkey qrencode
+paperkey qrencode zbar-tools
 screen
 
 ############################
