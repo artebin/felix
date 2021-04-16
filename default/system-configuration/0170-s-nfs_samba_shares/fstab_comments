@@ -3,5 +3,8 @@
 #//<ip or hostname>/<shared directory> <mount point> cifs guest,uid=1000,iocharset=utf8 0 0
 
 # Mount nfs share
-#<ip or hostname>:/<shared directory> <mount point> nfs noauto,users,rw,atime,soft,timeo=60,nosuid,noexec,nodev,bg,comment=x-gvfs-show 0 0
+# Note: the value of timeo is in deciseconds i.e. timeo=30 means 3 seconds.
+# retrans means the retry. An I/O error is trigger after (retrans * timeo).
+# timeo and retrans can be used in soft NFS only.
+#<ip or hostname>:/<shared directory> <mount point> nfs noauto,users,rw,atime,soft,timeo=60,retrans=2,nosuid,noexec,nodev,bg,comment=x-gvfs-show 0 0
 
