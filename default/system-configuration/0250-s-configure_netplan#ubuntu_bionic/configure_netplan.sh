@@ -13,16 +13,13 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_netplan(){
+	printf "Disabling previous NetPlan configuration ...\n"
+	for NETPLAN_YAML_FILE in /etc/netplan/*.yaml; do
+		backup_file rename "${NETPLAN_YAML_FILE}"
+	done
+	
 	printf "Configuring NetPlan for using the NetworkManager as renderer...\n"
-	NETPLAN_INSTALL_CONFIG_FILE="/etc/netplan/01-installer-config.yaml"
-	NETPLAN_FELIX_CONFIG_FILE="/etc/netplan/01-network.yaml"
-	if [[ ! -f "${NETPLAN_INSTALL_CONFIG_FILE}" ]]; then
-		printf "Cannot find NETPLAN_INSTALL_CONFIG_FILE[%s]\n" "${NETPLAN_INSTALL_CONFIG_FILE}"
-		return 1
-	fi
-	cp "${NETPLAN_INSTALL_CONFIG_FILE}" "${NETPLAN_FELIX_CONFIG_FILE}"
-	mv "${NETPLAN_INSTALL_CONFIG_FILE}" "${NETPLAN_INSTALL_CONFIG_FILE}.bak" 
-	add_or_update_line_based_on_prefix "  renderer: networkd" "  renderer: NetworkManager" "${NETPLAN_FELIX_CONFIG_FILE}"
+	cp ./01-netcfg.yaml /etc/netplan/
 	netplan generate
 	netplan apply
 	
