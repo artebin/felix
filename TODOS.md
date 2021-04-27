@@ -1,5 +1,7 @@
 # TODOS
 
+- [ ] Desktop files are using $TERM for the "Terminal=true" property, we should set "TERM=x-terminal-emulator" somewhere.
+- [ ] Auto mount FAT usb stick and all files have execute permissions, remove that.
 - [ ] MoveRelative for W-Left|Right|Up|down and MovetoEdge with A-W-Left|Right|Up|Down.
 - [ ] bash alias "ls --full-time".
 - [ ] Add a recipe for adding /sbin in the path of regular users in debian.
