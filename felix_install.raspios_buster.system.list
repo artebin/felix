@@ -1,5 +1,3 @@
-
-
 ################################################################################
 # Recipes from default/system-software
 ################################################################################
@@ -38,7 +36,6 @@ default/system-software/0260-s-install_kpie_from_sources
 default/system-software/0270-s-install_arandr_from_sources
 default/system-software/9999-s-remove_unwanted_packages#debian_buster
 #default/system-software/9999-s-remove_unwanted_packages#ubuntu_bionic
-
 
 ################################################################################
 # Recipes from default/system-configuration
