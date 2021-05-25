@@ -192,3 +192,14 @@ set_terminal_title() {
 	PS1=${ORIG}${TITLE}
 }
 alias set_terminal_title=set_terminal_title
+
+m3u8_to_mp4(){
+	ffmpeg -i "${1}" -bsf:a aac_adtstoasc -vcodec copy -c copy -crf 50 "${2}"
+}
+
+remove_ssh_key_for_host(){
+	HOST_ADDRESS="${1}"
+	HOST_IP_ADDRESS=$(getent hosts "${HOST_ADDRESS}" | awk '{ print $1 }')
+	ssh-keygen -R "${HOST_ADDRESS}"
+	ssh-keygen -R "${HOST_IP_ADDRESS}"
+}
