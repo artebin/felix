@@ -13,14 +13,14 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_virtualbox_guest_additions(){
-	echo "Installing VirtualBox guest additions ..."
+	printf "Installing VirtualBox guest additions ...\n"
 	
 	DEPENDENCIES=(  "virtualbox-guest-dkms-hwe"
 			"virtualbox-guest-utils"
 			"virtualbox-guest-x11" )
 	install_package_if_not_installed "${DEPENDENCIES[@]}"
 	
-	echo
+	printf "\n"
 }
 
 install_virtualbox_guest_additions 2>&1 | tee -a "${RECIPE_LOG_FILE}"

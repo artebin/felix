@@ -13,7 +13,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 setup_monitors_via_lightdm_conf(){
-	echo "Setup monitors setup via lightdm configuration ..."
+	printf "Setup monitors setup via lightdm configuration ...\n"
 	
 	if [[ -f /etc/lightdm/lightdm.conf.d/10-monitors_setup.sh ]]; then
 		echo "lightdm configuration file /etc/lightdm/lightdm.conf.d/10-monitors_setup.sh already exists!"
@@ -23,7 +23,7 @@ setup_monitors_via_lightdm_conf(){
 	cd "${RECIPE_DIRECTORY}"
 	cp 10-monitors_setup.sh /etc/lightdm/lightdm.conf.d
 	
-	echo
+	printf "\n"
 }
 
 setup_monitors_via_lightdm_conf 2>&1 | tee -a "${RECIPE_LOG_FILE}"
