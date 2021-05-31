@@ -204,6 +204,7 @@ poppler-utils
 ############
 # Printing
 ############
+printer-driver-all
 cups-common cups-browsed cups-server-common cups-pk-helper
 system-config-printer
 
