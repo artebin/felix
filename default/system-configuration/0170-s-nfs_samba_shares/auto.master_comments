@@ -5,5 +5,5 @@
 # /- /etc/auto.master.d/auto.share#2 --timeout=600
 #
 # Add the mount configuration files in /etc/auto.master.d/ like below:
-# <MOUNT_POINT> -users,rw,sync,atime,nosuid,noexec,nodev,bg <IP_OR_HOST_NAME>:<SHARED_DIRECTORY>
+# <MOUNT_POINT> -users,rw,sync,atime,soft,timeo=60,retrans=2,nosuid,noexec,nodev,bg <IP_OR_HOST_NAME>:<SHARED_DIRECTORY>
 
