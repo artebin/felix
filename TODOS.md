@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] Allow sudoers to modify printing configuration (lpadmin).
 - [ ] Add a recipe for a local git server, access it via http and zeroconf .local ?
 - [ ] Stop the kernel flooding the console <https://superuser.com/questions/351387/how-to-stop-kernel-messages-from-flooding-my-console>.
 - [ ] Desktop files are using $TERM for the "Terminal=true" property, we should set "TERM=x-terminal-emulator" somewhere.
