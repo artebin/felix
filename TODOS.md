@@ -1,5 +1,7 @@
 # TODOS
 
+- [ ] Use t2ec for a better tint2 <https://github.com/nwg-piotr/t2ec>. It would be also good to show the volume as percentage (can be 110%).
+- [ ] Can we disable the trash?
 - [ ] Disable "Recent Files" in GTK2/3 file chooser and dialogs.
 - [ ] Allow sudoers to modify printing configuration (lpadmin).
 - [ ] Add a recipe for a local git server, access it via http and zeroconf .local ?
