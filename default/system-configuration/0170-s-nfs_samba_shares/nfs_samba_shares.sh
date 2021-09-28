@@ -16,7 +16,7 @@ nfs_samba_shares(){
 	printf "nfs samba shares...\n"
 	
 	cd "${RECIPE_DIRECTORY}"
-	cat exports_commends >>/etc/exports
+	cat exports_comments >>/etc/exports
 	cat fstab_comments >>/etc/fstab
 	cat auto.master_comments >>/etc/auto.master
 	
