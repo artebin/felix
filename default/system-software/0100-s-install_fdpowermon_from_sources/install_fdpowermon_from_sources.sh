@@ -20,7 +20,7 @@ install_fdpowermon_from_sources(){
 	remove_with_purge_package_if_installed "fdpowermon" "fdpowermon-icons"
 	
 	# Install dependencies
-	install_package_if_not_installed "acpi" "devscripts" "libgtk3-perl"
+	install_package_if_not_installed "acpi" "devscripts" "libgtk3-perl" "oxygen-icon-theme"
 	
 	# Create a directory 'fdpowermon-build' because we will call
 	# 'dpkg-buildpackage' and its output directory is always the
