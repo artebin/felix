@@ -3,7 +3,7 @@
 ################################################################################
 recipes/system-software/0000-s-generate_and_set_locales
 recipes/system-software/0010-s-upgrade_system
-recipes/system-software/0020-s-install_packages#debian_buster
+recipes/system-software/0020-s-install_packages#debian_bullseye
 #recipes/system-software/0020-s-install_packages#raspbian_buster
 #recipes/system-software/0020-s-install_packages#ubuntu_bionic
 recipes/system-software/0030-s-install_google_chrome
