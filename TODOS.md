@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] Add pdfgrep, ttyclock and webp to list of packages.
 - [ ] Use t2ec for a better tint2 <https://github.com/nwg-piotr/t2ec>. It would be also good to show the volume as percentage (can be 110%).
 - [ ] Can we disable the trash?
 - [ ] Disable "Recent Files" in GTK2/3 file chooser and dialogs.
