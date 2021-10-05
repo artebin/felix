@@ -228,7 +228,7 @@ shotwell
 gimp gimp-data-extras
 inkscape
 gpick
-icc-profiles
+#icc-profiles
 
 ###############
 # Web browser
