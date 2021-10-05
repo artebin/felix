@@ -22,7 +22,7 @@ recipes/system-software/0140-s-install_mps_youtube_from_sources
 recipes/system-software/0150-s-install_translate_notify
 #recipes/system-software/0160-s-install_claws_mail_from_sources
 recipes/system-software/0170-s-install_fixed_notify_send
-recipes/system-software/0180-s-install_pcp_from_sources
+#recipes/system-software/0180-s-install_pcp_from_sources
 recipes/system-software/0190-s-install_language_support#debian_buster
 #recipes/system-software/0190-s-install_language_support#ubuntu_bionic
 recipes/system-software/0200-s-install_tint2_from_sources#debian_buster
@@ -63,7 +63,7 @@ recipes/system-configuration/0170-s-nfs_samba_shares
 recipes/system-configuration/0180-s-install_java_env_vars_in_profile
 recipes/system-configuration/0190-s-disable_bluetooth_at_boot_time
 recipes/system-configuration/0200-s-configure_keyboard
-recipes/system-configuration/0210-s-configure_trackpad_mtrack
+#recipes/system-configuration/0210-s-configure_trackpad_mtrack
 recipes/system-configuration/0220-s-terminate_x_with_ctrl_alt_backspace
 recipes/system-configuration/0240-s-configure_php_in_userdir#debian_buster
 #recipes/system-configuration/0240-s-configure_php_in_userdir#ubuntu_bionic
