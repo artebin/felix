@@ -65,7 +65,7 @@ recipes/system-configuration/0190-s-disable_bluetooth_at_boot_time
 recipes/system-configuration/0200-s-configure_keyboard
 #recipes/system-configuration/0210-s-configure_trackpad_mtrack
 recipes/system-configuration/0220-s-terminate_x_with_ctrl_alt_backspace
-recipes/system-configuration/0240-s-configure_php_in_userdir#debian_buster
+recipes/system-configuration/0240-s-configure_php_in_userdir#debian_bullseye
 #recipes/system-configuration/0240-s-configure_php_in_userdir#ubuntu_bionic
 #recipes/system-configuration/0250-s-configure_netplan#ubuntu_bionic
 recipes/system-configuration/0260-s-force_geany_to_reuse_same_instance_per_workspace
