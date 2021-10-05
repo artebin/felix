@@ -42,7 +42,7 @@ recipes/system-software/9999-s-remove_unwanted_packages#debian_buster
 ################################################################################
 recipes/system-configuration/0000-s-set_local_time_zone
 recipes/system-configuration/0010-s-disable_automatic_update_and_upgrade
-recipes/system-configuration/0020-s-disable_apport_whoopsie
+#recipes/system-configuration/0020-s-disable_apport_whoopsie
 #recipes/system-configuration/0030-s-configure_apticron#debian_buster
 #recipes/system-configuration/0030-s-configure_apticron#ubuntu_bionic
 recipes/system-configuration/0040-s-configure_grub
