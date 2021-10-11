@@ -1,5 +1,10 @@
 # TODOS
 
+- [ ] Check the nice on unpack_in_terminal.
+- [ ] Update firefox configuration and reduce the number of contentprocessor by default (8 -> 4).
+- [ ] Fix configure_acpi_wakeup.
+- [ ] Configure_apticron#ubuntu_bionic should be moved to xtra.
+- [ ] Force_soffice_to_use_single_instance should be move to xtra.
 - [ ] Use clearine for openbox exit dialog, we need to because python2 is removed from Debian11 <https://github.com/okitavera/clearine>.
 - [ ] Add pdfgrep, ttyclock and webp to list of packages.
 - [ ] Use t2ec for a better tint2 <https://github.com/nwg-piotr/t2ec>. It would be also good to show the volume as percentage (can be 110%).
