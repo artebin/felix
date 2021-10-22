@@ -12,17 +12,17 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_root_privileges
 
-configure_default_applications_with_xdg_mime(){
-	printf "Configuring default applications with xdg-mime ...\n"
-	
-	printf "  - Caja should be default file browser\n"
-	xdg-mime default caja.desktop inode/directory
-	
-	printf "  - Claws Mail should be default mail client\n"
-	xdg-mime default sylpheed-claws.desktop x-scheme-handler/mailto
-	
-	printf "\n"
-}
+#configure_default_applications_with_xdg_mime(){
+#	printf "Configuring default applications with xdg-mime ...\n"
+#	
+#	printf "  - Caja should be default file browser\n"
+#	xdg-mime default caja.desktop inode/directory
+#	
+#	printf "  - Claws Mail should be default mail client\n"
+#	xdg-mime default sylpheed-claws.desktop x-scheme-handler/mailto
+#	
+#	printf "\n"
+#}
 
 configure_default_applications_with_desktop_file_overridings(){
 	printf "Configuring default applications with desktop files overridings ...\n"
@@ -111,6 +111,7 @@ configure_default_applications_with_mime_apps_list(){
 	printf "application/x-shellscript=geany.desktop;\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
 	printf "application/xml=geany.desktop;\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
 	printf "application/x-jar=engrampa.desktop;\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
+	printf "inode/directory=caja.desktop;\n" >>"${TEMP_MIME_APPS_LIST_FILE}"
 	
 	# See <https://wiki.archlinux.org/index.php/XDG_MIME_Applications>
 	# ${HOME}/.local/share/applications/mimeapps.list is deprecated
@@ -131,11 +132,11 @@ configure_default_applications_with_mime_apps_list(){
 	printf "\n"
 }
 
-configure_default_applications_with_xdg_mime 2>&1 | tee -a "${RECIPE_LOG_FILE}"
-EXIT_CODE="${PIPESTATUS[0]}"
-if [[ "${EXIT_CODE}" -ne 0 ]]; then
-	exit "${EXIT_CODE}"
-fi
+#configure_default_applications_with_xdg_mime 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+#EXIT_CODE="${PIPESTATUS[0]}"
+#if [[ "${EXIT_CODE}" -ne 0 ]]; then
+#	exit "${EXIT_CODE}"
+#fi
 
 configure_default_applications_with_desktop_file_overridings 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
