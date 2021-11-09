@@ -1,5 +1,7 @@
 # TODOS
 
+- [ ] <https://www.reddit.com/r/linuxquestions/comments/pmodjk/cant_change_text_color_in_rofi_theme_file/>.
+- [ ] Should install rofi from sources.
 - [ ] <https://github.com/adi1090x/rofi>.
 - [ ] Check the nice on unpack_in_terminal.
 - [ ] Update firefox configuration and reduce the number of contentprocessor by default (8 -> 4).
