@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] Add uniutils.
 - [ ] <https://www.reddit.com/r/linuxquestions/comments/pmodjk/cant_change_text_color_in_rofi_theme_file/>.
 - [ ] Should install rofi from sources.
 - [ ] <https://github.com/adi1090x/rofi>.
