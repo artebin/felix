@@ -1,5 +1,7 @@
 # TODOS
 
+- [ ] Action in Caja for "Bypass the trash".
+- [ ] OSD menu for openbox window actions?
 - [ ] Add uniutils.
 - [ ] <https://www.reddit.com/r/linuxquestions/comments/pmodjk/cant_change_text_color_in_rofi_theme_file/>.
 - [ ] Should install rofi from sources.
