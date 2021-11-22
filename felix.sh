@@ -10,7 +10,7 @@ FELIX_BANNER='
 ██      ███████ ███████ ██ ██   ██ 
 '
 
-RECIPE_ID_REGEX="([0-9][0-9][0-9][0-9])-([us])-([a-zA-Z0-9_#]*)"
+RECIPE_ID_REGEX="([0-9][0-9][0-9][0-9]|x)-([us])-([a-zA-Z0-9_#]*)"
 RECIPE_ID_REGEX_GROUP_NUMBER_INDEX=1
 RECIPE_ID_REGEX_GROUP_RIGHTS_INDEX=2
 RECIPE_ID_REGEX_GROUP_NAME_INDEX=3
