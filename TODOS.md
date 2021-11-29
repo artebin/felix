@@ -1,5 +1,7 @@
 # TODOS
 
+- [ ] Shortcut for black screen (power down the screen)
+- [ ] Shortcut "Show desktop" associated to <WIN><F4> should actually be implemented by "Minize all windows".
 - [ ] Action in Caja for "Bypass the trash".
 - [ ] OSD menu for openbox window actions?
 - [ ] Add uniutils.
