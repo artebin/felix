@@ -6,3 +6,4 @@
 #
 # Add the mount configuration files in /etc/auto.master.d/ like below:
 # <MOUNT_POINT> -users,rw,sync,soft,rsize=32768,wsize=32768,intr,timeo=600,retrans=2,nosuid,noexec,nodev,noatime,nolock,bg <IP_OR_HOST_NAME>:<SHARED_DIRECTORY>
+
