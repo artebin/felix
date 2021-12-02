@@ -18,14 +18,23 @@ weather(){
 alias weather=weather
 
 github-clone(){
-	if [[ $# -eq 1 ]]; then
-		git clone "${1}"
-	elif [[ $# -eq 2 ]]; then
-		git clone "https://github.com/${1}/${2}"
-	else 
-		printf "Usage: %s REPOSITORY_URL\n" "${FUNCNAME[0]}"
-		printf "       %s USER_NAME REPOSITY_NAME\n" "${FUNCNAME[0]}"
+	if [[ $# -ne 3 ]]; then
+		printf "Usage: %s PROTOCOL USER_NAME REPOSITY_NAME\n" "${FUNCNAME[0]}"
 		return
+	fi
+	PROTOCOL="${1}"
+	PROTOCOL_HTTPS="https"
+	PROTOCOL_SSH="ssh"
+	if [[ "${PROTOCOL}" != "${PROTOCOL_HTTPS}" ]] && [[ "${PROTOCOL}" != "${PROTOCOL_SSH}" ]]; then
+		printf "Usage: %s PROTOCOL USER_NAME REPOSITY_NAME\n" "${FUNCNAME[0]}"
+		return
+	fi
+	USER_NAME="${2}"
+	REPOSITORY_NAME="${3}"
+	if [[ "${PROTOCOL}" == "${PROTOCOL_HTTPS}" ]]; then
+		git clone "https://github.com/${USER_NAME}/${REPOSITORY_NAME}"
+	else
+		git clone "ssh://git@github.com/${USER_NAME}/${REPOSITORY_NAME}.git"
 	fi
 }
 alias github-clone=github-clone
