@@ -1,5 +1,7 @@
 # TODOS
 
+- [ ] Openbox shortcut for increasing/decreasing size of a window (horizontally and vertically), only horizonatally, only vertically.
+- [ ] Shortcut in geany comment lines.
 - [ ] Shortcut for black screen (power down the screen)
 - [ ] Shortcut "Show desktop" associated to <WIN><F4> should actually be implemented by "Minize all windows".
 - [ ] Action in Caja for "Bypass the trash".
