@@ -1,5 +1,9 @@
 # TODOS
 
+- [ ] Change ~/scripts for ~/bin.
+- [ ] Disable recipe for install fonts and add package noto-emojis.
+- [ ] Add rofimoji.
+- [ ] Add emoji to the terminal (for nb).
 - [ ] Openbox shortcut for increasing/decreasing size of a window (horizontally and vertically), only horizonatally, only vertically.
 - [ ] Shortcut in geany comment lines.
 - [ ] Shortcut for black screen (power down the screen)
