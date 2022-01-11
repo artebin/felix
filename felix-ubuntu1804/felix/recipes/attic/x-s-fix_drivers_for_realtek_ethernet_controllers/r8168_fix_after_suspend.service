@@ -1,0 +1,14 @@
+[Unit]
+Description=Insert r8169 module after suspend/hybrid-sleep/hibernate
+After=suspend.target
+After=hybrid-sleep.target
+After=hibernate.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/modprobe r8168
+
+[Install]
+WantedBy=suspend.target
+WantedBy=hybrid-sleep.target
+WantedBy=hibernate.target

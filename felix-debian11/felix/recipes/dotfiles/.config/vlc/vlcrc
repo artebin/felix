@@ -1,0 +1,11 @@
+# Resize interface to the native video size (boolean)
+qt-video-autoresize=0
+
+# Allow metadata network access (boolean)
+metadata-network-access=0
+
+# Allow only one running instance (boolean)
+one-instance=0
+
+# Use only one instance when started from file manager (boolean)
+one-instance-when-started-from-file=0

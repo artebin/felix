@@ -1,0 +1,50 @@
+http://direct.franceinfo.fr/live/franceinfo-midfi.mp3
+France Info
+http://direct.franceinter.fr/live/franceinter-midfi.mp3
+France Inter
+http://direct.franceculture.fr/live/franceculture-midfi.mp3
+France Culture
+https://radios.rtbf.be/laprem1ere-64.aac
+RTBF La Prem1ère
+https://radios.rtbf.be/vivabxl-64.aac
+RTBF VivaCité Bruxelles
+https://radios.rtbf.be/classic21-64.aac
+RTBF Classic 21
+https://radios.rtbf.be/musiq3-128.aac
+RTBF Musiq 3
+http://direct.fipradio.fr/live/fip-midfi.mp3
+FIP
+http://direct.fipradio.fr/live/fip-webradio1.mp3
+FIP Rock
+http://direct.fipradio.fr/live/fip-webradio2.mp3
+FIP Jazz
+http://bbcmedia.ic.llnwd.net/stream/bbcmedia_radio2_mf_p
+BBC Radio Two
+http://ice1.somafm.com/groovesalad-256-mp3
+SomaFM Groove Salad
+http://ice1.somafm.com/suburbsofgoa-128-mp3
+SomaFM Suburbs of Goa
+http://ice1.somafm.com/fluid-128-mp3
+SomaFM Fluid
+http://ice1.somafm.com/deepspaceone-128-aac
+SomaFM Deep Space One
+http://ridibundus.divergence-fm.org:8000/divergence.mp3
+Divergence FM
+http://icepe12.infomaniak.ch:80/tsfjazz-high.mp3
+TSF Jazz
+http://live.wostreaming.net/direct/ppm-jazz24mp3-ibc1
+Jazz 24
+http://swingfm.ice.infomaniak.ch:80/swingfm-128
+Swing FM
+http://broadcast.infomaniak.net/novazz-128.mp3
+Radi Nova
+http://163.172.94.169:8080/radiolib
+Radio Libertaire
+http://www.radioking.com/play/la-radio-du-cinema
+La Radio Du Cinéma
+https://amiga.lebtimnetz.de/necta192
+Nectarine Demoscene Radio
+http://streaming.radionomy.com/JamendoLounge?lang=en_US
+Jamendo Lounge
+http://radio.dawnshadow.se:8000/stream
+sdx's synthetic experience! Synth, EBM, Industrial, C64, and more!

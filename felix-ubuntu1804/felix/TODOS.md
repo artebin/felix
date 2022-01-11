@@ -1,0 +1,450 @@
+# TODOS
+
+- [ ] Change ~/scripts for ~/bin.
+- [ ] Disable recipe for install fonts and add package noto-emojis.
+- [ ] Add rofimoji.
+- [ ] Add emoji to the terminal (for nb).
+- [ ] Openbox shortcut for increasing/decreasing size of a window (horizontally and vertically), only horizonatally, only vertically.
+- [ ] Shortcut in geany comment lines.
+- [ ] Shortcut for black screen (power down the screen)
+- [ ] Shortcut "Show desktop" associated to <WIN><F4> should actually be implemented by "Minize all windows".
+- [ ] Action in Caja for "Bypass the trash".
+- [ ] OSD menu for openbox window actions?
+- [ ] Add uniutils.
+- [ ] <https://www.reddit.com/r/linuxquestions/comments/pmodjk/cant_change_text_color_in_rofi_theme_file/>.
+- [ ] Should install rofi from sources.
+- [ ] <https://github.com/adi1090x/rofi>.
+- [ ] Check the nice on unpack_in_terminal.
+- [ ] Update firefox configuration and reduce the number of contentprocessor by default (8 -> 4).
+- [ ] Fix configure_acpi_wakeup.
+- [ ] Configure_apticron#ubuntu_bionic should be moved to xtra.
+- [ ] Force_soffice_to_use_single_instance should be move to xtra.
+- [ ] Use clearine for openbox exit dialog, we need to because python2 is removed from Debian11 <https://github.com/okitavera/clearine>.
+- [ ] Add pdfgrep, ttyclock and webp to list of packages.
+- [ ] Use t2ec for a better tint2 <https://github.com/nwg-piotr/t2ec>. It would be also good to show the volume as percentage (can be 110%).
+- [ ] Can we disable the trash?
+- [ ] Disable "Recent Files" in GTK2/3 file chooser and dialogs.
+- [ ] Allow sudoers to modify printing configuration (lpadmin).
+- [ ] Add a recipe for a local git server, access it via http and zeroconf .local ?
+- [ ] Stop the kernel flooding the console <https://superuser.com/questions/351387/how-to-stop-kernel-messages-from-flooding-my-console>.
+- [ ] Desktop files are using $TERM for the "Terminal=true" property, we should set "TERM=x-terminal-emulator" somewhere.
+- [ ] Auto mount FAT usb stick and all files have execute permissions, remove that.
+- [ ] MoveRelative for W-Left|Right|Up|down and MovetoEdge with A-W-Left|Right|Up|Down.
+- [ ] bash alias "ls --full-time".
+- [ ] Add a recipe for adding /sbin in the path of regular users in debian.
+- [ ] Add a recipe for Debian Buster and another one for minimal Ubuntu.
+- [ ] Unpack is console script should be nice +10.
+- [ ] VLC plugin shuffle and SongList <https://addons.videolan.org/p/1154018/>.
+- [ ] Move from Faenza to Obsidian or Delft (they are both based on Faenza).
+- [ ] Add a VLC Media Library script manager, can take a list file in argument.
+- [ ] VLC song logger <https://askubuntu.com/questions/922418/how-can-i-automatically-log-the-names-of-songs-i-play-in-a-vlc-player-window>.
+- [ ] Cannot programatically use rc.local in debian because the file ends with 'exit 0'.
+- [ ] Documentation and tool to log incoming traffic.
+- [ ] Add configuration recipe for xpad + change icon.
+- [ ] Command for picking a window a apply a kpie rule.
+- [ ] Terminal with support for images (mlterm).
+- [ ] Use hsetroot instead of xsetroot which is not compatible with xcompmgr/compton.
+- [ ] Maybe use arc thene <https://www.reddit.com/r/pop_os/comments/hnxgzv/i_have_been_trying_for_hours_to_get_rid_of_the/>.
+- [ ] Remove rounded corner in NewAdwaita <https://blog.gtk.org/2019/01/14/theme-changes-in-gtk-3/>.
+- [ ] Add a recipe for unified remote for the PI4 <https://www.unifiedremote.com/tutorials/how-to-install-unified-remote-server-deb-via-terminal>.
+- [ ] Add a recipe for the PI4 WiFi hotspot <https://www.raspberryconnect.com/projects/65-raspberrypi-hotspot-accesspoints/183-raspberry-pi-automatic-hotspot-and-static-hotspot-installer>.
+- [ ] Caja seems to mount ftp without unicode support.
+- [ ] Activate by default "Addons" plugin in Geany.
+- [ ] Can I replace clipmenu by <https://github.com/mrichar1/clipster>?
+- [ ] Rofi menu <https://gitlab.com/vahnrr/rofi-menus>.
+- [ ] Add lua extension for VLC for shuffle playlist <https://addons.videolan.org/p/1154030/>.
+- [ ] Cannot use pkexec in rofi.
+- [ ] Review bash aliases for time conversion and millis2date should return UTC.
+- [ ] Configure firefox with https://support.mozilla.org/gl/questions/1241294 for not allowing website to override Firefox UI shortcuts.
+- [ ] remove gromit and gkxset and xfce4-mouse and keyboard.
+- [ ] Better tiling in rc.xml <win>- adn <win>+ for (un)maximizing the window, switch current window follow mouse cursor or not.
+- [ ] Add an action in openbox menu for editing the crontab.
+- [ ] Add a .desktop for Impress that can be used directly after making a screenshot for adding annotation.
+- [ ] firefox addons for wikipedia CSS <https://addons.mozilla.org/fr/firefox/addon/full-width-wikipedia/>.
+- [ ] .desktop with Term=true is not using x-terminal-emulator, could it be it is using $TERM instead?
+- [ ] Make sure 'xdg-mime default caja.default inode/directory" is done, it seems it is not.
+- [ ] Install todotxt-cli and <https://github.com/hugokernel/todofi.sh>. add the todofi as a mod for the rofi.
+- [ ] There is a bug in grub configuration, if no swap partition then the recipe indicates UUID of another partition.
+- [ ] Replace apticron by cron-apt which does not install postfix as dependency.
+- [ ] Add bash_apt.sh in .bashrc.d with apt functions.
+- [ ] Font size seems different with the resolution.
+- [ ] tmux instead of screen.
+- [ ] Always active dbus interface in VLC.
+- [ ] Add an action "Edit screenshot with PowerPoint"
+- [ ] XF86 keys for audio should be managed by sxhkd if pasystray.
+- [ ] Do the settings for the firefox megabar off <https://support.mozilla.org/en-US/questions/1274579>.
+- [ ] PCP in avahi-discovery?.
+- [ ] Add recipe for installing vivaldi + update libwidevine amd and arm.
+- [ ] Fix ssh welcome for Raspbian.
+- [ ] Add mugshot to the openbox menu or find another application.
+- [ ] Add network scan command in bash aliases.
+- [ ] Seconde recipe should check depot in sources.list, recipe for installing software may fail if not.
+- [ ] Update gtk configuration with the light variant in theme name and add "gtk-application-prefer-dark-theme=false". See <https://unix.stackexchange.com/questions/14129/gtk-enable-set-dark-theme-on-a-per-application-basis>.
+- [ ] Add configuration for GIMP to use system instead of the dark theme.
+- [ ] Create recipe for patching apt-mirror <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=932379>.
+- [ ] re_index_recipe should re-number recipes which are not defaults, keep order but put them after the defaults.
+- [ ] On the Dell the switch to headset microphone is not done after pluggin the headset. <https://superuser.com/questions/1312970/headset-microphone-not-detected-by-pulse-und-alsa>
+- [ ] Improve Remmina recipe: notification icon, tree view => added the configuration in dotfiles directory, should not do a recipe for that.
+- [ ] Desktop font should be configurable via recipe family .conf file.
+- [ ] Add a recipe for SetWorkspaceLayout.
+- [ ] Extract archive in terminal shows an error dialog even if unpacking sucessful.
+- [ ] Add a convertWebpToPng caja script.
+- [ ] Something is installing PackageKit, what? check with clean install if PackageKit is installed. => Cockpit is installing packagekit. Should be removed, we don't want that.
+- [ ] Open browser quarter of the screen, lower-right corner of the screen.
+- [ ] Add regexer and http://mathew-kurian.github.io/CharacterMap/ in a bookmark tools.
+- [ ] Caja script for sorting file, same for removing duplicates.
+- [ ] Find the project on github for reminding shortcuts (command line and rofi).
+- [ ] Would be perfect to be able to choose the mail client: claws-mail, Evolution, Thunderbird. Can suceed in doing that today when Thunderbird and Evolution are installed, the change is not detected.
+- [ ] Deactivate Rofi modi ssh and try to add rofi-buku.
+- [ ] Find a good portal for firefox or a Web Bookmarks application.
+- [ ] Rule for VLC which save the window dimensions between 2 runs.
+- [ ] Find an image browser which can copy the path of the currently displayed image, or do drag'n'drop.
+- [ ] Check good usage of `xdg-settings set default-url-scheme-handler`. See <https://wiki.archlinux.org/index.php/Xdg-utils>.
+- [ ] Recipe family conf should contain a variable for the mail client (claws, evolution etc. ), it should be installed by install.sh and set in openbox menu.
+- [ ] Key shortcut for applying geometry to a window something line 512x512 on the left-bottom corner of the screen. It would be even better if it could be to3ggable.
+- [ ] Mirage or GPicView? GPicView is slower at rendering SVG graphics.
+- [ ] Create better graphs with gnuplot and battery-stats-collector.
+- [ ] Add notes about bash completion.
+- [ ] Reworked remote desktop software and use tiger VNC.
+- [ ] tint2 is not listening to changes in monitors: which one is primary? Add detection of primary in starter script and set tint2 configuration file.
+- [ ] kpie does not listen to window title change.
+- [ ] Update CSS for Geany Markdown plugin + configure properly the plugin during install.
+- [ ] Geany Markdown plugin is not resetting the vertical scroll.
+- [ ] The scripts folder should be renamed lib.
+- [ ] Add an minimal image viewer such as "edisplay" (good to have one image viewer with no scale smoothing).
+- [ ] How to set the primary monitor from the command line and add it in `ob-randr.py`.
+- [ ] Bugs in user_playlist.sh: next is not working on macbook air + should not prev/next if only one item in the playlist.
+- [ ] UserPlaylist should not use multimedia keys because some applications use PAUSE/PLAY for pausing momentarily the playback, the PLAY will start the playlist. UserPlaylist should be a Rofi plugin.
+- [ ] .user_playlist.txt should allow comment with char #
+- [ ] all calls to rename_for_backup should use a suffix (felix_install_yyMMDD_HHmmss.SSS)
+- [ ] add menuitem for showing battery performance (battery-graph or our own gnuplot script). It can happen that the battery level is off the chart with battery-graph.
+- [ ] dialog_command v2 and v3 are not used => in the end it will be replaced by yad, delete them?
+- [ ] Rofi gray out the screen behind.
+- [ ] Allow the execution of extra recipes direcly from the openbox menu? And when recipe executed then do not show the recipe in the menu? It should git pull felix, maybe a menu Felix should have a "Update Felix from github" menuitem.
+- [ ] How to get the list of recommended packages for a package to install?
+- [ ] Add a note for encrypted USB key.
+- [ ] Create an openbox pipe menu for enabling/disabling the bluetooth.
+- [ ] Use autorandr to change lightdm resolution.
+- [ ] Woud be useful to have a short program putting a icon in the tray and click-left="show a dialog" and click-right="Contextual menu with one item: Exit". Would be also useful if a notification could be shown when then icon appears. Could be also the dialog to be showed automatically.
+- [ ] Recipe for dictionary and spelling (for example: US, FR). For Geany, we need hunspell => have a openbox menu for installing dictionary, use yad for selecting the language. It could be a bash function and one alias.
+- [ ] TLP and CpuFreq for lower average temperatgure? Thermald for logging? pcp?
+- [ ] Numeric keyboard disabled after wake from hibernation.
+- [ ] Change the format of file "Owner" in Caja? We don't want to se extended login "login - Name" but just "login".
+- [ ] Action for naming the current desktop with the name of an application + revert to default.
+- [ ] pipemenu in openbox for .desktop files in ad-hoc location, something like ~/.config/openbox/menu-apps/
+- [ ] Add kdesvn in tools.
+- [ ] Add bash function in .bashrc for downloading a list of URLs from file.
+- [ ] Add bash library scripts via the .bashrc.d
+- [ ] Rofi menu for session actions <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
+- [ ] Better documentation in openbox rc.xml (with "Window Actions" section) see <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
+- [ ] Openbox application shotcuts "restart openbox" and "quit openbox".
+- [ ] change pidgin icon for using the stock icon.
+- [ ] Configuration libinput <https://unix.stackexchange.com/questions/337008/activate-tap-to-click-on-touchpad> it replaces synaptics.
+- [ ] mtrack configuration should check if there is already a \d+_mtrack.conf file in /usr/share/X11/xorg.conf.d/
+- [ ] List parameters useful to the user regarding dpms, lightlocker, suspend-then-hibernate => check if there is a yad panel for dpms.
+- [ ] Special menu in rofi for the XF86 symbols.
+- [ ] Window frame icon for being on top of other windows.
+- [ ] Is it possible to make work the TRRS on Linux?
+- [ ] Add a caja script for playing a folder in Media player "play all media in VLC", retrieve extension for audio/ media/ mime types.
+- [ ] Install dlna support
+- [ ] Check command to start by fdpowermon when reaching critical level of battery power => should be a script asking the user what do you + a timer "going to hibernate... ".
+- [ ] Brillo and Display: keyboard backlight in console (keysym ?).
+- [ ] macbook air: analysis of battery consumption and CPU usage.
+- [ ] macbook air: acpi_osi in kernel pameters see <https://wiki.archlinux.org/index.php/Mac#Suspend_and_Hibernate>
+- [ ] macbook air: kernel parameter for acpi on macbook air (native).
+- [ ] macbook air: screenshot key => Rofi menu?
+- [ ] macbook air: fix the Xmodmap.
+- [ ] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron.
+- [ ] Check what is missing if we do not use a Power manager (multiple displays support in logind?).
+- [ ] Use xdg-open from openbox (no panel no desktop). We can use "dex" but would be good to be able to use xdg-open (gtk-open, exo-open etc. ).
+- [ ] locate panel-desktop-handler.desktop => this desktop file is called for creating a shortcut for each execution of one desktop file with exo-open, gvfs-open, xdg-open etc.
+- [ ] Add traces for monitoring the time taken for the installation.
+- [ ] scroll by pixel/pc amount in LibreOffice Calc (rather by number of rows).
+- [ ] <https://bugs.launchpad.net/ubuntu/+source/gvfs/+bug/378783> 
+- [ ] A script at startup of openbox checking for the default application and notify the user about some changes. Have a look at Xfce4 MIME Type Editor.
+- [ ] Need a way to do some settings regarding the sensitiviy of the touchpad/mouse a save these settings. The xfce4-mouse-settings is not saved and even worst it is reset during a session but it probably because I use it in a not-XFCE desktop.
+- [ ] Test if caja gets unresponsive when the NFS is mounter via a regular mount command rather via gvfs. Just test it by mount it, access it via caja, unplug the network and access it again via caja.
+- [ ] Shortcuts for tiling the windows + boxing all the windows on the screen.
+- [ ] Read <https://github.com/capn-damo/Openbox-tiling/blob/master/ob-tile.sh>.
+- [ ] Add a note for the static route for accessing trevize.net from the local network.
+
+# ISSUES
+
+- [ ] Pasystray: middle click on the tray icon is not muting the sound anymore.
+- [ ] GPicView: slow at rendering SVG files.
+- [ ] Caja: copying files is very slow compared to the command line (local or remote) => it can be because of GVFS
+- [ ] Caja: create new directory with name starting with a dot is bugged.
+- [ ] Caja: renaming a .desktop file is bugged.
+- [ ] Caja: opening 2 window of file Properties is buggy.
+- [ ] Caja: always show the file name (extension are hidden for .desktop files for example) See <https://github.com/mate-desktop/caja/issues/727> open ticket.
+- [ ] Caja: when opening executable scripts (bash, python) => contextual menu is showing 'open'. Good UX would be 3 menu items: 'Run', 'Run in terminal' and 'Open with X', X being the default application for the mime type. However today there is only 'Open' which will open dialog a popup asking 'Display or run or run in terminal?'. The user does not know what is behind 'Display', display with what??? Even worst: the default application for the mime type is not listed in the 'Open with' maybe because, well... it is the application used for 'Display', erf...
+- [ ] dmenu: dmenu appears on the monitor on which the currently focused window is located. It should use the mouse pointer location to determine the monitor.
+- [ ] Geany/Markdown: plugin is not properly using the css specified (colors are not used and lines starting with the character `#` inside a blockcode are treated as a heading).
+- [ ] Geany/Markdown: when all the document are closed, the Markdown Preview still shows the last preview done.
+- [ ] Geany/Markdown: the links are clickable in the preview, if we click one link then the page is showed in the sidebar but there is no way to navigate and go back to the preview.
+- [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
+
+# DONE
+
+- [x] Add in VLC config "one-instance-when-started-from-file=0".
+- [x] Add create_dependencies_file_from_package_list_file() bash function using 'apt-cache depends package-name' and/or 'apt-rdepends'.
+- [x] Add recipe for configuring Atril => added the configuration in dotfiles directory, should not do a recipe for that.
+- [x] Bash script with respawn for VNC server.
+- [x] Rework gandi-dyndns, the project is obsolete and does not work anymore. => replaced by gandi-automatic-dns.
+- [x] Use autofs for preventing caja to freeze when NFS/Samba is down or network problems. See <https://unix.stackexchange.com/questions/267138/preventing-broken-nfs-connection-from-freezing-the-client-system> and <https://help.ubuntu.com/community/Autofs>.
+- [x] Remove PulseAudio for Raspbian.
+- [x] Key binding for XF86 mute, lower and raise volume should be managed by pasystray if pulseaudio, or volumeicon if alsa.
+- [x] Key binding for pulseaudio in sxhkd should be disabled for raspbian.
+- [x] Add the env. var for disabling CSD, and check over variables too <https://developer.gnome.org/gtk3/stable/gtk-running.html>.
+- [x] Add a recipe to fix timezone.
+- [x] Alias `ls -lh` for `ll`.
+- [x] First recipe in system-software should be re-generating the locales. See <https://www.thomas-krenn.com/en/wiki/Perl_warning_Setting_locale_failed_in_Debian>.
+- [x] install.sh should use `lsb_release -d` instead of `cat /etc/lsb-release`.
+- [x] Additional fields in recipe ID for stated install by default => RECIPE_CATEGORY
+- [x] locate and sshpass not installed by default
+- [x] Caja script "Execute script" but not with a terminal (double-click the file in caja does not work if the file is not set as executable).
+- [x] Default configuration in Geany: symbol view should be ordered by appearance, not lexicographic order.
+- [x] Add a "File processing" menu in openbox and shortcut to trash-empty directly in the openbox menu => "File Utils"
+- [x] WWw Browser in incognito mode in the openbox menu, use a font with icons to add sunglasses icons.
+- [x] backlight value at boot time can be too low (20 on the macbook) => fixed by using acpi_backlight=native
+- [x] kernel acpi_backlight=native for macbook air (and don't need the fix for backlight after suspend).
+- [x] Recipe for configuring apticron (setting the email).
+- [x] Should keep apt.daily actived.
+- [x] Make avahi workstation published (publish-workstation=yes in /etc/avahi/avahi-daemon.conf)
+- [x] It should be a choice to use mtrack or libinput, and put the default on libinput.
+- [x] Caja script compare should support one file compare with meld => revisioned file.
+- [x] Add a doc for managing security updates: server => email with apticron, or automatic install (with unattended-update https://www.cyberciti.biz/faq/how-to-keep-debian-linux-patched-with-latest-security-updates-automatically/), desktop => icon in the window manager and SSH motd (this is done in motd configuration already).
+- [x] Do not add alias and function to .bashrc but source .bashrc.d files
+- [x] Update openbox menu.xml for pidgin.
+- [x] move geany_one_instance_per_workspace to /usr/local/bin
+- [x] Title for terminal for htop started from the menu or from <WIN>h should be "htop".
+- [x] Add avahi-discover in openbox menu.
+- [x] Missing polkit rules for cups see <https://wiki.archlinux.org/index.php/CUPS#Allowing_admin_authentication_through_PolicyKit>.
+- [x] Do not show resolution below SVGA in openbox pipemenu randr
+- [x] Add a openbox menuitem for light-locker-settings.
+- [x] Rework openbox menu.
+- [x] Add recipe for gtkxset and add openbox menuitem for it.
+- [x] Add a Caja script for unpacking archive with unp (because unpacking big archives with the Caja/Engrampa plugin makes Caja lagging a lot).
+- [x] Open GoogleDrive should pop up a new Forefox window.
+- [x] git preferences are not applied.
+- [x] Remove Thunderbird from openbox menu.xml.
+- [x] Add randr pipemenu <https://github.com/whiteinge/ob-randr>.
+- [x] recipe for configuring firefox seems to don't work anymore.
+- [x] Add nbtscan.
+- [X] set the LC_COLLATING for a proper sorting in caja <https://askubuntu.com/questions/10896/nautilus-sorts-the-name-column-mysteriously-how-can-i-change-the-collating-se>
+- [x] Command line git-flavored markdown-2-html? with pandoc or <http://daringfireball.net/projects/downloads/Markdown_1.0.1.zip>. => use mmark.
+- [x] Extract localisation FR from minimal.packages.list, it should only contains US locales.
+- [X] It seems thunderbird is not using x-www-browser (chromium is used), "network.protocol-handler.warn-external.http" should be true for all. gnome-www-browser should be set too (not only x-www-browser). => stopped to use thunderbird.
+- [x] Rofi for clipmenu.
+- [x] Set "mailto" for thunderbird or claws-mail.
+- [x] Compile from source <https://github.com/freedesktop/xdg-desktop-file-utils> because command "update-desktop-database" is bugged in Ubuntu 18.04 => it is not a bug.
+- [x] Configure default difftool for git, editor etc.
+- [x] "enter your password to unlock your login keyring". => it happens when the keyring is not named "Login". See <https://wiki.archlinux.org/index.php/GNOME/Keyring>.
+- [x] For GDM and LightDM, the keyring must be named login to be automatically unlocked <https://wiki.archlinux.org/index.php/GNOME/Keyring>.
+- [x] Add a Felix rofi theme inspired by the dmenu theme we already have.
+- [x] Check the configuration of DokuWiki (entities etc.).
+- [x] Doing the autostart with the openbox autostart is much faster than with .xsessionrc
+- [x] Add recipe for building tint2 from sources.
+- [x] Jar should not be associated to Java.
+- [x] pdf are opened with gimp.
+- [x] Add a Caja script for executing a script into a terminal and "press a key" before exit the terminal.
+- [x] Get a useful logging of all the paclages installed in the system (think about the version of the GTK libs for example, pasystray middle click on tray icon for mute is not working anymore).
+- [x] virtual keyboard: onboard or florence. => onboard
+- [x] Add an alias in bachrc or a menuitem in openbox menu for doing a screenshot of a window with 'xwd'.
+- [x] Cannot install ubuntu_1804/user from a tty. We should test is $DISPLAY is defined. Should be done via a function in common.sh exit_if_not_x_session() => only do that for the recipe that need x session
+- [x] Make changes allowing to run 'info.sh' without 'common.sh'.
+- [x] "tint2rc": caja will open the file with "Tint2 Settings", how does it works?
+- [x] Add recipe for suspend-then-hibernate, see <https://askubuntu.com/questions/12383/how-to-go-automatically-from-suspend-into-hibernate>
+- [x] Bit of tiling: grow up window, i.e. increase width/height until reaching another window or screen edges or panels.
+- [x] Only clipboard and not primary in clipmenu?
+- [x] Replace pasystray by pnmixer + call paprefs
+- [x] Cups server is not installed.
+- [x] Add missing pulseaudio packages.
+- [x] Recipe for configuring grub with hibernate actived is buggy, if no swap partition when the startup hangs up for 30seconds, See <https://askubuntu.com/questions/1034359/boot-hangs-for-30-seconds-at-begin-running-scripts-local-premount>.
+- [x] Use ncurse for showing a dialog and allow to select some recipes to install.
+- [x] Remove aspell-fr from minimal.install.list
+- [x] Use whiptail to create a recipe selector.
+- [x] Clean recipe openbox clipmenud_run.sh should be removed? Check about that. => yes. Removed.
+- [x] Add caja script for indenting XML file
+- [x] Add recipe for updating the XDG default directory (remove "Templates" and "Music" should be default). => done as recipe in system-configuration.
+- [x] Add function exit_is_has_root_privileges and use it in user family recipes.
+- [x] Read doc about the DPMS <https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling> and add doc in openbox autostart.
+- [x] Move hotkeys from openbox rc.xml to sxhkd.
+- [x] Copy the felix banner in a file. => no but put it in felix.sh
+- [x] Add a recipe for installing claws-mail from sources + plugins (fancy, vcalendar etc. ).
+- [x] alias github-clone should use https
+- [x] Do not start fdpowermon if no battery, test in openbox autostart.
+- [x] Move the scripts (including the openbox scripts) in a script folder in the $HOME.
+- [x] Improve recipe for configuring apt-mirror and adding local repository in apt sources.
+- [x] Add a recipe (disabled by default, in extra) for installing virtualbox guest packages.
+- [X] Add a 'dotfiles' folder in the RECIPE_FAMILY_DIR.
+- [x] BASEDIR in the recipes is actually RECIPE_DIR. Add RECIPE_FAMILY_DIR.
+- [x] Retrieve FELIX_ROOT with the pwd.
+- [x] Indent JSON command.
+- [x] Rename ubuntu_18.04.sh to ubuntu_18.04.conf.
+- [x] Replace dmenu by rofi? => not by default but it is installed now.
+- [x] Skype: tray icon/app-indicator is buggy. It happens with skype and possibly others, the problem is in libappindicator and/or Electron <https://github.com/mate-desktop/mate-panel/issues/793> <https://answers.microsoft.com/en-us/skype/forum/skype_linux-skype_startms-skype_installms/system-tray-icon-in-xfce/d3f162bf-0bbf-481b-90a1-f43cae9a86cc?page=5> <https://github.com/electron/electron/issues/12791>.
+- [x] Set lightdm settings.
+- [x] Set cursor themes.
+- [x] Install xterm (not installed by default with ubuntu miniso).
+- [x] On the Dell the fn key for keyboard backlight is not working properly because there is only one key => it is managed by the hardware, no known X86 symbols for this key.
+- [x] On the Dell I can see 2 notifiations when I change the backlight => use xshkd and lock the notification_id file.
+- [x] Improve recipe for ACPI events (notably USB etc. expect LID) with a script to be called by the service. Could be the script will be used not only for ACPI wakeup but also for others ACPI event groups.
+- [x] Disable bluetooh module better than current recipe see <https://askubuntu.com/questions/67758/how-can-i-deactivate-bluetooth-on-system-startup> + action in openbox menu for re-activating it.
+- [x] Hibernate is not working anymore => should add a kernel parameter, see <https://soulkiln.blog/2018/08/14/ubuntu-18-04-hibernate-and-suspend-fix/>.
+- [x] Fix the icons for xfce4-power-manager. See <https://bbs.archlinux.org/viewtopic.php?id=216495>. => use fdpowermon now.
+- [x] Install xdg-utils from sources. => complicated, xdg-utils is a dependency for many packages.
+- [x] Add recipe for fdpowermon + specifies icons from Faenza for the battery indicator.
+- [x] Scrolling with mtrack is too much sensitive.
+- [x] Geany: key shortcut for "Line wrapping".
+- [x] Install dex: "DesktopEntry eXecution implements the Freedesktop.org autostart specification, independent of any desktop or window manager environment.". Why xdg-open is not implemented the same way? See <https://github.com/jceb/dex>.
+- [x] Add a recipe for disabling the Mac startup chime.
+- [x] Patch EOM for not showing "set background" is window manager is not Metacity (the WM which should be used with EOM). Use $XDG_SESSION_DESKTOP. => EOM replaced by GPicView.
+- [x] Still a problem with mtrack we do not have right click with the 2-fingers tap.
+- [x] Refactor "common.sh" to "felix_xubuntu18.04.sh" and extract functions in a common.sh located at the root of the project.
+- [x] Add a recipe for "brillo" <https://www.reddit.com/r/archlinux/comments/9mr58u/my_brightness_control_tool_brillo_has_a_new/>.
+- [x] Brillo + notification if X.
+- [x] Prevent notify-send from stacking <https://unix.stackexchange.com/questions/376071/prevent-notify-send-from-stacking>
+- [x] Add recipe for notify-send.sh <https://github.com/vlevit/notify-send.sh>
+- [x] gpicview should replace EOM (replace the text in the .desktop file)
+- [x] Remove alltray.
+- [x] Make the DisplayLink works.
+- [x] Search for "apt" in the project and avoid to use apt, use apt-get instead when possible.
+- [x] Remove blueman-applet from Openbox autostart and add a menu entry for starting it. 
+- [x] Should revert to xfce4-power-manager.
+- [x] Openbox add keybinds in openbox rc.xml for mouse clicks.
+- [x] Add shortcuts from openbox in shortcuts.md.
+- [x] Add pigz
+- [x] Execute the dstat recipe by default but do not start the service.
+- [x] Install dstat from source.
+- [x] Disable the automatic update in ubuntu <https://askubuntu.com/questions/1059971/disable-updates-from-command-line-in-ubuntu-16-04>.
+- [x] Pulse audio does not restart properly after logout/login. Fixed with <https://wiki.archlinux.org/index.php/PulseAudio/Troubleshooting#ALSA_channels_mute_when_headphones_are_plugged/unplugged_improperly>.
+- [x] Recipe for removing packages is not working properly (too many packages removed).
+- [x] Add guvcview in package to install (good replacement for cheese which is deadly GNOME refactored)
+- [x] Restart X with <Ctrl><Alt>Backspace
+- [x] XDG user dirs Templates, remove it.
+- [x] mtrack does not seem to work with Ubuntu18.04. => apparrently it is fixed now 18-12-08
+- [x] Caja: the side panel is not working correctly (and the rendering for painting the focuses/unfocused panel is a little ugly). => fixed in Caja v1.20.2
+- [x] Geany redo should be <ctrl><shift>z
+- [x] Geany tab at right opening of the tab will give 70% of the width to the tab rather than the editor. Save width of the tab? => just revert to sidebar at left
+- [x] Add tree in default package to install.
+- [x] Disable autostart of blueman-applet
+- [x] It seems bluman is using 50MB in RAM and I never use the bluetooth. Would it be possible to disable it? => yes just rename the .desktop file in /etc/xdg/autostart
+- [x] Completely remove references to termite
+- [x] add mercurial
+- [x] Should use `/usr/share/backgrounds` rather than `/usr/share/wallpapers`.
+- [x] Do not show by default menubar in mate-terminal.
+- [x] Switch back to MATE-Terminal (and archive the installation script for Termite)
+- [x] Add install for 'psmisc' (not installed by default on Debian)
+- [x] SSH Welcome message should not include Ubuntu message.
+- [x] Path to JDK should to specified in .xsessionrc (will works on everything Linux distributions).
+- [x] Geany default configuration should indent with "tab and space"
+- [x] Fix indentation in TODOS.md
+- [x] Open "Google Drive" from the menu should create a new Web Browser window, else Drive can be opened in the Web Browser in Desktop#1 but current desktop is Desktop#4.
+- [x] Read <https://wiki.archlinux.org/index.php/File_manager_functionality>
+- [x] Read <https://help.gnome.org/admin/system-admin-guide/stable/mime-types-custom.html.en>
+- [x] Work with `/etc/mime.types` for setting all text with Geany, all audio/video with VLC.
+- [x] Set MIME types using ~/.config/mimeapps.list.
+- [x] The fix for the menu border adwaita gtk2 seems to not work anymore.
+- [x] mate-power-manager always set to 100pc the keyboard backlight when it starts => did not find the problem, made a quickfix.
+- [x] It seems config for geany is missing: side bar, message bar, toolbar only image.
+- [x] Clean Openbox rc.xml and add openbox rc.xml v3.4 original for comparison.
+- [x] XF86 keys (Explorer, Mail, WWW, Music, Messenger etc.). See <http://wiki.linuxquestions.org/wiki/XF86_keyboard_symbols>.
+- [x] After some time of inactivity the displays are closed even if VLC is runnning fullscreen => can not replicate it.
+- [x] Add a caja script compare which allow 1 or 2 arguments.
+- [x] Width of the error zenity popup window => use option `--no-wrap`
+- [x] Missing icon for the GUI component "spinner"-like, the '-' icon is an 'x' => use gtk inspector to find the missing icon. It can see the prorblem with obconf. See <http://linux-buddy.blogspot.com/2014/01/gtk-example-spinbutton.html>. See <https://github.com/GNOME/gtk/blob/master/demos/gtk-demo/spinbutton.c>. The problem is `list-remove.png` from Faenza. It could be fixed for all action icon by re-using/modifying the add icon.
+- [x] re-add backup alias in bashrc.
+- [x] Border for menus in GTK2 with Adwaita, it is quite important because we still have GTK2 application running: Thunar, GVim etc. See <http://www.techytalk.info/fix-clearlooks-gtk-2-theme-missing-menu-borders-on-java-applications/> and <https://azizsaboor.wordpress.com/2015/03/17/fixing-netbeans-menu-display-on-linux-missing-menu-borders-white-on-white-invisible-menu-items/>.
+- [x] Add geany shorcut for moving line up/down.
+- [x] Invert ctrl+k and ctrl+d? The shortcuts from Eclipse are quite well designed...
+- [x] Add some bash function for working with time durations (or use some bc functions).
+- [x] Quick tool for rendering chart? => gnu plot and plotdrop GTK GUI.
+- [x] VNC with 2 screens => not possible, it is no has no concept of separate monitor, we should set the geometry to support the size of the 2 screens combined.
+- [x] Find a search tool with GUI => FSearch seems interesting...
+- [x] System monitor: CPU, Memory, I/O, network + add it to openbox menu. => use glances (don't like much mate-system-monitor but keep it installed)
+- [x] Use dunst notification (for Translate-Notify especially) => missing dependencies `libxss-dev` and `libxdg-basedir1`
+- [x] Caja seems to open MATE terminal (instead of x-terminal-emulator) => property to set in dconf
+- [x] Add a `tail and follow` caja script.
+- [x] No PulseAudio paman in Xubuntu 18.04 but do I really need it? => I can compile it from the sources, do not know why it is missing in Ubuntu 18.04 repository.
+- [x] Use a Caja script for diff file/directory with meld, see <https://ubuntu-mate.community/t/copy-to-move-to-in-caja/15156/5>
+- [x] install.sh should have a log indicating which recipe failed.
+- [x] Disable gnome keyring.
+- [x] Use `[Seat:*]` instead of `[Seat:defaults]`
+- [x] No Geany Markdown plugin in Xubuntu 18.04 => `libwebkit2gtk-4.0-dev` need to be installed for compiling it and maybe it is not the case when Ubuntu build the geany-plugins package. Fix is: clone the geany-plugin git repo and make/make install the markdown plugin. 
+- [x] XDMCP, xrdp and FreeRDP
+- [x] Can I set the font size by default in the geany config files?
+- [x] Openbox shortcut for minimizing the active window
+- [x] Latex install (just install texlive)
+- [x] Still some colors are not correct with Termite (htop) => openbox `rc.xml` was not correct and was starting htop with mate-terminal instead of termite (but no idea why the colors are not correct with mate-terminal).
+- [x] Translate-notify should indicate when the clipboard is empty.
+- [x] Rework a little bit the shortcuts `<win>c` should be clip menu, `<win>r` should be dmenu, `<win>z` should be translate notify
+- [x] Should I use `--no-install-recommends` with apt? => yes, try with it for next install.
+- [x] add CSVKit.
+- [x] Add gnumeric, can be useful when LibreOffice crashes (and it happens quite often... ).
+- [x] Waiting for window when launching command from dmenu? (and spinning cursor?) => StartNofity was `true` in openbox rc/xml
+- [x] Translate feature should allow to type the text, use a dialog for that => use dmenu
+- [x] Move translate-notify.sh in /usr/bin for being able to start it from dmenu, or add a folder of executables in dmenu.
+- [x] Add `traceroute`.
+- [x] Should use `#!/usr/bin/env bash` in particular for geany_one_instance_per_workspace.sh
+- [x] How to disable the touch screen on the Dell Inspiron 7000?
+- [x] Add configuration file for gsimplecal.
+- [x] Switch to Adwaita: (1) Eclipse GUI looks better with Adwaita, (2) bug with Termite scrollbar seems to be fixed with Adwaita, (3) Gsimplecal is better rendered.
+- [x] Disable recipe for mtrack because it is not working with Ubuntu18.04 (cursor jumps random and no right click).
+- [x] How to improve Eclipse UI? It is ugly with Ubuntu 18.04. I was quite happy with Ubuntu 17.04/SWT_GTK3 => it is far better with Adwaita.
+- [x] There is a problem with user recipe configure_gtk, the file `.gtk-bookmarks` does not exists.
+- [x] Geany toolbar icon size => better with Adwaita.
+- [x] install.sh should stop as soon as a recipe returns an error code.
+- [x] Test for package availability in install_packages.sh should be optional.
+- [x] Add the preferences for mate-power-manager.
+- [x] Offline repository (from external USB disk) <https://askubuntu.com/questions/882255/i-do-not-fully-understand-wiki-aptget-offline>
+- [x] Replace ClipIt by clipmenu <https://github.com/cdown/clipmenu/> or clipster <https://github.com/mrichar1/clipster>
+- [x] Do not browse media when inserted.
+- [x] Should invert F6 and F7 in geany shortcuts.
+- [x] Compile alltray from source and use this fork of alltray <https://github.com/bill-auger/alltray>
+- [x] If keyboard is properly configured via /etc/default/keyboard then no need to configure it via openbox autostart.
+- [x] Clipboard persistence? It is sometimes annoying to see the clipboard is empty after exiting geany but we expected to do a paste somewhere. => install clipit and start it via openbox autostart.
+- [x] polkit policy file for mate-power-manager and backlight helper is missing.
+- [x] Path in Geany desktop file is using "~" which is not supported here.
+- [x] Add a function check_package_availability using dpkg/apt => current implementation is using `aptitude search` because can not find relevent return code for `apt` and `dpkg`.
+- [x] Is xfce4-volumed really is started via /etc/xdg/autostart/xfce4-volumed.desktop? If yes then we should not start it also from openbox autostart file.
+- [x] Add xfce4-mime-settings in openbox menu
+- [x] Example for NFS export => already in the `exports` file installed with the package manager
+- [x] Add nfs-kernel-server to the install package list
+- [x] Should remove apt.input file
+- [x] .rpmdb and .wget-hsts are owned by root in the user home => they are created when installing Skype.
+- [x] Should be able to categorize the packages in packages.list
+- [x] Remove package whoopsie
+- [x] Remove packages for Ubuntu update notifications "update-manager, update-manager-core, update-notifier, update-notifier-common, xubuntu-desktop, flashplugin-installer, ubuntu-release-upgrader-gtk"
+- [x] Allow wake up with lid only
+- [x] Macbook wakes up with usb mouse, remove this.
+- [x] Each time a process is killed, the mouse cursor is "busy" why? Ubuntu error reporting? => it is Ubuntu whoopsie... Remove it.
+- [x] Categorize the packages in packages.install.list + add lshw?
+- [x] It can occurs that login after suspend/hibernate, the keyboard configuration is lost. 
+- [x] Disable bluetooth at startup
+- [x] One instance of Geany per workspace
+- [x] Add an install bash function (to be used by system, user and specifics, just wait in argument the directory containing the recipes)
+- [x] Add should not be run with admin rights (xmodmap in specifics macbook)
+- [x] Install other HID implementation allowing the horizontal scroll from the trackpad
+- [x] Touchpad is still too much sensitive in macbook air => use mtrack
+- [x] Add geany markdown template
+- [x] common.sh backup function is not checking directory or file
+- [x] Patch line height for dmenu
+- [x] Support NFS/samba + comments in /etc/fstab for how to mount the file systems
+- [x] Force num lock at boot time (console and X)
+- [x] Dialogs for suspend and hibernate not working from openbox menu?
+- [x] Default for laptops in xfce4-power-manager settings
+- [x] When suspended, the laptop is waked up by mouse move
+- [x] Update or remove Install.md
+- [x] VirtualBox Frogstar install should not be a script but rather a documentation
+- [x] Auto_login and gandy_dns should not be in the list of the default recipes
+- [x] Add kodos regular expression tester => No, can not compile, too old stuff
+- [x] When config Geany, also put the .desktop file for forcing one instance per file opening (the one instance per workspace does not seem to work)
+- [x] Geany shortcut for show/hide the sidebar?
+- [x] Remove shotwell from packages.install.list => No shotwell should be installed by default
+- [x] Try DockBarX
+- [x] Put the trace files in a dedicated directory => NO, it is better like it is today
+- [x] Clean: remove install_mate_1.17, ampache and deluge_deamon (keep it in the attic)
+- [x] LightDM config
+- [x] User recipe for Geany config should check geany version number + should compare original file with my dot file
+- [x] Use Geany Markdown plugin

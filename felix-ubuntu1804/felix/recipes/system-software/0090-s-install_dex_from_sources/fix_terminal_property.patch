@@ -1,0 +1,9 @@
+@@ -514,7 +514,7 @@ class Application(DesktopEntry):
+ 
+ 		if _exec:
+ 			path = self.Path
+-			cmd = self._build_cmd(self.Exec)
++			cmd = self._build_cmd(self.Exec, self.Terminal)
+ 			if not cmd:
+ 				raise ApplicationExecException('Failed to build command string.')
+ 			if dryrun or verbose:

@@ -1,0 +1,108 @@
+#######################
+# Application hotkeys
+#######################
+super + e
+	geany_one_instance_per_workspace
+
+Print
+	xfce4-screenshooter
+
+alt + Print
+	scrot -s
+
+ctrl + alt + q
+	xkill
+
+super + r
+	rofi -show run
+
+super + c
+	bash "${HOME}/scripts/clipmenu_run.sh"
+
+super + f
+	caja --no-desktop
+
+super + z
+	translate-notify
+
+super + t
+	x-terminal-emulator
+
+super + w
+	x-www-browser
+
+super + m
+	vlc
+
+super + h
+	x-terminal-emulator -T "Task Manager (htop)" -e "htop"
+
+super + v
+	pavucontrol
+
+################
+# XF86 symbols
+################
+XF86MonBrightnessDown
+	flock -n "/dev/shm/${USER}.brillo.backlight.notification_id" bash "${HOME}/scripts/brillo_backlight_notify.sh" -d
+
+XF86MonBrightnessUp
+	flock -n "/dev/shm/${USER}.brillo.backlight.notification_id" bash "${HOME}/scripts/brillo_backlight_notify.sh" -i
+
+XF86KbdBrightnessDown
+	flock -n "/dev/shm/${USER}.brillo.keyboard.notification_id" bash "${HOME}/scripts/brillo_keyboard_notify.sh" -d
+
+XF86KbdBrightnessUp
+	flock -n "/dev/shm/${USER}.brillo.keyboard.notification_id" bash "${HOME}/scripts/brillo_keyboard_notify.sh" -i
+
+# XF86AudioMute, XF86AudioLowerVolume and XF86AudioRaiseVolume are binded by
+# pasystray if PulseAudio, or volumeicon if ALSA.
+#XF86AudioMute
+#	pulseaudio-ctl mute
+#XF86AudioLowerVolume
+#	pulseaudio-ctl down
+#XF86AudioRaiseVolume
+#	pulseaudio-ctl up
+
+XF86AudioMicMute
+	pulseaudio-ctl mute-input
+
+XF86Search
+	caja --no-desktop
+
+XF86HomePage
+	caja --no-desktop "${HOME}"
+
+XF86Explorer
+	caja --no-desktop
+
+XF86Mail
+	claws-mail
+
+XF86Messenger
+	empathy
+
+XF86Music
+	vlc
+
+XF86AudioPlay
+	flock -n "/dev/shm/${USER}.user_playlist" bash "${HOME}/scripts/user_playlist.sh" toggle
+
+XF86AudioPrev
+	flock -n "/dev/shm/${USER}.user_playlist" bash "${HOME}/scripts/user_playlist.sh" next
+
+XF86AudioNext
+	flock -n "/dev/shm/${USER}.user_playlist" bash "${HOME}/scripts/user_playlist.sh" prev
+
+# Rii i8: XF86Tools symbol is sent for the Media Player key
+XF86Tools
+	vlc
+
+XF86Terminal
+	x-terminal-emulator
+
+XF86WWW
+	x-www-browser
+
+XF86PowerOff
+	python "${HOME}/scripts/power_button_pressed.py"

@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+
+#export JDK_HOME=""
+#export JRE_HOME=""
+#export ANT_HOME=""
+#export MVN_HOME=""
+
+if [[ ! -z "${JDK_HOME}" ]]; then
+	export PATH=${JDK_HOME}/bin:${PATH}
+fi
+
+if [[ ! -z "${ANT_HOME}" ]]; then
+	export PATH=${ANT_HOME}/bin:${PATH}
+fi
+
+if [[ ! -z "${MVN_HOME}" ]]; then
+	export PATH=${MVN_HOME}/bin:${PATH}
+fi
+
+##################################
+# XDG_SESSION_DESKTOP == openbox
+##################################
+# Register Thunar in D-BUS
+#thunar --daemon &
+
+# Keyboard should be set properly in /etc/default/keyboard
+#setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &
+
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+
+bash "${HOME}/scripts/clipmenud_run.sh" &
+
+# Hotkey daemon
+sxhkd &
+
+# Multimedia keys can be managed by xfce4-volumed if sxhkd is not doing it
+#xfce4-volumed &
+
+############################
+# Re-configure the screens
+############################
+#xrandr --output LVDS-1 --off --output DP-1 --off --output HDMI-1 --mode 1360x768 --primary --pos 0x0 --rotate normal --output VGA-1 --off &
+
+###########
+# Xmodmap
+###########
+# Do not call `xmodmap` from here, it will not work.
+if [[ -f "${HOME}/.Xmodmap" ]]; then
+	xmodmap .Xmodmap
+fi
+
+#################################################################################
+# DPMS (Display Power Management Signaling) is controlled with the xset command
+# See <https://wiki.archlinux.org/index.php/Display_Power_Management_Signaling>
+#################################################################################
+# Query the current settings
+# xset q
+#
+# Disable screen saver blanking
+# xset s off
+#
+# Change blank time to 1 hour
+# xset s 3600 3600
+#
+# Turn off DPMS
+# xset -dpms
+#
+# Disable DPMS and prevent screen from blanking
+# xset s off -dpms
+#
+# Turn off screen immediately
+# xset dpms force off
+#
+# Standy screen
+# xset dpms force standy
+#
+# Suspend screen
+# xset dpms force suspend
+#

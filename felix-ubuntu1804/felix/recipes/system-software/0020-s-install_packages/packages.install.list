@@ -1,0 +1,314 @@
+################
+# System tools
+################
+apt-rdepends
+lsb-base
+lsb-release
+moreutils
+psmisc #Includes fuser, killall, peekfd, pstree, prtstat
+hwinfo lshw inxi
+htop iotop smem #dstat is included in pcp
+glances
+pcp pcp-gui
+@--no-install-recommends@ cockpit
+battery-stats
+autofs
+fuseiso
+fuseiso9660
+vbetool
+locate
+crudini
+uuid-runtime
+
+#################################
+# Terminal & command line tools
+#################################
+parallel
+colortest
+tree
+vim
+ncdu
+ranger
+cryptsetup
+paperkey qrencode zbar-tools
+screen
+
+############################
+# Language and translation
+############################
+translate-shell
+
+#################
+# Network tools
+#################
+nmap traceroute nbtscan
+nethogs speedometer tcptrack bmon
+curl
+wireshark wireshark-gtk wireshark-doc
+network-manager-gnome
+gigolo
+avahi-discover
+
+#############
+# Bluetooth
+#############
+blueman
+
+########
+# SNMP
+########
+snmp snmp-mibs-downloader
+
+#######
+# SSH
+#######
+ssh sshpass
+
+#######
+# NFS
+#######
+nfs-common nfs-kernel-server
+
+#########
+# Samba
+#########
+smbclient cifs-utils
+
+#######
+# FTP
+#######
+filezilla
+
+##############
+# BitTorrent
+##############
+transmission-gtk
+
+#######
+# VNC
+#######
+tigervnc-standalone-server tigervnc-scraping-server
+remmina
+
+########
+# Mail
+########
+offlineimap maildir-utils
+
+###################
+# Package manager
+###################
+aptitude
+apt-mirror
+
+###################
+# Display Manager
+###################
+lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+light-locker
+
+##############
+# Xorg tools
+##############
+ubuntu-drivers-common
+mesa-utils mesa-utils-extra
+xinput xinput-calibrator
+x11-apps
+xsel xclip xdo xtitle
+wmctrl xdotool xautomation
+xserver-xephyr
+libnotify-dev libnotify-doc #libnotify-bin should be installed from sources (fix on notification IDs)
+onboard
+xtrlock xprintidle
+trash-cli
+hsetroot
+
+##################################
+# Window manager & desktop tools
+##################################
+policykit-desktop-privileges
+openbox openbox-menu obconf
+lxappearance lxappearance-obconf
+dconf-cli
+dconf-editor
+gconf-service gconf-editor
+mate-utils mate-system-monitor
+xfce4-settings xfce4-notifyd xfce4-dict xfce4-screenshooter xfburn
+lxinput
+suckless-tools
+rofi
+galternatives
+gsimplecal
+plank
+arandr
+software-properties-gtk
+synaptic
+gparted
+seahorse
+zenity
+mugshot
+
+###################
+# Desktop theming
+###################
+adwaita-icon-theme-full
+blackbird-gtk-theme
+bluebird-gtk-theme
+greybird-gtk-theme
+
+#########
+# Fonts
+#########
+fonts-liberation
+fonts-liberation2
+fonts-noto
+fonts-noto-cjk
+fonts-noto-cjk-extra 
+fonts-noto-color-emoji
+fonts-noto-hinted
+fonts-noto-mono
+fonts-noto-unhinted
+faenza-icon-theme
+fonts-font-awesome
+fontforge
+
+#############################
+# Virtual Terminal Emulator
+#############################
+xterm mate-terminal
+
+################
+# File manager
+################
+thunar
+caja caja-actions caja-extensions-common caja-open-terminal
+
+########################################
+# File reader/editor & file diff tools
+########################################
+vim-gtk
+glogg
+geany geany-plugins
+meld kdiff3
+bless
+mediainfo
+regexxer
+
+#######################################
+# PDF viewer & PDF manipulation tools
+#######################################
+atril
+wkhtmltopdf
+poppler-utils
+
+############
+# Printing
+############
+printer-driver-all
+cups-common cups-browsed cups-server-common cups-pk-helper
+system-config-printer
+
+###################
+# Archive manager
+###################
+engrampa
+p7zip-full
+pigz
+unp
+
+#######################################
+# Image viewer, browser, manipulation
+#######################################
+libimage-exiftool-perl #for exiftool
+imagemagick
+pqiv
+gpicview
+shotwell
+gimp gimp-data-extras
+inkscape
+gpick
+icc-profiles
+
+###############
+# Web browser
+###############
+firefox
+chromium-browser
+
+##############
+# PulseAudio
+##############
+pulseaudio
+pulseaudio-dlna
+pulseaudio-equalizer
+pulseaudio-module-bluetooth
+pulseaudio-module-lirc
+pulseaudio-module-raop
+pulseaudio-module-zeroconf
+pulseaudio-utils
+pulsemixer
+libpulse-dev
+pavucontrol
+pavumeter
+paprefs
+
+##########################
+# Audio and video player
+##########################
+ffmpeg
+flac
+vlc
+gaupol
+subtitleeditor
+mplayer
+gpodder
+audacity
+espeak
+
+###################
+# Chat and webcam
+###################
+hexchat
+@--no-install-recommends@ empathy telepathy-haze pidgin-sipe
+guvcview
+
+################
+# Office suite
+################
+libreoffice
+
+#####################
+# Data manipulation
+#####################
+csvkit csvkit-doc
+libxml2-utils xmlstarlet tidy xmlto
+jq
+gnuplot plotdrop
+mmark
+
+#######
+# VCS
+#######
+subversion
+git git-gui giggle git-cola
+mercurial
+
+#####################
+# Development tools
+#####################
+flex bison
+build-essential
+gcc g++ make
+autoconf
+cmake
+sassc
+libgtk-3-dev gtk-3-examples
+libgtk2.0-dev gtk2.0-examples
+libxml2-dbg libxml2-dev libxml2-doc
+golang
+
+##############
+# VirtualBox
+##############
+virtualbox
+virtualbox-ext-pack

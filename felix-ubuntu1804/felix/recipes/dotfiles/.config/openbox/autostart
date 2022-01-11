@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Wallpaper setting
+xsetroot -solid "#303030" &
+
+tint2 &
+bash ~/scripts/fdpowermon_run.sh &
+nm-applet &
+
+# Wait a little bit for nm-applet to be started, to get order the icons in the system tray of tint2
+sleep 1
+
+# Volume icon
+pasystray --notify=sink_default --notify=source_default &

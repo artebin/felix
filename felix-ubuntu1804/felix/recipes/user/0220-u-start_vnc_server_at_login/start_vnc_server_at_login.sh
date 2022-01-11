@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+RECIPE_DIRECTORY="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+FELIX_ROOT="${RECIPE_DIRECTORY%/felix/*}/felix"
+if [[ ! -f "${FELIX_ROOT}/felix.sh" ]]; then
+	printf "Cannot find ${FELIX_ROOT}/felix.sh\n"
+	exit 1
+fi
+source "${FELIX_ROOT}/felix.sh"
+initialize_recipe "${RECIPE_DIRECTORY}"
+
+exit_if_not_bash
+exit_if_has_root_privileges
+
+start_vnc_server_at_login(){
+	printf "Start VNC server at login ...\n"
+	
+	printf "Adding .desktop file for starting VNC server at login ...\n"
+	if [[ ! -d "${HOME}/.config/autostart" ]]; then
+		mkdir -p "${HOME}/.config/autostart"
+	fi
+	cd "${RECIPE_DIRECTORY}"
+	cp "SetScreenLayoutAndStartVNCServer.desktop" "${HOME}/.config/autostart"
+	
+	printf "Please execute 'vncpasswd' in order to set your VNC password\n"
+	
+	printf "\n"
+}
+
+start_vnc_server_at_login 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+EXIT_CODE="${PIPESTATUS[0]}"
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
+	exit "${EXIT_CODE}"
+fi

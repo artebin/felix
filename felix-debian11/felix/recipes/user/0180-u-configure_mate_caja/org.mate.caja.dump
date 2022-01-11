@@ -1,0 +1,23 @@
+[preferences]
+default-folder-viewer='list-view'
+show-image-thumbnails='never'
+date-format='iso'
+show-directory-item-counts='never'
+preview-sound='never'
+show-icon-text='never'
+sort-directories-first=false
+
+[window-state]
+start-with-sidebar=true
+geometry='800x550+186+71'
+start-with-status-bar=true
+maximized=false
+start-with-toolbar=true
+
+[icon-view]
+default-use-tighter-layout=true
+labels-beside-icons=true
+
+[list-view]
+default-visible-columns=['name', 'size', 'type', 'date_modified', 'permissions', 'owner', 'group']
+default-column-order=['name', 'size', 'type', 'date_modified', 'permissions', 'owner', 'group', 'date_accessed', 'where', 'mime_type', 'octal_permissions', 'selinux_context']

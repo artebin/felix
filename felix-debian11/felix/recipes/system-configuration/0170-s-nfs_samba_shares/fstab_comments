@@ -1,0 +1,10 @@
+
+# Mount samba share
+#//<IP_OR_HOST_NAME>/<SHARED_DIRECTORY> <MOUNT_POINT> cifs guest,uid=1000,iocharset=utf8 0 0
+
+# Mount nfs share
+# Note: the value of timeo is in deciseconds i.e. timeo=600 means 60 seconds.
+# retrans means the retry. An I/O error is trigger after (retrans * timeo).
+# timeo and retrans can be used in soft NFS only.
+#<IP_OR_HOST_NAME>:<SHARED_DIRECTORY> <MOUNT_POINT> nfs users,rw,sync,soft,rsize=32768,wsize=32768,intr,timeo=600,retrans=2,nosuid,noexec,nodev,noatime,nolock,bg,noauto,comment=x-gvfs-show 0 0
+

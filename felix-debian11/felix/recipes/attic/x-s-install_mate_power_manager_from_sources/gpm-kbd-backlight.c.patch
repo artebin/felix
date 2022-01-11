@@ -1,0 +1,146 @@
+diff --git a/src/gpm-kbd-backlight.c b/src/gpm-kbd-backlight.c
+index ec353e0..00462ff 100644
+--- a/src/gpm-kbd-backlight.c
++++ b/src/gpm-kbd-backlight.c
+@@ -102,6 +102,8 @@ gpm_kbd_backlight_get_brightness (GpmKbdBacklight *backlight,
+    }
+ 
+    *brightness = backlight->priv->brightness_percent;
++   g_debug ("gpm_kbd_backlight_get_brightness: retrieved value for Brightness[%d]", *brightness);
++   
+    return TRUE;
+ }
+ 
+@@ -109,6 +111,8 @@ static gboolean
+ gpm_kbd_backlight_set (GpmKbdBacklight *backlight,
+               guint percentage)
+ {
++	g_debug ("gpm_kbd_backlight_set: input Percentage[%d]", percentage);
++	
+    gint scale;
+    guint goal;
+ 
+@@ -285,6 +289,7 @@ gpm_kbd_backlight_set_brightness (GpmKbdBacklight *backlight,
+ 
+    backlight->priv->master_percentage = percentage;
+ 
++	g_debug( "gpm_kbd_backlight_set_brightness: calling gpm_kbd_backlight_set with Percentage[%d]", percentage );
+    ret = gpm_kbd_backlight_set (backlight, percentage);
+    if (!ret) {
+        g_set_error_literal (error, gpm_kbd_backlight_error_quark (),
+@@ -365,7 +370,10 @@ gpm_kbd_backlight_dbus_method_call (GDBusConnection *connection,
+ 
+    if (g_strcmp0 (method_name, "SetBrightness") == 0) {
+        g_variant_get (parameters, "(u)", &value);
++       
++       g_debug( "gpm_kbd_backlight_dbus_method_call: calling gpm_kbd_backlight_set_brightness with Value[%d]", value );
+        ret = gpm_kbd_backlight_set_brightness (backlight, value, &error);
++
+        if (!ret) {
+            g_dbus_method_invocation_return_gerror (invocation, error);
+            g_error_free (error);
+@@ -437,7 +445,8 @@ gpm_kbd_backlight_evaluate_power_source_and_set (GpmKbdBacklight *backlight)
+    guint value;
+    gboolean ret;
+ 
+-   brightness = backlight->priv->master_percentage;
++   brightness = backlight->priv->brightness_percent;
++   g_debug( "gpm_kbd_backlight_evaluate_power_source_and_set: input brightness[%f]", brightness );
+ 
+    g_object_get (backlight->priv->client,
+              "on-battery",
+@@ -447,10 +456,11 @@ gpm_kbd_backlight_evaluate_power_source_and_set (GpmKbdBacklight *backlight)
+    battery_reduce = g_settings_get_boolean (backlight->priv->settings, GPM_SETTINGS_KBD_BACKLIGHT_BATT_REDUCE);
+ 
+    if (on_battery && battery_reduce) {
++	   g_debug ( "gpm_kbd_backlight_evaluate_power_source_and_set: on_battery && battery_reduce==TRUE" );
+        value = g_settings_get_int (backlight->priv->settings, GPM_SETTINGS_KBD_BRIGHTNESS_DIM_BY_ON_BATT);
+ 
+        if (value > 100) {
+-           g_warning ("Cannot scale brightness down by more than 100%%. Scaling by 50%%");
++           g_debug ("Cannot scale brightness down by more than 100%%. Scaling by 50%%");
+            value = 50;
+        }
+ 
+@@ -458,12 +468,19 @@ gpm_kbd_backlight_evaluate_power_source_and_set (GpmKbdBacklight *backlight)
+        brightness *= scale;
+ 
+        value = (guint) brightness;
+-
++       g_debug ( "gpm_kbd_backlight_evaluate_power_source_and_set: on_battery && battery_reduce==TRUE and BrightnessValueToUse[%d]", value );
+    } else {
++	   g_debug ( "gpm_kbd_backlight_evaluate_power_source_and_set: on_battery && battery_reduce==FALSE" );
+        value = g_settings_get_int (backlight->priv->settings, GPM_SETTINGS_KBD_BRIGHTNESS_ON_AC);
++	   g_debug ( "gpm_kbd_backlight_evaluate_power_source_and_set: on_battery && battery_reduce==FALSE and BrightnessValueToUse[%d]", value );
+    }
+ 
++	g_debug( "gpm_kbd_backlight_evaluate_power_source_and_set: revert BrightnessValueToUse[%d] to BrightnessValue[%d]", value, (guint) brightness );
++	value = (guint) brightness;
++	
++	g_debug( "gpm_kbd_backlight_evaluate_power_source_and_set: calling gpm_kbd_backlight_set with BrightnessValueToUse[%d]", value );
+    ret = gpm_kbd_backlight_set (backlight, value);
++   
+    return ret;
+ }
+ 
+@@ -542,10 +559,14 @@ gpm_kbd_backlight_button_pressed_cb (GpmButton *button,
+    } else if (g_strcmp0 (type, GPM_BUTTON_KBD_BRIGHT_TOGGLE) == 0) {
+        if (backlight->priv->master_percentage == 0) {
+            /* backlight is off turn it back on */
++           g_debug( "backlight is off turn it back on" );
++           g_debug( "calling gpm_kbd_backlight_set with saved_brightness[%d]", saved_brightness );
+            gpm_kbd_backlight_set (backlight, saved_brightness);
+        } else {
+            /* backlight is on, turn it off and save current value */
++           g_debug( "backlight is on, turn it off and save current value" );
+            saved_brightness = backlight->priv->master_percentage;
++           g_debug( "calling gpm_kbd_backlight_set with saved_brightness[%d]", 0 );
+            gpm_kbd_backlight_set (backlight, 0);
+        }
+    }
+@@ -594,12 +615,14 @@ gpm_kbd_backlight_idle_changed_cb (GpmIdle *idle,
+        return;
+ 
+    if (mode == GPM_IDLE_MODE_NORMAL) {
++        g_debug( "gpm_kbd_backlight_idle_changed_cb: mode == GPM_IDLE_MODE_NORMAL" );
+         egg_debug("GPM_IDLE_MODE_NORMAL");
+-       backlight->priv->master_percentage = 100;
++       //backlight->priv->master_percentage = 100;
+        gpm_kbd_backlight_evaluate_power_source_and_set (backlight);
+    } else if (mode == GPM_IDLE_MODE_DIM) {
++	   g_debug( "gpm_kbd_backlight_idle_changed_cb: mode == GPM_IDLE_MODE_DIM" );
+        egg_debug("GPM_IDLE_MODE_DIM");
+-       brightness = backlight->priv->master_percentage;
++       brightness = backlight->priv->brightness_percent;
+        value = g_settings_get_int (backlight->priv->settings, GPM_SETTINGS_KBD_BRIGHTNESS_DIM_BY_ON_IDLE);
+ 
+        if (value > 100) {
+@@ -611,8 +634,10 @@ gpm_kbd_backlight_idle_changed_cb (GpmIdle *idle,
+        brightness *= scale;
+ 
+        value = (guint) brightness;
++       g_debug( "gpm_kbd_backlight_idle_changed_cb: calling gpm_kbd_backlight_set with value[%d]", value );
+        gpm_kbd_backlight_set (backlight, value);
+    } else if (mode == GPM_IDLE_MODE_BLANK) {
++	   g_debug( "gpm_kbd_backlight_idle_changed_cb: calling gpm_kbd_backlight_set with value[%d]", 0u );
+        gpm_kbd_backlight_set (backlight, 0u);
+    }
+ }
+@@ -752,7 +777,7 @@ gpm_kbd_backlight_init (GpmKbdBacklight *backlight)
+ 
+ err:
+    backlight->priv->brightness = 0;
+-   backlight->priv->brightness_percent = 100;
++   backlight->priv->brightness_percent = 0;
+    backlight->priv->max_brightness = 0;
+ 
+ noerr:
+@@ -800,6 +825,8 @@ noerr:
+              G_CALLBACK (gpm_kbd_backlight_control_resume_cb), backlight);
+ 
+    /* set initial values for whether we're on AC or battery*/
++   g_debug ( "gpm_kbd_backlight_init: set initial values for whether we're on AC or battery" );
++   g_debug ( "gpm_kbd_backlight_init: brightness_percent[%d]", backlight->priv->brightness_percent );
+    gpm_kbd_backlight_evaluate_power_source_and_set (backlight);
+ }
+ 

@@ -1,0 +1,32 @@
+USER_NAME="frogstar"
+VM_DIRECTORY_PATH=""
+VM_NAME=$(basedir ${VM_DIRECTORY_PATH})
+VM_SERVICE_FILE_NAME="virtualbox-${VM_NAME}.service"
+
+# Install VirtualBox Extension Pack
+sudo apt-get install virtualbox-ext-pack
+
+# Create user and copy VM files
+useradd "${USER_NAME}"
+addgroup "${USER_NAME}" vboxusers
+mkdir -p "/home/${USER_NAME}/VMs/"
+cp -R "${VM_DIRECTORY_PATH}" "/home/${USER_NAME}/VMs/"
+chown -R "${USER_NAME}":"${USER_NAME}" "/home/${USER_NAME}"
+
+# Register the VM for user
+runuser -l "${USER_NAME}" -c "VBoxManage registervm /home/${USER_NAME}/VMs/${VM_NAME}/${VM_NAME}.vbox"
+
+# Non existing NIC => update of the network configuration may be needed
+- edit ${VM_NAME}.vbox
+- search for the nonexisting NIC and replace it by the proper one
+
+# Add systemd service and enable it
+cp "./${VM_SERVICE_FILE_NAME}" "/etc/systemd/system/${VM_SERVICE_FILE_NAME}"
+systemctl daemon-reload
+
+# Start the service
+systemctl start virtualbox-frogstar.service
+systemctl status virtualbox-frogstar.service
+
+# Enable the service
+systemctl enable "${VM_SERVICE_FILE_NAME}"

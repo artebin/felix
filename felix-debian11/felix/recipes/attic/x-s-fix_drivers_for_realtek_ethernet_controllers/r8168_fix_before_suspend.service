@@ -1,0 +1,14 @@
+[Unit]
+Description=Remove r8169 module before suspend/hybrid-sleep/hibernate
+Before=suspend.target
+Before=hybrid-sleep.target
+Before=hibernate.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/modprobe -r r8168
+
+[Install]
+WantedBy=suspend.target
+WantedBy=hybrid-sleep.target
+WantedBy=hibernate.target

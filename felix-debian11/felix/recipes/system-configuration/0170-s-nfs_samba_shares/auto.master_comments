@@ -1,0 +1,9 @@
+
+# Reference the mount points in /etc/auto.master like below:
+# +auto.master
+# /- /etc/auto.master.d/auto.share#1 --timeout=600
+# /- /etc/auto.master.d/auto.share#2 --timeout=600
+#
+# Add the mount configuration files in /etc/auto.master.d/ like below:
+# <MOUNT_POINT> -users,rw,sync,soft,rsize=32768,wsize=32768,intr,timeo=600,retrans=2,nosuid,noexec,nodev,noatime,nolock,bg <IP_OR_HOST_NAME>:<SHARED_DIRECTORY>
+

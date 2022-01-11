@@ -1,0 +1,9 @@
+[/]
+button-power='interactive'
+info-last-device='/org/freedesktop/UPower/devices/line_power_AC'
+button-lid-ac='suspend'
+button-suspend='suspend'
+info-page-number=0
+info-history-type='charge'
+info-stats-type='discharge-accuracy'
+icon-policy='always'

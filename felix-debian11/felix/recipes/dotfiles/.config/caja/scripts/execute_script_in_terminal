@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# This caja script runs a script in a terminal and wait for a key to be
+# pressed before exiting the terminal.
+
+usage(){
+	echo "Usage: ${0} <script to run>"
+}
+
+INPUT_FILE=$(readlink -f "${1}")
+INPUT_DIRNAME=$(dirname "${INPUT_FILE}")
+INPUT_FILENAME=$(basename "${INPUT_FILE}")
+
+# Check that the file begins with a shebang
+if ! grep -xq '^#!.*$' "${INPUT_FILE}" ]]; then
+	zenity --no-wrap --error --text="Cannot find a sheebang in file: ${INPUT_FILENAME}"
+	exit 1
+fi
+
+x-terminal-emulator -e "bash -c \"cd ${INPUT_DIRNAME};perl ${INPUT_FILENAME};printf '\n\n';read -p 'Press enter to exit.'\""

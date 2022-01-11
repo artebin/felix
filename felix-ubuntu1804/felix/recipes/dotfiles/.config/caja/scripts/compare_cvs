@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+usage(){
+	echo "Usage: ${0} <file>"
+}
+
+if [[ "$#" -eq "0" ]] | [[ "$#" -gt "2" ]]; then
+	zenity --error --text="The script ${0} expects &lt;file&gt; in argument"
+	exit 1
+fi
+
+meld "${1}"

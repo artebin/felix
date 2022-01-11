@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# This caja script unpacks an archive with unp in a terminal, and wait to a key
+# to be pressed before exit.
+
+INPUT_FILE=$(readlink -f "${1}")
+INPUT_DIRNAME=$(dirname "${INPUT_FILE}")
+INPUT_FILENAME=$(basename "${INPUT_FILE}")
+
+if [[ ! -e "${INPUT_FILE}" ]]; then
+	zenity --no-wrap --error --text="Cannot find ${INPUT_FILE}"
+	exit 1
+fi
+
+if [[ ! -f "${INPUT_FILE}" ]]; then
+	zenity --no-wrap --error --text="Cannot use this script on a directory"
+	exit 1
+fi
+
+COMMAND=$(printf "cd '%s';unp '%s';printf '\n\n';read -p 'Press enter to exit.'" "${INPUT_DIRNAME}" "${INPUT_FILENAME}")
+x-terminal-emulator -e "bash -c \"${COMMAND}\""
+RETURN_CODE=$?
+
+if [[ "${RETURN_CODE}" -ne 0 ]]; then
+	zenity --no-wrap --error --text="$(printf "An error occurred while unpacking the file:\n%s\n\nErrorCode: %s" "${INPUT_FILE}" "${RETURN_CODE}")"
+	exit 1
+fi
+
+exit 0

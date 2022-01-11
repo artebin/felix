@@ -1,0 +1,17 @@
+################################################################################
+# Recipes from recipes/user
+################################################################################
+recipes/user/0000-s-configure_user_account
+recipes/user/0001-u-install_dotfiles
+recipes/user/0010-u-install_user_scripts
+recipes/user/0060-u-configure_mate_terminal
+recipes/user/0090-u-configure_gtk
+recipes/user/0100-u-configure_xfce4_notifyd
+recipes/user/0110-u-blueman_applet_should_not_auto_enable_bluetooth_adapter
+recipes/user/0150-u-configure_gsimplecal
+recipes/user/0170-u-configure_xfce4_thunar
+recipes/user/0180-u-configure_mate_caja
+recipes/user/0200-u-configure_vlc
+recipes/user/0210-u-configure_firefox_default_profile
+recipes/user/0220-u-start_vnc_server_at_login
+recipes/user/9999-u-configure_default_applications

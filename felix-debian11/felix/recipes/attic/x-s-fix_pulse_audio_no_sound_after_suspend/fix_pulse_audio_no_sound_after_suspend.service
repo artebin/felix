@@ -1,0 +1,10 @@
+[Unit]
+Description=Fix PulseAudio no sound after suspend
+After=suspend.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/pasuspender /bin/true
+
+[Install]
+WantedBy=suspend.target

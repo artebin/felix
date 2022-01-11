@@ -1,0 +1,15 @@
+[Unit]
+Description=VirtualBox Frogstar Service
+Requires=virtualbox.service
+After=virtualbox.service
+Before=shutdown.target reboot.target halt.target
+
+[Service]
+User=frogstar
+Group=vboxusers
+ExecStart=/usr/bin/VBoxHeadless -s frogstar
+#ExecStart=/usr/bin/VBoxManage startvm frogstar -type vrdp
+ExecStop=/usr/bin/VBoxManage controlvm frogstar savestate
+
+[Install]
+WantedBy=multi-user.target

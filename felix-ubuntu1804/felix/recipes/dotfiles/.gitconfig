@@ -1,0 +1,7 @@
+[diff]
+	tool = meld
+[merge]
+	tool = meld
+[gui]
+	editor = geany
+	historybrowser = gitk

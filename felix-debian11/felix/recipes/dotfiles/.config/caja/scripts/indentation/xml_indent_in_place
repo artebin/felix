@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# This caja script calls XMLStarlet to indent an XML file
+
+INPUT_FILE=$(readlink -f "${1}")
+
+if [[ ! -e "${INPUT_FILE}" ]]; then
+	zenity --no-wrap --error --text="Cannot find ${INPUT_FILE}"
+	exit 1
+fi
+
+if [[ ! -f "${INPUT_FILE}" ]]; then
+	zenity --no-wrap --error --text="Cannot use this script on a directory"
+	exit 1
+fi
+
+xmlstarlet fo "${INPUT_FILE}" >"${INPUT_FILE}.tmp" 2>"${INPUT_FILE}.log"
+RETURN_CODE=$?
+
+if [[ "${RETURN_CODE}" -eq 0 ]]; then
+	rm "${INPUT_FILE}"
+	mv "${INPUT_FILE}.tmp" "${INPUT_FILE}"
+	if [[ -e "${INPUT_FILE}.log" ]]; then
+		rm -f "${INPUT_FILE}.log"
+	fi
+	exit 0
+else
+	zenity --no-wrap --error --text="An error occurred while indenting the file"
+	if [[ -e "${INPUT_FILE}.tmp" ]]; then
+		rm -f "${INPUT_FILE}.tmp"
+	fi
+	exit 1
+fi

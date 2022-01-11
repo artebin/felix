@@ -1,0 +1,27 @@
+# Remove some XFCE software
+mousepad
+ristretto #Image viewer => we prefer to use EOM from MATE
+parole #Media player => we prefer to use VLC
+
+# Remove some GNOME software
+file-roller #GNOME Archive Manager (it is still "File Roller" whatever can say the GNOME team... )
+evince evince-common
+
+# Remove GNOME Update Manager and Notifier
+#update-manager update-manager-core update-notifier update-notifier-common
+
+# Remove GNOME Software Center and snap
+gnome-software gnome-software-common gnome-software-plugin-snap snapd
+
+# Remove Ubuntu release upgrader
+ubuntu-release-upgrader-core ubuntu-release-upgrader-gtk
+
+# Remove Ubuntu Crash Reporter
+# NJ:18-12-09: must not be removed in Xubuntu because xorg and xserver-xorg depend on it
+#apport apport-gtk apport-symptoms python3-apport
+
+# Remove Ubuntu Error Reporter (it sends to Canonical the crash reports created by Apport)
+# NJ:18-12-09: must not be removed in Xubuntu because xorg and xserver-xorg depend on it
+#whoopsie libwhoopsie0
+
+popularity-contest
