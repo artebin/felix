@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] create_recipe_list_file_from_directory() function does not ignore xxxx recipes, it should also be refactored.
 - [x] Replace the code for finding felix.sh by the oneline in <https://unix.stackexchange.com/questions/6463/find-searching-in-parent-directories-instead-of-subdirectories>, and remove the extra "felix" directory.
 - [ ] Change ~/scripts for ~/bin.
 - [ ] Disable recipe for install fonts and add package noto-emojis.
