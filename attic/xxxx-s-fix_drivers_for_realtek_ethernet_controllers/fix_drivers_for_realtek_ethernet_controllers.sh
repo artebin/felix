@@ -11,6 +11,7 @@ exit_if_has_not_root_privileges
 
 fix_drivers_for_realtek_ethernet_controllers(){
 	echo "Fixing drivers r8168/r8169 for realtek ethernet controllers ..."
+	echo "See <https://askubuntu.com/questions/1052971/r8168-r8169-realtek-driver-module-troubles>"
 	
 	# The command below prints the devices and the drivers that are currently used
 	lspci -k -nn | grep -A 3 -i net
