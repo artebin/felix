@@ -1,5 +1,7 @@
 # TODOS
 
+- [ ] Remove cheese, it i replaced by guvcview.
+- [ ] Add a recipe to build caja from the sources.
 - [ ] Replace locate by plocate.
 - [ ] Finally understand the problem with xdg-open and xfcepanel <https://qastack.fr/ubuntu/5172/running-a-desktop-file-in-the-terminal>.
 - [ ] Clean the package list, planck, graybird theme etc.
