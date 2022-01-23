@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] Replace locate by plocate.
 - [ ] Finally understand the problem with xdg-open and xfcepanel <https://qastack.fr/ubuntu/5172/running-a-desktop-file-in-the-terminal>.
 - [ ] Clean the package list, planck, graybird theme etc.
 - [ ] create_recipe_list_file_from_directory() function does not ignore xxxx recipes, it should also be refactored.
