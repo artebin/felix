@@ -6,6 +6,7 @@
 #fi
 #trap 'test -n "$SSH_AUTH_SOCK" && eval `/usr/bin/ssh-agent -k`' 0
 
+# Using <https://unix.stackexchange.com/a/217223/169557>
 if [ ! -S ~/.ssh/ssh_auth_sock ]; then
 	eval `ssh-agent`
 	ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
