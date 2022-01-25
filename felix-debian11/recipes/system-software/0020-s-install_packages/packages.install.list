@@ -181,7 +181,7 @@ xterm mate-terminal
 # File manager
 ################
 thunar
-caja caja-actions caja-extensions-common caja-open-terminal
+#caja caja-actions caja-extensions-common caja-open-terminal
 
 ########################################
 # File reader/editor & file diff tools
