@@ -18,19 +18,19 @@ install_dmenu_from_sources(){
 	cd "${RECIPE_DIRECTORY}"
 	
 	echo "Installing dmenu from sources ..."
-	tar xzf dmenu-4.7.tar.gz
-	cp ./dmenu-lineheight-4.7.diff ./dmenu-4.7/
-	cp ./dmenu-xyw-4.7.diff ./dmenu-4.7/
+	tar xzf dmenu-5.0.tar.gz
+	cp ./dmenu-lineheight-5.0.diff ./dmenu-4.7/
+	cp ./dmenu-xyw-5.0.diff ./dmenu-4.7/
 	
-	cd ./dmenu-4.7
-	patch < dmenu-lineheight-4.7.diff
-	patch < dmenu-xyw-4.7.diff
+	cd ./dmenu-5.0
+	patch < dmenu-lineheight-5.0.diff
+	patch < dmenu-xyw-5.0.diff
 	make
 	make install
 	
 	# Cleanup
 	cd "${RECIPE_DIRECTORY}"
-	rm -fr ./dmenu-4.7/
+	rm -fr ./dmenu-5.0/
 	
 	echo
 }
