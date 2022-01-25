@@ -18,7 +18,7 @@ install_check_from_sources(){
 	printf "Install check from sources (check >= 0.11.0 is a dependency of rofi) ...\n"
 	
 	# Install dependencies
-	install_package_if_not_installed "texinfo"
+	install_package_if_not_installed "texinfo libxcb-randr0-dev"
 	
 	# Clone git repository
 	cd "${RECIPE_DIRECTORY}"
