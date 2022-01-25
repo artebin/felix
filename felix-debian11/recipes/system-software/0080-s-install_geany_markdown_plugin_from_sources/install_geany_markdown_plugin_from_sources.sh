@@ -18,7 +18,7 @@ install_geany_markdown_plugin_from_sources(){
 	printf "Install Geany / Markdown plugin from sources ...\n"
 	
 	# Install dependencies
-	install_package_if_not_installed "intltool" "libwebkit2gtk-4.0-dev"
+	install_package_if_not_installed "intltool" "libwebkit2gtk-4.0-dev libgtkspell3-3-dev"
 	
 	# Clone git repository
 	cd "${RECIPE_DIRECTORY}"
