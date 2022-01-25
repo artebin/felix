@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] Install rofimoji <https://github.com/fdw/rofimoji>.
 - [ ] Where can I found the mount point from Caja?
 - [ ] Disable the autostart of the ssh-agent with <https://unix.stackexchange.com/a/79861/169557> and start it from .xsessionrc.
 - [ ] Install pass from the sources, not from a release.
