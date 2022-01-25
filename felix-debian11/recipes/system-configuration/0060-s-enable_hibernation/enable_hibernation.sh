@@ -19,7 +19,7 @@ enable_hibernation(){
 	
 	# Add polkit authority for upower and logind
 	cd "${RECIPE_DIRECTORY}"
-	cp com.ubuntu.enable-hibernate.pkla /etc/polkit-1/localauthority/50-local.d/com.ubuntu.enable-hibernate.pkla
+	cp enable-hibernate.pkla /etc/polkit-1/localauthority/50-local.d/enable-hibernate.pkla
 	
 	printf "\n"
 }
