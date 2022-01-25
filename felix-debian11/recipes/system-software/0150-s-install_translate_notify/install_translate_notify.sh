@@ -24,8 +24,6 @@ install_translate_notify(){
 	echo
 }
 
-
-
 cd "${RECIPE_DIRECTORY}"
 install_translate_notify 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
