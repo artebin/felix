@@ -16,7 +16,7 @@ autofs
 fuseiso
 fuseiso9660
 vbetool
-locate
+plocate
 crudini
 uuid-runtime
 
