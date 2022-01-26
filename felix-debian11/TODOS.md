@@ -1,18 +1,19 @@
 # TODOS
 
+- [x] Add ssh-agent.sh in .bashrc.d.
+- [x] Disable the autostart of the ssh-agent with <https://unix.stackexchange.com/a/79861/169557> and start it from .xsessionrc and .bashrc.
+- [x] Replace the code for finding felix.sh by the oneline in <https://unix.stackexchange.com/questions/6463/find-searching-in-parent-directories-instead-of-subdirectories>, and remove the extra "felix" directory.
+
 - [ ] Install rofimoji <https://github.com/fdw/rofimoji>.
 - [ ] Where can I found the mount point from Caja?
-- [ ] Disable the autostart of the ssh-agent with <https://unix.stackexchange.com/a/79861/169557> and start it from .xsessionrc.
 - [ ] Install pass from the sources, not from a release.
 - [ ] Install nocsd, it's not only for the header bar but also for the window frame and resizing handles.
-- [x] Add ssh-agent.sh in .bashrc.d.
 - [ ] Remove cheese, it is replaced by guvcview.
 - [ ] Add a recipe to build caja from the sources.
 - [ ] Replace locate by plocate.
 - [ ] Finally understand the problem with xdg-open and xfcepanel <https://qastack.fr/ubuntu/5172/running-a-desktop-file-in-the-terminal>.
 - [ ] Clean the package list, planck, graybird theme etc.
 - [ ] create_recipe_list_file_from_directory() function does not ignore xxxx recipes, it should also be refactored.
-- [x] Replace the code for finding felix.sh by the oneline in <https://unix.stackexchange.com/questions/6463/find-searching-in-parent-directories-instead-of-subdirectories>, and remove the extra "felix" directory.
 - [ ] Change ~/scripts for ~/bin.
 - [ ] Disable recipe for install fonts and add package noto-emojis.
 - [ ] Add rofimoji.

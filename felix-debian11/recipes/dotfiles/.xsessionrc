@@ -30,7 +30,9 @@ fi
 
 bash "${HOME}/scripts/clipmenud_run.sh" &
 
+#################
 # Hotkey daemon
+#################
 sxhkd &
 
 # Multimedia keys can be managed by xfce4-volumed if sxhkd is not doing it
@@ -77,3 +79,23 @@ fi
 # Suspend screen
 # xset dpms force suspend
 #
+
+#############
+# Wallpaper
+#############
+hsetroot -tile /home/njames/Projects/MyConfig/wallpapers/Textures/texture.jpg &
+
+####################
+# Bluetooth applet
+####################
+blueman-applet &
+
+################################
+# SSH agent for X applications
+################################
+if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+	eval `ssh-agent`
+	ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+fi
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+ssh-add -l > /dev/null || ssh-add
