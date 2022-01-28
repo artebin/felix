@@ -10,6 +10,9 @@
 - [ ] Install pass from the sources, not from a release.
 - [ ] Install nocsd, it's not only for the header bar but also for the window frame and resizing handles.
 - [ ] Remove cheese, it is replaced by guvcview => already removed but show it in openbox menu.
+- [ ] Errors while installing pcp.
+- [ ] Copy start_http_server_for_apt_mirrors.sh in the scripts folder.
+- [ ] Remove cheese, it i replaced by guvcview.
 - [ ] Add a recipe to build caja from the sources.
 - [ ] Finally understand the problem with xdg-open and xfcepanel <https://qastack.fr/ubuntu/5172/running-a-desktop-file-in-the-terminal>.
 - [ ] Clean the package list, planck, graybird theme etc.
