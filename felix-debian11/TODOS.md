@@ -4,6 +4,8 @@
 - [x] Disable the autostart of the ssh-agent with <https://unix.stackexchange.com/a/79861/169557> and start it from .xsessionrc and .bashrc.
 - [x] Replace the code for finding felix.sh by the oneline in <https://unix.stackexchange.com/questions/6463/find-searching-in-parent-directories-instead-of-subdirectories>, and remove the extra "felix" directory.
 - [x] Replace locate by plocate.
+- [x] Fixed pre-installation of firefox addons.
+- [x] Firefox is asking to save the passwords => it was because "firefox -p" does not exist anymore, correct argument is "-P".
 
 - [ ] Something is wrong about the ssh-agent, it shows error messages until I copied .ssh folder.
 - [ ] Move LightLocker configuration in openbox menu, it is not only about the Display.
