@@ -46,31 +46,14 @@ install_caja_from_sources(){
 	cd caja-extensions
 	ACLOCAL_FLAGS="-I /usr/share/aclocal -I /usr/local/share/aclocal" ./autogen.sh --prefix=/usr
 	make
-	make install
-	
-	printf "Installing libgtop required for caja-actions from sources...\n"
-	cd "${RECIPE_DIRECTORY}"
-	git clone "https://gitlab.gnome.org/GNOME/libgtop"
-	cd libgtop
-	./autogen.sh
-	make
-	make install
-	
-	printf "Installing caja-actions from sources...\n"
-	cd "${RECIPE_DIRECTORY}"
-	git clone "https://github.com/mate-desktop/caja-actions"
-	cd caja-actions
-	ACLOCAL_FLAGS="-I /usr/share/aclocal -I /usr/local/share/aclocal" ./autogen.sh --prefix=/usr
-	make
+	cd open-terminal
 	make install
 	
 	# Cleanup
 	cd "${RECIPE_DIRECTORY}"
-	#rm -fr mate-common
-	#rm -fr caja
-	#rm -fr caja-extension
-	#rm -fr libgtop
-	#rm -fr caja-actions
+	rm -fr mate-common
+	rm -fr caja
+	rm -fr caja-extension
 	
 	printf "\n"
 }
