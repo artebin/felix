@@ -5,3 +5,7 @@
 [gui]
 	editor = geany
 	historybrowser = gitk
+[format]
+	pretty = format:%Cred%h%Creset %Cblue<%an>%Creset %Cgreen%ci%Creset %s
+[pull]
+	ff = only
