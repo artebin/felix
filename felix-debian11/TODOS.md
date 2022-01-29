@@ -5,6 +5,9 @@
 - [x] Replace the code for finding felix.sh by the oneline in <https://unix.stackexchange.com/questions/6463/find-searching-in-parent-directories-instead-of-subdirectories>, and remove the extra "felix" directory.
 - [x] Replace locate by plocate.
 
+- [ ] Move LightLocker configuration in openbox menu, it is not only about the Display.
+- [ ] Evolution processes keeps running after executing Evolution.
+- [ ] Openbox menu for disable/enable the touchscreen, see <https://mastizada.com/blog/disable-touchscreen-in-gnulinux/>.
 - [ ] Install rofimoji <https://github.com/fdw/rofimoji>.
 - [ ] Where can I found the mount point from Caja?
 - [ ] Install pass from the sources, not from a release.
