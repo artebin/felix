@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-# Wallpaper setting
-xsetroot -solid "#303030" &
-
 tint2 &
 bash ~/scripts/fdpowermon_run.sh &
 nm-applet &

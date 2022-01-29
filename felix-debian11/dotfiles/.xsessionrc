@@ -83,7 +83,7 @@ fi
 #############
 # Wallpaper
 #############
-hsetroot -tile /home/njames/Projects/MyConfig/wallpapers/Textures/texture.jpg &
+hsetroot -solid "#303030" &
 
 ####################
 # Bluetooth applet
