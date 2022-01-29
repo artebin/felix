@@ -95,7 +95,7 @@ configure_firefox_default_profile(){
 	
 	# Since Firefox ESR 60 it is mandatory to force the profile at the first execution of firefox
 	# else it will create a new default profile.
-	firefox -p "default" "about:profiles" >/dev/null 2>/dev/null &
+	firefox -P "default" "about:profiles" >/dev/null 2>/dev/null &
 	
 	printf "\n"
 }
@@ -107,21 +107,21 @@ pre_install_extensions_in_firefox_profile(){
 	fi
 	FIREROX_PROFILE_PATH="${1}"
 	
-	printf "Pre-installing extension: AdBlock Plus ...\n"
+	printf "Pre-installing extension: AdBlocker Ultimate ...\n"
 	cd "${RECIPE_DIRECTORY}"
-	wget --quiet "https://eyeo.to/adblockplus/firefox_install/firefox" -O adblockplus.xpi
-	rename_xpi_file_with_web_extension_with_id adblockplus.xpi
+	wget --quiet "https://addons.mozilla.org/firefox/downloads/file/3877418/adblocker_ultimate-3.7.15-an+fx.xpi" -O adblocker_ultimate-3.7.15-an+fx.xpi
+	rename_xpi_file_with_web_extension_with_id adblocker_ultimate-3.7.15-an+fx.xpi
 	
-	printf "Pre-installing extension: Google Search Link Fix ...\n"
-	wget --quiet "https://addons.mozilla.org/firefox/downloads/file/3051379/google_search_link_fix-1.6.8-an+fx.xpi?src=dp-btn-primary" -O google_search_link_fix.xpi
-	rename_xpi_file_with_web_extension_with_id google_search_link_fix.xpi
+	printf "Pre-installing extension: Google Redirect Fixer Tracking Remover ...\n"
+	wget --quiet "https://addons.mozilla.org/firefox/downloads/file/706680/google_redirects_fixer_tracking_remover-3.0.0-an+fx.xpi" -O google_redirects_fixer_tracking_remover-3.0.0-an+fx.xpi
+	rename_xpi_file_with_web_extension_with_id google_redirects_fixer_tracking_remover-3.0.0-an+fx.xpi
 	
 	printf "Pre-installing extension: Google Translator For Firefox ...\n"
-	wget --quiet "https://addons.mozilla.org/firefox/downloads/file/1167275/google_translator_for_firefox-3.0.3.3-fx.xpi?src=dp-btn-primary" -O google_translator_for_firefox.xpi
+	wget --quiet "https://addons.mozilla.org/firefox/downloads/file/1167275/google_translator_for_firefox-3.0.3.3-fx.xpi" -O google_translator_for_firefox.xpi
 	rename_xpi_file_with_web_extension_with_id google_translator_for_firefox.xpi
 	
 	printf "Pre-installing extension: RSS Preview ...\n"
-	wget --quiet "https://addons.mozilla.org/firefox/downloads/file/3379752/rsspreview-3.10.1-an+fx.xpi?src=recommended" -O rss_preview.xpi
+	wget --quiet "https://addons.mozilla.org/firefox/downloads/file/3379752/rsspreview-3.10.1-an+fx.xpi" -O rss_preview.xpi
 	rename_xpi_file_with_web_extension_with_id rss_preview.xpi
 	
 	mkdir -p "${FIREROX_PROFILE_PATH}/extensions"
