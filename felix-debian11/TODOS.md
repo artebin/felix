@@ -6,10 +6,19 @@
 - [x] Replace locate by plocate.
 - [x] Fixed pre-installation of firefox addons.
 - [x] Firefox is asking to save the passwords => it was because "firefox -p" does not exist anymore, correct argument is "-P".
+- [x] Remove cheese, it i replaced by guvcview.
+- [x] Evolution processes keeps running after executing Evolution => evolution --force-shutdown.
+- [x] Should install rofi from sources.
+- [x] Configure_apticron#ubuntu_bionic should be moved to xtra.
+- [x] Use clearine for openbox exit dialog, we need to because python2 is removed from Debian11 <https://github.com/okitavera/clearine>. => will use rofi instead.
+- [x] Use hsetroot instead of xsetroot which is not compatible with xcompmgr/compton.
 
+- [ ] Install rofi menus <https://github.com/adi1090x/rofi> and update sxhkd for power button.
+- [ ] Fix path for debian.
+- [ ] Add a recipe for Debian Buster and another one for minimal Ubuntu.
+- [ ] Add a recipe for adding /sbin in the path of regular users in debian.
 - [ ] Something is wrong about the ssh-agent, it shows error messages until I copied .ssh folder.
 - [ ] Move LightLocker configuration in openbox menu, it is not only about the Display.
-- [ ] Evolution processes keeps running after executing Evolution.
 - [ ] Openbox menu for disable/enable the touchscreen, see <https://mastizada.com/blog/disable-touchscreen-in-gnulinux/>.
 - [ ] Install rofimoji <https://github.com/fdw/rofimoji>.
 - [ ] Where can I found the mount point from Caja?
@@ -18,7 +27,6 @@
 - [ ] Remove cheese, it is replaced by guvcview => already removed but show it in openbox menu.
 - [ ] Errors while installing pcp.
 - [ ] Copy start_http_server_for_apt_mirrors.sh in the scripts folder.
-- [ ] Remove cheese, it i replaced by guvcview.
 - [ ] Add a recipe to build caja from the sources.
 - [ ] Finally understand the problem with xdg-open and xfcepanel <https://qastack.fr/ubuntu/5172/running-a-desktop-file-in-the-terminal>.
 - [ ] Clean the package list, planck, graybird theme etc.
@@ -34,14 +42,10 @@
 - [ ] OSD menu for openbox window actions?
 - [ ] Add uniutils.
 - [ ] <https://www.reddit.com/r/linuxquestions/comments/pmodjk/cant_change_text_color_in_rofi_theme_file/>.
-- [ ] Should install rofi from sources.
 - [ ] <https://github.com/adi1090x/rofi>.
 - [ ] Check the nice on unpack_in_terminal.
-- [ ] Update firefox configuration and reduce the number of contentprocessor by default (8 -> 4).
 - [ ] Fix configure_acpi_wakeup.
-- [ ] Configure_apticron#ubuntu_bionic should be moved to xtra.
 - [ ] Force_soffice_to_use_single_instance should be move to xtra.
-- [ ] Use clearine for openbox exit dialog, we need to because python2 is removed from Debian11 <https://github.com/okitavera/clearine>.
 - [ ] Add pdfgrep, ttyclock and webp to list of packages.
 - [ ] Use t2ec for a better tint2 <https://github.com/nwg-piotr/t2ec>. It would be also good to show the volume as percentage (can be 110%).
 - [ ] Can we disable the trash?
@@ -53,8 +57,6 @@
 - [ ] Auto mount FAT usb stick and all files have execute permissions, remove that.
 - [ ] MoveRelative for W-Left|Right|Up|down and MovetoEdge with A-W-Left|Right|Up|Down.
 - [ ] bash alias "ls --full-time".
-- [ ] Add a recipe for adding /sbin in the path of regular users in debian.
-- [ ] Add a recipe for Debian Buster and another one for minimal Ubuntu.
 - [ ] Unpack is console script should be nice +10.
 - [ ] VLC plugin shuffle and SongList <https://addons.videolan.org/p/1154018/>.
 - [ ] Move from Faenza to Obsidian or Delft (they are both based on Faenza).
@@ -64,8 +66,6 @@
 - [ ] Documentation and tool to log incoming traffic.
 - [ ] Add configuration recipe for xpad + change icon.
 - [ ] Command for picking a window a apply a kpie rule.
-- [ ] Terminal with support for images (mlterm).
-- [ ] Use hsetroot instead of xsetroot which is not compatible with xcompmgr/compton.
 - [ ] Maybe use arc thene <https://www.reddit.com/r/pop_os/comments/hnxgzv/i_have_been_trying_for_hours_to_get_rid_of_the/>.
 - [ ] Remove rounded corner in NewAdwaita <https://blog.gtk.org/2019/01/14/theme-changes-in-gtk-3/>.
 - [ ] Add a recipe for unified remote for the PI4 <https://www.unifiedremote.com/tutorials/how-to-install-unified-remote-server-deb-via-terminal>.
@@ -192,19 +192,20 @@
 
 # ISSUES
 
-- [ ] Pasystray: middle click on the tray icon is not muting the sound anymore.
+- [x] Pasystray: middle click on the tray icon is not muting the sound anymore => fixed in recent version of pasystray.
+- [x] Caja: copying files is very slow compared to the command line (local or remote) => it can be because of GVFS => nothing to fix.
+- [x] dmenu: dmenu appears on the monitor on which the currently focused window is located. It should use the mouse pointer location to determine the monitor. => we use rofi now.
+- [x] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement. => we are using autofs now.
+
 - [ ] GPicView: slow at rendering SVG files.
-- [ ] Caja: copying files is very slow compared to the command line (local or remote) => it can be because of GVFS
 - [ ] Caja: create new directory with name starting with a dot is bugged.
 - [ ] Caja: renaming a .desktop file is bugged.
 - [ ] Caja: opening 2 window of file Properties is buggy.
 - [ ] Caja: always show the file name (extension are hidden for .desktop files for example) See <https://github.com/mate-desktop/caja/issues/727> open ticket.
 - [ ] Caja: when opening executable scripts (bash, python) => contextual menu is showing 'open'. Good UX would be 3 menu items: 'Run', 'Run in terminal' and 'Open with X', X being the default application for the mime type. However today there is only 'Open' which will open dialog a popup asking 'Display or run or run in terminal?'. The user does not know what is behind 'Display', display with what??? Even worst: the default application for the mime type is not listed in the 'Open with' maybe because, well... it is the application used for 'Display', erf...
-- [ ] dmenu: dmenu appears on the monitor on which the currently focused window is located. It should use the mouse pointer location to determine the monitor.
 - [ ] Geany/Markdown: plugin is not properly using the css specified (colors are not used and lines starting with the character `#` inside a blockcode are treated as a heading).
 - [ ] Geany/Markdown: when all the document are closed, the Markdown Preview still shows the last preview done.
 - [ ] Geany/Markdown: the links are clickable in the preview, if we click one link then the page is showed in the sidebar but there is no way to navigate and go back to the preview.
-- [ ] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement.
 
 # DONE
 
