@@ -12,6 +12,13 @@
 - [x] Configure_apticron#ubuntu_bionic should be moved to xtra.
 - [x] Use clearine for openbox exit dialog, we need to because python2 is removed from Debian11 <https://github.com/okitavera/clearine>. => will use rofi instead.
 - [x] Use hsetroot instead of xsetroot which is not compatible with xcompmgr/compton.
+- [x] Add bash library scripts via the .bashrc.d
+- [x] Create recipe for patching apt-mirror <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=932379>.
+- [x] change pidgin icon for using the stock icon. => do not use pidgin it's even better.
+- [x] kpie does not listen to window title change. => we use devilspie2 now.
+- [x] Rofi menu <https://gitlab.com/vahnrr/rofi-menus>. => use <https://github.com/adi1090x/rofi> instead.
+- [x] XF86 keys for audio should be managed by sxhkd if pasystray.
+- [x] Do the settings for the firefox megabar off <https://support.mozilla.org/en-US/questions/1274579>. => not relevant for recent version of firefox.
 
 - [ ] Install rofi menus <https://github.com/adi1090x/rofi> and update sxhkd for power button.
 - [ ] Fix path for debian.
@@ -73,7 +80,6 @@
 - [ ] Caja seems to mount ftp without unicode support.
 - [ ] Activate by default "Addons" plugin in Geany.
 - [ ] Can I replace clipmenu by <https://github.com/mrichar1/clipster>?
-- [ ] Rofi menu <https://gitlab.com/vahnrr/rofi-menus>.
 - [ ] Add lua extension for VLC for shuffle playlist <https://addons.videolan.org/p/1154030/>.
 - [ ] Cannot use pkexec in rofi.
 - [ ] Review bash aliases for time conversion and millis2date should return UTC.
@@ -93,17 +99,14 @@
 - [ ] tmux instead of screen.
 - [ ] Always active dbus interface in VLC.
 - [ ] Add an action "Edit screenshot with PowerPoint"
-- [ ] XF86 keys for audio should be managed by sxhkd if pasystray.
-- [ ] Do the settings for the firefox megabar off <https://support.mozilla.org/en-US/questions/1274579>.
 - [ ] PCP in avahi-discovery?.
-- [ ] Add recipe for installing vivaldi + update libwidevine amd and arm.
-- [ ] Fix ssh welcome for Raspbian.
+- [x] Add recipe for installing vivaldi + update libwidevine amd and arm. => we forget about raspberry for now.
+- [x] Fix ssh welcome for Raspbian. => we forget about raspberry for now.
 - [ ] Add mugshot to the openbox menu or find another application.
 - [ ] Add network scan command in bash aliases.
 - [ ] Seconde recipe should check depot in sources.list, recipe for installing software may fail if not.
 - [ ] Update gtk configuration with the light variant in theme name and add "gtk-application-prefer-dark-theme=false". See <https://unix.stackexchange.com/questions/14129/gtk-enable-set-dark-theme-on-a-per-application-basis>.
 - [ ] Add configuration for GIMP to use system instead of the dark theme.
-- [ ] Create recipe for patching apt-mirror <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=932379>.
 - [ ] re_index_recipe should re-number recipes which are not defaults, keep order but put them after the defaults.
 - [ ] On the Dell the switch to headset microphone is not done after pluggin the headset. <https://superuser.com/questions/1312970/headset-microphone-not-detected-by-pulse-und-alsa>
 - [ ] Improve Remmina recipe: notification icon, tree view => added the configuration in dotfiles directory, should not do a recipe for that.
@@ -126,13 +129,10 @@
 - [ ] Key shortcut for applying geometry to a window something line 512x512 on the left-bottom corner of the screen. It would be even better if it could be to3ggable.
 - [ ] Mirage or GPicView? GPicView is slower at rendering SVG graphics.
 - [ ] Create better graphs with gnuplot and battery-stats-collector.
-- [ ] Add notes about bash completion.
 - [ ] Reworked remote desktop software and use tiger VNC.
 - [ ] tint2 is not listening to changes in monitors: which one is primary? Add detection of primary in starter script and set tint2 configuration file.
-- [ ] kpie does not listen to window title change.
 - [ ] Update CSS for Geany Markdown plugin + configure properly the plugin during install.
 - [ ] Geany Markdown plugin is not resetting the vertical scroll.
-- [ ] The scripts folder should be renamed lib.
 - [ ] Add an minimal image viewer such as "edisplay" (good to have one image viewer with no scale smoothing).
 - [ ] How to set the primary monitor from the command line and add it in `ob-randr.py`.
 - [ ] Bugs in user_playlist.sh: next is not working on macbook air + should not prev/next if only one item in the playlist.
@@ -156,11 +156,9 @@
 - [ ] pipemenu in openbox for .desktop files in ad-hoc location, something like ~/.config/openbox/menu-apps/
 - [ ] Add kdesvn in tools.
 - [ ] Add bash function in .bashrc for downloading a list of URLs from file.
-- [ ] Add bash library scripts via the .bashrc.d
 - [ ] Rofi menu for session actions <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
 - [ ] Better documentation in openbox rc.xml (with "Window Actions" section) see <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
 - [ ] Openbox application shotcuts "restart openbox" and "quit openbox".
-- [ ] change pidgin icon for using the stock icon.
 - [ ] Configuration libinput <https://unix.stackexchange.com/questions/337008/activate-tap-to-click-on-touchpad> it replaces synaptics.
 - [ ] mtrack configuration should check if there is already a \d+_mtrack.conf file in /usr/share/X11/xorg.conf.d/
 - [ ] List parameters useful to the user regarding dpms, lightlocker, suspend-then-hibernate => check if there is a yad panel for dpms.
