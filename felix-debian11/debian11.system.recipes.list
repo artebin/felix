@@ -36,8 +36,8 @@ recipes/system-software/9999-s-remove_unwanted_packages
 ################################################################################
 recipes/system-configuration/0000-s-set_local_time_zone
 recipes/system-configuration/0010-s-disable_automatic_update_and_upgrade
-recipes/system-configuration/0020-s-disable_apport_whoopsie
-recipes/system-configuration/0030-s-configure_apticron
+#recipes/system-configuration/0020-s-disable_apport_whoopsie
+#recipes/system-configuration/0030-s-configure_apticron
 recipes/system-configuration/0040-s-configure_grub
 recipes/system-configuration/0050-s-configure_bash_for_root
 recipes/system-configuration/0060-s-enable_hibernation
@@ -54,7 +54,7 @@ recipes/system-configuration/0150-s-force_numlock
 recipes/system-configuration/0160-s-configure_xdg_user_dirs_and_autostart
 recipes/system-configuration/0170-s-nfs_samba_shares
 recipes/system-configuration/0180-s-install_java_env_vars_in_profile
-recipes/system-configuration/0190-s-disable_bluetooth_at_boot_time
+#recipes/system-configuration/0190-s-disable_bluetooth_at_boot_time
 recipes/system-configuration/0200-s-configure_keyboard
 recipes/system-configuration/0220-s-terminate_x_with_ctrl_alt_backspace
 recipes/system-configuration/0240-s-configure_php_in_userdir
@@ -63,4 +63,4 @@ recipes/system-configuration/0270-s-enable_exit_dialog_at_power_button_pressed
 recipes/system-configuration/0280-s-configure_acpi_wakeup
 recipes/system-configuration/0290-s-configure_avahi_daemon
 recipes/system-configuration/0300-s-configure_remmina
-recipes/system-configuration/0310-s-force_soffice_to_use_single_instance
+#recipes/system-configuration/0310-s-force_soffice_to_use_single_instance
