@@ -11,3 +11,5 @@ evince evince-common
 gnome-software gnome-software-common gnome-software-plugin-snap snapd
 
 popularity-contest
+
+ibus-*
