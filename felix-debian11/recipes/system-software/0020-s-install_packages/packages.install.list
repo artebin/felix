@@ -1,14 +1,20 @@
+#########################
+# Firmwares and drivers
+#########################
+firmware-iwlwifi
+firmware-misc-nonfree
+
 ################
 # System tools
 ################
-apt-rdepends
 lsb-base
 lsb-release
 moreutils
+finger
 psmisc #Includes fuser, killall, peekfd, pstree, prtstat
 hwinfo lshw inxi
-htop iotop smem #dstat is included in pcp
-#glances #Not available in Debian11
+htop iotop smem #Do not install dstat because it is included in pcp
+glances
 pcp pcp-gui
 @--no-install-recommends@ cockpit
 battery-stats
@@ -100,6 +106,7 @@ offlineimap maildir-utils
 ###################
 aptitude
 apt-mirror
+apt-rdepends
 
 ###################
 # Display Manager
@@ -110,7 +117,7 @@ light-locker
 ##############
 # Xorg tools
 ##############
-firmware-misc-nonfree
+gtk3-nocsd
 mesa-utils mesa-utils-extra
 xinput xinput-calibrator
 x11-apps
