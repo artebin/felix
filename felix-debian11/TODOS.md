@@ -19,7 +19,9 @@
 - [x] Rofi menu <https://gitlab.com/vahnrr/rofi-menus>. => use <https://github.com/adi1090x/rofi> instead.
 - [x] XF86 keys for audio should be managed by sxhkd if pasystray.
 - [x] Do the settings for the firefox megabar off <https://support.mozilla.org/en-US/questions/1274579>. => not relevant for recent version of firefox.
+- [x] install engrampa from the sources allows the 'Extract here/Compress' menu in Caja.
 
+- [ ] Activate geany plugin highlight occurences. 
 - [ ] Install rofi menus <https://github.com/adi1090x/rofi> and update sxhkd for power button.
 - [ ] Fix path for debian.
 - [ ] Add a recipe for Debian Buster and another one for minimal Ubuntu.

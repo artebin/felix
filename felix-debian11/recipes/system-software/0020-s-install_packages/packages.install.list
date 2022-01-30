@@ -218,7 +218,6 @@ system-config-printer
 ###################
 # Archive manager
 ###################
-engrampa
 p7zip-full
 pigz
 unp
