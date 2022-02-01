@@ -22,6 +22,9 @@
 - [x] install engrampa from the sources allows the 'Extract here/Compress' menu in Caja.
 - [x] Activate geany plugin addons and mark words. 
 
+- [ ] Use update-alternatives for gnoe-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
+- [ ] gucharmap to install and register in openbox menu.
+- [ ] <https://github.com/jeremija/unipicker>.
 - [ ] Install rofi menus <https://github.com/adi1090x/rofi> and update sxhkd for power button.
 - [ ] Fix path for debian.
 - [ ] Add a recipe for Debian Buster and another one for minimal Ubuntu.
