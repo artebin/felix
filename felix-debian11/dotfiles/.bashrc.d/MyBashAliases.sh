@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# df human readable
+# Make df human readable
 alias df="df -h"
 
 # Add standard math library to bc
@@ -17,7 +17,7 @@ weather(){
 }
 alias weather=weather
 
-github-clone(){
+function github_clone(){
 	if [[ $# -ne 3 ]]; then
 		printf "Usage: %s PROTOCOL USER_NAME REPOSITY_NAME\n" "${FUNCNAME[0]}"
 		return
@@ -37,31 +37,31 @@ github-clone(){
 		git clone "ssh://git@github.com/${USER_NAME}/${REPOSITORY_NAME}.git"
 	fi
 }
-alias github-clone=github-clone
+alias github_clone=github_clone
 
-git-config-global-user-name-email(){
+git_config_user_name_email(){
 	NAME="${1}"
 	EMAIL="${2}"
 	if [[ -z "${NAME}" ]] | [[ -z "${EMAIL}" ]]; then
 		printf "Usage: %s NAME EMAIL\n" "${FUNCNAME[0]}"
 		return
 	fi
-	git config --global user.name "${NAME}"
-	git config --global user.email "${EMAIL}"
+	git config user.name "${NAME}"
+	git config user.email "${EMAIL}"
 }
-alias git-config-global-user-name-email=git-config-global-user-name-email
+alias git_config_user_name_email=git_config_user_name_email
 
-dateInSeconds(){
+date_in_seconds(){
 	date +%s
 }
-alias dateInSeconds=dateInSeconds
+alias date_in_seconds=date_in_seconds
 
-dateInMillis(){
+date_in_millis(){
 	date +%s%N | cut -b1-13
 }
-alias dateInMillis=dateInMillis
+alias date_in_millis=date_in_millis
 
-millis2date() {
+millis_to_date() {
 	DATE_IN_MILLIS="${1}"
 	if [[ -z "${DATE_IN_MILLIS}" ]]; then
 		printf "Usage: %s DATE_IN_MILLIS\n" "${FUNCNAME[0]}"
@@ -70,9 +70,9 @@ millis2date() {
 	DATE_IN_SECONDS=$(( "${DATE_IN_MILLIS}" / 1000 ))
 	date -d @${DATE_IN_SECONDS}
 }
-alias millis2date=millis2date
+alias millis_to_date=millis_to_date
 
-date2seconds(){
+date_to_seconds(){
 	DATE_AS_STRING="${1}"
 	if [[ -z "${DATE_AS_STRING}" ]]; then
 		printf "Usage: %s DATE_AS_STRING\n" "${FUNCNAME[0]}"
@@ -80,9 +80,9 @@ date2seconds(){
 	fi
 	date -d "${DATE_AS_STRING}" %s
 }
-alias date2seconds=date2seconds
+alias date_to_seconds=date_to_seconds
 
-dates2duration(){
+dates_to_duration(){
 	LEFT_DATE_AS_STRING="${1}"
 	RIGHT_DATE_AS_STRING="${2}"
 	if [[ -z "${LEFT_DATE_AS_STRING}" ]] | [[ -z "${RIGHT_DATE_AS_STRING}" ]]; then
@@ -97,7 +97,7 @@ dates2duration(){
 	TIME_OF_DAY=$(date -u -d @"${DIFF_IN_SECONDS}" +"%T")
 	printf "%sd %s\n" "${DAY_COUNT}" "${TIME_OF_DAY}"
 }
-alias dates2duration=dates2duration
+alias dates_to_duration=dates_to_duration
 
 backup_file(){
 	BACKUP_MODE="${1}"
