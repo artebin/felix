@@ -21,8 +21,9 @@
 - [x] Do the settings for the firefox megabar off <https://support.mozilla.org/en-US/questions/1274579>. => not relevant for recent version of firefox.
 - [x] install engrampa from the sources allows the 'Extract here/Compress' menu in Caja.
 - [x] Activate geany plugin addons and mark words. 
+- [x] Fix MyBashAliases.sh because hyphens are not allowed in valid names in bash see <https://unix.stackexchange.com/questions/168221/are-there-problems-with-hyphens-in-functions-aliases-and-executables>.
+- [x] Should not use the `git config --global` but rather have a bash function for easily write the .gitconfig in the repository.
 
-- [ ] Should not use the `git config --global` but rather have a bash function for easily write the .gitconfig in the repository.
 - [ ] Install rofi menus <https://github.com/adi1090x/rofi> and update sxhkd for power button.
 - [ ] Fix path for debian.
 - [ ] Add a recipe for Debian Buster and another one for minimal Ubuntu.
