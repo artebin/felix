@@ -22,6 +22,7 @@
 - [x] install engrampa from the sources allows the 'Extract here/Compress' menu in Caja.
 - [x] Activate geany plugin addons and mark words. 
 
+- [ ] Should not use the `git config --global` but rather have a bash function for easily write the .gitconfig in the repository.
 - [ ] Install rofi menus <https://github.com/adi1090x/rofi> and update sxhkd for power button.
 - [ ] Fix path for debian.
 - [ ] Add a recipe for Debian Buster and another one for minimal Ubuntu.
