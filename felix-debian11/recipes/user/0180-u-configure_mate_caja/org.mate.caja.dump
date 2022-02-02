@@ -6,6 +6,7 @@ show-directory-item-counts='never'
 preview-sound='never'
 show-icon-text='never'
 sort-directories-first=false
+enable-delete=true
 
 [window-state]
 start-with-sidebar=true

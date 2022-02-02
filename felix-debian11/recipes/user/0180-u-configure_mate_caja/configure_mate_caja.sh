@@ -16,6 +16,7 @@ exit_if_has_root_privileges
 
 configure_mate_caja(){
 	printf "Configuring mate-caja ...\n"
+	
 	cd "${RECIPE_DIRECTORY}"
 	dconf load /org/mate/caja/ < "org.mate.caja.dump"
 	dconf load /org/mate/desktop/ < "org.mate.desktop.dump"
