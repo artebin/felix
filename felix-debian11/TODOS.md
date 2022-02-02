@@ -24,6 +24,9 @@
 - [x] Fix MyBashAliases.sh because hyphens are not allowed in valid names in bash see <https://unix.stackexchange.com/questions/168221/are-there-problems-with-hyphens-in-functions-aliases-and-executables>.
 - [x] Should not use the `git config --global` but rather have a bash function for easily write the .gitconfig in the repository.
 
+- [ ] Use update-alternatives for gnoe-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
+- [ ] gucharmap to install and register in openbox menu.
+- [ ] <https://github.com/jeremija/unipicker>.
 - [ ] dotfiles for meld show line numbers, highlight current line, show whitspaces and use syntax highlighting tango.
 - [ ] Check the DPI see <https://wiki.archlinux.org/title/HiDPI#X_Resources>.
 - [ ] Install rofi menus <https://github.com/adi1090x/rofi> and update sxhkd for power button.
