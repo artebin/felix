@@ -20,7 +20,7 @@ configure_grub(){
 	# Backup grub configuration
 	printf "Backup current grub configuration ...\n"
 	backup_file copy /etc/default/grub
-	echo
+	printf "\n"
 	
 	# Show grub and set timeout
 	printf "Showing grub and set timeout...\n"
@@ -53,10 +53,10 @@ configure_grub(){
 	FIRST_SWAP_PARTITION_DEVICE_NAME=$(swapon --noheadings --raw --show=NAME|head -n1)
 	if [[ ! -z "${FIRST_SWAP_PARTITION_DEVICE_NAME}" ]]; then
 		FIRST_SWAP_PARTITION_UUID=$(blkid -s UUID -o value ${FIRST_SWAP_PARTITION_DEVICE_NAME})
-		echo "Adding swap partition for resume from hibernate: ${FIRST_SWAP_PARTITION_UUID}"
-		echo "Using acpi_backlight=native"
+		printf "Adding swap partition for resume from hibernate: ${FIRST_SWAP_PARTITION_UUID}\n"
+		printf "Using acpi_backlight=native\n"
 		sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=\"resume=UUID=${FIRST_SWAP_PARTITION_UUID} acpi_backlight=native\"/" /etc/default/grub
-		echo
+		printf "\n"
 	fi
 	
 	update-grub
