@@ -23,7 +23,12 @@
 - [x] Activate geany plugin addons and mark words. 
 - [x] Fix MyBashAliases.sh because hyphens are not allowed in valid names in bash see <https://unix.stackexchange.com/questions/168221/are-there-problems-with-hyphens-in-functions-aliases-and-executables>.
 - [x] Should not use the `git config --global` but rather have a bash function for easily write the .gitconfig in the repository.
+- [x] Add recipe for installing vivaldi + update libwidevine amd and arm. => we forget about raspberry for now.
+- [x] Fix ssh welcome for Raspbian. => we forget about raspberry for now.
+- [x] Show delete in Caja configuration.
+- [x] Add a recipe to build caja from the sources.
 
+- [ ] Remove cheese, it is replaced by guvcview => already removed but show guvcview in openbox menu.
 - [ ] Use update-alternatives for gnoe-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
 - [ ] gucharmap to install and register in openbox menu.
 - [ ] <https://github.com/jeremija/unipicker>.
@@ -40,10 +45,8 @@
 - [ ] Where can I found the mount point from Caja?
 - [ ] Install pass from the sources, not from a release.
 - [ ] Install nocsd, it's not only for the header bar but also for the window frame and resizing handles.
-- [ ] Remove cheese, it is replaced by guvcview => already removed but show it in openbox menu.
 - [ ] Errors while installing pcp.
 - [ ] Copy start_http_server_for_apt_mirrors.sh in the scripts folder.
-- [ ] Add a recipe to build caja from the sources.
 - [ ] Finally understand the problem with xdg-open and xfcepanel <https://qastack.fr/ubuntu/5172/running-a-desktop-file-in-the-terminal>.
 - [ ] Clean the package list, planck, graybird theme etc.
 - [ ] create_recipe_list_file_from_directory() function does not ignore xxxx recipes, it should also be refactored.
@@ -54,11 +57,9 @@
 - [ ] Shortcut in geany comment lines.
 - [ ] Shortcut for black screen (power down the screen)
 - [ ] Shortcut "Show desktop" associated to <WIN><F4> should actually be implemented by "Minize all windows".
-- [ ] Action in Caja for "Bypass the trash".
 - [ ] OSD menu for openbox window actions?
 - [ ] Add uniutils.
 - [ ] <https://www.reddit.com/r/linuxquestions/comments/pmodjk/cant_change_text_color_in_rofi_theme_file/>.
-- [ ] <https://github.com/adi1090x/rofi>.
 - [ ] Check the nice on unpack_in_terminal.
 - [ ] Fix configure_acpi_wakeup.
 - [ ] Force_soffice_to_use_single_instance should be move to xtra.
@@ -109,8 +110,6 @@
 - [ ] Always active dbus interface in VLC.
 - [ ] Add an action "Edit screenshot with PowerPoint"
 - [ ] PCP in avahi-discovery?.
-- [x] Add recipe for installing vivaldi + update libwidevine amd and arm. => we forget about raspberry for now.
-- [x] Fix ssh welcome for Raspbian. => we forget about raspberry for now.
 - [ ] Add mugshot to the openbox menu or find another application.
 - [ ] Add network scan command in bash aliases.
 - [ ] Seconde recipe should check depot in sources.list, recipe for installing software may fail if not.
@@ -127,7 +126,7 @@
 - [ ] Open browser quarter of the screen, lower-right corner of the screen.
 - [ ] Add regexer and http://mathew-kurian.github.io/CharacterMap/ in a bookmark tools.
 - [ ] Caja script for sorting file, same for removing duplicates.
-- [ ] Find the project on github for reminding shortcuts (command line and rofi).
+- [ ] Find the project on github for reminding shortcuts (command line and rofi) <https://gitlab.com/matclab/rofi-i3-shortcut-help>.
 - [ ] Would be perfect to be able to choose the mail client: claws-mail, Evolution, Thunderbird. Can suceed in doing that today when Thunderbird and Evolution are installed, the change is not detected.
 - [ ] Deactivate Rofi modi ssh and try to add rofi-buku.
 - [ ] Find a good portal for firefox or a Web Bookmarks application.
