@@ -17,7 +17,7 @@
 	lightbg:			rgba ( 238, 232, 213, 100 % );
 	selected-active-foreground:	rgba ( 0, 0, 0, 100 % );
 	alternate-active-background:	rgba ( 75, 81, 96, 89 % );
-	background:			rgba ( 45, 48, 59, 95 % );
+	background:			rgba ( 45, 48, 59, 100 % );
 	alternate-normal-foreground:	@foreground;
 	normal-background:		@background;
 	lightfg:			rgba ( 88, 104, 117, 100 % );
@@ -35,15 +35,17 @@
 }
 
 #window {
-    background-color: @background;
-    padding:          5;
-    border:           2px;
-    border-color:     LIGHTGRAY;
+	width:				100%;
+	height:				100%;
+	background-color:		rgba ( 45, 48, 59, 40 % );
+	padding:			30% 20% 30% 20%;
 }
 
 #mainbox {
-    border:  0;
-    padding: 0;
+	background-color:		@background;
+	border:				2px;
+	border-color:			LIGHTGRAY;
+	padding:			5px;
 }
 
 #message {
