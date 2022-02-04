@@ -28,6 +28,8 @@
 - [x] Show delete in Caja configuration.
 - [x] Add a recipe to build caja from the sources.
 
+- [ ] If we build the geany-addons then we should probably build geanny from the sources.
+- [ ] Install compton and start it with openbox, many app needs it nowadays like Teams showing a red border around the screen telling the screen is shared.
 - [ ] Remove cheese, it is replaced by guvcview => already removed but show guvcview in openbox menu.
 - [ ] Use update-alternatives for gnoe-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
 - [ ] gucharmap to install and register in openbox menu.
