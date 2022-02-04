@@ -28,7 +28,10 @@
 - [x] Show delete in Caja configuration.
 - [x] Add a recipe to build caja from the sources.
 - [x] Install compton and start it with openbox, many app needs it nowadays like Teams showing a red border around the screen telling the screen is shared.
+- [x] Resume from hibernate works after installing the NVidia drivers, problem seems similar to <https://forums.linuxmint.com/viewtopic.php?f=46&t=346628&sid=03c9ee952fdb05f83abbd3fae9de1f71&start=20>.
+- [x] Firefox window is not repaint properly when resized if hardware acceleration enabled.
 
+- [] Backlight level is not restored after reboot.
 - [ ] If we build the geany-addons then we should probably build geanny from the sources.
 - [ ] Remove cheese, it is replaced by guvcview => already removed but show guvcview in openbox menu.
 - [ ] Use update-alternatives for gnoe-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
