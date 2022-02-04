@@ -117,6 +117,7 @@ light-locker
 ##############
 # Xorg tools
 ##############
+compton compton-conf
 gtk3-nocsd
 mesa-utils mesa-utils-extra
 xinput xinput-calibrator

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+compton -b &
+
 tint2 &
 bash ~/scripts/fdpowermon_run.sh &
 nm-applet &
