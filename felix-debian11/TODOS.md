@@ -31,8 +31,11 @@
 - [x] Resume from hibernate works after installing the NVidia drivers, problem seems similar to <https://forums.linuxmint.com/viewtopic.php?f=46&t=346628&sid=03c9ee952fdb05f83abbd3fae9de1f71&start=20>.
 - [x] Firefox window is not repaint properly when resized if hardware acceleration enabled.
 - [x] Backlight level is not restored after reboot => because of "acpi" when configuring grub, I should remove that, it was for the macbook air.
+- [x] If we build the geany-addons then we should probably build geanny from the sources.
+- [x] Install nocsd, it's not only for the header bar but also for the window frame and resizing handles + active it via .xsessionrc.
+- [x] Force_soffice_to_use_single_instance should be move to attic.
 
-- [ ] If we build the geany-addons then we should probably build geanny from the sources.
+- [ ] Add caja action "Open in geany new instance", i.e. new window.
 - [ ] Remove cheese, it is replaced by guvcview => already removed but show guvcview in openbox menu.
 - [ ] Use update-alternatives for gnoe-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
 - [ ] gucharmap to install and register in openbox menu.
@@ -41,15 +44,12 @@
 - [ ] Check the DPI see <https://wiki.archlinux.org/title/HiDPI#X_Resources>.
 - [ ] Install rofi menus <https://github.com/adi1090x/rofi> and update sxhkd for power button.
 - [ ] Fix path for debian.
-- [ ] Add a recipe for Debian Buster and another one for minimal Ubuntu.
-- [ ] Add a recipe for adding /sbin in the path of regular users in debian.
 - [ ] Something is wrong about the ssh-agent, it shows error messages until I copied .ssh folder.
 - [ ] Move LightLocker configuration in openbox menu, it is not only about the Display.
 - [ ] Openbox menu for disable/enable the touchscreen, see <https://mastizada.com/blog/disable-touchscreen-in-gnulinux/>.
 - [ ] Install rofimoji <https://github.com/fdw/rofimoji>.
 - [ ] Where can I found the mount point from Caja?
 - [ ] Install pass from the sources, not from a release.
-- [ ] Install nocsd, it's not only for the header bar but also for the window frame and resizing handles.
 - [ ] Errors while installing pcp.
 - [ ] Copy start_http_server_for_apt_mirrors.sh in the scripts folder.
 - [ ] Finally understand the problem with xdg-open and xfcepanel <https://qastack.fr/ubuntu/5172/running-a-desktop-file-in-the-terminal>.
@@ -60,14 +60,13 @@
 - [ ] Add emoji to the terminal (for nb) => use noto font as default font in X and console.
 - [ ] Openbox shortcut for increasing/decreasing size of a window (horizontally and vertically), only horizonatally, only vertically.
 - [ ] Shortcut in geany comment lines.
-- [ ] Shortcut for black screen (power down the screen)
+- [ ] Shortcut for black screen (power down the screen).
 - [ ] Shortcut "Show desktop" associated to <WIN><F4> should actually be implemented by "Minize all windows".
 - [ ] OSD menu for openbox window actions?
 - [ ] Add uniutils.
 - [ ] <https://www.reddit.com/r/linuxquestions/comments/pmodjk/cant_change_text_color_in_rofi_theme_file/>.
 - [ ] Check the nice on unpack_in_terminal.
 - [ ] Fix configure_acpi_wakeup.
-- [ ] Force_soffice_to_use_single_instance should be move to xtra.
 - [ ] Add pdfgrep, ttyclock and webp to list of packages.
 - [ ] Use t2ec for a better tint2 <https://github.com/nwg-piotr/t2ec>. It would be also good to show the volume as percentage (can be 110%).
 - [ ] Can we disable the trash?

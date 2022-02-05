@@ -208,6 +208,7 @@ regexxer
 atril
 wkhtmltopdf
 poppler-utils
+pdfgrep
 
 ############
 # Printing
@@ -226,6 +227,7 @@ unp
 #######################################
 # Image viewer, browser, manipulation
 #######################################
+webp
 libimage-exiftool-perl #for exiftool
 imagemagick
 pqiv
