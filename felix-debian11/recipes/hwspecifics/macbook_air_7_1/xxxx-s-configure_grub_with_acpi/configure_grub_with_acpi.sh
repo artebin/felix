@@ -14,7 +14,7 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-configure_grub(){
+configure_grub_with_acpi(){
 	printf "Configuring grub...\n"
 	
 	# Backup grub configuration
@@ -45,12 +45,17 @@ configure_grub(){
 	
 	# Update kernel parameters:
 	#  - add swap partition for resume from hibernate
+	#  - use acpi_backlight=native
+	
+	# Before there was here a code for disabling the ACPI Operating System Identification function (OSI), but I don't think it is still needed.
+	# See <https://unix.stackexchange.com/questions/246672/how-to-set-acpi-osi-parameter-in-the-grub>
 	
 	FIRST_SWAP_PARTITION_DEVICE_NAME=$(swapon --noheadings --raw --show=NAME|head -n1)
 	if [[ ! -z "${FIRST_SWAP_PARTITION_DEVICE_NAME}" ]]; then
 		FIRST_SWAP_PARTITION_UUID=$(blkid -s UUID -o value ${FIRST_SWAP_PARTITION_DEVICE_NAME})
 		printf "Adding swap partition for resume from hibernate: ${FIRST_SWAP_PARTITION_UUID}\n"
-		sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=\"resume=UUID=${FIRST_SWAP_PARTITION_UUID}\"/" /etc/default/grub
+		printf "Using acpi_backlight=native\n"
+		sed -i "/^GRUB_CMDLINE_LINUX_DEFAULT=/s/.*/GRUB_CMDLINE_LINUX_DEFAULT=\"resume=UUID=${FIRST_SWAP_PARTITION_UUID} acpi_backlight=native\"/" /etc/default/grub
 		printf "\n"
 	fi
 	
@@ -59,7 +64,7 @@ configure_grub(){
 	printf "\n"
 }
 
-configure_grub 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+configure_grub_with_acpi 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
