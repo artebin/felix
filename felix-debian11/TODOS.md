@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [ ] Add caja action "Open in geany new instance", i.e. new window.
 - [ ] Remove cheese, it is replaced by guvcview => already removed but show guvcview in openbox menu.
 - [ ] Use update-alternatives for gnoe-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
