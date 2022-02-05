@@ -103,7 +103,8 @@ fi
 #############
 # Wallpaper
 #############
-hsetroot -solid "#303030" &
+#hsetroot -solid "#303030" &
+hsetroot -tile ~/.config/openbox/texture.jpg &
 
 ####################
 # Bluetooth applet
