@@ -15,7 +15,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_caja_from_sources(){
-	printf "Installing dependencies ...\n"
+	printf "Installing dependencies...\n"
 	DEPENDENCIES=(  "gtk-doc-tools"
 			"gobject-introspection"
 			"autoconf-archive"
@@ -24,7 +24,7 @@ install_caja_from_sources(){
 			"yelp-tools" )
 	install_package_if_not_installed "${DEPENDENCIES[@]}"
 	
-	printf "Installing mate-common from sources ...\n"
+	printf "Installing mate-common from sources...\n"
 	cd "${RECIPE_DIRECTORY}"
 	git clone "https://github.com/mate-desktop/mate-common"
 	cd mate-common
@@ -32,7 +32,7 @@ install_caja_from_sources(){
 	make
 	make install
 	
-	printf "Installing caja from sources ...\n"
+	printf "Installing caja from sources...\n"
 	cd "${RECIPE_DIRECTORY}"
 	git clone --recurse-submodules https://github.com/mate-desktop/caja.git
 	cd caja

@@ -15,7 +15,8 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_engrampa_from_sources(){
-	printf "Installing engrampa from sources ...\n"
+	printf "Installing engrampa from sources...\n"
+	
 	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/mate-desktop/engrampa
 	cd engrampa
