@@ -1,41 +1,5 @@
 # TODOS
 
-- [x] Add ssh-agent.sh in .bashrc.d.
-- [x] Disable the autostart of the ssh-agent with <https://unix.stackexchange.com/a/79861/169557> and start it from .xsessionrc and .bashrc.
-- [x] Replace the code for finding felix.sh by the oneline in <https://unix.stackexchange.com/questions/6463/find-searching-in-parent-directories-instead-of-subdirectories>, and remove the extra "felix" directory.
-- [x] Replace locate by plocate.
-- [x] Fixed pre-installation of firefox addons.
-- [x] Firefox is asking to save the passwords => it was because "firefox -p" does not exist anymore, correct argument is "-P".
-- [x] Remove cheese, it i replaced by guvcview.
-- [x] Evolution processes keeps running after executing Evolution => evolution --force-shutdown.
-- [x] Should install rofi from sources.
-- [x] Configure_apticron#ubuntu_bionic should be moved to xtra.
-- [x] Use clearine for openbox exit dialog, we need to because python2 is removed from Debian11 <https://github.com/okitavera/clearine>. => will use rofi instead.
-- [x] Use hsetroot instead of xsetroot which is not compatible with xcompmgr/compton.
-- [x] Add bash library scripts via the .bashrc.d
-- [x] Create recipe for patching apt-mirror <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=932379>.
-- [x] change pidgin icon for using the stock icon. => do not use pidgin it's even better.
-- [x] kpie does not listen to window title change. => we use devilspie2 now.
-- [x] Rofi menu <https://gitlab.com/vahnrr/rofi-menus>. => use <https://github.com/adi1090x/rofi> instead.
-- [x] XF86 keys for audio should be managed by sxhkd if pasystray.
-- [x] Do the settings for the firefox megabar off <https://support.mozilla.org/en-US/questions/1274579>. => not relevant for recent version of firefox.
-- [x] install engrampa from the sources allows the 'Extract here/Compress' menu in Caja.
-- [x] Activate geany plugin addons and mark words. 
-- [x] Fix MyBashAliases.sh because hyphens are not allowed in valid names in bash see <https://unix.stackexchange.com/questions/168221/are-there-problems-with-hyphens-in-functions-aliases-and-executables>.
-- [x] Should not use the `git config --global` but rather have a bash function for easily write the .gitconfig in the repository.
-- [x] Add recipe for installing vivaldi + update libwidevine amd and arm. => we forget about raspberry for now.
-- [x] Fix ssh welcome for Raspbian. => we forget about raspberry for now.
-- [x] Show delete in Caja configuration.
-- [x] Add a recipe to build caja from the sources.
-- [x] Install compton and start it with openbox, many app needs it nowadays like Teams showing a red border around the screen telling the screen is shared.
-- [x] Resume from hibernate works after installing the NVidia drivers, problem seems similar to <https://forums.linuxmint.com/viewtopic.php?f=46&t=346628&sid=03c9ee952fdb05f83abbd3fae9de1f71&start=20>.
-- [x] Firefox window is not repaint properly when resized if hardware acceleration enabled.
-- [x] Backlight level is not restored after reboot => because of "acpi" when configuring grub, I should remove that, it was for the macbook air.
-- [x] If we build the geany-addons then we should probably build geanny from the sources.
-- [x] Install nocsd, it's not only for the header bar but also for the window frame and resizing handles + active it via .xsessionrc.
-- [x] Force_soffice_to_use_single_instance should be move to attic.
-- [x] Add pdfgrep, ttyclock and webp to list of packages.
-
 - [ ] Add caja action "Open in geany new instance", i.e. new window.
 - [ ] Remove cheese, it is replaced by guvcview => already removed but show guvcview in openbox menu.
 - [ ] Use update-alternatives for gnoe-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
@@ -92,7 +56,6 @@
 - [ ] Add a recipe for unified remote for the PI4 <https://www.unifiedremote.com/tutorials/how-to-install-unified-remote-server-deb-via-terminal>.
 - [ ] Add a recipe for the PI4 WiFi hotspot <https://www.raspberryconnect.com/projects/65-raspberrypi-hotspot-accesspoints/183-raspberry-pi-automatic-hotspot-and-static-hotspot-installer>.
 - [ ] Caja seems to mount ftp without unicode support.
-- [ ] Activate by default "Addons" plugin in Geany.
 - [ ] Can I replace clipmenu by <https://github.com/mrichar1/clipster>?
 - [ ] Add lua extension for VLC for shuffle playlist <https://addons.videolan.org/p/1154030/>.
 - [ ] Cannot use pkexec in rofi.
@@ -202,11 +165,6 @@
 
 # ISSUES
 
-- [x] Pasystray: middle click on the tray icon is not muting the sound anymore => fixed in recent version of pasystray.
-- [x] Caja: copying files is very slow compared to the command line (local or remote) => it can be because of GVFS => nothing to fix.
-- [x] dmenu: dmenu appears on the monitor on which the currently focused window is located. It should use the mouse pointer location to determine the monitor. => we use rofi now.
-- [x] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement. => we are using autofs now.
-
 - [ ] GPicView: slow at rendering SVG files.
 - [ ] Caja: create new directory with name starting with a dot is bugged.
 - [ ] Caja: renaming a .desktop file is bugged.
@@ -219,6 +177,46 @@
 
 # DONE
 
+- [x] Pasystray: middle click on the tray icon is not muting the sound anymore => fixed in recent version of pasystray.
+- [x] Caja: copying files is very slow compared to the command line (local or remote) => it can be because of GVFS => nothing to fix.
+- [x] dmenu: dmenu appears on the monitor on which the currently focused window is located. It should use the mouse pointer location to determine the monitor. => we use rofi now.
+- [x] At reboot & shutdown it can still be waiting for the nfs mount points to be unmounted. => it can be because of GVFS, using AutoFS could also be an improvement. => we are using autofs now.
+- [x] Add ssh-agent.sh in .bashrc.d.
+- [x] Disable the autostart of the ssh-agent with <https://unix.stackexchange.com/a/79861/169557> and start it from .xsessionrc and .bashrc.
+- [x] Replace the code for finding felix.sh by the oneline in <https://unix.stackexchange.com/questions/6463/find-searching-in-parent-directories-instead-of-subdirectories>, and remove the extra "felix" directory.
+- [x] Replace locate by plocate.
+- [x] Fixed pre-installation of firefox addons.
+- [x] Firefox is asking to save the passwords => it was because "firefox -p" does not exist anymore, correct argument is "-P".
+- [x] Remove cheese, it i replaced by guvcview.
+- [x] Evolution processes keeps running after executing Evolution => evolution --force-shutdown.
+- [x] Should install rofi from sources.
+- [x] Configure_apticron#ubuntu_bionic should be moved to xtra.
+- [x] Use clearine for openbox exit dialog, we need to because python2 is removed from Debian11 <https://github.com/okitavera/clearine>. => will use rofi instead.
+- [x] Use hsetroot instead of xsetroot which is not compatible with xcompmgr/compton.
+- [x] Add bash library scripts via the .bashrc.d
+- [x] Create recipe for patching apt-mirror <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=932379>.
+- [x] change pidgin icon for using the stock icon. => do not use pidgin it's even better.
+- [x] kpie does not listen to window title change. => we use devilspie2 now.
+- [x] Rofi menu <https://gitlab.com/vahnrr/rofi-menus>. => use <https://github.com/adi1090x/rofi> instead.
+- [x] XF86 keys for audio should be managed by sxhkd if pasystray.
+- [x] Do the settings for the firefox megabar off <https://support.mozilla.org/en-US/questions/1274579>. => not relevant for recent version of firefox.
+- [x] install engrampa from the sources allows the 'Extract here/Compress' menu in Caja.
+- [x] Activate geany plugin addons and mark words. 
+- [x] Fix MyBashAliases.sh because hyphens are not allowed in valid names in bash see <https://unix.stackexchange.com/questions/168221/are-there-problems-with-hyphens-in-functions-aliases-and-executables>.
+- [x] Should not use the `git config --global` but rather have a bash function for easily write the .gitconfig in the repository.
+- [x] Add recipe for installing vivaldi + update libwidevine amd and arm. => we forget about raspberry for now.
+- [x] Fix ssh welcome for Raspbian. => we forget about raspberry for now.
+- [x] Show delete in Caja configuration.
+- [x] Add a recipe to build caja from the sources.
+- [x] Install compton and start it with openbox, many app needs it nowadays like Teams showing a red border around the screen telling the screen is shared.
+- [x] Resume from hibernate works after installing the NVidia drivers, problem seems similar to <https://forums.linuxmint.com/viewtopic.php?f=46&t=346628&sid=03c9ee952fdb05f83abbd3fae9de1f71&start=20>.
+- [x] Firefox window is not repaint properly when resized if hardware acceleration enabled.
+- [x] Backlight level is not restored after reboot => because of "acpi" when configuring grub, I should remove that, it was for the macbook air.
+- [x] If we build the geany-addons then we should probably build geanny from the sources.
+- [x] Install nocsd, it's not only for the header bar but also for the window frame and resizing handles + active it via .xsessionrc.
+- [x] Force_soffice_to_use_single_instance should be move to attic.
+- [x] Add pdfgrep, ttyclock and webp to list of packages.
+- [x] Activate by default "Addons" plugin in Geany.
 - [x] Add in VLC config "one-instance-when-started-from-file=0".
 - [x] Add create_dependencies_file_from_package_list_file() bash function using 'apt-cache depends package-name' and/or 'apt-rdepends'.
 - [x] Add recipe for configuring Atril => added the configuration in dotfiles directory, should not do a recipe for that.
