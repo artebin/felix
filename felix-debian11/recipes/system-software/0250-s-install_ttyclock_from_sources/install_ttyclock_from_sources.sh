@@ -18,7 +18,7 @@ install_ttyclock_from_sources(){
 	printf "Installing ttyclock from from sources...\n\n"
 	
 	printf "Installing dependencies...\n"
-	DEPENDENCIES=( "ncurses-dev" )
+	DEPENDENCIES=( "libncurses-dev" )
 	install_package_if_not_installed "${DEPENDENCIES[@]}"
 	
 	
@@ -26,13 +26,13 @@ install_ttyclock_from_sources(){
 	git clone https://github.com/xorg62/tty-clock
 	
 	printf "Compiling and installing ttyclock...\n"
-	cd ttyclock
+	cd tty-clock
 	make
 	make install
 	
 	# Cleanup
 	cd "${RECIPE_DIRECTORY}"
-	rm -fr ttyclock
+	rm -fr tty-clock
 	
 	printf "\n"
 }
