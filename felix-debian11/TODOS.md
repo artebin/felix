@@ -34,6 +34,7 @@
 - [x] If we build the geany-addons then we should probably build geanny from the sources.
 - [x] Install nocsd, it's not only for the header bar but also for the window frame and resizing handles + active it via .xsessionrc.
 - [x] Force_soffice_to_use_single_instance should be move to attic.
+- [x] Add pdfgrep, ttyclock and webp to list of packages.
 
 - [ ] Add caja action "Open in geany new instance", i.e. new window.
 - [ ] Remove cheese, it is replaced by guvcview => already removed but show guvcview in openbox menu.
@@ -67,7 +68,6 @@
 - [ ] <https://www.reddit.com/r/linuxquestions/comments/pmodjk/cant_change_text_color_in_rofi_theme_file/>.
 - [ ] Check the nice on unpack_in_terminal.
 - [ ] Fix configure_acpi_wakeup.
-- [ ] Add pdfgrep, ttyclock and webp to list of packages.
 - [ ] Use t2ec for a better tint2 <https://github.com/nwg-piotr/t2ec>. It would be also good to show the volume as percentage (can be 110%).
 - [ ] Can we disable the trash?
 - [ ] Disable "Recent Files" in GTK2/3 file chooser and dialogs.
