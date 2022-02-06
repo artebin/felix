@@ -1,19 +1,23 @@
 # TODOS
 
 - [x] Install rofi menus <https://github.com/adi1090x/rofi> or rofi-power-menu <https://github.com/jluttine/rofi-power-menu> and update sxhkd for power button.
+- [x] Add uniutils.
 
+- [ ] Fix path for debian.
 - [ ] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
+- [ ] Shortcut in geany comment lines.
 - [ ] Add caja action "Open in geany new instance", i.e. new window.
+- [ ] Change ~/scripts for ~/bin.
+- [ ] bash alias "ls --time-style=long-iso".
+- [ ] Openbox menu for disable/enable the touchscreen, see <https://mastizada.com/blog/disable-touchscreen-in-gnulinux/>.
 - [ ] Remove cheese, it is replaced by guvcview => already removed but show guvcview in openbox menu.
 - [ ] Use update-alternatives for gnome-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
 - [ ] gucharmap to install and register in openbox menu.
 - [ ] <https://github.com/jeremija/unipicker>.
 - [ ] dotfiles for meld show line numbers, highlight current line, show whitspaces and use syntax highlighting tango.
 - [ ] Check the DPI see <https://wiki.archlinux.org/title/HiDPI#X_Resources>.
-- [ ] Fix path for debian.
 - [ ] Something is wrong about the ssh-agent, it shows error messages until I copied .ssh folder.
 - [ ] Move LightLocker configuration in openbox menu, it is not only about the Display.
-- [ ] Openbox menu for disable/enable the touchscreen, see <https://mastizada.com/blog/disable-touchscreen-in-gnulinux/>.
 - [ ] Install rofimoji <https://github.com/fdw/rofimoji>.
 - [ ] Where can I found the mount point from Caja?
 - [ ] Install pass from the sources, not from a release.
@@ -22,15 +26,12 @@
 - [ ] Finally understand the problem with xdg-open and xfcepanel <https://qastack.fr/ubuntu/5172/running-a-desktop-file-in-the-terminal>.
 - [ ] Clean the package list, planck, graybird theme etc.
 - [ ] create_recipe_list_file_from_directory() function does not ignore xxxx recipes, it should also be refactored.
-- [ ] Change ~/scripts for ~/bin.
 - [ ] Disable recipe for install fonts and add package noto-emojis.
 - [ ] Add emoji to the terminal (for nb) => use noto font as default font in X and console.
 - [ ] Openbox shortcut for increasing/decreasing size of a window (horizontally and vertically), only horizonatally, only vertically.
-- [ ] Shortcut in geany comment lines.
 - [ ] Shortcut for black screen (power down the screen).
 - [ ] Shortcut "Show desktop" associated to <WIN><F4> should actually be implemented by "Minize all windows".
 - [ ] OSD menu for openbox window actions?
-- [ ] Add uniutils.
 - [ ] <https://www.reddit.com/r/linuxquestions/comments/pmodjk/cant_change_text_color_in_rofi_theme_file/>.
 - [ ] Check the nice on unpack_in_terminal.
 - [ ] Fix configure_acpi_wakeup.
@@ -43,7 +44,6 @@
 - [ ] Desktop files are using $TERM for the "Terminal=true" property, we should set "TERM=x-terminal-emulator" somewhere.
 - [ ] Auto mount FAT usb stick and all files have execute permissions, remove that.
 - [ ] MoveRelative for W-Left|Right|Up|down and MovetoEdge with A-W-Left|Right|Up|Down.
-- [ ] bash alias "ls --full-time".
 - [ ] Unpack is console script should be nice +10.
 - [ ] VLC plugin shuffle and SongList <https://addons.videolan.org/p/1154018/>.
 - [ ] Move from Faenza to Obsidian or Delft (they are both based on Faenza).
