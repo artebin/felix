@@ -194,6 +194,7 @@ thunar
 ########################################
 # File reader/editor & file diff tools
 ########################################
+uniutils
 vim-gtk
 glogg
 geany geany-plugins
