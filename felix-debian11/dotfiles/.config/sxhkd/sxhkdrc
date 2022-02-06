@@ -105,4 +105,4 @@ XF86WWW
 	x-www-browser
 
 XF86PowerOff
-	python "${HOME}/scripts/power_button_pressed.py"
+	rofi -show power-menu -modi power-menu:~/.config/rofi/rofi-power-menu.sh
