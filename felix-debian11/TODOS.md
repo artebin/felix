@@ -1,14 +1,15 @@
 # TODOS
 
+- [x] Install rofi menus <https://github.com/adi1090x/rofi> or rofi-power-menu <https://github.com/jluttine/rofi-power-menu> and update sxhkd for power button.
+
 - [ ] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [ ] Add caja action "Open in geany new instance", i.e. new window.
 - [ ] Remove cheese, it is replaced by guvcview => already removed but show guvcview in openbox menu.
-- [ ] Use update-alternatives for gnoe-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
+- [ ] Use update-alternatives for gnome-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
 - [ ] gucharmap to install and register in openbox menu.
 - [ ] <https://github.com/jeremija/unipicker>.
 - [ ] dotfiles for meld show line numbers, highlight current line, show whitspaces and use syntax highlighting tango.
 - [ ] Check the DPI see <https://wiki.archlinux.org/title/HiDPI#X_Resources>.
-- [ ] Install rofi menus <https://github.com/adi1090x/rofi> and update sxhkd for power button.
 - [ ] Fix path for debian.
 - [ ] Something is wrong about the ssh-agent, it shows error messages until I copied .ssh folder.
 - [ ] Move LightLocker configuration in openbox menu, it is not only about the Display.
