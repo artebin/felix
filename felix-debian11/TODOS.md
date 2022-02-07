@@ -4,6 +4,7 @@
 - [x] Add uniutils.
 - [x] bash alias "ls --time-style=long-iso".
 
+- [ ] Rofi configuration is not complete, fullscreen.rasi is missing and the config file is not updated.
 - [ ] Fix path for debian.
 - [ ] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [ ] Shortcut in geany comment lines.
