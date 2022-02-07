@@ -2,13 +2,13 @@
 
 - [x] Install rofi menus <https://github.com/adi1090x/rofi> or rofi-power-menu <https://github.com/jluttine/rofi-power-menu> and update sxhkd for power button.
 - [x] Add uniutils.
+- [x] bash alias "ls --time-style=long-iso".
 
 - [ ] Fix path for debian.
 - [ ] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [ ] Shortcut in geany comment lines.
 - [ ] Add caja action "Open in geany new instance", i.e. new window.
 - [ ] Change ~/scripts for ~/bin.
-- [ ] bash alias "ls --time-style=long-iso".
 - [ ] Openbox menu for disable/enable the touchscreen, see <https://mastizada.com/blog/disable-touchscreen-in-gnulinux/>.
 - [ ] Remove cheese, it is replaced by guvcview => already removed but show guvcview in openbox menu.
 - [ ] Use update-alternatives for gnome-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.

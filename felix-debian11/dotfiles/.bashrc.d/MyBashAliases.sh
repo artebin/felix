@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-# Make df human readable
-alias df="df -h"
+alias df='df --human-readable'
 
-# Add standard math library to bc
-alias bc='bc -l'
+alias ls='ls --time-style=long-iso'
+
+alias bc='bc --mathlib'
 
 public_ip(){
 	curl ipinfo.io/ip
