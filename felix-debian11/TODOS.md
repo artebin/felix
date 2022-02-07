@@ -3,6 +3,7 @@
 - [x] Install rofi menus <https://github.com/adi1090x/rofi> or rofi-power-menu <https://github.com/jluttine/rofi-power-menu> and update sxhkd for power button.
 - [x] Add uniutils.
 
+- [ ] Rofi configuration is not complete, fullscreen.rasi is missing and the config file is not updated.
 - [ ] Fix path for debian.
 - [ ] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [ ] Shortcut in geany comment lines.
