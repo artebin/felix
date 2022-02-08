@@ -6,6 +6,7 @@
 - [x] Rofi configuration is not complete, fullscreen.rasi is missing and the config file is not updated.
 - [x] Script and openbox menu action to open the theme folder.
 
+- [ ] Xfce Mouse and Keyboard configuration do not work for Openbox, should be removed.
 - [ ] Fix path for debian.
 - [ ] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [ ] Shortcut in geany comment lines.
