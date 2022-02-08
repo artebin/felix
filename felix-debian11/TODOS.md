@@ -1,13 +1,5 @@
 # TODOS
 
-- [x] Install rofi menus <https://github.com/adi1090x/rofi> or rofi-power-menu <https://github.com/jluttine/rofi-power-menu> and update sxhkd for power button.
-- [x] Add uniutils.
-- [x] bash alias "ls --time-style=long-iso".
-- [x] Rofi configuration is not complete, fullscreen.rasi is missing and the config file is not updated.
-- [x] Script and openbox menu action to open the theme folder.
-- [x] Xfce Mouse and Keyboard configuration do not work for Openbox, should be removed.
-- [x] Remove cheese, it is replaced by guvcview => already removed but show guvcview in openbox menu.
-
 - [ ] Fix path for debian.
 - [ ] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [ ] Shortcut in geany comment lines.
@@ -17,11 +9,11 @@
 - [ ] Use update-alternatives for gnome-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
 - [ ] gucharmap to install and register in openbox menu.
 - [ ] <https://github.com/jeremija/unipicker>.
+- [ ] Install rofimoji <https://github.com/fdw/rofimoji>.
 - [ ] dotfiles for meld show line numbers, highlight current line, show whitspaces and use syntax highlighting tango.
 - [ ] Check the DPI see <https://wiki.archlinux.org/title/HiDPI#X_Resources>.
 - [ ] Something is wrong about the ssh-agent, it shows error messages until I copied .ssh folder.
 - [ ] Move LightLocker configuration in openbox menu, it is not only about the Display.
-- [ ] Install rofimoji <https://github.com/fdw/rofimoji>.
 - [ ] Where can I found the mount point from Caja?
 - [ ] Install pass from the sources, not from a release.
 - [ ] Errors while installing pcp.
@@ -35,24 +27,25 @@
 - [ ] Shortcut for black screen (power down the screen).
 - [ ] Shortcut "Show desktop" associated to <WIN><F4> should actually be implemented by "Minize all windows".
 - [ ] OSD menu for openbox window actions?
-- [ ] <https://www.reddit.com/r/linuxquestions/comments/pmodjk/cant_change_text_color_in_rofi_theme_file/>.
 - [ ] Check the nice on unpack_in_terminal.
 - [ ] Fix configure_acpi_wakeup.
 - [ ] Use t2ec for a better tint2 <https://github.com/nwg-piotr/t2ec>. It would be also good to show the volume as percentage (can be 110%).
 - [ ] Can we disable the trash?
 - [ ] Disable "Recent Files" in GTK2/3 file chooser and dialogs.
 - [ ] Allow sudoers to modify printing configuration (lpadmin).
-- [ ] Add a recipe for a local git server, access it via http and zeroconf .local ?
-- [ ] Stop the kernel flooding the console <https://superuser.com/questions/351387/how-to-stop-kernel-messages-from-flooding-my-console>.
+- [ ] Add a recipe for a git server, access it via http and zeroconf .local ?
 - [ ] Desktop files are using $TERM for the "Terminal=true" property, we should set "TERM=x-terminal-emulator" somewhere.
 - [ ] Auto mount FAT usb stick and all files have execute permissions, remove that.
 - [ ] MoveRelative for W-Left|Right|Up|down and MovetoEdge with A-W-Left|Right|Up|Down.
 - [ ] Unpack is console script should be nice +10.
 - [ ] VLC plugin shuffle and SongList <https://addons.videolan.org/p/1154018/>.
-- [ ] Move from Faenza to Obsidian or Delft (they are both based on Faenza).
 - [ ] Add a VLC Media Library script manager, can take a list file in argument.
+- [ ] Move from Faenza to Obsidian or Delft (they are both based on Faenza).
 - [ ] VLC song logger <https://askubuntu.com/questions/922418/how-can-i-automatically-log-the-names-of-songs-i-play-in-a-vlc-player-window>.
-- [ ] Cannot programatically use rc.local in debian because the file ends with 'exit 0'.
+- [ ] Rule for VLC which save the window dimensions between 2 runs.
+- [ ] Bugs in user_playlist.sh: next is not working on macbook air + should not prev/next if only one item in the playlist.
+- [ ] UserPlaylist should not use multimedia keys because some applications use PAUSE/PLAY for pausing momentarily the playback, the PLAY will start the playlist. UserPlaylist should be a Rofi plugin.
+- [ ] .user_playlist.txt should allow comment with char #
 - [ ] Documentation and tool to log incoming traffic.
 - [ ] Add configuration recipe for xpad + change icon.
 - [ ] Command for picking a window a apply a kpie rule.
@@ -89,7 +82,6 @@
 - [ ] Add configuration for GIMP to use system instead of the dark theme.
 - [ ] re_index_recipe should re-number recipes which are not defaults, keep order but put them after the defaults.
 - [ ] On the Dell the switch to headset microphone is not done after pluggin the headset. <https://superuser.com/questions/1312970/headset-microphone-not-detected-by-pulse-und-alsa>
-- [ ] Improve Remmina recipe: notification icon, tree view => added the configuration in dotfiles directory, should not do a recipe for that.
 - [ ] Desktop font should be configurable via recipe family .conf file.
 - [ ] Add a recipe for SetWorkspaceLayout.
 - [ ] Extract archive in terminal shows an error dialog even if unpacking sucessful.
@@ -100,9 +92,8 @@
 - [ ] Caja script for sorting file, same for removing duplicates.
 - [ ] Find the project on github for reminding shortcuts (command line and rofi) <https://gitlab.com/matclab/rofi-i3-shortcut-help>.
 - [ ] Would be perfect to be able to choose the mail client: claws-mail, Evolution, Thunderbird. Can suceed in doing that today when Thunderbird and Evolution are installed, the change is not detected.
-- [ ] Deactivate Rofi modi ssh and try to add rofi-buku.
+- [ ] Deactivate Rofi modi ssh and try to add rofi-buku. => don't like buku in the end...
 - [ ] Find a good portal for firefox or a Web Bookmarks application.
-- [ ] Rule for VLC which save the window dimensions between 2 runs.
 - [ ] Find an image browser which can copy the path of the currently displayed image, or do drag'n'drop.
 - [ ] Check good usage of `xdg-settings set default-url-scheme-handler`. See <https://wiki.archlinux.org/index.php/Xdg-utils>.
 - [ ] Recipe family conf should contain a variable for the mail client (claws, evolution etc. ), it should be installed by install.sh and set in openbox menu.
@@ -115,17 +106,11 @@
 - [ ] Geany Markdown plugin is not resetting the vertical scroll.
 - [ ] Add an minimal image viewer such as "edisplay" (good to have one image viewer with no scale smoothing).
 - [ ] How to set the primary monitor from the command line and add it in `ob-randr.py`.
-- [ ] Bugs in user_playlist.sh: next is not working on macbook air + should not prev/next if only one item in the playlist.
-- [ ] UserPlaylist should not use multimedia keys because some applications use PAUSE/PLAY for pausing momentarily the playback, the PLAY will start the playlist. UserPlaylist should be a Rofi plugin.
-- [ ] .user_playlist.txt should allow comment with char #
 - [ ] all calls to rename_for_backup should use a suffix (felix_install_yyMMDD_HHmmss.SSS)
 - [ ] add menuitem for showing battery performance (battery-graph or our own gnuplot script). It can happen that the battery level is off the chart with battery-graph.
 - [ ] dialog_command v2 and v3 are not used => in the end it will be replaced by yad, delete them?
-- [ ] Rofi gray out the screen behind.
-- [ ] Allow the execution of extra recipes direcly from the openbox menu? And when recipe executed then do not show the recipe in the menu? It should git pull felix, maybe a menu Felix should have a "Update Felix from github" menuitem.
 - [ ] How to get the list of recommended packages for a package to install?
 - [ ] Add a note for encrypted USB key.
-- [ ] Create an openbox pipe menu for enabling/disabling the bluetooth.
 - [ ] Use autorandr to change lightdm resolution.
 - [ ] Woud be useful to have a short program putting a icon in the tray and click-left="show a dialog" and click-right="Contextual menu with one item: Exit". Would be also useful if a notification could be shown when then icon appears. Could be also the dialog to be showed automatically.
 - [ ] Recipe for dictionary and spelling (for example: US, FR). For Geany, we need hunspell => have a openbox menu for installing dictionary, use yad for selecting the language. It could be a bash function and one alias.
@@ -134,11 +119,9 @@
 - [ ] Change the format of file "Owner" in Caja? We don't want to se extended login "login - Name" but just "login".
 - [ ] Action for naming the current desktop with the name of an application + revert to default.
 - [ ] pipemenu in openbox for .desktop files in ad-hoc location, something like ~/.config/openbox/menu-apps/
-- [ ] Add kdesvn in tools.
 - [ ] Add bash function in .bashrc for downloading a list of URLs from file.
 - [ ] Rofi menu for session actions <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
 - [ ] Better documentation in openbox rc.xml (with "Window Actions" section) see <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
-- [ ] Openbox application shotcuts "restart openbox" and "quit openbox".
 - [ ] Configuration libinput <https://unix.stackexchange.com/questions/337008/activate-tap-to-click-on-touchpad> it replaces synaptics.
 - [ ] mtrack configuration should check if there is already a \d+_mtrack.conf file in /usr/share/X11/xorg.conf.d/
 - [ ] List parameters useful to the user regarding dpms, lightlocker, suspend-then-hibernate => check if there is a yad panel for dpms.
@@ -182,6 +165,18 @@
 
 # DONE
 
+- [x] Install rofi menus <https://github.com/adi1090x/rofi> or rofi-power-menu <https://github.com/jluttine/rofi-power-menu> and update sxhkd for power button.
+- [x] Add uniutils.
+- [x] bash alias "ls --time-style=long-iso".
+- [x] Rofi configuration is not complete, fullscreen.rasi is missing and the config file is not updated.
+- [x] Script and openbox menu action to open the theme folder.
+- [x] Xfce Mouse and Keyboard configuration do not work for Openbox, should be removed.
+- [x] Remove cheese, it is replaced by guvcview => already removed but show guvcview in openbox menu.
+- [x] <https://www.reddit.com/r/linuxquestions/comments/pmodjk/cant_change_text_color_in_rofi_theme_file/>.
+- [x] Stop the kernel flooding the console <https://superuser.com/questions/351387/how-to-stop-kernel-messages-from-flooding-my-console>.
+- [x] Cannot add command in rc.local because the file ends with 'exit 0'. => where? Cannot reproduce.
+- [x] Improve Remmina recipe: notification icon, tree view => added the configuration in dotfiles directory, should not do a recipe for that.
+- [x] Add kdesvn in tools.
 - [x] Pasystray: middle click on the tray icon is not muting the sound anymore => fixed in recent version of pasystray.
 - [x] Caja: copying files is very slow compared to the command line (local or remote) => it can be because of GVFS => nothing to fix.
 - [x] dmenu: dmenu appears on the monitor on which the currently focused window is located. It should use the mouse pointer location to determine the monitor. => we use rofi now.

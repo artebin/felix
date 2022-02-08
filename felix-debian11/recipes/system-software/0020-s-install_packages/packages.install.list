@@ -300,7 +300,7 @@ gnuplot
 #######
 # VCS
 #######
-subversion
+subversion kdesvn
 git git-gui giggle git-cola
 mercurial
 
