@@ -33,14 +33,14 @@
 	active-background:		rgba ( 29, 31, 33, 17 % );
 	selected-active-background:	rgba ( 252, 233, 79, 100 % );
 	font:				"Noto Mono Regular 12";
-	columns:2;
+	columns:			1;
 	
 }
 
 #window {
 	width:				100%;
 	height:				100%;
-	background-color:		rgba ( 0, 0, 0, 60 % );
+	background-color:		rgba ( 0, 0, 0, 30 % );
 	padding:			31% 20% 31% 20%;
 }
 
