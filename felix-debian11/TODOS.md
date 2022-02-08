@@ -5,15 +5,15 @@
 - [x] bash alias "ls --time-style=long-iso".
 - [x] Rofi configuration is not complete, fullscreen.rasi is missing and the config file is not updated.
 - [x] Script and openbox menu action to open the theme folder.
+- [x] Xfce Mouse and Keyboard configuration do not work for Openbox, should be removed.
+- [x] Remove cheese, it is replaced by guvcview => already removed but show guvcview in openbox menu.
 
-- [ ] Xfce Mouse and Keyboard configuration do not work for Openbox, should be removed.
 - [ ] Fix path for debian.
 - [ ] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [ ] Shortcut in geany comment lines.
 - [ ] Add caja action "Open in geany new instance", i.e. new window.
 - [ ] Change ~/scripts for ~/bin.
 - [ ] Openbox menu for disable/enable the touchscreen, see <https://mastizada.com/blog/disable-touchscreen-in-gnulinux/>.
-- [ ] Remove cheese, it is replaced by guvcview => already removed but show guvcview in openbox menu.
 - [ ] Use update-alternatives for gnome-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
 - [ ] gucharmap to install and register in openbox menu.
 - [ ] <https://github.com/jeremija/unipicker>.

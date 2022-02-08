@@ -41,6 +41,7 @@
 			<item label="Volume Control"><action name="Execute"><command>pavucontrol</command></action></item>
 			<item label="MPS YouTube"><action name="Execute"><command>x-terminal-emulator -T "MPS YouTube" -e "mpsyt"</command></action></item>
 			<item label="VLC"><action name="Execute"><command>vlc</command></action></item>
+			<item label="Webcam Viewer"><action name="Execute"><command>guvcview</command></action></item>
 			<item label="Xfburn"><action name="Execute"><command>xfburn</command></action></item>
 		</menu>
 		<menu id="network" label="Network">
@@ -83,8 +84,6 @@
 				<item label="Screen Layout Editor"><action name="Execute"><command>arandr</command></action></item>
 				<item label="DPMS"><action name="Execute"><command>light-locker-settings</command></action></item>
 			</menu>
-			<item id="MouseSettings" label="Mouse"><action name="Execute"><command>xfce4-mouse-settings</command></action></item>
-			<item id="KeyboardSettings" label="Keyboard"><action name="Execute"><command>xfce4-keyboard-settings</command></action></item>
 			<separator/>
 			<item label="User Interface Settings"><action name="Execute"><command>lxappearance</command></action></item>
 			<separator/>
