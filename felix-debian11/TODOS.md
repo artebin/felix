@@ -2,8 +2,8 @@
 
 - [x] Fix ob-randr.sh <https://raw.githubusercontent.com/owl4ce/dotfiles/main/.config/openbox/pipe-menu/ob-randr.py> and openbox menu.
 - [x] Openbox theme should be installed in user space.
+- [X] Do not really need the install_themes recipe, but just copy .themes in dotfiles.
 
-- [ ] Do not really need the install_themes recipe, but just copy .themes in dotfiles.
 - [ ] Fix path for debian.
 - [ ] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [ ] Shortcut in geany comment lines.
