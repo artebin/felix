@@ -28,6 +28,7 @@ recipes/system-software/0210-s-install_pamixer_from_sources
 recipes/system-software/0230-s-install_pass_1_7_3_from_sources
 recipes/system-software/0240-s-install_xlockscreen
 recipes/system-software/0250-s-install_sw_from_sources
+recipes/system-software/0250-s-install_ttyclock_from_sources
 recipes/system-software/0270-s-install_arandr_from_sources
 recipes/system-software/0280-s-install_rofi_from_sources
 recipes/system-software/9999-s-remove_unwanted_packages
@@ -47,7 +48,6 @@ recipes/system-configuration/0062-s-disable_system_beep
 recipes/system-configuration/0070-s-configure_alternatives
 recipes/system-configuration/0080-s-add_lightdm_greeter_badges
 recipes/system-configuration/0090-s-configure_lightdm_greeter
-recipes/system-configuration/0100-s-install_gtk_themes
 recipes/system-configuration/0110-s-configure_gtk
 recipes/system-configuration/0120-s-configure_icon_themes
 recipes/system-configuration/0130-s-install_fonts
