@@ -30,7 +30,7 @@
 }
 
 #XfceNotifyWindow progressbar progress {
-    background-color: #fcfcfc;
+	background-color: #fcfcfc;
 	min-height: 4px;
 }
 
