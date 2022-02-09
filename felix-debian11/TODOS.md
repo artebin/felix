@@ -3,13 +3,13 @@
 - [x] Fix ob-randr.sh <https://raw.githubusercontent.com/owl4ce/dotfiles/main/.config/openbox/pipe-menu/ob-randr.py> and openbox menu.
 - [x] Openbox theme should be installed in user space.
 - [X] Do not really need the install_themes recipe, but just copy .themes in dotfiles.
+- [x] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 
 - [ ] Fix path for debian.
-- [ ] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [ ] Shortcut in geany comment lines.
 - [ ] Add caja action "Open in geany new instance", i.e. new window.
 - [ ] Change ~/scripts for ~/bin.
-- [ ] Openbox menu for disable/enable the touchscreen, see <https://mastizada.com/blog/disable-touchscreen-in-gnulinux/>.
+- [ ] Openbox pipe menu for disable/enable the touchscreen, see <https://mastizada.com/blog/disable-touchscreen-in-gnulinux/>.
 - [ ] Use update-alternatives for gnome-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
 - [ ] gucharmap to install and register in openbox menu.
 - [ ] <https://github.com/jeremija/unipicker>.
