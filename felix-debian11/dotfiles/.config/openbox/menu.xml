@@ -47,7 +47,7 @@
 		<menu id="network" label="Network">
 			<menu id="wwwbrowsers" label="WWW Browsers">
 				<item label="Firefox"><action name="Execute"><execute>firefox</execute></action></item>
-				<item label="Chromium"><action name="Execute"><execute>chromium-browser</execute></action></item>
+				<item label="Chromium"><action name="Execute"><execute>chromium</execute></action></item>
 				<item label="Google Chrome"><action name="Execute"><execute>google-chrome</execute></action></item>
 			</menu>
 			<item label="Mail Client (claws-mail)"><action name="Execute"><execute>claws-mail</execute></action></item>
