@@ -13,14 +13,14 @@ moreutils
 finger
 psmisc #Includes fuser, killall, peekfd, pstree, prtstat
 hwinfo lshw inxi
-htop iotop smem #Do not install dstat because it is included in pcp
-glances
+htop iotop smem
+#Do not install dstat because it is included in pcp
 pcp pcp-gui
 @--no-install-recommends@ cockpit
+glances
 battery-stats
 autofs
-fuseiso
-fuseiso9660
+fuseiso fuseiso9660
 vbetool
 plocate
 crudini
