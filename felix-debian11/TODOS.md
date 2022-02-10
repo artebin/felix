@@ -4,6 +4,7 @@
 - [x] Openbox theme should be installed in user space.
 - [X] Do not really need the install_themes recipe, but just copy .themes in dotfiles.
 - [x] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
+- [x] Edit and restart sxhkd from Openbox menu.
 
 - [ ] Fix path for debian.
 - [ ] Shortcut in geany comment lines.

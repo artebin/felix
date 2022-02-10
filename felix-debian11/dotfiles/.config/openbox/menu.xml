@@ -98,10 +98,15 @@
 				<item label="Reconfigure"><action name="Reconfigure"/></item>
 				<item label="Restart"><action name="Restart"/></item>
 			</menu>
-			<menu id="Tint2Config" label="tint2">
+			<menu id="Tint2Config" label="Tint2">
 				<item label="Edit tint2rc"><action name="Execute"><command>geany -i ~/.config/tint2/tint2rc</command></action></item>
 				<separator/>
 				<item label="Restart"><action name="Execute"><command>bash ~/.config/tint2/restart_tint2.sh</command></action></item>
+			</menu>
+			<menu id="SxhkdConfig" label="Sxhkd">
+				<item label="Edit sxhkdrc"><action name="Execute"><command>geany -i ~/.config/sxhkd/sxhkdrc</command></action></item>
+				<separator/>
+				<item label="Restart"><action name="Execute"><command>bash ~/.config/sxhkd/restart_sxhkd.sh</command></action></item>
 			</menu>
 		</menu>
 		<menu id="system" label="System">
