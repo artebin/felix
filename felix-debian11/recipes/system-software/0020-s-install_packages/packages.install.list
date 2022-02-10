@@ -312,6 +312,7 @@ build-essential
 gcc g++ make
 autoconf
 cmake
+meson
 sassc
 libgtk-3-dev gtk-3-examples
 libgtk2.0-dev gtk2.0-examples
