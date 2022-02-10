@@ -60,7 +60,7 @@ install_caja_from_sources(){
 	cd "${RECIPE_DIRECTORY}"
 	rm -fr mate-common
 	rm -fr caja
-	rm -fr caja-extension
+	rm -fr caja-extensions
 	
 	printf "\n"
 }
