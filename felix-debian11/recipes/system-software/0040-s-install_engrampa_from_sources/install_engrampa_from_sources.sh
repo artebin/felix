@@ -17,6 +17,30 @@ exit_if_has_not_root_privileges
 install_engrampa_from_sources(){
 	printf "Installing engrampa from sources...\n"
 	
+	printf "Installing dependencies...\n"
+	DEPENDENCIES=(  "gtk-doc-tools"
+			"gobject-introspection"
+			"autoconf-archive"
+			"libgail-3-dev"
+			"libmate-desktop-dev"
+			"yelp-tools" )
+	install_package_if_not_installed "${DEPENDENCIES[@]}"
+	
+	if [[ ! -d "/usr/share/aclocal" ]]; then
+		mkdir -p "/usr/share/aclocal"
+	fi
+	if [[ ! -d "/usr/local/share/aclocal" ]]; then
+		mkdir -p "/usr/local/share/aclocal"
+	fi
+	
+	printf "Installing mate-common from sources...\n"
+	cd "${RECIPE_DIRECTORY}"
+	git clone "https://github.com/mate-desktop/mate-common"
+	cd mate-common
+	ACLOCAL_FLAGS="-I /usr/share/aclocal -I /usr/local/share/aclocal" ./autogen.sh --prefix=/usr
+	make
+	make install
+	
 	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/mate-desktop/engrampa
 	cd engrampa
