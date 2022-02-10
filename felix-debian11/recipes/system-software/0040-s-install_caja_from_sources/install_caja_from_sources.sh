@@ -28,7 +28,7 @@ install_caja_from_sources(){
 	cd "${RECIPE_DIRECTORY}"
 	git clone "https://github.com/mate-desktop/mate-common"
 	cd mate-common
-	ACLOCAL_FLAGS="-I /usr/share/aclocal -I /usr/local/share/aclocal" ./autogen.sh --prefix=/usr
+	./autogen.sh --prefix=/usr
 	make
 	make install
 	
