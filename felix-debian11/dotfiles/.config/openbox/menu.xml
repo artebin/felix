@@ -80,7 +80,7 @@
 		<separator/>
 		<menu id="settings" label="Settings">
 			<menu id="DisplaySettings" label="Display">
-				<menu id="randr-menu" label="Screen Layout" execute="python ~/.config/openbox/ob-randr.py" />
+				<menu id="randr-menu" label="Screen Layout" execute="python3 ~/.config/openbox/ob-randr.py" />
 				<item label="Screen Layout Editor"><action name="Execute"><command>arandr</command></action></item>
 				<item label="DPMS"><action name="Execute"><command>light-locker-settings</command></action></item>
 			</menu>
