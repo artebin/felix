@@ -24,11 +24,18 @@ install_caja_from_sources(){
 			"yelp-tools" )
 	install_package_if_not_installed "${DEPENDENCIES[@]}"
 	
+	if [[ ! -d "/usr/share/aclocal" ]]; then
+		mkdir -p "/usr/share/aclocal"
+	fi
+	if [[ ! -d "/usr/local/share/aclocal" ]]; then
+		mkdir -p "/usr/local/share/aclocal"
+	fi
+	
 	printf "Installing mate-common from sources...\n"
 	cd "${RECIPE_DIRECTORY}"
 	git clone "https://github.com/mate-desktop/mate-common"
 	cd mate-common
-	./autogen.sh --prefix=/usr
+	ACLOCAL_FLAGS="-I /usr/share/aclocal -I /usr/local/share/aclocal" ./autogen.sh --prefix=/usr
 	make
 	make install
 	
