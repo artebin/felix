@@ -23,7 +23,7 @@ super + f
 	caja --no-desktop
 
 super + z
-	translate-notify
+	translate-notify -c
 
 super + t
 	x-terminal-emulator
