@@ -30,8 +30,8 @@ install_pamixer_from_sources(){
 	make install
 	
 	# Cleaning
-	cd "${RECIPE_DIRECTORY}"
-	rm -fr pamixer
+	#cd "${RECIPE_DIRECTORY}"
+	#rm -fr pamixer
 	
 	printf "\n"
 }

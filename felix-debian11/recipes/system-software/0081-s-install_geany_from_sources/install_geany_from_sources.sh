@@ -50,7 +50,7 @@ install_geany_from_sources(){
 	# Cleaning
 	cd "${RECIPE_DIRECTORY}"
 	rm -fr ./geany
-	rm -fr ./geayn-plugins
+	rm -fr ./geany-plugins
 	
 	printf "\n"
 }
