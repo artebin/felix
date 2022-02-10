@@ -19,7 +19,7 @@ configure_gtk2(){
 	if [[ -f /etc/gtk-2.0/gtkrc ]]; then
 		backup_file rename /etc/gtk-2.0/gtkrc
 	fi
-	cp "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.gtkrc-2.0" /etc/gtk-2.0/gtkrc
+	cp "${FELIX_ROOT}/dotfiles/.gtkrc-2.0" /etc/gtk-2.0/gtkrc
 	chmod 755 /etc/gtk-2.0/gtkrc
 	
 	printf "Setting gtk-theme-name: ${GTK_THEME_NAME} ...\n"
@@ -39,7 +39,7 @@ configure_gtk3(){
 	if [[ -f /etc/gtk-3.0/settings.ini ]]; then
 		backup_file rename /etc/gtk-3.0/settings.ini
 	fi
-	cp "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/gtk-3.0/settings.ini" /etc/gtk-3.0/settings.ini
+	cp "${FELIX_ROOT}/dotfiles/.config/gtk-3.0/settings.ini" /etc/gtk-3.0/settings.ini
 	chmod 755 /etc/gtk-3.0/settings.ini
 	
 	printf "Setting gtk-theme-name: ${GTK_THEME_NAME} ...\n"
@@ -53,7 +53,7 @@ configure_gtk3(){
 		backup_file rename /root/.config/gtk-3.0
 	fi
 	mkdir -p /root/.config/gtk-3.0
-	cp "${RECIPE_FAMILY_DIRECTORY}/dotfiles/.config/gtk-3.0/gtk.css" /root/.config/gtk-3.0/gtk.css
+	cp "${FELIX_ROOT}/dotfiles/.config/gtk-3.0/gtk.css" /root/.config/gtk-3.0/gtk.css
 	
 	printf "Forcing GTK+ to use GDK backend x11 ...\n"
 	echo "GDK_BACKEND=x11" >>/etc/environment
