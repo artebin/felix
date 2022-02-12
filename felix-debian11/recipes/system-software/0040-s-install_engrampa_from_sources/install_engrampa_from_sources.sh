@@ -51,9 +51,9 @@ install_engrampa_from_sources(){
 	make install
 	
 	# Cleaning
-	cd "${RECIPE_DIRECTORY}"
-	rm -fr mate-common
-	rm -fr engrampa
+	#cd "${RECIPE_DIRECTORY}"
+	#rm -fr mate-common
+	#rm -fr engrampa
 	
 	printf "\n"
 }

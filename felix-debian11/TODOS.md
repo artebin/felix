@@ -6,6 +6,7 @@
 - [x] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [x] Edit and restart sxhkd from Openbox menu.
 
+- [ ] Script for setting the font for openbox wm and tint2 and xnotifyd?.
 - [ ] Fix path for debian.
 - [ ] Shortcut in geany comment lines.
 - [ ] Add caja action "Open in geany new instance", i.e. new window.
