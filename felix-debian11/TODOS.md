@@ -6,6 +6,9 @@
 - [x] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [x] Edit and restart sxhkd from Openbox menu.
 
+- [ ] Color palette for background, window title colors etc.
+- [ ] Compile Remina from the sources?
+- [ ] Glances seems to be automatically started, disable the service.
 - [ ] Script for setting the font for Openbox, Tint2, GTK and KDE.
 - [ ] Fix path for debian.
 - [ ] Shortcut in geany comment lines.
