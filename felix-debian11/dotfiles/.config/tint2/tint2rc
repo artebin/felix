@@ -26,7 +26,7 @@ border_color = #000000 0
 # ID 5 - taskbar name active 
 rounded = 0
 border_width = 0
-background_color = #fffff0 64
+background_color = #fffff0 44
 border_color = #d8d8d8 30
 
 # ID 6 - task
@@ -38,7 +38,7 @@ border_color = #000000 0
 # ID 7 - task active
 rounded = 0
 border_width = 0
-background_color = #fffff0 64
+background_color = #fffff0 44
 border_color = #d8d8d8 30
 
 # ID 8 - task iconified
