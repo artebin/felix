@@ -9,12 +9,12 @@
 
 # Window geometry
 padding.width: 2
-padding.height: 2
+padding.height: 6
 window.client.padding.width: 0
 window.client.padding.height: 0
 window.handle.width: 3
 
-border.width: 
+border.width: 1
 osd.border.width: 1
 menu.border.width: 1
 
@@ -37,7 +37,6 @@ window.inactive.client.color: #545043
 
 osd.border.color:  #474439
 menu.border.color: #474439
-
 
 # Text shadows
 window.active.label.text.font: shadow=n
