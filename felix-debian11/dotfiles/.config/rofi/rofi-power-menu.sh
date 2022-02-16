@@ -11,6 +11,39 @@
 #   rofi -show powermenu -modi powermenu:./rofi-power-menu.sh
 #################################################################################
 
+function print_usage(){
+	echo "rofi-power-menu - a power menu mode for Rofi"
+	echo
+	echo "Usage: rofi-power-menu [--choices CHOICES] [--confirm CHOICES]"
+	echo "                       [--choose CHOICE] [--dry-run] [--symbols|--no-symbols]"
+	echo
+	echo "Use with Rofi in script mode. For instance, to ask for shutdown or reboot:"
+	echo
+	echo "  rofi -show menu -modi \"menu:rofi-power-menu --choices=shutdown/reboot\""
+	echo
+	echo "Available options:"
+	echo "  --dry-run          Don't perform the selected action but print it to stderr."
+	echo "  --choices CHOICES  Show only the selected choices in the given order. Use / "
+	echo "                     as the separator. Available choices are lockscreen, logout,"
+	echo "                     suspend, hibernate, reboot and shutdown. By default, all"
+	echo "                     available choices are shown."
+	echo "  --confirm CHOICES  Require confirmation for the gives choices only. Use / as"
+	echo "                     the separator. Available choices are lockscreen, logout,"
+	echo "                     suspend, hibernate, reboot and shutdown. By default, only"
+	echo "                     irreversible actions logout, reboot and shutdown require"
+	echo "                     confirmation."
+	echo "  --choose CHOICE    Preselect the given choice and only ask for a confirmation"
+	echo "                     (if confirmation is set to be requested). It is strongly"
+	echo "                     recommended to combine this option with --confirm=CHOICE"
+	echo "                     if the choice wouldn't require confirmation by default."
+	echo "                     Available choices are lockscreen, logout, suspend,"
+	echo "                     hibernate, reboot and shutdown."
+	echo "  --[no-]symbols     Show Unicode symbols or not. Requires a font with support"
+	echo "                     for the symbols. Use, for instance, fonts from the"
+	echo "                     Nerdfonts collection. By default, they are shown"
+	echo "  -h,--help          Show this help text."
+}
+
 # Exit immediately if a command exits with a non-zero status.
 set -e
 
@@ -70,84 +103,56 @@ function check_valid(){
 
 # Parse command-line options
 parsed=$(getopt --options=h --longoptions=help,dry-run,confirm:,choices:,choose:,symbols,no-symbols --name "$0" -- "$@")
-if [ $? -ne 0 ]; then
+if [[ ${?} -ne 0 ]]; then
     echo 'Terminating...' >&2
     exit 1
 fi
+
 eval set -- "$parsed"
 unset parsed
 while true; do
-    case "$1" in
-        "-h"|"--help")
-            echo "rofi-power-menu - a power menu mode for Rofi"
-            echo
-            echo "Usage: rofi-power-menu [--choices CHOICES] [--confirm CHOICES]"
-            echo "                       [--choose CHOICE] [--dry-run] [--symbols|--no-symbols]"
-            echo
-            echo "Use with Rofi in script mode. For instance, to ask for shutdown or reboot:"
-            echo
-            echo "  rofi -show menu -modi \"menu:rofi-power-menu --choices=shutdown/reboot\""
-            echo
-            echo "Available options:"
-            echo "  --dry-run          Don't perform the selected action but print it to stderr."
-            echo "  --choices CHOICES  Show only the selected choices in the given order. Use / "
-            echo "                     as the separator. Available choices are lockscreen, logout,"
-            echo "                     suspend, hibernate, reboot and shutdown. By default, all"
-            echo "                     available choices are shown."
-            echo "  --confirm CHOICES  Require confirmation for the gives choices only. Use / as"
-            echo "                     the separator. Available choices are lockscreen, logout,"
-            echo "                     suspend, hibernate, reboot and shutdown. By default, only"
-            echo "                     irreversible actions logout, reboot and shutdown require"
-            echo "                     confirmation."
-            echo "  --choose CHOICE    Preselect the given choice and only ask for a confirmation"
-            echo "                     (if confirmation is set to be requested). It is strongly"
-            echo "                     recommended to combine this option with --confirm=CHOICE"
-            echo "                     if the choice wouldn't require confirmation by default."
-            echo "                     Available choices are lockscreen, logout, suspend,"
-            echo "                     hibernate, reboot and shutdown."
-            echo "  --[no-]symbols     Show Unicode symbols or not. Requires a font with support"
-            echo "                     for the symbols. Use, for instance, fonts from the"
-            echo "                     Nerdfonts collection. By default, they are shown"
-            echo "  -h,--help          Show this help text."
-            exit 0
-            ;;
-        "--dry-run")
-            DRY_RUN=true
-            shift 1
-            ;;
-        "--confirm")
-            IFS='/' read -ra MENU_ITEM_REQUESTING_CONFIGURATION_ARRAY <<< "$2"
-            check_valid "$1" "${MENU_ITEM_REQUESTING_CONFIGURATION_ARRAY[@]}"
-            shift 2
-            ;;
-        "--choices")
-            IFS='/' read -ra MENU_ITEMS_TO_SHOW_ARRAY <<< "$2"
-            check_valid "$1" "${MENU_ITEMS_TO_SHOW_ARRAY[@]}"
-            shift 2
-            ;;
-        "--choose")
-            # Check that the choice is valid
-            check_valid "$1" "$2"
-            selectionID="$2"
-            shift 2
-            ;;
-        "--symbols")
-            SHOW_ICONS=true
-            shift 1
-            ;;
-        "--no-symbols")
-            SHOW_ICONS=false
-            shift 1
-            ;;
-        "--")
-            shift
-            break
-            ;;
-        *)
-            echo "Internal error" >&2
-            exit 1
-            ;;
-    esac
+	case "$1" in
+		"-h"|"--help")
+			print_usage
+			exit 0
+			;;
+		"--dry-run")
+			DRY_RUN=true
+			shift 1
+			;;
+		"--confirm")
+			IFS='/' read -ra MENU_ITEM_REQUESTING_CONFIGURATION_ARRAY <<< "$2"
+			check_valid "$1" "${MENU_ITEM_REQUESTING_CONFIGURATION_ARRAY[@]}"
+			shift 2
+			;;
+		"--choices")
+			IFS='/' read -ra MENU_ITEMS_TO_SHOW_ARRAY <<< "$2"
+			check_valid "$1" "${MENU_ITEMS_TO_SHOW_ARRAY[@]}"
+			shift 2
+			;;
+		"--choose")
+			# Check that the choice is valid
+			check_valid "$1" "$2"
+			selectionID="$2"
+			shift 2
+			;;
+		"--symbols")
+			SHOW_ICONS=true
+			shift 1
+			;;
+		"--no-symbols")
+			SHOW_ICONS=false
+			shift 1
+			;;
+		"--")
+			shift
+			break
+			;;
+		*)
+			echo "Internal error" >&2
+			exit 1
+			;;
+	esac
 done
 
 # Define the messages after parsing the CLI options so that it is possible to
@@ -178,69 +183,63 @@ for ENTRY in "${ALL_MENU_ITEM_ARRAY[@]}"; do
 done
 confirmationMessages[cancel]=$(write_message "${MENU_ITEM_ICON_ARRAY[cancel]}" "No, cancel")
 
-if [ $# -gt 0 ]
-then
-    # If arguments given, use those as the selection
-    selection="${@}"
+
+if [[ ${#} -gt 0 ]]; then
+	# If arguments given, use those as the selection
+	selection="${@}"
 else
-    # Otherwise, use the CLI passed choice if given
-    if [ -n "${selectionID+x}" ]
-    then
-        selection="${messages[$selectionID]}"
-    fi
+	# Otherwise, use the CLI passed choice if given
+	if [[ -n "${selectionID+x}" ]]; then
+		selection="${messages[$selectionID]}"
+	fi
 fi
 
 # Don't allow custom entries
 echo -e "\0no-custom\x1ftrue"
+
 # Use markup
 echo -e "\0markup-rows\x1ftrue"
 
-if [ -z "${selection+x}" ]
-then
-    echo -e "\0prompt\x1fPower menu"
-    for entry in "${MENU_ITEMS_TO_SHOW_ARRAY[@]}"
-    do
-        echo -e "${messages[$entry]}\0icon\x1f${MENU_ITEM_ICON_ARRAY[$entry]}"
-    done
+if [[ -z "${selection+x}" ]]; then
+	echo -e "\0prompt\x1fPower menu"
+	for entry in "${MENU_ITEMS_TO_SHOW_ARRAY[@]}"; do
+		echo -e "${messages[$entry]}\0icon\x1f${MENU_ITEM_ICON_ARRAY[$entry]}"
+	done
 else
-    for entry in "${MENU_ITEMS_TO_SHOW_ARRAY[@]}"
-    do
-        if [ "$selection" = "$(print_selection "${messages[$entry]}")" ]
-        then
-            # Check if the selected entry is listed in confirmation requirements
-            for confirmation in "${MENU_ITEM_REQUESTING_CONFIGURATION_ARRAY[@]}"
-            do
-                if [ "$entry" = "$confirmation" ]
-                then
-                    # Ask for confirmation
-                    echo -e "\0prompt\x1fAre you sure"
-                    echo -e "${confirmationMessages[$entry]}\0icon\x1f${MENU_ITEM_ICON_ARRAY[$entry]}"
-                    echo -e "${confirmationMessages[cancel]}\0icon\x1f${MENU_ITEM_ICON_ARRAY[cancel]}"
-                    exit 0
-                fi
-            done
-            # If not, then no confirmation is required, so mark confirmed
-            selection=$(print_selection "${confirmationMessages[$entry]}")
-        fi
-        if [ "$selection" = "$(print_selection "${confirmationMessages[$entry]}")" ]
-        then
-            if [ $DRY_RUN = true ]
-            then
-                # Tell what would have been done
-                echo "Selected: $entry" >&2
-            else
-                # Perform the action
-                ${MENU_ITEM_ACTION_ARRAY[$entry]}
-            fi
-            exit 0
-        fi
-        if [ "$selection" = "$(print_selection "${confirmationMessages[cancel]}")" ]
-        then
-            # Do nothing
-            exit 0
-        fi
-    done
-    # The selection didn't match anything, so raise an error
-    echo "Invalid selection: $selection" >&2
-    exit 1
+	for entry in "${MENU_ITEMS_TO_SHOW_ARRAY[@]}"; do
+		if [[ "$selection" = "$(print_selection "${messages[$entry]}")" ]]; then
+			# Check if the selected entry is listed in confirmation requirements
+			for confirmation in "${MENU_ITEM_REQUESTING_CONFIGURATION_ARRAY[@]}"; do
+				if [[ "$entry" = "$confirmation" ]]; then
+					# Ask for confirmation
+					echo -e "\0prompt\x1fAre you sure"
+					echo -e "${confirmationMessages[$entry]}\0icon\x1f${MENU_ITEM_ICON_ARRAY[$entry]}"
+					echo -e "${confirmationMessages[cancel]}\0icon\x1f${MENU_ITEM_ICON_ARRAY[cancel]}"
+					exit 0
+				fi
+			done
+			# If not, then no confirmation is required, so mark confirmed
+			selection=$(print_selection "${confirmationMessages[$entry]}")
+		fi
+		
+		if [[ "$selection" = "$(print_selection "${confirmationMessages[$entry]}")" ]]; then
+			if [[ $DRY_RUN = true ]]; then
+				# Tell what would have been done
+				echo "Selected: $entry" >&2
+			else
+				# Perform the action
+				${MENU_ITEM_ACTION_ARRAY[$entry]}
+			fi
+			exit 0
+		fi
+		
+		if [[ "$selection" = "$(print_selection "${confirmationMessages[cancel]}")" ]]; then
+			# Do nothing
+			exit 0
+		fi
+	done
+	
+	# The selection didn't match anything, so raise an error
+	echo "Invalid selection: $selection" >&2
+	exit 1
 fi

@@ -26,12 +26,13 @@ install_pamixer_from_sources(){
 	# Build and install
 	cd "${RECIPE_DIRECTORY}"
 	cd pamixer
-	make
-	make install
+	meson setup build
+        meson compile -C build
+	meson install -C build
 	
 	# Cleaning
-	#cd "${RECIPE_DIRECTORY}"
-	#rm -fr pamixer
+	cd "${RECIPE_DIRECTORY}"
+	rm -fr pamixer
 	
 	printf "\n"
 }
