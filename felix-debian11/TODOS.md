@@ -6,6 +6,9 @@
 - [x] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [x] Edit and restart sxhkd from Openbox menu.
 
+- [ ] kcolorchooser instead of gpick.
+- [ ] Script for columnating a file based on a regex providing the prefix, the remaining content of the lines is tab aligned, allow to give a max length for the prefix.
+- [ ] Bash script for re-formatting openbox theme file.
 - [ ] Convert any images to a color palette <https://ign.schrodinger-hat.it/color-schemes>.
 - [ ] Color palette for background, window title colors etc.
 - [ ] Compile Remina from the sources?
