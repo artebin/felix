@@ -1,6 +1,113 @@
-#
-#
-#
+############################
+# Data type: Justification
+############################
+
+Possible values are: Left, Center, Right
+
+######################
+# Date type: Texture
+######################
+
+parentrelative | ((solid | gradient gradient-type) [border] [interlaced])
+
+A texture can be solid or gradient.
+It can also have a border and being interlaced with a line.
+
+## Solid
+
+Solid means that the background of the texture is filled with a single color.
+The texture must be accompanied by a single color field.
+
+Example:
+menu.items.bg:       Solid Flat
+menu.items.bg.color: #f8f5f2
+
+## Gradient
+
+When a gradient is specified, it must be followed by the gradient's type.
+Gradients all use two color fields: color and colorTo and must also be accompanied by these.
+
+Valid gradient types are:
+
+  - Diagonal - A gradient from the top left corner to the bottom right corner
+  - CrossDiagonal - A gradient from the top right corner to the bottom left corner
+  - Pyramid - A gradient that starts in all four corners and smooths to the center of the texture
+  - Horizontal - A gradient from the left edge to the right
+  - MirrorHorizontal - A gradient from the left edge to the middle, and then reversed to the right edge
+  - Vertical - A gradient from the top edge to the bottom
+  - SplitVertical - A gradient split in the middle that goes out toward the top and bottom edges 
+
+Example:
+menu.title.bg:         Gradient Vertical Raised 
+menu.title.bg.color:   #658fb5
+menu.title.bg.colorTo: #4d6982
+
+SplitVertical gradients have 2 optional, addition color fields: color.splitTo and colorTo.splitTo.
+These colors are the light colors used on the far top and bottom of the SplitVertical gradient.
+When these are omitted, then the default values for these are color * 5/4, and colorTo * 17/16.
+
+Example:
+menu.title.bg:                 Gradient SplitVertical Raised 
+menu.title.bg.color:           #658fb5
+menu.title.bg.color.splitTo:   #7595b9
+menu.title.bg.colorTo:         #4d6982
+menu.title.bg.colorTo.splitTo: #557485
+
+## Borders
+
+Borders can be used on both solid and gradient textures.
+Possible values are: Flat, Flat Border, Raised and Sunken.
+
+Flat means no border at all.
+Flat Border means a flat solid border.
+When using a flat border, the texture must be accompanied by a border color.
+When a border is not specified, Raised is assumed.
+
+Raised and Sunken have two bevel options available to them.
+By default, a bevel is drawn around the very outside of the texture.
+If Bevel2 is specified, then the bevel is drawn slightly in from the edge.
+This can be used to animate button presses/toggled states. 
+
+The strength of the bevel highlights can also be determined by the theme, by using the highlight and shadow fields: 
+  - highlight: specifies the strength of the light bevel.
+    It is a value above or equal to 0, where 0 makes no highlight at all, 256 makes the highlight color 100% brighter, 512 makes the highlight color 200% brighter, and so on.
+    The default highlight is 128 (which is a 50% increase in brightness).
+  - shadow: The shadow field specifies the strength of the dark bevel.
+    It is a value between 0 and 256, where 0 makes no shadow at all, and 256 makes a completely black shadow (100% decreased brightness).
+    The default shadow is 64 (which is a 25% decrease in brightness).
+
+Example:
+window.inactive.button.disabled.bg:           Gradient Diagonal Raised
+window.inactive.button.disabled.bg.color:     rgb:50/54/58
+window.inactive.button.disabled.bg.colorTo:   black
+window.inactive.button.disabled.bg.highlight: 128
+window.inactive.button.disabled.bg.shadow:    64
+window.inactive.button.toggled.pressed.bg:          Gradient Diagonal Raised Bevel2
+window.inactive.button.toggled.pressed.bg.color:    rgb:50/54/58
+window.inactive.button.toggled.pressed.bg.colorTo:  black
+
+## Interlace
+
+Interlaced textures have a solid line drawn horizontally every second row.
+When you specify interlaced, the texture must be accompanied by an interlaced color. 
+
+Example:
+window.inactive.title.bg: Solid Flat Interlaced
+window.inactive.title.bg.color: #f5f5f5
+window.inactive.title.bg.interlace.color: #f6f6f6
+
+##########
+# Colors
+##########
+
+Themerc being a X resource database, X11 color names are allowed and new colors can be defined like below:
+#define COLOR0  #1c1c1c
+
+Colors can be specified in hex RGB color code (HTML), or in the format "rgb:rr/bb/gg" where rr/bb/gg are given in hexadecimal.
+
+####################
+# Theme properties
+####################
 
 border.width:								Specifies the size of the border drawn around window frames.
 									Type: integer
