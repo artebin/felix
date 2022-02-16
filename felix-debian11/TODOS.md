@@ -6,6 +6,9 @@
 - [x] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [x] Edit and restart sxhkd from Openbox menu.
 
+- [ ] Separator bar wider in caja.
+- [ ] Memory, cpu and network logging with a service for activating it, and a rolling logging and a nice GUI app to see historical data like kcollectd. Later on I could add the battery info I wanted to.
+- [ ] Would be nice to dock a window i.e. fullscreen on other windows would take it into account. The dock is always visible with fullscreened windows (unless floating window overlap the dock).
 - [ ] kcolorchooser instead of gpick.
 - [ ] Script for columnating a file based on a regex providing the prefix, the remaining content of the lines is tab aligned, allow to give a max length for the prefix.
 - [ ] Bash script for re-formatting openbox theme file.
