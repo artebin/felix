@@ -6,6 +6,7 @@
 - [x] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [x] Edit and restart sxhkd from Openbox menu.
 
+- [ ] pqiv or qview for the image viewer, do they support webp?
 - [ ] Create a palette from a initial N colors, or from a wallpaper, and use this palette create automatically create a new theme <https://github.com/warpwm/lule_bash>.
 - [ ] Phone does not appear in caja (obex not supported?).
 - [ ] Separator bar wider in caja.
