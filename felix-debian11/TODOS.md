@@ -6,6 +6,8 @@
 - [x] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [x] Edit and restart sxhkd from Openbox menu.
 
+- [ ] Create a palette from a initial N colors, or from a wallpaper, and use this palette create automatically create a new theme <https://github.com/warpwm/lule_bash>.
+- [ ] Phone does not appear in caja (obex not supported?).
 - [ ] Separator bar wider in caja.
 - [ ] Memory, cpu and network logging with a service for activating it, and a rolling logging and a nice GUI app to see historical data like kcollectd. Later on I could add the battery info I wanted to.
 - [ ] Would be nice to dock a window i.e. fullscreen on other windows would take it into account. The dock is always visible with fullscreened windows (unless floating window overlap the dock).
