@@ -1,3 +1,14 @@
+#define polar_night_0 #2e3440
+#define polar_night_1 #3b4252
+#define polar_night_2 #434c5e
+#define polar_night_3 #4c566a
+
+#define window_active_title_bg
+#define window_inactive_title_bg 
+#define menu_active_bg
+#define menu_inactive_bg
+#define menu_disabled_bg
+
 border.width: 1
 padding.height: 6
 padding.width: 6
@@ -5,12 +16,12 @@ padding.width: 6
 menu.border.color: #4c566a
 menu.border.width: 0
 menu.items.active.bg.border.width: 0
-menu.items.active.bg.border.color: #3b4252
+menu.items.active.bg.border.color: #434c5e
 menu.items.active.bg.color: #4c566a
 menu.items.active.bg: flat solid border
 menu.items.active.disabled.text.color: #756f5d
 menu.items.active.text.color: #fcf1ca
-menu.items.bg.color: #3b4252
+menu.items.bg.color: #434c5e
 menu.items.bg: flat solid
 menu.items.disabled.text.color: #756f5d
 menu.items.font: shadow=n
@@ -21,7 +32,7 @@ menu.separator.color: #a89f87
 menu.separator.padding.height: 2
 menu.separator.padding.width: 6
 menu.separator.width: 1
-menu.title.bg.color: #3b4252
+menu.title.bg.color: #434c5e
 menu.title.bg: flat solid
 menu.title.text.color: #fcf1ca
 menu.title.text.font: shadow=n
@@ -52,7 +63,7 @@ window.client.padding.width: 0
 window.handle.width: 3
 window.label.text.justify: center
 
-window.active.border.color: #4c566a
+window.active.border.color: black
 window.active.button.disabled.bg: Parentrelative
 window.active.button.disabled.image.color: #545043
 window.active.button.hover.bg: parentrelative
@@ -79,7 +90,7 @@ window.active.title.bg.color: #4c566a
 window.active.title.bg: flat solid
 window.active.title.separator.color: #4c566a
 
-window.inactive.border.color:  #434c5e
+window.inactive.border.color:  black
 window.inactive.button.disabled.bg: Parentrelative
 window.inactive.button.disabled.image.color: #545043
 window.inactive.button.hover.bg: parentrelative
