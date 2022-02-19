@@ -1,37 +1,34 @@
-#define polar_night_0 #2e3440
-#define polar_night_1 #3b4252
-#define polar_night_2 #434c5e
-#define polar_night_3 #4c566a
-
-#define window_active_title_bg
-#define window_inactive_title_bg 
-#define menu_active_bg
-#define menu_inactive_bg
-#define menu_disabled_bg
-
 border.width: 1
 padding.height: 6
 padding.width: 6
 
 menu.border.color: #4c566a
 menu.border.width: 0
+
 menu.items.active.bg.border.width: 0
-menu.items.active.bg.border.color: #434c5e
+menu.items.active.bg.border.color: black
 menu.items.active.bg.color: #4c566a
-menu.items.active.bg: flat solid border
+menu.items.active.bg: flat
 menu.items.active.disabled.text.color: #756f5d
+menu.items.active.font: shadow=n
 menu.items.active.text.color: #fcf1ca
+
+menu.items.bg.border.width: 0
+menu.items.bg.border.color: black
 menu.items.bg.color: #434c5e
-menu.items.bg: flat solid
+menu.items.bg: flat
 menu.items.disabled.text.color: #756f5d
 menu.items.font: shadow=n
 menu.items.text.color: #c2b99b
+
 menu.overlap.x: -5
 menu.overlap.y: 0
+
 menu.separator.color: #a89f87
 menu.separator.padding.height: 2
 menu.separator.padding.width: 6
 menu.separator.width: 1
+
 menu.title.bg.color: #434c5e
 menu.title.bg: flat solid
 menu.title.text.color: #fcf1ca
