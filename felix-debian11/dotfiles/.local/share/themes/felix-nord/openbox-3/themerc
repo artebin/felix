@@ -2,8 +2,8 @@ border.width: 1
 padding.height: 6
 padding.width: 6
 
-menu.border.color: #4c566a
-menu.border.width: 0
+menu.border.color: #434c5e
+menu.border.width: 2
 
 menu.items.active.bg.border.width: 0
 menu.items.active.bg.border.color: black
@@ -35,7 +35,7 @@ menu.title.text.color: #fcf1ca
 menu.title.text.font: shadow=n
 menu.title.text.justify: center
 
-osd.bg.color:  #545043
+osd.bg.color: #545043
 osd.bg: flat solid
 osd.border.color:  #474439
 osd.border.width: 1
