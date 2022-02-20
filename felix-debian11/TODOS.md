@@ -6,6 +6,7 @@
 - [x] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [x] Edit and restart sxhkd from Openbox menu.
 
+- [ ] Remove XDG desktop folder and check on /etc/xdg/user-dirs.conf.
 - [ ] The ordering of the files in caja is wrong.
 - [ ] Avahi-discover window centered in the screen.
 - [ ] Find a way to iterate over a list of GIT repositories and warn the user that some changes are not pushed yet. Maybe it is good to have a 'git' folder in the home after all.
