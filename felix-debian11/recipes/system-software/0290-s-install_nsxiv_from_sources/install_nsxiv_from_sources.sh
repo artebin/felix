@@ -15,7 +15,7 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_nsxiv_from_sources(){
-	printf "Install nsxiv from sources ...\n"
+	printf "Install nsxiv from sources...\n"
 	
 	# Install dependencies
 	DEPENDENCIES=(
@@ -37,9 +37,18 @@ install_nsxiv_from_sources(){
 	make
 	make install
 	
+	# Clone git repository for nsxiv-extra and copy nsxiv-rifle to /usr/local/bin
+	printf "Retrieve nxsiv-rifle and make nsxiv.desktop call it...\n"
+	#git clone https://github.com/nsxiv/nsxiv-extra
+	cp ./nsxiv-extra/scripts/nsxiv-rifle/nsxiv-rifle /usr/local/bin/nsxiv-rifle
+	chmod +x /usr/local/bin/nsxiv-rifle
+	add_or_update_keyvalue /usr/local/share/applications/nsxiv.desktop "Exec" "nsxiv-rifle %%F"
+	update-desktop-database
+	
 	# Cleaning
 	cd "${RECIPE_DIRECTORY}"
 	rm -fr nsxiv
+	rm -fr nsxiv-extra
 	
 	printf "\n"
 }
