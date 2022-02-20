@@ -38,6 +38,7 @@ ranger
 cryptsetup
 paperkey qrencode zbar-tools
 screen
+inotify-tools inotify-hookable
 
 ############################
 # Language and translation
