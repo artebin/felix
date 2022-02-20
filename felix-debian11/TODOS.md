@@ -6,6 +6,8 @@
 - [x] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [x] Edit and restart sxhkd from Openbox menu.
 
+- [ ] The ordering of the files in caja is wrong.
+- [ ] Avahi-discover window centered in the screen.
 - [ ] Find a way to iterate over a list of GIT repositories and warn the user that some changes are not pushed yet. Maybe it is good to have a 'git' folder in the home after all.
 - [ ] Rofi mode for remmina files and use a icon per type of connections SSH, VNC, RDP etc. the modi can used an index which could be rebuilt by quick-checking the files.
 - [ ] Compile Caja with the support of OBEX.
