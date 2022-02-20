@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+while read FILE; do
+	case "$1" in
+		"C-r")
+			convert -rotate 90 "${FILE}" "${FILE}" ;;
+		"C-c")
+			echo -n "${FILE}" | xclip -selection clipboard ;;
+	esac
+done
