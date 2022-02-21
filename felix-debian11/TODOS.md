@@ -7,6 +7,9 @@
 - [x] Edit and restart sxhkd from Openbox menu.
 
 - [ ] Install <https://github.com/sharkdp/pastel> for processing colors from the command line.
+- [ ] Remove XDG desktop folder and check on /etc/xdg/user-dirs.conf.
+- [ ] The ordering of the files in caja is wrong.
+- [ ] Avahi-discover window centered in the screen.
 - [ ] Find a way to iterate over a list of GIT repositories and warn the user that some changes are not pushed yet. Maybe it is good to have a 'git' folder in the home after all.
 - [ ] Rofi mode for remmina files and use a icon per type of connections SSH, VNC, RDP etc. the modi can used an index which could be rebuilt by quick-checking the files.
 - [ ] Compile Caja with the support of OBEX.
@@ -14,6 +17,7 @@
 - [ ] Path openbox for the hints and also for window title disable center justification when window too much small.
 - [ ] pqiv or qview for the image viewer, do they support webp? => no the best seems to be nsxiv
 - [ ] Create a palette from a initial N colors, or from a wallpaper, and use this palette create automatically create a new theme <https://github.com/warpwm/lule_bash>. Similar to this <https://github.com/fikriomar16/obtgen> it mentioned pywal to extract a palette from an image.
+- [ ] Phone does not appear in caja (obex not supported?).
 - [ ] Separator bar wider in caja.
 - [ ] Memory, cpu and network logging with a service for activating it, and a rolling logging and a nice GUI app to see historical data like kcollectd. Later on I could add the battery info I wanted to.
 - [ ] Would be nice to dock a window i.e. fullscreen on other windows would take it into account. The dock is always visible with fullscreened windows (unless floating window overlap the dock).

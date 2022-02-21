@@ -20,6 +20,7 @@ pcp pcp-gui
 glances
 battery-stats
 autofs
+gvfs gvfs-backends gvfs-fuse
 fuseiso fuseiso9660
 vbetool
 plocate
@@ -38,6 +39,7 @@ ranger
 cryptsetup
 paperkey qrencode zbar-tools
 screen
+inotify-tools inotify-hookable
 
 ############################
 # Language and translation
