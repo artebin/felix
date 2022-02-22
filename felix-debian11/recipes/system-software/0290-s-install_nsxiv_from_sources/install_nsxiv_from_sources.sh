@@ -27,9 +27,10 @@ install_nsxiv_from_sources(){
 		)
 	install_package_if_not_installed "${DEPENDENCIES[@]}"
 	
-	# Clone git repository
+	# Clone git repositories
 	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/nsxiv/nsxiv
+	git clone https://github.com/nsxiv/nsxiv-extra
 	
 	# Build
 	cd "${RECIPE_DIRECTORY}"
@@ -37,9 +38,9 @@ install_nsxiv_from_sources(){
 	make
 	make install
 	
-	# Clone git repository for nsxiv-extra and copy nsxiv-rifle to /usr/local/bin
-	printf "Retrieve nxsiv-rifle and make nsxiv.desktop call it...\n"
-	#git clone https://github.com/nsxiv/nsxiv-extra
+	# Copy nsxiv-rifle to /usr/local/bin
+	printf "Make nsxiv.desktop call nsxiv-rifle...\n"
+	cd "${RECIPE_DIRECTORY}"
 	cp ./nsxiv-extra/scripts/nsxiv-rifle/nsxiv-rifle /usr/local/bin/nsxiv-rifle
 	chmod +x /usr/local/bin/nsxiv-rifle
 	add_or_update_keyvalue /usr/local/share/applications/nsxiv.desktop "Exec" "nsxiv-rifle %%F"
