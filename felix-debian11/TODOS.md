@@ -6,6 +6,7 @@
 - [x] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [x] Edit and restart sxhkd from Openbox menu.
 
+- [ ] Install Herbe <https://github.com/dudik/herbe>.
 - [ ] Install <https://github.com/sharkdp/pastel> for processing colors from the command line.
 - [ ] Remove XDG desktop folder and check on /etc/xdg/user-dirs.conf.
 - [ ] The ordering of the files in caja is wrong.
