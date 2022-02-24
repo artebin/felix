@@ -8,7 +8,7 @@ print_usage(){
 }
 
 start_vnc_server(){
-	x0tigervncserver -display :0 -passwordfile ${HOME}/.vnc/passwd
+	x0tigervncserver -display :0 -passwordfile ${HOME}/.vnc/passwd -localhost no
 }
 
 RESPAWN="false"
