@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-compton -b &
+picom -b &
 
 tint2 &
 bash ~/scripts/fdpowermon_run.sh &

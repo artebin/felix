@@ -49,6 +49,7 @@ translate-shell
 #################
 # Network tools
 #################
+net-tools
 nmap traceroute nbtscan
 nethogs speedometer tcptrack bmon
 curl
@@ -119,7 +120,7 @@ light-locker
 ##############
 # Xorg tools
 ##############
-compton compton-conf
+picom
 gtk3-nocsd
 mesa-utils mesa-utils-extra
 xinput xinput-calibrator

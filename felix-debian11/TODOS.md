@@ -6,7 +6,11 @@
 - [x] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [x] Edit and restart sxhkd from Openbox menu.
 - [x] Bash script for re-formatting openbox theme file. => no just use a sort command and remove all extra lines.
+- [x] Replace compton by picom (if fixes the bug with Java).
 
+- [ ] MyScreenLayout conflict with the wallpaper set with hsetroot.
+- [ ] Add openbox menu entry to "edit xsessionrc".
+- [ ] Power menu is "power menu", we should have a "log out" entry in the openbox menu.
 - [ ] Install Herbe <https://github.com/dudik/herbe>.
 - [ ] Install <https://github.com/sharkdp/pastel> for processing colors from the command line.
 - [ ] Remove XDG desktop folder and check on /etc/xdg/user-dirs.conf.
