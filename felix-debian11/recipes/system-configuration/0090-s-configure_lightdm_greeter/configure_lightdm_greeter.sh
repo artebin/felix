@@ -28,6 +28,9 @@ configure_lightdm_greeter(){
 	# Copy GTK greeter.conf file
 	cp lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 	
+	# Do not hide users
+	add_or_update_line_based_on_prefix "#greeter-hide-users=false" "greeter-hide-users=false" /etc/lightdm/lightdm.conf
+	
 	printf "\n"
 }
 
