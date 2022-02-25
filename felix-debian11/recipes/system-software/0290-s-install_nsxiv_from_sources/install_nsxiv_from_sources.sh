@@ -37,6 +37,7 @@ install_nsxiv_from_sources(){
 	cd nsxiv
 	make
 	make install
+	cp nsxiv.desktop /usr/local/share/applications/
 	
 	# Copy nsxiv-rifle to /usr/local/bin
 	printf "Make nsxiv.desktop call nsxiv-rifle...\n"
