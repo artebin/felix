@@ -10,7 +10,7 @@
 - [x] Script for setting the wallpaper + use xeventbind <https://github.com/ritave/xeventbind> for re-executing the script.
 - [x] MyScreenLayout conflict with the wallpaper set with hsetroot => register an action executed at resolution change.
 
-- [ ] Build imlib2 from the sources to get svg support in nsxiv.
+- [ ] <https://wiki.debian.org/NetworkManager> and let NetworkManager to manage the interfaces.
 - [ ] Add openbox menu entry to "edit xsessionrc".
 - [ ] Power menu is "power menu", we should have a "log out" entry in the openbox menu.
 - [ ] Install Herbe <https://github.com/dudik/herbe>.
