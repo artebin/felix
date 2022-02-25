@@ -103,9 +103,7 @@ fi
 #############
 # Wallpaper
 #############
-#hsetroot -solid "#303030" &
-#hsetroot -tile ~/.local/share/wallpapers/texture_0.jpg &
-hsetroot -full ~/.local/share/wallpapers/earth-in-space.png &
+bash "${HOME}/.local/share/wallpapers/set_wallpaper.sh" &
 
 ####################
 # Bluetooth applet

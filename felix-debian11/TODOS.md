@@ -7,8 +7,9 @@
 - [x] Edit and restart sxhkd from Openbox menu.
 - [x] Bash script for re-formatting openbox theme file. => no just use a sort command and remove all extra lines.
 - [x] Replace compton by picom (if fixes the bug with Java).
+- [x] Script for setting the wallpaper + use xeventbind <https://github.com/ritave/xeventbind> for re-executing the script.
+- [x] MyScreenLayout conflict with the wallpaper set with hsetroot => register an action executed at resolution change.
 
-- [ ] MyScreenLayout conflict with the wallpaper set with hsetroot.
 - [ ] Add openbox menu entry to "edit xsessionrc".
 - [ ] Power menu is "power menu", we should have a "log out" entry in the openbox menu.
 - [ ] Install Herbe <https://github.com/dudik/herbe>.
