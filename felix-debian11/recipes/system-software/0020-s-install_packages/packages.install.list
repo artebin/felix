@@ -139,6 +139,7 @@ hsetroot
 ##################################
 #policykit-desktop-privileges #Not available in debian_buster
 openbox openbox-menu obconf
+devilspie2
 lxappearance lxappearance-obconf
 dconf-cli
 dconf-editor
