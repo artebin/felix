@@ -6,6 +6,9 @@
 - [x] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [x] Edit and restart sxhkd from Openbox menu.
 
+- [ ] Use the patch on openbox to ignore the hints, the bug is into the openbox tiling via rc.xml, we should do the tiling via an external tool.
+- [ ] Keyboard shotcut to make all visible window undecorated (or all windows in the current desktop) + inverted action.
+- [ ] We miss a keyboard shorcut to make appear the window menu (usefull when the window is undecorated).
 - [ ] Install Herbe <https://github.com/dudik/herbe>.
 - [ ] Install <https://github.com/sharkdp/pastel> for processing colors from the command line.
 - [ ] Remove XDG desktop folder and check on /etc/xdg/user-dirs.conf.
