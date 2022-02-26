@@ -5,10 +5,17 @@
 - [X] Do not really need the install_themes recipe, but just copy .themes in dotfiles.
 - [x] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
 - [x] Edit and restart sxhkd from Openbox menu.
+- [x] Bash script for re-formatting openbox theme file. => no just use a sort command and remove all extra lines.
+- [x] Replace compton by picom (if fixes the bug with Java).
+- [x] Script for setting the wallpaper + use xeventbind <https://github.com/ritave/xeventbind> for re-executing the script.
+- [x] MyScreenLayout conflict with the wallpaper set with hsetroot => register an action executed at resolution change.
 
 - [ ] Use the patch on openbox to ignore the hints, the bug is into the openbox tiling via rc.xml, we should do the tiling via an external tool.
 - [ ] Keyboard shotcut to make all visible window undecorated (or all windows in the current desktop) + inverted action.
 - [ ] We miss a keyboard shorcut to make appear the window menu (usefull when the window is undecorated).
+- [ ] <https://wiki.debian.org/NetworkManager> and let NetworkManager to manage the interfaces.
+- [ ] Add openbox menu entry to "edit xsessionrc".
+- [ ] Power menu is "power menu", we should have a "log out" entry in the openbox menu.
 - [ ] Install Herbe <https://github.com/dudik/herbe>.
 - [ ] Install <https://github.com/sharkdp/pastel> for processing colors from the command line.
 - [ ] Remove XDG desktop folder and check on /etc/xdg/user-dirs.conf.
@@ -16,20 +23,15 @@
 - [ ] Avahi-discover window centered in the screen.
 - [ ] Find a way to iterate over a list of GIT repositories and warn the user that some changes are not pushed yet. Maybe it is good to have a 'git' folder in the home after all.
 - [ ] Rofi mode for remmina files and use a icon per type of connections SSH, VNC, RDP etc. the modi can used an index which could be rebuilt by quick-checking the files.
-- [ ] Compile Caja with the support of OBEX.
-- [ ] Phone does not appear in caja (obex not supported?).
-- [ ] Path openbox for the hints and also for window title disable center justification when window too much small.
+- [ ] Patch openbox for the hints and also for window title disable center justification when window too much small.
 - [ ] pqiv or qview for the image viewer, do they support webp? => no the best seems to be nsxiv
 - [ ] Create a palette from a initial N colors, or from a wallpaper, and use this palette create automatically create a new theme <https://github.com/warpwm/lule_bash>. Similar to this <https://github.com/fikriomar16/obtgen> it mentioned pywal to extract a palette from an image.
-- [ ] Phone does not appear in caja (obex not supported?).
 - [ ] Separator bar wider in caja.
 - [ ] Memory, cpu and network logging with a service for activating it, and a rolling logging and a nice GUI app to see historical data like kcollectd. Later on I could add the battery info I wanted to.
 - [ ] Would be nice to dock a window i.e. fullscreen on other windows would take it into account. The dock is always visible with fullscreened windows (unless floating window overlap the dock).
 - [ ] kcolorchooser instead of gpick.
 - [ ] Script for columnating a file based on a regex providing the prefix, the remaining content of the lines is tab aligned, allow to give a max length for the prefix.
-- [ ] Bash script for re-formatting openbox theme file.
 - [ ] Convert any images to a color palette <https://ign.schrodinger-hat.it/color-schemes>.
-- [ ] Color palette for background, window title colors etc.
 - [ ] Compile Remina from the sources?
 - [ ] Glances seems to be automatically started, disable the service.
 - [ ] Script for setting the font for Openbox, Tint2, GTK and KDE.
