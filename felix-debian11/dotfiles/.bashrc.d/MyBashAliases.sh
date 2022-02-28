@@ -39,6 +39,8 @@ function github_clone(){
 }
 alias github_clone=github_clone
 
+alias gitfs="git fetch && git status"
+
 git_config_user_name_email(){
 	NAME="${1}"
 	EMAIL="${2}"
