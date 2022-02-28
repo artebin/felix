@@ -26,6 +26,9 @@ if [[ ! -z "${MVN_HOME}" ]]; then
 	export PATH=${MVN_HOME}/bin:${PATH}
 fi
 
+#export GPODDER_HOME=""
+#export GPODDER_DOWNLOAD_DIR=""
+
 ######################################################
 # Register Thunar in D-BUS if you wish to use thunar
 ######################################################
