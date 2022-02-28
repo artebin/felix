@@ -9,7 +9,13 @@
 - [x] Replace compton by picom (if fixes the bug with Java).
 - [x] Script for setting the wallpaper + use xeventbind <https://github.com/ritave/xeventbind> for re-executing the script.
 - [x] MyScreenLayout conflict with the wallpaper set with hsetroot => register an action executed at resolution change.
+- [x] Translate-notify does not work => the new version of the script still is MyMurtaugh.
 
+- [ ] <-https://stackoverflow.com/questions/43607461/google-chrome-disable-window-animations>.
+- [ ] Install cockpit and add a menu item in openbox for locahost:9090.
+- [ ] Use the patch on openbox to ignore the hints, the bug is into the openbox tiling via rc.xml, we should do the tiling via an external tool.
+- [ ] Keyboard shotcut to make all visible window undecorated (or all windows in the current desktop) + inverted action.
+- [ ] We miss a keyboard shorcut to make appear the window menu (usefull when the window is undecorated).
 - [ ] <https://wiki.debian.org/NetworkManager> and let NetworkManager to manage the interfaces.
 - [ ] Add openbox menu entry to "edit xsessionrc".
 - [ ] Power menu is "power menu", we should have a "log out" entry in the openbox menu.
