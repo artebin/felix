@@ -151,7 +151,7 @@ clock_rclick_command = gsimplecal
 
 # Executor 1
 execp = new 
-execp_command = echo "$(whoami)@$(hostname) "
+execp_command = echo "$(whoami)@$(hostname)"
 execp_font = DroidSansMono Nerd Font Bold 11
 execp_font_color = #ffffff 100
 execp_background_id = 3
