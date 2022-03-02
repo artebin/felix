@@ -9,7 +9,6 @@ recipes/user/0005-u-configure_rofi
 recipes/user/0010-u-install_user_scripts
 recipes/user/0060-u-configure_mate_terminal
 recipes/user/0090-u-configure_gtk
-recipes/user/0100-u-configure_xfce4_notifyd
 recipes/user/0150-u-configure_gsimplecal
 recipes/user/0170-u-configure_xfce4_thunar
 recipes/user/0180-u-configure_mate_caja

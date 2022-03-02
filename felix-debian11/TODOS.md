@@ -11,7 +11,7 @@
 - [x] MyScreenLayout conflict with the wallpaper set with hsetroot => register an action executed at resolution change.
 - [x] Translate-notify does not work => the new version of the script still is MyMurtaugh.
 
-- [ ] <-https://stackoverflow.com/questions/43607461/google-chrome-disable-window-animations>.
+- [ ] <https://stackoverflow.com/questions/43607461/google-chrome-disable-window-animations>.
 - [ ] Install cockpit and add a menu item in openbox for locahost:9090.
 - [ ] Use the patch on openbox to ignore the hints, the bug is into the openbox tiling via rc.xml, we should do the tiling via an external tool.
 - [ ] Keyboard shotcut to make all visible window undecorated (or all windows in the current desktop) + inverted action.

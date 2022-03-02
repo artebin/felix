@@ -30,6 +30,8 @@ recipes/system-software/0250-s-install_sw_from_sources
 recipes/system-software/0250-s-install_ttyclock_from_sources
 recipes/system-software/0270-s-install_arandr_from_sources
 recipes/system-software/0280-s-install_rofi_from_sources
+recipes/system-software/0290-s-install_nsxiv_from_sources
+recipes/system-software/0290-s-install_xeventbind_from_sources
 recipes/system-software/9999-s-remove_unwanted_packages
 
 
@@ -37,6 +39,7 @@ recipes/system-software/9999-s-remove_unwanted_packages
 # Recipes from recipes/system-configuration
 ################################################################################
 recipes/system-configuration/0000-s-set_local_time_zone
+recipes/system-configuration/0005-s-fix_debian_user_path
 recipes/system-configuration/0010-s-disable_automatic_update_and_upgrade
 recipes/system-configuration/0011-s-fix_apt_mirror_with_support_of_xz_for_translations
 recipes/system-configuration/0040-s-configure_grub
