@@ -8,7 +8,7 @@ XEVENTBIND_PID=""
 if [[ -f "${XEVENTBIND_PID_FILE}" ]]; then
 	XEVENTBIND_PID=$(cat "${XEVENTBIND_PID_FILE}")
 fi
-if [[ -z "${XEVENTBIND_PID}" ]] && ! $(ps --pid "${XEVENTBIND_PID}" &>/dev/null); then
+if [[ -z "${XEVENTBIND_PID}" ]] || ! $(ps --pid "${XEVENTBIND_PID}" &>/dev/null); then
 	xeventbind resolution "${HOME}/.local/share/wallpapers/set_wallpaper.sh" </dev/null >/dev/null 2>/dev/null &
 	XEVENTBIND_PID=$!
 	if [[ ! -d "/tmp/${USER}" ]]; then
