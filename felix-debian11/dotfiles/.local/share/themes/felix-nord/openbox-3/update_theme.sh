@@ -51,17 +51,19 @@ THEME_VARIABLE_NAME_LIST=(
 	MENU_DISABLED_FONT_COLOR
 	)
 
-THEMERC_PROPERTY_NAME_LIST_WINDOW_ACTIVE_TITLE_BACKGROUND_COLOR=( "window.active.title.bg.color:" )
-THEMERC_PROPERTY_NAME_LIST_WINDOW_ACTIVE_TITLE_FONT_COLOR=( "window.active.label.text.color:" )
-THEMERC_PROPERTY_NAME_LIST_WINDOW_INACTIVE_TITLE_BACKGROUND_COLOR=( "window.inactive.title.bg.color:" )
-THEMERC_PROPERTY_NAME_LIST_WINDOW_INACTIVE_TITLE_FONT_COLOR=( "window.inactive.label.text.color:" )
-THEMERC_PROPERTY_NAME_LIST_MENU_ACTIVE_BACKGROUND_COLOR=( "menu.items.active.bg.color:" )
-THEMERC_PROPERTY_NAME_LIST_MENU_ACTIVE_FONT_COLOR=( "menu.items.active.text.color:" )
-THEMERC_PROPERTY_NAME_LIST_MENU_INACTIVE_BACKGROUND_COLOR=( "menu.items.bg.color:" )
-THEMERC_PROPERTY_NAME_LIST_MENU_INACTIVE_FONT_COLOR=( "menu.items.text.color:" )
-THEMERC_PROPERTY_NAME_LIST_MENU_TITLE_BACKGROUND_COLOR=( "menu.title.bg.color:" )
-THEMERC_PROPERTY_NAME_LIST_MENU_TITLE_FONT_COLOR=( "menu.title.text.color:" )
-THEMERC_PROPERTY_NAME_LIST_MENU_DISABLED_FONT_COLOR=( "menu.items.disabled.text.color:" )
+THEMERC_PROPERTY_NAME_LIST_WINDOW_ACTIVE_TITLE_BACKGROUND_COLOR=( "window.active.title.bg.color" )
+THEMERC_PROPERTY_NAME_LIST_WINDOW_ACTIVE_TITLE_FONT_COLOR=( "window.active.label.text.color" )
+THEMERC_PROPERTY_NAME_LIST_WINDOW_INACTIVE_TITLE_BACKGROUND_COLOR=( "window.inactive.title.bg.color" )
+THEMERC_PROPERTY_NAME_LIST_WINDOW_INACTIVE_TITLE_FONT_COLOR=( "window.inactive.label.text.color" )
+THEMERC_PROPERTY_NAME_LIST_MENU_ACTIVE_BACKGROUND_COLOR=( "menu.items.active.bg.color" "osd.hilight.bg.color" )
+THEMERC_PROPERTY_NAME_LIST_MENU_ACTIVE_FONT_COLOR=( "menu.items.active.text.color" )
+THEMERC_PROPERTY_NAME_LIST_MENU_INACTIVE_BACKGROUND_COLOR=( "menu.items.bg.color" "osd.unhilight.bg.color" "osd.button.focused.bg.color" "osd.button.pressed.bg.color" "osd.button.unpressed.bg.color" )
+THEMERC_PROPERTY_NAME_LIST_MENU_INACTIVE_FONT_COLOR=( "menu.items.text.color" )
+THEMERC_PROPERTY_NAME_LIST_MENU_TITLE_BACKGROUND_COLOR=( "menu.title.bg.color" "osd.bg.color" )
+THEMERC_PROPERTY_NAME_LIST_MENU_TITLE_FONT_COLOR=( "menu.title.text.color" )
+THEMERC_PROPERTY_NAME_LIST_MENU_DISABLED_FONT_COLOR=( "menu.items.disabled.text.color" )
+
+THEMERC_PROPERTY_VALUE_DELIMITER=":"
 
 escape_sed_pattern(){
 	printf "${1}" | sed -e 's/[\\&]/\\&/g' | sed -e 's/[\/&]/\\&/g'
@@ -84,9 +86,10 @@ update_line_based_on_prefix(){
 function apply_template(){
 	for THEME_VARIABLE_NAME in "${THEME_VARIABLE_NAME_LIST[@]}"; do
 		THEMERC_PROPERTY_NAME_LIST_NAME="THEMERC_PROPERTY_NAME_LIST_${THEME_VARIABLE_NAME}"
-		THEMERC_PROPERTY_NAME_LIST="${!THEMERC_PROPERTY_NAME_LIST_NAME}"
+		declare -n THEMERC_PROPERTY_NAME_LIST="${THEMERC_PROPERTY_NAME_LIST_NAME}"
 		for THEMERC_PROPERTY_NAME in "${THEMERC_PROPERTY_NAME_LIST[@]}"; do
-			update_line_based_on_prefix "${THEMERC_PROPERTY_NAME}" "${THEMERC_PROPERTY_NAME} ${!THEME_VARIABLE_NAME}" themerc
+			printf "%-40s%-50s%-40s\n" "${THEMERC_PROPERTY_NAME}" "${THEME_VARIABLE_NAME}" "${!THEME_VARIABLE_NAME}"
+			update_line_based_on_prefix "${THEMERC_PROPERTY_NAME}${THEMERC_PROPERTY_VALUE_DELIMITER}" "${THEMERC_PROPERTY_NAME}${THEMERC_PROPERTY_VALUE_DELIMITER} ${!THEME_VARIABLE_NAME}" themerc
 		done
 	done
 }
