@@ -9,8 +9,6 @@
 		<item label="Mail Client"><action name="Execute"><command>claws-mail</command></action></item>
 		<item label="Media Player"><action name="Execute"><command>vlc</command></action></item>
 		<separator/>
-		<menu id="Remote Hosts" label="Remote Hosts" execute="bash ~/.config/openbox/ob-pipe-menu-remmina.sh" />
-		<separator/>
 		<menu id="file_utils" label="File Utils">
 			<item label="GVim"><action name="Execute"><command>gvim</command></action></item>
 			<item label="Hexadecimal Editor (bless)"><action name="Execute"><command>bless</command></action></item>
