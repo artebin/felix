@@ -290,7 +290,7 @@ guvcview
 ################
 # Office suite
 ################
-libreoffice
+libreoffice libreoffice-gnome
 
 #####################
 # Data manipulation
