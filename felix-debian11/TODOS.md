@@ -11,6 +11,9 @@
 - [x] MyScreenLayout conflict with the wallpaper set with hsetroot => register an action executed at resolution change.
 - [x] Translate-notify does not work => the new version of the script still is MyMurtaugh.
 
+- [ ] Openbox menu to open autostart folder.
+- [ ] Is it possible that Gtk3 is not respecting LC_COLLATE in file chooser?
+- [ ] Refactor the scripts folder into ~/bin and add into it the set_wallpaper?
 - [ ] <https://stackoverflow.com/questions/43607461/google-chrome-disable-window-animations>.
 - [ ] Install cockpit and add a menu item in openbox for locahost:9090.
 - [ ] Use the patch on openbox to ignore the hints, the bug is into the openbox tiling via rc.xml, we should do the tiling via an external tool.
