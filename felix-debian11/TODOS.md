@@ -11,8 +11,9 @@
 - [x] MyScreenLayout conflict with the wallpaper set with hsetroot => register an action executed at resolution change.
 - [x] Translate-notify does not work => the new version of the script still is MyMurtaugh.
 
+- [ ] Set the DPI with formula from <https://www.kali.org/docs/general-use/fixing-dpi/>.
+- [ ] It would be a better setup to use a swapfile for the hibernate.
 - [ ] Openbox menu to open autostart folder.
-- [ ] Is it possible that Gtk3 is not respecting LC_COLLATE in file chooser?
 - [ ] Refactor the scripts folder into ~/bin and add into it the set_wallpaper?
 - [ ] <https://stackoverflow.com/questions/43607461/google-chrome-disable-window-animations>.
 - [ ] Install cockpit and add a menu item in openbox for locahost:9090.
@@ -74,7 +75,7 @@
 - [ ] Disable "Recent Files" in GTK2/3 file chooser and dialogs.
 - [ ] Allow sudoers to modify printing configuration (lpadmin).
 - [ ] Add a recipe for a git server, access it via http and zeroconf .local ?
-- [ ] Desktop files are using $TERM for the "Terminal=true" property, we should set "TERM=x-terminal-emulator" somewhere.
+- [x] Desktop files are using $TERM for the "Terminal=true" property, we should set "TERM=x-terminal-emulator" somewhere. => this seems to be fixed in Debian11.
 - [ ] Auto mount FAT usb stick and all files have execute permissions, remove that.
 - [ ] MoveRelative for W-Left|Right|Up|down and MovetoEdge with A-W-Left|Right|Up|Down.
 - [ ] Unpack is console script should be nice +10.
@@ -90,7 +91,6 @@
 - [ ] Add configuration recipe for xpad + change icon.
 - [ ] Command for picking a window a apply a kpie rule.
 - [ ] Maybe use arc thene <https://www.reddit.com/r/pop_os/comments/hnxgzv/i_have_been_trying_for_hours_to_get_rid_of_the/>.
-- [ ] Remove rounded corner in NewAdwaita <https://blog.gtk.org/2019/01/14/theme-changes-in-gtk-3/>.
 - [ ] Add a recipe for unified remote for the PI4 <https://www.unifiedremote.com/tutorials/how-to-install-unified-remote-server-deb-via-terminal>.
 - [ ] Add a recipe for the PI4 WiFi hotspot <https://www.raspberryconnect.com/projects/65-raspberrypi-hotspot-accesspoints/183-raspberry-pi-automatic-hotspot-and-static-hotspot-installer>.
 - [ ] Caja seems to mount ftp without unicode support.
