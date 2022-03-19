@@ -1,0 +1,7 @@
+- [ ] Read <https://www.reddit.com/r/linux/comments/23fvb3/so_csd_just_became_mandatory_for_all_gnome/>
+- [ ] push my github ssh key in paas in github and then I can retrieve it from git hhtps.
+- [ ] change my password github.com.
+- [ ] remove rofi from list of package to install and install from the sources.
+- [ ] install "fimware-iwlwifi" and "broadcom-sta-dkms" on debian.
+- [ ] remove ibus.
+- [ ] script for managing the local repository should create 2 files one for the local and one for the remote debian repo.
