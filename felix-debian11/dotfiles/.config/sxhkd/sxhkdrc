@@ -105,4 +105,4 @@ XF86WWW
 	x-www-browser
 
 XF86PowerOff
-	rofi -show power-menu -modi power-menu:~/.config/rofi/rofi-power-menu.sh
+	rofi -show powermenu -modi powermenu:"${HOME}/.config/rofi/rififi.sh -f ${HOME}/.config/rofi/rififi-power-menu.conf"

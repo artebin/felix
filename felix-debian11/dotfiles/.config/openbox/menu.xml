@@ -118,6 +118,6 @@
 			</menu>
 		</menu>
 		<separator/>
-		<item label="Exit"><action name="Execute"><execute>rofi -show power-menu -modi power-menu:~/.config/rofi/rofi-power-menu.sh</execute></action></item>
+		<item label="Exit"><action name="Execute"><execute>rofi -show powermenu -modi powermenu:"~/.config/rofi/rififi.sh -f ~/.config/rofi/rififi-power-menu.conf"</execute></action></item>
 	</menu>
 </openbox_menu>
