@@ -54,12 +54,12 @@ git_config_user_name_email(){
 alias git_config_user_name_email=git_config_user_name_email
 
 date_in_seconds(){
-	date +%s
+	date -u +%s
 }
 alias date_in_seconds=date_in_seconds
 
 date_in_millis(){
-	date +%s%N | cut -b1-13
+	date -u +%s%N | cut -b1-13
 }
 alias date_in_millis=date_in_millis
 
@@ -70,7 +70,7 @@ millis_to_date() {
 		return
 	fi
 	DATE_IN_SECONDS=$(( "${DATE_IN_MILLIS}" / 1000 ))
-	date -d @${DATE_IN_SECONDS}
+	date -u -d @${DATE_IN_SECONDS}
 }
 alias millis_to_date=millis_to_date
 
@@ -80,7 +80,7 @@ date_to_seconds(){
 		printf "Usage: %s DATE_AS_STRING\n" "${FUNCNAME[0]}"
 		return
 	fi
-	date -d "${DATE_AS_STRING}" %s
+	date -u -d "${DATE_AS_STRING}" %s
 }
 alias date_to_seconds=date_to_seconds
 
