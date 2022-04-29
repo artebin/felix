@@ -41,6 +41,7 @@ paperkey qrencode zbar-tools
 screen
 inotify-tools inotify-hookable
 rsync
+linuxlogo
 
 ############################
 # Language and translation
