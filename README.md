@@ -1,7 +1,7 @@
 # felix
 
   - Debian 11
-  - WM: Openbox
+  - Window manager: Openbox
   - Bar: Tint2
   - Terminal: mate-terminal
   - Font Openbox+tint2: BitStream Vera Sans Mono
