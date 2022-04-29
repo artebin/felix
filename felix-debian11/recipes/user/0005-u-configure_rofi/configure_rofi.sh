@@ -14,10 +14,10 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_root_privileges
 
-configure_rofi(){
-	printf "Configure rofi ...\n"
+install_rofi_menus(){
+	printf "Install rofi-menus from <https://github.com/adi1090x/rofi> under ${HOME}/config/rofi/rofi-menus\n"
 	
-	printf "Install rofi applets from <https://github.com/adi1090x/rofi> under ${HOME}/config/rofi/rofi-menus\n"
+	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/adi1090x/rofi
 	cd rofi
 	FONT_DIRECTORY="${HOME}/.local/share/fonts"
@@ -50,7 +50,28 @@ configure_rofi(){
 	printf "\n"
 }
 
-configure_rofi 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+install_rififi(){
+	printf "Configure rififi ...\n"
+	
+	cd "${RECIPE_DIRECTORY}"
+	git clone https://github.com/artebin/rififi
+	cp ./rififi/*.sh "${HOME}/.config/rofi"
+	cp ./rififi/*.conf "${HOME}/.config/rofi"
+	
+	# Cleanup
+	cd "${RECIPE_DIRECTORY}"
+	rm -fr rififi
+	
+	printf "\n"
+}
+
+#install_rofi_menus 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+#EXIT_CODE="${PIPESTATUS[0]}"
+#if [[ "${EXIT_CODE}" -ne 0 ]]; then
+#	exit "${EXIT_CODE}"
+#fi
+
+install_rififi 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
