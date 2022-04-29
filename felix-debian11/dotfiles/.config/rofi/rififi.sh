@@ -2,18 +2,21 @@
 
 function print_usage(){
 	cat << EOF
-Usage: ${0} -f <CONFIGURATION_FILE> [-hdn] [SELECTED_ROFI_MENU_ENTRY]
+Usage: ./rififi.sh -f <CONFIGURATION_FILE> [-hdn] [SELECTED_ROFI_MENU_ENTRY]
 
 Where:
   -f      path to CONFIGURATION_FILE
   -h      help
   -d      dry run
   -n      do not show symbols
+
+Example:
+  rofi -show powermenu -modi powermenu:"./rififi.sh -f ./rififi-power-menu.conf"
 EOF
 }
 
 CONFIGURATION_FILE=""
-DRY_RUN="true"
+DRY_RUN="false"
 SHOW_SYMBOLS="true"
 
 while getopts "f:hdn" OPT; do
@@ -46,11 +49,6 @@ fi
 ###########################
 # Load configuration file
 ###########################
-if [[ ! -f "${CONFIGURATION_FILE}" ]]; then
-	printf "Cannot find CONFIGURATION_FILE[%s]\n" >&2
-	exit 1
-fi
-
 MENU_TITLE=""
 declare -a MENU_ITEM_ID_ALL_ARRAY
 declare -A MENU_ITEM_VISIBLE_ARRAY
@@ -58,8 +56,13 @@ declare -A MENU_ITEM_REQUEST_CONFIRMATION_ARRAY
 declare -A MENU_ITEM_SYMBOL_ARRAY
 declare -A MENU_ITEM_TEXT_ARRAY
 declare -A MENU_ITEM_ACTION_ARRAY
+
 MENU_ITEM_SYMBOL_ARRAY[cancel]=""
 
+if [[ ! -f "${CONFIGURATION_FILE}" ]]; then
+	printf "Cannot find CONFIGURATION_FILE[%s]\n" >&2
+	exit 1
+fi
 source "${CONFIGURATION_FILE}"
 
 #################################################################
@@ -136,9 +139,11 @@ function execute_action_for_menu_item_id(){
 		exit 1
 	fi
 	MENU_ITEM_ACTION="${MENU_ITEM_ACTION_ARRAY[${MENU_ITEM_ID}]}"
-	printf "MENU_ITEM_ID[%s] MENU_ITEM_ACTION[%s]\n" "${MENU_ITEM_ID}" "${MENU_ITEM_ACTION}" >&2
-	if ! ${DRY_RUN}; then
-		${MENU_ITEM_ACTION_ARRAY[${MENU_ITEM_ID}]}
+	if ${DRY_RUN}; then
+		printf "Executing MENU_ITEM_ID[%s] MENU_ITEM_ACTION[%s] DRY_RUN[%s]\n" "${MENU_ITEM_ID}" "${MENU_ITEM_ACTION}" "${DRY_RUN}" >&2
+	else
+		printf "Executing MENU_ITEM_ID[%s] MENU_ITEM_ACTION[%s] DRY_RUN[%s]\n" "${MENU_ITEM_ID}" "${MENU_ITEM_ACTION}" "${DRY_RUN}" >&2
+		eval "${MENU_ITEM_ACTION_ARRAY[${MENU_ITEM_ID}]}"
 	fi
 }
 
