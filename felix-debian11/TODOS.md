@@ -11,6 +11,7 @@
 - [x] MyScreenLayout conflict with the wallpaper set with hsetroot => register an action executed at resolution change.
 - [x] Translate-notify does not work => the new version of the script still is MyMurtaugh.
 
+- [ ] Replace light-locker with xss-lock.
 - [ ] Recent version of xfce notifyd with the logs notification bubbles.
 - [ ] Set the DPI with formula from <https://www.kali.org/docs/general-use/fixing-dpi/>.
 - [ ] It would be a better setup to use a swapfile for the hibernate.

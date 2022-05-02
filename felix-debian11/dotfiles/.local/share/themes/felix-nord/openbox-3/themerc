@@ -29,24 +29,24 @@ menu.title.bg: flat
 menu.title.text.color: #fcf1ca
 menu.title.text.font: shadow=n
 menu.title.text.justify: center
-osd.bg.color: #545043
+osd.bg.color: #434c5e
 osd.bg: flat solid
 osd.border.color:  #474439
 osd.border.width: 1
-osd.button.focused.bg.color: #545043
+osd.button.focused.bg.color: #4c566a
 osd.button.focused.bg: flat solid
 osd.button.focused.text.color: #fef0cb
-osd.button.pressed.bg.color: #545043
+osd.button.pressed.bg.color: #4c566a
 osd.button.pressed.bg: flat solid
 osd.button.pressed.text.color: #c9bfa1
-osd.button.unpressed.bg.color: #545043
+osd.button.unpressed.bg.color: #4c566a
 osd.button.unpressed.bg: flat solid
 osd.button.unpressed.text.color:  #a89f87
-osd.hilight.bg.color: #fef0cb
+osd.hilight.bg.color: #ebcb8b
 osd.hilight.bg: flat solid
 osd.label.bg: parentrelative
 osd.label.text.color: #fef0cb
-osd.unhilight.bg.color: #a89f87
+osd.unhilight.bg.color: #4c566a
 osd.unhilight.bg: flat solid
 padding.height: 4
 padding.width: 6
