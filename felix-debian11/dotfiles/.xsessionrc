@@ -3,8 +3,10 @@
 ########################################################################################################
 # Start xss-lock to lock the session for events: suspend, hibernate, lock-session, and unlock-session.
 # See <https://wiki.archlinux.org/title/Power_management#xss-lock>
+#
+# It is not working with `dm-tool lock` 
 ########################################################################################################
-xss-lock -- dm-tool lock &
+xss-lock -- dm-tool switch-to-greeter &
 
 ##################################
 # Force loading of libgtk3-nocsd
