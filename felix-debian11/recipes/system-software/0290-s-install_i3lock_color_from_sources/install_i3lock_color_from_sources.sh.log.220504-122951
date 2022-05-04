@@ -1,0 +1,226 @@
+Install i3lock-color from sources...
+Cloning into 'i3lock-color'...
++ configureOpts=
++ getopts :hd opt
++ configureOpts= --prefix=/usr --sysconfdir=/etc
++ autoreconf -fiv
+autoreconf: Entering directory `.'
+autoreconf: configure.ac: not using Gettext
+autoreconf: running: aclocal --force 
+autoreconf: configure.ac: tracing
+autoreconf: configure.ac: not using Libtool
+autoreconf: running: /usr/bin/autoconf --force
+autoreconf: running: /usr/bin/autoheader --force
+autoreconf: running: automake --add-missing --copy --force-missing
+configure.ac:118: installing './ar-lib'
+configure.ac:53: installing './compile'
+configure.ac:7: installing './config.guess'
+configure.ac:7: installing './config.sub'
+configure.ac:8: installing './install-sh'
+configure.ac:8: installing './missing'
+Makefile.am: installing './depcomp'
+autoreconf: Leaving directory `.'
++ BUILD_DIR=build/
++ rm -rf build/
++ mkdir -vp build/
+mkdir: created directory 'build/'
++ cd build/
++ ../configure --prefix=/usr --sysconfdir=/etc
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking target system type... x86_64-pc-linux-gnu
+checking for gsed... sed
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether make supports nested variables... (cached) yes
+checking whether to enable maintainer-specific portions of Makefiles... yes
+checking for gawk... (cached) gawk
+checking for GNU make... make
+checking for a sed that does not truncate output... /bin/sed
+checking whether to build with code coverage support... no
+checking whether to enable debugging... no
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking whether gcc understands -c and -o together... yes
+checking for style of include used by make... GNU
+checking dependency style of gcc... gcc3
+checking how to run the C preprocessor... gcc -E
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking minix/config.h usability... no
+checking minix/config.h presence... no
+checking for minix/config.h... no
+checking whether it is safe to define __EXTENSIONS__... yes
+checking for stdbool.h that conforms to C99... yes
+checking for _Bool... yes
+checking for mode_t... yes
+checking for off_t... yes
+checking for pid_t... yes
+checking for size_t... yes
+checking for ssize_t... yes
+checking for pid_t... (cached) yes
+checking vfork.h usability... no
+checking vfork.h presence... no
+checking for vfork.h... no
+checking for fork... yes
+checking for vfork... yes
+checking for working fork... yes
+checking for working vfork... (cached) yes
+checking whether lstat correctly handles trailing slash... yes
+checking for working strnlen... yes
+checking for atexit... yes
+checking for dup2... yes
+checking for ftruncate... yes
+checking for getcwd... yes
+checking for gettimeofday... yes
+checking for localtime_r... yes
+checking for memchr... yes
+checking for memset... yes
+checking for mkdir... yes
+checking for rmdir... yes
+checking for setlocale... yes
+checking for socket... yes
+checking for strcasecmp... yes
+checking for strchr... yes
+checking for strdup... yes
+checking for strerror... yes
+checking for strncasecmp... yes
+checking for strndup... yes
+checking for strrchr... yes
+checking for strspn... yes
+checking for strstr... yes
+checking for strtol... yes
+checking for strtoul... yes
+checking for explicit_bzero... yes
+checking for library containing floor... -lm
+checking for library containing ev_run... -lev
+checking for library containing shm_open... -lrt
+checking for library containing pam_authenticate... -lpam
+checking for library containing iconv_open... none required
+checking for pkg-config... /usr/bin/pkg-config
+checking pkg-config is at least version 0.9.0... yes
+checking for XCB... yes
+checking for XCB_IMAGE... yes
+checking for XCB_UTIL... yes
+checking for XCB_UTIL_XRM... yes
+checking for XKBCOMMON... yes
+checking for CAIRO... yes
+checking for JPEG... yes
+checking for FONTCONFIG... yes
+checking for gawk... (cached) gawk
+checking how to run the C preprocessor... gcc -E
+checking whether make sets $(MAKE)... (cached) yes
+checking for ranlib... ranlib
+checking whether ln -s works... yes
+checking for ar... ar
+checking the archiver (ar) interface... ar
+checking CFLAGS for maximum warnings... -Wall
+checking whether C compiler accepts -Wunused-value... yes
+checking for BASH_COMPLETION... yes
+checking for zsh... no
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking float.h usability... yes
+checking float.h presence... yes
+checking for float.h... yes
+checking for inttypes.h... (cached) yes
+checking limits.h usability... yes
+checking limits.h presence... yes
+checking for limits.h... yes
+checking locale.h usability... yes
+checking locale.h presence... yes
+checking for locale.h... yes
+checking netinet/in.h usability... yes
+checking netinet/in.h presence... yes
+checking for netinet/in.h... yes
+checking paths.h usability... yes
+checking paths.h presence... yes
+checking for paths.h... yes
+checking stddef.h usability... yes
+checking stddef.h presence... yes
+checking for stddef.h... yes
+checking for stdint.h... (cached) yes
+checking for stdlib.h... (cached) yes
+checking for string.h... (cached) yes
+checking sys/param.h usability... yes
+checking sys/param.h presence... yes
+checking for sys/param.h... yes
+checking sys/socket.h usability... yes
+checking sys/socket.h presence... yes
+checking for sys/socket.h... yes
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking for unistd.h... (cached) yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating config.h
+config.status: executing buildir commands
+config.status: skipping top_srcdir/Makefile - not created
+config.status: executing depfiles commands
+--------------------------------------------------------------------------------
+build configured:
+
+  i3lock version:         2.13.c.4-34-gd846e7c (2022-03-18)
+  is release version:     no
+
+  enable debug flags:     no
+  code coverage:          no
+  enabled sanitizers:     
+--------------------------------------------------------------------------------
++ make
+make  all-am
+make[1]: Entering directory '/home/njames/MyProjects/felix/felix-debian11/recipes/system-software/0290-s-install_i3lock_color_from_sources/i3lock-color/build'
+  CC       i3lock-blur.o
+  CC       i3lock-blur_simd.o
+  CC       i3lock-dpi.o
+  CC       i3lock-jpg.o
+  CC       i3lock-i3lock.o
+  CC       i3lock-randr.o
+  CC       i3lock-tinyexpr.o
+  CC       i3lock-unlock_indicator.o
+  CC       i3lock-xcb.o
+  CCLD     i3lock
+make[1]: Leaving directory '/home/njames/MyProjects/felix/felix-debian11/recipes/system-software/0290-s-install_i3lock_color_from_sources/i3lock-color/build'
+make[1]: Entering directory '/home/njames/MyProjects/felix/felix-debian11/recipes/system-software/0290-s-install_i3lock_color_from_sources/i3lock-color/build'
+ /bin/mkdir -p '/usr/bin'
+  /usr/bin/install -c i3lock '/usr/bin'
+ /bin/mkdir -p '/usr/share/bash-completion/completions'
+ /usr/bin/install -c -m 644 ../../i3lock-color/i3lock-bash '/usr/share/bash-completion/completions'
+ /bin/mkdir -p '/usr/share/man/man1'
+ /usr/bin/install -c -m 644 ../../i3lock-color/i3lock.1 '/usr/share/man/man1'
+ /bin/mkdir -p '/etc/pam.d'
+ /usr/bin/install -c -m 644 ../../i3lock-color/pam/i3lock '/etc/pam.d'
+make  install-data-hook
+make[2]: Entering directory '/home/njames/MyProjects/felix/felix-debian11/recipes/system-software/0290-s-install_i3lock_color_from_sources/i3lock-color/build'
+test -f "/usr/share/bash-completion/completions/i3lock-bash" && mv -f "/usr/share/bash-completion/completions/i3lock-bash" "/usr/share/bash-completion/completions/i3lock" || true
+make[2]: Leaving directory '/home/njames/MyProjects/felix/felix-debian11/recipes/system-software/0290-s-install_i3lock_color_from_sources/i3lock-color/build'
+make[1]: Leaving directory '/home/njames/MyProjects/felix/felix-debian11/recipes/system-software/0290-s-install_i3lock_color_from_sources/i3lock-color/build'
+i3lock-color installed. The binary and manpage listing are `i3lock'.
+The license can be found at /usr/share/licenses/i3lock-color/LICENSE
+GitHub repo: https://github.com/Raymo111/i3lock-color
+Discord server: https://discord.gg/FzVPghyDt2
+
