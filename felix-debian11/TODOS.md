@@ -10,8 +10,9 @@
 - [x] Script for setting the wallpaper + use xeventbind <https://github.com/ritave/xeventbind> for re-executing the script.
 - [x] MyScreenLayout conflict with the wallpaper set with hsetroot => register an action executed at resolution change.
 - [x] Translate-notify does not work => the new version of the script still is MyMurtaugh.
+- [x] Replace light-locker with xss-lock.
 
-- [ ] Replace light-locker with xss-lock.
+- [ ] It seems `xss-lock` does not work with `dm-tool lock` or `dm-tool switch-to-greeter`. Use `i3lock` instead <https://gist.github.com/victorhaggqvist/603125bbc0f61a787d89>.
 - [ ] Recent version of xfce notifyd with the logs notification bubbles.
 - [ ] Set the DPI with formula from <https://www.kali.org/docs/general-use/fixing-dpi/>.
 - [ ] It would be a better setup to use a swapfile for the hibernate.

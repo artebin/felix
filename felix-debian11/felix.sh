@@ -159,7 +159,6 @@ re_index_recipes(){
 		printf "# ${RECIPE_ID}\n"
 		
 		RECIPE_NUMBER=$(retrieve_recipe_number "${RECIPE_ID}")
-		RECIPE_CATEGORY=$(retrieve_recipe_category "${RECIPE_ID}")
 		RECIPE_RIGHTS=$(retrieve_recipe_rights "${RECIPE_ID}")
 		RECIPE_NAME=$(retrieve_recipe_name "${RECIPE_ID}")
 		RECIPE_DISPLAY_NAME=$(retrieve_recipe_display_name "${RECIPE_ID}")
@@ -173,7 +172,7 @@ re_index_recipes(){
 		
 		CURRENT_RECIPE_NUMBER=$(( 10#"${CURRENT_RECIPE_NUMBER}" + "${RECIPE_NUMBER_INCREMENT}" ))
 		CURRENT_RECIPE_NUMBER=$(printf "%04d" ${CURRENT_RECIPE_NUMBER})
-		RECIPE_NEW_ID="${CURRENT_RECIPE_NUMBER}-${RECIPE_CATEGORY}-${RECIPE_RIGHTS}-${RECIPE_NAME}"
+		RECIPE_NEW_ID="${CURRENT_RECIPE_NUMBER}-${RECIPE_RIGHTS}-${RECIPE_NAME}"
 		
 		if [[ "${RECIPE_ID}" = "${RECIPE_NEW_ID}" ]]; then
 			printf "  => no changes\n\n"
