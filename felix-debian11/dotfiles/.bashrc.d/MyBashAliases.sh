@@ -39,7 +39,9 @@ function github_clone(){
 }
 alias github_clone=github_clone
 
-alias gitfs="git fetch && git status"
+alias git_fetch_and_status="git fetch && git status"
+
+alias git_revert_last_commit="git reset --soft HEAD~1"
 
 git_config_user_name_email(){
 	NAME="${1}"
