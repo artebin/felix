@@ -4,9 +4,9 @@
 # Start xss-lock to lock the session for events: suspend, hibernate, lock-session, and unlock-session.
 # See <https://wiki.archlinux.org/title/Power_management#xss-lock>
 #
-# It is not working with `dm-tool lock` 
+# It does not work well with dm-tool, we use i3lock instead.
 ########################################################################################################
-xss-lock -- dm-tool switch-to-greeter &
+xss-lock -- i3lock -n -notify 20 -notifier "notify-send '' 'The screen will be locked in 20 seconds...'" &
 
 ##################################
 # Force loading of libgtk3-nocsd
