@@ -12,6 +12,7 @@
 - [x] Translate-notify does not work => the new version of the script still is MyMurtaugh.
 - [x] Replace light-locker with xss-lock.
 
+- [ ] Fix key shortcut for translate-notify via screenshot.
 - [ ] Command and key shortcut to extract text from an image, write the text in a temp file and open a text editor.
 - [ ] Hibernate in a file <https://forums.debian.net/viewtopic.php?t=150284>.
 - [ ] Install `i3lock-color` from the sources, and update the rofi power-menu for calling the proper lock command, and also re-order the menu entries.
