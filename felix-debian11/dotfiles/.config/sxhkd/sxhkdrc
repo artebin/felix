@@ -25,6 +25,9 @@ super + f
 super + z
 	translate-notify -c
 
+super + x
+	translate-notify -s
+
 super + t
 	x-terminal-emulator
 
