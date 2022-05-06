@@ -12,6 +12,7 @@
 - [x] Translate-notify does not work => the new version of the script still is MyMurtaugh.
 - [x] Replace light-locker with xss-lock.
 
+- [ ] Install translate-notify via the github project.
 - [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>.
 - [ ] Create github repositories for Openbox theme and for translate-notify.
 - [ ] Fix key shortcut for translate-notify via screenshot.
