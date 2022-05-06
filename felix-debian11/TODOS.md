@@ -12,6 +12,8 @@
 - [x] Translate-notify does not work => the new version of the script still is MyMurtaugh.
 - [x] Replace light-locker with xss-lock.
 
+- [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>.
+- [ ] Create github repositories for Openbox theme and for translate-notify.
 - [ ] Fix key shortcut for translate-notify via screenshot.
 - [ ] Command and key shortcut to extract text from an image, write the text in a temp file and open a text editor.
 - [ ] Hibernate in a file <https://forums.debian.net/viewtopic.php?t=150284>.
