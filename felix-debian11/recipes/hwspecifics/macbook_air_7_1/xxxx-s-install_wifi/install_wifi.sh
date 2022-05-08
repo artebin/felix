@@ -16,7 +16,11 @@ exit_if_has_not_root_privileges
 
 install_wifi(){
 	printf "Installing Wi-Fi ...\n"
-	install_package_if_not_installed "bcmwl-kernel-source"
+	
+	# It is "broadcom-sta-dkms" which must be installed on Debian
+	#install_package_if_not_installed "bcmwl-kernel-source"
+	install_package_if_not_installed "broadcom-sta-dkms"
+	
 	printf "\n"
 }
 

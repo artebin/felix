@@ -17,7 +17,7 @@ htop iotop smem
 #Do not install dstat because it is included in pcp
 pcp pcp-gui
 @--no-install-recommends@ cockpit
-#glances
+#glances #Not available in Debian11
 battery-stats
 autofs
 gvfs gvfs-backends gvfs-fuse
@@ -140,7 +140,7 @@ hsetroot
 ##################################
 # Window manager & desktop tools
 ##################################
-#policykit-desktop-privileges #Not available in debian_buster
+#policykit-desktop-privileges #Not available in Debian11
 openbox openbox-menu obconf
 devilspie2
 lxappearance lxappearance-obconf
@@ -161,12 +161,12 @@ synaptic
 gparted
 seahorse
 zenity
-#mugshot #Not available in debian_buster
+#mugshot #Not available in Debian11
 
 ###################
 # Desktop theming
 ###################
-#adwaita-icon-theme-full #Not available in debian_buster
+#adwaita-icon-theme-full #Not available in Debian11
 blackbird-gtk-theme
 bluebird-gtk-theme
 greybird-gtk-theme
@@ -323,11 +323,11 @@ meson
 sassc
 libgtk-3-dev gtk-3-examples
 libgtk2.0-dev gtk2.0-examples
-libxml2-dbg libxml2-dev libxml2-doc
+libxml2-dev libxml2-doc
 golang
 
 ##############
 # VirtualBox
 ##############
-#virtualbox #Not available in debian_buster
-#virtualbox-ext-pack #Not available in debian_buster
+#virtualbox #Not available in Debian11
+#virtualbox-ext-pack #Not available in Debian11
