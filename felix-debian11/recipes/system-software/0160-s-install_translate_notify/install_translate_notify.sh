@@ -15,13 +15,20 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 install_translate_notify(){
-	cd "${RECIPE_DIRECTORY}"
+	printf "Install translate-notify ...\n"
 	
-	echo "Install Translate-Notify ..."
-	cp ./translate-notify.sh /usr/bin/translate-notify
+	# Clone git repository and install
+	cd "${RECIPE_DIRECTORY}"
+	git clone https://github.com/artebin/translate-notify
+	cd translate-notify
+	cp translate-notify.sh /usr/bin/translate-notify
 	chmod a+x /usr/bin/translate-notify
 	
-	echo
+	# Cleaning
+	cd "${RECIPE_DIRECTORY}"
+	rm -fr translate-notify
+	
+	printf "\n"
 }
 
 cd "${RECIPE_DIRECTORY}"
