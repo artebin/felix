@@ -267,7 +267,7 @@ retrieve_package_short_description(){
 }
 
 generate_apt_package_list_files(){
-	if [[ ! $# -ne 2 ]]; then
+	if [[ $# -ne 3 ]]; then
 		printf "${FUNCNAME[0]}() expects PACKAGE_LIST_FILE, APT_PACKAGE_LIST_FILE_NAME_PREFIX and MISSING_PACKAGE_LIST_FILE in arguments\n" 1>&2
 		exit 1
 	fi
@@ -283,7 +283,6 @@ generate_apt_package_list_files(){
 	# If APT_OPTIONS is specified in LINE then we creates a package list file especially for this LINE
 	declare -A APT_OPTIONS_AND_PACKAGE_LIST_ARRAY
 	KEY_APT_OPTIONS="00_NO_APT_APTIONS" # The prefix "00_" will ensure this package list file to be written first
-	MISSING_PACKAGE_LIST=""
 	DEBUG_DEPENDENCIES_FILE="dependencies.txt"
 	if [[ -f "${DEBUG_DEPENDENCIES_FILE}" ]]; then
 		rm -f "${DEBUG_DEPENDENCIES_FILE}"
@@ -314,11 +313,11 @@ generate_apt_package_list_files(){
 		for PACKAGE_NAME in ${PACKAGES_LINE}; do
 			IS_PACKAGE_AVAILABLE=$(is_package_available "${PACKAGE_NAME}";echo $?)
 			
-			# Fill APT_OPTIONS_AND_PACKAGE_LIST_ARRAY or MISSING_PACKAGE_LIST
+			# Fill APT_OPTIONS_AND_PACKAGE_LIST_ARRAY or write the missing package in MISSING_PACKAGE_LIST_FILE
 			if [[ ${IS_PACKAGE_AVAILABLE} -eq 0 ]]; then
 				APT_OPTIONS_AND_PACKAGE_LIST_ARRAY[${APT_OPTIONS}]+="${PACKAGE_NAME} "
 			else
-				MISSING_PACKAGE_LIST+="${PACKAGE_NAME} "
+				printf "%s\n" "${PACKAGE_NAME}" >> "${MISSING_PACKAGE_LIST_FILE}"
 			fi
 			
 			# Print a report in the console for PACKAGE_NAME
