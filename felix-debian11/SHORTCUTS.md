@@ -29,7 +29,7 @@
 | <kbd>Alt</kbd><kbd>F4</kbd>                                           | Close |
 | <kbd>Alt</kbd><kbd>Esc</kbd>                                          | Place one level below and unfocus it |
 | <kbd>Alt</kbd><kbd>Space</kbd>                                        | Show window menu |
-| <kbd>Alt</kbd><kbd>Print</kbd>                                        | Take a screenshot with scrot |
+| <kbd>Alt</kbd><kbd>Print</kbd>                                        | Take a screenshot with maim |
 | <kbd>Alt</kbd><kbd>Tab</kbd>                                          | Switch to next window |
 | <kbd>Alt</kbd><kbd>Shift</kbd><kbd>Tab</kbd>                          | Switch to previous window |
 | <kbd>Ctrl</kbd><kbd>Alt</kbd><kbd>Tab</kbd>                           ||
@@ -170,4 +170,4 @@
 | <kbd>Fn</kbd><kbd>Left</kbd>                                          | Home |
 | <kbd>Fn</kbd><kbd>Right</kbd>                                         | End |
 | <kbd>Fn</kbd><kbd>Backspace</kbd>                                     | Delete |
-| <kbd>Fn</kbd><kdb>Shift</kdb><kbd>Enter</kbd>                        | Insert |
+| <kbd>Fn</kbd><kbd>Shift</kbd><kbd>Enter</kbd>                         | Insert |
