@@ -17,7 +17,7 @@ htop iotop smem
 #Do not install dstat because it is included in pcp
 pcp pcp-gui
 @--no-install-recommends@ cockpit
-glances
+#glances
 battery-stats
 autofs
 gvfs gvfs-backends gvfs-fuse
