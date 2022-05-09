@@ -1,21 +1,10 @@
 # TODOS
 
-- [x] Fix ob-randr.sh <https://raw.githubusercontent.com/owl4ce/dotfiles/main/.config/openbox/pipe-menu/ob-randr.py> and openbox menu.
-- [x] Openbox theme should be installed in user space.
-- [X] Do not really need the install_themes recipe, but just copy .themes in dotfiles.
-- [x] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
-- [x] Edit and restart sxhkd from Openbox menu.
-- [x] Bash script for re-formatting openbox theme file. => no just use a sort command and remove all extra lines.
-- [x] Replace compton by picom (if fixes the bug with Java).
-- [x] Script for setting the wallpaper + use xeventbind <https://github.com/ritave/xeventbind> for re-executing the script.
-- [x] MyScreenLayout conflict with the wallpaper set with hsetroot => register an action executed at resolution change.
-- [x] Translate-notify does not work => the new version of the script still is MyMurtaugh.
-- [x] Replace light-locker with xss-lock.
+- [x] Create github repositories for Openbox theme and for translate-notify.
+- [x] Install translate-notify via the github project.
+- [x] Fix key shortcut for translate-notify via screenshot.
 
-- [ ] Install translate-notify via the github project.
 - [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>.
-- [ ] Create github repositories for Openbox theme and for translate-notify.
-- [ ] Fix key shortcut for translate-notify via screenshot.
 - [ ] Command and key shortcut to extract text from an image, write the text in a temp file and open a text editor.
 - [ ] Hibernate in a file <https://forums.debian.net/viewtopic.php?t=150284>.
 - [ ] Install `i3lock-color` from the sources, and update the rofi power-menu for calling the proper lock command, and also re-order the menu entries.
@@ -85,7 +74,6 @@
 - [ ] Disable "Recent Files" in GTK2/3 file chooser and dialogs.
 - [ ] Allow sudoers to modify printing configuration (lpadmin).
 - [ ] Add a recipe for a git server, access it via http and zeroconf .local ?
-- [x] Desktop files are using $TERM for the "Terminal=true" property, we should set "TERM=x-terminal-emulator" somewhere. => this seems to be fixed in Debian11.
 - [ ] Auto mount FAT usb stick and all files have execute permissions, remove that.
 - [ ] MoveRelative for W-Left|Right|Up|down and MovetoEdge with A-W-Left|Right|Up|Down.
 - [ ] Unpack is console script should be nice +10.
@@ -215,6 +203,18 @@
 
 # DONE
 
+- [x] Desktop files are using $TERM for the "Terminal=true" property, we should set "TERM=x-terminal-emulator" somewhere. => this seems to be fixed in Debian11.
+- [x] Fix ob-randr.sh <https://raw.githubusercontent.com/owl4ce/dotfiles/main/.config/openbox/pipe-menu/ob-randr.py> and openbox menu.
+- [x] Openbox theme should be installed in user space.
+- [X] Do not really need the install_themes recipe, but just copy .themes in dotfiles.
+- [x] Relocate restart_tint2.sh into tint2 config folder, check other scripts too.
+- [x] Edit and restart sxhkd from Openbox menu.
+- [x] Bash script for re-formatting openbox theme file. => no just use a sort command and remove all extra lines.
+- [x] Replace compton by picom (if fixes the bug with Java).
+- [x] Script for setting the wallpaper + use xeventbind <https://github.com/ritave/xeventbind> for re-executing the script.
+- [x] MyScreenLayout conflict with the wallpaper set with hsetroot => register an action executed at resolution change.
+- [x] Translate-notify does not work => the new version of the script still is MyMurtaugh.
+- [x] Replace light-locker with xss-lock.
 - [x] Install rofi menus <https://github.com/adi1090x/rofi> or rofi-power-menu <https://github.com/jluttine/rofi-power-menu> and update sxhkd for power button.
 - [x] Add uniutils.
 - [x] bash alias "ls --time-style=long-iso".

@@ -1,2 +1,0 @@
-- [ ] Read <https://www.reddit.com/r/linux/comments/23fvb3/so_csd_just_became_mandatory_for_all_gnome/>
-- [ ] push my github ssh key in paas in github and then I can retrieve it from git hhtps.
