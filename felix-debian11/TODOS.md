@@ -4,6 +4,8 @@
 - [x] Install translate-notify via the github project.
 - [x] Fix key shortcut for translate-notify via screenshot.
 
+- [ ] Add nitrogen which is handy for multihead setups.
+- [ ] Can we use xeventd to detect that the primary monitor changed and then update tint2 conf + restart it. At least we could retrieve the primary monitor when starting tint2.
 - [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>.
 - [ ] Command and key shortcut to extract text from an image, write the text in a temp file and open a text editor.
 - [ ] Hibernate in a file <https://forums.debian.net/viewtopic.php?t=150284>.
