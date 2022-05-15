@@ -135,7 +135,7 @@ onboard
 maim
 xtrlock xprintidle
 trash-cli
-hsetroot
+hsetroot nitrogen
 
 ##################################
 # Window manager & desktop tools
