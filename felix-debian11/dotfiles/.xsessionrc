@@ -1,18 +1,5 @@
 #!/usr/bin/env bash
 
-########################################################################################################
-# Start xss-lock to lock the session for events: suspend, hibernate, lock-session, and unlock-session.
-# See <https://wiki.archlinux.org/title/Power_management#xss-lock>
-#
-# It does not work well with dm-tool, we use i3lock instead.
-########################################################################################################
-xss-lock -- i3lock -n -notify 20 -notifier "notify-send '' 'The screen will be locked in 20 seconds...'" &
-
-##################################
-# Force loading of libgtk3-nocsd
-##################################
-export LD_PRELOAD="libgtk3-nocsd.so.0${LD_PRELOAD:+:$LD_PRELOAD}"
-
 #########################
 # Environment variables
 #########################
@@ -37,15 +24,53 @@ fi
 #export GPODDER_HOME=""
 #export GPODDER_DOWNLOAD_DIR=""
 
-######################################################
-# Register Thunar in D-BUS if you wish to use thunar
-######################################################
-#thunar --daemon &
+##################################
+# Force loading of libgtk3-nocsd
+##################################
+export LD_PRELOAD="libgtk3-nocsd.so.0${LD_PRELOAD:+:$LD_PRELOAD}"
 
-##########################################################################################
-# Keyboard should be set properly in /etc/default/keyboard but if you wish to do it here
-##########################################################################################
+############################
+# Re-configure the screens
+############################
+if [[ -f "${HOME}/.screenlayout/MyScreenLayout.sh" ]]; then
+	bash "${HOME}/.screenlayout/MyScreenLayout.sh"
+fi
+
+##############
+# Wallpapers
+##############
+#bash "${HOME}/.local/share/wallpapers/set_wallpaper.sh" &
+nitrogen --restore &
+
+####################
+# Bluetooth applet
+####################
+blueman-applet &
+
+########################################################################################################
+# Start xss-lock to lock the session for events: suspend, hibernate, lock-session, and unlock-session.
+# See <https://wiki.archlinux.org/title/Power_management#xss-lock>
+#
+# It does not work well with dm-tool, we use i3lock instead.
+########################################################################################################
+xss-lock -- i3lock -n -notify 20 -notifier "notify-send '' 'The screen will be locked in 20 seconds...'" &
+
+#################
+# Hotkey daemon
+#################
+sxhkd &
+
+########################################################################################
+# Keyboard should be set properly in /etc/default/keyboard but could also be done here
+########################################################################################
 #setxkbmap -rules evdev -model evdev -layout us -variant altgr-intl &
+
+###########
+# Xmodmap
+###########
+if [[ -f "${HOME}/.Xmodmap" ]]; then
+	xmodmap .Xmodmap
+fi
 
 ##########
 # Polkit
@@ -56,30 +81,6 @@ fi
 # clipmenud
 #############
 bash "${HOME}/scripts/clipmenud_run.sh" &
-
-#################
-# Hotkey daemon
-#################
-sxhkd &
-
-############################################################################
-# Multimedia keys can be managed by xfce4-volumed if sxhkd is not doing it
-############################################################################
-
-#xfce4-volumed &
-
-############################
-# Re-configure the screens
-############################
-
-#xrandr --output LVDS-1 --off --output DP-1 --off --output HDMI-1 --mode 1360x768 --primary --pos 0x0 --rotate normal --output VGA-1 --off &
-
-###########
-# Xmodmap
-###########
-if [[ -f "${HOME}/.Xmodmap" ]]; then
-	xmodmap .Xmodmap
-fi
 
 #################################################################################
 # DPMS (Display Power Management Signaling) is controlled with the xset command
@@ -110,16 +111,6 @@ fi
 # Suspend screen
 # xset dpms force suspend
 #
-
-#############
-# Wallpaper
-#############
-bash "${HOME}/.local/share/wallpapers/set_wallpaper.sh" &
-
-####################
-# Bluetooth applet
-####################
-blueman-applet &
 
 ################################
 # SSH agent for X applications
