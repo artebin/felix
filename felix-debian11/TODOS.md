@@ -3,17 +3,17 @@
 - [x] Create github repositories for Openbox theme and for translate-notify.
 - [x] Install translate-notify via the github project.
 - [x] Fix key shortcut for translate-notify via screenshot.
+- [x] Always execute MyScreenLayout.sh if the script exists.
+- [x] Add nitrogen which is handy for multihead setups and restore the wallpaper in `.xsessionrc`.
+- [x] Hibernate in a file <https://forums.debian.net/viewtopic.php?t=150284> => only disadvantage with it. Not doing it.
 
-- [ ] Add nitrogen which is handy for multihead setups.
 - [ ] Can we use xeventd to detect that the primary monitor changed and then update tint2 conf + restart it. At least we could retrieve the primary monitor when starting tint2.
 - [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>.
 - [ ] Command and key shortcut to extract text from an image, write the text in a temp file and open a text editor.
-- [ ] Hibernate in a file <https://forums.debian.net/viewtopic.php?t=150284>.
 - [ ] Install `i3lock-color` from the sources, and update the rofi power-menu for calling the proper lock command, and also re-order the menu entries.
 - [ ] It seems `xss-lock` does not work with `dm-tool lock` or `dm-tool switch-to-greeter`. Use `i3lock` instead <https://gist.github.com/victorhaggqvist/603125bbc0f61a787d89>.
 - [ ] Recent version of xfce notifyd with the logs notification bubbles.
 - [ ] Set the DPI with formula from <https://www.kali.org/docs/general-use/fixing-dpi/>.
-- [ ] It would be a better setup to use a swapfile for the hibernate.
 - [ ] Openbox menu to open autostart folder.
 - [ ] Refactor the scripts folder into ~/bin and add into it the set_wallpaper?
 - [ ] <https://stackoverflow.com/questions/43607461/google-chrome-disable-window-animations>.
