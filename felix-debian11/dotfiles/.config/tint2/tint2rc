@@ -139,7 +139,7 @@ systray_icon_asb = 100 0 0
 
 # Clock
 #time1_format = %H:%M %A %B %d
-time1_format = %b %d %R
+time1_format = %b %d %H:%M
 time1_font = DroidSansMono Nerd Font Bold 11
 clock_font_color = #ffffff 100
 clock_padding = 4 4
