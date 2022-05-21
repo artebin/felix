@@ -39,7 +39,6 @@ fi
 ##############
 # Wallpapers
 ##############
-#bash "${HOME}/.local/share/wallpapers/set_wallpaper.sh" &
 nitrogen --restore &
 
 ####################
