@@ -22,7 +22,7 @@ add_apt_preferences(){
 	cp testing.pref /etc/apt/preferences.d/
 	cp 99defaultrelease /etc/apt/apt.conf.d/
 	
-	printf "You should have the source lists `stable.list` and `testing.list` in your `/etc/apt/sources.list.d`\n"
+	printf "You should have the source lists 'stable.list' and 'testing.list' in your '/etc/apt/sources.list.d'\n"
 	
 	printf "\n"
 }
