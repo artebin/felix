@@ -55,8 +55,8 @@ install_rififi(){
 	
 	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/artebin/rififi
-	cp ./rififi/*.sh "${HOME}/.config/rofi"
-	cp ./rififi/*.conf "${HOME}/.config/rofi"
+	cd rififi
+	bash install.sh
 	
 	# Cleanup
 	cd "${RECIPE_DIRECTORY}"
