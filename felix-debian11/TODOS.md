@@ -1,5 +1,9 @@
 # TODOS
 
+- [ ] Use youtube-dl for podcast?
+- [ ] Add action for updating the openbox theme or at least open a file manager with current folder being the theme folder.
+- [ ] Install qgit.
+- [ ] Finish icon indicator for (security) updates available, user action for updating, script for updating a network of machines.
 - [ ] Create a palette from a initial N colors, or from a wallpaper, and use this palette create automatically create a new theme <https://github.com/warpwm/lule_bash>. Similar to this <https://github.com/fikriomar16/obtgen> it mentioned pywal to extract a palette from an image.
 - [ ] Disable "Recent" category in Caja/Nautilus <https://askubuntu.com/questions/294901/how-to-disable-recent-files-folder-in-nautilus>.
 - [ ] Still have logs of the kernel printing in my console.
