@@ -15,4 +15,5 @@ recipes/user/0090-u-configure_mate_caja
 recipes/user/0100-u-configure_vlc
 recipes/user/0110-u-configure_firefox_default_profile
 recipes/user/0120-u-start_vnc_server_at_login
+recipes/user/0130-u-install_felix_themes
 recipes/user/9999-u-configure_default_applications

@@ -56,7 +56,7 @@ install_rififi(){
 	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/artebin/rififi
 	cd rififi
-	bash install.sh
+	./install.sh
 	
 	# Cleanup
 	cd "${RECIPE_DIRECTORY}"
