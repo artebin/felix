@@ -1,49 +1,31 @@
 # TODOS
 
-- [x] Create github repositories for Openbox theme and for translate-notify.
-- [x] Install translate-notify via the github project.
-- [x] Fix key shortcut for translate-notify via screenshot.
-- [x] Always execute MyScreenLayout.sh if the script exists.
-- [x] Add nitrogen which is handy for multihead setups and restore the wallpaper in `.xsessionrc`.
-- [x] Hibernate in a file <https://forums.debian.net/viewtopic.php?t=150284> => only disadvantage with it. Not doing it.
-
+- [ ] Create a palette from a initial N colors, or from a wallpaper, and use this palette create automatically create a new theme <https://github.com/warpwm/lule_bash>. Similar to this <https://github.com/fikriomar16/obtgen> it mentioned pywal to extract a palette from an image.
 - [ ] Disable "Recent" category in Caja/Nautilus <https://askubuntu.com/questions/294901/how-to-disable-recent-files-folder-in-nautilus>.
 - [ ] Still have logs of the kernel printing in my console.
-- [ ] Can we use xeventd to detect that the primary monitor changed and then update tint2 conf + restart it. At least we could retrieve the primary monitor when starting tint2.
-- [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>.
-- [ ] Command and key shortcut to extract text from an image, write the text in a temp file and open a text editor.
-- [ ] Install `i3lock-color` from the sources, and update the rofi power-menu for calling the proper lock command, and also re-order the menu entries.
-- [ ] It seems `xss-lock` does not work with `dm-tool lock` or `dm-tool switch-to-greeter`. Use `i3lock` instead <https://gist.github.com/victorhaggqvist/603125bbc0f61a787d89>.
-- [ ] Recent version of xfce notifyd with the logs notification bubbles.
+- [ ] Too many logs for pcp in `/var/logs`.
+- [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>, there is the logs of the battery in `/var/logs`.
 - [ ] Set the DPI with formula from <https://www.kali.org/docs/general-use/fixing-dpi/>.
 - [ ] Openbox menu to open autostart folder.
-- [ ] Refactor the scripts folder into ~/bin and add into it the set_wallpaper?
+- [ ] Refactor the scripts folder into ~/bin?
 - [ ] <https://stackoverflow.com/questions/43607461/google-chrome-disable-window-animations>.
 - [ ] Install cockpit and add a menu item in openbox for locahost:9090.
 - [ ] Use the patch on openbox to ignore the hints, the bug is into the openbox tiling via rc.xml, we should do the tiling via an external tool.
-- [ ] Keyboard shotcut to make all visible window undecorated (or all windows in the current desktop) + inverted action.
+- [ ] Keyboard shortcut to make all visible window undecorated (or all windows in the current desktop) + inverted action.
 - [ ] We miss a keyboard shorcut to make appear the window menu (usefull when the window is undecorated).
-- [ ] <https://wiki.debian.org/NetworkManager> and let NetworkManager to manage the interfaces.
 - [ ] Add openbox menu entry to "edit xsessionrc".
-- [ ] Power menu is "power menu", we should have a "log out" entry in the openbox menu.
 - [ ] Install Herbe <https://github.com/dudik/herbe>.
 - [ ] Install <https://github.com/sharkdp/pastel> for processing colors from the command line.
-- [ ] Remove XDG desktop folder and check on /etc/xdg/user-dirs.conf.
 - [ ] The ordering of the files in caja is wrong.
 - [ ] Avahi-discover window centered in the screen.
 - [ ] Find a way to iterate over a list of GIT repositories and warn the user that some changes are not pushed yet. Maybe it is good to have a 'git' folder in the home after all.
-- [ ] Rofi mode for remmina files and use a icon per type of connections SSH, VNC, RDP etc. the modi can used an index which could be rebuilt by quick-checking the files.
-- [ ] Patch openbox for the hints and also for window title disable center justification when window too much small.
+- [ ] Patch openbox for the hints and also for window title disable center justification when window too much small, we should see the beginning of the window title.
 - [ ] pqiv or qview for the image viewer, do they support webp? => no the best seems to be nsxiv
-- [ ] Create a palette from a initial N colors, or from a wallpaper, and use this palette create automatically create a new theme <https://github.com/warpwm/lule_bash>. Similar to this <https://github.com/fikriomar16/obtgen> it mentioned pywal to extract a palette from an image.
-- [ ] Separator bar wider in caja.
+- [ ] Separator bar wider in caja, is it possible?
 - [ ] Memory, cpu and network logging with a service for activating it, and a rolling logging and a nice GUI app to see historical data like kcollectd. Later on I could add the battery info I wanted to.
 - [ ] Would be nice to dock a window i.e. fullscreen on other windows would take it into account. The dock is always visible with fullscreened windows (unless floating window overlap the dock).
-- [ ] kcolorchooser instead of gpick.
 - [ ] Script for columnating a file based on a regex providing the prefix, the remaining content of the lines is tab aligned, allow to give a max length for the prefix.
 - [ ] Convert any images to a color palette <https://ign.schrodinger-hat.it/color-schemes>.
-- [ ] Compile Remina from the sources?
-- [ ] Glances seems to be automatically started, disable the service.
 - [ ] Script for setting the font for Openbox, Tint2, GTK and KDE.
 - [ ] Fix path for debian.
 - [ ] Shortcut in geany comment lines.
@@ -207,6 +189,23 @@
 
 # DONE
 
+- [x] Compile Remina from the sources? => heavy task, it is better to install it from testing.
+- [x] Glances seems to be automatically started, disable the service. => removed from list of packages to install.
+- [x] kcolorchooser instead of gpick. => kcolorchooser is very basic, to pick a color we can use geany.
+- [x] Rofi mode for remmina files and use a icon per type of connections SSH, VNC, RDP etc. the modi can used an index which could be rebuilt by quick-checking the files. => done with rififi.
+- [x] Remove XDG desktop folder and check on /etc/xdg/user-dirs.conf => if Desktop does not exist then Caja recreated it.
+- [x] <https://wiki.debian.org/NetworkManager> and let NetworkManager to manage the interfaces.
+- [x] Recent version of xfce notifyd => in debian11 we already have a recent version, not the last one but just before. We can configure where to show the bubbles.
+- [x] Command and key shortcut to extract text from an image, write the text in a temp file and open a text editor (think about these websites where you cannot select the text, like in office365).
+- [x] It seems `xss-lock` does not work with `dm-tool lock` or `dm-tool switch-to-greeter`. Use `i3lock` instead <https://gist.github.com/victorhaggqvist/603125bbc0f61a787d89>. => did it but switched back to dm-tool, we prefer.
+- [x] Install `i3lock-color` from the sources, and update the rofi power-menu for calling the proper lock command, and also re-order the menu entries => added the recipes in extra but not using it, we prefer light-locker in the end.
+- [x] Can we use xeventd to detect that the primary monitor changed and then update tint2 conf + restart it. At least we could retrieve the primary monitor when starting tint2. => not really useful, we can just edit tint2rc.
+- [x] Hibernate in a file <https://forums.debian.net/viewtopic.php?t=150284> => only disadvantage with it. Not doing it.
+- [x] Add nitrogen which is handy for multihead setups and restore the wallpaper in `.xsessionrc`.
+- [x] Always execute MyScreenLayout.sh if the script exists.
+- [x] Fix key shortcut for translate-notify via screenshot.
+- [x] Install translate-notify via the github project.
+- [x] Create github repositories for Openbox theme and for translate-notify.
 - [x] Desktop files are using $TERM for the "Terminal=true" property, we should set "TERM=x-terminal-emulator" somewhere. => this seems to be fixed in Debian11.
 - [x] Fix ob-randr.sh <https://raw.githubusercontent.com/owl4ce/dotfiles/main/.config/openbox/pipe-menu/ob-randr.py> and openbox menu.
 - [x] Openbox theme should be installed in user space.
