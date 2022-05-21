@@ -80,7 +80,7 @@
 			<menu id="DisplaySettings" label="Display">
 				<menu id="randr-menu" label="Screen Layout" execute="python3 ~/.config/openbox/ob-randr.py" />
 				<item label="Screen Layout Editor"><action name="Execute"><command>arandr</command></action></item>
-				<item label="DPMS"><action name="Execute"><command>x-terminal-emulator -T "DPMS" -e "bash -c \"xset -q;bash\""</command></action></item>
+				<item label="DPMS"><action name="Execute"><command>light-locker-settings</command></action></item>
 				<item label="Wallpapers (nitrogen)"><action name="Execute"><command>nitrogen</command></action></item>
 			</menu>
 			<separator/>
