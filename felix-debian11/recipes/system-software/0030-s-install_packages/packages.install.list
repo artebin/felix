@@ -117,7 +117,7 @@ apt-rdepends
 # Display Manager
 ###################
 lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
-xss-lock
+light-locker
 
 ##############
 # Xorg tools
