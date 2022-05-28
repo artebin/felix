@@ -15,7 +15,7 @@ exit_if_not_bash
 exit_if_has_root_privileges
 
 install_rofi_menus(){
-	printf "Install rofi-menus from <https://github.com/adi1090x/rofi> under ${HOME}/config/rofi/rofi-menus\n"
+	printf "Installing rofi-menus from <https://github.com/adi1090x/rofi> under ${HOME}/config/rofi/rofi-menus ...\n"
 	
 	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/adi1090x/rofi
@@ -51,7 +51,7 @@ install_rofi_menus(){
 }
 
 install_rififi(){
-	printf "Configure rififi ...\n"
+	printf "Configuring rififi ...\n"
 	
 	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/artebin/rififi
@@ -65,11 +65,33 @@ install_rififi(){
 	printf "\n"
 }
 
+install_rofimoji(){
+	printf "Installing rofimoji ...\n"
+	
+	# Install dependencies
+	cd "${RECIPE_DIRECTORY}"
+	install_package_if_not_installed "python3-configargparse"
+	
+	# Install rofimoji
+	git clone https://github.com/fdw/rofimoji
+	cd rofimoji
+	
+	
+	# Cleaning
+	
+}
+
 #install_rofi_menus 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 #EXIT_CODE="${PIPESTATUS[0]}"
 #if [[ "${EXIT_CODE}" -ne 0 ]]; then
 #	exit "${EXIT_CODE}"
 #fi
+
+install_rififi 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+EXIT_CODE="${PIPESTATUS[0]}"
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
+	exit "${EXIT_CODE}"
+fi
 
 install_rififi 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
