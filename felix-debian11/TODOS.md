@@ -1,5 +1,10 @@
 # TODOS
 
+- [ ] Bash coloring for ls etc.
+- [ ] Change the font for tty <https://askubuntu.com/questions/173220/how-do-i-change-the-font-or-the-font-size-in-the-tty-console>.
+- [ ] Move the xset setting from .xsessionrc to a script in scripts, can be set at startup via an autostart.
+- [ ] Disabled button in Felix-nord is still using the colors from Erthe.
+- [ ] Write a script rendering the openbox theme in HTML with colored blocks.
 - [ ] Use youtube-dl for podcast?
 - [ ] Add action for updating the openbox theme or at least open a file manager with current folder being the theme folder.
 - [ ] Install qgit.
