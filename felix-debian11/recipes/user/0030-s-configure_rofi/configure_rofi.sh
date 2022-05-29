@@ -12,7 +12,7 @@ source "${FELIX_SH}"
 initialize_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
-exit_if_has_root_privileges
+exit_if_has_not_root_privileges
 
 install_rofi_menus(){
 	printf "Installing rofi-menus from <https://github.com/adi1090x/rofi> under ${HOME}/config/rofi/rofi-menus ...\n"
@@ -93,8 +93,8 @@ if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
 
-install_rififi 2>&1 | tee -a "${RECIPE_LOG_FILE}"
-EXIT_CODE="${PIPESTATUS[0]}"
-if [[ "${EXIT_CODE}" -ne 0 ]]; then
-	exit "${EXIT_CODE}"
-fi
+#install_rofimoji 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+#EXIT_CODE="${PIPESTATUS[0]}"
+#if [[ "${EXIT_CODE}" -ne 0 ]]; then
+#	exit "${EXIT_CODE}"
+#fi

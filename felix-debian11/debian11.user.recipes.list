@@ -5,7 +5,7 @@
 ################################################################################
 recipes/user/0010-s-configure_user_account
 recipes/user/0020-u-install_dotfiles
-recipes/user/0030-u-configure_rofi
+recipes/user/0030-s-configure_rofi
 recipes/user/0040-u-install_user_scripts
 recipes/user/0050-u-configure_mate_terminal
 recipes/user/0060-u-configure_gtk
