@@ -1,8 +1,9 @@
 #########################
 # Firmwares and drivers
 #########################
-firmware-iwlwifi
+firmware-linux firmware-linux-free firmware-linux-nonfree
 firmware-misc-nonfree
+firmware-iwlwifi
 
 ################
 # System tools
