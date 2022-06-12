@@ -1,6 +1,7 @@
 # TODOS
 
-- [ ] lsb_release does not give the id of the distrib on debian.
+- [ ] Check `system_update_check.sh` is still running on debian + might install yad from sources.
+- [ ] lsb_release does not give the id of the distrib on debian => use `lsb_release -a`.
 - [ ] Bash coloring for ls etc.
 - [ ] Change the font for tty <https://askubuntu.com/questions/173220/how-do-i-change-the-font-or-the-font-size-in-the-tty-console>.
 - [ ] Move the xset setting from .xsessionrc to a script in scripts, can be set at startup via an autostart.
