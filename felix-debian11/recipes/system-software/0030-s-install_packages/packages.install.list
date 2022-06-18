@@ -131,7 +131,6 @@ xinput xinput-calibrator
 x11-apps
 xsel xclip xdo xtitle
 wmctrl xdotool xautomation
-xserver-xephyr
 libnotify-dev libnotify-doc #libnotify-bin should be installed from sources (fix on notification IDs)
 onboard
 maim
