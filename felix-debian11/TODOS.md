@@ -1,9 +1,10 @@
 # TODOS
 
-- [ ] remove clipd and use parcellite.
-- [ ] Clean openbox menu (glances etc. ).
-- [ ] Add menu item for editing xsessrionrc.
-- [ ] Modify take screenshot and remove header like for lightdm.
+- [x] remove clipd and use parcellite.
+- [x] Clean openbox menu (glances etc. ).
+- [x] Add menu item for editing xsessrionrc.
+- [x] remove gromit and gkxset and xfce4-mouse and keyboard.
+
 - [ ] Check `system_update_check.sh` is still running on debian + might install yad from sources.
 - [ ] lsb_release does not give the id of the distrib on debian => use `lsb_release -a`.
 - [ ] Bash coloring for ls etc.
@@ -98,7 +99,6 @@
 - [ ] Cannot use pkexec in rofi.
 - [ ] Review bash aliases for time conversion and millis2date should return UTC.
 - [ ] Configure firefox with https://support.mozilla.org/gl/questions/1241294 for not allowing website to override Firefox UI shortcuts.
-- [ ] remove gromit and gkxset and xfce4-mouse and keyboard.
 - [ ] Better tiling in rc.xml <win>- adn <win>+ for (un)maximizing the window, switch current window follow mouse cursor or not.
 - [ ] Add an action in openbox menu for editing the crontab.
 - [ ] Add a .desktop for Impress that can be used directly after making a screenshot for adding annotation.

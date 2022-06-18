@@ -18,11 +18,10 @@
 		</menu>
 		<separator/>
 		<menu id="accessories" label="Accessories">
-			<item label="Task Manager (htop)"><action name="Execute"><command>x-terminal-emulator -T "Task Manager (htop)" -e "htop"</command></action></item>
-			<item label="System Monitor (glances)"><action name="Execute"><command>x-terminal-emulator -T "System Monitor (glances)" -e "glances"</command></action></item>
-			<item label="Disk Usage Analyzer (ncdu)"><action name="Execute"><command>x-terminal-emulator -T "Disk Usage Analyzer (ncdu)" -e "ncdu"</command></action></item>
-			<item label="Encryption Keys Manager (seahorse)"><action name="Execute"><command>seahorse</command></action></item>
-			<item label="Virtual Keyboard (onboard)"><action name="Execute"><command>onboard</command></action></item>
+			<item label="Task Manager"><action name="Execute"><command>x-terminal-emulator -T "Task Manager (htop)" -e "htop"</command></action></item>
+			<item label="Disk Usage Analyzer"><action name="Execute"><command>x-terminal-emulator -T "Disk Usage Analyzer (ncdu)" -e "ncdu"</command></action></item>
+			<item label="Encryption Keys Manager"><action name="Execute"><command>seahorse</command></action></item>
+			<item label="Virtual Keyboard"><action name="Execute"><command>onboard</command></action></item>
 			<item label="Battery Usage"><action name="Execute"><command>battery-graph</command></action></item>
 		</menu>
 		<menu id="graphics" label="Graphics">
@@ -32,7 +31,6 @@
 			<item label="Screenshooter"><action name="Execute"><command>xfce4-screenshooter</command></action></item>
 			<item label="Capture Window"><action name="Execute"><command>bash ~/scripts/screenshot_capture_window.sh -f</command></action></item>
 			<item label="Capture Window (no decoration)"><action name="Execute"><command>bash ~/scripts/screenshot_capture_window.sh</command></action></item>
-			<item label="Screen Annotation (Gromit-MPX)"><action name="Execute"><command>gromit-mpx</command></action></item>
 			<item label="Color Picker (gpick)"><action name="Execute"><command>gpick</command></action></item>
 		</menu>
 		<menu id="multimedia" label="Multimedia">
@@ -81,11 +79,17 @@
 				<menu id="randr-menu" label="Screen Layout" execute="python3 ~/.config/openbox/ob-randr.py" />
 				<item label="Screen Layout Editor"><action name="Execute"><command>arandr</command></action></item>
 				<item label="DPMS"><action name="Execute"><command>light-locker-settings</command></action></item>
-				<item label="Wallpapers (nitrogen)"><action name="Execute"><command>nitrogen</command></action></item>
+				<item label="Wallpapers"><action name="Execute"><command>nitrogen</command></action></item>
 			</menu>
 			<separator/>
 			<item label="User Interface Settings"><action name="Execute"><command>lxappearance</command></action></item>
 			<separator/>
+			<item label="Edit .xsessionrc"><action name="Execute"><command>geany -i ~/.xsessionrc</command></action></item>
+			<menu id="SxhkdConfig" label="Sxhkd">
+				<item label="Edit sxhkdrc"><action name="Execute"><command>geany -i ~/.config/sxhkd/sxhkdrc</command></action></item>
+				<separator/>
+				<item label="Restart"><action name="Execute"><command>bash ~/.config/sxhkd/restart_sxhkd.sh</command></action></item>
+			</menu>
 			<menu id="OpenboxConfig" label="Openbox">
 				<item label="GUI Config Tool"><action name="Execute"><command>obconf</command></action></item>
 				<separator/>
@@ -101,11 +105,6 @@
 				<item label="Edit tint2rc"><action name="Execute"><command>geany -i ~/.config/tint2/tint2rc</command></action></item>
 				<separator/>
 				<item label="Restart"><action name="Execute"><command>bash ~/.config/tint2/restart_tint2.sh</command></action></item>
-			</menu>
-			<menu id="SxhkdConfig" label="Sxhkd">
-				<item label="Edit sxhkdrc"><action name="Execute"><command>geany -i ~/.config/sxhkd/sxhkdrc</command></action></item>
-				<separator/>
-				<item label="Restart"><action name="Execute"><command>bash ~/.config/sxhkd/restart_sxhkd.sh</command></action></item>
 			</menu>
 		</menu>
 		<menu id="system" label="System">
