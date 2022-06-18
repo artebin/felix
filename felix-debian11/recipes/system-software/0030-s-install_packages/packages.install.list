@@ -138,6 +138,7 @@ maim
 xtrlock xprintidle
 trash-cli
 hsetroot nitrogen
+parcellite
 
 ##################################
 # Window manager & desktop tools
