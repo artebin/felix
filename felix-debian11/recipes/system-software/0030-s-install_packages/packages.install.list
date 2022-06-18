@@ -138,6 +138,7 @@ xtrlock xprintidle
 trash-cli
 hsetroot nitrogen
 parcellite
+ssh-askpass
 
 ##################################
 # Window manager & desktop tools
