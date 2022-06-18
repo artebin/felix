@@ -1,5 +1,9 @@
 # TODOS
 
+- [ ] remove clipd and use parcellite.
+- [ ] Clean openbox menu (glances etc. ).
+- [ ] Add menu item for editing xsessrionrc.
+- [ ] Modify take screenshot and remove header like for lightdm.
 - [ ] Check `system_update_check.sh` is still running on debian + might install yad from sources.
 - [ ] lsb_release does not give the id of the distrib on debian => use `lsb_release -a`.
 - [ ] Bash coloring for ls etc.
