@@ -4,17 +4,19 @@
 - [x] Clean openbox menu (glances etc. ).
 - [x] Add menu item for editing xsessrionrc.
 - [x] remove gromit and gkxset and xfce4-mouse and keyboard.
+- [x] Add action for updating the openbox theme or at least open a file manager with current folder being the theme folder.
 
+- [ ] GitQlient (fork of qgit).
+- [ ] Write a script rendering the openbox theme in HTML with colored blocks. Missing the links to defined color in palette.
+- [ ] Add another preferences for unstable in debian11 (for firefox).
+- [ ] Install `xorg-xinput` for libinput (replacing synaptics), or use mtrack.
 - [ ] Check `system_update_check.sh` is still running on debian + might install yad from sources.
 - [ ] lsb_release does not give the id of the distrib on debian => use `lsb_release -a`.
-- [ ] Bash coloring for ls etc.
+- [ ] Bash coloring for ls etc. see <https://wiki.debian.org/BashColors>.
 - [ ] Change the font for tty <https://askubuntu.com/questions/173220/how-do-i-change-the-font-or-the-font-size-in-the-tty-console>.
 - [ ] Move the xset setting from .xsessionrc to a script in scripts, can be set at startup via an autostart.
 - [ ] Disabled button in Felix-nord is still using the colors from Erthe.
-- [ ] Write a script rendering the openbox theme in HTML with colored blocks.
 - [ ] Use youtube-dl for podcast?
-- [ ] Add action for updating the openbox theme or at least open a file manager with current folder being the theme folder.
-- [ ] Install qgit.
 - [ ] Finish icon indicator for (security) updates available, user action for updating, script for updating a network of machines.
 - [ ] Create a palette from a initial N colors, or from a wallpaper, and use this palette create automatically create a new theme <https://github.com/warpwm/lule_bash>. Similar to this <https://github.com/fikriomar16/obtgen> it mentioned pywal to extract a palette from an image.
 - [ ] Disable "Recent" category in Caja/Nautilus <https://askubuntu.com/questions/294901/how-to-disable-recent-files-folder-in-nautilus>.
@@ -29,7 +31,6 @@
 - [ ] Use the patch on openbox to ignore the hints, the bug is into the openbox tiling via rc.xml, we should do the tiling via an external tool.
 - [ ] Keyboard shortcut to make all visible window undecorated (or all windows in the current desktop) + inverted action.
 - [ ] We miss a keyboard shorcut to make appear the window menu (usefull when the window is undecorated).
-- [ ] Add openbox menu entry to "edit xsessionrc".
 - [ ] Install Herbe <https://github.com/dudik/herbe>.
 - [ ] Install <https://github.com/sharkdp/pastel> for processing colors from the command line.
 - [ ] The ordering of the files in caja is wrong.
