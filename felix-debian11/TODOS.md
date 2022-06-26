@@ -6,6 +6,11 @@
 - [x] remove gromit and gkxset and xfce4-mouse and keyboard.
 - [x] Add action for updating the openbox theme or at least open a file manager with current folder being the theme folder.
 
+- [ ] Bug gtk3.24 mouse wheel events with modifier are used as regular events and scroll panels.
+- [ ] Add a ~/bin folder, and the script creating HW+soft report + some alias like getting gtk versions etc. 
+- [ ] Add recipe for apt preferences bullseye, testing and unstable (firefox) + 
+- [ ] Remove the setting for mtrack in felix.conf.
+- [ ] Add configuration for libinput <https://askubuntu.com/questions/1156192/how-to-enable-tap-to-click-in-libinput-on-ubuntu-19-04-x11-unity>.
 - [ ] GitQlient (fork of qgit).
 - [ ] Write a script rendering the openbox theme in HTML with colored blocks. Missing the links to defined color in palette.
 - [ ] Add another preferences for unstable in debian11 (for firefox).
