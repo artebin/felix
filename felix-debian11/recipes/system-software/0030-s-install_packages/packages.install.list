@@ -139,6 +139,7 @@ trash-cli
 hsetroot nitrogen
 parcellite
 ssh-askpass
+alltray
 
 ##################################
 # Window manager & desktop tools
