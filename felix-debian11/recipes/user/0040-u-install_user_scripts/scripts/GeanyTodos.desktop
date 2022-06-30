@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=TODOS
+Type=Application
+Exec=alltray -st -i /usr/share/icons/Faenza-njames/apps/64/gtodo.png "${TODOS_FILE}"
+Terminal=false
+Name[en_US]=GeanyTodos.desktop
