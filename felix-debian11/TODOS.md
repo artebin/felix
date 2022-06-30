@@ -6,6 +6,7 @@
 - [x] remove gromit and gkxset and xfce4-mouse and keyboard.
 - [x] Add action for updating the openbox theme or at least open a file manager with current folder being the theme folder.
 
+- [ ] We can set the size of the mouse cursor with an entry in .Xresources.
 - [ ] Bug gtk3.24 mouse wheel events with modifier are used as regular events and scroll panels.
 - [ ] Add a ~/bin folder, and the script creating HW+soft report + some alias like getting gtk versions etc. 
 - [ ] Add recipe for apt preferences bullseye, testing and unstable (firefox) + 
