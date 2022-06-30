@@ -32,7 +32,7 @@ configure_auto_login(){
 			exit 1
 		fi
 	else
-		mkdir /etc/lightdm/lightdm.conf.d
+		mkdir -p /etc/lightdm/lightdm.conf.d
 	fi
 	
 	cd "${RECIPE_DIRECTORY}"
