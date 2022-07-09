@@ -30,8 +30,8 @@ process_package_install_list(){
 	# Generate APT_PACKAGE_LIST_FILES from PACKAGE_LIST_FILE
 	# It will also fill MISSING_PACKAGE_LIST_FILE
 	PACKAGE_LIST_FILE="${RECIPE_DIRECTORY}/packages.install.list"
-	APT_PACKAGE_LIST_FILE_NAME_PREFIX="${RECIPE_DIRECTORY}/apt_package_list"
-	MISSING_PACKAGE_LIST_FILE="${RECIPE_DIRECTORY}/packages.missing.list"
+	APT_PACKAGE_LIST_FILE_NAME_PREFIX="${RECIPE_DIRECTORY}/apt_packages_to_install.$(date -u +'%y%m%d-%H%M%S').list"
+	MISSING_PACKAGE_LIST_FILE="${RECIPE_DIRECTORY}/packages.missing.$(date -u +'%y%m%d-%H%M%S').list"
 	cd "${RECIPE_DIRECTORY}"
 	generate_apt_package_list_files "${PACKAGE_LIST_FILE}" "${APT_PACKAGE_LIST_FILE_NAME_PREFIX}" "${MISSING_PACKAGE_LIST_FILE}"
 	
