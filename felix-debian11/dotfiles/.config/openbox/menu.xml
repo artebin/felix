@@ -9,14 +9,6 @@
 		<item label="Mail Client"><action name="Execute"><command>claws-mail</command></action></item>
 		<item label="Media Player"><action name="Execute"><command>vlc</command></action></item>
 		<separator/>
-		<menu id="file_utils" label="File Utils">
-			<item label="GVim"><action name="Execute"><command>gvim</command></action></item>
-			<item label="Hexadecimal Editor (bless)"><action name="Execute"><command>bless</command></action></item>
-			<item label="Diff &amp; Merge Tool (meld)"><action name="Execute"><command>meld</command></action></item>
-			<item label="Log Explorer (glogg)"><action name="Execute"><command>glogg</command></action></item>
-			<item label="Empty Trash"><action name="Execute"><command>trash-empty</command></action></item>
-		</menu>
-		<separator/>
 		<menu id="accessories" label="Accessories">
 			<item label="Task Manager"><action name="Execute"><command>x-terminal-emulator -T "Task Manager (htop)" -e "htop"</command></action></item>
 			<item label="Disk Usage Analyzer"><action name="Execute"><command>x-terminal-emulator -T "Disk Usage Analyzer (ncdu)" -e "ncdu"</command></action></item>
@@ -24,6 +16,13 @@
 			<item label="Virtual Keyboard"><action name="Execute"><command>onboard</command></action></item>
 			<item label="Battery Usage"><action name="Execute"><command>battery-graph</command></action></item>
 			<item label="Admin Web Console (cockpit)"><action name="Execute"><command>x-www-browser --new-window http://localhost:9090/</command></action></item>
+		</menu>
+		<menu id="file_utils" label="File Utils">
+			<item label="GVim"><action name="Execute"><command>gvim</command></action></item>
+			<item label="Hexadecimal Editor (bless)"><action name="Execute"><command>bless</command></action></item>
+			<item label="Diff &amp; Merge Tool (meld)"><action name="Execute"><command>meld</command></action></item>
+			<item label="Log Explorer (glogg)"><action name="Execute"><command>glogg</command></action></item>
+			<item label="Empty Trash"><action name="Execute"><command>trash-empty</command></action></item>
 		</menu>
 		<menu id="graphics" label="Graphics">
 			<item label="Image Viewer (gpicview)"><action name="Execute"><command>gpicview</command></action></item>
