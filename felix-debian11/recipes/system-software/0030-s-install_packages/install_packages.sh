@@ -26,17 +26,29 @@ process_package_install_list(){
 	
 	# Synchronized package index files from sources
 	apt-get update
+	APT_GET_UPDATE_EXIT_CODE="${?}"
+	if [[ "${APT_GET_UPDATE_EXIT_CODE}" -ne 0 ]]; then
+		printf "!ERROR! apt-get return with errors\n" 1>&2
+		exit 1
+	fi
 	
-	# Generate APT_PACKAGE_LIST_FILES from PACKAGE_LIST_FILE
-	# It will also fill MISSING_PACKAGE_LIST_FILE
 	PACKAGE_LIST_FILE="${RECIPE_DIRECTORY}/packages.install.list"
-	APT_PACKAGE_LIST_FILE_NAME_PREFIX="${RECIPE_DIRECTORY}/apt_packages_to_install.$(date -u +'%y%m%d-%H%M%S').list"
-	MISSING_PACKAGE_LIST_FILE="${RECIPE_DIRECTORY}/packages.missing.$(date -u +'%y%m%d-%H%M%S').list"
+	
+	# Build APT_PACKAGE_LIST_FILES and MISSING_PACKAGE_LIST_FILE from PACKAGE_LIST_FILE
+	APT_PACKAGE_LIST_FILE_NAME_PREFIX="${RECIPE_DIRECTORY}/apt_package_list"
+	if [[ -f "${APT_PACKAGE_LIST_FILE_NAME_PREFIX}" ]]; then
+		rm -f "${APT_PACKAGE_LIST_FILE_NAME_PREFIX}"
+	fi
+	MISSING_PACKAGE_LIST_FILE="${RECIPE_DIRECTORY}/packages.missing.list"
+	if [[ -f "${MISSING_PACKAGE_LIST_FILE}" ]]; then
+		rm -f "${MISSING_PACKAGE_LIST_FILE}"
+	fi
+	
 	cd "${RECIPE_DIRECTORY}"
 	generate_apt_package_list_files "${PACKAGE_LIST_FILE}" "${APT_PACKAGE_LIST_FILE_NAME_PREFIX}" "${MISSING_PACKAGE_LIST_FILE}"
 	
 	# Exit if some packages are missing
-	if [[ -f "${MISSING_PACKAGE_LIST_FILE}" && ! -s "${MISSING_PACKAGE_LIST_FILE}" ]]; then
+	if [[ -f "${MISSING_PACKAGE_LIST_FILE}" ]] && [[ -s "${MISSING_PACKAGE_LIST_FILE}" ]]; then
 		printf "Some packages are missing\n"
 		printf "See MISSING_PACKAGE_LIST_FILE: ${MISSING_PACKAGE_LIST_FILE}\n"
 		rm -f "${APT_PACKAGE_LIST_FILE}"
