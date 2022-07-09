@@ -139,7 +139,7 @@ trash-cli
 hsetroot nitrogen
 parcellite
 ssh-askpass
-alltray
+#alltray #Not available in Debian11
 
 ##################################
 # Window manager & desktop tools
