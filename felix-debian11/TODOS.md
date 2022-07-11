@@ -5,18 +5,22 @@
 - [x] Add menu item for editing xsessrionrc.
 - [x] remove gromit and gkxset and xfce4-mouse and keyboard.
 - [x] Add action for updating the openbox theme or at least open a file manager with current folder being the theme folder.
+- [x] Missing packages should kill the installation but it is not, maybe we should check the repository sections available.
+- [x] We can set the size of the mouse cursor with an entry in .Xresources.
 
+- [ ] Add another preferences for unstable in debian11 (for firefox).
+- [ ] Add configuration for libinput <https://askubuntu.com/questions/1156192/how-to-enable-tap-to-click-in-libinput-on-ubuntu-19-04-x11-unity>.
+- [ ] Install `xorg-xinput` for libinput (replacing synaptics), or use mtrack.
+- [ ] Disable pcp zeroconf?
+- [ ] Should have an ExecutionTimestamp for recipe and use it for InstallSoftware.
+- [ ] Activate autosave in geany.
 - [ ] Should add an openbox menu for the notes (and TODOS) managed with geanys, or a rofi mode => better than one TODOS file opened with autostart.
-- [ ] We can set the size of the mouse cursor with an entry in .Xresources.
 - [ ] Bug gtk3.24 mouse wheel events with modifier are used as regular events and scroll panels.
 - [ ] Add a ~/bin folder, and the script creating HW+soft report + some alias like getting gtk versions etc. 
-- [ ] Add recipe for apt preferences bullseye, testing and unstable (firefox) + 
+- [ ] Add recipe for apt preferences bullseye, testing and unstable (firefox).
 - [ ] Remove the setting for mtrack in felix.conf.
-- [ ] Add configuration for libinput <https://askubuntu.com/questions/1156192/how-to-enable-tap-to-click-in-libinput-on-ubuntu-19-04-x11-unity>.
 - [ ] GitQlient (fork of qgit).
 - [ ] Write a script rendering the openbox theme in HTML with colored blocks. Missing the links to defined color in palette.
-- [ ] Add another preferences for unstable in debian11 (for firefox).
-- [ ] Install `xorg-xinput` for libinput (replacing synaptics), or use mtrack.
 - [ ] Check `system_update_check.sh` is still running on debian + might install yad from sources.
 - [ ] lsb_release does not give the id of the distrib on debian => use `lsb_release -a`.
 - [ ] Bash coloring for ls etc. see <https://wiki.debian.org/BashColors>.
