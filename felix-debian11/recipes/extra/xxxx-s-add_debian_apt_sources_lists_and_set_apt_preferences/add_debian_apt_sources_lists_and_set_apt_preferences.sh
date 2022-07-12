@@ -20,13 +20,13 @@ add_debian_apt_sources_lists_and_set_apt_preferences(){
 	cd "${RECIPE_DIRECTORY}"
 	
 	cp stable.pref /etc/apt/preferences.d/
-	cp stable.list /etc/apt/sources.d
+	cp stable.list /etc/apt/sources.list.d/
 	
 	cp testing.pref /etc/apt/preferences.d/
-	cp testing.list /etc/apt/sources.d
+	cp testing.list /etc/apt/sources.list.d/
 	
 	cp unstable.pref /etc/apt/preferences.d/
-	cp unstable.list /etc/apt/sources.d
+	cp unstable.list /etc/apt/sources.list.d/
 	
 	cp 99defaultrelease /etc/apt/apt.conf.d/
 	
