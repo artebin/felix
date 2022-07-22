@@ -216,3 +216,13 @@ remove_ssh_key_for_host(){
 	ssh-keygen -R "${HOST_ADDRESS}"
 	ssh-keygen -R "${HOST_IP_ADDRESS}"
 }
+
+function run_command_after(){
+	if [[ $# -ne 2 ]]; then
+		printf "Usage: run_command_after <PID> <COMMAND>"
+		return
+	fi
+	PID="${1}"
+	COMMAND_TO_RUN_AFTER="${2}"
+	watch -g ps -opid -p <pid>; mycommand
+}
