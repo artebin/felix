@@ -7,7 +7,11 @@
 - [x] Add action for updating the openbox theme or at least open a file manager with current folder being the theme folder.
 - [x] Missing packages should kill the installation but it is not, maybe we should check the repository sections available.
 - [x] We can set the size of the mouse cursor with an entry in .Xresources.
+- [x] Replace xfce-screenshooter with "mate-screnshot -i".
 
+- [ ] Build eom from the sources <https://github.com/mate-desktop/eom> and set default mime type for eom.
+- [ ] pqiv or qview or nsxiv for the image viewer, do they have support webp? => gpicview is discontinued, we should go back to eom, at least this one provide drag'n'drop.
+- [ ] cron task "gpo update && gpo download" + manage cron list with cockpit?
 - [ ] Add another preferences for unstable in debian11 (for firefox).
 - [ ] Add configuration for libinput <https://askubuntu.com/questions/1156192/how-to-enable-tap-to-click-in-libinput-on-ubuntu-19-04-x11-unity>.
 - [ ] Install `xorg-xinput` for libinput (replacing synaptics), or use mtrack.
@@ -48,7 +52,6 @@
 - [ ] Avahi-discover window centered in the screen.
 - [ ] Find a way to iterate over a list of GIT repositories and warn the user that some changes are not pushed yet. Maybe it is good to have a 'git' folder in the home after all.
 - [ ] Patch openbox for the hints and also for window title disable center justification when window too much small, we should see the beginning of the window title.
-- [ ] pqiv or qview for the image viewer, do they support webp? => no the best seems to be nsxiv
 - [ ] Separator bar wider in caja, is it possible?
 - [ ] Memory, cpu and network logging with a service for activating it, and a rolling logging and a nice GUI app to see historical data like kcollectd. Later on I could add the battery info I wanted to.
 - [ ] Would be nice to dock a window i.e. fullscreen on other windows would take it into account. The dock is always visible with fullscreened windows (unless floating window overlap the dock).
