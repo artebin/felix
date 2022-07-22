@@ -5,7 +5,7 @@ super + e
 	geany_one_instance_per_workspace
 
 Print
-	xfce4-screenshooter
+	mate-screenshoot -i
 
 alt + Print
 	maim -s
