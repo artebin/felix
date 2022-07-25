@@ -14,7 +14,7 @@ ctrl + alt + q
 	xkill
 
 super + r
-	rofi -show run -modi run,window,remmina:"${HOME}/.config/rofi/rififi.sh -f ${HOME}/.config/rofi/rififi-remmina.conf"
+	rofi -show run -modi run,window
 
 super + c
 	bash "${HOME}/scripts/clipmenu_run.sh"
