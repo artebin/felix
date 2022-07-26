@@ -28,6 +28,7 @@ plocate
 crudini
 uuid-runtime
 python-is-python3
+accountsservice
 
 #################################
 # Terminal & command line tools
