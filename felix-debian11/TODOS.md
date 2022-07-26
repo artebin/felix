@@ -8,9 +8,9 @@
 - [x] Missing packages should kill the installation but it is not, maybe we should check the repository sections available.
 - [x] We can set the size of the mouse cursor with an entry in .Xresources.
 - [x] Replace xfce-screenshooter with "mate-screnshot -i".
+- [x] Sync nitrogen wallpaper and lightdm <https://forum.maboxlinux.org/t/sync-nitrogen-wallpaper-with-lightdm-background/674>.
+- [x] Build eom from the sources <https://github.com/mate-desktop/eom> and set default mime type for eom.
 
-- [ ] Sync nitrogen wallpaper and lightdm <https://forum.maboxlinux.org/t/sync-nitrogen-wallpaper-with-lightdm-background/674>.
-- [ ] Build eom from the sources <https://github.com/mate-desktop/eom> and set default mime type for eom.
 - [ ] pqiv or qview or nsxiv for the image viewer, do they have support webp? => gpicview is discontinued, we should go back to eom, at least this one provide drag'n'drop.
 - [ ] cron task "gpo update && gpo download" + manage cron list with cockpit?
 - [ ] Add another preferences for unstable in debian11 (for firefox).

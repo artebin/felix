@@ -34,9 +34,6 @@ configure_default_applications_with_desktop_file_overridings(){
 	printf "  - Caja: should to be started with a script assuring one instance per workspace\n"
 	cp "${RECIPE_DIRECTORY}/caja.desktop" "${HOME}/.local/share/applications"
 	
-	printf "  - GPicView: gpicview.desktop which is installed with the package gives 'Image Viewer' as application name but we don't want to see that. The name should be 'GPicView'\n"
-	cp "${RECIPE_DIRECTORY}/gpicview.desktop" "${HOME}/.local/share/applications"
-	
 	printf "\n"
 }
 
@@ -56,7 +53,7 @@ configure_default_applications_with_mime_apps_list(){
 	#  application/.*+xml	Geany
 	#  application/.*_xml	Geany
 	#  application/.*pdf.*	Atril
-	#  image/* 		GPicView
+	#  image/* 		Eye of MATE
 	#  audio/*		VLC
 	#  video/*		VLC
 	
@@ -92,7 +89,7 @@ configure_default_applications_with_mime_apps_list(){
 			continue
 		fi
 		if [[ "${MIME_TYPE}" =~ ^image/ ]]; then
-			echo "${MIME_TYPE}=gpicview.desktop;" >>"${TEMP_MIME_APPS_LIST_FILE}"
+			echo "${MIME_TYPE}=eom.desktop;" >>"${TEMP_MIME_APPS_LIST_FILE}"
 			continue
 		fi
 		if [[ "${MIME_TYPE}" =~ ^audio/ ]]; then
