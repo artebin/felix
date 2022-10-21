@@ -11,6 +11,12 @@
 - [x] Sync nitrogen wallpaper and lightdm <https://forum.maboxlinux.org/t/sync-nitrogen-wallpaper-with-lightdm-background/674>.
 - [x] Build eom from the sources <https://github.com/mate-desktop/eom> and set default mime type for eom.
 
+- [ ] Volume normalizatio <https://flaterco.com/kb/audio/pulse/volume.html>.
+- [ ] Look again at zentile <https://github.com/blrsn/zentile>.
+- [ ] Bluetooth on debian is a bit unstable it seems, check if it is using bluez-firmware see <https://wiki.debian.org/BluetoothUser/a2dp> and <https://wiki.debian.org/BluetoothUser>.
+- [ ] use <https://stackoverflow.com/questions/14848274/git-log-to-get-commits-only-for-a-specific-branch> in a bash alias.
+- [ ] glogg --multi.
+- [ ] Caja action execute in Terminal is not loading bashrc or PATH is not correcly set.
 - [ ] pqiv or qview or nsxiv for the image viewer, do they have support webp? => gpicview is discontinued, we should go back to eom, at least this one provide drag'n'drop.
 - [ ] cron task "gpo update && gpo download" + manage cron list with cockpit?
 - [ ] Add another preferences for unstable in debian11 (for firefox).
