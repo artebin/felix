@@ -11,6 +11,9 @@
 - [x] Sync nitrogen wallpaper and lightdm <https://forum.maboxlinux.org/t/sync-nitrogen-wallpaper-with-lightdm-background/674>.
 - [x] Build eom from the sources <https://github.com/mate-desktop/eom> and set default mime type for eom.
 
+- [ ] Introduce .xsessionrc.d
+- [ ] Should not start the VNC server via .desktop file.
+- [ ] .desktop file for starting the VNC server should not call the screenlayout script.
 - [ ] Volume normalization <https://flaterco.com/kb/audio/pulse/volume.html>.
 - [ ] Look again at zentile <https://github.com/blrsn/zentile>.
 - [ ] Bluetooth on debian is a bit unstable it seems, check if it is using bluez-firmware see <https://wiki.debian.org/BluetoothUser/a2dp> and <https://wiki.debian.org/BluetoothUser>.
