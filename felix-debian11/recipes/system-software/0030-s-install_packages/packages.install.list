@@ -4,6 +4,7 @@
 firmware-linux firmware-linux-free firmware-linux-nonfree
 firmware-misc-nonfree
 firmware-iwlwifi
+bluez-firmware
 
 ################
 # System tools
@@ -17,7 +18,7 @@ hwinfo lshw inxi
 htop iotop smem
 #Do not install dstat because it is included in pcp
 pcp pcp-gui
-@--no-install-recommends@ cockpit
+@--no-install-recommends@ cockpit cockpit-pcp
 #glances #Not available in Debian11
 battery-stats
 autofs
