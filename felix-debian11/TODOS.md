@@ -67,9 +67,13 @@
 - [ ] Change ~/scripts for ~/bin.
 - [ ] Openbox pipe menu for disable/enable the touchscreen, see <https://mastizada.com/blog/disable-touchscreen-in-gnulinux/>.
 - [ ] Use update-alternatives for gnome-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
+
 - [ ] gucharmap to install and register in openbox menu.
 - [ ] <https://github.com/jeremija/unipicker>.
 - [ ] Install rofimoji <https://github.com/fdw/rofimoji>.
+- [ ] Add emoji to the terminal (for nb) => use noto font as default font in X and console.
+- [ ] Disable recipe for install fonts and add package noto-emojis.
+
 - [ ] dotfiles for meld show line numbers, highlight current line, show whitspaces and use syntax highlighting tango.
 - [ ] Check the DPI see <https://wiki.archlinux.org/title/HiDPI#X_Resources>.
 - [ ] Something is wrong about the ssh-agent, it shows error messages until I copied .ssh folder.
@@ -78,13 +82,14 @@
 - [ ] Finally understand the problem with xdg-open and xfcepanel <https://qastack.fr/ubuntu/5172/running-a-desktop-file-in-the-terminal>.
 - [ ] Clean the package list, planck, graybird theme etc.
 - [ ] create_recipe_list_file_from_directory() function does not ignore xxxx recipes, it should also be refactored.
-- [ ] Disable recipe for install fonts and add package noto-emojis.
-- [ ] Add emoji to the terminal (for nb) => use noto font as default font in X and console.
 - [ ] Openbox shortcut for increasing/decreasing size of a window (horizontally and vertically), only horizonatally, only vertically.
 - [ ] Shortcut for black screen (power down the screen).
 - [ ] Shortcut "Show desktop" associated to <WIN><F4> should actually be implemented by "Minize all windows".
 - [ ] OSD menu for openbox window actions?
+
 - [ ] Check the nice on unpack_in_terminal.
+- [ ] Unpack is console script should be nice +10.
+
 - [ ] Fix configure_acpi_wakeup.
 - [ ] Use t2ec for a better tint2 <https://github.com/nwg-piotr/t2ec>. It would be also good to show the volume as percentage (can be 110%).
 - [ ] Can we disable the trash?
@@ -93,19 +98,18 @@
 - [ ] Add a recipe for a git server, access it via http and zeroconf .local ?
 - [ ] Auto mount FAT usb stick and all files have execute permissions, remove that.
 - [ ] MoveRelative for W-Left|Right|Up|down and MovetoEdge with A-W-Left|Right|Up|Down.
-- [ ] Unpack is console script should be nice +10.
 - [ ] VLC plugin shuffle and SongList <https://addons.videolan.org/p/1154018/>.
 - [ ] Add a VLC Media Library script manager, can take a list file in argument.
-- [ ] Move from Faenza to Obsidian or Delft (they are both based on Faenza).
 - [ ] VLC song logger <https://askubuntu.com/questions/922418/how-can-i-automatically-log-the-names-of-songs-i-play-in-a-vlc-player-window>.
 - [ ] Rule for VLC which save the window dimensions between 2 runs.
 - [ ] Bugs in user_playlist.sh: next is not working on macbook air + should not prev/next if only one item in the playlist.
 - [ ] UserPlaylist should not use multimedia keys because some applications use PAUSE/PLAY for pausing momentarily the playback, the PLAY will start the playlist. UserPlaylist should be a Rofi plugin.
 - [ ] .user_playlist.txt should allow comment with char #
 - [ ] Documentation and tool to log incoming traffic.
-- [ ] Add configuration recipe for xpad + change icon.
-- [ ] Command for picking a window a apply a kpie rule.
-- [ ] Maybe use arc thene <https://www.reddit.com/r/pop_os/comments/hnxgzv/i_have_been_trying_for_hours_to_get_rid_of_the/>.
+
+- [ ] Move from Faenza to Obsidian or Delft (they are both based on Faenza).
+- [ ] Maybe use arc theme <https://www.reddit.com/r/pop_os/comments/hnxgzv/i_have_been_trying_for_hours_to_get_rid_of_the/>.
+
 - [ ] Add a recipe for unified remote for the PI4 <https://www.unifiedremote.com/tutorials/how-to-install-unified-remote-server-deb-via-terminal>.
 - [ ] Add a recipe for the PI4 WiFi hotspot <https://www.raspberryconnect.com/projects/65-raspberrypi-hotspot-accesspoints/183-raspberry-pi-automatic-hotspot-and-static-hotspot-installer>.
 - [ ] Caja seems to mount ftp without unicode support.
