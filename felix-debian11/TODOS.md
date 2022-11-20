@@ -6,6 +6,14 @@
 - [x] Shortcut in geany comment lines => <CTRL>+E
 - [x] Caja action execute in Terminal is not loading bashrc or PATH is not correcly set => cannot reproduce it.
 - [x] cron task "gpo update && gpo download" + manage cron list with cockpit?
+- [x] Bash coloring for ls etc. see <https://wiki.debian.org/BashColors> => this was a bug due to an override of the alias for ls.
+- [x] Move the xset setting from .xsessionrc to a script in scripts, can be set at startup via an autostart => script in .xsessionrc.d
+- [x] Install cockpit and add a menu item in openbox for locahost:9090.
+- [x] Openbox menu to open autostart folder => YAGNI.
+- [x] Activate autosave in geany => don't want it.
+- [x] Write a script rendering the openbox theme in HTML with colored blocks.
+- [x] Errors while installing pcp => we do not install it from the sources.
+- [x] Move LightLocker configuration in openbox menu, it is not only about the Display => renamed the menu entry "DPMS"
 
 - [ ] Volume normalization <https://flaterco.com/kb/audio/pulse/volume.html>.
 - [ ] Look again at zentile <https://github.com/blrsn/zentile>.
@@ -15,31 +23,25 @@
 - [ ] Add configuration for libinput <https://askubuntu.com/questions/1156192/how-to-enable-tap-to-click-in-libinput-on-ubuntu-19-04-x11-unity>.
 - [ ] Install `xorg-xinput` for libinput (replacing synaptics), or use mtrack.
 - [ ] Should have an ExecutionTimestamp for recipe and use it for InstallSoftware.
-- [ ] Activate autosave in geany.
 - [ ] Should add an openbox menu for the notes (and TODOS) managed with geanys, or a rofi mode => better than one TODOS file opened with autostart.
 - [ ] Bug gtk3.24 mouse wheel events with modifier are used as regular events and scroll panels.
 - [ ] Add a ~/bin folder, and the script creating HW+soft report + some alias like getting gtk versions etc. 
 - [ ] Add recipe for apt preferences bullseye, testing and unstable (firefox).
 - [ ] Remove the setting for mtrack in felix.conf.
 - [ ] GitQlient (fork of qgit).
-- [ ] Write a script rendering the openbox theme in HTML with colored blocks. Missing the links to defined color in palette.
-- [ ] Check `system_update_check.sh` is still running on debian + might install yad from sources.
-- [ ] Bash coloring for ls etc. see <https://wiki.debian.org/BashColors>.
-- [ ] Change the font for tty <https://askubuntu.com/questions/173220/how-do-i-change-the-font-or-the-font-size-in-the-tty-console>.
-- [ ] Move the xset setting from .xsessionrc to a script in scripts, can be set at startup via an autostart.
+- [ ] Cannot detect the colors which are not taken from the palette in update_theme.sh.
 - [ ] Disabled button in Felix-nord is still using the colors from Erthe.
-- [ ] Use youtube-dl for podcast?
-- [ ] Finish icon indicator for (security) updates available, user action for updating, script for updating a network of machines.
 - [ ] Create a palette from a initial N colors, or from a wallpaper, and use this palette create automatically create a new theme <https://github.com/warpwm/lule_bash>. Similar to this <https://github.com/fikriomar16/obtgen> it mentioned pywal to extract a palette from an image.
+- [ ] Check `system_update_check.sh` is still running on debian + might install yad from sources.
+- [ ] Change the font for tty <https://askubuntu.com/questions/173220/how-do-i-change-the-font-or-the-font-size-in-the-tty-console>.
+- [ ] Finish icon indicator for (security) updates available, user action for updating, script for updating a network of machines.
 - [ ] Disable "Recent" category in Caja/Nautilus <https://askubuntu.com/questions/294901/how-to-disable-recent-files-folder-in-nautilus>.
 - [ ] Still have logs of the kernel printing in my console.
 - [ ] Too many logs for pcp in `/var/logs`.
 - [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>, there is the logs of the battery in `/var/logs`.
 - [ ] Set the DPI with formula from <https://www.kali.org/docs/general-use/fixing-dpi/>.
-- [ ] Openbox menu to open autostart folder.
 - [ ] Refactor the scripts folder into ~/bin?
 - [ ] <https://stackoverflow.com/questions/43607461/google-chrome-disable-window-animations>.
-- [ ] Install cockpit and add a menu item in openbox for locahost:9090.
 - [ ] Use the patch on openbox to ignore the hints, the bug is into the openbox tiling via rc.xml, we should do the tiling via an external tool.
 - [ ] Keyboard shortcut to make all visible window undecorated (or all windows in the current desktop) + inverted action.
 - [ ] We miss a keyboard shorcut to make appear the window menu (usefull when the window is undecorated).
@@ -66,10 +68,8 @@
 - [ ] dotfiles for meld show line numbers, highlight current line, show whitspaces and use syntax highlighting tango.
 - [ ] Check the DPI see <https://wiki.archlinux.org/title/HiDPI#X_Resources>.
 - [ ] Something is wrong about the ssh-agent, it shows error messages until I copied .ssh folder.
-- [ ] Move LightLocker configuration in openbox menu, it is not only about the Display.
 - [ ] Where can I found the mount point from Caja?
 - [ ] Install pass from the sources, not from a release.
-- [ ] Errors while installing pcp.
 - [ ] Copy start_http_server_for_apt_mirrors.sh in the scripts folder.
 - [ ] Finally understand the problem with xdg-open and xfcepanel <https://qastack.fr/ubuntu/5172/running-a-desktop-file-in-the-terminal>.
 - [ ] Clean the package list, planck, graybird theme etc.
@@ -105,7 +105,7 @@
 - [ ] Add a recipe for unified remote for the PI4 <https://www.unifiedremote.com/tutorials/how-to-install-unified-remote-server-deb-via-terminal>.
 - [ ] Add a recipe for the PI4 WiFi hotspot <https://www.raspberryconnect.com/projects/65-raspberrypi-hotspot-accesspoints/183-raspberry-pi-automatic-hotspot-and-static-hotspot-installer>.
 - [ ] Caja seems to mount ftp without unicode support.
-- [ ] Can I replace clipmenu by <https://github.com/mrichar1/clipster>?
+- [ ] Can I replace clipmenu by <https://github.com/mrichar1/clipster>? => replaced by parcelitte
 - [ ] Add lua extension for VLC for shuffle playlist <https://addons.videolan.org/p/1154030/>.
 - [ ] Cannot use pkexec in rofi.
 - [ ] Review bash aliases for time conversion and millis2date should return UTC.
