@@ -3,6 +3,7 @@
 - [x] Disable pcp zeroconf? => this was because of pmproxy which is not installed anymore.
 - [x] lsb_release does not give the id of the distrib on debian => use `lsb_release -a`.
 - [x] glogg --multi.
+- [x] Shortcut in geany comment lines => <CTRL>+E
 
 - [ ] Volume normalization <https://flaterco.com/kb/audio/pulse/volume.html>.
 - [ ] Look again at zentile <https://github.com/blrsn/zentile>.
@@ -55,7 +56,6 @@
 - [ ] Convert any images to a color palette <https://ign.schrodinger-hat.it/color-schemes>.
 - [ ] Script for setting the font for Openbox, Tint2, GTK and KDE.
 - [ ] Fix path for debian.
-- [ ] Shortcut in geany comment lines.
 - [ ] Add caja action "Open in geany new instance", i.e. new window.
 - [ ] Change ~/scripts for ~/bin.
 - [ ] Openbox pipe menu for disable/enable the touchscreen, see <https://mastizada.com/blog/disable-touchscreen-in-gnulinux/>.
