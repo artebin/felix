@@ -16,9 +16,6 @@ ctrl + alt + q
 super + r
 	rofi -show run -modi run,window
 
-super + c
-	bash "${HOME}/scripts/clipmenu_run.sh"
-
 super + f
 	caja --no-desktop
 

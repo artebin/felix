@@ -14,6 +14,11 @@
 - [x] Write a script rendering the openbox theme in HTML with colored blocks.
 - [x] Errors while installing pcp => we do not install it from the sources.
 - [x] Move LightLocker configuration in openbox menu, it is not only about the Display => renamed the menu entry "DPMS"
+- [x] Can I replace clipmenu by <https://github.com/mrichar1/clipster>? => replaced by parcelitte
+- [x] Font size seems different with the resolution => missing .Xresources
+- [x] Reworked remote desktop software and use tiger VNC.
+- [x] Something is installing PackageKit, what? check with clean install if PackageKit is installed. => Cockpit is installing packagekit.
+- [x] Copy start_http_server_for_apt_mirrors.sh in the scripts folder => copied it with empty repo folders in felix.
 
 - [ ] Volume normalization <https://flaterco.com/kb/audio/pulse/volume.html>.
 - [ ] Look again at zentile <https://github.com/blrsn/zentile>.
@@ -70,7 +75,6 @@
 - [ ] Something is wrong about the ssh-agent, it shows error messages until I copied .ssh folder.
 - [ ] Where can I found the mount point from Caja?
 - [ ] Install pass from the sources, not from a release.
-- [ ] Copy start_http_server_for_apt_mirrors.sh in the scripts folder.
 - [ ] Finally understand the problem with xdg-open and xfcepanel <https://qastack.fr/ubuntu/5172/running-a-desktop-file-in-the-terminal>.
 - [ ] Clean the package list, planck, graybird theme etc.
 - [ ] create_recipe_list_file_from_directory() function does not ignore xxxx recipes, it should also be refactored.
@@ -105,7 +109,6 @@
 - [ ] Add a recipe for unified remote for the PI4 <https://www.unifiedremote.com/tutorials/how-to-install-unified-remote-server-deb-via-terminal>.
 - [ ] Add a recipe for the PI4 WiFi hotspot <https://www.raspberryconnect.com/projects/65-raspberrypi-hotspot-accesspoints/183-raspberry-pi-automatic-hotspot-and-static-hotspot-installer>.
 - [ ] Caja seems to mount ftp without unicode support.
-- [ ] Can I replace clipmenu by <https://github.com/mrichar1/clipster>? => replaced by parcelitte
 - [ ] Add lua extension for VLC for shuffle playlist <https://addons.videolan.org/p/1154030/>.
 - [ ] Cannot use pkexec in rofi.
 - [ ] Review bash aliases for time conversion and millis2date should return UTC.
@@ -120,7 +123,6 @@
 - [ ] There is a bug in grub configuration, if no swap partition then the recipe indicates UUID of another partition.
 - [ ] Replace apticron by cron-apt which does not install postfix as dependency.
 - [ ] Add bash_apt.sh in .bashrc.d with apt functions.
-- [ ] Font size seems different with the resolution.
 - [ ] tmux instead of screen.
 - [ ] Always active dbus interface in VLC.
 - [ ] Add an action "Edit screenshot with PowerPoint"
@@ -136,7 +138,6 @@
 - [ ] Add a recipe for SetWorkspaceLayout.
 - [ ] Extract archive in terminal shows an error dialog even if unpacking sucessful.
 - [ ] Add a convertWebpToPng caja script.
-- [ ] Something is installing PackageKit, what? check with clean install if PackageKit is installed. => Cockpit is installing packagekit. Should be removed, we don't want that.
 - [ ] Open browser quarter of the screen, lower-right corner of the screen.
 - [ ] Add regexer and http://mathew-kurian.github.io/CharacterMap/ in a bookmark tools.
 - [ ] Caja script for sorting file, same for removing duplicates.
@@ -150,7 +151,6 @@
 - [ ] Key shortcut for applying geometry to a window something line 512x512 on the left-bottom corner of the screen. It would be even better if it could be to3ggable.
 - [ ] Mirage or GPicView? GPicView is slower at rendering SVG graphics.
 - [ ] Create better graphs with gnuplot and battery-stats-collector.
-- [ ] Reworked remote desktop software and use tiger VNC.
 - [ ] tint2 is not listening to changes in monitors: which one is primary? Add detection of primary in starter script and set tint2 configuration file.
 - [ ] Update CSS for Geany Markdown plugin + configure properly the plugin during install.
 - [ ] Geany Markdown plugin is not resetting the vertical scroll.
