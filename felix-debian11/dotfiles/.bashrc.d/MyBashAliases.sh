@@ -2,8 +2,6 @@
 
 alias df='df --human-readable'
 
-alias ls='ls --time-style=long-iso'
-
 alias bc='bc --mathlib'
 
 function public_ip(){
