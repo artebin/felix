@@ -1,22 +1,10 @@
 # TODOS
 
-- [x] remove clipd and use parcellite.
-- [x] Clean openbox menu (glances etc. ).
-- [x] Add menu item for editing xsessrionrc.
-- [x] remove gromit and gkxset and xfce4-mouse and keyboard.
-- [x] Add action for updating the openbox theme or at least open a file manager with current folder being the theme folder.
-- [x] Missing packages should kill the installation but it is not, maybe we should check the repository sections available.
-- [x] We can set the size of the mouse cursor with an entry in .Xresources.
-- [x] Replace xfce-screenshooter with "mate-screnshot -i".
-- [x] Sync nitrogen wallpaper and lightdm <https://forum.maboxlinux.org/t/sync-nitrogen-wallpaper-with-lightdm-background/674>.
-- [x] Build eom from the sources <https://github.com/mate-desktop/eom> and set default mime type for eom.
+- [x] Disable pcp zeroconf? => this was because of pmproxy which is not installed anymore.
 
-- [ ] Introduce .xsessionrc.d
-- [ ] Should not start the VNC server via .desktop file.
-- [ ] .desktop file for starting the VNC server should not call the screenlayout script.
+- [ ] lsb_release does not give the id of the distrib on debian => use `lsb_release -a`.
 - [ ] Volume normalization <https://flaterco.com/kb/audio/pulse/volume.html>.
 - [ ] Look again at zentile <https://github.com/blrsn/zentile>.
-- [ ] Bluetooth on debian is a bit unstable it seems, check if it is using bluez-firmware see <https://wiki.debian.org/BluetoothUser/a2dp> and <https://wiki.debian.org/BluetoothUser>.
 - [ ] use <https://stackoverflow.com/questions/14848274/git-log-to-get-commits-only-for-a-specific-branch> in a bash alias.
 - [ ] glogg --multi.
 - [ ] Caja action execute in Terminal is not loading bashrc or PATH is not correcly set.
@@ -25,7 +13,6 @@
 - [ ] Add another preferences for unstable in debian11 (for firefox).
 - [ ] Add configuration for libinput <https://askubuntu.com/questions/1156192/how-to-enable-tap-to-click-in-libinput-on-ubuntu-19-04-x11-unity>.
 - [ ] Install `xorg-xinput` for libinput (replacing synaptics), or use mtrack.
-- [ ] Disable pcp zeroconf?
 - [ ] Should have an ExecutionTimestamp for recipe and use it for InstallSoftware.
 - [ ] Activate autosave in geany.
 - [ ] Should add an openbox menu for the notes (and TODOS) managed with geanys, or a rofi mode => better than one TODOS file opened with autostart.
@@ -36,7 +23,6 @@
 - [ ] GitQlient (fork of qgit).
 - [ ] Write a script rendering the openbox theme in HTML with colored blocks. Missing the links to defined color in palette.
 - [ ] Check `system_update_check.sh` is still running on debian + might install yad from sources.
-- [ ] lsb_release does not give the id of the distrib on debian => use `lsb_release -a`.
 - [ ] Bash coloring for ls etc. see <https://wiki.debian.org/BashColors>.
 - [ ] Change the font for tty <https://askubuntu.com/questions/173220/how-do-i-change-the-font-or-the-font-size-in-the-tty-console>.
 - [ ] Move the xset setting from .xsessionrc to a script in scripts, can be set at startup via an autostart.
@@ -229,6 +215,20 @@
 
 # DONE
 
+- [x] remove clipd and use parcellite.
+- [x] Clean openbox menu (glances etc. ).
+- [x] Add menu item for editing xsessrionrc.
+- [x] remove gromit and gkxset and xfce4-mouse and keyboard.
+- [x] Add action for updating the openbox theme or at least open a file manager with current folder being the theme folder.
+- [x] Missing packages should kill the installation but it is not, maybe we should check the repository sections available.
+- [x] We can set the size of the mouse cursor with an entry in .Xresources.
+- [x] Replace xfce-screenshooter with "mate-screnshot -i".
+- [x] Sync nitrogen wallpaper and lightdm <https://forum.maboxlinux.org/t/sync-nitrogen-wallpaper-with-lightdm-background/674>.
+- [x] Build eom from the sources <https://github.com/mate-desktop/eom> and set default mime type for eom.
+- [x] Introduce .xsessionrc.d
+- [x] Bluetooth on debian is a bit unstable it seems, check if it is using bluez-firmware see <https://wiki.debian.org/BluetoothUser/a2dp> and <https://wiki.debian.org/BluetoothUser>.
+- [x] Should not start the VNC server via .desktop file => now done with .xsessionrc.d
+- [x] .desktop file for starting the VNC server should not call the screenlayout script.
 - [x] Compile Remina from the sources? => heavy task, it is better to install it from testing.
 - [x] Glances seems to be automatically started, disable the service. => removed from list of packages to install.
 - [x] kcolorchooser instead of gpick. => kcolorchooser is very basic, to pick a color we can use geany.
