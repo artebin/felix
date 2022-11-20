@@ -1,25 +1,6 @@
 # TODOS
 
-- [x] Disable pcp zeroconf? => this was because of pmproxy which is not installed anymore.
-- [x] lsb_release does not give the id of the distrib on debian => use `lsb_release -a`.
-- [x] glogg --multi.
-- [x] Shortcut in geany comment lines => <CTRL>+E
-- [x] Caja action execute in Terminal is not loading bashrc or PATH is not correcly set => cannot reproduce it.
-- [x] cron task "gpo update && gpo download" + manage cron list with cockpit?
-- [x] Bash coloring for ls etc. see <https://wiki.debian.org/BashColors> => this was a bug due to an override of the alias for ls.
-- [x] Move the xset setting from .xsessionrc to a script in scripts, can be set at startup via an autostart => script in .xsessionrc.d
-- [x] Install cockpit and add a menu item in openbox for locahost:9090.
-- [x] Openbox menu to open autostart folder => YAGNI.
-- [x] Activate autosave in geany => don't want it.
-- [x] Write a script rendering the openbox theme in HTML with colored blocks.
-- [x] Errors while installing pcp => we do not install it from the sources.
-- [x] Move LightLocker configuration in openbox menu, it is not only about the Display => renamed the menu entry "DPMS"
-- [x] Can I replace clipmenu by <https://github.com/mrichar1/clipster>? => replaced by parcelitte
-- [x] Font size seems different with the resolution => missing .Xresources
-- [x] Reworked remote desktop software and use tiger VNC.
-- [x] Something is installing PackageKit, what? check with clean install if PackageKit is installed. => Cockpit is installing packagekit.
-- [x] Copy start_http_server_for_apt_mirrors.sh in the scripts folder => copied it with empty repo folders in felix.
-
+- [ ] .local/bin is not added to the PATH?
 - [ ] Volume normalization <https://flaterco.com/kb/audio/pulse/volume.html>.
 - [ ] Look again at zentile <https://github.com/blrsn/zentile>.
 - [ ] use <https://stackoverflow.com/questions/14848274/git-log-to-get-commits-only-for-a-specific-branch> in a bash alias.
@@ -61,8 +42,6 @@
 - [ ] Would be nice to dock a window i.e. fullscreen on other windows would take it into account. The dock is always visible with fullscreened windows (unless floating window overlap the dock).
 - [ ] Script for columnating a file based on a regex providing the prefix, the remaining content of the lines is tab aligned, allow to give a max length for the prefix.
 - [ ] Convert any images to a color palette <https://ign.schrodinger-hat.it/color-schemes>.
-- [ ] Script for setting the font for Openbox, Tint2, GTK and KDE.
-- [ ] Fix path for debian.
 - [ ] Add caja action "Open in geany new instance", i.e. new window.
 - [ ] Change ~/scripts for ~/bin.
 - [ ] Openbox pipe menu for disable/enable the touchscreen, see <https://mastizada.com/blog/disable-touchscreen-in-gnulinux/>.
@@ -75,10 +54,8 @@
 - [ ] Disable recipe for install fonts and add package noto-emojis.
 
 - [ ] dotfiles for meld show line numbers, highlight current line, show whitspaces and use syntax highlighting tango.
-- [ ] Check the DPI see <https://wiki.archlinux.org/title/HiDPI#X_Resources>.
 - [ ] Something is wrong about the ssh-agent, it shows error messages until I copied .ssh folder.
 - [ ] Where can I found the mount point from Caja?
-- [ ] Install pass from the sources, not from a release.
 - [ ] Finally understand the problem with xdg-open and xfcepanel <https://qastack.fr/ubuntu/5172/running-a-desktop-file-in-the-terminal>.
 - [ ] Clean the package list, planck, graybird theme etc.
 - [ ] create_recipe_list_file_from_directory() function does not ignore xxxx recipes, it should also be refactored.
@@ -130,7 +107,6 @@
 - [ ] tmux instead of screen.
 - [ ] Always active dbus interface in VLC.
 - [ ] Add an action "Edit screenshot with PowerPoint"
-- [ ] PCP in avahi-discovery?.
 - [ ] Add mugshot to the openbox menu or find another application.
 - [ ] Add network scan command in bash aliases.
 - [ ] Seconde recipe should check depot in sources.list, recipe for installing software may fail if not.
@@ -138,8 +114,6 @@
 - [ ] Add configuration for GIMP to use system instead of the dark theme.
 - [ ] re_index_recipe should re-number recipes which are not defaults, keep order but put them after the defaults.
 - [ ] On the Dell the switch to headset microphone is not done after pluggin the headset. <https://superuser.com/questions/1312970/headset-microphone-not-detected-by-pulse-und-alsa>
-- [ ] Desktop font should be configurable via recipe family .conf file.
-- [ ] Add a recipe for SetWorkspaceLayout.
 - [ ] Extract archive in terminal shows an error dialog even if unpacking sucessful.
 - [ ] Add a convertWebpToPng caja script.
 - [ ] Open browser quarter of the screen, lower-right corner of the screen.
@@ -151,21 +125,25 @@
 - [ ] Find a good portal for firefox or a Web Bookmarks application.
 - [ ] Find an image browser which can copy the path of the currently displayed image, or do drag'n'drop.
 - [ ] Check good usage of `xdg-settings set default-url-scheme-handler`. See <https://wiki.archlinux.org/index.php/Xdg-utils>.
+
 - [ ] Recipe family conf should contain a variable for the mail client (claws, evolution etc. ), it should be installed by install.sh and set in openbox menu.
+
 - [ ] Key shortcut for applying geometry to a window something line 512x512 on the left-bottom corner of the screen. It would be even better if it could be to3ggable.
 - [ ] Mirage or GPicView? GPicView is slower at rendering SVG graphics.
 - [ ] Create better graphs with gnuplot and battery-stats-collector.
 - [ ] tint2 is not listening to changes in monitors: which one is primary? Add detection of primary in starter script and set tint2 configuration file.
 - [ ] Update CSS for Geany Markdown plugin + configure properly the plugin during install.
 - [ ] Geany Markdown plugin is not resetting the vertical scroll.
+
 - [ ] Add an minimal image viewer such as "edisplay" (good to have one image viewer with no scale smoothing).
+
 - [ ] How to set the primary monitor from the command line and add it in `ob-randr.py`.
 - [ ] all calls to rename_for_backup should use a suffix (felix_install_yyMMDD_HHmmss.SSS)
 - [ ] add menuitem for showing battery performance (battery-graph or our own gnuplot script). It can happen that the battery level is off the chart with battery-graph.
 - [ ] dialog_command v2 and v3 are not used => in the end it will be replaced by yad, delete them?
 - [ ] How to get the list of recommended packages for a package to install?
 - [ ] Add a note for encrypted USB key.
-- [ ] Use autorandr to change lightdm resolution.
+- [ ] Use autorandr to change lightdm resolution and new screen is detected.
 - [ ] Woud be useful to have a short program putting a icon in the tray and click-left="show a dialog" and click-right="Contextual menu with one item: Exit". Would be also useful if a notification could be shown when then icon appears. Could be also the dialog to be showed automatically.
 - [ ] Recipe for dictionary and spelling (for example: US, FR). For Geany, we need hunspell => have a openbox menu for installing dictionary, use yad for selecting the language. It could be a bash function and one alias.
 - [ ] TLP and CpuFreq for lower average temperatgure? Thermald for logging? pcp?
@@ -219,6 +197,30 @@
 
 # DONE
 
+- [x] Disable pcp zeroconf? => this was because of pmproxy which is not installed anymore.
+- [x] lsb_release does not give the id of the distrib on debian => use `lsb_release -a`.
+- [x] glogg --multi.
+- [x] Shortcut in geany comment lines => <CTRL>+E
+- [x] Caja action execute in Terminal is not loading bashrc or PATH is not correcly set => cannot reproduce it.
+- [x] cron task "gpo update && gpo download" + manage cron list with cockpit?
+- [x] Bash coloring for ls etc. see <https://wiki.debian.org/BashColors> => this was a bug due to an override of the alias for ls.
+- [x] Move the xset setting from .xsessionrc to a script in scripts, can be set at startup via an autostart => script in .xsessionrc.d
+- [x] Install cockpit and add a menu item in openbox for locahost:9090.
+- [x] Openbox menu to open autostart folder => YAGNI.
+- [x] Activate autosave in geany => don't want it.
+- [x] Write a script rendering the openbox theme in HTML with colored blocks.
+- [x] Errors while installing pcp => we do not install it from the sources.
+- [x] Move LightLocker configuration in openbox menu, it is not only about the Display => renamed the menu entry "DPMS"
+- [x] Can I replace clipmenu by <https://github.com/mrichar1/clipster>? => replaced by parcelitte
+- [x] Font size seems different with the resolution => missing .Xresources
+- [x] Reworked remote desktop software and use tiger VNC.
+- [x] Something is installing PackageKit, what? check with clean install if PackageKit is installed. => Cockpit is installing packagekit.
+- [x] Copy start_http_server_for_apt_mirrors.sh in the scripts folder => copied it with empty repo folders in felix.
+- [x] Fix path for debian.
+- [x] Desktop font should be configurable via recipe family .conf file => YAGNI.
+- [x] Add a recipe for SetWorkspaceLayout => it is obsetlayout and we do not need this for now.
+- [x] Check the DPI see <https://wiki.archlinux.org/title/HiDPI#X_Resources> => fixed with .Xresources.
+- [x] Install pass from the sources, not from a release.
 - [x] remove clipd and use parcellite.
 - [x] Clean openbox menu (glances etc. ).
 - [x] Add menu item for editing xsessrionrc.
