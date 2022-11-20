@@ -1,8 +1,11 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-if [[ -d ${HOME}/.xsessionrc.d ]]; then
+# The shell used to execute the .xsessionrc is the one used by the graphical login session manager.
+# It is safe to assume that it will be sh.
+
+if [ -d ${HOME}/.xsessionrc.d ]; then
 	for FILE in ${HOME}/.xsessionrc.d/*; do
-		source "${FILE}"
+		bash "${FILE}"
 	done
 fi
 
