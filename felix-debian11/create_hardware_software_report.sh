@@ -41,8 +41,8 @@ print_display_info_xrandr(){
 }
 
 print_lsb_release(){
-	print_section_heading "Distribution name (cat /etc/lsb-release)"
-	cat /etc/lsb-release
+	print_section_heading "LSB release (lsb_release -a)"
+	lsb_release -a
 	print_section_ending
 }
 

@@ -1,8 +1,8 @@
 # TODOS
 
 - [x] Disable pcp zeroconf? => this was because of pmproxy which is not installed anymore.
+- [x] lsb_release does not give the id of the distrib on debian => use `lsb_release -a`.
 
-- [ ] lsb_release does not give the id of the distrib on debian => use `lsb_release -a`.
 - [ ] Volume normalization <https://flaterco.com/kb/audio/pulse/volume.html>.
 - [ ] Look again at zentile <https://github.com/blrsn/zentile>.
 - [ ] use <https://stackoverflow.com/questions/14848274/git-log-to-get-commits-only-for-a-specific-branch> in a bash alias.
