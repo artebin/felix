@@ -21,7 +21,9 @@ install_caja_from_sources(){
 			"autoconf-archive"
 			"libgail-3-dev"
 			"libmate-desktop-dev"
-			"yelp-tools" )
+			"yelp-tools"
+			"libgstreamer1.0-dev"
+			"libgstreamer-plugins-base1.0-dev" )
 	install_package_if_not_installed "${DEPENDENCIES[@]}"
 	
 	if [[ ! -d "/usr/share/aclocal" ]]; then
