@@ -6,12 +6,12 @@ alias ls='ls --time-style=long-iso'
 
 alias bc='bc --mathlib'
 
-public_ip(){
+function public_ip(){
 	curl ipinfo.io/ip
 }
 alias public_ip=public_ip
 
-weather(){
+function weather(){
 	# wttr.in guesses the location from the request originator if no indicated location
 	curl "wttr.in/${1}"
 }
@@ -43,7 +43,7 @@ alias git_fetch_and_status="git fetch && git status"
 
 alias git_revert_last_commit="git reset --soft HEAD~1"
 
-git_config_user_name_email(){
+function git_config_user_name_email(){
 	NAME="${1}"
 	EMAIL="${2}"
 	if [[ -z "${NAME}" ]] | [[ -z "${EMAIL}" ]]; then
@@ -55,17 +55,17 @@ git_config_user_name_email(){
 }
 alias git_config_user_name_email=git_config_user_name_email
 
-date_in_seconds(){
+function date_in_seconds(){
 	date -u +%s
 }
 alias date_in_seconds=date_in_seconds
 
-date_in_millis(){
+function date_in_millis(){
 	date -u +%s%N | cut -b1-13
 }
 alias date_in_millis=date_in_millis
 
-millis_to_date() {
+function millis_to_date() {
 	DATE_IN_MILLIS="${1}"
 	if [[ -z "${DATE_IN_MILLIS}" ]]; then
 		printf "Usage: %s DATE_IN_MILLIS\n" "${FUNCNAME[0]}"
@@ -76,7 +76,7 @@ millis_to_date() {
 }
 alias millis_to_date=millis_to_date
 
-date_to_seconds(){
+function date_to_seconds(){
 	DATE_AS_STRING="${1}"
 	if [[ -z "${DATE_AS_STRING}" ]]; then
 		printf "Usage: %s DATE_AS_STRING\n" "${FUNCNAME[0]}"
@@ -86,7 +86,7 @@ date_to_seconds(){
 }
 alias date_to_seconds=date_to_seconds
 
-dates_to_duration(){
+function dates_to_duration(){
 	LEFT_DATE_AS_STRING="${1}"
 	RIGHT_DATE_AS_STRING="${2}"
 	if [[ -z "${LEFT_DATE_AS_STRING}" ]] | [[ -z "${RIGHT_DATE_AS_STRING}" ]]; then
@@ -103,7 +103,7 @@ dates_to_duration(){
 }
 alias dates_to_duration=dates_to_duration
 
-backup_file(){
+function backup_file(){
 	BACKUP_MODE="${1}"
 	FILE="${2}"
 	if [[ "${BACKUP_MODE}" != "-r"  && "${BACKUP_MODE}" != "-c" ]]; then
@@ -136,37 +136,37 @@ alias backup_file=backup_file
 
 # Sed command for removing ANSI/VT100 control sequences
 # See <https://stackoverflow.com/questions/17998978/removing-colors-from-output>
-remove_terminal_control_sequences(){
+function remove_terminal_control_sequences(){
 	sed -r "s/\x1B(\[[0-9;]*[JKmsu]|\(B)//g"
 }
 alias remove_terminal_control_sequences=remove_terminal_control_sequences
 
-package_reinstall_and_revert_conf_files(){
+function package_reinstall_and_revert_conf_files(){
 	apt-get install --reinstall -o Dpkg::Options::="--force-confask,confnew,confmiss" "${@}"
 }
 alias package_reinstall_and_revert_conf_files=package_reinstall_and_revert_conf_files
 
-screen_dimension(){
+function screen_dimension(){
 	xdpyinfo | grep -oP 'dimensions:\s+\K\S+'
 }
 alias screen_dimension=screen_dimension
 
-show_connected_monitors(){
+function show_connected_monitors(){
 	xrandr | grep ' connected'
 }
 alias show_connected_monitors=show_connected_monitors
 
-retrieve_geometry_of_primary_monitor(){
+function retrieve_geometry_of_primary_monitor(){
 	xrandr | grep ' connected primary' | cut -d" " -f4
 }
 alias retrieve_geometry_of_primary_monitor=retrieve_geometry_of_primary_monitor
 
-retrieve_distro_codename(){
+function retrieve_distro_codename(){
 	lsb_release --codename --short
 }
 alias retrieve_distro_codename=retrieve_distro_codename
 
-ls_socket_for_pid(){
+function ls_socket_for_pid(){
 	PID="${1}"
 	if [[ -z "${PID}" ]]; then
 		printf "Usage: %s PID\n" "${FUNCNAME[0]}"
@@ -176,7 +176,7 @@ ls_socket_for_pid(){
 }
 alias ls_socket_for_pid=ls_socket_for_pid
 
-desc_for_pid(){
+function desc_for_pid(){
 	if [[ $# -eq 0 ]]; then
 		printf "Usage: %s PID_LIST\n" "${FUNCNAME[0]}"
 		return
@@ -190,14 +190,14 @@ desc_for_pid(){
 }
 alias desc_for_pid=desc_for_pid
 
-svn_mark_missing_as_deletions(){
+function svn_mark_missing_as_deletions(){
 	if [[ ! -z "$(svn st | grep ^! | awk '{print " --force "$2}')" ]]; then
 		svn st | grep ^! | awk '{print " --force "$2}' | xargs svn rm
 	fi
 }
 alias svn_mark_missing_as_deletions=svn_mark_missing_as_deletions
 
-set_terminal_title() {
+function set_terminal_title() {
 	if [[ -z "$ORIG" ]]; then
 		ORIG=$PS1
 	fi
@@ -206,23 +206,13 @@ set_terminal_title() {
 }
 alias set_terminal_title=set_terminal_title
 
-m3u8_to_mp4(){
+function m3u8_to_mp4(){
 	ffmpeg -i "${1}" -bsf:a aac_adtstoasc -vcodec copy -c copy -crf 50 "${2}"
 }
 
-remove_ssh_key_for_host(){
+function remove_ssh_key_for_host(){
 	HOST_ADDRESS="${1}"
 	HOST_IP_ADDRESS=$(getent hosts "${HOST_ADDRESS}" | awk '{ print $1 }')
 	ssh-keygen -R "${HOST_ADDRESS}"
 	ssh-keygen -R "${HOST_IP_ADDRESS}"
-}
-
-function run_command_after(){
-	if [[ $# -ne 2 ]]; then
-		printf "Usage: run_command_after <PID> <COMMAND>"
-		return
-	fi
-	PID="${1}"
-	COMMAND_TO_RUN_AFTER="${2}"
-	watch -g ps -opid -p <pid>; mycommand
 }
