@@ -2,11 +2,11 @@
 
 - [x] Disable pcp zeroconf? => this was because of pmproxy which is not installed anymore.
 - [x] lsb_release does not give the id of the distrib on debian => use `lsb_release -a`.
+- [x] glogg --multi.
 
 - [ ] Volume normalization <https://flaterco.com/kb/audio/pulse/volume.html>.
 - [ ] Look again at zentile <https://github.com/blrsn/zentile>.
 - [ ] use <https://stackoverflow.com/questions/14848274/git-log-to-get-commits-only-for-a-specific-branch> in a bash alias.
-- [ ] glogg --multi.
 - [ ] Caja action execute in Terminal is not loading bashrc or PATH is not correcly set.
 - [ ] pqiv or qview or nsxiv for the image viewer, do they have support webp? => gpicview is discontinued, we should go back to eom, at least this one provide drag'n'drop.
 - [ ] cron task "gpo update && gpo download" + manage cron list with cockpit?
