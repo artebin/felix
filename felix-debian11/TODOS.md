@@ -1,5 +1,6 @@
 # TODOS
 - [x] Add recipe for apt preferences bullseye, testing and unstable (firefox).
+- [X] Install `xorg-xinput` for libinput (replacing synaptics), or use mtrack => removed configuration envvar XORG_INPUT_DRIVER, libinput is the default in debian11.
 
 - [ ] Add an openbox menu entry to indent HTML with "tidy -i" with as copy/in place like the other identation scripts.
 
@@ -13,9 +14,7 @@
 - [ ] Find an image browser which can copy the path of the currently displayed image, or do drag'n'drop.
 - [ ] Mirage or GPicView? GPicView is slower at rendering SVG graphics.
 
-- [ ] Add another preferences for unstable in debian11 (for firefox).
 - [ ] Add configuration for libinput <https://askubuntu.com/questions/1156192/how-to-enable-tap-to-click-in-libinput-on-ubuntu-19-04-x11-unity>.
-- [ ] Install `xorg-xinput` for libinput (replacing synaptics), or use mtrack.
 - [ ] Should have an ExecutionTimestamp for recipe and use it for InstallSoftware.
 - [ ] Should add an openbox menu for the notes (and TODOS) managed with geanys, or a rofi mode => better than one TODOS file opened with autostart.
 - [ ] Bug gtk3.24 mouse wheel events with modifier are used as regular events and scroll panels.
