@@ -17,10 +17,17 @@ exit_if_has_root_privileges
 install_user_scripts(){
 	printf "Install user scripts ...\n"
 	
+	SCRIPTS_DIRECTORY="${FELIX_ROOT}/user_scripts"
+	if [[ ! -d "${SCRIPTS_DIRECTORY}" ]]; then
+		printf "Cannot find SCRIPTS_DIRECTORY[%s]\n" "${SCRIPTS_DIRECTORY}"
+		exit 1
+	fi
+	
+	# Backup existing scripts directory
 	if [[ -d "${HOME}/scripts" ]]; then
 		backup_file rename "${HOME}/scripts"
 	fi
-	cp -R "${RECIPE_DIRECTORY}/scripts" "${HOME}/scripts"
+	cp -R "${SCRIPTS_DIRECTORY}" "${HOME}/scripts"
 	
 	printf "\n"
 }
