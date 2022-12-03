@@ -15,11 +15,6 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_trackpad_mtrack(){
-	if [[ "${XORG_INPUT_DRIVER}" != "mtrack" ]]; then
-		printf "This recipe is not applicable (XORG_INPUT_DRIVER: ${XORG_INPUT_DRIVER})\n"
-		return
-	fi
-	
 	printf "Configuring trackpad mtrack...\n"
 	
 	install_package_if_not_installed "xserver-xorg-input-mtrack"
