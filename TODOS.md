@@ -25,7 +25,7 @@
 - [ ] Add a ~/bin folder, and the script creating HW+soft report + some alias like getting gtk versions etc. 
 - [ ] GitQlient (fork of qgit).
 
-- [ ] Cannot detect the colors which are not taken from the palette in update_theme.sh.
+- [x] Cannot detect the colors which are not taken from the palette in update_theme.sh.
 - [ ] Disabled button in Felix-nord is still using the colors from Erthe.
 - [ ] Create a palette from a initial N colors, or from a wallpaper, and use this palette create automatically create a new theme <https://github.com/warpwm/lule_bash>. Similar to this <https://github.com/fikriomar16/obtgen> it mentioned pywal to extract a palette from an image.
 
@@ -73,9 +73,6 @@
 - [ ] Shortcut for black screen (power down the screen).
 - [ ] Shortcut "Show desktop" associated to <WIN><F4> should actually be implemented by "Minize all windows".
 - [ ] Rofi/OSD menu for openbox window actions?
-
-- [ ] Check the nice on unpack_in_terminal.
-- [ ] Unpack is console script should be nice +10.
 
 - [ ] Fix configure_acpi_wakeup.
 - [ ] Use t2ec for a better tint2 <https://github.com/nwg-piotr/t2ec>. It would be also good to show the volume as percentage (can be 110%).
