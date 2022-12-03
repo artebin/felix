@@ -1,12 +1,17 @@
 # TODOS
 - [x] Add recipe for apt preferences bullseye, testing and unstable (firefox).
 - [X] Install `xorg-xinput` for libinput (replacing synaptics), or use mtrack => removed configuration envvar XORG_INPUT_DRIVER, libinput is the default in debian11.
+- [x] Remove the setting for mtrack in felix.conf.
 
 - [ ] Add an openbox menu entry to indent HTML with "tidy -i" with as copy/in place like the other identation scripts.
+- [ ] Should add an openbox menu for the TODOs, it would start a geany with AllTray => better than one TODOS file opened with autostart.
 
-- [ ] .local/bin is not added to the PATH?
+- [ ] Refactor the scripts folder into ~/bin? or .local/bin?
+- [ ] .local/bin is not added to the PATH? The override of Nitrogen to update user wallpaper is not used.
+
 - [ ] Volume normalization <https://flaterco.com/kb/audio/pulse/volume.html>.
 - [ ] Look again at zentile <https://github.com/blrsn/zentile>.
+- [ ] Better tiling in rc.xml <win>- adn <win>+ for (un)maximizing the window, switch current window follow mouse cursor or not.
 - [ ] use <https://stackoverflow.com/questions/14848274/git-log-to-get-commits-only-for-a-specific-branch> in a bash alias.
 
 - [ ] pqiv or qview or nsxiv for the image viewer, do they have support webp? => gpicview is discontinued, we should go back to eom, at least this one provide drag'n'drop.
@@ -16,10 +21,8 @@
 
 - [ ] Add configuration for libinput <https://askubuntu.com/questions/1156192/how-to-enable-tap-to-click-in-libinput-on-ubuntu-19-04-x11-unity>.
 - [ ] Should have an ExecutionTimestamp for recipe and use it for InstallSoftware.
-- [ ] Should add an openbox menu for the notes (and TODOS) managed with geanys, or a rofi mode => better than one TODOS file opened with autostart.
-- [ ] Bug gtk3.24 mouse wheel events with modifier are used as regular events and scroll panels.
+- [ ] Bug gtk3.24? Mouse wheel events with modifier are used as regular events and scroll panels.
 - [ ] Add a ~/bin folder, and the script creating HW+soft report + some alias like getting gtk versions etc. 
-- [ ] Remove the setting for mtrack in felix.conf.
 - [ ] GitQlient (fork of qgit).
 
 - [ ] Cannot detect the colors which are not taken from the palette in update_theme.sh.
@@ -34,7 +37,6 @@
 - [ ] Too many logs for pcp in `/var/logs`.
 - [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>, there is the logs of the battery in `/var/logs`.
 - [ ] Set the DPI with formula from <https://www.kali.org/docs/general-use/fixing-dpi/>.
-- [ ] Refactor the scripts folder into ~/bin?
 - [ ] <https://stackoverflow.com/questions/43607461/google-chrome-disable-window-animations>.
 - [ ] Use the patch on openbox to ignore the hints, the bug is into the openbox tiling via rc.xml, we should do the tiling via an external tool.
 - [ ] Keyboard shortcut to make all visible window undecorated (or all windows in the current desktop) + inverted action.
@@ -47,13 +49,11 @@
 - [ ] Avahi-discover window centered in the screen.
 - [ ] Find a way to iterate over a list of GIT repositories and warn the user that some changes are not pushed yet. Maybe it is good to have a 'git' folder in the home after all.
 - [ ] Patch openbox for the hints and also for window title disable center justification when window too much small, we should see the beginning of the window title.
-- [ ] Separator bar wider in caja, is it possible?
 - [ ] Memory, cpu and network logging with a service for activating it, and a rolling logging and a nice GUI app to see historical data like kcollectd. Later on I could add the battery info I wanted to.
 - [ ] Would be nice to dock a window i.e. fullscreen on other windows would take it into account. The dock is always visible with fullscreened windows (unless floating window overlap the dock).
 - [ ] Script for columnating a file based on a regex providing the prefix, the remaining content of the lines is tab aligned, allow to give a max length for the prefix.
 - [ ] Convert any images to a color palette <https://ign.schrodinger-hat.it/color-schemes>.
 - [ ] Add caja action "Open in geany new instance", i.e. new window.
-- [ ] Change ~/scripts for ~/bin.
 - [ ] Openbox pipe menu for disable/enable the touchscreen, see <https://mastizada.com/blog/disable-touchscreen-in-gnulinux/>.
 - [ ] Use update-alternatives for gnome-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
 
@@ -72,7 +72,7 @@
 - [ ] Openbox shortcut for increasing/decreasing size of a window (horizontally and vertically), only horizonatally, only vertically.
 - [ ] Shortcut for black screen (power down the screen).
 - [ ] Shortcut "Show desktop" associated to <WIN><F4> should actually be implemented by "Minize all windows".
-- [ ] OSD menu for openbox window actions?
+- [ ] Rofi/OSD menu for openbox window actions?
 
 - [ ] Check the nice on unpack_in_terminal.
 - [ ] Unpack is console script should be nice +10.
@@ -85,6 +85,7 @@
 - [ ] Add a recipe for a git server, access it via http and zeroconf .local ?
 - [ ] Auto mount FAT usb stick and all files have execute permissions, remove that.
 - [ ] MoveRelative for W-Left|Right|Up|down and MovetoEdge with A-W-Left|Right|Up|Down.
+
 - [ ] VLC plugin shuffle and SongList <https://addons.videolan.org/p/1154018/>.
 - [ ] Add a VLC Media Library script manager, can take a list file in argument.
 - [ ] VLC song logger <https://askubuntu.com/questions/922418/how-can-i-automatically-log-the-names-of-songs-i-play-in-a-vlc-player-window>.
@@ -92,19 +93,18 @@
 - [ ] Bugs in user_playlist.sh: next is not working on macbook air + should not prev/next if only one item in the playlist.
 - [ ] UserPlaylist should not use multimedia keys because some applications use PAUSE/PLAY for pausing momentarily the playback, the PLAY will start the playlist. UserPlaylist should be a Rofi plugin.
 - [ ] .user_playlist.txt should allow comment with char #
+- [ ] Add lua extension for VLC for shuffle playlist <https://addons.videolan.org/p/1154030/>.
+
 - [ ] Documentation and tool to log incoming traffic.
 
 - [ ] Move from Faenza to Obsidian or Delft (they are both based on Faenza).
-- [ ] Maybe use arc theme <https://www.reddit.com/r/pop_os/comments/hnxgzv/i_have_been_trying_for_hours_to_get_rid_of_the/>.
 
 - [ ] Add a recipe for unified remote for the PI4 <https://www.unifiedremote.com/tutorials/how-to-install-unified-remote-server-deb-via-terminal>.
 - [ ] Add a recipe for the PI4 WiFi hotspot <https://www.raspberryconnect.com/projects/65-raspberrypi-hotspot-accesspoints/183-raspberry-pi-automatic-hotspot-and-static-hotspot-installer>.
 - [ ] Caja seems to mount ftp without unicode support.
-- [ ] Add lua extension for VLC for shuffle playlist <https://addons.videolan.org/p/1154030/>.
 - [ ] Cannot use pkexec in rofi.
 - [ ] Review bash aliases for time conversion and millis2date should return UTC.
 - [ ] Configure firefox with https://support.mozilla.org/gl/questions/1241294 for not allowing website to override Firefox UI shortcuts.
-- [ ] Better tiling in rc.xml <win>- adn <win>+ for (un)maximizing the window, switch current window follow mouse cursor or not.
 - [ ] Add an action in openbox menu for editing the crontab.
 - [ ] Add a .desktop for Impress that can be used directly after making a screenshot for adding annotation.
 - [ ] firefox addons for wikipedia CSS <https://addons.mozilla.org/fr/firefox/addon/full-width-wikipedia/>.
@@ -150,7 +150,7 @@
 - [ ] How to get the list of recommended packages for a package to install?
 - [ ] Add a note for encrypted USB key.
 - [ ] Use autorandr to change lightdm resolution and new screen is detected.
-- [ ] Woud be useful to have a short program putting a icon in the tray and click-left="show a dialog" and click-right="Contextual menu with one item: Exit". Would be also useful if a notification could be shown when then icon appears. Could be also the dialog to be showed automatically.
+- [ ] Would be useful to have a short program putting a icon in the tray and click-left="show a dialog" and click-right="Contextual menu with one item: Exit". Would be also useful if a notification could be shown when then icon appears. Could be also the dialog to be showed automatically.
 - [ ] Recipe for dictionary and spelling (for example: US, FR). For Geany, we need hunspell => have a openbox menu for installing dictionary, use yad for selecting the language. It could be a bash function and one alias.
 - [ ] TLP and CpuFreq for lower average temperatgure? Thermald for logging? pcp?
 - [ ] Numeric keyboard disabled after wake from hibernation.
@@ -160,8 +160,10 @@
 - [ ] Add bash function in .bashrc for downloading a list of URLs from file.
 - [ ] Rofi menu for session actions <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
 - [ ] Better documentation in openbox rc.xml (with "Window Actions" section) see <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
+
 - [ ] Configuration libinput <https://unix.stackexchange.com/questions/337008/activate-tap-to-click-on-touchpad> it replaces synaptics.
-- [ ] mtrack configuration should check if there is already a \d+_mtrack.conf file in /usr/share/X11/xorg.conf.d/
+- [x] mtrack configuration should check if there is already a \d+_mtrack.conf file in /usr/share/X11/xorg.conf.d/ => mtrack is not used anymore
+
 - [ ] List parameters useful to the user regarding dpms, lightlocker, suspend-then-hibernate => check if there is a yad panel for dpms.
 - [ ] Special menu in rofi for the XF86 symbols.
 - [ ] Window frame icon for being on top of other windows (pin).
@@ -169,12 +171,15 @@
 - [ ] Add a caja script for playing a folder in Media player "play all media in VLC", retrieve extension for audio/ media/ mime types.
 - [ ] Install dlna support
 - [ ] Check command to start by fdpowermon when reaching critical level of battery power => should be a script asking the user what do you + a timer "going to hibernate... ".
+
 - [ ] Brillo and Display: keyboard backlight in console (keysym ?).
+
 - [ ] macbook air: analysis of battery consumption and CPU usage.
 - [ ] macbook air: acpi_osi in kernel pameters see <https://wiki.archlinux.org/index.php/Mac#Suspend_and_Hibernate>
 - [ ] macbook air: kernel parameter for acpi on macbook air (native).
 - [ ] macbook air: screenshot key => Rofi menu?
 - [ ] macbook air: fix the Xmodmap.
+
 - [ ] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron.
 - [ ] Check what is missing if we do not use a Power manager (multiple displays support in logind?).
 - [ ] Use xdg-open from openbox (no panel no desktop). We can use "dex" but would be good to be able to use xdg-open (gtk-open, exo-open etc. ).
