@@ -1,10 +1,17 @@
 # TODOS
 
+- [ ] Add an openbox menu entry to indent HTML with "tidy -i" with as copy/in place like the other identation scripts.
+
 - [ ] .local/bin is not added to the PATH?
 - [ ] Volume normalization <https://flaterco.com/kb/audio/pulse/volume.html>.
 - [ ] Look again at zentile <https://github.com/blrsn/zentile>.
 - [ ] use <https://stackoverflow.com/questions/14848274/git-log-to-get-commits-only-for-a-specific-branch> in a bash alias.
+
 - [ ] pqiv or qview or nsxiv for the image viewer, do they have support webp? => gpicview is discontinued, we should go back to eom, at least this one provide drag'n'drop.
+- [ ] Add an minimal image viewer such as "edisplay" (good to have one image viewer with no scale smoothing).
+- [ ] Find an image browser which can copy the path of the currently displayed image, or do drag'n'drop.
+- [ ] Mirage or GPicView? GPicView is slower at rendering SVG graphics.
+
 - [ ] Add another preferences for unstable in debian11 (for firefox).
 - [ ] Add configuration for libinput <https://askubuntu.com/questions/1156192/how-to-enable-tap-to-click-in-libinput-on-ubuntu-19-04-x11-unity>.
 - [ ] Install `xorg-xinput` for libinput (replacing synaptics), or use mtrack.
@@ -15,9 +22,11 @@
 - [ ] Add recipe for apt preferences bullseye, testing and unstable (firefox).
 - [ ] Remove the setting for mtrack in felix.conf.
 - [ ] GitQlient (fork of qgit).
+
 - [ ] Cannot detect the colors which are not taken from the palette in update_theme.sh.
 - [ ] Disabled button in Felix-nord is still using the colors from Erthe.
 - [ ] Create a palette from a initial N colors, or from a wallpaper, and use this palette create automatically create a new theme <https://github.com/warpwm/lule_bash>. Similar to this <https://github.com/fikriomar16/obtgen> it mentioned pywal to extract a palette from an image.
+
 - [ ] Check `system_update_check.sh` is still running on debian + might install yad from sources.
 - [ ] Change the font for tty <https://askubuntu.com/questions/173220/how-do-i-change-the-font-or-the-font-size-in-the-tty-console>.
 - [ ] Finish icon indicator for (security) updates available, user action for updating, script for updating a network of machines.
@@ -31,7 +40,9 @@
 - [ ] Use the patch on openbox to ignore the hints, the bug is into the openbox tiling via rc.xml, we should do the tiling via an external tool.
 - [ ] Keyboard shortcut to make all visible window undecorated (or all windows in the current desktop) + inverted action.
 - [ ] We miss a keyboard shorcut to make appear the window menu (usefull when the window is undecorated).
-- [ ] Install Herbe <https://github.com/dudik/herbe>.
+
+- [ ] Recipe to install Herbe <https://github.com/dudik/herbe>.
+
 - [ ] Install <https://github.com/sharkdp/pastel> for processing colors from the command line.
 - [ ] The ordering of the files in caja is wrong.
 - [ ] Avahi-discover window centered in the screen.
@@ -123,19 +134,15 @@
 - [ ] Would be perfect to be able to choose the mail client: claws-mail, Evolution, Thunderbird. Can suceed in doing that today when Thunderbird and Evolution are installed, the change is not detected.
 - [ ] Deactivate Rofi modi ssh and try to add rofi-buku. => don't like buku in the end...
 - [ ] Find a good portal for firefox or a Web Bookmarks application.
-- [ ] Find an image browser which can copy the path of the currently displayed image, or do drag'n'drop.
 - [ ] Check good usage of `xdg-settings set default-url-scheme-handler`. See <https://wiki.archlinux.org/index.php/Xdg-utils>.
 
 - [ ] Recipe family conf should contain a variable for the mail client (claws, evolution etc. ), it should be installed by install.sh and set in openbox menu.
 
 - [ ] Key shortcut for applying geometry to a window something line 512x512 on the left-bottom corner of the screen. It would be even better if it could be to3ggable.
-- [ ] Mirage or GPicView? GPicView is slower at rendering SVG graphics.
 - [ ] Create better graphs with gnuplot and battery-stats-collector.
 - [ ] tint2 is not listening to changes in monitors: which one is primary? Add detection of primary in starter script and set tint2 configuration file.
 - [ ] Update CSS for Geany Markdown plugin + configure properly the plugin during install.
 - [ ] Geany Markdown plugin is not resetting the vertical scroll.
-
-- [ ] Add an minimal image viewer such as "edisplay" (good to have one image viewer with no scale smoothing).
 
 - [ ] How to set the primary monitor from the command line and add it in `ob-randr.py`.
 - [ ] all calls to rename_for_backup should use a suffix (felix_install_yyMMDD_HHmmss.SSS)
@@ -158,7 +165,7 @@
 - [ ] mtrack configuration should check if there is already a \d+_mtrack.conf file in /usr/share/X11/xorg.conf.d/
 - [ ] List parameters useful to the user regarding dpms, lightlocker, suspend-then-hibernate => check if there is a yad panel for dpms.
 - [ ] Special menu in rofi for the XF86 symbols.
-- [ ] Window frame icon for being on top of other windows.
+- [ ] Window frame icon for being on top of other windows (pin).
 - [ ] Is it possible to make work the TRRS on Linux?
 - [ ] Add a caja script for playing a folder in Media player "play all media in VLC", retrieve extension for audio/ media/ mime types.
 - [ ] Install dlna support

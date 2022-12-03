@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-alias df='df --human-readable'
+# Make df human readable
+alias df="df -h"
 
-alias bc='bc --mathlib'
+# Add standard math library to bc
+alias bc='bc -l'
 
 function public_ip(){
 	curl ipinfo.io/ip
@@ -37,7 +39,11 @@ function github_clone(){
 }
 alias github_clone=github_clone
 
-alias git_fetch_and_status="git fetch && git status"
+alias gitfs="git fetch && git status"
+
+function git_branch_commit_history(){
+	git log "${1}" --not $(git for-each-ref --format='%(refname)' refs/heads/ | grep -v "refs/heads/${1}")
+}
 
 alias git_revert_last_commit="git reset --soft HEAD~1"
 
