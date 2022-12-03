@@ -1,4 +1,5 @@
 # TODOS
+- [x] Add recipe for apt preferences bullseye, testing and unstable (firefox).
 
 - [ ] Add an openbox menu entry to indent HTML with "tidy -i" with as copy/in place like the other identation scripts.
 
@@ -19,7 +20,6 @@
 - [ ] Should add an openbox menu for the notes (and TODOS) managed with geanys, or a rofi mode => better than one TODOS file opened with autostart.
 - [ ] Bug gtk3.24 mouse wheel events with modifier are used as regular events and scroll panels.
 - [ ] Add a ~/bin folder, and the script creating HW+soft report + some alias like getting gtk versions etc. 
-- [ ] Add recipe for apt preferences bullseye, testing and unstable (firefox).
 - [ ] Remove the setting for mtrack in felix.conf.
 - [ ] GitQlient (fork of qgit).
 
