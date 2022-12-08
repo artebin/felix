@@ -21,7 +21,7 @@ configure_bash_for_root(){
 		backup_file rename /root/.bashrc
 	fi
 	
-	cp "${FELIX_ROOT}/dotfiles/.bashrc" /root/.bashrc
+	cp "${FELIX_ROOT}/user-dotfiles/.bashrc" /root/.bashrc
 	
 	printf "\n"
 }
