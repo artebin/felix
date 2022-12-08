@@ -9,4 +9,8 @@
   - Application launcher: rofi
   - Terminal: MATE Terminal
   - File Manager: MATE Caja
-
+  
+  - Openbox Felix Nord theme
+  - Rofi menus defined with rififi
+  - Text translation in notitication bubbles with translate-notify
+  - Wallpaper with Nitrogen + AccountService.BackgroundFile set for LightDM

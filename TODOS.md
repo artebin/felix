@@ -3,6 +3,8 @@
 - [X] Install `xorg-xinput` for libinput (replacing synaptics), or use mtrack => removed configuration envvar XORG_INPUT_DRIVER, libinput is the default in debian11.
 - [x] Remove the setting for mtrack in felix.conf.
 
+- [ ] We can certainly delete 0080-u-configure_xfce4_thunar.
+
 - [ ] Add an openbox menu entry to indent HTML with "tidy -i" with as copy/in place like the other identation scripts.
 - [ ] Should add an openbox menu for the TODOs, it would start a geany with AllTray => better than one TODOS file opened with autostart.
 
