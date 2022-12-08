@@ -17,7 +17,7 @@ exit_if_has_root_privileges
 install_user_scripts(){
 	printf "Install user scripts ...\n"
 	
-	SCRIPTS_DIRECTORY="${FELIX_ROOT}/user_scripts"
+	SCRIPTS_DIRECTORY="${FELIX_ROOT}/user-scripts"
 	if [[ ! -d "${SCRIPTS_DIRECTORY}" ]]; then
 		printf "Cannot find SCRIPTS_DIRECTORY[%s]\n" "${SCRIPTS_DIRECTORY}"
 		exit 1

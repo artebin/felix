@@ -17,7 +17,7 @@ exit_if_has_root_privileges
 install_dotfiles(){
 	printf "Install dotfiles ...\n"
 	
-	DOTFILES_DIRECTORY="${FELIX_ROOT}/user_dotfiles"
+	DOTFILES_DIRECTORY="${FELIX_ROOT}/user-dotfiles"
 	if [[ ! -d "${DOTFILES_DIRECTORY}" ]]; then
 		printf "Cannot find DOTFILES_DIRECTORY[%s]\n" "${DOTFILES_DIRECTORY}"
 		exit 1
