@@ -4,6 +4,8 @@
 - [x] Remove the setting for mtrack in felix.conf.
 - [x] Rework the script for nitrogen and setting background in LightDM and retrieve the first occurrence of "file=" because it does not work as-is with a multiple display setup.
 
+- [ ] xeventbind should probably be started at xsession but it is not.
+
 - [ ] We can certainly use only sh in xsession.d scripts.
 
 - [ ] PrtScr does not work on the Dell Precision.

@@ -17,6 +17,4 @@ if [[ -z "${XEVENTBIND_PID}" ]] && ! $(ps --pid "${XEVENTBIND_PID}" &>/dev/null)
 	printf "%s" "${XEVENTBIND_PID}" >"${XEVENTBIND_PID_FILE}"
 fi
 
-#hsetroot -solid "#303030" &
-#hsetroot -tile "${SCRIPT_PARENT_DIRECTORY}/texture_0.jpg" &
-#hsetroot -fill "${SCRIPT_PARENT_DIRECTORY}/Airtopsoft_2560x1440.png" &
+#nitrogen --restore
