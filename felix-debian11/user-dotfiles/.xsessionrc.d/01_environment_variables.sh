@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export PATH="${HOME}/.local/bin:${PATH}"
+
 export JDK_HOME=""
 export JRE_HOME=""
 if [[ ! -z "${JDK_HOME}" ]]; then
