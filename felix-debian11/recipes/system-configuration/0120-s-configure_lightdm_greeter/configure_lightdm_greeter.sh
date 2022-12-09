@@ -21,10 +21,6 @@ configure_lightdm_greeter(){
 		backup_file rename /etc/lightdm/lightdm-gtk-greeter.conf
 	fi
 	
-	# Copy some backgrounds free of use from unsplash <https://unsplash.com> 
-	cd "${RECIPE_DIRECTORY}"
-	cp backgrounds/*.jpg /usr/share/backgrounds
-	
 	# Copy GTK greeter.conf file
 	cp lightdm-gtk-greeter.conf /etc/lightdm/lightdm-gtk-greeter.conf
 	
