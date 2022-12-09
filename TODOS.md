@@ -2,6 +2,11 @@
 - [x] Add recipe for apt preferences bullseye, testing and unstable (firefox).
 - [X] Install `xorg-xinput` for libinput (replacing synaptics), or use mtrack => removed configuration envvar XORG_INPUT_DRIVER, libinput is the default in debian11.
 - [x] Remove the setting for mtrack in felix.conf.
+- [x] Rework the script for nitrogen and setting background in LightDM and retrieve the first occurrence of "file=" because it does not work as-is with a multiple display setup.
+
+- [ ] We can certainly use only sh in xsession.d scripts.
+
+- [ ] PrtScr does not work on the Dell Precision.
 
 - [ ] We can certainly delete 0080-u-configure_xfce4_thunar.
 
