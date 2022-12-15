@@ -59,7 +59,7 @@ recipes/system-configuration/0180-s-configure_xdg_user_dirs_and_autostart
 recipes/system-configuration/0190-s-nfs_samba_shares
 recipes/system-configuration/0200-s-install_java_env_vars_in_profile
 recipes/system-configuration/0210-s-configure_keyboard
-recipes/system-configuration/0220-s-terminate_x_with_ctrl_alt_backspace
+recipes/system-configuration/0220-s-configure_xorg
 recipes/system-configuration/0230-s-configure_php_in_userdir
 recipes/system-configuration/0240-s-force_geany_to_reuse_same_instance_per_workspace
 recipes/system-configuration/0250-s-enable_exit_dialog_at_power_button_pressed

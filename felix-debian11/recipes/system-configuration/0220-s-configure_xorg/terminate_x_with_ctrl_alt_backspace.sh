@@ -14,16 +14,19 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-terminate_x_with_ctrl_alt_backspace(){
-	printf "Allow terminate X server with <Ctrl><Alt>Backspace...\n"
+configure_xorg(){
+	printf "Allow touchpad tapping...\n"
+	cd "${RECIPE_DIRECTORY}"
+	cp 30-touchpad.conf /usr/share/X11/xorg.conf.d/30-touchpad.conf
 	
+	printf "Allow terminate X server with <Ctrl><Alt>Backspace...\n"
 	cd "${RECIPE_DIRECTORY}"
 	cp 90-zap.conf /usr/share/X11/xorg.conf.d/90-zap.conf
 	
 	printf "\n"
 }
 
-terminate_x_with_ctrl_alt_backspace 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+configure_xorg 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
