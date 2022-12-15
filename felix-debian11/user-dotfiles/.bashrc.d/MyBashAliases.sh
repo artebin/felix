@@ -213,6 +213,7 @@ alias set_terminal_title=set_terminal_title
 function m3u8_to_mp4(){
 	ffmpeg -i "${1}" -bsf:a aac_adtstoasc -vcodec copy -c copy -crf 50 "${2}"
 }
+alias m3u8_to_mp4=m3u8_to_mp4
 
 function remove_ssh_key_for_host(){
 	HOST_ADDRESS="${1}"
@@ -220,3 +221,4 @@ function remove_ssh_key_for_host(){
 	ssh-keygen -R "${HOST_ADDRESS}"
 	ssh-keygen -R "${HOST_IP_ADDRESS}"
 }
+alias remove_ssh_key_for_host=remove_ssh_key_for_host
