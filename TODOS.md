@@ -4,6 +4,7 @@
 - [x] Remove the setting for mtrack in felix.conf.
 - [x] Rework the script for nitrogen and setting background in LightDM and retrieve the first occurrence of "file=" because it does not work as-is with a multiple display setup.
 
+- [ ] Openbox pipenu for a folder containing .desktop files (teams).
 - [ ] Openbox pipemenu for changing primary monitor of Tint2.
 - [ ] Key shortcut to move a window from one screen to another with <https://superuser.com/questions/990454/how-can-i-instantly-move-the-active-window-to-a-secondary-monitor-in-openbox>
 - [ ] Change the acceleration for the mouse wheel.
