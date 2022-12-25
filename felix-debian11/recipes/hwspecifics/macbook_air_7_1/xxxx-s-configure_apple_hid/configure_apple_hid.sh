@@ -15,9 +15,14 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 configure_apple_hid(){
-	printf "Configuring Apple HID (use fn key for special functions keys) ...\n"
+	printf "Configuring Apple HID for using fn keys as special functions keys...\n"
 	printf "options hid_apple fnmode=2\n" > /etc/modprobe.d/hid_apple.conf
+	
+	printf "Configuring ISO layout for Apple HID...\n"
+	printf "options hid_apple iso_layout=0\n" >> /etc/modprobe.d/hid_apple.conf
+	
 	update-initramfs -u -k all
+	
 	printf "\n"
 }
 
