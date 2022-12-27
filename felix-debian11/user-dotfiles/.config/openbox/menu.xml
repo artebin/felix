@@ -14,7 +14,7 @@
 			<item label="Disk Usage Analyzer"><action name="Execute"><command>x-terminal-emulator -T "Disk Usage Analyzer (ncdu)" -e "ncdu"</command></action></item>
 			<item label="Encryption Keys Manager"><action name="Execute"><command>seahorse</command></action></item>
 			<item label="Virtual Keyboard"><action name="Execute"><command>onboard</command></action></item>
-			<item label="Battery Usage"><action name="Execute"><command>battery-graph</command></action></item>
+			<item label="Battery Usage"><action name="Execute"><command>battery-graph -d 2d</command></action></item>
 			<item label="Admin Web Console (cockpit)"><action name="Execute"><command>x-www-browser --new-window http://localhost:9090/</command></action></item>
 		</menu>
 		<menu id="file_utils" label="File Utils">
