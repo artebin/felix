@@ -180,6 +180,7 @@ greybird-gtk-theme
 #########
 # Fonts
 #########
+fonts-recommended
 fonts-liberation
 fonts-liberation2
 fonts-noto
