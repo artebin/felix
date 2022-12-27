@@ -5,7 +5,14 @@
 - [x] Rework the script for nitrogen and setting background in LightDM and retrieve the first occurrence of "file=" because it does not work as-is with a multiple display setup.
 - [x] .local/bin is not added to the PATH? The override of Nitrogen to update user wallpaper is not used.
 - [x] Cannot detect the colors which are not taken from the palette in update_theme.sh.
+- [x] Configuration libinput <https://unix.stackexchange.com/questions/337008/activate-tap-to-click-on-touchpad> it replaces synaptics.
+- [x] mtrack configuration should check if there is already a \d+_mtrack.conf file in /usr/share/X11/xorg.conf.d/ => mtrack is not used anymore
+- [x] Install rofimoji <https://github.com/fdw/rofimoji>.
+- [x] Is it possible to make work the TRRS on Linux? => YAGNI.
+- [x] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron. => disabling the trigger for the LID on macbook air seems to not work with udev, must do it with a systemd service.
+- [x] Install dlna support => No needed right now.
 
+- [ ] Configure font in terminal for having emojis.
 - [ ] Install xinput-gui <https://github.com/IvanFon/xinput-gui>.
 - [ ] Rebuild Openbox from sources and fix size increment.
 - [ ] Openbox pipenu for a folder containing .desktop files (teams).
@@ -74,9 +81,8 @@
 
 - [ ] gucharmap to install and register in openbox menu.
 - [ ] <https://github.com/jeremija/unipicker>.
-- [ ] Install rofimoji <https://github.com/fdw/rofimoji>.
 - [ ] Add emoji to the terminal (for nb) => use noto font as default font in X and console.
-- [ ] Disable recipe for install fonts and add package noto-emojis.
+- [ ] Add Noto Color Emojis or another emojis fonts.
 
 - [ ] dotfiles for meld show line numbers, highlight current line, show whitspaces and use syntax highlighting tango.
 - [ ] Something is wrong about the ssh-agent, it shows error messages until I copied .ssh folder.
@@ -173,15 +179,9 @@
 - [ ] Rofi menu for session actions <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
 - [ ] Better documentation in openbox rc.xml (with "Window Actions" section) see <https://bbs.archlinux.org/viewtopic.php?id=93126&p=2>.
 
-- [ ] Configuration libinput <https://unix.stackexchange.com/questions/337008/activate-tap-to-click-on-touchpad> it replaces synaptics.
-- [x] mtrack configuration should check if there is already a \d+_mtrack.conf file in /usr/share/X11/xorg.conf.d/ => mtrack is not used anymore
-
 - [ ] List parameters useful to the user regarding dpms, lightlocker, suspend-then-hibernate => check if there is a yad panel for dpms.
 - [ ] Special menu in rofi for the XF86 symbols.
 - [ ] Window frame icon for being on top of other windows (pin).
-- [ ] Is it possible to make work the TRRS on Linux?
-- [ ] Add a caja script for playing a folder in Media player "play all media in VLC", retrieve extension for audio/ media/ mime types.
-- [ ] Install dlna support
 - [ ] Check command to start by fdpowermon when reaching critical level of battery power => should be a script asking the user what do you + a timer "going to hibernate... ".
 
 - [ ] Brillo and Display: keyboard backlight in console (keysym ?).
@@ -190,15 +190,15 @@
 - [ ] macbook air: acpi_osi in kernel pameters see <https://wiki.archlinux.org/index.php/Mac#Suspend_and_Hibernate>
 - [ ] macbook air: kernel parameter for acpi on macbook air (native).
 - [ ] macbook air: screenshot key => Rofi menu?
-- [ ] macbook air: fix the Xmodmap.
+- [ ] macbook air: fix the Xmodmap for +/- and paragraph key.
 
-- [ ] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron.
 - [ ] Check what is missing if we do not use a Power manager (multiple displays support in logind?).
+
 - [ ] Use xdg-open from openbox (no panel no desktop). We can use "dex" but would be good to be able to use xdg-open (gtk-open, exo-open etc. ).
 - [ ] locate panel-desktop-handler.desktop => this desktop file is called for creating a shortcut for each execution of one desktop file with exo-open, gvfs-open, xdg-open etc.
 - [ ] Add traces for monitoring the time taken for the installation.
 - [ ] scroll by pixel/pc amount in LibreOffice Calc (rather by number of rows).
-- [ ] <https://bugs.launchpad.net/ubuntu/+source/gvfs/+bug/378783> 
+- [ ] <https://bugs.launchpad.net/ubuntu/+source/gvfs/+bug/378783>.
 - [ ] A script at startup of openbox checking for the default application and notify the user about some changes. Have a look at Xfce4 MIME Type Editor.
 - [ ] Need a way to do some settings regarding the sensitiviy of the touchpad/mouse a save these settings. The xfce4-mouse-settings is not saved and even worst it is reset during a session but it probably because I use it in a not-XFCE desktop.
 - [ ] Test if caja gets unresponsive when the NFS is mounter via a regular mount command rather via gvfs. Just test it by mount it, access it via caja, unplug the network and access it again via caja.
