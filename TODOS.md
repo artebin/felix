@@ -3,10 +3,14 @@
 - [X] Install `xorg-xinput` for libinput (replacing synaptics), or use mtrack => removed configuration envvar XORG_INPUT_DRIVER, libinput is the default in debian11.
 - [x] Remove the setting for mtrack in felix.conf.
 - [x] Rework the script for nitrogen and setting background in LightDM and retrieve the first occurrence of "file=" because it does not work as-is with a multiple display setup.
+- [x] .local/bin is not added to the PATH? The override of Nitrogen to update user wallpaper is not used.
+- [x] Cannot detect the colors which are not taken from the palette in update_theme.sh.
 
+- [ ] Install xinput-gui <https://github.com/IvanFon/xinput-gui>.
+- [ ] Rebuild Openbox from sources and fix size increment.
 - [ ] Openbox pipenu for a folder containing .desktop files (teams).
 - [ ] Openbox pipemenu for changing primary monitor of Tint2.
-- [ ] Key shortcut to move a window from one screen to another with <https://superuser.com/questions/990454/how-can-i-instantly-move-the-active-window-to-a-secondary-monitor-in-openbox>
+- [ ] Key shortcut to move a window from one screen to another with <https://superuser.com/questions/990454/how-can-i-instantly-move-the-active-window-to-a-secondary-monitor-in-openbox>.
 - [ ] Change the acceleration for the mouse wheel.
 - [ ] xeventbind should probably be started at xsession but it is not.
 
@@ -20,7 +24,6 @@
 - [ ] Should add an openbox menu for the TODOs, it would start a geany with AllTray => better than one TODOS file opened with autostart.
 
 - [ ] Refactor the scripts folder into ~/bin? or .local/bin?
-- [ ] .local/bin is not added to the PATH? The override of Nitrogen to update user wallpaper is not used.
 
 - [ ] Volume normalization <https://flaterco.com/kb/audio/pulse/volume.html>.
 - [ ] Look again at zentile <https://github.com/blrsn/zentile>.
@@ -38,7 +41,6 @@
 - [ ] Add a ~/bin folder, and the script creating HW+soft report + some alias like getting gtk versions etc. 
 - [ ] GitQlient (fork of qgit).
 
-- [x] Cannot detect the colors which are not taken from the palette in update_theme.sh.
 - [ ] Disabled button in Felix-nord is still using the colors from Erthe.
 - [ ] Create a palette from a initial N colors, or from a wallpaper, and use this palette create automatically create a new theme <https://github.com/warpwm/lule_bash>. Similar to this <https://github.com/fikriomar16/obtgen> it mentioned pywal to extract a palette from an image.
 
