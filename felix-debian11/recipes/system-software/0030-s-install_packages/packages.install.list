@@ -22,7 +22,7 @@ pcp pcp-gui
 #glances #Not available in Debian11
 battery-stats
 autofs
-fuse fuseiso fuseiso9660
+fuse3 fuseiso fuseiso9660
 sshfs
 gvfs gvfs-backends gvfs-fuse
 vbetool
