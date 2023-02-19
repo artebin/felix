@@ -16,11 +16,10 @@ finger
 psmisc #Includes fuser, killall, peekfd, pstree, prtstat
 hwinfo lshw inxi
 htop iotop smem
-#Do not install dstat because it is included in pcp
 pcp pcp-gui
 @--no-install-recommends@ cockpit cockpit-pcp
-#glances #Not available in Debian11
-battery-stats
+glances glances-doc
+battery-stats tlp
 autofs
 gvfs gvfs-backends gvfs-fuse
 fuseiso fuseiso9660
@@ -242,7 +241,7 @@ unp
 #######################################
 # Image viewer, browser, manipulation
 #######################################
-webp
+webp webp-pixbuf-loader
 libimage-exiftool-perl #for exiftool
 imagemagick
 pqiv
