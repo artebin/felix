@@ -17,19 +17,13 @@ exit_if_has_not_root_privileges
 install_chrome(){
 	cd "${RECIPE_DIRECTORY}"
 	
-	printf "Installing Google Chrome from Google APT repository...\n"
-	wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-	if [[ -f /etc/apt/sources.list.d/google-chrome.list ]]; then
-		backup_file rename /etc/apt/sources.list.d/google-chrome.list
-	fi
-	printf "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main\n" > /etc/apt/sources.list.d/google-chrome.list
-	apt-get update
-	apt-get install google-chrome-stable -y
+	printf "Installing Google Chrome...\n"
+	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	dpkg -i google-chrome-stable_current_amd64.deb
+	rm -f google-chrome-stable_current_amd64.deb
 	
 	printf "\n"
 }
-
-
 
 cd "${RECIPE_DIRECTORY}"
 install_chrome 2>&1 | tee -a "${RECIPE_LOG_FILE}"

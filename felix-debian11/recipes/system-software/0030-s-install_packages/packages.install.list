@@ -21,8 +21,9 @@ pcp pcp-gui
 glances glances-doc
 battery-stats tlp
 autofs
+fuse3 fuseiso fuseiso9660
+sshfs
 gvfs gvfs-backends gvfs-fuse
-fuseiso fuseiso9660
 vbetool
 plocate
 crudini

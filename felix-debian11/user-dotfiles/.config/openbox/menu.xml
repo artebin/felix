@@ -35,7 +35,6 @@
 		</menu>
 		<menu id="multimedia" label="Multimedia">
 			<item label="Volume Control"><action name="Execute"><command>pavucontrol</command></action></item>
-			<item label="MPS YouTube"><action name="Execute"><command>x-terminal-emulator -T "MPS YouTube" -e "mpsyt"</command></action></item>
 			<item label="VLC"><action name="Execute"><command>vlc</command></action></item>
 			<item label="Webcam Viewer"><action name="Execute"><command>guvcview</command></action></item>
 			<item label="Xfburn"><action name="Execute"><command>xfburn</command></action></item>

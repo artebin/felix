@@ -1,0 +1,8 @@
+
+
+################################################################################
+# Recipes from recipes/system-extra
+################################################################################
+recipes/system-extra/0010-s-install_dmenu_from_sources
+recipes/system-extra/0020-s-install_mps_youtube_from_sources
+recipes/system-extra/0030-s-install_ttyclock_from_sources
