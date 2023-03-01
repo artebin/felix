@@ -12,6 +12,7 @@
 - [x] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron. => disabling the trigger for the LID on macbook air seems to not work with udev, must do it with a systemd service.
 - [x] Install dlna support => No needed right now.
 - [x] Check if sshfs and fuse are installed.
+- [x] Toggle shortcut to show/hide tint2.
 
 - [ ] Command to turn off bluetooth at startup.
 - [ ] Audacious has audio player instead of VLC, it has much better playlist management and reload.
