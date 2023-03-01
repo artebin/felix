@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-tint2 &
+bash ~./config/tint2/toggle_tint2.sh &
 bash ~/scripts/fdpowermon_run.sh &
 nm-applet &
 pasystray --notify=sink_default --notify=source_default &
