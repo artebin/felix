@@ -13,7 +13,10 @@
 - [x] Install dlna support => No needed right now.
 - [x] Check if sshfs and fuse are installed.
 - [x] Toggle shortcut to show/hide tint2.
+- [x] fix toggle_tint2.sh and merge into the same script the restart_tint2.sh.
 
+- [ ] Prepare an example of lemonbar for demo screen: can we mimick tint2 like |virtual desktop #1|virtual desktop #2...|selected window title|system tray| and it should multi-monitor enabled.
+- [ ] There is a continuation of tint2 <https://www.opencode.net/nick87720z/tint2>, maybe we should build from there now.
 - [ ] Command to turn off bluetooth at startup.
 - [ ] Audacious has audio player instead of VLC, it has much better playlist management and reload.
 - [ ] Configure font in terminal for having emojis.
