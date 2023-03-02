@@ -1,4 +1,4 @@
-# Openbox
+# Felix / Keyboard Shortcuts
 
 ## Desktops navigation
 
