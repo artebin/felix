@@ -11,13 +11,13 @@ retrieve_tint2_pid(){
 }
 
 start_tint2(){
-	tint2 >/dev/null 2>/dev/null &
+	tint2 &
 	TINT2_PID=$!
 	printf "%s" "${TINT2_PID}" >"${TINT2_PID_FILE}"
 }
 
 stop_tint2(){
-	kill -9 "${TINT2_PID}"
+	kill -15 "${TINT2_PID}"
 }
 
 toogle_tint2(){
@@ -33,4 +33,30 @@ toogle_tint2(){
 	fi
 }
 
-toogle_tint2
+print_usage(){
+	printf "Usage: bash ${0} [OPTIONS...]\n"
+	printf "  -r restart tint2\n"
+	printf "\n"
+}
+
+# Retrieve options
+RESTART="false"
+while getopts ":r" OPT; do
+	case "${OPT}" in
+		r)
+			RESTART="true"
+			;;
+		*)
+			print_usage
+			exit 1
+			;;
+	esac
+done
+shift $((OPTIND-1))
+
+if "${RESTART}"; then
+	stop_tint2
+	start_tint2
+else
+	toogle_tint2
+fi

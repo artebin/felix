@@ -103,7 +103,7 @@
 			<menu id="Tint2Config" label="Tint2">
 				<item label="Edit tint2rc"><action name="Execute"><command>geany -i ~/.config/tint2/tint2rc</command></action></item>
 				<separator/>
-				<item label="Restart"><action name="Execute"><command>bash ~/.config/tint2/restart_tint2.sh</command></action></item>
+				<item label="Restart"><action name="Execute"><command>bash ~/.config/tint2/toggle_tint2.sh -r</command></action></item>
 				<item label="Toggle Show/Hide"><action name="Execute"><command>bash ~/.config/tint2/toggle_tint2.sh</command></action></item>
 			</menu>
 			<separator/>
