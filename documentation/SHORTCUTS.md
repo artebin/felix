@@ -1,6 +1,6 @@
-## Openbox
+# Openbox
 
-# Desktops navigation
+## Desktops navigation
 
 | Shorcut | Action |
 | --- | --- |
@@ -14,7 +14,7 @@
 | <kbd>Win</kbd><kbd>F4</kbd>                                           | Go to desktop 4 |
 | <kbd>Win</kbd><kbd>d</kbd>                                            | Toggle show desktop |
 
-# Windows navigation
+## Windows navigation
 
 | Shorcut | Action |
 | --- | --- |
@@ -39,7 +39,7 @@
 | <kbd>Win</kbd><kbd>Shift</kbd><kbd>Down</kbd>                         | Switching to window down |
 | <kbd>Win</kbd><kbd>Tab</kbd>                                          | Show window list |
 
-# Window editing
+## Window editing
 
 | Shorcut | Action |
 | --- | --- |
@@ -53,7 +53,7 @@
 | <kbd>Alt</kbd><kbd>Win</kbd><kbd>Mouse Wheel Up</kbd>                 | Send to previous desktop |
 | <kbd>Alt</kbd><kbd>Win</kbd><kbd>Mouse Wheel Down</kbd>               | Send to next desktop |
 
-# Windows tiling
+## Windows tiling
 
 | Shorcut | Action |
 | --- | --- |
@@ -64,7 +64,7 @@
 | <kbd>Win</kbd><kbd>grave</kbd>                                        | Grow to edge east/north/west/south |
 
 
-# Applications
+## Applications
 
 | Shorcut | Action |
 | --- | --- |
@@ -81,7 +81,7 @@
 | <kbd>Win</kbd><kbd>v</kbd>                                            | Volume control |
 | <kbd>Win</kbd><kbd>Space</kbd>                                        | Show menu |
 
-# XFree86 keyboard symbols
+## XFree86 keyboard symbols
 
 | Shorcut | Action |
 | --- | --- |
