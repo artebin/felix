@@ -14,7 +14,11 @@
 - [x] Check if sshfs and fuse are installed.
 - [x] Toggle shortcut to show/hide tint2.
 - [x] fix toggle_tint2.sh and merge into the same script the restart_tint2.sh.
+- [x] We can certainly use only sh in xsession.d scripts.
 
+- [ ] Kind of tiling but with a mode with an area where windows are placed we do not see the frame content but just window name and icon, kind of a dick but inside the screen, when clicking it we could have combination of key modifier telling what to do with the window: (1) selecting it (2) use it as master in the biggest area etc.
+- [ ] Add pandoc (markdown to html).
+- [ ] Add csstidy and universalindentgui.
 - [ ] Prepare an example of lemonbar for demo screen: can we mimick tint2 like |virtual desktop #1|virtual desktop #2...|selected window title|system tray| and it should multi-monitor enabled.
 - [ ] There is a continuation of tint2 <https://www.opencode.net/nick87720z/tint2>, maybe we should build from there now.
 - [ ] Command to turn off bluetooth at startup.
@@ -28,7 +32,6 @@
 - [ ] Change the acceleration for the mouse wheel.
 - [ ] xeventbind should probably be started at xsession but it is not.
 
-- [ ] We can certainly use only sh in xsession.d scripts.
 
 - [ ] PrtScr does not work on the Dell Precision.
 
