@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export TIME_STYLE=long-iso
+
 # Make df human readable
 alias df="df -h"
 
