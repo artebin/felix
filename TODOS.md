@@ -16,6 +16,8 @@
 - [x] fix toggle_tint2.sh and merge into the same script the restart_tint2.sh.
 - [x] We can certainly use only sh in xsession.d scripts.
 
+- [ ] Add a recipe for install <https://github.com/MunifTanjim/rofunicode>.
+- [ ] One virtual desktop for external screen? If we change the virtual desktop in the laptop screen it does not change the "presentation screen".
 - [ ] Kind of tiling but with a mode with an area where windows are placed we do not see the frame content but just window name and icon, kind of a dick but inside the screen, when clicking it we could have combination of key modifier telling what to do with the window: (1) selecting it (2) use it as master in the biggest area etc.
 - [ ] Add pandoc (markdown to html).
 - [ ] Add csstidy and universalindentgui.
