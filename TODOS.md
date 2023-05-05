@@ -17,6 +17,7 @@
 - [x] We can certainly use only sh in xsession.d scripts.
 - [x] create github repo for xlockscreen and add a parameter for switching the virtual desktop with `wmctrl -s VIRTUAL_DESKTOP_ID`.
 
+- [ ] PrintScreen is not working on the Dell Precision 7530 see <https://unix.stackexchange.com/questions/669853/printscreen-key-not-registering-in-arch-linux>.
 - [ ] Set virtual desktop name with <https://superuser.com/questions/508128/is-it-possible-to-set-the-name-of-the-current-virtual-desktop-via-commandline>.
 - [ ] use github repo xlockscreen in the recipe.
 - [ ] create github repo for git_sup.
