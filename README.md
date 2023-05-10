@@ -12,7 +12,7 @@
 
   - [Felix themes](https://github.com/artebin/felix-themes) for Openbox, xfce4-notifyd and rofi
   - Rofi menus defined with [rififi](https://github.com/artebin/rififi)
-  - Text translation in desktop notification bubbles with (translate-notify](https://github.com/artebin/translate-notify)
+  - Text translation in desktop notification bubbles with [translate-notify](https://github.com/artebin/translate-notify)
 
   - Terminal: MATE Terminal
   - File Manager: MATE Caja
