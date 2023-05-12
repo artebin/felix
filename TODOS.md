@@ -17,6 +17,8 @@
 - [x] We can certainly use only sh in xsession.d scripts.
 - [x] create github repo for xlockscreen and add a parameter for switching the virtual desktop with `wmctrl -s VIRTUAL_DESKTOP_ID`.
 
+- [ ] mps-youtube still is part of the openbox menu but it has been moved to software-extra. We should think of a way to update openbox menus easily.
+- [ ] transate-notify cannot be easily configured.
 - [ ] PrintScreen is not working on the Dell Precision 7530 see <https://unix.stackexchange.com/questions/669853/printscreen-key-not-registering-in-arch-linux>.
 - [ ] Set virtual desktop name with <https://superuser.com/questions/508128/is-it-possible-to-set-the-name-of-the-current-virtual-desktop-via-commandline>.
 - [ ] use github repo xlockscreen in the recipe.
