@@ -17,6 +17,10 @@
 - [x] We can certainly use only sh in xsession.d scripts.
 - [x] create github repo for xlockscreen and add a parameter for switching the virtual desktop with `wmctrl -s VIRTUAL_DESKTOP_ID`.
 
+- [ ] Check the /etc/xdg/autostart again (typically do we really need <https://wiki.linuxfoundation.org/accessibility/atk/at-spi/at-spi_on_d-bus>).
+- [ ] should condition xsession.d to the window manager.
+- [ ] disable the scrolbar overlay in firefox.
+- [ ] Create file for git alias and add one for git_sup.
 - [ ] mps-youtube still is part of the openbox menu but it has been moved to software-extra. We should think of a way to update openbox menus easily.
 - [ ] transate-notify cannot be easily configured.
 - [ ] PrintScreen is not working on the Dell Precision 7530 see <https://unix.stackexchange.com/questions/669853/printscreen-key-not-registering-in-arch-linux>.
