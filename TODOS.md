@@ -1,23 +1,9 @@
-# TODOS
-- [x] Add recipe for apt preferences bullseye, testing and unstable (firefox).
-- [X] Install `xorg-xinput` for libinput (replacing synaptics), or use mtrack => removed configuration envvar XORG_INPUT_DRIVER, libinput is the default in debian11.
-- [x] Remove the setting for mtrack in felix.conf.
-- [x] Rework the script for nitrogen and setting background in LightDM and retrieve the first occurrence of "file=" because it does not work as-is with a multiple display setup.
-- [x] .local/bin is not added to the PATH? The override of Nitrogen to update user wallpaper is not used.
-- [x] Cannot detect the colors which are not taken from the palette in update_theme.sh.
-- [x] Configuration libinput <https://unix.stackexchange.com/questions/337008/activate-tap-to-click-on-touchpad> it replaces synaptics.
-- [x] mtrack configuration should check if there is already a \d+_mtrack.conf file in /usr/share/X11/xorg.conf.d/ => mtrack is not used anymore
-- [x] Install rofimoji <https://github.com/fdw/rofimoji>.
-- [x] Is it possible to make work the TRRS on Linux? => YAGNI.
-- [x] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron. => disabling the trigger for the LID on macbook air seems to not work with udev, must do it with a systemd service.
-- [x] Install dlna support => No needed right now.
-- [x] Check if sshfs and fuse are installed.
-- [x] Toggle shortcut to show/hide tint2.
-- [x] fix toggle_tint2.sh and merge into the same script the restart_tint2.sh.
-- [x] We can certainly use only sh in xsession.d scripts.
-- [x] create github repo for xlockscreen and add a parameter for switching the virtual desktop with `wmctrl -s VIRTUAL_DESKTOP_ID`.
 
-- [ ] Hide gtk3 duplicated window title because of nocsd <https://github.com/PCMan/gtk3-nocsd/issues/19>.
+# TODOS
+
+- [x] Hide gtk3 duplicated window title because of nocsd <https://github.com/PCMan/gtk3-nocsd/issues/19>.
+
+- [ ] Geany markdown is not configured anymore with the github css.
 - [ ] `apt-cache policy evolution` to show all version available.
 - [ ] Install "lz4 lz4json" for unpacking jsonlz4/mozLz4/Mozilla LZ4.
 - [ ] Can we find a command to list the URLs opened in firerox.
@@ -248,6 +234,23 @@
 
 # DONE
 
+- [x] Add recipe for apt preferences bullseye, testing and unstable (firefox).
+- [X] Install `xorg-xinput` for libinput (replacing synaptics), or use mtrack => removed configuration envvar XORG_INPUT_DRIVER, libinput is the default in debian11.
+- [x] Remove the setting for mtrack in felix.conf.
+- [x] Rework the script for nitrogen and setting background in LightDM and retrieve the first occurrence of "file=" because it does not work as-is with a multiple display setup.
+- [x] .local/bin is not added to the PATH? The override of Nitrogen to update user wallpaper is not used.
+- [x] Cannot detect the colors which are not taken from the palette in update_theme.sh.
+- [x] Configuration libinput <https://unix.stackexchange.com/questions/337008/activate-tap-to-click-on-touchpad> it replaces synaptics.
+- [x] mtrack configuration should check if there is already a \d+_mtrack.conf file in /usr/share/X11/xorg.conf.d/ => mtrack is not used anymore
+- [x] Install rofimoji <https://github.com/fdw/rofimoji>.
+- [x] Is it possible to make work the TRRS on Linux? => YAGNI.
+- [x] Immediate wake up after suspend/hivernate if LID not closed. It happens because of ACPI LID events enabled (if disabled then I do not see the problem). There is something to fix here, the problem does not occur on Dell Inspiron. => disabling the trigger for the LID on macbook air seems to not work with udev, must do it with a systemd service.
+- [x] Install dlna support => No needed right now.
+- [x] Check if sshfs and fuse are installed.
+- [x] Toggle shortcut to show/hide tint2.
+- [x] fix toggle_tint2.sh and merge into the same script the restart_tint2.sh.
+- [x] We can certainly use only sh in xsession.d scripts.
+- [x] create github repo for xlockscreen and add a parameter for switching the virtual desktop with `wmctrl -s VIRTUAL_DESKTOP_ID`.
 - [x] Disable pcp zeroconf? => this was because of pmproxy which is not installed anymore.
 - [x] lsb_release does not give the id of the distrib on debian => use `lsb_release -a`.
 - [x] glogg --multi.
