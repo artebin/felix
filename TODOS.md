@@ -3,6 +3,7 @@
 
 - [x] Hide gtk3 duplicated window title because of nocsd <https://github.com/PCMan/gtk3-nocsd/issues/19>.
 
+- [ ] Freeze at lightdm login after hibernate on inspiron 7737 (does not occur with the precision 7530!? ), could be fixed with `init_on_alloc=0 ` see <https://forums.debian.net/viewtopic.php?t=149965>.
 - [ ] Geany markdown is not configured anymore with the github css.
 - [ ] `apt-cache policy evolution` to show all version available.
 - [ ] Install "lz4 lz4json" for unpacking jsonlz4/mozLz4/Mozilla LZ4.
