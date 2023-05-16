@@ -17,6 +17,11 @@
 - [x] We can certainly use only sh in xsession.d scripts.
 - [x] create github repo for xlockscreen and add a parameter for switching the virtual desktop with `wmctrl -s VIRTUAL_DESKTOP_ID`.
 
+- [ ] Hide gtk3 duplicated window title because of nocsd <https://github.com/PCMan/gtk3-nocsd/issues/19>.
+- [ ] `apt-cache policy evolution` to show all version available.
+- [ ] Install "lz4 lz4json" for unpacking jsonlz4/mozLz4/Mozilla LZ4.
+- [ ] Can we find a command to list the URLs opened in firerox.
+- [ ] Bash alias for printing firefox memory footprint with <https://unix.stackexchange.com/questions/288589/get-chromes-total-memory-usage> and `smem -tkP firefox`.
 - [ ] Check the /etc/xdg/autostart again (typically do we really need <https://wiki.linuxfoundation.org/accessibility/atk/at-spi/at-spi_on_d-bus>).
 - [ ] should condition xsession.d to the window manager.
 - [ ] disable the scrolbar overlay in firefox.
