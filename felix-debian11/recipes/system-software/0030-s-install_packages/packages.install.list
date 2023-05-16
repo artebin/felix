@@ -245,8 +245,7 @@ unp
 webp webp-pixbuf-loader
 libimage-exiftool-perl #for exiftool
 imagemagick
-pqiv
-gpicview
+eom gpicview pqiv
 shotwell
 gimp gimp-data-extras
 inkscape
@@ -294,7 +293,6 @@ espeak
 ###################
 hexchat
 @--no-install-recommends@ empathy telepathy-haze pidgin-sipe
-guvcview
 
 ################
 # Office suite
