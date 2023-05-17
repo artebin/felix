@@ -5,6 +5,7 @@
 - [x] Add csstidy => the tool seems to change the css, do not use it.
 - [x] Installing Evolution from testing removes xorg (xorg after an upgrade to testing) if done with apt, but aptitude can resolve better the dependencies conflict.
 - [x] Install git_sup.
+- [x] Check the /etc/xdg/autostart again, we should override the desktop files in user home.
 
 - [ ] Tiling with bash <https://github.com/kstenschke/xmchord/blob/master/bin/actions/utils/splitDesk.sh>.
 - [ ] Freeze at lightdm login after hibernate on inspiron 7737 (does not occur with the precision 7530!? ), could be fixed with `init_on_alloc=0` see <https://forums.debian.net/viewtopic.php?t=149965>.
@@ -13,15 +14,12 @@
 - [ ] Install "lz4 lz4json" for unpacking jsonlz4/mozLz4/Mozilla LZ4.
 - [ ] Can we find a command to list the URLs opened in firerox.
 - [ ] Bash alias for printing firefox memory footprint with <https://unix.stackexchange.com/questions/288589/get-chromes-total-memory-usage> and `smem -tkP firefox`.
-- [ ] Check the /etc/xdg/autostart again (typically do we really need <https://wiki.linuxfoundation.org/accessibility/atk/at-spi/at-spi_on_d-bus>).
 - [ ] should condition xsession.d to the window manager.
-- [ ] disable the scrolbar overlay in firefox.
-- [ ] mps-youtube still is part of the openbox menu but it has been moved to software-extra. We should think of a way to update openbox menus easily.
-- [ ] transate-notify cannot be easily configured.
+- [ ] disable the scrollbar overlay in firefox.
+- [ ] translate-notify cannot be easily configured.
 - [ ] PrintScreen is not working on the Dell Precision 7530 see <https://unix.stackexchange.com/questions/669853/printscreen-key-not-registering-in-arch-linux>.
 - [ ] Set virtual desktop name with <https://superuser.com/questions/508128/is-it-possible-to-set-the-name-of-the-current-virtual-desktop-via-commandline>.
 - [ ] use github repo xlockscreen in the recipe.
-- [ ] create github repo for git_sup.
 - [ ] Add a recipe for install <https://github.com/MunifTanjim/rofunicode> and also can we show the unicode U+hhhh directly in rofi?
 - [ ] One virtual desktop for external screen? If we change the virtual desktop in the laptop screen it does not change the "presentation screen".
 - [ ] Kind of tiling but with a mode with an area where windows are placed we do not see the frame content but just window name and icon, kind of a dick but inside the screen, when clicking it we could have combination of key modifier telling what to do with the window: (1) selecting it (2) use it as master in the biggest area etc.
