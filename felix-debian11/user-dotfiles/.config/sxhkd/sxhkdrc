@@ -19,8 +19,8 @@ super + r
 super + k
 	onboard
 
-super + j
-	rofimoji
+super + u
+	rofunicode | xsel -i --clipboard 
 
 super + f
 	caja --no-desktop
