@@ -4,6 +4,7 @@
 - [x] Add pandoc (markdown to html).
 - [x] Add csstidy => the tool seems to change the css, do not use it.
 - [x] Installing Evolution from testing removes xorg (xorg after an upgrade to testing) if done with apt, but aptitude can resolve better the dependencies conflict.
+- [x] Install git_sup.
 
 - [ ] Tiling with bash <https://github.com/kstenschke/xmchord/blob/master/bin/actions/utils/splitDesk.sh>.
 - [ ] Freeze at lightdm login after hibernate on inspiron 7737 (does not occur with the precision 7530!? ), could be fixed with `init_on_alloc=0` see <https://forums.debian.net/viewtopic.php?t=149965>.
@@ -15,7 +16,6 @@
 - [ ] Check the /etc/xdg/autostart again (typically do we really need <https://wiki.linuxfoundation.org/accessibility/atk/at-spi/at-spi_on_d-bus>).
 - [ ] should condition xsession.d to the window manager.
 - [ ] disable the scrolbar overlay in firefox.
-- [ ] Create file for git alias and add one for git_sup.
 - [ ] mps-youtube still is part of the openbox menu but it has been moved to software-extra. We should think of a way to update openbox menus easily.
 - [ ] transate-notify cannot be easily configured.
 - [ ] PrintScreen is not working on the Dell Precision 7530 see <https://unix.stackexchange.com/questions/669853/printscreen-key-not-registering-in-arch-linux>.
