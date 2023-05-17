@@ -455,3 +455,26 @@ clean_ssh_keys(){
 		ssh-keygen -R "${REMOTE_IP_ADDRESS}"
 	fi
 }
+
+key_value_retriever(){
+	KEY="${1}"
+	if [[ -z "${KEY}" ]]; then
+		printf "ERROR: KEY should not be empty\n"
+		return
+	fi
+	FILE="${2}"
+	if [[ ! -f "${FILE}" ]]; then
+		printf "ERROR: Cannot find FILE: %s\n" "${FILE}"
+		return
+	fi
+	VALUE_VARNAME="${3}"
+	if [[ -z "${VALUE_VARNAME}" ]]; then
+		printf "ERROR: VALUE_VARNAME should not be empty\n"
+		return
+	fi
+	MATCH=$(grep "^[[:space:]]*${KEY}=" "${FILE}")
+	INDEX_OF_FIRST_EQUAL=$(expr index "${MATCH}" =)
+	VALUE="${MATCH:${INDEX_OF_FIRST_EQUAL}}"
+	VALUE="$(echo "${VALUE}" | sed "s/\r//g" )"
+	export "${VALUE_VARNAME}"="${VALUE}"
+}
