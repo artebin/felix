@@ -63,27 +63,6 @@ list_xdg_autostart_desktop_files(){
 	printf "\n"
 }
 
-disable_unwanted_xdg_autostart(){
-	printf "Disabling unwanted xdg autostart...\n"
-	
-	XDG_AUTOSTART_DESKTOP_FILE_ARRAY=(
-		"nm-applet"
-		"blueman.desktop"
-		"xfce4-power-manager.desktop"
-	)
-	
-	for XDG_AUTOSTART_FILE_NAME in "${XDG_AUTOSTART_DESKTOP_FILE_ARRAY[@]}"; do
-		if [[ ! -f "/etc/xdg/autostart/${XDG_AUTOSTART_FILE_NAME}" ]]; then
-			printf "Cannot find file: ${XDG_AUTOSTART_FILE_NAME}\n"
-		else
-			printf "Disabling autostart for ${XDG_AUTOSTART_FILE_NAME}...\n"
-			backup_file rename "/etc/xdg/autostart/${XDG_AUTOSTART_FILE_NAME}"
-		fi
-	done
-	
-	printf "\n"
-}
-
 update_xdg_user_dirs_default 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
@@ -91,12 +70,6 @@ if [[ "${EXIT_CODE}" -ne 0 ]]; then
 fi
 
 list_xdg_autostart_desktop_files 2>&1 | tee -a "${RECIPE_LOG_FILE}"
-EXIT_CODE="${PIPESTATUS[0]}"
-if [[ "${EXIT_CODE}" -ne 0 ]]; then
-	exit "${EXIT_CODE}"
-fi
-
-disable_unwanted_xdg_autostart 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
