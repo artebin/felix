@@ -221,6 +221,7 @@ regexxer
 # PDF viewer & PDF manipulation tools
 #######################################
 atril
+pandoc
 wkhtmltopdf
 poppler-utils
 pdfgrep
