@@ -1,10 +1,11 @@
-
 # TODOS
 
 - [x] Hide gtk3 duplicated window title because of nocsd <https://github.com/PCMan/gtk3-nocsd/issues/19>.
+- [x] Add pandoc (markdown to html).
 
+- [ ] Tiling with bash <https://github.com/kstenschke/xmchord/blob/master/bin/actions/utils/splitDesk.sh>.
 - [ ] Installing Evolution from testing removes xorg (xorg after an upgrade to testing).
-- [ ] Freeze at lightdm login after hibernate on inspiron 7737 (does not occur with the precision 7530!? ), could be fixed with `init_on_alloc=0 ` see <https://forums.debian.net/viewtopic.php?t=149965>.
+- [ ] Freeze at lightdm login after hibernate on inspiron 7737 (does not occur with the precision 7530!? ), could be fixed with `init_on_alloc=0` see <https://forums.debian.net/viewtopic.php?t=149965>.
 - [ ] Geany markdown is not configured anymore with the github css.
 - [ ] `apt-cache policy evolution` to show all version available.
 - [ ] Install "lz4 lz4json" for unpacking jsonlz4/mozLz4/Mozilla LZ4.
@@ -23,7 +24,6 @@
 - [ ] Add a recipe for install <https://github.com/MunifTanjim/rofunicode> and also can we show the unicode U+hhhh directly in rofi?
 - [ ] One virtual desktop for external screen? If we change the virtual desktop in the laptop screen it does not change the "presentation screen".
 - [ ] Kind of tiling but with a mode with an area where windows are placed we do not see the frame content but just window name and icon, kind of a dick but inside the screen, when clicking it we could have combination of key modifier telling what to do with the window: (1) selecting it (2) use it as master in the biggest area etc.
-- [ ] Add pandoc (markdown to html).
 - [ ] Add csstidy and universalindentgui.
 - [ ] Prepare an example of lemonbar for demo screen: can we mimick tint2 like |virtual desktop #1|virtual desktop #2...|selected window title|system tray| and it should multi-monitor enabled.
 - [ ] There is a continuation of tint2 <https://www.opencode.net/nick87720z/tint2>, maybe we should build from there now.
