@@ -6,6 +6,9 @@
 - [x] Installing Evolution from testing removes xorg (xorg after an upgrade to testing) if done with apt, but aptitude can resolve better the dependencies conflict.
 - [x] Install git_sup.
 - [x] Check the /etc/xdg/autostart again, we should override the desktop files in user home.
+- [x] Add a recipe for install <https://github.com/MunifTanjim/rofunicode>.
+
+- [ ] `xdg-settings set default-web-browser firefox-esr.desktop` and <https://askubuntu.com/questions/16621/how-to-set-the-default-browser-from-the-command-line>.
 
 - [ ] Tiling with bash <https://github.com/kstenschke/xmchord/blob/master/bin/actions/utils/splitDesk.sh>.
 - [ ] Freeze at lightdm login after hibernate on inspiron 7737 (does not occur with the precision 7530!? ), could be fixed with `init_on_alloc=0` see <https://forums.debian.net/viewtopic.php?t=149965>.
@@ -20,7 +23,7 @@
 - [ ] PrintScreen is not working on the Dell Precision 7530 see <https://unix.stackexchange.com/questions/669853/printscreen-key-not-registering-in-arch-linux>.
 - [ ] Set virtual desktop name with <https://superuser.com/questions/508128/is-it-possible-to-set-the-name-of-the-current-virtual-desktop-via-commandline>.
 - [ ] use github repo xlockscreen in the recipe.
-- [ ] Add a recipe for install <https://github.com/MunifTanjim/rofunicode> and also can we show the unicode U+hhhh directly in rofi?
+- [ ] Can we show the unicode U+hhhh directly in rofunicode?
 - [ ] One virtual desktop for external screen? If we change the virtual desktop in the laptop screen it does not change the "presentation screen".
 - [ ] Kind of tiling but with a mode with an area where windows are placed we do not see the frame content but just window name and icon, kind of a dick but inside the screen, when clicking it we could have combination of key modifier telling what to do with the window: (1) selecting it (2) use it as master in the biggest area etc.
 - [ ] Prepare an example of lemonbar for demo screen: can we mimick tint2 like |virtual desktop #1|virtual desktop #2...|selected window title|system tray| and it should multi-monitor enabled.

@@ -12,23 +12,29 @@ Add the lines below to `xsessionrc`.
 
 For not having the window title showed twice (i.e. in the window decoration and in the gtk header bar): make invisible the title in `gtk3.css` like below.
 
-    /* CSD: collapse leftover when using gtk3-nocsd */
-    headerbar {
-    	margin-top: -100px;
-    	border-bottom-width: 0;
-    }
-    /* but not when functional elements are in it */
-    headerbar button,
-    headerbar spinbutton,
-    headerbar entry,
-    headerbar separator {
-    	margin-top: 103px;
-    	margin-bottom: 3px;
-    }
+~~~
+/* CSD: collapse leftover when using gtk3-nocsd */
+headerbar {
+	margin-top: -100px;
+	border-bottom-width: 0;
+}
+/* but not when functional elements are in it */
+headerbar button,
+headerbar spinbutton,
+headerbar entry,
+headerbar separator {
+	margin-top: 103px;
+	margin-bottom: 3px;
+}
+~~~
 
-__References:__
+References:
 
   - <https://github.com/PCMan/gtk3-nocsd/issues/19>
+
+## Evolution
+
+  - Evolution is broken in Debian Bullseye because of webkit <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=975039>.
 
 ## Print key does not work with Debian11
 It occurs with 2 different Dell laptops (Inspiron 7737 and a Precision 7530).  
