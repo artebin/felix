@@ -5,10 +5,10 @@ super + e
 	geany_one_instance_per_workspace
 
 Print
-	mate-screenshoot -i
+	mate-screenshot -i
 
 alt + Print
-	maim -s
+	~/.local/bin/maim_screenshot.sh
 
 ctrl + alt + q
 	xkill
