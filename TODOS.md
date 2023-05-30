@@ -8,7 +8,17 @@
 - [x] Check the /etc/xdg/autostart again, we should override the desktop files in user home.
 - [x] Add a recipe for install <https://github.com/MunifTanjim/rofunicode>.
 
+- [ ] Create a script for alt+print key shortcut `maim -s "${HOME}/Pictures/Screenshot-$(date +"%y%m%d-%H%M%S-%Z").png`.
+
+- [ ] Install nomacs from the sources.
+
+- [ ] Start pages <https://www.reddit.com/r/startpages/>.
+
+- [ ] Use Hugo or Jekyll for having a local startpage saved into a git repo.
+
 - [ ] `xdg-settings set default-web-browser firefox-esr.desktop` and <https://askubuntu.com/questions/16621/how-to-set-the-default-browser-from-the-command-line>.
+
+- [ ] Disable flat volumes in debian <https://www.reddit.com/r/debian/comments/3mzkjz/pulseaudio_flat_volumes_madness/>.
 
 - [ ] Tiling with bash <https://github.com/kstenschke/xmchord/blob/master/bin/actions/utils/splitDesk.sh>.
 - [ ] Freeze at lightdm login after hibernate on inspiron 7737 (does not occur with the precision 7530!? ), could be fixed with `init_on_alloc=0` see <https://forums.debian.net/viewtopic.php?t=149965>.
