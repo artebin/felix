@@ -21,15 +21,6 @@ scrolledwindow undershoot {
 }
 
 /* CSD: collapse leftover when using gtk3-nocsd */
-headerbar {
-	margin-top: -100px;
-	border-bottom-width: 0;
-}
-/* but not when functional elements are in it */
-headerbar button,
-headerbar spinbutton,
-headerbar entry,
-headerbar separator {
-	margin-top: 103px;
-	margin-bottom: 3px;
+headerbar.titlebar {
+	color: transparent;
 }
