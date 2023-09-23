@@ -8,6 +8,22 @@
 - [x] Check the /etc/xdg/autostart again, we should override the desktop files in user home.
 - [x] Add a recipe for install <https://github.com/MunifTanjim/rofunicode>.
 
+- [ ] Parallelize git_sup with 4 threads?
+
+- [ ] Could this <https://askubuntu.com/questions/1355031/when-laptop-lid-is-closed-the-desktop-switches-to-external-monitor-ubuntu-20-0> fix the suspend issue while an external screen is connected?
+
+- [ ] openbox dynamic menu for a folder of .md files? todo?
+
+- [ ] Can we open encrypted volumes in debian installer?
+
+- [ ] openbox dynamic menu for tint2 telling in what screen should appear the systray.
+
+- [ ] Auto randr and mutiple configuration, how to easily configure closing the lid does not mean suspend/hibernate?
+
+- [ ] VLC plugin libnotify and no tray icon notifications.
+
+- [ ] Use "active monitor" in Openbox configuration + disable save window geometry and position in Geany.
+
 - [ ] Create a script for alt+print key shortcut `maim -s "${HOME}/Pictures/Screenshot-$(date +"%y%m%d-%H%M%S-%Z").png`.
 
 - [ ] Install nomacs from the sources.
