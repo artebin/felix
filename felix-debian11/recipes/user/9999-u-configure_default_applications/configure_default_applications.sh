@@ -14,6 +14,7 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_root_privileges
 
+# Should use xdg-settings instead below:
 #configure_default_applications_with_xdg_mime(){
 #	printf "Configuring default applications with xdg-mime ...\n"
 #	
