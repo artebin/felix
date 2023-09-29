@@ -8,6 +8,9 @@ alias df="df -h"
 # Add standard math library to bc
 alias bc='bc -l'
 
+# Show file system labels in lsblk output
+alias lsblk='lsblk -o name,type,mountpoint,label,size,uuid'
+
 function public_ip(){
 	curl ipinfo.io/ip
 }
