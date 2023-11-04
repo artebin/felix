@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 #################################################################################
 # DPMS (Display Power Management Signaling) is controlled with the xset command
