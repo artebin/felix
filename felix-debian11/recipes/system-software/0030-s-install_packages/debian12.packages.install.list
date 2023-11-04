@@ -146,7 +146,7 @@ ssh-askpass
 ##################################
 # Window manager & desktop tools
 ##################################
-#policykit-desktop-privileges #Not available in Debian11
+mate-polkit mate-polkit-bin
 openbox obconf
 devilspie2
 lxappearance lxappearance-obconf
