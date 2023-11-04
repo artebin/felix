@@ -18,6 +18,7 @@ install_rofimoji(){
 	printf "Installing rofimoji ...\n"
 	
 	pip install rofimoji
+	cp rofimoji.rc ~/.config/
 	
 	printf "\n"
 }
