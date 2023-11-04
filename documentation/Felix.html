@@ -12,7 +12,6 @@
     div.column{display: inline-block; vertical-align: top; width: 50%;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <style type="text/css">
 
@@ -257,18 +256,12 @@ max-width: 44em; color:black;}*:not('#mkdbuttons'){margin:0;padding:0}body{font:
 <body>
 <h1 id="felix">Felix</h1>
 <h2 id="gtk3-and-libgtk3-nocsd">GTK3 and libgtk3-nocsd</h2>
-<p>GTK3 Client Side Decoration (CSD) is removed with
-<code>libgtk3-nocsd</code>.<br />
-The GTK Header Bar is still visible but the window decoration is
-rendered by the Window Manager and it can include: the window icon and
-the buttons for iconify/minimize, maximize, shade/roll up,
-sticky/omnipresent and close.</p>
+<p>GTK3 Client Side Decoration (CSD) is removed with <code>libgtk3-nocsd</code>.<br />
+The GTK Header Bar is still visible but the window decoration is rendered by the Window Manager and it can include: the window icon and the buttons for iconify/minimize, maximize, shade/roll up, sticky/omnipresent and close.</p>
 <p>Add the lines below to <code>xsessionrc</code>.</p>
 <pre><code># Force loading of libgtk3-nocsd
 export LD_PRELOAD=&quot;libgtk3-nocsd.so.0${LD_PRELOAD:+:$LD_PRELOAD}&quot;</code></pre>
-<p>For not having the window title showed twice (i.e. in the window
-decoration and in the gtk header bar): make invisible the title in
-<code>gtk3.css</code> like below.</p>
+<p>For not having the window title showed twice (i.e. in the window decoration and in the gtk header bar): make invisible the title in <code>gtk3.css</code> like below.</p>
 <pre><code>/* CSD: collapse leftover when using gtk3-nocsd */
 headerbar {
     margin-top: -100px;
@@ -282,13 +275,13 @@ headerbar separator {
     margin-top: 103px;
     margin-bottom: 3px;
 }</code></pre>
-<p><strong>References:</strong></p>
+<p>References:</p>
 <ul>
 <li><a href="https://github.com/PCMan/gtk3-nocsd/issues/19" class="uri">https://github.com/PCMan/gtk3-nocsd/issues/19</a></li>
 </ul>
-<h2 id="print-key-does-not-work-with-debian11">Print key does not work
-with Debian11</h2>
-<p>It occurs with 2 different Dell laptops (Inspiron 7737 and a
-Precision 7530).</p>
+<h2 id="evolution-in-debian11">Evolution in Debian11</h2>
+<ul>
+<li>Evolution is broken in Debian11 because of webkit <a href="https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=975039" class="uri">https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=975039</a>.</li>
+</ul>
 </body>
 </html>

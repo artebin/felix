@@ -32,10 +32,7 @@ References:
 
   - <https://github.com/PCMan/gtk3-nocsd/issues/19>
 
-## Evolution
+## Evolution in Debian11
 
-  - Evolution is broken in Debian Bullseye because of webkit <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=975039>.
-
-## Print key does not work with Debian11
-It occurs with 2 different Dell laptops (Inspiron 7737 and a Precision 7530).  
+  - Evolution is broken in Debian11 because of webkit <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=975039>.
 
