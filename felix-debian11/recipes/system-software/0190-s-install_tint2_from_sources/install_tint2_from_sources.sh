@@ -34,9 +34,13 @@ install_tint2_from_sources(){
 	# Compile and install
 	cd "${RECIPE_DIRECTORY}"
 	cd tint2
-	git checkout 16.7
+	git checkout 17.0.2
 	mkdir build
 	cd build
+	
+	# Buid expects /usr/local/share/mime/packages to exist
+	mkdir -p /usr/local/share/mime/packages to exist
+	
 	cmake .. -DENABLE_TINT2CONF=OFF
 	make -j4
 	make install
