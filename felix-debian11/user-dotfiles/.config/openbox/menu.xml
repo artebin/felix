@@ -67,7 +67,7 @@
 				<item label="Draw"><action name="Execute"><command>/usr/lib/libreoffice/program/sdraw</command></action></item>
 			</menu>
 			<item label="PDF Viewer (atril)"><action name="Execute"><command>atril</command></action></item>
-			<!-- The use the of argument --new-window below should work for Firefox, Chrome, Chromium -->
+			<!-- The use the 'new-window' parameter below should work for Firefox, Chrome, Chromium -->
 			<item label="Google Drive"><action name="Execute"><command>x-www-browser --new-window https://drive.google.com/</command></action></item>
 			<item label="Office 365"><action name="Execute"><command>x-www-browser --new-window https://www.office.com/</command></action></item>
 		</menu>
