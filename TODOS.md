@@ -1,14 +1,10 @@
 # TODOS
 
-- [x] Hide gtk3 duplicated window title because of nocsd <https://github.com/PCMan/gtk3-nocsd/issues/19>.
-- [x] Add pandoc (markdown to html).
-- [x] Add csstidy => the tool seems to change the css, do not use it.
-- [x] Installing Evolution from testing removes xorg (xorg after an upgrade to testing) if done with apt, but aptitude can resolve better the dependencies conflict.
-- [x] Install git_sup.
-- [x] Check the /etc/xdg/autostart again, we should override the desktop files in user home.
-- [x] Add a recipe for install <https://github.com/MunifTanjim/rofunicode>.
+- [ ] Disable alert sound from effing GNOME <https://www.reddit.com/r/gnome/comments/jtfrzp/disabling_beep_on_the_end_of_line/>.
 
-- [ ] Parallelize git_sup with 4 threads?
+- [ ] why xfce4-screenshooter replace by mate-screeshot?
+
+- [ ] Parallelize git_sup?
 
 - [ ] Could this <https://askubuntu.com/questions/1355031/when-laptop-lid-is-closed-the-desktop-switches-to-external-monitor-ubuntu-20-0> fix the suspend issue while an external screen is connected?
 
@@ -262,6 +258,14 @@
 
 # DONE
 
+- [x] Hide gtk3 duplicated window title because of nocsd <https://github.com/PCMan/gtk3-nocsd/issues/19>.
+- [x] Add pandoc (markdown to html).
+- [x] Add csstidy => the tool seems to change the css, do not use it.
+- [x] Installing Evolution from testing removes xorg (xorg after an upgrade to testing) if done with apt, but aptitude can resolve better the dependencies conflict.
+- [x] Install git_sup.
+- [x] Check the /etc/xdg/autostart again, we should override the desktop files in user home.
+- [x] Add a recipe for install <https://github.com/MunifTanjim/rofunicode>.
+- [x] recipe for rofimoji should copy configuration file.
 - [x] Add recipe for apt preferences bullseye, testing and unstable (firefox).
 - [X] Install `xorg-xinput` for libinput (replacing synaptics), or use mtrack => removed configuration envvar XORG_INPUT_DRIVER, libinput is the default in debian11.
 - [x] Remove the setting for mtrack in felix.conf.
