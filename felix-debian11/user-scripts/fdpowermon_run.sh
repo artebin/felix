@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 
-# Start fdpowermon only if we can find a battery with upower
-
+# Start fdpowermon only if we are not running in a virtual machine and if we can find a battery with upower
+RUNNING_IN_VIRTUAL_MACHINE=$(systemd-detect-virt)
 BATTERY_INFO=$(upower -e|grep 'BAT')
-if [[ ! -z "${BATTERY_INFO}" ]]; then
+
+if [[ -z "${RUNNING_IN_VIRTUAL_MACHINE}" ]] && [[ ! -z "${BATTERY_INFO}" ]]; then
 	fdpowermon &
 else
-	printf "Cannot find battery information using upower\n"
+	printf "fdpowermon_run.sh: not starting fdpowermon RUNNING_IN_VIRTUAL_MACHINE[%s] BATTERY_INFO[%s]\n" "${RUNNING_IN_VIRTUAL_MACHINE}" "${BATTERY_INFO}"
 fi
