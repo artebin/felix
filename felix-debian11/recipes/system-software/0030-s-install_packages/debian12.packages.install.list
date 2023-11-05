@@ -209,7 +209,7 @@ thunar
 # File reader/editor & file diff tools
 ########################################
 uniutils
-vim-gtk
+#vim-gtk
 glogg
 geany geany-plugins
 meld kdiff3
@@ -263,7 +263,7 @@ chromium
 # PulseAudio
 ##############
 pulseaudio
-pulseaudio-dlna
+#pulseaudio-dlna
 pulseaudio-equalizer
 pulseaudio-module-bluetooth
 pulseaudio-module-lirc
