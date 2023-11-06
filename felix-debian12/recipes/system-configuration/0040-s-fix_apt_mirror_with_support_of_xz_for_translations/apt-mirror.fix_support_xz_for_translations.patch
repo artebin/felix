@@ -1,0 +1,11 @@
+--- apt-mirror.orig	2022-01-23 14:10:45.243691000 +0100
++++ apt-mirror	2022-01-23 14:11:48.779808256 +0100
+@@ -520,7 +520,7 @@
+                 if ( @parts == 3 )
+                 {
+                     my ( $sha1, $size, $filename ) = @parts;
+-                    if ( $filename =~ m{^$component/i18n/Translation-[^./]*\.bz2$} )
++                    if ( $filename =~ m{^$component/i18n/Translation-[^./]*\.(bz2|xz)$} )
+                     {
+                         add_url_to_download( $dist_uri . $filename, $size );
+                     }

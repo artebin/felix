@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+# Wrapper for nitrogen setting the freedesktop.org AccountsService/BackgroundFile so LightDM wallpaper is synced.
+# Inspired by <https://rafaelc.org/posts/sync-wm-wallpaper-with-lightdm-on-linux-mint/>
+
+key_value_retriever(){
+	KEY="${1}"
+	if [[ -z "${KEY}" ]]; then
+		printf "ERROR: KEY should not be empty\n"
+		return
+	fi
+	FILE="${2}"
+	if [[ ! -f "${FILE}" ]]; then
+		printf "ERROR: Cannot find FILE: %s\n" "${FILE}"
+		return
+	fi
+	VALUE_VARNAME="${3}"
+	if [[ -z "${VALUE_VARNAME}" ]]; then
+		printf "ERROR: VALUE_VARNAME should not be empty\n"
+		return
+	fi
+	MATCH=$(grep -m1 "^[[:space:]]*${KEY}=" "${FILE}")
+	INDEX_OF_FIRST_EQUAL=$(expr index "${MATCH}" =)
+	VALUE="${MATCH:${INDEX_OF_FIRST_EQUAL}}"
+	export "${VALUE_VARNAME}"="${VALUE}"
+}
+
+/usr/bin/nitrogen "$@"
+if [[ "${1:-}" == "--restore" ]]; then
+	exit $?
+fi
+
+NITROGEN_BG_SAVED_CFG_FILE="${HOME}/.config/nitrogen/bg-saved.cfg"
+if [[ ! -f "${NITROGEN_BG_SAVED_CFG_FILE}" ]]; then
+	printf "!ERROR! Cannot find NITROGEN_BG_SAVED_CFG_FILE[%s]\n" "${NITROGEN_BG_SAVED_CFG_FILE}" 1>&2
+	exit 1
+fi
+
+key_value_retriever "file" "${NITROGEN_BG_SAVED_CFG_FILE}" "NITROGEN_BG_SAVED_CFG_FIRST_BACKGROUND_FILE"
+
+if [[ -z "${NITROGEN_BG_SAVED_CFG_FIRST_BACKGROUND_FILE}" ]]; then
+	printf "!ERROR! Cannot retrieve NITROGEN_BG_SAVED_CFG_FIRST_BACKGROUND_FILE from NITROGEN_BG_SAVED_CFG_FILE[%s]\n" "NITROGEN_BG_SAVED_CFG_FIRST_BACKGROUND_FILE" 1>&2
+	exit 1
+fi
+
+if [[ ! -f "${NITROGEN_BG_SAVED_CFG_FIRST_BACKGROUND_FILE}" ]]; then
+	printf "!ERROR! Cannot find NITROGEN_BG_SAVED_CFG_FIRST_BACKGROUND_FILE[%s]\n" "${NITROGEN_BG_SAVED_CFG_FIRST_BACKGROUND_FILE}" 1>&2
+	exit 1
+fi
+
+printf "Setting nitrogen background into freedesktop.org AccountsService...\n"
+printf "NITROGEN_BG_SAVED_CFG_FIRST_BACKGROUND_FILE[%s]\n" "${NITROGEN_BG_SAVED_CFG_FIRST_BACKGROUND_FILE}"
+
+dbus-send \
+	--print-reply \
+	--system \
+	--dest=org.freedesktop.Accounts \
+	/org/freedesktop/Accounts/User$(id -u) \
+	org.freedesktop.DBus.Properties.Set \
+	string:org.freedesktop.DisplayManager.AccountsService \
+	string:BackgroundFile \
+	variant:string:"${NITROGEN_BG_SAVED_CFG_FIRST_BACKGROUND_FILE}"

@@ -1,0 +1,4 @@
+
+# Export nfs share
+# <SHARED_DIRECTORY> *(rw,sync,all_squash,anonuid=1000,anongid=1000,no_subtree_check)
+

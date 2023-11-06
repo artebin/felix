@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/ file:///usr/share/openbox/menu.xsd">
+	<menu id="root-menu" label="Openbox 3.5">
+		<item label="Terminal"><action name="Execute"><command>x-terminal-emulator</command></action></item>
+		<item label="File Manager"><action name="Execute"><command>caja --no-desktop</command></action></item>
+		<item label="Text Editor"><action name="Execute"><command>geany_one_instance_per_workspace</command></action></item>
+		<item label="Web Browser"><action name="Execute"><command>x-www-browser</command></action></item>
+		<item label="Web Browser &#xE245; "><action name="Execute"><command>x-www-browser --private-window</command></action></item>
+		<item label="Mail Client"><action name="Execute"><command>claws-mail</command></action></item>
+		<item label="Media Player"><action name="Execute"><command>vlc</command></action></item>
+		<separator/>
+		<menu id="accessories" label="Accessories">
+			<item label="Task Manager"><action name="Execute"><command>x-terminal-emulator -T "Task Manager (htop)" -e "htop"</command></action></item>
+			<item label="Disk Usage Analyzer"><action name="Execute"><command>x-terminal-emulator -T "Disk Usage Analyzer (ncdu)" -e "ncdu"</command></action></item>
+			<item label="Encryption Keys Manager"><action name="Execute"><command>seahorse</command></action></item>
+			<item label="Virtual Keyboard"><action name="Execute"><command>onboard</command></action></item>
+			<item label="Battery Usage"><action name="Execute"><command>battery-graph -d 2d</command></action></item>
+			<item label="Admin Web Console (cockpit)"><action name="Execute"><command>x-www-browser --new-window http://localhost:9090/</command></action></item>
+		</menu>
+		<menu id="file_utils" label="File Utils">
+			<item label="GVim"><action name="Execute"><command>gvim</command></action></item>
+			<item label="Hexadecimal Editor (bless)"><action name="Execute"><command>bless</command></action></item>
+			<item label="Diff &amp; Merge Tool (meld)"><action name="Execute"><command>meld</command></action></item>
+			<item label="Log Explorer (glogg)"><action name="Execute"><command>glogg  --multi</command></action></item>
+			<item label="Empty Trash"><action name="Execute"><command>trash-empty</command></action></item>
+		</menu>
+		<menu id="graphics" label="Graphics">
+			<item label="Image Viewer (gpicview)"><action name="Execute"><command>gpicview</command></action></item>
+			<item label="Shotwell"><action name="Execute"><command>shotwell</command></action></item>
+			<item label="GIMP"><action name="Execute"><command>gimp</command></action></item>
+			<item label="Screenshooter"><action name="Execute"><command>xfce4-screenshooter</command></action></item>
+			<item label="Capture Window"><action name="Execute"><command>bash ~/scripts/screenshot_capture_window.sh -f</command></action></item>
+			<item label="Capture Window (no decoration)"><action name="Execute"><command>bash ~/scripts/screenshot_capture_window.sh</command></action></item>
+			<item label="Color Picker (gpick)"><action name="Execute"><command>gpick</command></action></item>
+		</menu>
+		<menu id="multimedia" label="Multimedia">
+			<item label="Volume Control"><action name="Execute"><command>pavucontrol</command></action></item>
+			<item label="VLC"><action name="Execute"><command>vlc</command></action></item>
+			<item label="Webcam Viewer"><action name="Execute"><command>guvcview</command></action></item>
+			<item label="Xfburn"><action name="Execute"><command>xfburn</command></action></item>
+		</menu>
+		<menu id="network" label="Network">
+			<menu id="wwwbrowsers" label="WWW Browsers">
+				<item label="Firefox"><action name="Execute"><execute>firefox</execute></action></item>
+				<item label="Chromium"><action name="Execute"><execute>chromium</execute></action></item>
+				<item label="Google Chrome"><action name="Execute"><execute>google-chrome</execute></action></item>
+			</menu>
+			<item label="Mail Client (claws-mail)"><action name="Execute"><execute>claws-mail</execute></action></item>
+			<menu id="Messaging" label="Messaging">
+				<item label="Empathy"><action name="Execute"><command>empathy</command></action></item>
+				<item label="Skype"><action name="Execute"><command>skypeforlinux</command></action></item>
+				<item label="IRC Client (hexchat)"><action name="Execute"><command>hexchat</command></action></item>
+			</menu>
+			<item label="Remote Filesystems (gigolo)"><action name="Execute"><command>gigolo</command></action></item>
+			<item label="FTP Client (bareftp)"><action name="Execute"><command>bareftp</command></action></item>
+			<item label="BitTorrent Client (transmission)"><action name="Execute"><command>transmission-gtk</command></action></item>
+			<item label="Bluetooth (blueman-applet)"><action name="Execute"><command>bash -c "pkexec modprobe btusb;blueman-applet"</command></action></item>
+			<item label="VNC Client (remmina)"><action name="Execute"><command>remmina</command></action></item>
+		</menu>
+		<menu id="office" label="Office">
+			<menu id="libreoffice" label="Libre Office">
+				<item label="Writer"><action name="Execute"><command>/usr/lib/libreoffice/program/swriter</command></action></item>
+				<item label="Calc"><action name="Execute"><command>/usr/lib/libreoffice/program/scalc</command></action></item>
+				<item label="Impress"><action name="Execute"><command>/usr/lib/libreoffice/program/simpress</command></action></item>
+				<item label="Base"><action name="Execute"><command>/usr/lib/libreoffice/program/sbase</command></action></item>
+				<item label="Math"><action name="Execute"><command>/usr/lib/libreoffice/program/smath</command></action></item>
+				<item label="Draw"><action name="Execute"><command>/usr/lib/libreoffice/program/sdraw</command></action></item>
+			</menu>
+			<item label="PDF Viewer (atril)"><action name="Execute"><command>atril</command></action></item>
+			<!-- The use the 'new-window' parameter below should work for Firefox, Chrome, Chromium -->
+			<item label="Google Drive"><action name="Execute"><command>x-www-browser --new-window https://drive.google.com/</command></action></item>
+			<item label="Office 365"><action name="Execute"><command>x-www-browser --new-window https://www.office.com/</command></action></item>
+		</menu>
+		<item label="Printers"><action name="Execute"><command>system-config-printer</command></action></item>
+		<separator/>
+		<menu id="settings" label="Settings">
+			<menu id="DisplaySettings" label="Display">
+				<menu id="randr-menu" label="Screen Layout" execute="python3 ~/.config/openbox/ob-randr.py" />
+				<item label="Screen Layout Editor"><action name="Execute"><command>arandr</command></action></item>
+				<item label="DPMS"><action name="Execute"><command>light-locker-settings</command></action></item>
+				<item label="Wallpapers"><action name="Execute"><command>nitrogen</command></action></item>
+			</menu>
+			<separator/>
+			<item label="User Interface Settings"><action name="Execute"><command>lxappearance</command></action></item>
+			<separator/>
+			<item label="Edit .xsessionrc"><action name="Execute"><command>geany -i ~/.xsessionrc</command></action></item>
+			<menu id="SxhkdConfig" label="Sxhkd">
+				<item label="Edit sxhkdrc"><action name="Execute"><command>geany -i ~/.config/sxhkd/sxhkdrc</command></action></item>
+				<separator/>
+				<item label="Restart"><action name="Execute"><command>bash ~/.config/sxhkd/restart_sxhkd.sh</command></action></item>
+			</menu>
+			<menu id="OpenboxConfig" label="Openbox">
+				<item label="GUI Config Tool"><action name="Execute"><command>obconf</command></action></item>
+				<separator/>
+				<item label="Open Themes Folder"><action name="Execute"><command>bash ~/.config/openbox/ob-open-theme-folder.sh</command></action></item>
+				<item label="Edit menu.xml"><action name="Execute"><command>geany -i ~/.config/openbox/menu.xml</command></action></item>
+				<item label="Edit rc.xml"><action name="Execute"><command>geany -i ~/.config/openbox/rc.xml</command></action></item>
+				<item label="Edit autostart"><action name="Execute"><command>geany -i ~/.config/openbox/autostart</command></action></item>
+				<separator/>
+				<item label="Reconfigure"><action name="Reconfigure"/></item>
+				<item label="Restart"><action name="Restart"/></item>
+			</menu>
+			<menu id="Tint2Config" label="Tint2">
+				<item label="Edit tint2rc"><action name="Execute"><command>geany -i ~/.config/tint2/tint2rc</command></action></item>
+				<separator/>
+				<item label="Restart"><action name="Execute"><command>bash ~/.config/tint2/toggle_tint2.sh -r</command></action></item>
+				<item label="Toggle Show/Hide"><action name="Execute"><command>bash ~/.config/tint2/toggle_tint2.sh</command></action></item>
+			</menu>
+			<separator/>
+			<item label="Open Autostart Folder"><action name="Execute"><command>caja ~/.config/autostart</command></action></item>
+		</menu>
+		<menu id="system" label="System">
+			<item label="Software &amp; Updates"><action name="Execute"><command>software-properties-gtk</command></action></item>
+			<item label="Synaptic Package Manager"><action name="Execute"><command>synaptic-pkexec</command></action></item>
+			<item label="User Login Settings"><action name="Execute"><command>pkexec lightdm-gtk-greeter-settings</command></action></item>
+			<menu id="DefaultApplications" label="Default Applications">
+				<item label="Update Alternatives CLI"><action name="Execute"><command>x-terminal-emulator -T "Update Alternatives CLI" -e "sudo update-alternatives --all"</command></action></item>
+				<item label="Update Alternatives GUI"><action name="Execute"><command>galternatives</command></action></item>
+				<item label="MIME Settings"><action name="Execute"><command>xfce4-mime-settings</command></action></item>
+			</menu>
+		</menu>
+		<separator/>
+		<item label="Exit"><action name="Execute"><execute>rofi -show powermenu -modi powermenu:"~/.config/rofi/rififi.sh -f ~/.config/rofi/rififi-power-menu.conf"</execute></action></item>
+	</menu>
+</openbox_menu>

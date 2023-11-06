@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+# This caja script runs meld for comparing 2 files or 2 directories.
+# If the number of arguments given to the script is one then it shows 
+# a zenity file/directory selector for selecting the right member of the
+# comparison.
+
+usage(){
+	echo "Usage: ${0} <left member of the comparison> [right member of the comparison]"
+}
+
+COMPARISON_LEFT_MEMBER=""
+COMPARISON_RIGHT_MEMBER=""
+
+if [[ "$#" -eq "0" ]]; then
+	zenity --error --text="The 'compare' script expects at least &lt;left member of the comparison&gt; in argument"
+	exit 1
+fi
+
+if [[ "$#" -gt "2" ]]; then
+	zenity --error --text="Cannot compare more than 2 files or directories"
+	exit 1
+fi
+
+COMPARISON_LEFT_MEMBER="${1}"
+if [[ ! -e "${COMPARISON_LEFT_MEMBER}" ]]; then
+	zenity --error --text="Cannot find: ${COMPARISON_LEFT_MEMBER}"
+	exit 1
+fi
+COMPARISON_LEFT_MEMBER=$(readlink -f "${COMPARISON_LEFT_MEMBER}")
+
+if [[ "$#" -eq "1" ]]; then
+	if [[ -d "${COMPARISON_LEFT_MEMBER}" ]]; then
+		COMPARISON_RIGHT_MEMBER=$(zenity --file-selection --directory --title="Choose the file or directory to compare with")
+	else
+		COMPARISON_RIGHT_MEMBER=$(zenity --file-selection --title="Choose the file or directory to compare with")
+	fi
+	if [[ "$?" -eq 1 ]]; then
+		exit 1
+	fi
+	COMPARISON_RIGHT_MEMBER=$(awk -F, '{print $1}' <<<${COMPARISON_RIGHT_MEMBER})
+else
+	COMPARISON_RIGHT_MEMBER="${2}"
+fi
+
+if [[ ! -e "${COMPARISON_RIGHT_MEMBER}" ]]; then
+	zenity --error --text="Cannot find: ${COMPARISON_RIGHT_MEMBER}"
+	exit 1
+fi
+COMPARISON_RIGHT_MEMBER=$(readlink -f "${COMPARISON_RIGHT_MEMBER}")
+
+if [[ ( -f "${COMPARISON_LEFT_MEMBER}" && -f "${COMPARISON_RIGHT_MEMBER}" ) || ( -d "${COMPARISON_LEFT_MEMBER}" && -d "${COMPARISON_RIGHT_MEMBER}" ) ]]; then
+	meld "${COMPARISON_LEFT_MEMBER}" "${COMPARISON_RIGHT_MEMBER}"
+else
+	zenity --error --text="Cannot compare a file with a directory"
+	exit 1
+fi

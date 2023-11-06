@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Tiling 2 app horizontal
+GenericName=Tiling 2 app horizontal
+Comment=ATiling 2 app horizontal
+Exec=bash ~/.config/openbox/tiling_util.sh -h 2
+Icon=/home/njames/.config/openbox/tile-horiz.png
+Terminal=false
+Categories=GTK;Development;IDE;
+MimeType=
+StartupNotify=true
+Name[en_US]=tiling_1x2.desktop

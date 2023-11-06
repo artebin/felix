@@ -1,0 +1,11 @@
+# Help and locales in software
+libreoffice-l10n-en-us
+libreoffice-help-en-us
+gimp-help-en
+
+# Dictionaries and spell-checker
+wamerican wfrench
+hunspell-en-us hunspell-fr
+aspell-en aspell-fr
+hyphen-en-us hyphen-fr
+mythes-en-us mythes-fr

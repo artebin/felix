@@ -1,0 +1,15 @@
+# Remove some XFCE software
+mousepad
+ristretto #Image viewer => we prefer to use EOM from MATE
+parole #Media player => we prefer to use VLC
+
+# Remove some GNOME software
+file-roller #GNOME Archive Manager (it is still "File Roller" whatever can say the GNOME team... )
+evince evince-common
+
+# Remove GNOME Software Center and snap
+gnome-software gnome-software-common gnome-software-plugin-snap snapd
+
+popularity-contest
+
+ibus-*
