@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
+SCRIPT_NAME="$(basename "${BASH_SOURCE}")"
+
 print_usage(){
 	cat << EOF
 Usage: ${0} [-r]
 
-Options:"
+Options:
   -r        Respawn the server if it crashed.
 EOF
 }
@@ -26,7 +28,7 @@ PID_LIST_FILE="/run/user/${UID}/$(basename $0).pid_list"
 
 kill_registered_processes(){
 	PID_LIST=$(cat "${PID_LIST_FILE}")
-	printf ">>> kill_registered_processes PID_LIST[%s]\n" "${PID_LIST}"
+	printf "${SCRIPT_NAME}: kill_registered_processes PID_LIST[%s]\n" "${PID_LIST}"
 	kill -s 9 ${PID_LIST} 2>&1 2>/dev/null
 }
 
@@ -51,6 +53,12 @@ if [[ $# != 0 ]]; then
 	exit 1
 fi
 
+# Check if VNC is properly configured: the passwd file is mandatory
+if [[ ! -f "~/.vnc/passwd" ]]; then
+	printf "${SCRIPT_NAME}: Cannot start VNC server because passwd file is missing. Please execute the \'vncpass\' command.\n" 1>&2
+	exit 1
+fi
+
 # Make sure the server is not already running
 kill_registered_processes
 
@@ -58,7 +66,7 @@ if ! ${RESPAWN}; then
 	start_vnc_server
 else
 	until start_vnc_server; do
-		printf "VNC server crashed with exit code $?.\nRespawning ...\n"
+		printf "${SCRIPT_NAME}: VNC server crashed with exit code $?.\nRespawning ...\n"
 		sleep 1
 	done
 fi
