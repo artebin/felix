@@ -32,8 +32,6 @@ kill_registered_processes(){
 	kill -s 9 ${PID_LIST} 2>&1 2>/dev/null
 }
 
-trap kill_registered_processes 0
-
 RESPAWN="false"
 while getopts ":r" OPT; do
 	case "${OPT}" in
@@ -58,6 +56,8 @@ if [[ ! -f "~/.vnc/passwd" ]]; then
 	printf "${SCRIPT_NAME}: Cannot start VNC server because passwd file is missing. Please execute the \'vncpass\' command.\n" 1>&2
 	exit 1
 fi
+
+trap kill_registered_processes 0
 
 # Make sure the server is not already running
 kill_registered_processes
