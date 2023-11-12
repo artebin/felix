@@ -23,3 +23,6 @@ export GPODDER_DOWNLOAD_DIR=""
 
 # Force loading of libgtk3-nocsd
 export LD_PRELOAD="libgtk3-nocsd.so.0${LD_PRELOAD:+:$LD_PRELOAD}"
+
+# Use qt5ct for theming Qt applications
+export QT_QPA_PLATFORMTHEME=qt5ct

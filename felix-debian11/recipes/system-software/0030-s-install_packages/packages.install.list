@@ -150,6 +150,7 @@ mate-polkit mate-polkit-bin
 openbox openbox-menu obconf
 devilspie2
 lxappearance lxappearance-obconf
+qt5ct qt5-gtk2-platformtheme
 dconf-cli
 dconf-editor
 gconf-service
