@@ -1,10 +1,22 @@
 # TODOS
 
-- [ ] Debian12: cannot build arandr but we do not need to, now 0.1.11 is in the debian depo.
+- [x] Debian12: cannot build arandr but we do not need to, now 0.1.11 is in the debian depo.
 - [ ] Debian12: "error: externally-managed-environment" when using pip3, see <https://www.jeffgeerling.com/blog/2023/how-solve-error-externally-managed-environment-when-installing-pip3>.
 - [ ] Debian12: Cannot build pamixer, the recipe should be removed, I guess it wasn't working in Debian11 either.
+- [ ] Debian12: use DejaVu for monospace font instead of Noto <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1028643#26>.
 
+- [ ] Use <https://github.com/lah7/gtk3-classic>.
+
+- [ ] gtk3.css hide the headerbar.title was for Remmina.
+
+- [ ] Replace youtube-dl by yt-dlp.
+
+- [ ] Add a button in notification bubble of translate-notify for opening the translation into a text editor.
+- [ ] Add gtk-4 folder in config.
+- [ ] "gtk-enable-animations=0" see <https://askubuntu.com/questions/903160/turn-off-smooth-scrolling-in-gtk3>
 - [ ] Disable alert sound from effing GNOME <https://www.reddit.com/r/gnome/comments/jtfrzp/disabling_beep_on_the_end_of_line/>.
+
+- [ ] Better script folder with helper script "graphics-cards-info.sh", "gtk-version.sh" etc.
 
 - [ ] why xfce4-screenshooter replace by mate-screeshot?
 
