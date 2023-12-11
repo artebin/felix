@@ -1,10 +1,18 @@
 # TODOS
 
+- [ ] <https://blog.programster.org/set-up-a-local-ubuntu-mirror-with-apt-mirror> could it work if current user is member of group apt-mirror?
+- [ ] <https://github.com/jalopezg-git/openbox/tree/enable-full-GTK-CSD>.
+
+- [ ] Activate geany git diff by default.
+
 - [ ] Debian12: minimal felix?
 - [x] Debian12: cannot build arandr but we do not need to, now 0.1.11 is in the debian depo.
 - [ ] Debian12: "error: externally-managed-environment" when using pip3, see <https://www.jeffgeerling.com/blog/2023/how-solve-error-externally-managed-environment-when-installing-pip3>.
 - [ ] Debian12: Cannot build pamixer, the recipe should be removed, I guess it wasn't working in Debian11 either.
 - [ ] Debian12: use DejaVu for monospace font instead of Noto <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1028643#26>.
+
+- [ ] respawn=no in pulseaudio conf to allow restart?
+- [ ] Improve sw so that we can use it a sleep-timer before starting a command.
 
 - [ ] Two ways to fix polkit: (1) mate-polkit or (2) policykit-1-gnome.
 
