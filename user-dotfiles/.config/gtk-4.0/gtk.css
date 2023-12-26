@@ -19,8 +19,3 @@ scrolledwindow undershoot {
 	border: none;
 	background-image: none;
 }
-
-/* CSD: collapse leftover when using gtk3-nocsd */
-headerbar.titlebar {
-	color: transparent;
-}
