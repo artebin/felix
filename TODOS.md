@@ -1,12 +1,19 @@
 # TODOS
 
+- [x] Debian12: cannot build arandr but we do not need to, now 0.1.11 is in the debian depo.
+- [x] Two ways to fix polkit: (1) mate-polkit or (2) policykit-1-gnome.
+- [x] gtk3.css hide the headerbar.title was for Remmina but cannot use it anymore because of Firefox using the headerbar for tabs.
+- [x] User Background in lightdm does not work => maybe it was running as root before but not anymore? Solution is to g+x on the home folder and add lightdm to the user group.
+- [x] Install members by default.
+
+- [ ] Default web browser not correct (see Formiko).
+
 - [ ] <https://blog.programster.org/set-up-a-local-ubuntu-mirror-with-apt-mirror> could it work if current user is member of group apt-mirror?
 - [ ] <https://github.com/jalopezg-git/openbox/tree/enable-full-GTK-CSD>.
 
 - [ ] Activate geany git diff by default.
 
 - [ ] Debian12: minimal felix?
-- [x] Debian12: cannot build arandr but we do not need to, now 0.1.11 is in the debian depo.
 - [ ] Debian12: "error: externally-managed-environment" when using pip3, see <https://www.jeffgeerling.com/blog/2023/how-solve-error-externally-managed-environment-when-installing-pip3>.
 - [ ] Debian12: Cannot build pamixer, the recipe should be removed, I guess it wasn't working in Debian11 either.
 - [ ] Debian12: use DejaVu for monospace font instead of Noto <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1028643#26>.
@@ -14,11 +21,7 @@
 - [ ] respawn=no in pulseaudio conf to allow restart?
 - [ ] Improve sw so that we can use it a sleep-timer before starting a command.
 
-- [ ] Two ways to fix polkit: (1) mate-polkit or (2) policykit-1-gnome.
-
 - [ ] Use <https://github.com/lah7/gtk3-classic>.
-
-- [ ] gtk3.css hide the headerbar.title was for Remmina.
 
 - [ ] Replace youtube-dl by yt-dlp.
 
@@ -30,8 +33,6 @@
 - [ ] Better script folder with helper script "graphics-cards-info.sh", "gtk-version.sh" etc.
 
 - [ ] why xfce4-screenshooter replace by mate-screeshot?
-
-- [ ] Parallelize git_sup?
 
 - [ ] Could this <https://askubuntu.com/questions/1355031/when-laptop-lid-is-closed-the-desktop-switches-to-external-monitor-ubuntu-20-0> fix the suspend issue while an external screen is connected?
 
