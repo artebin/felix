@@ -27,7 +27,7 @@ install_user_scripts(){
 	if [[ -d "${HOME}/scripts" ]]; then
 		backup_file rename "${HOME}/scripts"
 	fi
-	cp -R "${SCRIPTS_DIRECTORY}" "${HOME}/scripts"
+	cp -L -R "${SCRIPTS_DIRECTORY}" "${HOME}/scripts"
 	
 	printf "\n"
 }
