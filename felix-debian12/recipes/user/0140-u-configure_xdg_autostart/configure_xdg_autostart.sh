@@ -15,21 +15,18 @@ exit_if_not_bash
 exit_if_has_root_privileges
 
 configure_xdg_autostart(){
-	printf "Configuring xdg autostart ...\n"
-	
-	printf "Disable all desktop files from \`/etc/xdg/autostart\` ...\n"
+	printf "Setting desktop files in /etc/xdg/autostart disabled for openbox ...\n"
 	cd "${RECIPE_DIRECTORY}"
 	
 	mkdir -p "${HOME}/.config/autostart"
 	
 	for XDG_AUTOSTART_FILE in /etc/xdg/autostart/*.desktop; do
-		printf "${XDG_AUTOSTART_FILE_NAME}\n"
-		if [[ "${XDG_AUTOSTART_FILE_NAME}" == "xdg-users-dirs.desktop" ]]; then
-			printf "  File skipped\n\n"
+		XDG_AUTOSTART_FILE_NAME="$(basename "${XDG_AUTOSTART_FILE}")"
+		if [[ "${XDG_AUTOSTART_FILE_NAME}" == "xdg-user-dirs.desktop" ]]; then
+			printf "  %-50s : Skipped\n" "${XDG_AUTOSTART_FILE_NAME}"
 			continue
 		fi
-		printf "  Disabling ${XDG_AUTOSTART_FILE}\n\n"
-		XDG_AUTOSTART_FILE_NAME="$(basename "${XDG_AUTOSTART_FILE}")"
+		printf "  %-50s : NotShowIn=Openbox\n" "${XDG_AUTOSTART_FILE_NAME}"
 		printf "[Desktop Entry]\nNotShowIn=Openbox\n" >"${HOME}/.config/autostart/${XDG_AUTOSTART_FILE_NAME}"
 	done
 	
