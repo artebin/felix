@@ -16,6 +16,7 @@ finger
 psmisc #Includes fuser, killall, peekfd, pstree, prtstat
 hwinfo lshw inxi
 htop iotop smem
+members
 pcp pcp-gui
 @--no-install-recommends@ cockpit cockpit-pcp
 glances glances-doc
