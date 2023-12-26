@@ -58,7 +58,7 @@ process_package_install_list(){
 	# Proceed install with --force-confnew
 	# Always install the new version of the configuration file, the current version is kept in a file with the .dpkg-old suffix
 	for APT_PACKAGE_FILE_LIST in "${APT_PACKAGE_LIST_FILE_NAME_PREFIX}"*; do
-		xargs apt-get -o Dpkg::Options::=--force-confnew -y install <"${APT_PACKAGE_FILE_LIST}"
+		DEBIAN_FRONTEND=readline xargs apt-get -o Dpkg::Options::=--force-confnew -y install <"${APT_PACKAGE_FILE_LIST}"
 	done
 	
 	# Cleaning
