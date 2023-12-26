@@ -20,7 +20,7 @@ configure_gsimplecal(){
 	if [[ ! -d "${HOME}/.config/gsimplecal" ]]; then
 		mkdir -p "${HOME}/.config/gsimplecal"
 	fi
-	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/gsimplecal/config" "${RECIPE_FAMILY_DIRECTORY}/user-dotfiles/.config/gsimplecal/config"
+	backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/gsimplecal/config" "${FELIX_ROOT}/user-dotfiles/.config/gsimplecal/config"
 	SED_PATTERN="LOCAL_TIME_ZONE"
 	ESCAPED_SED_PATTERN=$(escape_sed_pattern ${SED_PATTERN})
 	REPLACEMENT_STRING="${LOCAL_TIME_ZONE}"
