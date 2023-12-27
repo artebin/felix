@@ -12,13 +12,26 @@ source "${FELIX_SH}"
 initialize_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
-exit_if_has_not_root_privileges
+exit_if_has_root_privileges
 
 install_rofimoji(){
 	printf "Installing rofimoji ...\n"
 	
+	PYTHON_VENV_ROFIMOJI_DIR="/home/${USER}/.local/lib/rofimoji/venv"
+	if [[ -d "${PYTHON_VENV_ROFIMOJI_DIR}" ]]; then
+		printf "Python venv for rofimoji already exists: %s\n" "${PYTHON_VENV_ROFIMOJI_DIR}"
+		printf "Deleting it...\n"
+		rm -fr "${PYTHON_VENV_ROFIMOJI_DIR}"
+	fi
+	
+	printf "Creating python venv for rofimoji: %s\n" "${PYTHON_VENV_ROFIMOJI_DIR}"
+	python -m venv "${PYTHON_VENV_ROFIMOJI_DIR}"
+	source "${PYTHON_VENV_ROFIMOJI_DIR}"/bin/activate
 	pip install rofimoji
+	
 	cp rofimoji.rc ~/.config/
+	chmod +x rofimoji_run.sh
+	cp rofimoji_run.sh ~/.local/bin
 	
 	printf "\n"
 }
