@@ -20,7 +20,7 @@ super + k
 	onboard
 
 super + u
-	rofunicode | xsel -i --clipboard 
+	rofimoji_run.sh
 
 super + f
 	caja --no-desktop
