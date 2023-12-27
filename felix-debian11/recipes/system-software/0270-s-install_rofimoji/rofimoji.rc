@@ -1,3 +1,0 @@
-action = copy
-files = [math, emojis]
-skin-tone = moderate

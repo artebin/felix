@@ -1,4 +1,0 @@
-# SOURCES START #
-deb [arch=amd64] http://deb.debian.org/debian unstable main contrib non-free
-#deb-src http://deb.debian.org/debian unstable main contrib non-free
-# SOURCES END #
