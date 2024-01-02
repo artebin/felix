@@ -3,9 +3,7 @@
 if [ -d "${HOME}/.ssh" ]; then
 	HOME_LINK_SSH_AUTH_SOCK="${HOME}/.ssh/ssh_auth_sock"
 	if [ ! -S "${HOME_LINK_SSH_AUTH_SOCK}" ]; then
-		eval `ssh-agent`
-		ln -sf "${SSH_AUTH_SOCK}" "${HOME_LINK_SSH_AUTH_SOCK}"
+		eval `ssh-agent /usr/bin/dbus-launch --exit-with-session x-session-manager`
 	fi
-	export SSH_AUTH_SOCK="${HOME_LINK_SSH_AUTH_SOCK}"
-	ssh-add -l > /dev/null || ssh-add
+	ssh-add -l > /dev/null | ssh-add
 fi
