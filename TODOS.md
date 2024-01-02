@@ -5,8 +5,19 @@
 - [x] gtk3.css hide the headerbar.title was for Remmina but cannot use it anymore because of Firefox using the headerbar for tabs.
 - [x] User Background in lightdm does not work => maybe it was running as root before but not anymore? Solution is to g+x on the home folder and add lightdm to the user group.
 - [x] Install members by default.
+- [x] Debian12: fix install rofimoji with python venv.
+- [x] Debian12: "error: externally-managed-environment" when using pip3, see <https://www.jeffgeerling.com/blog/2023/how-solve-error-externally-managed-environment-when-installing-pip3>. => use python venv is better anyway.
+- [x] Debian12: Cannot build pamixer, the recipe should be removed, I guess it wasn't working in Debian11 either.
 
-- [ ] Default web browser not correct (see Formiko).
+- [ ] Google maps search in firefox.
+- [ ] Target language for translate-notify in sxhkd.
+- [ ] Cannot read /dev/video0 facetimehd in mplayer without specify "-vo gl_nosw" or "-vo x11" ? <https://github.com/patjak/facetimehd/issues/198>.
+- [ ] Execute xsession files only if openbox.
+- [ ] Debian12: Fn keys make firefox headerbar blink, quite weird behavior.
+
+- [ ] Why xtrlock has a sticky bit?
+- [ ] Firefox no scrollbar overlay by default.
+- [ ] Default web browser not correct (see Formiko) can see that in firefox too.
 
 - [ ] <https://blog.programster.org/set-up-a-local-ubuntu-mirror-with-apt-mirror> could it work if current user is member of group apt-mirror?
 - [ ] <https://github.com/jalopezg-git/openbox/tree/enable-full-GTK-CSD>.
@@ -14,8 +25,6 @@
 - [ ] Activate geany git diff by default.
 
 - [ ] Debian12: minimal felix?
-- [ ] Debian12: "error: externally-managed-environment" when using pip3, see <https://www.jeffgeerling.com/blog/2023/how-solve-error-externally-managed-environment-when-installing-pip3>.
-- [ ] Debian12: Cannot build pamixer, the recipe should be removed, I guess it wasn't working in Debian11 either.
 - [ ] Debian12: use DejaVu for monospace font instead of Noto <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1028643#26>.
 
 - [ ] respawn=no in pulseaudio conf to allow restart?
@@ -26,7 +35,6 @@
 - [ ] Replace youtube-dl by yt-dlp.
 
 - [ ] Add a button in notification bubble of translate-notify for opening the translation into a text editor.
-- [ ] Add gtk-4 folder in config.
 - [ ] "gtk-enable-animations=0" see <https://askubuntu.com/questions/903160/turn-off-smooth-scrolling-in-gtk3>
 - [ ] Disable alert sound from effing GNOME <https://www.reddit.com/r/gnome/comments/jtfrzp/disabling_beep_on_the_end_of_line/>.
 
@@ -37,8 +45,6 @@
 - [ ] Could this <https://askubuntu.com/questions/1355031/when-laptop-lid-is-closed-the-desktop-switches-to-external-monitor-ubuntu-20-0> fix the suspend issue while an external screen is connected?
 
 - [ ] openbox dynamic menu for a folder of .md files? todo?
-
-- [ ] Can we open encrypted volumes in debian installer?
 
 - [ ] openbox dynamic menu for tint2 telling in what screen should appear the systray.
 
