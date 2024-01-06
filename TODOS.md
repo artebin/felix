@@ -59,7 +59,6 @@
 
 - [ ] Create a script for alt+print key shortcut `maim -s "${HOME}/Pictures/Screenshot-$(date +"%y%m%d-%H%M%S-%Z").png`.
 
-
 - [ ] Start pages <https://www.reddit.com/r/startpages/>.
 
 - [ ] Use Hugo or Jekyll for having a local startpage saved into a git repo.
@@ -76,7 +75,6 @@
 - [ ] Can we find a command to list the URLs opened in firerox.
 - [ ] Bash alias for printing firefox memory footprint with <https://unix.stackexchange.com/questions/288589/get-chromes-total-memory-usage> and `smem -tkP firefox`.
 - [ ] should condition xsession.d to the window manager.
-- [ ] disable the scrollbar overlay in firefox.
 - [ ] translate-notify cannot be easily configured.
 - [ ] PrintScreen is not working on the Dell Precision 7530 see <https://unix.stackexchange.com/questions/669853/printscreen-key-not-registering-in-arch-linux>.
 - [ ] Set virtual desktop name with <https://superuser.com/questions/508128/is-it-possible-to-set-the-name-of-the-current-virtual-desktop-via-commandline>.
