@@ -33,9 +33,24 @@ configure_firefox_default_profile(){
 	
 	FIREFOX_PREFS_JS_FILE="${FIREFOX_DEFAULT_PROFILE_PATH}/prefs.js"
 	if [[ ! -f "${FIREFOX_PREFS_JS_FILE}" ]]; then
-		printf "Cannot find FIREFOX_PREFS_JS_FILE: ${FIREFOX_PREFS_JS_FILE} => creation one!\n"
+		printf "Cannot find FIREFOX_PREFS_JS_FILE: ${FIREFOX_PREFS_JS_FILE} => creating one!\n"
 		touch "${FIREFOX_PREFS_JS_FILE}"
 	fi
+	
+	printf "=> Allow legacy user profile customization (userChrome.css) ...\n"
+	FIREFOX_PREF_KEY="toolkit.legacyUserProfileCustomizations.stylesheets"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", true);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
+	
+	printf "=> Copying chrome folder into default profile ...\n"
+	cp -R ./chrome "${FIREFOX_DEFAULT_PROFILE_PATH}"
+	
+	printf "=> Disable GTK overlay scrollbars ...\n"
+	FIREFOX_PREF_KEY="widget.gtk.overlay-scrollbars.enabled"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", false);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
 	
 	printf "=> Show your windows and tabs from last time ...\n"
 	FIREFOX_PREF_KEY="browser.startup.page"
