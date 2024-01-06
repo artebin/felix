@@ -8,15 +8,17 @@
 - [x] Debian12: fix install rofimoji with python venv.
 - [x] Debian12: "error: externally-managed-environment" when using pip3, see <https://www.jeffgeerling.com/blog/2023/how-solve-error-externally-managed-environment-when-installing-pip3>. => use python venv is better anyway.
 - [x] Debian12: Cannot build pamixer, the recipe should be removed, I guess it wasn't working in Debian11 either.
+- [x] Execute xsession files only if openbox.
+- [x] Google maps search in firefox. => gmaps links fixed in more recent firefox, we should install firefox from unstable instead of firefox-esr. 
+- [x] Debian12: Fn keys make firefox headerbar blink, quite weird behavior. => it not doing it with recent firefox 121.
+- [x] Firefox no gtk scrollbar overlay by default.
 
-- [ ] Google maps search in firefox.
+- [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>, there is the logs of the battery in `/var/logs` provided by battery-stats. Also see <https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-power> where we can find the document for `/sys/class/power_supply/BAT0/`. Add a script to print the average discharging rate (slope), build a better plot with gnuplot.
+- [ ] Geany is quitting with shortcut CTRL+SHIFT+V which is boring because we can type that by mistake when copy/paste from terminal.
 - [ ] Target language for translate-notify in sxhkd.
 - [ ] Cannot read /dev/video0 facetimehd in mplayer without specify "-vo gl_nosw" or "-vo x11" ? <https://github.com/patjak/facetimehd/issues/198>.
-- [ ] Execute xsession files only if openbox.
-- [ ] Debian12: Fn keys make firefox headerbar blink, quite weird behavior.
 
 - [ ] Why xtrlock has a sticky bit?
-- [ ] Firefox no scrollbar overlay by default.
 - [ ] Default web browser not correct (see Formiko) can see that in firefox too.
 
 - [ ] <https://blog.programster.org/set-up-a-local-ubuntu-mirror-with-apt-mirror> could it work if current user is member of group apt-mirror?
@@ -129,7 +131,6 @@
 - [ ] Disable "Recent" category in Caja/Nautilus <https://askubuntu.com/questions/294901/how-to-disable-recent-files-folder-in-nautilus>.
 - [ ] Still have logs of the kernel printing in my console.
 - [ ] Too many logs for pcp in `/var/logs`.
-- [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>, there is the logs of the battery in `/var/logs`.
 - [ ] Set the DPI with formula from <https://www.kali.org/docs/general-use/fixing-dpi/>.
 - [ ] <https://stackoverflow.com/questions/43607461/google-chrome-disable-window-animations>.
 - [ ] Use the patch on openbox to ignore the hints, the bug is into the openbox tiling via rc.xml, we should do the tiling via an external tool.
