@@ -12,6 +12,8 @@
 - [x] Google maps search in firefox. => gmaps links fixed in more recent firefox, we should install firefox from unstable instead of firefox-esr. 
 - [x] Debian12: Fn keys make firefox headerbar blink, quite weird behavior. => it not doing it with recent firefox 121.
 - [x] Firefox no gtk scrollbar overlay by default.
+- [x] Debian12: use DejaVu for monospace font instead of Noto <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1028643#26>.
+- [x] Install nomacs.
 
 - [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>, there is the logs of the battery in `/var/logs` provided by battery-stats. Also see <https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-power> where we can find the document for `/sys/class/power_supply/BAT0/`. Add a script to print the average discharging rate (slope), build a better plot with gnuplot.
 - [ ] Geany is quitting with shortcut CTRL+SHIFT+V which is boring because we can type that by mistake when copy/paste from terminal.
@@ -27,7 +29,6 @@
 - [ ] Activate geany git diff by default.
 
 - [ ] Debian12: minimal felix?
-- [ ] Debian12: use DejaVu for monospace font instead of Noto <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1028643#26>.
 
 - [ ] respawn=no in pulseaudio conf to allow restart?
 - [ ] Improve sw so that we can use it a sleep-timer before starting a command.
@@ -58,7 +59,6 @@
 
 - [ ] Create a script for alt+print key shortcut `maim -s "${HOME}/Pictures/Screenshot-$(date +"%y%m%d-%H%M%S-%Z").png`.
 
-- [ ] Install nomacs from the sources.
 
 - [ ] Start pages <https://www.reddit.com/r/startpages/>.
 
