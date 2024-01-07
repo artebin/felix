@@ -14,31 +14,43 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_root_privileges
 
-# Should use xdg-settings instead below:
-#configure_default_applications_with_xdg_mime(){
-#	printf "Configuring default applications with xdg-mime ...\n"
-#	
-#	printf "  - Caja should be default file browser\n"
-#	xdg-mime default caja.desktop inode/directory
-#	
-#	printf "  - Claws Mail should be default mail client\n"
-#	xdg-mime default sylpheed-claws.desktop x-scheme-handler/mailto
-#	
-#	printf "\n"
-#}
-
-configure_default_applications_with_desktop_file_overridings(){
-	printf "Configuring default applications with desktop files overridings ...\n"
+function update_alternatives(){
+	printf "Update alternative x-www-browser=/usr/bin/firefox ...\n"
+	update-alternatives --set x-www-browser /usr/bin/firefox
 	
-	mkdir -p "${HOME}/.local/share/applications"
+	printf "Update alternative gnome-www-browser=/usr/bin/firefox ...\n"
+	update-alternatives --set gnome-www-browser /usr/bin/firefox
 	
-	printf "  - Caja: should to be started with a script assuring one instance per workspace\n"
-	cp "${RECIPE_DIRECTORY}/caja.desktop" "${HOME}/.local/share/applications"
+	printf "Update alternative x-terminal-emulator=/usr/bin/mate-terminal.wrapper ...\n"
+	update-alternatives --set x-terminal-emulator /usr/bin/mate-terminal.wrapper
 	
 	printf "\n"
 }
 
-configure_default_applications_with_mime_apps_list(){
+function xdg_settings(){
+	printf "xdg-settings --list\n"
+	xdg-settings --list
+	
+	printf "xdg-settings default-web-browser=firefox.desktop ...\n"
+	xdg-settings set default-web-browser firefox.desktop
+	
+	printf "\n"
+}
+
+function desktop_file_overridings(){
+	USER_LOCAL_SHARE_APPLICATION_DIRECTORY="${HOME}/.local/share/applications"
+	
+	if [[ ! -d "${USER_LOCAL_SHARE_APPLICATION_DIRECTORY}" ]]; then
+		mkdir -p "${USER_LOCAL_SHARE_APPLICATION_DIRECTORY}"
+	fi
+	
+	printf "Override caja.desktop: should to be started with --no-desktop ...\n"
+	cp "${RECIPE_DIRECTORY}/caja.desktop" "${USER_LOCAL_SHARE_APPLICATION_DIRECTORY}"
+	
+	printf "\n"
+}
+
+function configure_default_applications_with_mime_apps_list(){
 	printf "Configuring default applications with mimeapp.list ...\n"
 	
 	# We will work on a temporary file
@@ -49,14 +61,17 @@ configure_default_applications_with_mime_apps_list(){
 	
 	# MIME types are defined in /etc/mime.types
 	# Set default applications per MIME types:
-	#  text/*		Geany
-	#  application/.*-xml	Geany
-	#  application/.*+xml	Geany
-	#  application/.*_xml	Geany
-	#  application/.*pdf.*	Atril
-	#  image/* 		Eye of MATE
-	#  audio/*		VLC
-	#  video/*		VLC
+	#  text/*			Geany
+	#  application/.*-xml		Geany
+	#  application/.*+xml		Geany
+	#  application/.*_xml		Geany
+	#  application/.*pdf.*		Atril
+	#  image/* 			Eye of MATE
+	#  audio/*			VLC
+	#  video/*			VLC
+	#  x-scheme-handler/http	Firefox
+	#  x-scheme-handler/https	Firefox
+	
 	
 	while read LINE; do
 		MIME_TYPE=""
@@ -105,6 +120,14 @@ configure_default_applications_with_mime_apps_list(){
 			echo "${MIME_TYPE}=atril.desktop;" >>"${TEMP_MIME_APPS_LIST_FILE}"
 			continue
 		fi
+		if [[ "${MIME_TYPE}" == 'x-scheme-handler/http' ]]; then
+			echo "${MIME_TYPE}=firefox.desktop;" >>"${TEMP_MIME_APPS_LIST_FILE}"
+			continue
+		fi
+		if [[ "${MIME_TYPE}" == 'x-scheme-handler/https' ]]; then
+			echo "${MIME_TYPE}=firefox.desktop;" >>"${TEMP_MIME_APPS_LIST_FILE}"
+			continue
+		fi
 		#echo "${MIME_TYPE}=" >>"${TEMP_MIME_APPS_LIST_FILE}"
 	done < /etc/mime.types
 	
@@ -132,19 +155,25 @@ configure_default_applications_with_mime_apps_list(){
 	printf "\n"
 }
 
-#configure_default_applications_with_xdg_mime 2>&1 | tee -a "${RECIPE_LOG_FILE}"
-#EXIT_CODE="${PIPESTATUS[0]}"
-#if [[ "${EXIT_CODE}" -ne 0 ]]; then
-#	exit "${EXIT_CODE}"
-#fi
-
-configure_default_applications_with_desktop_file_overridings 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+configure_default_applications_with_mime_apps_list 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
 
-configure_default_applications_with_mime_apps_list 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+update_alternatives 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+EXIT_CODE="${PIPESTATUS[0]}"
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
+	exit "${EXIT_CODE}"
+fi
+
+xdg_settings 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+EXIT_CODE="${PIPESTATUS[0]}"
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
+	exit "${EXIT_CODE}"
+fi
+
+desktop_file_overridings 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
