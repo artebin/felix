@@ -143,6 +143,7 @@ hsetroot nitrogen
 parcellite
 ssh-askpass
 #alltray #Not available in Debian11
+xorg-dev xtrlock xprintidle # Dependencies for xlockscreen
 
 ##################################
 # Window manager & desktop tools
