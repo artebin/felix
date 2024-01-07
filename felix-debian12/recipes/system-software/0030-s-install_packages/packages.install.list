@@ -212,7 +212,7 @@ thunar
 uniutils
 vim-gtk3
 glogg
-geany geany-plugins
+#geany geany-plugins # Geany will be installed from sources
 meld kdiff3
 bless
 mediainfo
