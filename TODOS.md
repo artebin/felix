@@ -14,17 +14,20 @@
 - [x] Firefox no gtk scrollbar overlay by default.
 - [x] Debian12: use DejaVu for monospace font instead of Noto <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1028643#26>.
 - [x] Install nomacs.
+- [x] Replace youtube-dl by yt-dlp => just remove the recipe for youtube-db, yt-dlp is easy to install in ~/.local/bin it is just a script to download.
+- [x] `xdg-settings set default-web-browser firefox-esr.desktop` and <https://askubuntu.com/questions/16621/how-to-set-the-default-browser-from-the-command-line>.
+- [x] Default web browser not correct (see meld or Formiko) can see that in firefox too.
+- [x] Use update-alternatives for gnome-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
 
 - [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>, there is the logs of the battery in `/var/logs` provided by battery-stats. Also see <https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-power> where we can find the document for `/sys/class/power_supply/BAT0/`. Add a script to print the average discharging rate (slope), build a better plot with gnuplot.
-- [ ] Geany is quitting with shortcut CTRL+SHIFT+V which is boring because we can type that by mistake when copy/paste from terminal.
+- [ ] Geany is quitting with shortcut CTRL+SHIFT+V which is boring because we can type that by mistake when copy/paste from terminal => this is because of a known and fixed bug <https://github.com/geany/geany/issues/2813> but we should fix the install_geany_from_sources recipe.
 - [ ] Target language for translate-notify in sxhkd.
 - [ ] Cannot read /dev/video0 facetimehd in mplayer without specify "-vo gl_nosw" or "-vo x11" ? <https://github.com/patjak/facetimehd/issues/198>.
 
 - [ ] Why xtrlock has a sticky bit?
-- [ ] Default web browser not correct (see Formiko) can see that in firefox too.
 
-- [ ] <https://blog.programster.org/set-up-a-local-ubuntu-mirror-with-apt-mirror> could it work if current user is member of group apt-mirror?
 - [ ] <https://github.com/jalopezg-git/openbox/tree/enable-full-GTK-CSD>.
+- [ ] Use <https://github.com/lah7/gtk3-classic>.
 
 - [ ] Activate geany git diff by default.
 
@@ -32,10 +35,6 @@
 
 - [ ] respawn=no in pulseaudio conf to allow restart?
 - [ ] Improve sw so that we can use it a sleep-timer before starting a command.
-
-- [ ] Use <https://github.com/lah7/gtk3-classic>.
-
-- [ ] Replace youtube-dl by yt-dlp.
 
 - [ ] Add a button in notification bubble of translate-notify for opening the translation into a text editor.
 - [ ] "gtk-enable-animations=0" see <https://askubuntu.com/questions/903160/turn-off-smooth-scrolling-in-gtk3>
@@ -63,7 +62,6 @@
 
 - [ ] Use Hugo or Jekyll for having a local startpage saved into a git repo.
 
-- [ ] `xdg-settings set default-web-browser firefox-esr.desktop` and <https://askubuntu.com/questions/16621/how-to-set-the-default-browser-from-the-command-line>.
 
 - [ ] Disable flat volumes in debian <https://www.reddit.com/r/debian/comments/3mzkjz/pulseaudio_flat_volumes_madness/>.
 
@@ -148,7 +146,6 @@
 - [ ] Convert any images to a color palette <https://ign.schrodinger-hat.it/color-schemes>.
 - [ ] Add caja action "Open in geany new instance", i.e. new window.
 - [ ] Openbox pipe menu for disable/enable the touchscreen, see <https://mastizada.com/blog/disable-touchscreen-in-gnulinux/>.
-- [ ] Use update-alternatives for gnome-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
 
 - [ ] gucharmap to install and register in openbox menu.
 - [ ] <https://github.com/jeremija/unipicker>.
