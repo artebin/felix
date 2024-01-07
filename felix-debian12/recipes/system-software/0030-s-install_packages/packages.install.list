@@ -203,7 +203,6 @@ xterm mate-terminal
 ################
 # File manager
 ################
-thunar
 #caja caja-actions caja-extensions-common caja-open-terminal # Caja will be installed from sources
 
 ########################################
