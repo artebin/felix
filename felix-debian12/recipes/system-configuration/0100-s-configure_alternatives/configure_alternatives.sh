@@ -26,6 +26,11 @@ configure_alternatives(){
 	update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/firefox 900
 	update-alternatives --set x-www-browser /usr/bin/firefox
 	printf "\n"
+	
+	printf "Setting firefox as gnome-www-browser...\n"
+	update-alternatives --install /usr/bin/gnome-www-browser gnome-www-browser /usr/bin/firefox 900
+	update-alternatives --set gnome-www-browser /usr/bin/firefox
+	printf "\n"
 }
 
 configure_alternatives 2>&1 | tee -a "${RECIPE_LOG_FILE}"
