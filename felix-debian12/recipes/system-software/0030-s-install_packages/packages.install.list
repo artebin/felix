@@ -142,7 +142,6 @@ trash-cli
 hsetroot nitrogen
 parcellite
 ssh-askpass
-#alltray #Not available in Debian11
 xorg-dev xtrlock xprintidle # Dependencies for xlockscreen
 
 ##################################
@@ -171,12 +170,10 @@ gparted
 seahorse
 zenity
 speech-dispatcher
-#mugshot #Not available in Debian11
 
 ###################
 # Desktop theming
 ###################
-#adwaita-icon-theme-full #Not available in Debian11
 blackbird-gtk-theme
 bluebird-gtk-theme
 greybird-gtk-theme
@@ -207,13 +204,13 @@ xterm mate-terminal
 # File manager
 ################
 thunar
-#caja caja-actions caja-extensions-common caja-open-terminal
+#caja caja-actions caja-extensions-common caja-open-terminal # Caja will be installed from sources
 
 ########################################
 # File reader/editor & file diff tools
 ########################################
 uniutils
-#vim-gtk
+vim-gtk3
 glogg
 geany geany-plugins
 meld kdiff3
@@ -249,7 +246,7 @@ unp
 # Image viewer, browser, manipulation
 #######################################
 webp webp-pixbuf-loader
-libimage-exiftool-perl #for exiftool
+libimage-exiftool-perl # Provides exiftool
 imagemagick
 eom gpicview pqiv
 shotwell
@@ -257,7 +254,6 @@ gimp gimp-data-extras
 inkscape
 gpick
 nomacs
-#icc-profiles
 
 ###############
 # Web browser
@@ -269,7 +265,7 @@ chromium
 # PulseAudio
 ##############
 pulseaudio
-#pulseaudio-dlna
+pulseaudio-dlna
 pulseaudio-equalizer
 pulseaudio-module-bluetooth
 pulseaudio-module-lirc
@@ -299,7 +295,6 @@ espeak
 # Chat and webcam
 ###################
 hexchat
-@--no-install-recommends@ empathy telepathy-haze pidgin-sipe
 
 ################
 # Office suite
@@ -313,8 +308,7 @@ csvkit csvkit-doc
 libxml2-utils xmlstarlet tidy xmlto
 jq
 gnuplot
-#plotdrop #Not available in Debian11
-#mmark #Not available in Debian11
+mmark
 
 #######
 # VCS
