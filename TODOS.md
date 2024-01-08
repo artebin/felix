@@ -18,13 +18,17 @@
 - [x] `xdg-settings set default-web-browser firefox-esr.desktop` and <https://askubuntu.com/questions/16621/how-to-set-the-default-browser-from-the-command-line>.
 - [x] Default web browser not correct (see meld or Formiko) can see that in firefox too.
 - [x] Use update-alternatives for gnome-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
+- [x] We can certainly delete 0080-u-configure_xfce4_thunar.
+- [x] Add mugshot to the openbox menu.
 
 - [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>, there is the logs of the battery in `/var/logs` provided by battery-stats. Also see <https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-power> where we can find the document for `/sys/class/power_supply/BAT0/`. Add a script to print the average discharging rate (slope), build a better plot with gnuplot.
 - [ ] Geany is quitting with shortcut CTRL+SHIFT+V which is boring because we can type that by mistake when copy/paste from terminal => this is because of a known and fixed bug <https://github.com/geany/geany/issues/2813> but we should fix the install_geany_from_sources recipe.
 - [ ] Target language for translate-notify in sxhkd.
 - [ ] Cannot read /dev/video0 facetimehd in mplayer without specify "-vo gl_nosw" or "-vo x11" ? <https://github.com/patjak/facetimehd/issues/198>.
 
-- [ ] Why xtrlock has a sticky bit?
+- [ ] Add a file ~/.config/felix.conf to be sourced in .xsessionrc, it can contain var for translate-notify etc.
+- [ ] Add a button in notification bubble of translate-notify for opening the translation into a text editor.
+- [ ] translate-notify cannot be easily configured.
 
 - [ ] <https://github.com/jalopezg-git/openbox/tree/enable-full-GTK-CSD>.
 - [ ] Use <https://github.com/lah7/gtk3-classic>.
@@ -36,7 +40,6 @@
 - [ ] respawn=no in pulseaudio conf to allow restart?
 - [ ] Improve sw so that we can use it a sleep-timer before starting a command.
 
-- [ ] Add a button in notification bubble of translate-notify for opening the translation into a text editor.
 - [ ] "gtk-enable-animations=0" see <https://askubuntu.com/questions/903160/turn-off-smooth-scrolling-in-gtk3>
 - [ ] Disable alert sound from effing GNOME <https://www.reddit.com/r/gnome/comments/jtfrzp/disabling_beep_on_the_end_of_line/>.
 
@@ -73,7 +76,6 @@
 - [ ] Can we find a command to list the URLs opened in firerox.
 - [ ] Bash alias for printing firefox memory footprint with <https://unix.stackexchange.com/questions/288589/get-chromes-total-memory-usage> and `smem -tkP firefox`.
 - [ ] should condition xsession.d to the window manager.
-- [ ] translate-notify cannot be easily configured.
 - [ ] PrintScreen is not working on the Dell Precision 7530 see <https://unix.stackexchange.com/questions/669853/printscreen-key-not-registering-in-arch-linux>.
 - [ ] Set virtual desktop name with <https://superuser.com/questions/508128/is-it-possible-to-set-the-name-of-the-current-virtual-desktop-via-commandline>.
 - [ ] use github repo xlockscreen in the recipe.
@@ -95,7 +97,6 @@
 
 - [ ] PrtScr does not work on the Dell Precision.
 
-- [ ] We can certainly delete 0080-u-configure_xfce4_thunar.
 
 - [ ] Add an openbox menu entry to indent HTML with "tidy -i" with as copy/in place like the other identation scripts.
 - [ ] Should add an openbox menu for the TODOs, it would start a geany with AllTray => better than one TODOS file opened with autostart.
@@ -133,7 +134,7 @@
 - [ ] Keyboard shortcut to make all visible window undecorated (or all windows in the current desktop) + inverted action.
 - [ ] We miss a keyboard shorcut to make appear the window menu (usefull when the window is undecorated).
 
-- [ ] Recipe to install Herbe <https://github.com/dudik/herbe>.
+- [ ] Recipe to install Herbe <https://github.com/dudik/herbe> and commit our changes into a fork.
 
 - [ ] Install <https://github.com/sharkdp/pastel> for processing colors from the command line.
 - [ ] The ordering of the files in caja is wrong.
@@ -148,8 +149,6 @@
 - [ ] Openbox pipe menu for disable/enable the touchscreen, see <https://mastizada.com/blog/disable-touchscreen-in-gnulinux/>.
 
 - [ ] gucharmap to install and register in openbox menu.
-- [ ] <https://github.com/jeremija/unipicker>.
-- [ ] Add emoji to the terminal (for nb) => use noto font as default font in X and console.
 - [ ] Add Noto Color Emojis or another emojis fonts.
 
 - [ ] dotfiles for meld show line numbers, highlight current line, show whitspaces and use syntax highlighting tango.
@@ -203,7 +202,6 @@
 - [ ] tmux instead of screen.
 - [ ] Always active dbus interface in VLC.
 - [ ] Add an action "Edit screenshot with PowerPoint"
-- [ ] Add mugshot to the openbox menu or find another application.
 - [ ] Add network scan command in bash aliases.
 - [ ] Seconde recipe should check depot in sources.list, recipe for installing software may fail if not.
 - [ ] Update gtk configuration with the light variant in theme name and add "gtk-application-prefer-dark-theme=false". See <https://unix.stackexchange.com/questions/14129/gtk-enable-set-dark-theme-on-a-per-application-basis>.
