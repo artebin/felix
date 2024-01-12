@@ -20,11 +20,11 @@
 - [x] Use update-alternatives for gnome-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
 - [x] We can certainly delete 0080-u-configure_xfce4_thunar.
 - [x] Add mugshot to the openbox menu.
+- [x] Add command for xml-unindent.
 
 - [ ] Install and configure autorandr <https://stackoverflow.com/questions/73671674/how-to-auto-run-script-after-applying-arandr-setting>.
 - [ ] Add a script for start/stop docker.service docker.socket <https://askubuntu.com/questions/766318/disable-docker-autostart-at-boot>.
 - [ ] Rename seconds2date and date2seconds and move them to .local/bin.
-- [ ] Add command for un-indent.
 - [ ] Push changes in herbe.
 - [ ] Rename maim_screeshot.sh in .local/bin and connect it to PrtScr key in sxhkd.
 - [ ] #DCDCDC colored font for tint2.

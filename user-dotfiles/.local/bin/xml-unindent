@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+if [[ "${#}" == 0 ]]; then
+	printf "Usage: ${0} FILE...\n"
+	exit 1
+fi
+
+for FILE in "${@}"; do
+	if [[ ! -f "${FILE}" ]]; then
+		printf "!ERROR! Cannot find FILE[%s]\n" "${FILE}"
+		exit 1
+	fi
+	# Use perl to match the newline characters
+	# Cannot use "sed -z" making the line delimitation being \0 but
+	# then there is line size limitation <https://www.gnu.org/software/sed/manual/html_node/Limitations.html>
+	cat "${FILE}" | sed 's/^[[:blank:]]*//g' | perl -p -e 's/>\n/>/'
+done
