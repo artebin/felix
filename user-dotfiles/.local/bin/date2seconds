@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [[ "${#}" -gt 1 ]]; then
+	printf "Usage: ${0} [DATE]\n"
+	exit 1
+fi
+
+if [[ "${#}" == 0 ]]; then
+	date '+%s'
+else
+	date -d "${1}" '+%s'
+fi

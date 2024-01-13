@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+if [[ "${#}" -ne 1 ]]; then
+	printf "Usage: ${0} SECONDS\n"
+	exit 1
+fi
+
+date -u -d @"${1}" '+%y-%m-%d %H:%M:%S%z'

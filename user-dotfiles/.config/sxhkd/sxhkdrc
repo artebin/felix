@@ -8,7 +8,7 @@ Print
 	mate-screenshot -i
 
 alt + Print
-	~/.local/bin/maim_screenshot.sh
+	maim-screenshot
 
 ctrl + alt + q
 	xkill
