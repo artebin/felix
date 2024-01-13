@@ -21,6 +21,7 @@
 - [x] We can certainly delete 0080-u-configure_xfce4_thunar.
 - [x] Add mugshot to the openbox menu.
 
+- [ ] Configure gtk4 system wide.
 - [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>, there is the logs of the battery in `/var/logs` provided by battery-stats. Also see <https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-power> where we can find the document for `/sys/class/power_supply/BAT0/`. Add a script to print the average discharging rate (slope), build a better plot with gnuplot.
 - [ ] Geany is quitting with shortcut CTRL+SHIFT+V which is boring because we can type that by mistake when copy/paste from terminal => this is because of a known and fixed bug <https://github.com/geany/geany/issues/2813> but we should fix the install_geany_from_sources recipe.
 - [ ] Target language for translate-notify in sxhkd.
