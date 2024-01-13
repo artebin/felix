@@ -314,7 +314,8 @@ mmark
 # VCS
 #######
 subversion kdesvn
-git git-gui giggle git-cola
+git git-gui giggle
+#git-cola # Install will be installed git-cola from sources 
 mercurial
 
 #####################

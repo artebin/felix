@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+~/.local/lib/git-cola/bin/git-cola
