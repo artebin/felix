@@ -19,11 +19,11 @@ install_geany_from_sources(){
 	
 	# Install dependencies
 	printf "Installing dependencies...\n"
-	install_package_if_not_installed "intltool" "libwebkit2gtk-4.0-dev" "libgtkspell3-3-dev"
+	install_package_if_not_installed "intltool" "libwebkit2gtk-4.0-dev" "libvte-2.91-dev" "libgtkspell3-3-dev" "libgit2-dev"
 	
 	# Clone Geany git repository
 	cd "${RECIPE_DIRECTORY}"
-	git clone https://github.com/geany/geany
+	git clone https://git.geany.org/git/geany
 	
 	# Compile and install Geany
 	printf "Compiling and installing Geany...\n"
@@ -36,7 +36,7 @@ install_geany_from_sources(){
 	
 	# Clone Geany plugins git repository
 	cd "${RECIPE_DIRECTORY}"
-	git clone https://github.com/geany/geany-plugins
+	git clone https://git.geany.org/git/geany-plugins
 	
 	# Compile and install Geany plugins
 	printf "Compiling and installing Geany plugins\n"
