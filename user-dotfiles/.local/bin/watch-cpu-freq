@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+watch "(lscpu | grep MHz)"
