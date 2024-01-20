@@ -25,6 +25,7 @@
 - [x] Rename seconds2date and date2seconds and move them to .local/bin.
 - [x] Geany is quitting with shortcut CTRL+SHIFT+V which is boring because we can type that by mistake when copy/paste from terminal => this is because of a known and fixed bug <https://github.com/geany/geany/issues/2813> but we should fix the install_geany_from_sources recipe.
 
+- [ ] Notification icon telling about reduced CPU freq?
 - [ ] Install and configure autorandr <https://stackoverflow.com/questions/73671674/how-to-auto-run-script-after-applying-arandr-setting>.
 - [ ] Add a script for start/stop docker.service docker.socket <https://askubuntu.com/questions/766318/disable-docker-autostart-at-boot>.
 - [ ] Push changes in herbe.
