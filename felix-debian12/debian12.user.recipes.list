@@ -19,5 +19,4 @@ recipes/user/0140-u-configure_xdg_autostart
 recipes/user/0270-s-install_rofimoji
 recipes/user/0280-u-configure_dejavu_as_default_monospace_font
 recipes/user/0290-u-install_git_cola
-recipes/user/0300-u-install_autorandr
 recipes/user/9999-u-configure_default_applications
