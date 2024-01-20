@@ -16,7 +16,7 @@ recipes/user/0110-u-configure_firefox_default_profile
 recipes/user/0120-u-start_vnc_server_at_login
 recipes/user/0130-u-install_felix_themes
 recipes/user/0140-u-configure_xdg_autostart
-recipes/user/0270-s-install_rofimoji
+recipes/user/0270-u-install_rofimoji
 recipes/user/0280-u-configure_dejavu_as_default_monospace_font
 recipes/user/0290-u-install_git_cola
 recipes/user/9999-u-configure_default_applications
