@@ -253,7 +253,6 @@ shotwell
 gimp gimp-data-extras
 inkscape
 gpick
-nomacs
 
 ###############
 # Web browser
@@ -265,7 +264,6 @@ chromium
 # PulseAudio
 ##############
 pulseaudio
-pulseaudio-dlna
 pulseaudio-equalizer
 pulseaudio-module-bluetooth
 pulseaudio-module-lirc
