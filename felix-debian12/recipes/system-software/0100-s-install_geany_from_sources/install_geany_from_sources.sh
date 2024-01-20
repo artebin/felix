@@ -19,7 +19,7 @@ install_geany_from_sources(){
 	
 	# Install dependencies
 	printf "Installing dependencies...\n"
-	install_package_if_not_installed "intltool" "libwebkit2gtk-4.0-dev" "libvte-2.91-dev" "libgtkspell3-3-dev" "libgit2-dev"
+	install_package_if_not_installed "intltool" "libwebkit2gtk-4.0-dev" "libvte-2.91-dev" "libgtkspell3-3-dev" "libgit2-dev" "docbook-utils"
 	
 	# Clone Geany git repository
 	cd "${RECIPE_DIRECTORY}"
