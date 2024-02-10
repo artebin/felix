@@ -1,35 +1,14 @@
 # TODOS
 
-- [x] Debian12: cannot build arandr but we do not need to, now 0.1.11 is in the debian depo.
-- [x] Two ways to fix polkit: (1) mate-polkit or (2) policykit-1-gnome.
-- [x] gtk3.css hide the headerbar.title was for Remmina but cannot use it anymore because of Firefox using the headerbar for tabs.
-- [x] User Background in lightdm does not work => maybe it was running as root before but not anymore? Solution is to g+x on the home folder and add lightdm to the user group.
-- [x] Install members by default.
-- [x] Debian12: fix install rofimoji with python venv.
-- [x] Debian12: "error: externally-managed-environment" when using pip3, see <https://www.jeffgeerling.com/blog/2023/how-solve-error-externally-managed-environment-when-installing-pip3>. => use python venv is better anyway.
-- [x] Debian12: Cannot build pamixer, the recipe should be removed, I guess it wasn't working in Debian11 either.
-- [x] Execute xsession files only if openbox.
-- [x] Google maps search in firefox. => gmaps links fixed in more recent firefox, we should install firefox from unstable instead of firefox-esr. 
-- [x] Debian12: Fn keys make firefox headerbar blink, quite weird behavior. => it not doing it with recent firefox 121.
-- [x] Firefox no gtk scrollbar overlay by default.
-- [x] Debian12: use DejaVu for monospace font instead of Noto <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1028643#26>.
-- [x] Install nomacs.
-- [x] Replace youtube-dl by yt-dlp => just remove the recipe for youtube-db, yt-dlp is easy to install in ~/.local/bin it is just a script to download.
-- [x] `xdg-settings set default-web-browser firefox-esr.desktop` and <https://askubuntu.com/questions/16621/how-to-set-the-default-browser-from-the-command-line>.
-- [x] Default web browser not correct (see meld or Formiko) can see that in firefox too.
-- [x] Use update-alternatives for gnome-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
-- [x] We can certainly delete 0080-u-configure_xfce4_thunar.
-- [x] Add mugshot to the openbox menu.
-- [x] Add command for xml-unindent.
-- [x] Rename maim_screeshot.sh in .local/bin.
-- [x] Rename seconds2date and date2seconds and move them to .local/bin.
-- [x] Geany is quitting with shortcut CTRL+SHIFT+V which is boring because we can type that by mistake when copy/paste from terminal => this is because of a known and fixed bug <https://github.com/geany/geany/issues/2813> but we should fix the install_geany_from_sources recipe.
-
+- [ ] background color tint2 considering battery power?
 - [ ] Notification icon telling about reduced CPU freq?
+- [ ] Remmina do not show icon tray by default.
 - [ ] Install and configure autorandr <https://stackoverflow.com/questions/73671674/how-to-auto-run-script-after-applying-arandr-setting>.
 - [ ] Add a script for start/stop docker.service docker.socket <https://askubuntu.com/questions/766318/disable-docker-autostart-at-boot>.
 - [ ] Push changes in herbe.
 - [ ] #DCDCDC colored font for tint2.
+
+- [ ] Script for restart_tint2 is broken.
 
 - [ ] Configure gtk4 system wide.
 - [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>, there is the logs of the battery in `/var/logs` provided by battery-stats. Also see <https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-power> where we can find the document for `/sys/class/power_supply/BAT0/`. Add a script to print the average discharging rate (slope), build a better plot with gnuplot.
@@ -74,7 +53,6 @@
 - [ ] Start pages <https://www.reddit.com/r/startpages/>.
 
 - [ ] Use Hugo or Jekyll for having a local startpage saved into a git repo.
-
 
 - [ ] Disable flat volumes in debian <https://www.reddit.com/r/debian/comments/3mzkjz/pulseaudio_flat_volumes_madness/>.
 
@@ -296,6 +274,30 @@
 
 # DONE
 
+- [x] Debian12: cannot build arandr but we do not need to, now 0.1.11 is in the debian depo.
+- [x] Two ways to fix polkit: (1) mate-polkit or (2) policykit-1-gnome.
+- [x] gtk3.css hide the headerbar.title was for Remmina but cannot use it anymore because of Firefox using the headerbar for tabs.
+- [x] User Background in lightdm does not work => maybe it was running as root before but not anymore? Solution is to g+x on the home folder and add lightdm to the user group.
+- [x] Install members by default.
+- [x] Debian12: fix install rofimoji with python venv.
+- [x] Debian12: "error: externally-managed-environment" when using pip3, see <https://www.jeffgeerling.com/blog/2023/how-solve-error-externally-managed-environment-when-installing-pip3>. => use python venv is better anyway.
+- [x] Debian12: Cannot build pamixer, the recipe should be removed, I guess it wasn't working in Debian11 either.
+- [x] Execute xsession files only if openbox.
+- [x] Google maps search in firefox. => gmaps links fixed in more recent firefox, we should install firefox from unstable instead of firefox-esr. 
+- [x] Debian12: Fn keys make firefox headerbar blink, quite weird behavior. => it not doing it with recent firefox 121.
+- [x] Firefox no gtk scrollbar overlay by default.
+- [x] Debian12: use DejaVu for monospace font instead of Noto <https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1028643#26>.
+- [x] Install nomacs.
+- [x] Replace youtube-dl by yt-dlp => just remove the recipe for youtube-db, yt-dlp is easy to install in ~/.local/bin it is just a script to download.
+- [x] `xdg-settings set default-web-browser firefox-esr.desktop` and <https://askubuntu.com/questions/16621/how-to-set-the-default-browser-from-the-command-line>.
+- [x] Default web browser not correct (see meld or Formiko) can see that in firefox too.
+- [x] Use update-alternatives for gnome-www-browser <https://askubuntu.com/questions/191696/whats-the-difference-between-x-www-browser-and-gnome-www-browser>.
+- [x] We can certainly delete 0080-u-configure_xfce4_thunar.
+- [x] Add mugshot to the openbox menu.
+- [x] Add command for xml-unindent.
+- [x] Rename maim_screeshot.sh in .local/bin.
+- [x] Rename seconds2date and date2seconds and move them to .local/bin.
+- [x] Geany is quitting with shortcut CTRL+SHIFT+V which is boring because we can type that by mistake when copy/paste from terminal => this is because of a known and fixed bug <https://github.com/geany/geany/issues/2813> but we should fix the install_geany_from_sources recipe.
 - [x] Hide gtk3 duplicated window title because of nocsd <https://github.com/PCMan/gtk3-nocsd/issues/19>.
 - [x] Add pandoc (markdown to html).
 - [x] Add csstidy => the tool seems to change the css, do not use it.
