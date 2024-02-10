@@ -1,1 +1,9 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
+
+# The shell used to execute this script is the one used by the graphical login session manager.
+
+if [ -d "${HOME}"/.config/openbox/autostart.d ]; then
+	for FILE in "${HOME}"/.config/openbox/autostart.d/*.sh; do
+		. "${FILE}"
+	done
+fi
