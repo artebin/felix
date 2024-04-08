@@ -1,5 +1,11 @@
 # TODOS
 
+- [ ] Icon for arandr?
+- [ ] rofi for airport code, country code, phone prefix.
+- [ ] Caja scripts should starts command in background else it might freeze the GUI (like indenting more than 1GB large XML file).
+- [ ] "tidy -xml -i -q edis-mil_240214_000001.log >edis-mil_240214_000001.log.xml" works while xmlstartlet cannot.
+- [ ] Make the recipe for having debian testing always installed with the apt pref and install firefox with it (no firefox-esr).
+- [ ] Should not use .xsessionrc because WM name is not known at the time of execution and also it is debian specific. We should use openbox autostart instead.
 - [ ] background color tint2 considering battery power?
 - [ ] Notification icon telling about reduced CPU freq?
 - [ ] Remmina do not show icon tray by default.
