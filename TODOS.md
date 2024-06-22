@@ -1,7 +1,15 @@
 # TODOS
 
+- [ ] Openbox pipe menu for resizing image (as a copy? ).
+- [ ] Can we use <https://github.com/svenstaro/rofi-calc> and assign it to the "Calc" key?
+- [ ] Rififi remmina should rebuild the connection.conf file only as an option. We should have a script on the side for manually rebuilding the file.
+- [ ] Review bash script for data conversion date2seconds and seconds2date. Also add a 2dates2seconds and 2dates2days for computing durations.
+- [ ] Bash script for altitude conversion ft, meters, flight levels.
+- [ ] Bash alias for printing "DIR_NAME FILE_COUNT DISK_SIZE", something like printf "%-20s %-20s %-20s\n" "$1" "$(ls -1 "$1"|wc -l)" "$(du -h "$1"|cut -f 1)". and then we can easily use this in a find -exec.
+- [ ] Bash alias revert eclipse workspace/.metadata/.plugins/org.eclipse.e4.workbench.xmi.
+- [ ] add a script for adding a start/end element to an XML file and indent it.
 - [ ] Icon for arandr?
-- [ ] rofi for airport code, country code, phone prefix.
+- [ ] rofi for airport code, country code, phone prefix => could use <https://github.com/ip2location/ip2location-iata-icao>.
 - [ ] Caja scripts should starts command in background else it might freeze the GUI (like indenting more than 1GB large XML file).
 - [ ] "tidy -xml -i -q edis-mil_240214_000001.log >edis-mil_240214_000001.log.xml" works while xmlstartlet cannot.
 - [ ] Make the recipe for having debian testing always installed with the apt pref and install firefox with it (no firefox-esr).
