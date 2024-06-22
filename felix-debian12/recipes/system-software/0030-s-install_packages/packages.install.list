@@ -329,6 +329,7 @@ sassc
 libgtk-3-dev gtk-3-examples
 libgtk2.0-dev gtk2.0-examples
 libxml2-dev libxml2-doc
+libu2f-udev #Universal 2nd Factor protocol - required by many projects at compile time.
 golang
 
 ##############
