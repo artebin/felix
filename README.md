@@ -1,10 +1,10 @@
 # felix
 
-  - Debian 11
+  - Debian 12
   - Login Display Manager: LightDM
   - Window manager: Openbox
   - Bar: Tint2
-  - Wallpapers settings with Nitrogen for handling multiple displays. There is a trigger when closing Nitrogen for setting AccountService.BackgroundFile and let LightDM paint the user wallpaper.
+  - Wallpapers settings with Nitrogen for handling multiple monitors. There is a trigger when closing Nitrogen for setting AccountService.BackgroundFile and let LightDM paint the user wallpaper.
   - Desktop Notifications: xfce4-notifyd
   - Font Openbox+tint2: Droid Sans Mono Nerd
   - Font GTK2/3+QT: Roboto
