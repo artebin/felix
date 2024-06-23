@@ -14,8 +14,8 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-set_locales(){
-	printf "Setting the locales ...\n"
+function generate_and_set_locales(){
+	printf "Generate and set the locales...\n"
 	for LOCALE in ${LOCALES_TO_GENERATE}; do
 		printf "  ${LOCALE}%s\n"
 		update_line_based_on_prefix "# ${LOCALE}" "${LOCALE} UTF-8" /etc/locale.gen 
@@ -25,7 +25,7 @@ set_locales(){
 	locale-gen
 	printf "\n"
 	
-	printf "Updating /etc/default/locale ...\n"
+	printf "Update /etc/default/locale...\n"
 	update-locale LANGUAGE="${LOCALE_TO_USE_LANGUAGE}"
 	update-locale LANG="${LOCALE_TO_USE_LANG}"
 	update-locale LC_ALL="${LOCALE_TO_USE_LC_ALL}"
@@ -48,7 +48,9 @@ set_locales(){
 	printf "\n"
 }
 
-set_locales 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+cd "${RECIPE_DIRECTORY}"
+
+generate_and_set_locales 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

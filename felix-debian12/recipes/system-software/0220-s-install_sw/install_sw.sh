@@ -14,36 +14,24 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-install_dex_from_sources(){
-	echo "Installing dex from sources ..."
-	
-	# Install dependencies
-	install_package_if_not_installed "python3-sphinx"
-	
-	# Clone git repository
+function install_sw_from_sources(){
+	printf "Install sw from <https://github.com/artebin/sw>...\n"
 	cd "${RECIPE_DIRECTORY}"
-	git clone https://github.com/jceb/dex
+	git clone https://github.com/artebin/sw
+	cp sw/sw /usr/local/bin
 	
-	# Patch dex for supporting 'Terminal=(true|false)' property in .desktop files
-	# See <https://github.com/jceb/dex/issues/33>
-	cd dex
-	patch dex < ../fix_terminal_property.patch
-	
-	# Install
-	make install
-	
-	# Cleaning
+	# Cleanup
 	cd "${RECIPE_DIRECTORY}"
-	rm -fr dex
+	rm -fr sw
 	
-	echo
+	printf "\n"
 }
 
-
-
 cd "${RECIPE_DIRECTORY}"
-install_dex_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+
+# sw is not in the Debian repository
+install_sw_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi

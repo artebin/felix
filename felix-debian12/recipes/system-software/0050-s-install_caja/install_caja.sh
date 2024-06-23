@@ -15,17 +15,13 @@ exit_if_not_bash
 exit_if_has_not_root_privileges
 
 function install_caja(){
-	printf "Installing caja...\n"
-	
-	DEPENDENCIES=(  "caja"
-			"caja-extensions-common" )
-	install_package_if_not_installed "${DEPENDENCIES[@]}"
-	
+	printf "Install caja...\n"
+	install_package_if_not_installed "caja" "caja-extensions-common"
 	printf "\n"
 }
 
 function install_caja_from_sources(){
-	printf "Installing dependencies...\n"
+	printf "Install required dependencies to build caja...\n"
 	DEPENDENCIES=(  "gtk-doc-tools"
 			"gobject-introspection"
 			"autoconf-archive"
@@ -36,6 +32,7 @@ function install_caja_from_sources(){
 			"libgstreamer-plugins-base1.0-dev" )
 	install_package_if_not_installed "${DEPENDENCIES[@]}"
 	
+	# Create required directories
 	if [[ ! -d "/usr/share/aclocal" ]]; then
 		mkdir -p "/usr/share/aclocal"
 	fi
@@ -43,15 +40,15 @@ function install_caja_from_sources(){
 		mkdir -p "/usr/local/share/aclocal"
 	fi
 	
-	printf "Installing mate-common from sources...\n"
+	printf "Build and install mate-common from <https://github.com/mate-desktop/mate-common>...\n"
 	cd "${RECIPE_DIRECTORY}"
-	git clone "https://github.com/mate-desktop/mate-common"
+	git clone https://github.com/mate-desktop/mate-common
 	cd mate-common
 	ACLOCAL_FLAGS="-I /usr/share/aclocal -I /usr/local/share/aclocal" ./autogen.sh --prefix=/usr
 	make
 	make install
 	
-	printf "Installing caja from sources...\n"
+	printf "Build and install caja from <https://github.com/mate-desktop/caja>...\n"
 	cd "${RECIPE_DIRECTORY}"
 	git clone --recurse-submodules https://github.com/mate-desktop/caja.git
 	cd caja
@@ -59,9 +56,9 @@ function install_caja_from_sources(){
 	make
 	make install
 	
-	printf "Installing caja-extensions from sources...\n"
+	printf "Build and install caja-extensions from <https://github.com/mate-desktop/caja-extensions>...\n"
 	cd "${RECIPE_DIRECTORY}"
-	git clone "https://github.com/mate-desktop/caja-extensions"
+	git clone https://github.com/mate-desktop/caja-extensions
 	cd caja-extensions
 	ACLOCAL_FLAGS="-I /usr/share/aclocal -I /usr/local/share/aclocal" ./autogen.sh --prefix=/usr
 	make

@@ -14,30 +14,25 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-install_sxhkd_from_sources(){
-	echo "Installing sxhkd from sources ..."
-	
-	# Install dependencies
-	install_package_if_not_installed "libxcb-util0-dev" "libxcb-keysyms1-dev"
-	
-	# Clone git repository
-	git clone https://github.com/baskerville/sxhkd
-	
-	# Build and install
-	cd sxhkd
+function install_light_locker_settings_from_sources(){
+	printf "Build and install Light Locker Settings from <https://github.com/artebin/light-locker-settings>...\n"
+	cd "${RECIPE_DIRECTORY}"
+	git clone https://github.com/artebin/light-locker-settings
+	cd light-locker-settings
+	./configure
 	make
 	make install
-	
-	# Cleaning
+
+	# Cleanup
 	cd "${RECIPE_DIRECTORY}"
-	rm -fr sxhkd
-	
-	echo
+	rm -fr light-locker-settings
+
+	printf "\n"
 }
 
-cd "${RECIPE_DIRECTORY}"
-install_sxhkd_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+# Light Locker Settings is not in the Debian repository
+install_light_locker_settings_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
-if [ "${EXIT_CODE}" -ne 0 ]; then
+if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi

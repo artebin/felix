@@ -14,15 +14,20 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-install_fdpowermon_from_sources(){
-	echo "Install fdpowermon from sources ..."
-	
-	# Remove packages 'fdpowermon' and 'fdpowermon-icons' if already 
-	# installed.
+function install_fdpowermon(){
+	printf "Install fdpowermon...\n"
+	install_package_if_not_installed "fdpowermon"
+	printf "\n"
+}
+
+function install_fdpowermon_from_sources(){
+	printf "Remove packages 'fdpowermon' and 'fdpowermon-icons' if already installed...\n"
 	remove_with_purge_package_if_installed "fdpowermon" "fdpowermon-icons"
 	
-	# Install dependencies
+	printf "Install required dependencies to build fdpowermon...\n"
 	install_package_if_not_installed "acpi" "devscripts" "libgtk3-perl" "oxygen-icon-theme"
+	
+	printf "Build and install fdpowermon from <https://github.com/yoe/fdpowermon>...\n"
 	
 	# Create a directory 'fdpowermon-build' because we will call
 	# 'dpkg-buildpackage' and its output directory is always the
@@ -48,16 +53,25 @@ install_fdpowermon_from_sources(){
 		dpkg -i fdpowermon-icons_*.deb
 	fi
 	
-	# Cleaning
+	# Cleanup
 	cd "${RECIPE_DIRECTORY}"
 	rm -fr fdpowermon-build
 	
-	echo
+	printf "\n"
 }
 
 cd "${RECIPE_DIRECTORY}"
-install_fdpowermon_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
-EXIT_CODE="${PIPESTATUS[0]}"
-if [[ "${EXIT_CODE}" -ne 0 ]]; then
-	exit "${EXIT_CODE}"
+
+if [[ "${FELIX_RECIPE_BUILD_FROM_SOURCES_ARRAY[${RECIPE_ID}]}" != "true" ]]; then
+	install_fdpowermon 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+	EXIT_CODE="${PIPESTATUS[0]}"
+	if [[ "${EXIT_CODE}" -ne 0 ]]; then
+		exit "${EXIT_CODE}"
+	fi
+else
+	install_fdpowermon_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+	EXIT_CODE="${PIPESTATUS[0]}"
+	if [[ "${EXIT_CODE}" -ne 0 ]]; then
+		exit "${EXIT_CODE}"
+	fi
 fi

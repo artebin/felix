@@ -14,10 +14,14 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-install_engrampa_from_sources(){
-	printf "Installing engrampa from sources...\n"
-	
-	printf "Installing dependencies...\n"
+function install_engrampa(){
+	printf "Install engrampa...\n"
+	install_package_if_not_installed "engrampa"
+	printf "\n"
+}
+
+function install_engrampa_from_sources(){
+	printf "Install required dependencies to build engrampa...\n"
 	DEPENDENCIES=(  "gtk-doc-tools"
 			"gobject-introspection"
 			"autoconf-archive"
@@ -26,6 +30,7 @@ install_engrampa_from_sources(){
 			"yelp-tools" )
 	install_package_if_not_installed "${DEPENDENCIES[@]}"
 	
+	# Create required directories
 	if [[ ! -d "/usr/share/aclocal" ]]; then
 		mkdir -p "/usr/share/aclocal"
 	fi
@@ -33,14 +38,15 @@ install_engrampa_from_sources(){
 		mkdir -p "/usr/local/share/aclocal"
 	fi
 	
-	printf "Installing mate-common from sources...\n"
+	printf "Build and install mate-common from <https://github.com/mate-desktop/mate-common>...\n"
 	cd "${RECIPE_DIRECTORY}"
-	git clone "https://github.com/mate-desktop/mate-common"
+	git clone https://github.com/mate-desktop/mate-common
 	cd mate-common
 	ACLOCAL_FLAGS="-I /usr/share/aclocal -I /usr/local/share/aclocal" ./autogen.sh --prefix=/usr
 	make
 	make install
 	
+	printf "Build and install engrampa from <https://github.com/mate-desktop/engrampa>...\n"
 	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/mate-desktop/engrampa
 	cd engrampa
@@ -50,7 +56,7 @@ install_engrampa_from_sources(){
 	make
 	make install
 	
-	# Cleaning
+	# Cleanup
 	cd "${RECIPE_DIRECTORY}"
 	rm -fr mate-common
 	rm -fr engrampa
@@ -59,8 +65,17 @@ install_engrampa_from_sources(){
 }
 
 cd "${RECIPE_DIRECTORY}"
-install_engrampa_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
-EXIT_CODE="${PIPESTATUS[0]}"
-if [[ "${EXIT_CODE}" -ne 0 ]]; then
-	exit "${EXIT_CODE}"
+
+if [[ "${FELIX_RECIPE_BUILD_FROM_SOURCES_ARRAY[${RECIPE_ID}]}" != "true" ]]; then
+	install_engrampa 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+	EXIT_CODE="${PIPESTATUS[0]}"
+	if [[ "${EXIT_CODE}" -ne 0 ]]; then
+		exit "${EXIT_CODE}"
+	fi
+else
+	install_engrampa_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+	EXIT_CODE="${PIPESTATUS[0]}"
+	if [[ "${EXIT_CODE}" -ne 0 ]]; then
+		exit "${EXIT_CODE}"
+	fi
 fi

@@ -14,17 +14,15 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-install_translate_notify(){
-	printf "Install translate-notify ...\n"
-	
-	# Clone git repository and install
+function install_translate_notify(){
+	printf "Install translate-notify from <https://github.com/artebin/translate-notify>...\n"
 	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/artebin/translate-notify
 	cd translate-notify
 	cp translate-notify.sh /usr/bin/translate-notify
 	chmod a+x /usr/bin/translate-notify
 	
-	# Cleaning
+	# Cleanup
 	cd "${RECIPE_DIRECTORY}"
 	rm -fr translate-notify
 	
@@ -32,6 +30,7 @@ install_translate_notify(){
 }
 
 cd "${RECIPE_DIRECTORY}"
+
 install_translate_notify 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

@@ -14,17 +14,16 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-upgrade_system(){
-	echo "Upgrading the system ..."
-	
+function upgrade_system(){
+	printf "Upgrade the system...\n"
 	apt-get update
 	apt-get -y upgrade
 	apt-get -y dist-upgrade
-	
-	echo
+	printf "\n"
 }
 
 cd "${RECIPE_DIRECTORY}"
+
 upgrade_system 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then

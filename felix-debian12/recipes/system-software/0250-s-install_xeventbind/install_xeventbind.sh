@@ -14,21 +14,25 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-install_sw_from_sources(){
-	printf "Installing sw (StopWatch) from sources...\n"
-	
+function install_xeventbind_from_sources(){
+	printf "Build and install from <https://github.com/artebin/xeventbind>...\n"
 	cd "${RECIPE_DIRECTORY}"
-	git clone https://github.com/artebin/sw
-	cp sw/sw /usr/local/bin
+	git clone https://github.com/artebin/xeventbind
+	cd xeventbind
+	make
+	make install
 	
 	# Cleanup
 	cd "${RECIPE_DIRECTORY}"
-	rm -fr sw
+	rm -fr xeventbind
 	
 	printf "\n"
 }
 
-install_sw_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+cd "${RECIPE_DIRECTORY}"
+
+# xeventbind is not in the Debian repository
+install_xeventbind_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

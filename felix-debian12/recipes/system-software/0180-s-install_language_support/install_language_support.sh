@@ -14,8 +14,8 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-install_language_support(){
-	printf "Installing language support ...\n"
+function install_language_support(){
+	printf "Install language support...\n"
 	
 	# Check that dpkg is not locked
 	DPKG_LOCK=$(fuser /var/lib/dpkg/lock 2>/dev/null)
@@ -48,11 +48,13 @@ install_language_support(){
 		xargs apt-get -o Dpkg::Options::=--force-confnew -y install <"${APT_PACKAGE_FILE_LIST}"
 	done
 	
-	# Cleaning
+	# Cleanup
 	rm -f "${APT_PACKAGE_LIST_FILE}"
 	
 	printf "\n"
 }
+
+cd "${RECIPE_DIRECTORY}"
 
 install_language_support 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"

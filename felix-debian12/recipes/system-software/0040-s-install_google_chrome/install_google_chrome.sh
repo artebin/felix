@@ -14,18 +14,21 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-install_chrome(){
+function install_chrome(){
+	printf "Install Google Chrome...\n"
 	cd "${RECIPE_DIRECTORY}"
-	
-	printf "Installing Google Chrome...\n"
 	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 	dpkg -i google-chrome-stable_current_amd64.deb
+	
+	# Cleanup
+	cd "${RECIPE_DIRECTORY}"
 	rm -f google-chrome-stable_current_amd64.deb
 	
 	printf "\n"
 }
 
 cd "${RECIPE_DIRECTORY}"
+
 install_chrome 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [ "${EXIT_CODE}" -ne 0 ]; then

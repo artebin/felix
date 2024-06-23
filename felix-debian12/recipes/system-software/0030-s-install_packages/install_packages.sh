@@ -14,7 +14,7 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-process_package_install_list(){
+function process_package_install_list(){
 	printf "Install packages ...\n"
 	
 	# Check that dpkg is not locked
@@ -61,11 +61,13 @@ process_package_install_list(){
 		DEBIAN_FRONTEND=readline xargs apt-get -o Dpkg::Options::=--force-confnew -y install <"${APT_PACKAGE_FILE_LIST}"
 	done
 	
-	# Cleaning
+	# Cleanup
 	rm -f "${APT_PACKAGE_LIST_FILE}"
 	
 	printf "\n"
 }
+
+cd "${RECIPE_DIRECTORY}"
 
 process_package_install_list 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"

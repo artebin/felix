@@ -14,29 +14,25 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-install_light_locker_settings_from_sources(){
-	printf "Install Light Locker Settings from sources ...\n"
-
-	printf "Cloning GIT repository <https://github.com/artebin/light-locker-settings> ...\n"
+function install_pulseaudioctl_from_sources(){
+	printf "Build and install pulseaudio-ctl <https://github.com/graysky2/pulseaudio-ctl>...\n"
+	git clone https://github.com/graysky2/pulseaudio-ctl
 	cd "${RECIPE_DIRECTORY}"
-	git clone https://github.com/artebin/light-locker-settings
-
-	# Build and install
-	cd "${RECIPE_DIRECTORY}"
-	cd light-locker-settings
-	./configure
+	cd pulseaudio-ctl
 	make
 	make install
-
+	
 	# Cleaning
 	cd "${RECIPE_DIRECTORY}"
-	rm -fr light-locker-settings
-
+	rm -fr pulseaudio-ctl
+	
 	printf "\n"
 }
 
 cd "${RECIPE_DIRECTORY}"
-install_light_locker_settings_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+
+# pulseaudio-ctl is not in the Debian repository
+install_pulseaudioctl_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"

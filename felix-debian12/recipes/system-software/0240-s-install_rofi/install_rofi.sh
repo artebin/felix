@@ -14,18 +14,20 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-install_check_from_sources(){
-	printf "Install check from sources (check >= 0.11.0 is a dependency of rofi) ...\n"
+function install_rofi(){
+	printf "Install rofi...\n"
+	install_package_if_not_installed "rofi"
+	printf "\n"
+}
+
+# check >= 0.11.0 is a dependency of rofi so we might have to install it from sources too
+function install_check_from_sources(){
+	printf "Install required dependencies to build check...\n"
+	install_package_if_not_installed "texinfo" "libxcb-randr0-dev"
 	
-	# Install dependencies
-	install_package_if_not_installed "texinfo libxcb-randr0-dev"
-	
-	# Clone git repository
+	printf "Build and install check...\n"
 	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/libcheck/check
-	
-	# Compile and install
-	cd "${RECIPE_DIRECTORY}"
 	cd check
 	autoreconf -i
 	./configure
@@ -40,10 +42,8 @@ install_check_from_sources(){
 	printf "\n"
 } 
 
-install_rofi_from_sources(){
-	printf "Install rofi from sources ...\n"
-	
-	# Install dependencies
+function install_rofi_from_sources(){
+	printf "Install required dependencies to build rofi...\n"
 	DEPENDENCIES=(  "bison" 
 			"flex" 
 			"libxcb-xkb-dev"
@@ -57,14 +57,11 @@ install_rofi_from_sources(){
 			"librsvg2-dev" )
 	install_package_if_not_installed "${DEPENDENCIES[@]}"
 	
-	# Clone git repository
+	printf "Build and install rofi from <https://github.com/DaveDavenport/rofi>...\n"
 	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/DaveDavenport/rofi
 	cd rofi
 	git submodule update --init #Pull dependencies
-	
-	# Build
-	cd "${RECIPE_DIRECTORY}"
 	cd rofi
 	autoreconf -i
 	mkdir build
@@ -73,7 +70,7 @@ install_rofi_from_sources(){
 	make
 	make install
 	
-	# Cleaning
+	# Cleanup
 	cd "${RECIPE_DIRECTORY}"
 	rm -fr rofi
 	
@@ -81,15 +78,24 @@ install_rofi_from_sources(){
 }
 
 cd "${RECIPE_DIRECTORY}"
-install_check_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
-EXIT_CODE="${PIPESTATUS[0]}"
-if [[ "${EXIT_CODE}" -ne 0 ]]; then
-	exit "${EXIT_CODE}"
-fi
 
-cd "${RECIPE_DIRECTORY}"
-install_rofi_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
-EXIT_CODE="${PIPESTATUS[0]}"
-if [[ "${EXIT_CODE}" -ne 0 ]]; then
+if [[ "${FELIX_RECIPE_BUILD_FROM_SOURCES_ARRAY[${RECIPE_ID}]}" != "true" ]]; then
+	install_rofi 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+	EXIT_CODE="${PIPESTATUS[0]}"
+	if [[ "${EXIT_CODE}" -ne 0 ]]; then
+		exit "${EXIT_CODE}"
+	fi
+else
+	# Debian12 provides at least check v0.15.2 so we do not need to build it anymore and we comment the lines below.
+	#install_check_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+	#EXIT_CODE="${PIPESTATUS[0]}"
+	#if [[ "${EXIT_CODE}" -ne 0 ]]; then
+	#	exit "${EXIT_CODE}"
+	#fi
+	
+	install_rofi_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+	EXIT_CODE="${PIPESTATUS[0]}"
+	if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
+	fi
 fi
