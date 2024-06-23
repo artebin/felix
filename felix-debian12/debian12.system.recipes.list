@@ -7,7 +7,7 @@ recipes/system-software/0010-s-generate_and_set_locales
 recipes/system-software/0020-s-upgrade_system
 recipes/system-software/0030-s-install_packages
 recipes/system-software/0040-s-install_google_chrome
-recipes/system-software/0050-s-install_caja_from_sources
+recipes/system-software/0050-s-install_caja
 recipes/system-software/0060-s-install_engrampa_from_sources
 recipes/system-software/0070-s-install_eom_from_sources
 recipes/system-software/0080-s-install_pasystray_from_sources

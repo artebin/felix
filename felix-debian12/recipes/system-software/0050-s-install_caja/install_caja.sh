@@ -14,7 +14,17 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-install_caja_from_sources(){
+function install_caja(){
+	printf "Installing caja...\n"
+	
+	DEPENDENCIES=(  "caja"
+			"caja-extensions-common" )
+	install_package_if_not_installed "${DEPENDENCIES[@]}"
+	
+	printf "\n"
+}
+
+function install_caja_from_sources(){
 	printf "Installing dependencies...\n"
 	DEPENDENCIES=(  "gtk-doc-tools"
 			"gobject-introspection"
@@ -68,8 +78,17 @@ install_caja_from_sources(){
 }
 
 cd "${RECIPE_DIRECTORY}"
-install_caja_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
-EXIT_CODE="${PIPESTATUS[0]}"
-if [[ "${EXIT_CODE}" -ne 0 ]]; then
-	exit "${EXIT_CODE}"
+
+if [[ "${FELIX_RECIPE_BUILD_FROM_SOURCES_ARRAY[${RECIPE_ID}]}" != "true" ]]; then
+	install_caja 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+	EXIT_CODE="${PIPESTATUS[0]}"
+	if [[ "${EXIT_CODE}" -ne 0 ]]; then
+		exit "${EXIT_CODE}"
+	fi
+else
+	install_caja_from_sources 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+	EXIT_CODE="${PIPESTATUS[0]}"
+	if [[ "${EXIT_CODE}" -ne 0 ]]; then
+		exit "${EXIT_CODE}"
+	fi
 fi
