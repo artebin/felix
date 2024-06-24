@@ -148,7 +148,7 @@ xorg-dev xtrlock xprintidle # Dependencies for xlockscreen
 # Window manager & desktop tools
 ##################################
 mate-polkit mate-polkit-bin
-openbox obconf
+#openbox obconf are now installed by a recipe and optionally openbox package will be rebuild with patched sources
 devilspie2
 lxappearance lxappearance-obconf
 qt5ct qt5-gtk2-platformtheme
