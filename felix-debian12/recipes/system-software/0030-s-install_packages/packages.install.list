@@ -134,7 +134,7 @@ xinput xinput-calibrator
 x11-apps
 xsel xclip xdo xtitle
 wmctrl xdotool xautomation
-libnotify-dev libnotify-doc #libnotify-bin should be installed from sources (fix on notification IDs)
+libnotify-dev libnotify-doc # libnotify-bin is installed by a recipe and optionally from sources
 onboard
 maim
 xtrlock xprintidle
@@ -148,14 +148,14 @@ xorg-dev xtrlock xprintidle # Dependencies for xlockscreen
 # Window manager & desktop tools
 ##################################
 mate-polkit mate-polkit-bin
-#openbox obconf are now installed by a recipe and optionally openbox package will be rebuild with patched sources
+#openbox obconf are installed by a recipe and optionally from sources
 devilspie2
 lxappearance lxappearance-obconf
 qt5ct qt5-gtk2-platformtheme
 dconf-cli
 dconf-editor
 gconf-service
-#gconf-editor #Not available in Debian11
+#gconf-editor # Not available in Debian11
 mate-utils mate-system-monitor
 xfce4-settings xfce4-notifyd xfce4-screenshooter xfce4-dict xfburn
 lxinput
@@ -204,7 +204,7 @@ xterm mate-terminal
 ################
 # File manager
 ################
-#caja caja-actions caja-extensions-common caja-open-terminal # Caja will be installed from sources
+#caja caja-actions caja-extensions-common caja-open-terminal # Caja is installed by a recipe and optionally from sources
 
 ########################################
 # File reader/editor & file diff tools
@@ -212,7 +212,7 @@ xterm mate-terminal
 uniutils
 vim-gtk3
 glogg
-#geany geany-plugins # Geany will be installed from sources
+#geany geany-plugins # Geany is installed by a recipe and optionally from sources
 meld kdiff3
 bless
 mediainfo
@@ -248,7 +248,8 @@ unp
 webp webp-pixbuf-loader
 libimage-exiftool-perl # Provides exiftool
 imagemagick
-eom gpicview pqiv
+#eom # EOM is installed by a recipe and optionally installed from sources
+gpicview pqiv
 shotwell
 gimp gimp-data-extras
 inkscape
@@ -313,7 +314,7 @@ mmark
 #######
 subversion kdesvn
 git git-gui giggle
-#git-cola # Install will be installed git-cola from sources 
+#git-cola # git-cola is installed by a recipe and optionally from sources 
 mercurial
 
 #####################
@@ -329,11 +330,5 @@ sassc
 libgtk-3-dev gtk-3-examples
 libgtk2.0-dev gtk2.0-examples
 libxml2-dev libxml2-doc
-libu2f-udev #Universal 2nd Factor protocol - required by many projects at compile time.
+libu2f-udev # Universal 2nd Factor protocol - required by many projects at compile time.
 golang
-
-##############
-# VirtualBox
-##############
-#virtualbox #Not available in Debian11
-#virtualbox-ext-pack #Not available in Debian11
