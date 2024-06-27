@@ -23,22 +23,24 @@ function install_openbox(){
 function install_openbox_from_sources(){
 	printf "Retrieve Debian sources for openbox package and install build dependencies...\n"
 	cd "${RECIPE_DIRECTORY}"
-	apt-get source openbox/bullseye
-	sudo apt-get build-dep openbox/bullseye
+	apt-get source openbox/stable
+	sudo apt-get build-dep openbox/stable
 	
 	printf "Apply patch for GTK_FRAME_EXTENTS from <https://github.com/jalopezg-git/openbox>...\n"
 	cd "${RECIPE_DIRECTORY}"
 	GTK_FRAME_EXTENTS_COMMIT_SHA="d5a0e47025cf1a002f827740cc77d84f71d0d7aa"
 	curl https://github.com/jalopezg-git/openbox/commit/${GTK_FRAME_EXTENTS_COMMIT_SHA}.patch/ >${GTK_FRAME_EXTENTS_COMMIT_SHA}.patch
 	cd openbox-3.6.1
-	git apply ../${GTK_FRAME_EXTENTS_COMMIT_SHA}.patch
+	patch -p1 < ../${GTK_FRAME_EXTENTS_COMMIT_SHA}.patch
+	dpkg-source --commit
+	debuild -us -uc
 	
 	# then we can add the changes with $dpkg-source --commit
 	# then build the package with $debuild -us -uc
 	# then install the package
 	
 	# We do not build obconf from sources but install it from Debian repository
-	install_package_if_not_installed "obconf"
+	#install_package_if_not_installed "obconf"
 	
 	printf "\n"
 }
