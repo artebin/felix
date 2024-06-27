@@ -14,6 +14,8 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
+# notify-send.sh provides a fix for libnotify on the notification IDs.
+
 function install_fixed_notify_send(){
 	printf "Remove libnotify-bin if already installed...\n"
 	remove_with_purge_package_if_installed "libnotify-bin"
