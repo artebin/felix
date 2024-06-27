@@ -21,8 +21,11 @@ fi
 export GPODDER_HOME=""
 export GPODDER_DOWNLOAD_DIR=""
 
-# Force loading of libgtk3-nocsd
-export LD_PRELOAD="libgtk3-nocsd.so.0${LD_PRELOAD:+:$LD_PRELOAD}"
+# Force loading of libgtk3-nocsd if it is installed
+LIBGTK3_NOCSD_PATH="/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0"
+if [[ -f "${LIBGTK3_NOCSD_PATH}" ]]; then
+	export LD_PRELOAD="$(basename "${LIBGTK3_NOCSD_PATH}")${LD_PRELOAD:+:$LD_PRELOAD}"
+fi
 
 # Use qt5ct for theming Qt applications
 export QT_QPA_PLATFORMTHEME=qt5ct
