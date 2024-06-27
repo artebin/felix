@@ -16,7 +16,7 @@ exit_if_has_not_root_privileges
 
 function install_caja(){
 	printf "Install caja...\n"
-	install_package_if_not_installed "caja" "caja-extensions-common"
+	install_package_if_not_installed "caja" "caja-extensions-common" "caja-open-terminal"
 	printf "\n"
 }
 
