@@ -16,7 +16,7 @@ exit_if_has_not_root_privileges
 
 function install_openbox(){
 	printf "Install caja...\n"
-	install_package_if_not_installed "openbox obconf"
+	install_package_if_not_installed "openbox" "obconf"
 	printf "\n"
 }
 
@@ -25,6 +25,8 @@ function install_openbox_from_sources(){
 	cd "${RECIPE_DIRECTORY}"
 	apt-get source openbox/stable
 	sudo apt-get build-dep openbox/stable
+	
+	install_package_if_not_installed "devscripts"
 	
 	printf "Apply patch for GTK_FRAME_EXTENTS from <https://github.com/jalopezg-git/openbox>...\n"
 	cd "${RECIPE_DIRECTORY}"
