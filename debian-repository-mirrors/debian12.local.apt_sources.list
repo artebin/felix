@@ -1,13 +1,13 @@
 # SOURCES START #
-deb [arch=amd64] http://localhost:10001/debian11/mirror/deb.debian.org/debian bookworm main contrib non-free non-free-firmware
-deb-src http://localhost:10001/debian11/mirror/deb.debian.org/debian bookworm main contrib non-free non-free-firmware
+deb [arch=amd64] http://localhost:10001/debian12/mirror/deb.debian.org/debian bookworm main contrib non-free non-free-firmware
+deb-src http://localhost:10001/debian12/mirror/deb.debian.org/debian bookworm main contrib non-free non-free-firmware
 
-deb [arch=amd64] http://localhost:10001/debian11/mirror/deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
-deb-src http://localhost:10001/debian11/mirror/deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
+deb [arch=amd64] http://localhost:10001/debian12/mirror/deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
+deb-src http://localhost:10001/debian12/mirror/deb.debian.org/debian-security/ bookworm-security main contrib non-free non-free-firmware
 
-deb [arch=amd64] http://localhost:10001/debian11/mirror/deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
-deb-src http://localhost:10001/debian11/mirror/deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
+deb [arch=amd64] http://localhost:10001/debian12/mirror/deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
+deb-src http://localhost:10001/debian12/mirror/deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
 
-deb [arch=amd64] http://localhost:10001/debian11/mirror/deb.debian.org/debian bookworm-backports main contrib non-free non-free-firmware
-deb-src http://localhost:10001/debian11/mirror/deb.debian.org/debian bookworm-backports main contrib non-free non-free-firmware
+deb [arch=amd64] http://localhost:10001/debian12/mirror/deb.debian.org/debian bookworm-backports main contrib non-free non-free-firmware
+deb-src http://localhost:10001/debian12/mirror/deb.debian.org/debian bookworm-backports main contrib non-free non-free-firmware
 # SOURCES END #
