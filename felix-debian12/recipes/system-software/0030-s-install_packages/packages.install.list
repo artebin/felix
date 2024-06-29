@@ -197,7 +197,7 @@ fontforge
 #############################
 # Virtual Terminal Emulator
 #############################
-xterm mate-terminal
+xterm mate-terminal terminator
 
 ################
 # File manager
