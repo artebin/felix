@@ -21,8 +21,8 @@ function update_alternatives(){
 	printf "Update alternative gnome-www-browser=/usr/bin/firefox ...\n"
 	update-alternatives --set gnome-www-browser /usr/bin/firefox
 	
-	printf "Update alternative x-terminal-emulator=/usr/bin/mate-terminal.wrapper ...\n"
-	update-alternatives --set x-terminal-emulator /usr/bin/mate-terminal.wrapper
+	printf "Update alternative x-terminal-emulator=/usr/bin/terminator ...\n"
+	update-alternatives --set x-terminal-emulator /usr/bin/terminator
 	
 	printf "\n"
 }

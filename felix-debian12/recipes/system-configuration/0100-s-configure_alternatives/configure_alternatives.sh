@@ -17,9 +17,9 @@ exit_if_has_not_root_privileges
 configure_alternatives(){
 	printf "Configuring alternatives...\n"
 	
-	printf "Setting mate-terminal as x-terminal-emulator...\n"
-	update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/mate-terminal.wrapper 900
-	update-alternatives --set x-terminal-emulator /usr/bin/mate-terminal.wrapper
+	printf "Setting terminator as x-terminal-emulator...\n"
+	update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator /usr/bin/terminator 900
+	update-alternatives --set x-terminal-emulator /usr/bin/terminator
 	printf "\n"
 	
 	printf "Setting firefox as x-www-browser...\n"
