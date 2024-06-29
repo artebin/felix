@@ -25,7 +25,7 @@ recipes/system-software/0200-s-install_pass
 recipes/system-software/0220-s-install_sw
 recipes/system-software/0240-s-install_rofi
 recipes/system-software/0250-s-install_xeventbind
-recipes/system-software/0260-s-install_light_locker
+recipes/system-software/0260-s-install_light_locker_settings
 recipes/system-software/0280-s-install_git_sup
 recipes/system-software/9999-s-remove_unwanted_packages
 
