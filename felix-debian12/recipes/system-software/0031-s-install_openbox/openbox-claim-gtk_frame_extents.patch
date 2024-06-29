@@ -1,0 +1,61 @@
+From d5a0e47025cf1a002f827740cc77d84f71d0d7aa Mon Sep 17 00:00:00 2001
+From: Javier Lopez-Gomez <javier.lopez.gomez@proton.me>
+Date: Wed, 18 Oct 2023 20:20:03 +0200
+Subject: [PATCH] Claim to support the `GTK_FRAME_EXTENTS`
+
+Advertise support for the `GTK_FRAME_EXTENTS` property via `NET_SUPPORTED`.
+The property, however, is ignored if set, but just advertising support
+enables full GTK client-side decoration, i.e. rounded corners and drop
+shadows.
+
+Additional bits and pieces might be landed in a follow-up commit.
+---
+ obt/prop.c       | 2 ++
+ obt/prop.h       | 4 ++++
+ openbox/screen.c | 5 +++++
+ 3 files changed, 11 insertions(+)
+
+diff --git a/obt/prop.c b/obt/prop.c
+index 0cecccf4d..74fa84c14 100644
+--- a/obt/prop.c
++++ b/obt/prop.c
+@@ -181,6 +181,8 @@ void obt_prop_startup(void)
+     CREATE_(KDE_WM_CHANGE_STATE);
+     CREATE_(KDE_NET_WM_WINDOW_TYPE_OVERRIDE);
+ 
++    CREATE_(GTK_FRAME_EXTENTS);
++
+ /*
+     CREATE_NAME(ROOTPMAPId, "_XROOTPMAP_ID");
+     CREATE_NAME(ESETROOTId, "ESETROOT_PMAP_ID");
+diff --git a/obt/prop.h b/obt/prop.h
+index acb5c956e..304fde5e6 100644
+--- a/obt/prop.h
++++ b/obt/prop.h
+@@ -201,6 +201,10 @@ typedef enum {
+     OBT_PROP_KDE_NET_WM_FRAME_STRUT,
+     OBT_PROP_KDE_NET_WM_WINDOW_TYPE_OVERRIDE,
+ 
++    /* GTK atoms */
++
++    OBT_PROP_GTK_FRAME_EXTENTS,
++
+ /*
+     OBT_PROP_ROOTPMAPID,
+     OBT_PROP_ESETROOTID,
+diff --git a/openbox/screen.c b/openbox/screen.c
+index 31cb8ded9..23457f67e 100644
+--- a/openbox/screen.c
++++ b/openbox/screen.c
+@@ -294,6 +294,11 @@ gboolean screen_annex(void)
+     supported[i++] = OBT_PROP_ATOM(KDE_NET_WM_FRAME_STRUT);
+     supported[i++] = OBT_PROP_ATOM(KDE_NET_WM_WINDOW_TYPE_OVERRIDE);
+ 
++    // FIXME: openbox claims to support GTK_FRAME_EXTENTS, which is currently
++    // not the case.  This, however, enables full GTK client-side decorations,
++    // e.g. rounded window frames and shadows.
++    supported[i++] = OBT_PROP_ATOM(GTK_FRAME_EXTENTS);
++
+     supported[i++] = OBT_PROP_ATOM(OB_WM_ACTION_UNDECORATE);
+     supported[i++] = OBT_PROP_ATOM(OB_WM_STATE_UNDECORATED);
+     supported[i++] = OBT_PROP_ATOM(OPENBOX_PID);

@@ -1,12 +1,13 @@
---- client.c.orig	2024-06-27 15:56:04.505150000 +0200
-+++ client.c	2024-06-27 15:56:15.361194551 +0200
-@@ -1757,9 +1757,6 @@
+--- openbox/client.c.orig	2024-06-29 14:26:23.846093528 +0200
++++ openbox/client.c	2024-06-29 14:26:37.500917985 +0200
+@@ -1757,8 +1757,8 @@
          if (size.flags & PBaseSize)
              SIZE_SET(self->base_size, size.base_width, size.base_height);
  
 -        if (size.flags & PResizeInc && size.width_inc && size.height_inc)
 -            SIZE_SET(self->size_inc, size.width_inc, size.height_inc);
--
++        //if (size.flags & PResizeInc && size.width_inc && size.height_inc)
++            //SIZE_SET(self->size_inc, size.width_inc, size.height_inc);
+ 
          ob_debug("Normal hints: min size (%d %d) max size (%d %d)",
                   self->min_size.width, self->min_size.height,
-                  self->max_size.width, self->max_size.height);
