@@ -16,7 +16,7 @@ exit_if_has_not_root_privileges
 
 function install_openbox(){
 	printf "Install openbox...\n"
-	install_package_if_not_installed "openbox obconf"
+	install_package_if_not_installed "openbox" "obconf"
 	printf "\n"
 }
 
@@ -29,7 +29,8 @@ function install_openbox_3_6_1_from_sources(){
 		printf "!ERROR! Cannot find openbox-3.6.1 directory\n"
 		exit 1
 	fi
-	sudo apt-get build-dep openbox/stable
+	apt-get build-dep -y openbox/stable
+	install_package_if_not_installed "devscripts"
 	
 	printf "Apply patch for claiming the support of GTK_FRAME_EXTENTS from <https://github.com/jalopezg-git/openbox>...\n"
 	cd "${RECIPE_DIRECTORY}"/debian-openbox/openbox-3.6.1
@@ -57,7 +58,7 @@ function install_openbox_3_6_1_from_sources(){
 
 cd "${RECIPE_DIRECTORY}"
 
-if [[ "${FELIX_RECIPE_BUILD_FROM_SOURCES_ARRAY[${RECIPE_ID}]}" != "true" ]]; then
+if false; then
 	install_openbox 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 	EXIT_CODE="${PIPESTATUS[0]}"
 	if [[ "${EXIT_CODE}" -ne 0 ]]; then
