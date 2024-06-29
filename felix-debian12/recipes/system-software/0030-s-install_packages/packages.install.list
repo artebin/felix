@@ -19,7 +19,6 @@ htop iotop smem
 members
 pcp pcp-gui
 @--no-install-recommends@ cockpit cockpit-pcp
-glances glances-doc
 battery-stats tlp
 autofs
 fuse3 fuseiso fuseiso9660
