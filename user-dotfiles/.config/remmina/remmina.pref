@@ -1,3 +1,3 @@
 [remmina_pref]
-disable_tray_icon=false
+disable_tray_icon=true
 view_file_mode=1
