@@ -1,5 +1,14 @@
 # TODOS
 
+- [x] Modify most of the recipes installing software from sources for installing from repository and only optionally from sources.
+- [x] Should not use .xsessionrc because WM name is not known at the time of execution and also it is debian specific. We should use openbox autostart instead.
+- [x] 99_start_vnc_server is broken because still copied into .xsessionrc.
+- [x] Remmina do not show icon tray by default.
+
+- [ ] Update rofi theme for error messages?
+- [ ] Custom faenza should be installed in user config.
+- [ ] Add a script for checking the RAM usage <https://superuser.com/questions/398862/linux-find-out-what-process-is-using-all-the-ram> might be interesting.
+- [ ] Install of gtk3-nocsd should be a recipe and disable by default. Bash environement should adding the lib nocsd only if it is installed.
 - [ ] Openbox pipe menu for resizing image (as a copy? ).
 - [ ] Can we use <https://github.com/svenstaro/rofi-calc> and assign it to the "Calc" key?
 - [ ] Rififi remmina should rebuild the connection.conf file only as an option. We should have a script on the side for manually rebuilding the file.
@@ -13,10 +22,8 @@
 - [ ] Caja scripts should starts command in background else it might freeze the GUI (like indenting more than 1GB large XML file).
 - [ ] "tidy -xml -i -q edis-mil_240214_000001.log >edis-mil_240214_000001.log.xml" works while xmlstartlet cannot.
 - [ ] Make the recipe for having debian testing always installed with the apt pref and install firefox with it (no firefox-esr).
-- [ ] Should not use .xsessionrc because WM name is not known at the time of execution and also it is debian specific. We should use openbox autostart instead.
 - [ ] background color tint2 considering battery power?
 - [ ] Notification icon telling about reduced CPU freq?
-- [ ] Remmina do not show icon tray by default.
 - [ ] Install and configure autorandr <https://stackoverflow.com/questions/73671674/how-to-auto-run-script-after-applying-arandr-setting>.
 - [ ] Add a script for start/stop docker.service docker.socket <https://askubuntu.com/questions/766318/disable-docker-autostart-at-boot>.
 - [ ] Push changes in herbe.
