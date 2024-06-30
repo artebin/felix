@@ -14,6 +14,6 @@
   - Rofi menus defined with [rififi](https://github.com/artebin/rififi)
   - Text translation in desktop notification bubbles with [translate-notify](https://github.com/artebin/translate-notify)
 
-  - Terminal: MATE Terminal
+  - Terminal: Terminator
   - File Manager: MATE Caja
   
