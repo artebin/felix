@@ -22,7 +22,7 @@ start_vnc_server_at_login(){
 	fi
 	
 	cd "${RECIPE_DIRECTORY}"
-	cp "99_start_vnc_server.sh" "${HOME}/.xsessionrc.d"
+	cp "99_start_vnc_server.sh" "${HOME}/.config/openbox/autostart.d"
 	
 	printf "Please execute 'vncpasswd' in order to set your VNC password\n"
 	
