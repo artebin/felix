@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# This caja script calls XMLStarlet to indent an XML file
-
 INPUT_FILE=$(readlink -f "${1}")
 
 if [[ ! -e "${INPUT_FILE}" ]]; then
@@ -14,12 +12,13 @@ if [[ ! -f "${INPUT_FILE}" ]]; then
 	exit 1
 fi
 
-xmlstarlet fo "${INPUT_FILE}" >"${INPUT_FILE}.tmp" 2>"${INPUT_FILE}.log"
+# `xmlstarlet` was used before but we could find some xml documents that it could handle properly while `tidy` could.
+#xmlstarlet fo "${INPUT_FILE}" >"${INPUT_FILE}.tmp" 2>"${INPUT_FILE}.log"
+tidy -xml -i -q "${INPUT_FILE}" >"${INPUT_FILE}.tmp" 2>"${INPUT_FILE}.log"
 RETURN_CODE=$?
 
 if [[ "${RETURN_CODE}" -eq 0 ]]; then
-	rm "${INPUT_FILE}"
-	mv "${INPUT_FILE}.tmp" "${INPUT_FILE}"
+	mv "${INPUT_FILE}.tmp" "${INPUT_FILE}.indented.xml"
 	if [[ -e "${INPUT_FILE}.log" ]]; then
 		rm -f "${INPUT_FILE}.log"
 	fi

@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+INPUT_FILE=$(readlink -f "${1}")
+
+if [[ ! -e "${INPUT_FILE}" ]]; then
+	zenity --no-wrap --error --text="Cannot find ${INPUT_FILE}"
+	exit 1
+fi
+
+if [[ ! -f "${INPUT_FILE}" ]]; then
+	zenity --no-wrap --error --text="Cannot use this script on a directory"
+	exit 1
+fi
+
+# Assume the file is the capture of a XML stream, we will work on a copy of the INPUT_FILE and add a root element into it
+ROOT_ELEMENT_NAME="root_element_added_for_indentation"
+echo  "<${ROOT_ELEMENT_NAME}>" >"${INPUT_FILE}.indented.xml"
+cat "${INPUT_FILE}" >>"${INPUT_FILE}.indented.xml"
+echo "</${ROOT_ELEMENT_NAME}>" >>"${INPUT_FILE}.indented.xml"
+
+INPUT_FILE="${INPUT_FILE}.indented.xml"
+
+# `xmlstarlet` was used before but we could find some XML documents that it could handle properly while `tidy` could.
+#xmlstarlet fo "${INPUT_FILE}" >"${INPUT_FILE}.tmp" 2>"${INPUT_FILE}.log"
+tidy -xml -i -q "${INPUT_FILE}" >"${INPUT_FILE}.tmp" 2>"${INPUT_FILE}.log"
+RETURN_CODE=$?
+
+if [[ "${RETURN_CODE}" -eq 0 ]]; then
+	mv "${INPUT_FILE}.tmp" "${INPUT_FILE}"
+	if [[ -e "${INPUT_FILE}.log" ]]; then
+		rm -f "${INPUT_FILE}.log"
+	fi
+	exit 0
+else
+	zenity --no-wrap --error --text="An error occurred while indenting the file"
+	if [[ -e "${INPUT_FILE}.tmp" ]]; then
+		rm -f "${INPUT_FILE}.tmp"
+	fi
+	exit 1
+fi
