@@ -58,7 +58,7 @@ function install_openbox_3_6_1_from_sources(){
 
 cd "${RECIPE_DIRECTORY}"
 
-if false; then
+if [[ "${FELIX_RECIPE_BUILD_FROM_SOURCES_ARRAY[${RECIPE_ID}]}" != "true" ]]; then
 	install_openbox 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 	EXIT_CODE="${PIPESTATUS[0]}"
 	if [[ "${EXIT_CODE}" -ne 0 ]]; then
