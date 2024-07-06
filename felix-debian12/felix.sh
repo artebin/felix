@@ -15,7 +15,7 @@ RECIPE_ID_REGEX_GROUP_NUMBER_INDEX=1
 RECIPE_ID_REGEX_GROUP_RIGHTS_INDEX=2
 RECIPE_ID_REGEX_GROUP_NAME_INDEX=3
 
-retrieve_recipe_number(){
+function retrieve_recipe_number(){
 	if [[ $# -ne 1 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
 		exit 1
@@ -29,7 +29,7 @@ retrieve_recipe_number(){
 	printf "${RECIPE_NUMBER}"
 }
 
-retrieve_recipe_rights(){
+function retrieve_recipe_rights(){
 	if [[ $# -ne 1 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
 		exit 1
@@ -43,7 +43,7 @@ retrieve_recipe_rights(){
 	printf "${RECIPE_RIGHTS}"
 }
 
-retrieve_recipe_name(){
+function retrieve_recipe_name(){
 	if [[ $# -ne 1 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
 		exit 1
@@ -57,7 +57,7 @@ retrieve_recipe_name(){
 	printf "${RECIPE_NAME}"
 }
 
-retrieve_recipe_display_name(){
+function retrieve_recipe_display_name(){
 	if [[ $# -ne 1 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
 		exit 1
@@ -72,7 +72,7 @@ retrieve_recipe_display_name(){
 	printf "${RECIPE_DISPLAY_NAME}"
 }
 
-retrieve_recipe_script_file(){
+function retrieve_recipe_script_file(){
 	if [[ $# -ne 1 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPE_ID in argument\n"
 		exit 1
@@ -87,7 +87,7 @@ retrieve_recipe_script_file(){
 	printf "${RECIPE_SCRIPT_FILE}"
 }
 
-list_recipes(){
+function list_recipes(){
 	if [[ $# -ne 1 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPES_PARENT_DIRECTORY in argument\n"
 		exit 1
@@ -130,7 +130,7 @@ list_recipes(){
 	done
 }
 
-re_index_recipes(){
+function re_index_recipes(){
 	if [[ $# -ne 1 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPES_PARENT_DIRECTORY in argument\n"
 		exit 1
@@ -183,7 +183,7 @@ re_index_recipes(){
 	done
 }
 
-fill_recipe_directories_array(){
+function fill_recipe_directories_array(){
 	if [[ $# -ne 2 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPES_PARENT_DIRECTORY and ARRAY_NAME in arguments\n"
 		exit 1
@@ -201,7 +201,7 @@ fill_recipe_directories_array(){
 	readarray -t RECIPE_DIRECTORY_ARRAY < <(find "${RECIPES_PARENT_DIRECTORY}" -maxdepth 1 -type d -regextype posix-extended -regex "${RECIPES_PARENT_DIRECTORY}/${RECIPE_ID_REGEX}" -exec readlink -f {} \;|sort)
 }
 
-fill_recipe_array_with_recipe_list_file(){
+function fill_recipe_array_with_recipe_list_file(){
 	if [[ $# -ne 2 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPE_LIST_FILE and RECIPE_ARRAY_NAME in arguments\n"
 		exit 1
@@ -248,13 +248,13 @@ fill_recipe_array_with_recipe_list_file(){
 	done < "${RECIPE_LIST_FILE}"
 }
 
-retrieve_distribution(){
+function retrieve_distribution(){
 	LSB_RELEASE_DISTRIBUTOR=$(lsb_release -si)
 	LSB_RELEASE_CODENAME=$(lsb_release -sc)
 	printf "${LSB_RELEASE_DISTRIBUTOR,,}_${LSB_RELEASE_CODENAME,,}"
 }
 
-select_from_recipe_directories_array(){
+function select_from_recipe_directories_array(){
 	if [[ $# -ne 2 ]]; then
 		printf "${FUNCNAME[0]}() expects RECIPE_DIRECTORY_ARRAY_NAME and SELECTED_RECIPE_DIRECTORY_ARRAY_NAME in arguments\n"
 		exit 1
@@ -289,7 +289,7 @@ select_from_recipe_directories_array(){
 	fi
 }
 
-initialize_recipe(){
+function initialize_recipe(){
 	# Retrieve and source FELIX_CONF_FILE
 	if [[ -z "${FELIX_ROOT}" ]]; then
 		printf "FELIX_ROOT should not be empty"
@@ -331,7 +331,7 @@ initialize_recipe(){
 	printf "\n"
 }
 
-retrieve_log_file_name(){
+function retrieve_log_file_name(){
 	if [[ $# -ne 1 ]]; then
 		printf "${FUNCNAME[0]}() expects FILE_NAME in argument\n"
 		exit 1
@@ -341,15 +341,15 @@ retrieve_log_file_name(){
 	echo "${LOG_FILE_NAME}"
 }
 
-list_log_files(){
+function list_log_files(){
 	find . -iname "*.log.*" -type f
 }
 
-delete_log_files(){
+function delete_log_files(){
 	find . -name "*.log.*" -type f -exec rm -fr {} \;
 }
 
-create_recipe_list_file_from_directory(){
+function create_recipe_list_file_from_directory(){
 	if [[ $# -ne 2 ]]; then
 		printf "${FUNCNAME[0]}() expects SOURCE_DIRECTORY and RECIPE_LIST_FILE in argument\n"
 		exit 1

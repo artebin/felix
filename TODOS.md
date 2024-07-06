@@ -1,10 +1,6 @@
 # TODOS
 
-- [x] Modify most of the recipes installing software from sources for installing from repository and only optionally from sources.
-- [x] Should not use .xsessionrc because WM name is not known at the time of execution and also it is debian specific. We should use openbox autostart instead.
-- [x] 99_start_vnc_server is broken because still copied into .xsessionrc.
-- [x] Remmina do not show icon tray by default.
-
+- [ ] Make indentation script for caja able to process multiple selection.
 - [ ] Update rofi theme for error messages?
 - [ ] Custom faenza should be installed in user config.
 - [ ] Add a script for checking the RAM usage <https://superuser.com/questions/398862/linux-find-out-what-process-is-using-all-the-ram> might be interesting.
@@ -295,6 +291,10 @@
 
 # DONE
 
+- [x] Modify most of the recipes installing software from sources for installing from repository and only optionally from sources.
+- [x] Should not use .xsessionrc because WM name is not known at the time of execution and also it is debian specific. We should use openbox autostart instead.
+- [x] 99_start_vnc_server is broken because still copied into .xsessionrc.
+- [x] Remmina do not show icon tray by default.
 - [x] Debian12: cannot build arandr but we do not need to, now 0.1.11 is in the debian depo.
 - [x] Two ways to fix polkit: (1) mate-polkit or (2) policykit-1-gnome.
 - [x] gtk3.css hide the headerbar.title was for Remmina but cannot use it anymore because of Firefox using the headerbar for tabs.
