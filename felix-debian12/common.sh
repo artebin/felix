@@ -1,35 +1,5 @@
 #!/usr/bin/env bash
 
-is_linux_platform(){
-	UNAME_OUTPUT=$(uname -a)
-	LINUX_REGEX=".*GNU/Linux.*"
-	if [[ "${UNAME_OUTPUT}" =~ ${LINUX_REGEX} ]]; then
-		return 0
-	else
-		return 1
-	fi
-}
-
-is_mac_platform(){
-	UNAME_OUTPUT=$(uname -a)
-	OSX_REGEX=".*Darwin Kernel.*"
-	if [[ "${UNAME_OUTPUT}" =~ ${OSX_REGEX} ]]; then
-		return 0
-	else
-		return 1
-	fi
-}
-
-is_cygwin_platform(){
-	UNAME_OUTPUT=$(uname -a)
-	CYGWIN_REGEX=".*Cygwin.*"
-	if [[ "${UNAME_OUTPUT}" =~ ${CYGWIN_REGEX} ]]; then
-		return 0
-	else
-		return 1
-	fi
-}
-
 exit_if_not_bash(){
 	if [[ ! "${BASH_VERSION}" ]] ; then
 		printf "This script should run with bash\n" 1>&2
@@ -66,18 +36,6 @@ exit_if_has_root_privileges(){
 	fi
 }
 
-retrieve_absolute_path(){
-	# The 'readlink' command can not be used on Mac platform to retrieve the absolute paths.
-	# Internet says there's no simple way to do this and best solution is to invoke perl.
-	if is_mac_platform; then
-		ABSOLUTE_PATH=$(perl -e 'use Cwd "abs_path";print abs_path(shift)' "${1}")
-		echo "${ABSOLUTE_PATH}"
-	else
-		ABSOLUTE_PATH=$(readlink -f "${1}")
-		echo "${ABSOLUTE_PATH}"
-	fi
-}
-
 escape_sed_pattern(){
 	printf "${1}" | sed -e 's/[\\&]/\\&/g' | sed -e 's/[\/&]/\\&/g'
 }
@@ -89,11 +47,7 @@ update_line_based_on_prefix(){
 	if grep -q -E "^${PREFIX_TO_SEARCH}" "${FILE_PATH}"; then
 		ESCAPED_PREFIX_TO_SEARCH=$(escape_sed_pattern "${PREFIX_TO_SEARCH}")
 		ESCAPED_LINE_REPLACEMENT_VALUE=$(escape_sed_pattern "${LINE_REPLACEMENT_VALUE}")
-		if is_mac_platform; then
-			sed -i '' "/^${ESCAPED_PREFIX_TO_SEARCH}/s/.*/${ESCAPED_LINE_REPLACEMENT_VALUE}/" "${FILE_PATH}"
-		else
-			sed -i "/^${ESCAPED_PREFIX_TO_SEARCH}/s/.*/${ESCAPED_LINE_REPLACEMENT_VALUE}/" "${FILE_PATH}"
-		fi
+		sed -i "/^${ESCAPED_PREFIX_TO_SEARCH}/s/.*/${ESCAPED_LINE_REPLACEMENT_VALUE}/" "${FILE_PATH}"
 		return 0
 	else
 		return 1
@@ -107,11 +61,7 @@ add_or_update_line_based_on_prefix(){
 	if grep -q -E "^${PREFIX_TO_SEARCH}" "${FILE_PATH}"; then
 		ESCAPED_PREFIX_TO_SEARCH=$(escape_sed_pattern "${PREFIX_TO_SEARCH}")
 		ESCAPED_LINE_REPLACEMENT_VALUE=$(escape_sed_pattern "${LINE_REPLACEMENT_VALUE}")
-		if is_mac_platform; then
-			sed -i '' "/^${ESCAPED_PREFIX_TO_SEARCH}/s/.*/${ESCAPED_LINE_REPLACEMENT_VALUE}/" "${FILE_PATH}"
-		else
-			sed -i "/^${ESCAPED_PREFIX_TO_SEARCH}/s/.*/${ESCAPED_LINE_REPLACEMENT_VALUE}/" "${FILE_PATH}"
-		fi
+		sed -i "/^${ESCAPED_PREFIX_TO_SEARCH}/s/.*/${ESCAPED_LINE_REPLACEMENT_VALUE}/" "${FILE_PATH}"
 	else
 		echo "${LINE_REPLACEMENT_VALUE}" >> "${FILE_PATH}"
 	fi
@@ -124,11 +74,7 @@ add_or_update_keyvalue(){
 	ESCAPED_KEY=$(escape_sed_pattern "${KEY}")
 	ESCAPED_NEW_VALUE=$(escape_sed_pattern "${NEW_VALUE}")
 	if grep -q "^${ESCAPED_KEY}" "${FILE_PATH}"; then
-		if is_mac_platform; then
-			sed -i '' "/^${ESCAPED_KEY}=/s/.*/${ESCAPED_KEY}=${ESCAPED_NEW_VALUE}/" "${FILE_PATH}"
-		else
-			sed -i "/^${ESCAPED_KEY}=/s/.*/${ESCAPED_KEY}=${ESCAPED_NEW_VALUE}/" "${FILE_PATH}"
-		fi
+		sed -i "/^${ESCAPED_KEY}=/s/.*/${ESCAPED_KEY}=${ESCAPED_NEW_VALUE}/" "${FILE_PATH}"
 	else
 		echo "${ESCAPED_KEY}=${ESCAPED_NEW_VALUE}" >> "${FILE_PATH}"
 	fi
@@ -215,23 +161,6 @@ backup_by_rename_if_exists_and_copy_replacement(){
 		backup_file rename "${SOURCE}"
 	fi
 	cp -r "${REPLACEMENT}" "${SOURCE}"
-}
-
-convert_yymmdd_to_epoch(){
-	DATE_IN_YYMMDD="${1}"
-	EPOCH_IN_SECONDS=""
-	if is_linux_platform; then
-		EPOCH_IN_SECONDS=$(date -u --date="${DATE_IN_YYMMDD}" +%s)
-	elif is_mac_platform; then
-		 EPOCH_IN_SECONDS=$(date -ju -f "%y%m%d%H%M%S" "${DATE_IN_YYMMDD}000000" +"%s")
-	fi
-	printf "${EPOCH_IN_SECONDS}"
-}
-
-convert_hhmmss_time_duration_to_seconds(){
-	TIME_DURATION_IN_HHMMSS="${1}"
-	TIME_DURATION_IN_SECONDS=$(echo "${TIME_DURATION_IN_HHMMSS}"|awk '{print substr($1,1,2)*60*60 + substr($1,3,2)*60 + substr($1,5,2)}')
-	printf "${TIME_DURATION_IN_SECONDS}"
 }
 
 # Sed command for removing ANSI/VT100 control sequences
@@ -410,50 +339,6 @@ remove_with_purge_package_if_installed(){
 			apt-get remove --purge -y "${PACKAGE_NAME}"
 		fi
 	done
-}
-
-contains_element() {
-	ARRAY_NAME="${1}"
-	if [[ -z "${ARRAY_NAME}" ]]; then
-		printf "ERROR: ARRAY_NAME should not be empty\n"
-		return
-	fi
-	local -n ARRAY="${ARRAY_NAME}"
-	SEARCHED_VALUE="${2}"
-	if [[ -z "${SEARCHED_VALUE}" ]]; then
-		printf "ERROR: SEARCHED_VALUE should not be empty\n"
-		return
-	fi
-	VALUE_VARNAME="${3}"
-	if [[ -z "${VALUE_VARNAME}" ]]; then
-		printf "ERROR: VALUE_VARNAME should not be empty\n"
-		return
-	fi
-	CONTAINS_ELEMENT="false"
-	for VALUE in "${ARRAY[@]}"; do
-		if [[ "${VALUE}" == "${SEARCHED_VALUE}" ]]; then
-			CONTAINS_ELEMENT="true"
-			break;
-		fi
-	done
-	export "${VALUE_VARNAME}"="${CONTAINS_ELEMENT}"
-}
-
-clean_ssh_keys(){
-	REMOTE_ADDRESS="${1}"
-	if [[ -z "${REMOTE_ADDRESS}" ]]; then
-		printf "REMOTE_ADDRESS[%s] should not be empty\n"
-		return
-	fi
-	
-	# Remove REMOTE_ADDRESS from "${HOME}"/.ssh/known_hosts
-	ssh-keygen -R "${REMOTE_ADDRESS}"
-	
-	# Remove REMOTE_IP_ADDRESS from "${HOME}"/.ssh/known_hosts
-	REMOTE_IP_ADDRESS=$(getent hosts "${REMOTE_ADDRESS}" | awk '{ print $1 }')
-	if [[ ! -z "${REMOTE_IP_ADDRESS}" ]]; then
-		ssh-keygen -R "${REMOTE_IP_ADDRESS}"
-	fi
 }
 
 key_value_retriever(){
