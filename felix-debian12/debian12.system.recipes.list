@@ -7,7 +7,6 @@ recipes/01-system/0010-s-generate_and_set_locales
 recipes/01-system/0020-s-upgrade_system
 recipes/01-system/0030-s-install_packages
 recipes/01-system/0040-s-install_openbox
-recipes/01-system/0050-s-install_gtk3_nocsd
 recipes/01-system/0060-s-install_google_chrome
 recipes/01-system/0070-s-install_caja
 recipes/01-system/0080-s-install_engrampa
