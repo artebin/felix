@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# This script is an attempt to remove the indentation of an XML file
+# assuming the file is generated with a XML binding and it does not
+# contain large chunks of text. It is just an experiment to estimate how
+# much we could gain in file size by not indenting the XML.
+
 if [[ "${#}" == 0 ]]; then
 	printf "Usage: ${0} FILE...\n"
 	exit 1
@@ -11,7 +16,7 @@ for FILE in "${@}"; do
 		exit 1
 	fi
 	# Use perl to match the newline characters
-	# Cannot use "sed -z" making the line delimitation being \0 but
-	# then there is line size limitation <https://www.gnu.org/software/sed/manual/html_node/Limitations.html>
+	# We could use "sed -z" which makes the line delimitation being \0 but 
+	# sed has a line size limitation see <https://www.gnu.org/software/sed/manual/html_node/Limitations.html>
 	cat "${FILE}" | sed 's/^[[:blank:]]*//g' | perl -p -e 's/>\n/>/'
 done
