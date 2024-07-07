@@ -1,6 +1,7 @@
 # TODOS
 
-- [ ] Make indentation script for caja able to process multiple selection.
+- [x] Make indentation script for caja able to process multiple selection.
+
 - [ ] Update rofi theme for error messages?
 - [ ] Custom faenza should be installed in user config.
 - [ ] Add a script for checking the RAM usage <https://superuser.com/questions/398862/linux-find-out-what-process-is-using-all-the-ram> might be interesting.

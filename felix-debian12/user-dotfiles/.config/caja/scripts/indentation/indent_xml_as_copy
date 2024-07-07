@@ -1,32 +1,38 @@
 #!/usr/bin/env bash
 
-INPUT_FILE=$(readlink -f "${1}")
-
-if [[ ! -e "${INPUT_FILE}" ]]; then
-	zenity --no-wrap --error --text="Cannot find ${INPUT_FILE}"
-	exit 1
-fi
-
-if [[ ! -f "${INPUT_FILE}" ]]; then
-	zenity --no-wrap --error --text="Cannot use this script on a directory"
-	exit 1
-fi
-
-# `xmlstarlet` was used before but we could find some xml documents that it could handle properly while `tidy` could.
-#xmlstarlet fo "${INPUT_FILE}" >"${INPUT_FILE}.tmp" 2>"${INPUT_FILE}.log"
-tidy -xml -i -q "${INPUT_FILE}" >"${INPUT_FILE}.tmp" 2>"${INPUT_FILE}.log"
-RETURN_CODE=$?
-
-if [[ "${RETURN_CODE}" -eq 0 ]]; then
-	mv "${INPUT_FILE}.tmp" "${INPUT_FILE}.indented.xml"
-	if [[ -e "${INPUT_FILE}.log" ]]; then
-		rm -f "${INPUT_FILE}.log"
+function indent_xml_as_copy(){
+	FILE=$(readlink -f "${1}")
+	
+	if [[ ! -e "${FILE}" ]]; then
+		zenity --no-wrap --error --text="Cannot find ${FILE}"
+		return
 	fi
-	exit 0
-else
-	zenity --no-wrap --error --text="An error occurred while indenting the file"
-	if [[ -e "${INPUT_FILE}.tmp" ]]; then
-		rm -f "${INPUT_FILE}.tmp"
+	
+	if [[ ! -f "${FILE}" ]]; then
+		zenity --no-wrap --error --text="'$(basename "${BASH_SOURCE}")' works on files only"
+		return
 	fi
-	exit 1
-fi
+	
+	FILE_TO_INDENT="${FILE}.$(date '+%y%m%d-%H%M%S').indented.xml"
+	
+	# `xmlstarlet` was used before but we could find some XML documents that it could handle properly while `tidy` could.
+	#xmlstarlet fo "${FILE}" >"${FILE_TO_INDENT}.tmp" 2>"${FILE_TO_INDENT}.log"
+	tidy -xml -i -q "${FILE}" >"${FILE_TO_INDENT}.tmp" 2>"${FILE_TO_INDENT}.log"
+	RETURN_CODE=$?
+	
+	if [[ "${RETURN_CODE}" -eq 0 ]]; then
+		mv "${FILE_TO_INDENT}.tmp" "${FILE_TO_INDENT}"
+		if [[ -e "${FILE_TO_INDENT}.log" ]]; then
+			rm -f "${FILE_TO_INDENT}.log"
+		fi
+	else
+		zenity --no-wrap --error --text="An error occurred while indenting ${FILE}"
+		if [[ -e "${FILE_TO_INDENT}.tmp" ]]; then
+			rm -f "${FILE_TO_INDENT}.tmp"
+		fi
+	fi
+}
+
+for FILE in "${@}"; do
+	indent_xml_as_copy "${FILE}"
+done
