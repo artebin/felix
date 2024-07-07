@@ -83,7 +83,6 @@
 			<separator/>
 			<item label="User Interface Settings"><action name="Execute"><command>lxappearance</command></action></item>
 			<separator/>
-			<item label="Edit .xsessionrc"><action name="Execute"><command>geany -i ~/.xsessionrc</command></action></item>
 			<menu id="SxhkdConfig" label="Sxhkd">
 				<item label="Edit sxhkdrc"><action name="Execute"><command>geany -i ~/.config/sxhkd/sxhkdrc</command></action></item>
 				<separator/>
@@ -92,10 +91,10 @@
 			<menu id="OpenboxConfig" label="Openbox">
 				<item label="GUI Config Tool"><action name="Execute"><command>obconf</command></action></item>
 				<separator/>
+				<item label="Open Autostart Folder"><action name="Execute"><command>caja ~/.config/openbox/autostart.d</command></action></item>
 				<item label="Open Themes Folder"><action name="Execute"><command>bash ~/.config/openbox/ob-open-theme-folder.sh</command></action></item>
-				<item label="Edit menu.xml"><action name="Execute"><command>geany -i ~/.config/openbox/menu.xml</command></action></item>
 				<item label="Edit rc.xml"><action name="Execute"><command>geany -i ~/.config/openbox/rc.xml</command></action></item>
-				<item label="Edit autostart"><action name="Execute"><command>geany -i ~/.config/openbox/autostart</command></action></item>
+				<item label="Edit menu.xml"><action name="Execute"><command>geany -i ~/.config/openbox/menu.xml</command></action></item>
 				<separator/>
 				<item label="Reconfigure"><action name="Reconfigure"/></item>
 				<item label="Restart"><action name="Restart"/></item>
