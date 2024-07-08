@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] Install and configure autorandr <https://stackoverflow.com/questions/73671674/how-to-auto-run-script-after-applying-arandr-setting>.
 - [ ] List version of gtk4 in hw_soft_report.
 - [ ] Script for changing system lightdm wallpaper.
 - [ ] Disable the queuing in caja <https://github.com/mate-desktop/caja/issues/844>.
@@ -19,11 +20,10 @@
 - [ ] Icon for arandr?
 - [ ] rofi for airport code, country code, phone prefix => could use <https://github.com/ip2location/ip2location-iata-icao>.
 - [ ] Caja scripts should starts command in background else it might freeze the GUI (like indenting more than 1GB large XML file).
-- [ ] "tidy -xml -i -q edis-mil_240214_000001.log >edis-mil_240214_000001.log.xml" works while xmlstartlet cannot.
+
 - [ ] Make the recipe for having debian testing always installed with the apt pref and install firefox with it (no firefox-esr).
 - [ ] background color tint2 considering battery power?
 - [ ] Notification icon telling about reduced CPU freq?
-- [ ] Install and configure autorandr <https://stackoverflow.com/questions/73671674/how-to-auto-run-script-after-applying-arandr-setting>.
 - [ ] Add a script for start/stop docker.service docker.socket <https://askubuntu.com/questions/766318/disable-docker-autostart-at-boot>.
 - [ ] Push changes in herbe.
 - [ ] #DCDCDC colored font for tint2.
@@ -294,6 +294,8 @@
 
 # DONE
 
+- [x] Install sw in user home.
+- [x] Use tidy in XML indentation because we found some XML xmlstartlet could not indent while tidy could.
 - [x] Make indentation script for caja able to process multiple selection.
 - [x] Install curl by default.
 - [x] Modify most of the recipes installing software from sources for installing from repository and only optionally from sources.
