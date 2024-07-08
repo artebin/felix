@@ -17,7 +17,7 @@ exit_if_has_not_root_privileges
 function install_chrome(){
 	printf "Install Google Chrome...\n"
 	cd "${RECIPE_DIRECTORY}"
-	wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+	curl -O https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 	dpkg -i google-chrome-stable_current_amd64.deb
 	
 	# Cleanup

@@ -30,6 +30,7 @@ crudini
 uuid-runtime
 python-is-python3 python3-pip python3-venv
 accountsservice
+curl wget
 
 #################################
 # Terminal & command line tools

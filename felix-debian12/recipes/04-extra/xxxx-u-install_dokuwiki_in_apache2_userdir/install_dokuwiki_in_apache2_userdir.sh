@@ -32,7 +32,7 @@ install_dokuwiki_in_userdir(){
 		exit 1
 	fi
 	DOKUWIKI_URL="https://download.dokuwiki.org/src/dokuwiki/dokuwiki-stable.tgz"
-	wget --quiet "${DOKUWIKI_URL}"
+	curl -O "${DOKUWIKI_URL}"
 	
 	# Install
 	cd "${APACHE2_USERDIR}"

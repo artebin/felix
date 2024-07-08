@@ -20,7 +20,7 @@ install_telegraf_influxdb(){
 	# See <https://kifarunix.com/install-and-setup-tig-stack-on-ubuntu-20-04>
 	
 	# Install telegraf
-	wget -qO- https://repos.influxdata.com/influxdb.key | sudo apt-key add -
+	wget -q -O - https://repos.influxdata.com/influxdb.key | sudo apt-key add -
 	source /etc/lsb-release
 	echo "deb https://repos.influxdata.com/${DISTRIB_ID,,} ${DISTRIB_CODENAME} stable" | sudo tee /etc/apt/sources.list.d/influxdb.list
 	apt-get update
@@ -31,7 +31,7 @@ install_telegraf_influxdb(){
 	systemctl status telegraf
 	
 	# Install influxdb
-	wget https://dl.influxdata.com/influxdb/releases/influxdb_1.8.0_amd64.deb
+	curl -O https://dl.influxdata.com/influxdb/releases/influxdb_1.8.0_amd64.deb
 	dpkg -i influxdb_1.8.0_amd64.deb
 	
 	# Start influxdb

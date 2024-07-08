@@ -1,7 +1,9 @@
 # TODOS
 
-- [x] Make indentation script for caja able to process multiple selection.
-
+- [ ] List version of gtk4 in hw_soft_report.
+- [ ] Script for changing system lightdm wallpaper.
+- [ ] Disable the queuing in caja <https://github.com/mate-desktop/caja/issues/844>.
+- [ ] Install autorandr and configure restore script <https://bbs.archlinux.org/viewtopic.php?id=248757>.
 - [ ] Update rofi theme for error messages?
 - [ ] Custom faenza should be installed in user config.
 - [ ] Add a script for checking the RAM usage <https://superuser.com/questions/398862/linux-find-out-what-process-is-using-all-the-ram> might be interesting.
@@ -292,6 +294,8 @@
 
 # DONE
 
+- [x] Make indentation script for caja able to process multiple selection.
+- [x] Install curl by default.
 - [x] Modify most of the recipes installing software from sources for installing from repository and only optionally from sources.
 - [x] Should not use .xsessionrc because WM name is not known at the time of execution and also it is debian specific. We should use openbox autostart instead.
 - [x] 99_start_vnc_server is broken because still copied into .xsessionrc.
