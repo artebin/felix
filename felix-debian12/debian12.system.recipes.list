@@ -23,7 +23,6 @@ recipes/01-system/0180-s-install_fixed_notify_send
 recipes/01-system/0190-s-install_language_support
 recipes/01-system/0200-s-install_tint2
 recipes/01-system/0210-s-install_pass
-recipes/01-system/0220-s-install_sw
 recipes/01-system/0230-s-install_rofi
 recipes/01-system/0240-s-install_xeventbind
 recipes/01-system/0250-s-install_light_locker_settings
