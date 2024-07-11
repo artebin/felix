@@ -162,7 +162,7 @@ suckless-tools
 galternatives
 gsimplecal
 plank
-arandr
+arandr autorandr
 software-properties-gtk
 synaptic
 gparted
