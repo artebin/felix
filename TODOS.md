@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] Recipe in extra for installing Teams with deb repository see <https://github.com/IsmaelMartinez/teams-for-linux>.
 - [ ] Install and configure autorandr <https://stackoverflow.com/questions/73671674/how-to-auto-run-script-after-applying-arandr-setting>.
 - [ ] List version of gtk4 in hw_soft_report.
 - [ ] Script for changing system lightdm wallpaper.
