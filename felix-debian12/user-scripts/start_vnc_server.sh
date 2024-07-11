@@ -52,8 +52,8 @@ if [[ $# != 0 ]]; then
 fi
 
 # Check if VNC is properly configured: the passwd file is mandatory
-if [[ ! -f "~/.vnc/passwd" ]]; then
-	printf "${SCRIPT_NAME}: Cannot start VNC server because passwd file is missing. Please execute the \'vncpass\' command.\n" 1>&2
+if [[ ! -f "${HOME}/.vnc/passwd" ]]; then
+	printf "${SCRIPT_NAME}: Cannot start VNC server because passwd file is missing. Please execute the \'vncpasswd\' command.\n" 1>&2
 	exit 1
 fi
 
