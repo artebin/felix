@@ -1,16 +1,12 @@
 # TODOS
 
 - [ ] Recipe in extra for installing Teams with deb repository see <https://github.com/IsmaelMartinez/teams-for-linux>.
-- [ ] Install and configure autorandr <https://stackoverflow.com/questions/73671674/how-to-auto-run-script-after-applying-arandr-setting>.
 - [ ] List version of gtk4 in hw_soft_report.
 - [ ] Script for changing system lightdm wallpaper.
 - [ ] Disable the queuing in caja <https://github.com/mate-desktop/caja/issues/844>.
-- [ ] Install autorandr and configure restore script <https://bbs.archlinux.org/viewtopic.php?id=248757>.
 - [ ] Update rofi theme for error messages?
 - [ ] Custom faenza should be installed in user config.
 - [ ] Add a script for checking the RAM usage <https://superuser.com/questions/398862/linux-find-out-what-process-is-using-all-the-ram> might be interesting.
-- [ ] Install of gtk3-nocsd should be a recipe and disable by default. Bash environement should adding the lib nocsd only if it is installed.
-- [ ] Openbox pipe menu for resizing image (as a copy? ).
 - [ ] Can we use <https://github.com/svenstaro/rofi-calc> and assign it to the "Calc" key?
 - [ ] Rififi remmina should rebuild the connection.conf file only as an option. We should have a script on the side for manually rebuilding the file.
 - [ ] Review bash script for data conversion date2seconds and seconds2date. Also add a 2dates2seconds and 2dates2days for computing durations.
@@ -295,6 +291,9 @@
 
 # DONE
 
+- [x] Install of gtk3-nocsd should be a recipe and disable by default. Bash environement should adding the lib nocsd only if it is installed.
+- [x] Install autorandr and configure restore script <https://bbs.archlinux.org/viewtopic.php?id=248757>. => winlayout.
+- [x] Install and configure autorandr <https://stackoverflow.com/questions/73671674/how-to-auto-run-script-after-applying-arandr-setting>.
 - [x] Install sw in user home.
 - [x] Use tidy in XML indentation because we found some XML xmlstartlet could not indent while tidy could.
 - [x] Make indentation script for caja able to process multiple selection.
