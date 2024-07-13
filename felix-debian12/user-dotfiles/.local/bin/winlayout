@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# Code below retrieved at <https://bbs.archlinux.org/viewtopic.php?pid=2086994#p2086994>.
-
 function print_usage(){
 	cat << EOF
 Usage: ${BASH_SOURCE} COMMAND
@@ -9,17 +7,17 @@ Usage: ${BASH_SOURCE} COMMAND
 Where COMMAND can be:
   help
   save
-  restore
+  load
 EOF
 }
 
-function save_windows_positions(){
+function winlayout_save(){
 	PROFILE_NAME="${1}"
 	if [[ -z "${PROFILE_NAME}" ]]; then
 		printf "!ERROR! PROFILE_NAME should not be empty\n"
 		exit 1
 	fi
-	PROFILE_DIRECTORY="${CONFIG_WINRESTORE_DIRECTORY}/${PROFILE_NAME}"
+	PROFILE_DIRECTORY="${WINLAYOUT_CONFIG_DIRECTORY}/${PROFILE_NAME}"
 	if [[ ! -d "${PROFILE_NAME}" ]]; then
 		mkdir -p "${PROFILE_DIRECTORY}"
 	else
@@ -39,13 +37,13 @@ function save_windows_positions(){
 	done <"${WMCTRL_FILE}"
 }
 
-function restore_windows_positions(){
+function winlayout_load(){
 	PROFILE_NAME="${1}"
 	if [[ -z "${PROFILE_NAME}" ]]; then
 		printf "!ERROR! PROFILE_NAME should not be empty\n"
 		exit 1
 	fi
-	PROFILE_DIRECTORY="${CONFIG_WINRESTORE_DIRECTORY}/${PROFILE_NAME}"
+	PROFILE_DIRECTORY="${WINLAYOUT_CONFIG_DIRECTORY}/${PROFILE_NAME}"
 	if [[ ! -d "${PROFILE_DIRECTORY}" ]]; then
 		printf "!ERROR! Cannot find PROFILE_DIRECTORY[%s]\n" "${PROFILE_DIRECTORY}"
 		exit 1
@@ -56,49 +54,69 @@ function restore_windows_positions(){
 		exit 1
 	fi
 	
+	WMCTRL_LINE_REGEX="(0x[0-9a-z]+) (-?[0-9]+) ([0-9]+) ([0-9]+) ([0-9]+) ([0-9]+) (.*)"
 	XPROP_NET_WM_OPAQUE_REGION_LINE_REGEX="_NET_WM_OPAQUE_REGION.*= ([[:digit:]]+), ([[:digit:]]+), ([[:digit:]]+), ([[:digit:]]+)"
 	WNCKPROP_GEOMETRY_LINE_REGEX="Geometry.*: ([[:digit:]]+), ([[:digit:]]+), ([[:digit:]]+), ([[:digit:]]+)"
 	while read LINE; do
 		LINE=$(echo "${LINE}"|tr -s ' ')
-		WIN_ID=$(echo "${LINE}"|cut -d ' ' -f1)
-		DESK=$(echo "${LINE}"|cut -d ' ' -f2)
-		if [[ "${DESK}" -le 0 ]]; then
-			continue;
-		fi
-		
-		wmctrl -i -r "${WIN_ID}" -t "${DESK}"
-		
-		XPROP_FILE="${PROFILE_DIRECTORY}/xprop.${WIN_ID}"
-		if [[ ! -f "${XPROP_FILE}" ]]; then
-			printf "!ERROR! Cannot find XPROP_FILE[%s]\n" "${XPROP_FILE}"
-			exit 1
-		fi
-		XPROP_NET_WM_OPAQUE_REGION_LINE="$(grep -o "_NET_WM_OPAQUE_REGION.*" "${XPROP_FILE}")"
-		if [[ "${XPROP_NET_WM_OPAQUE_REGION_LINE}" =~ ${XPROP_NET_WM_OPAQUE_REGION_LINE_REGEX} ]]; then
-			WIN_WIDTH="${BASH_REMATCH[3]}"
-			WIN_HEIGHT="${BASH_REMATCH[4]}"
-			printf "WIN_ID[%s] WIN_WIDTH[%s] WIN_HEIGHT[%s]\n" "${WIN_ID}" "${WIN_WIDTH}" "${WIN_HEIGHT}"
+		if [[ "${LINE}" =~ ${WMCTRL_LINE_REGEX} ]]; then
+			WIN_ID="${BASH_REMATCH[1]}"
+			WIN_DESK="${BASH_REMATCH[2]}"
+			WIN_POSX="${BASH_REMATCH[3]}"
+			WIN_POSY="${BASH_REMATCH[4]}"
+			WIN_WIDTH="${BASH_REMATCH[5]}"
+			WIN_HEIGHT="${BASH_REMATCH[6]}"
+			WIN_TITLE="${BASH_REMATCH[7]}"
+			
+			if [[ "${WIN_DESK}" -le 0 ]]; then
+				continue;
+			fi
+			
+			printf "WIN_ID[%s] WIN_DESK[%s] WIN_POSX[%s] WIN_POSY[%s] WIN_WIDTH[%s] WIN_HEIGHT[%s] WIN_TITLE[%s]\n" "${WIN_ID}" "${WIN_DESK}" "${WIN_POSX}" "${WIN_POSY}" "${WIN_WIDTH}" "${WIN_HEIGHT}" "${WIN_TITLE}"
+			
+			# Restore virtual desktop ID for window
+			wmctrl -i -r "${WIN_ID}" -t "${WIN_DESK}"
+			
+			# Restore window size from `wmctrl`
 			xdotool windowsize "${WIN_ID}" "${WIN_WIDTH}" "${WIN_HEIGHT}"
-		fi
-		
-		WNCKPROP_FILE="${PROFILE_DIRECTORY}/wnckprop.${WIN_ID}"
-		if [[ ! -f "${WNCKPROP_FILE}" ]]; then
-			printf "!ERROR! Cannot find WNCKPROP_FILE[%s]\n" "${WNCKPROP_FILE}"
-			exit 1
-		fi
-		WNCKPROP_GEOMETRY_LINE="$(grep -o "Geometry.*" "${WNCKPROP_FILE}")"
-		if [[ "${WNCKPROP_GEOMETRY_LINE}" =~ ${WNCKPROP_GEOMETRY_LINE_REGEX} ]]; then
-			WIN_POSX="${BASH_REMATCH[1]}"
-			WIN_POSY="${BASH_REMATCH[2]}"
-			printf "WIN_ID[%s] WIN_POSX[%s] WIN_POSY[%s]\n" "${WIN_ID}" "${WIN_POSX}" "${WIN_POSY}"
-			xdotool windowmove "${WIN_ID}" "${WIN_POSX}" "${WIN_POSY}"
+			
+			# Restore window size from `xprop`
+			#XPROP_FILE="${PROFILE_DIRECTORY}/xprop.${WIN_ID}"
+			#if [[ ! -f "${XPROP_FILE}" ]]; then
+				#printf "!ERROR! Cannot find XPROP_FILE[%s]\n" "${XPROP_FILE}"
+				#exit 1
+			#fi
+			#XPROP_NET_WM_OPAQUE_REGION_LINE="$(grep -o "_NET_WM_OPAQUE_REGION.*" "${XPROP_FILE}")"
+			#if [[ "${XPROP_NET_WM_OPAQUE_REGION_LINE}" =~ ${XPROP_NET_WM_OPAQUE_REGION_LINE_REGEX} ]]; then
+				#WIN_WIDTH="${BASH_REMATCH[3]}"
+				#WIN_HEIGHT="${BASH_REMATCH[4]}"
+				#printf "WIN_ID[%s] WIN_WIDTH[%s] WIN_HEIGHT[%s]\n" "${WIN_ID}" "${WIN_WIDTH}" "${WIN_HEIGHT}"
+				#xdotool windowsize "${WIN_ID}" "${WIN_WIDTH}" "${WIN_HEIGHT}"
+			#fi
+			
+			# Restore window location from `wnckprop`
+			# `wmctrl` returns the location of the window content i.e. it ignores title bar and borders
+			WNCKPROP_FILE="${PROFILE_DIRECTORY}/wnckprop.${WIN_ID}"
+			if [[ ! -f "${WNCKPROP_FILE}" ]]; then
+				printf "!ERROR! Cannot find WNCKPROP_FILE[%s]\n" "${WNCKPROP_FILE}"
+				exit 1
+			fi
+			WNCKPROP_GEOMETRY_LINE="$(grep -o "Geometry.*" "${WNCKPROP_FILE}")"
+			if [[ "${WNCKPROP_GEOMETRY_LINE}" =~ ${WNCKPROP_GEOMETRY_LINE_REGEX} ]]; then
+				WIN_POSX="${BASH_REMATCH[1]}"
+				WIN_POSY="${BASH_REMATCH[2]}"
+				printf "WIN_ID[%s] WIN_POSX[%s] WIN_POSY[%s]\n" "${WIN_ID}" "${WIN_POSX}" "${WIN_POSY}"
+				xdotool windowmove "${WIN_ID}" "${WIN_POSX}" "${WIN_POSY}"
+			fi
+			
+			printf "\n"
 		fi
 	done <"${WMCTRL_FILE}"
 }
 
-CONFIG_WINRESTORE_DIRECTORY="${HOME}/.config/winrestore"
-if [[ ! -d "${CONFIG_WINRESTORE_DIRECTORY}" ]]; then
-	mkdir -p "${CONFIG_WINRESTORE_DIRECTORY}"
+WINLAYOUT_CONFIG_DIRECTORY="${HOME}/.config/winlayout"
+if [[ ! -d "${WINLAYOUT_CONFIG_DIRECTORY}" ]]; then
+	mkdir -p "${WINLAYOUT_CONFIG_DIRECTORY}"
 fi
 
 COMMAND="${1}"
@@ -112,14 +130,14 @@ case "${COMMAND}" in
 			print_usage
 			exit 1
 		fi
-		save_windows_positions "${2}"
+		winlayout_save "${2}"
 		;;
-	"restore")
+	"load")
 		if [[ "${#}" -ne 2 ]]; then
 			print_usage
 			exit 1
 		fi
-		restore_windows_positions "${2}"
+		winlayout_load "${2}"
 		;;
 	*)
 		print_usage
