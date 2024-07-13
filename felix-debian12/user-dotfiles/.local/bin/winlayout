@@ -72,30 +72,42 @@ function winlayout_load(){
 				continue;
 			fi
 			
-			printf "WIN_ID[%s] WIN_DESK[%s] WIN_POSX[%s] WIN_POSY[%s] WIN_WIDTH[%s] WIN_HEIGHT[%s] WIN_TITLE[%s]\n" "${WIN_ID}" "${WIN_DESK}" "${WIN_POSX}" "${WIN_POSY}" "${WIN_WIDTH}" "${WIN_HEIGHT}" "${WIN_TITLE}"
+			if ${VERBOSE_DEBUG}; then
+				printf "WIN_ID[%s] WIN_DESK[%s] WIN_POSX[%s] WIN_POSY[%s] WIN_WIDTH[%s] WIN_HEIGHT[%s] WIN_TITLE[%s]\n" "${WIN_ID}" "${WIN_DESK}" "${WIN_POSX}" "${WIN_POSY}" "${WIN_WIDTH}" "${WIN_HEIGHT}" "${WIN_TITLE}"
+			fi
 			
+			#########################################
 			# Restore virtual desktop ID for window
+			#########################################
 			wmctrl -i -r "${WIN_ID}" -t "${WIN_DESK}"
 			
+			#####################################
 			# Restore window size from `wmctrl`
+			#####################################
 			xdotool windowsize "${WIN_ID}" "${WIN_WIDTH}" "${WIN_HEIGHT}"
 			
+			####################################
 			# Restore window size from `xprop`
-			#XPROP_FILE="${PROFILE_DIRECTORY}/xprop.${WIN_ID}"
-			#if [[ ! -f "${XPROP_FILE}" ]]; then
-				#printf "!ERROR! Cannot find XPROP_FILE[%s]\n" "${XPROP_FILE}"
-				#exit 1
-			#fi
-			#XPROP_NET_WM_OPAQUE_REGION_LINE="$(grep -o "_NET_WM_OPAQUE_REGION.*" "${XPROP_FILE}")"
-			#if [[ "${XPROP_NET_WM_OPAQUE_REGION_LINE}" =~ ${XPROP_NET_WM_OPAQUE_REGION_LINE_REGEX} ]]; then
-				#WIN_WIDTH="${BASH_REMATCH[3]}"
-				#WIN_HEIGHT="${BASH_REMATCH[4]}"
-				#printf "WIN_ID[%s] WIN_WIDTH[%s] WIN_HEIGHT[%s]\n" "${WIN_ID}" "${WIN_WIDTH}" "${WIN_HEIGHT}"
-				#xdotool windowsize "${WIN_ID}" "${WIN_WIDTH}" "${WIN_HEIGHT}"
-			#fi
+			####################################
+			XPROP_FILE="${PROFILE_DIRECTORY}/xprop.${WIN_ID}"
+			if [[ ! -f "${XPROP_FILE}" ]]; then
+				printf "!ERROR! Cannot find XPROP_FILE[%s]\n" "${XPROP_FILE}"
+				exit 1
+			fi
+			XPROP_NET_WM_OPAQUE_REGION_LINE="$(grep -o "_NET_WM_OPAQUE_REGION.*" "${XPROP_FILE}")"
+			if [[ "${XPROP_NET_WM_OPAQUE_REGION_LINE}" =~ ${XPROP_NET_WM_OPAQUE_REGION_LINE_REGEX} ]]; then
+				WIN_WIDTH="${BASH_REMATCH[3]}"
+				WIN_HEIGHT="${BASH_REMATCH[4]}"
+				if ${VERBOSE_DEBUG}; then
+					printf "WIN_ID[%s] WIN_WIDTH[%s] WIN_HEIGHT[%s]\n" "${WIN_ID}" "${WIN_WIDTH}" "${WIN_HEIGHT}"
+				fi
+				xdotool windowsize "${WIN_ID}" "${WIN_WIDTH}" "${WIN_HEIGHT}"
+			fi
 			
+			#############################################################################################
 			# Restore window location from `wnckprop`
 			# `wmctrl` returns the location of the window content i.e. it ignores title bar and borders
+			#############################################################################################
 			WNCKPROP_FILE="${PROFILE_DIRECTORY}/wnckprop.${WIN_ID}"
 			if [[ ! -f "${WNCKPROP_FILE}" ]]; then
 				printf "!ERROR! Cannot find WNCKPROP_FILE[%s]\n" "${WNCKPROP_FILE}"
@@ -105,11 +117,15 @@ function winlayout_load(){
 			if [[ "${WNCKPROP_GEOMETRY_LINE}" =~ ${WNCKPROP_GEOMETRY_LINE_REGEX} ]]; then
 				WIN_POSX="${BASH_REMATCH[1]}"
 				WIN_POSY="${BASH_REMATCH[2]}"
-				printf "WIN_ID[%s] WIN_POSX[%s] WIN_POSY[%s]\n" "${WIN_ID}" "${WIN_POSX}" "${WIN_POSY}"
+				if ${VERBOSE_DEBUG}; then
+					printf "WIN_ID[%s] WIN_POSX[%s] WIN_POSY[%s]\n" "${WIN_ID}" "${WIN_POSX}" "${WIN_POSY}"
+				fi
 				xdotool windowmove "${WIN_ID}" "${WIN_POSX}" "${WIN_POSY}"
 			fi
 			
-			printf "\n"
+			if ${VERBOSE_DEBUG}; then
+				printf "\n"
+			fi
 		fi
 	done <"${WMCTRL_FILE}"
 }
@@ -119,28 +135,44 @@ if [[ ! -d "${WINLAYOUT_CONFIG_DIRECTORY}" ]]; then
 	mkdir -p "${WINLAYOUT_CONFIG_DIRECTORY}"
 fi
 
-COMMAND="${1}"
-case "${COMMAND}" in
-	"help")
-		print_usage
-		exit 0
-		;;
-	"save")
-		if [[ "${#}" -ne 2 ]]; then
+VERBOSE_DEBUG="false"
+COMMAND=""
+PROFILE_NAME=""
+while getopts "hvs:l:" ARG; do
+	case "${ARG}" in
+		h)
+			print_usage
+			exit 0
+			;;
+		v)
+			VERBOSE_DEBUG="true"
+			;;
+		s)
+			COMMAND="save"
+			PROFILE_NAME="${OPTARG}"
+			;;
+		l)
+			COMMAND="load"
+			PROFILE_NAME="${OPTARG}"
+			;;
+		*)
 			print_usage
 			exit 1
-		fi
-		winlayout_save "${2}"
+			;;
+	esac
+done
+shift $((OPTIND-1))
+
+if [[ "${#}" -ne 0 ]]; then
+	print_usage
+	exit 1
+fi
+
+case "${COMMAND}" in
+	"save")
+		winlayout_save "${PROFILE_NAME}"
 		;;
 	"load")
-		if [[ "${#}" -ne 2 ]]; then
-			print_usage
-			exit 1
-		fi
-		winlayout_load "${2}"
-		;;
-	*)
-		print_usage
-		exit 1
+		winlayout_load "${PROFILE_NAME}"
 		;;
 esac

@@ -14,7 +14,7 @@ ctrl + alt + q
 	xkill
 
 super + r
-	rofi -show run -modi run,window
+	rofi -show run -modi run,winlayout:"bash ${HOME}/.config/rofi/rofi-winlayout.sh"
 
 super + k
 	onboard
