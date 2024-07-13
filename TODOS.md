@@ -22,26 +22,22 @@
 - [ ] background color tint2 considering battery power?
 - [ ] Notification icon telling about reduced CPU freq?
 - [ ] Add a script for start/stop docker.service docker.socket <https://askubuntu.com/questions/766318/disable-docker-autostart-at-boot>.
-- [ ] Push changes in herbe.
-- [ ] #DCDCDC colored font for tint2.
+- [ ] Push changes in herbe / notification on test machines.
 
+- [ ] #DCDCDC colored font for tint2.
 - [ ] Script for restart_tint2 is broken.
 
 - [ ] Configure gtk4 system wide.
 - [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>, there is the logs of the battery in `/var/logs` provided by battery-stats. Also see <https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-power> where we can find the document for `/sys/class/power_supply/BAT0/`. Add a script to print the average discharging rate (slope), build a better plot with gnuplot.
-- [ ] Target language for translate-notify in sxhkd.
-- [ ] Cannot read /dev/video0 facetimehd in mplayer without specify "-vo gl_nosw" or "-vo x11" ? <https://github.com/patjak/facetimehd/issues/198>.
 
 - [ ] Add a file ~/.config/felix.conf to be sourced in .xsessionrc, it can contain var for translate-notify etc.
+- [ ] Target language for translate-notify in sxhkd.
 - [ ] Add a button in notification bubble of translate-notify for opening the translation into a text editor.
 - [ ] translate-notify cannot be easily configured.
 
-- [ ] <https://github.com/jalopezg-git/openbox/tree/enable-full-GTK-CSD>.
-- [ ] Use <https://github.com/lah7/gtk3-classic>.
+- [ ] Cannot read /dev/video0 facetimehd in mplayer without specify "-vo gl_nosw" or "-vo x11" ? <https://github.com/patjak/facetimehd/issues/198>.
 
 - [ ] Activate geany git diff by default.
-
-- [ ] Debian12: minimal felix?
 
 - [ ] respawn=no in pulseaudio conf to allow restart?
 - [ ] Improve sw so that we can use it a sleep-timer before starting a command.
@@ -53,13 +49,13 @@
 
 - [ ] why xfce4-screenshooter replace by mate-screeshot?
 
-- [ ] Could this <https://askubuntu.com/questions/1355031/when-laptop-lid-is-closed-the-desktop-switches-to-external-monitor-ubuntu-20-0> fix the suspend issue while an external screen is connected?
 
 - [ ] openbox dynamic menu for a folder of .md files? todo?
 
 - [ ] openbox dynamic menu for tint2 telling in what screen should appear the systray.
 
-- [ ] Auto randr and mutiple configuration, how to easily configure closing the lid does not mean suspend/hibernate?
+- [ ] How to easily configure closing the lid does not mean suspend/hibernate?
+- [ ] Could this <https://askubuntu.com/questions/1355031/when-laptop-lid-is-closed-the-desktop-switches-to-external-monitor-ubuntu-20-0> fix the suspend issue while an external screen is connected?
 
 - [ ] VLC plugin libnotify and no tray icon notifications.
 
@@ -99,9 +95,6 @@
 - [ ] Key shortcut to move a window from one screen to another with <https://superuser.com/questions/990454/how-can-i-instantly-move-the-active-window-to-a-secondary-monitor-in-openbox>.
 - [ ] Change the acceleration for the mouse wheel.
 - [ ] xeventbind should probably be started at xsession but it is not.
-
-- [ ] PrtScr does not work on the Dell Precision.
-
 
 - [ ] Add an openbox menu entry to indent HTML with "tidy -i" with as copy/in place like the other identation scripts.
 - [ ] Should add an openbox menu for the TODOs, it would start a geany with AllTray => better than one TODOS file opened with autostart.
@@ -291,6 +284,7 @@
 
 # DONE
 
+- [x] Debian12: minimal felix? => install from debian repository by default, build from source is optional.
 - [x] Install of gtk3-nocsd should be a recipe and disable by default. Bash environement should adding the lib nocsd only if it is installed.
 - [x] Install autorandr and configure restore script <https://bbs.archlinux.org/viewtopic.php?id=248757>. => winlayout.
 - [x] Install and configure autorandr <https://stackoverflow.com/questions/73671674/how-to-auto-run-script-after-applying-arandr-setting>.
@@ -298,6 +292,7 @@
 - [x] Use tidy in XML indentation because we found some XML xmlstartlet could not indent while tidy could.
 - [x] Make indentation script for caja able to process multiple selection.
 - [x] Install curl by default.
+- [x] <https://github.com/jalopezg-git/openbox/tree/enable-full-GTK-CSD>.
 - [x] Modify most of the recipes installing software from sources for installing from repository and only optionally from sources.
 - [x] Should not use .xsessionrc because WM name is not known at the time of execution and also it is debian specific. We should use openbox autostart instead.
 - [x] 99_start_vnc_server is broken because still copied into .xsessionrc.

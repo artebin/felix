@@ -3,7 +3,7 @@
 #rofi -show winlayout -modi winlayout:"bash ${HOME}/.config/rofi/rofi-winlayout.sh"
 
 function print_rofi_menu(){
-	echo -e "\0prompt\x1fRestore windows layout"
+	echo -e "\0prompt\x1fload winlayout"
 	find "${HOME}/.config/winlayout" -mindepth 1 -maxdepth 1 -type d -exec basename {} \;
 }
 
