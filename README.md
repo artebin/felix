@@ -10,9 +10,10 @@
   - Font GTK2/3+QT: Roboto
   - Application launcher: rofi
 
-  - [Felix themes](https://github.com/artebin/felix-themes) for Openbox, xfce4-notifyd and rofi
-  - Current windows layout (virtual desktop, location and size) is saved before switching to a display configuration. There is a rofi menu to load windows layout.
-  - Some rofi menus: run+winlayout, rofimoji.
+  - [Felix themes](https://github.com/artebin/felix-themes) for Openbox, xfce4-notifyd.
+  - Current windows layout (virtual desktop, location and size) is saved before switching to a display configuration.
+    There is a rofi menu to load windows layout.
+  - Some rofi menus: run+winlayout, rofimoji (character finder - not limited to emojis).
   - Text translation in desktop notification bubbles with [translate-notify](https://github.com/artebin/translate-notify)
 
   - Terminal: Terminator
