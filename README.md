@@ -11,9 +11,10 @@
   - Application launcher: rofi
 
   - [Felix themes](https://github.com/artebin/felix-themes) for Openbox, xfce4-notifyd and rofi
-  - Rofi menus defined with [rififi](https://github.com/artebin/rififi)
+  - Current windows layout (virtual desktop, location and size) is saved before switching to a display configuration. There is a rofi menu to load windows layout.
+  - Some rofi menus: run+winlayout, rofimoji.
   - Text translation in desktop notification bubbles with [translate-notify](https://github.com/artebin/translate-notify)
 
   - Terminal: Terminator
   - File Manager: MATE Caja
-  
+
