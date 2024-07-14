@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+
+function print_usage(){
+	cat << EOF
+Usage: ${BASH_SOURCE} [-m]
+This script calls rofi itself when executed with no arguments.
+
+Options:
+  -m    Must be used when calling the script as a rofi modi, like below:
+        rofi -show remmina -modi remmina:"rofi-remmina -m"
+EOF
+}
+
+function key_value_retriever(){
+	KEY="${1}"
+	if [[ -z "${KEY}" ]]; then
+		printf "ERROR: KEY should not be empty\n"
+		return
+	fi
+	FILE="${2}"
+	if [[ ! -f "${FILE}" ]]; then
+		printf "ERROR: Cannot find FILE: %s\n" "${FILE}"
+		return
+	fi
+	VALUE_VARNAME="${3}"
+	if [[ -z "${VALUE_VARNAME}" ]]; then
+		printf "ERROR: VALUE_VARNAME should not be empty\n"
+		return
+	fi
+	MATCH=$(grep "^[[:space:]]*${KEY}=" "${FILE}")
+	INDEX_OF_FIRST_EQUAL=$(expr index "${MATCH}" =)
+	VALUE="${MATCH:${INDEX_OF_FIRST_EQUAL}}"
+	export "${VALUE_VARNAME}"="${VALUE}"
+}
+
+function update_rofi_remmina_menu(){
+	rm -f "${ROFI_REMMINA_MENU_FILE}"
+	
+	# Menu item text use character `^` as used as column separator, we will use the command `column` later to make a better display in rofi.
+	for REMMINA_FILE in "${REMMINA_FILES_PARENT_DIRECTORY}"/*.remmina; do
+		key_value_retriever "group" "${REMMINA_FILE}" "REMOTE_GROUP"
+		key_value_retriever "name" "${REMMINA_FILE}" "REMOTE_NAME"
+		key_value_retriever "protocol" "${REMMINA_FILE}" "REMOTE_PROTOCOL"
+		key_value_retriever "server" "${REMMINA_FILE}" "REMOTE_SERVER"
+		echo -e "${REMOTE_PROTOCOL} ^ ${REMOTE_NAME} ^ ${REMOTE_SERVER}\0info\x1f${REMMINA_FILE}" >>"${ROFI_REMMINA_MENU_FILE}.tmp"
+	done
+	
+	# Call `column` on MENU_ITEM_TEXT_ALL_AS_STRING and add MENU_ITEM_TEXT_ARRAY to the conf file
+	cat "${ROFI_REMMINA_MENU_FILE}.tmp" | column -s\^ -t >"${ROFI_REMMINA_MENU_FILE}.columnized.tmp"
+	
+	cat "${ROFI_REMMINA_MENU_FILE}.columnized.tmp" | sort >"${ROFI_REMMINA_MENU_FILE}"
+	
+	rm -f "${ROFI_REMMINA_MENU_FILE}.tmp"
+	rm -f "${ROFI_REMMINA_MENU_FILE}.columnized.tmp"
+}
+
+function print_rofi_menu(){
+	echo -e "\0prompt\x1fremmina connections"
+	cat "${ROFI_REMMINA_MENU_FILE}"
+}
+
+REMMINA_FILES_PARENT_DIRECTORY="${HOME}/.local/share/remmina"
+ROFI_REMMINA_MENU_FILE="${HOME}/.config/rofi/rofi-remmina-menu.dat"
+
+ROFI_MODI="false"
+while getopts "hum" ARG; do
+	case "${ARG}" in
+		h)
+			print_usage
+			exit 0
+			;;
+		u)
+			update_rofi_remmina_menu
+			exit 0
+			;;
+		m)
+			ROFI_MODI="true"
+			;;
+		*)
+			print_usage
+			exit 1
+			;;
+	esac
+done
+shift $((OPTIND-1))
+
+if ! ${ROFI_MODI}; then
+	coproc ( rofi -show remmina -modi remmina:"rofi-remmina -m" )
+else
+	if [[ "${ROFI_RETV}" -eq 0 ]]; then
+		print_rofi_menu
+	elif [[ "${ROFI_RETV}" -eq 1 ]]; then
+		coproc ( xdg-open "${ROFI_INFO}" )
+	fi
+fi
+

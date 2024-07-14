@@ -8,7 +8,6 @@
 - [ ] Custom faenza should be installed in user config.
 - [ ] Add a script for checking the RAM usage <https://superuser.com/questions/398862/linux-find-out-what-process-is-using-all-the-ram> might be interesting.
 - [ ] Can we use <https://github.com/svenstaro/rofi-calc> and assign it to the "Calc" key?
-- [ ] Rififi remmina should rebuild the connection.conf file only as an option. We should have a script on the side for manually rebuilding the file.
 - [ ] Review bash script for data conversion date2seconds and seconds2date. Also add a 2dates2seconds and 2dates2days for computing durations.
 - [ ] Bash script for altitude conversion ft, meters, flight levels.
 - [ ] Bash alias for printing "DIR_NAME FILE_COUNT DISK_SIZE", something like printf "%-20s %-20s %-20s\n" "$1" "$(ls -1 "$1"|wc -l)" "$(du -h "$1"|cut -f 1)". and then we can easily use this in a find -exec.

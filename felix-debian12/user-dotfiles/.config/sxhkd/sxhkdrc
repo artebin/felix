@@ -14,7 +14,7 @@ ctrl + alt + q
 	xkill
 
 super + r
-	rofi -show run -modi run,winlayout:"rofi-winlayout -m"
+	rofi -show run -modi run,winlayout:"rofi-winlayout -m",remmina:"rofi-remmina -m"
 
 super + k
 	onboard
