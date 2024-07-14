@@ -8,6 +8,8 @@ This script calls rofi itself when executed with no arguments.
 Options:
   -m    Must be used when calling the script as a rofi modi, like below:
         rofi -show remmina -modi remmina:"rofi-remmina -m"
+  
+  -u    Update the menu from remmina connection files.
 EOF
 }
 

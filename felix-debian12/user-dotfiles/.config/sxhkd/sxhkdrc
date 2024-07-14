@@ -8,7 +8,7 @@ Print
 	xfce4-screenshooter
 
 alt + Print
-	maim-screenshot
+	maim -s
 
 ctrl + alt + q
 	xkill
@@ -19,8 +19,8 @@ super + r
 super + k
 	onboard
 
-super + u
-	rofimoji_run.sh
+super + j
+	rofi -show emoji -modi emoji:"rofimoji",annuaire:"rofi-annuaire -m"
 
 super + f
 	caja --no-desktop

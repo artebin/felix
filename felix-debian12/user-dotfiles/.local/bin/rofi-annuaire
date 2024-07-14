@@ -1,0 +1,85 @@
+#!/usr/bin/env bash
+
+function print_usage(){
+	cat << EOF
+Usage: ${BASH_SOURCE} [-m]
+This script calls rofi itself when executed with no arguments.
+
+Options:
+  -m    Must be used when calling the script as a rofi modi, like below:
+        rofi -show annuaire -modi remmina:"rofi-annuaire -m"
+  
+  -u    Update the menu from input files.
+EOF
+}
+
+function update_rofi_annuaire_airports_menu(){
+	rm -f "${ROFI_ANNUAIRE_MENU_FILE}"
+	
+	# We build the menu based on a curated list of IATA+ICAO codes available at <https://github.com/ip2location/ip2location-iata-icao>
+	curl -O "https://raw.githubusercontent.com/ip2location/ip2location-iata-icao/master/iata-icao.csv"
+	mv "iata-icao.csv" "${HOME}/.config/rofi"
+	IATA_ICAO_CSV_FILE="${HOME}/.config/rofi/iata-icao.csv"
+	
+	LINE_REGEX='"(.*)","(.*)","(.*)","(.*)","(.*)","(.*)","(.*)"'
+	LINE_COUNT=0
+	while read -r LINE; do
+		# Skip CSV header
+		if [[ "${LINE_COUNT}" -eq 0 ]]; then
+			((++LINE_COUNT))
+			continue;
+		fi
+		if [[ "${LINE}" =~ ${LINE_REGEX} ]]; then
+			COUNTRY_CODE="${BASH_REMATCH[1]}"
+			REGION_NAME="${BASH_REMATCH[2]}"
+			IATA="${BASH_REMATCH[3]}"
+			ICAO="${BASH_REMATCH[4]}"
+			AIRPORT_NAME="${BASH_REMATCH[5]}"
+			LATITUDE="${BASH_REMATCH[6]}"
+			LONGITUDE="${BASH_REMATCH[7]}"
+			printf "%-4s %-5s %-55s (%s,%s)\n" "${ICAO}" "${IATA}" "${AIRPORT_NAME}" "${LATITUDE}" "${LONGITUDE}" >>"${ROFI_ANNUAIRE_MENU_FILE}"
+		fi
+		((++LINE_COUNT))
+	done <"${IATA_ICAO_CSV_FILE}"
+	printf "AirportCount[%s]\n" "${LINE_COUNT}"
+}
+
+function print_rofi_menu(){
+	echo -e "\0prompt\x1fannuaire"
+	cat "${ROFI_ANNUAIRE_MENU_FILE}"
+}
+
+ROFI_ANNUAIRE_MENU_FILE="${HOME}/.config/rofi/rofi-annuaire-menu.dat"
+
+ROFI_MODI="false"
+while getopts "hum" ARG; do
+	case "${ARG}" in
+		h)
+			print_usage
+			exit 0
+			;;
+		u)
+			update_rofi_annuaire_airports_menu
+			exit 0
+			;;
+		m)
+			ROFI_MODI="true"
+			;;
+		*)
+			print_usage
+			exit 1
+			;;
+	esac
+done
+shift $((OPTIND-1))
+
+if ! ${ROFI_MODI}; then
+	coproc ( rofi -matching prefix -sort levenshtein -show annuaire -modi annuaire:"rofi-annuaire -m" )
+else
+	if [[ "${ROFI_RETV}" -eq 0 ]]; then
+		print_rofi_menu
+	elif [[ "${ROFI_RETV}" -eq 1 ]]; then
+		ICAO_CODE=$(echo "${1}" | tr -s ' ' | cut -d ' ' -f1)
+		coproc ( x-www-browser "https://metar-taf.com/?hl=${ICAO_CODE}" )
+	fi
+fi
