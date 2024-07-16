@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] Replace autorandr with saved screen layout with arandr and a rofi menu?
 - [ ] Recipe in extra for installing Teams with deb repository see <https://github.com/IsmaelMartinez/teams-for-linux>.
 - [ ] List version of gtk4 in hw_soft_report.
 - [ ] Script for changing system lightdm wallpaper.

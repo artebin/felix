@@ -1,3 +1,3 @@
 #!/usr/bin/env sh
 
-nitrogen --restore
+nitrogen --restore &
