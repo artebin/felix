@@ -38,17 +38,20 @@ function key_value_retriever(){
 function update_rofi_remmina_menu(){
 	rm -f "${ROFI_REMMINA_MENU_FILE}"
 	
-	# Menu item text use character `^` as used as column separator, we will use the command `column` later to make a better display in rofi.
 	for REMMINA_FILE in "${REMMINA_FILES_PARENT_DIRECTORY}"/*.remmina; do
 		key_value_retriever "group" "${REMMINA_FILE}" "REMOTE_GROUP"
 		key_value_retriever "name" "${REMMINA_FILE}" "REMOTE_NAME"
 		key_value_retriever "protocol" "${REMMINA_FILE}" "REMOTE_PROTOCOL"
 		key_value_retriever "server" "${REMMINA_FILE}" "REMOTE_SERVER"
-		echo -e "${REMOTE_PROTOCOL} ^ ${REMOTE_NAME} ^ ${REMOTE_SERVER}\0info\x1f${REMMINA_FILE}" >>"${ROFI_REMMINA_MENU_FILE}.tmp"
+		
+		# Use the character `^` as column separator => we will call the command `column` later to make a table-based display in rofi
+		# Unfortunately `column` does not support NULL character in the line, see a good explanation there <https://unix.stackexchange.com/questions/644500/zero-nul-separator-breaks-column-command>
+		# We use a place holder and add the NULL characterss later with `sed`
+		echo -en "${REMOTE_PROTOCOL} ^ ${REMOTE_NAME} ^ ${REMOTE_SERVER}<!NULLCHAR!>info\x1f${REMMINA_FILE}\n" >>"${ROFI_REMMINA_MENU_FILE}.tmp"
 	done
 	
-	# Call `column` on MENU_ITEM_TEXT_ALL_AS_STRING and add MENU_ITEM_TEXT_ARRAY to the conf file
 	cat "${ROFI_REMMINA_MENU_FILE}.tmp" | column -s\^ -t >"${ROFI_REMMINA_MENU_FILE}.columnized.tmp"
+	sed -i 's/<!NULLCHAR!>/\x0/g' "${ROFI_REMMINA_MENU_FILE}.columnized.tmp"
 	
 	cat "${ROFI_REMMINA_MENU_FILE}.columnized.tmp" | sort >"${ROFI_REMMINA_MENU_FILE}"
 	
