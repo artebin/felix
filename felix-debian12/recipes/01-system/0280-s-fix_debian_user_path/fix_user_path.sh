@@ -21,6 +21,8 @@ fix_debian_user_path(){
 	
 	sed -i 's|PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"|PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games"|g' /etc/profile
 	
+	add_or_update_line_based_on_prefix "PATH=" "PATH=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games\"" /etc/environment
+	
 	printf "\n"
 }
 
