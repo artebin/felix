@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+
+COMMAND="${HOME}/.local/bin/osd-warning"
+PROCESS_PID_FILE="${HOME}/.config/osd-warning/osd-warning.pid"
+
+if ! type "herbe" >/dev/null 2>&1; then
+	printf "!ERROR! Cannot find herbe\n" >&2
+	printf "!ERROR! <https://github.com/dudik/herbe>\n" >&2
+	exit 1
+fi
+
+TOGGLE_WITH_START_STOP_DAEMON="false"
+while getopts "t" OPT; do
+	case "${OPT}" in
+		t)
+			TOGGLE_WITH_START_STOP_DAEMON="true"
+			((OPTION_COUNT+=1))
+			;;
+		*)
+			print_usage
+			exit 1
+			;;
+	esac
+done
+shift $((OPTIND-1))
+
+if ${TOGGLE_WITH_START_STOP_DAEMON}; then
+	if start-stop-daemon --status --pidfile "${PROCESS_PID_FILE}"; then
+		printf "Stopping daemon for COMMAND[%s]...\n" "${COMMAND}"
+		start-stop-daemon --stop --pidfile "${PROCESS_PID_FILE}"
+	else
+		printf "Starting daemon for COMMAND[%s]...\n" "${COMMAND}"
+		start-stop-daemon --start --exec "${COMMAND}" --pidfile "${PROCESS_PID_FILE}" --make-pidfile
+	fi
+	exit 0
+fi
+
+WARNING_MESSAGE=""
+WARNING_MESSAGE_FILE="${HOME}/.config/osd-warning/osd-warning-message.txt"
+if [[ -f "${WARNING_MESSAGE_FILE}" ]]; then
+	WARNING_MESSAGE="$(cat "${WARNING_MESSAGE_FILE}")"
+fi
+if [[ -z "${WARNING_MESSAGE}" ]]; then
+	WARNING_MESSAGE="Warning message file ${WARNING_MESSAGE_FILE} is empty!"
+fi
+
+XRESOURCES_FILE="${HOME}/.config/osd-warning/xresources"
+if [[ -f "${XRESOURCES_FILE}" ]]; then
+	xrdb -merge "${XRESOURCES_FILE}"
+fi
+
+HERBE_PID=""
+trap terminate EXIT
+function terminate(){
+	if [[ ! -z "${HERBE_PID}" ]]; then
+		# Send SIGUSR1 to dismiss the notification
+		pkill -SIGUSR1 "${HERBE_PID}"
+		
+		# Herbe is using signals, it might be stuck if unexpected signals are sent.
+		# We enforce below that it has been stopped properly and semaphor is unlocked, see <https://github.com/dudik/herbe>
+		pkill -SIGKILL herbe
+		herbe
+	fi
+}
+
+while true; do
+	herbe "${WARNING_MESSAGE}" &
+	HERBE_PID="${!}"
+	wait "${HERBE_PID}"
+	sleep 5s
+done

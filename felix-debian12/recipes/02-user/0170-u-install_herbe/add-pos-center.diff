@@ -1,0 +1,58 @@
+diff -crB herbe.orig/config.def.h herbe/config.def.h
+*** herbe.orig/config.def.h	2024-07-26 14:27:35.566949327 +0200
+--- herbe/config.def.h	2024-07-26 14:31:17.211914000 +0200
+***************
+*** 10,16 ****
+  static unsigned int pos_x = 30;
+  static unsigned int pos_y = 60;
+  
+! enum corners { TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT };
+  enum corners corner = TOP_RIGHT;
+  
+  static unsigned int duration = 5; /* in seconds */
+--- 10,16 ----
+  static unsigned int pos_x = 30;
+  static unsigned int pos_y = 60;
+  
+! enum corners { TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT, CENTER };
+  enum corners corner = TOP_RIGHT;
+  
+  static unsigned int duration = 5; /* in seconds */
+diff -crB herbe.orig/herbe.c herbe/herbe.c
+*** herbe.orig/herbe.c	2024-07-26 14:27:35.566949327 +0200
+--- herbe/herbe.c	2023-11-13 15:16:33.101636000 +0100
+***************
+*** 186,196 ****
+  	unsigned int text_height = font->ascent - font->descent;
+  	unsigned int height = (num_of_lines - 1) * line_spacing + num_of_lines * text_height + 2 * padding;
+  
+! 	if (corner == TOP_RIGHT || corner == BOTTOM_RIGHT)
+  		x = screen_width - width - border_size * 2 - pos_x;
+! 
+! 	if (corner == BOTTOM_LEFT || corner == BOTTOM_RIGHT)
+  		y = screen_height - height - border_size * 2 - pos_y;
+  
+  	window = XCreateWindow(display, RootWindow(display, screen), x, y, width, height, border_size, DefaultDepth(display, screen),
+  						   CopyFromParent, visual, CWOverrideRedirect | CWBackPixel | CWBorderPixel, &attributes);
+--- 186,206 ----
+  	unsigned int text_height = font->ascent - font->descent;
+  	unsigned int height = (num_of_lines - 1) * line_spacing + num_of_lines * text_height + 2 * padding;
+  
+! 	if (corner == TOP_RIGHT || corner == BOTTOM_RIGHT) {
+  		x = screen_width - width - border_size * 2 - pos_x;
+! 	}
+! 	else if (corner == CENTER ) {
+! 		x = ( screen_width - width - border_size * 2 ) /2 - pos_x;
+! 	}
+! 	
+! 	if (corner == BOTTOM_LEFT || corner == BOTTOM_RIGHT) {
+  		y = screen_height - height - border_size * 2 - pos_y;
++ 	}
++ 	else if ( corner == CENTER ) {
++ 		y = ( screen_height - height - border_size * 2) / 2 - pos_y;
++ 	}
++ 
++ 
+  
+  	window = XCreateWindow(display, RootWindow(display, screen), x, y, width, height, border_size, DefaultDepth(display, screen),
+  						   CopyFromParent, visual, CWOverrideRedirect | CWBackPixel | CWBorderPixel, &attributes);
