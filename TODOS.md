@@ -1,5 +1,10 @@
 # TODOS
 
+- [ ] laptop-mode-tools.
+- [ ] Command for setting the font size in openbox current theme.
+- [ ] remove Mate completely, check terminator is default.
+- [ ] Key shortcut for htop?
+- [ ] Configure default browser, something still missing, see WebAdmin button in CodeMeterCC.
 - [ ] Replace autorandr with saved screen layout with arandr and a rofi menu?
 - [ ] Recipe in extra for installing Teams with deb repository see <https://github.com/IsmaelMartinez/teams-for-linux>.
 - [ ] List version of gtk4 in hw_soft_report.
@@ -22,7 +27,6 @@
 - [ ] background color tint2 considering battery power?
 - [ ] Notification icon telling about reduced CPU freq?
 - [ ] Add a script for start/stop docker.service docker.socket <https://askubuntu.com/questions/766318/disable-docker-autostart-at-boot>.
-- [ ] Push changes in herbe / notification on test machines.
 
 - [ ] #DCDCDC colored font for tint2.
 - [ ] Script for restart_tint2 is broken.
@@ -131,8 +135,6 @@
 - [ ] Use the patch on openbox to ignore the hints, the bug is into the openbox tiling via rc.xml, we should do the tiling via an external tool.
 - [ ] Keyboard shortcut to make all visible window undecorated (or all windows in the current desktop) + inverted action.
 - [ ] We miss a keyboard shorcut to make appear the window menu (usefull when the window is undecorated).
-
-- [ ] Recipe to install Herbe <https://github.com/dudik/herbe> and commit our changes into a fork.
 
 - [ ] Install <https://github.com/sharkdp/pastel> for processing colors from the command line.
 - [ ] The ordering of the files in caja is wrong.
@@ -284,6 +286,7 @@
 
 # DONE
 
+- [x] osd-warning and herbe.
 - [x] Debian12: minimal felix? => install from debian repository by default, build from source is optional.
 - [x] Install of gtk3-nocsd should be a recipe and disable by default. Bash environement should adding the lib nocsd only if it is installed.
 - [x] Install autorandr and configure restore script <https://bbs.archlinux.org/viewtopic.php?id=248757>. => winlayout.
