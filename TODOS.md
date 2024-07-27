@@ -1,13 +1,17 @@
 # TODOS
 
+- [ ] winlayout should not restore virtual desktop for sticky windows.
 - [ ] laptop-mode-tools.
 - [ ] Command for setting the font size in openbox current theme.
 - [ ] remove Mate completely, check terminator is default.
-- [ ] Key shortcut for htop?
 - [ ] Configure default browser, something still missing, see WebAdmin button in CodeMeterCC.
-- [ ] Replace autorandr with saved screen layout with arandr and a rofi menu?
 - [ ] Recipe in extra for installing Teams with deb repository see <https://github.com/IsmaelMartinez/teams-for-linux>.
+
+- [ ] Add an openbox menu entry to indent HTML with "tidy -i" with as copy/in place like the other identation scripts.
+
 - [ ] List version of gtk4 in hw_soft_report.
+- [ ] Configure gtk4 system wide.
+
 - [ ] Script for changing system lightdm wallpaper.
 - [ ] Disable the queuing in caja <https://github.com/mate-desktop/caja/issues/844>.
 - [ ] Update rofi theme for error messages?
@@ -17,11 +21,8 @@
 - [ ] Review bash script for data conversion date2seconds and seconds2date. Also add a 2dates2seconds and 2dates2days for computing durations.
 - [ ] Bash script for altitude conversion ft, meters, flight levels.
 - [ ] Bash alias for printing "DIR_NAME FILE_COUNT DISK_SIZE", something like printf "%-20s %-20s %-20s\n" "$1" "$(ls -1 "$1"|wc -l)" "$(du -h "$1"|cut -f 1)". and then we can easily use this in a find -exec.
-- [ ] Bash alias revert eclipse workspace/.metadata/.plugins/org.eclipse.e4.workbench.xmi.
-- [ ] add a script for adding a start/end element to an XML file and indent it.
+- [ ] Bash alias save+revert eclipse workspace/.metadata/.plugins/org.eclipse.e4.workbench.xmi.
 - [ ] Icon for arandr?
-- [ ] rofi for airport code, country code, phone prefix => could use <https://github.com/ip2location/ip2location-iata-icao>.
-- [ ] Caja scripts should starts command in background else it might freeze the GUI (like indenting more than 1GB large XML file).
 
 - [ ] Make the recipe for having debian testing always installed with the apt pref and install firefox with it (no firefox-esr).
 - [ ] background color tint2 considering battery power?
@@ -31,7 +32,6 @@
 - [ ] #DCDCDC colored font for tint2.
 - [ ] Script for restart_tint2 is broken.
 
-- [ ] Configure gtk4 system wide.
 - [ ] Monitor power consumption and read <https://wiki.archlinux.org/title/Power_management>, there is the logs of the battery in `/var/logs` provided by battery-stats. Also see <https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-power> where we can find the document for `/sys/class/power_supply/BAT0/`. Add a script to print the average discharging rate (slope), build a better plot with gnuplot.
 
 - [ ] Add a file ~/.config/felix.conf to be sourced in .xsessionrc, it can contain var for translate-notify etc.
@@ -53,7 +53,6 @@
 
 - [ ] why xfce4-screenshooter replace by mate-screeshot?
 
-
 - [ ] openbox dynamic menu for a folder of .md files? todo?
 
 - [ ] openbox dynamic menu for tint2 telling in what screen should appear the systray.
@@ -61,6 +60,7 @@
 - [ ] How to easily configure closing the lid does not mean suspend/hibernate?
 - [ ] Could this <https://askubuntu.com/questions/1355031/when-laptop-lid-is-closed-the-desktop-switches-to-external-monitor-ubuntu-20-0> fix the suspend issue while an external screen is connected?
 
+- [ ] Always active dbus interface in VLC.
 - [ ] VLC plugin libnotify and no tray icon notifications.
 
 - [ ] Use "active monitor" in Openbox configuration + disable save window geometry and position in Geany.
@@ -77,11 +77,8 @@
 - [ ] Freeze at lightdm login after hibernate on inspiron 7737 (does not occur with the precision 7530!? ), could be fixed with `init_on_alloc=0` see <https://forums.debian.net/viewtopic.php?t=149965>.
 - [ ] Geany markdown is not configured anymore with the github css.
 - [ ] `apt-cache policy evolution` to show all version available.
-- [ ] Install "lz4 lz4json" for unpacking jsonlz4/mozLz4/Mozilla LZ4.
-- [ ] Can we find a command to list the URLs opened in firerox.
+
 - [ ] Bash alias for printing firefox memory footprint with <https://unix.stackexchange.com/questions/288589/get-chromes-total-memory-usage> and `smem -tkP firefox`.
-- [ ] should condition xsession.d to the window manager.
-- [ ] PrintScreen is not working on the Dell Precision 7530 see <https://unix.stackexchange.com/questions/669853/printscreen-key-not-registering-in-arch-linux>.
 - [ ] Set virtual desktop name with <https://superuser.com/questions/508128/is-it-possible-to-set-the-name-of-the-current-virtual-desktop-via-commandline>.
 - [ ] use github repo xlockscreen in the recipe.
 - [ ] Can we show the unicode U+hhhh directly in rofunicode?
@@ -93,14 +90,12 @@
 - [ ] Audacious has audio player instead of VLC, it has much better playlist management and reload.
 - [ ] Configure font in terminal for having emojis.
 - [ ] Install xinput-gui <https://github.com/IvanFon/xinput-gui>.
-- [ ] Rebuild Openbox from sources and fix size increment.
 - [ ] Openbox pipenu for a folder containing .desktop files (teams).
 - [ ] Openbox pipemenu for changing primary monitor of Tint2.
 - [ ] Key shortcut to move a window from one screen to another with <https://superuser.com/questions/990454/how-can-i-instantly-move-the-active-window-to-a-secondary-monitor-in-openbox>.
 - [ ] Change the acceleration for the mouse wheel.
-- [ ] xeventbind should probably be started at xsession but it is not.
+- [ ] xeventbind should probably be started at xsession but it is not. => why do we need xeventbind again? probably should remove it now.
 
-- [ ] Add an openbox menu entry to indent HTML with "tidy -i" with as copy/in place like the other identation scripts.
 - [ ] Should add an openbox menu for the TODOs, it would start a geany with AllTray => better than one TODOS file opened with autostart.
 
 - [ ] Refactor the scripts folder into ~/bin? or .local/bin?
@@ -186,8 +181,6 @@
 
 - [ ] Add a recipe for unified remote for the PI4 <https://www.unifiedremote.com/tutorials/how-to-install-unified-remote-server-deb-via-terminal>.
 - [ ] Add a recipe for the PI4 WiFi hotspot <https://www.raspberryconnect.com/projects/65-raspberrypi-hotspot-accesspoints/183-raspberry-pi-automatic-hotspot-and-static-hotspot-installer>.
-- [ ] Caja seems to mount ftp without unicode support.
-- [ ] Cannot use pkexec in rofi.
 - [ ] Review bash aliases for time conversion and millis2date should return UTC.
 - [ ] Configure firefox with https://support.mozilla.org/gl/questions/1241294 for not allowing website to override Firefox UI shortcuts.
 - [ ] Add an action in openbox menu for editing the crontab.
@@ -200,7 +193,6 @@
 - [ ] Replace apticron by cron-apt which does not install postfix as dependency.
 - [ ] Add bash_apt.sh in .bashrc.d with apt functions.
 - [ ] tmux instead of screen.
-- [ ] Always active dbus interface in VLC.
 - [ ] Add an action "Edit screenshot with PowerPoint"
 - [ ] Add network scan command in bash aliases.
 - [ ] Seconde recipe should check depot in sources.list, recipe for installing software may fail if not.
@@ -212,7 +204,9 @@
 - [ ] Add a convertWebpToPng caja script.
 - [ ] Open browser quarter of the screen, lower-right corner of the screen.
 - [ ] Add regexer and http://mathew-kurian.github.io/CharacterMap/ in a bookmark tools.
+
 - [ ] Caja script for sorting file, same for removing duplicates.
+
 - [ ] Find the project on github for reminding shortcuts (command line and rofi) <https://gitlab.com/matclab/rofi-i3-shortcut-help>.
 - [ ] Would be perfect to be able to choose the mail client: claws-mail, Evolution, Thunderbird. Can suceed in doing that today when Thunderbird and Evolution are installed, the change is not detected.
 - [ ] Deactivate Rofi modi ssh and try to add rofi-buku. => don't like buku in the end...
@@ -280,12 +274,17 @@
 - [ ] Caja: opening 2 window of file Properties is buggy.
 - [ ] Caja: always show the file name (extension are hidden for .desktop files for example) See <https://github.com/mate-desktop/caja/issues/727> open ticket.
 - [ ] Caja: when opening executable scripts (bash, python) => contextual menu is showing 'open'. Good UX would be 3 menu items: 'Run', 'Run in terminal' and 'Open with X', X being the default application for the mime type. However today there is only 'Open' which will open dialog a popup asking 'Display or run or run in terminal?'. The user does not know what is behind 'Display', display with what??? Even worst: the default application for the mime type is not listed in the 'Open with' maybe because, well... it is the application used for 'Display', erf...
+- [ ] Caja: seems to mount ftp without unicode support.
 - [ ] Geany/Markdown: plugin is not properly using the css specified (colors are not used and lines starting with the character `#` inside a blockcode are treated as a heading).
 - [ ] Geany/Markdown: when all the document are closed, the Markdown Preview still shows the last preview done.
 - [ ] Geany/Markdown: the links are clickable in the preview, if we click one link then the page is showed in the sidebar but there is no way to navigate and go back to the preview.
 
 # DONE
 
+- [x] Replace autorandr with saved screen layout with arandr and a rofi menu?
+- [x] rofi for airport code, country code, phone prefix => could use <https://github.com/ip2location/ip2location-iata-icao>.
+- [x] add a script for adding a start/end element to an XML file and indent it.
+- [x] Caja scripts should starts command in background else it might freeze the GUI (like indenting more than 1GB large XML file).
 - [x] osd-warning and herbe.
 - [x] Debian12: minimal felix? => install from debian repository by default, build from source is optional.
 - [x] Install of gtk3-nocsd should be a recipe and disable by default. Bash environement should adding the lib nocsd only if it is installed.
