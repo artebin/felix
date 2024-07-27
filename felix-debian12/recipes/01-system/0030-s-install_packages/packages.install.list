@@ -312,7 +312,7 @@ mmark
 # VCS
 #######
 subversion kdesvn
-git git-gui giggle
+git git-gui giggle tig
 #git-cola # git-cola is installed by a recipe and optionally from sources 
 mercurial
 
