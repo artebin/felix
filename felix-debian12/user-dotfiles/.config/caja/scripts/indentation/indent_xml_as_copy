@@ -33,6 +33,4 @@ function indent_xml_as_copy(){
 	fi
 }
 
-for FILE in "${@}"; do
-	indent_xml_as_copy "${FILE}"
-done
+coproc ( for FILE in "${@}"; do indent_xml_as_copy "${FILE}"; done )
