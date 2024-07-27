@@ -9,7 +9,7 @@ alias df="df -h"
 alias bc='bc -l'
 
 # Show file system labels in lsblk output
-alias lsblk='lsblk -o name,type,mountpoint,label,size,uuid'
+alias lsblk='lsblk -o name,mountpoint,label,size,uuid'
 
 # Always colorize grep output
 alias grep='grep --color=always'
