@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+
+function print_usage(){
+	cat << EOF
+Usage: ${BASH_SOURCE} [-m]
+This script calls rofi itself when executed with no arguments.
+
+Options:
+  -m    Must be used when calling the script as a rofi modi, like below:
+        rofi -show screenlayout -modi screenlayout:"rofi-screenlayout -m"
+EOF
+}
+
+SCREENLAYOUT_FILE_NAME_REGEX="rofi-screenlayout-(.*)\.sh"
+
+function print_rofi_menu_screenlayout(){
+	echo -e "\0prompt\x1fswitch to screenlayout"
+	find "${HOME}/.screenlayout" -name "rofi-screenlayout-*.sh" -mindepth 1 -maxdepth 1 -type f | while read FILE; do
+		FILE_NAME="$(basename "${FILE}")"
+		if [[ "${FILE_NAME}" =~ ${SCREENLAYOUT_FILE_NAME_REGEX} ]]; then
+			SCREENLAYOUT_NAME="${BASH_REMATCH[1]}"
+			
+			# Format ROFI_INFO as STEP1${FILE}
+			# The prefix STEP1 will be used later to tell where the user is inside the menu
+			echo -e "${SCREENLAYOUT_NAME}\0info\x1fSTEP1${FILE}"
+		fi
+	done
+}
+
+WINLAYOUT_MENU_ENTRY_DO_NOT_SAVE="Do not save"
+function print_rofi_menu_winlayout(){
+	echo -e "\0prompt\x1fsave current winlayout as"
+	echo -e "${WINLAYOUT_MENU_ENTRY_DO_NOT_SAVE}\0info\x1f${ROFI_INFO/STEP1/STEP2}"
+	find "${HOME}/.screenlayout" -name "rofi-screenlayout-*.sh" -mindepth 1 -maxdepth 1 -type f | while read FILE; do
+		FILE_NAME="$(basename "${FILE}")"
+		if [[ "${FILE_NAME}" =~ ${SCREENLAYOUT_FILE_NAME_REGEX} ]]; then
+			SCREENLAYOUT_NAME="${BASH_REMATCH[1]}"
+			
+			# Do not suggest to save winlayout as the SCREENLAYOUT_NAME we intend to switch to
+			if [[ "${SCREENLAYOUT_NAME}" != "${SELECTED_MENU_ENTRY}" ]]; then
+				# Format ROFI_INFO as STEP2${FILE}, the prefix STEP2 will be used later to tell where the user is inside the menu
+				echo -e "${SCREENLAYOUT_NAME}\0info\x1f${ROFI_INFO/STEP1/STEP2}"
+			fi
+		fi
+	done
+}
+
+ROFI_MODI="false"
+while getopts "hm" ARG; do
+	case "${ARG}" in
+		h)
+			print_usage
+			exit 0
+			;;
+		m)
+			ROFI_MODI="true"
+			;;
+		*)
+			print_usage
+			exit 1
+			;;
+	esac
+done
+shift $((OPTIND-1))
+
+SELECTED_MENU_ENTRY="${1}"
+
+if ! ${ROFI_MODI}; then
+	coproc ( rofi -show screenlayout -modi screenlayout:"rofi-screenlayout -m" )
+else
+	if [[ "${ROFI_RETV}" -eq 0 ]]; then
+		print_rofi_menu_screenlayout
+	elif [[ "${ROFI_RETV}" -eq 1 ]]; then
+		if [[ "${ROFI_INFO}" == STEP1* ]]; then
+			print_rofi_menu_winlayout
+		else
+			# Must be STEP2
+			WINLAYOUT_TO_SAVE_NAME="${SELECTED_MENU_ENTRY}"
+			
+			SCREENLAYOUT_FILE="${ROFI_INFO:5}"
+			SCREENLAYOUT_FILE_NAME="$(basename "${SCREENLAYOUT_FILE}")"
+			
+			SCREENLAYOUT_NAME=""
+			if [[ "${SCREENLAYOUT_FILE_NAME}" =~ ${SCREENLAYOUT_FILE_NAME_REGEX} ]]; then
+				SCREENLAYOUT_NAME="${BASH_REMATCH[1]}"
+			fi
+			
+			coproc ( if [[ "${WINLAYOUT_TO_SAVE_NAME}" != "${WINLAYOUT_MENU_ENTRY_DO_NOT_SAVE}" ]]; then winlayout -s "${WINLAYOUT_TO_SAVE_NAME}" >/dev/null 2>&1; fi; \
+				bash "${SCREENLAYOUT_FILE}" >/dev/null 2>&1; \
+				if [[ ! -z "${SCREENLAYOUT_NAME}" ]]; then winlayout -l "${SCREENLAYOUT_NAME}" >/dev/null 2>&1; fi; \
+				sleep 1; \
+				notify-send -i display "Display profile" "${SCREENLAYOUT_NAME}" & \
+				nitrogen --restore & )
+		fi
+	fi
+fi

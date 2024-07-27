@@ -14,13 +14,13 @@ ctrl + alt + q
 	xkill
 
 super + r
-	rofi -show run -modi run,winlayout:"rofi-winlayout -m",remmina:"rofi-remmina -m"
+	rofi -show run -modi run,screenlayout:"rofi-screenlayout -m",remmina:"rofi-remmina -m",annuaire:"rofi-annuaire -m"
 
 super + k
 	onboard
 
 super + j
-	rofi -show emoji -modi emoji:"rofimoji",annuaire:"rofi-annuaire -m"
+	rofimoji
 
 super + f
 	caja --no-desktop
