@@ -65,6 +65,12 @@ function print_rofi_menu(){
 }
 
 REMMINA_FILES_PARENT_DIRECTORY="${HOME}/.local/share/remmina"
+
+if [[ ! -d "${REMMINA_FILES_PARENT_DIRECTORY}" ]]; then
+	printf "!ERROR! Cannot find REMMINA_FILES_PARENT_DIRECTORY[%s]\n" "${REMMINA_FILES_PARENT_DIRECTORY}" 1>&2
+	exit 1
+fi
+
 ROFI_REMMINA_MENU_FILE="${HOME}/.config/rofi/rofi-remmina-menu.dat"
 
 ROFI_MODI="false"
