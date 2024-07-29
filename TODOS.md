@@ -281,6 +281,8 @@
 
 # DONE
 
+- [x] fix toogle tint2.
+- [x] fix_debian recipe name contains a typo.
 - [x] Replace autorandr with saved screen layout with arandr and a rofi menu?
 - [x] rofi for airport code, country code, phone prefix => could use <https://github.com/ip2location/ip2location-iata-icao>.
 - [x] add a script for adding a start/end element to an XML file and indent it.
