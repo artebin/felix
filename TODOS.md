@@ -1,6 +1,6 @@
 # TODOS
 
-- [ ] ibus cannot be used with openbox but we should enforce xim as input method else we can see a bug in firefox, see <https://forum.manjaro.org/t/whatsapp-web-deleting-letter-that-starts-with-accent/119772>.
+- [ ] If ibus is not installed we can see a bug in firefox, it is solved by forcing xim as input method, see <https://forum.manjaro.org/t/whatsapp-web-deleting-letter-that-starts-with-accent/119772>. We can also install ibus btu we miss the config for replacing shortcut W-space used by default as switch input method (i.e. the "ibus input method") while can be an openbox shortcut (usually it is the openbox menu toggle shortcut).
 - [ ] Debian 12 is slow and lags with full disk encryption <https://wiki.archlinux.org/title/Dm-crypt/Specialties#Disable_workqueue_for_increased_solid_state_drive_(SSD)_performance>.
 - [ ] winlayout should not restore virtual desktop for sticky windows.
 - [ ] laptop-mode-tools.
