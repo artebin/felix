@@ -1,5 +1,8 @@
 # TODOS
 
+- [ ] Hidden gem in Openbox: window selector Win+Tab and Shift+click brings a window from another desktop into the current desktop. Ctrl+click moves to desktop/window but keep the window selector opened.
+- [ ] Remove the QT QPA.
+- [ ] Adding backports into apt sources and install fasttrack.
 - [ ] Geany add header block comment <https://www.geany.org/manual/#sending-text-through-custom-commands>
 - [ ] Must install geany from sources else ctrl-shift-v is killing geany.
 - [ ] Fix paprefs <https://www.reddit.com/r/Ubuntu/comments/gvtzpb/ubuntu_2004_lts_x86_64_trying_to_use_paprefs_but/>.
