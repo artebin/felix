@@ -28,4 +28,4 @@ if [[ -f "${LIBGTK3_NOCSD_PATH}" ]]; then
 fi
 
 # Use qt5ct for theming Qt applications
-export QT_QPA_PLATFORMTHEME=qt5ct
+#export QT_QPA_PLATFORMTHEME=qt5ct
