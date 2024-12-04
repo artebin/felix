@@ -1,13 +1,13 @@
 # SOURCES START #
 deb [arch=amd64] http://localhost:10001/debian_testing/mirror/deb.debian.org/debian testing main contrib non-free non-free-firmware
-deb-src http://localhost:10001/debian_testing/mirror/deb.debian.org/debian testing main contrib non-free non-free-firmware
+#deb-src http://localhost:10001/debian_testing/mirror/deb.debian.org/debian testing main contrib non-free non-free-firmware
 
 deb [arch=amd64] http://localhost:10001/debian_testing/mirror/deb.debian.org/debian-security/ testing-security main contrib non-free non-free-firmware
-deb-src http://localhost:10001/debian_testing/mirror/deb.debian.org/debian-security/ testing-security main contrib non-free non-free-firmware
+#deb-src http://localhost:10001/debian_testing/mirror/deb.debian.org/debian-security/ testing-security main contrib non-free non-free-firmware
 
 deb [arch=amd64] http://localhost:10001/debian_testing/mirror/deb.debian.org/debian testing-updates main contrib non-free non-free-firmware
-deb-src http://localhost:10001/debian_testing/mirror/deb.debian.org/debian testing-updates main contrib non-free non-free-firmware
+#deb-src http://localhost:10001/debian_testing/mirror/deb.debian.org/debian testing-updates main contrib non-free non-free-firmware
 
 deb [arch=amd64] http://localhost:10001/debian_testing/mirror/deb.debian.org/debian testing-backports main contrib non-free non-free-firmware
-deb-src http://localhost:10001/debian_testing/mirror/deb.debian.org/debian testing-backports main contrib non-free non-free-firmware
+#deb-src http://localhost:10001/debian_testing/mirror/deb.debian.org/debian testing-backports main contrib non-free non-free-firmware
 # SOURCES END #
