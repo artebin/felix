@@ -1,5 +1,54 @@
 # TODOS
 
+- [ ] rofi-annuaire should show airport coordinates in DMS too (not only in DD Decimal Degrees).
+- [ ] Can we disable font smoothing in effin GNOME? <https://askubuntu.com/questions/1199155/how-do-i-disable-font-antialiasing-in-some-apps-e-g-vlc-telegram-viber>.
+
+- [ ] after installing packages to compile geany-preview <https://github.com/xiota/geany-preview>, the rendering of markdown in geany changed with a bug "extra line break between bullet and todo marker). Also the rendering in emails changed in Evolution. The list of packages is: Upgraded the following packages:
+  
+  libjavascriptcoregtk-4.0-18 (2.44.2-1~deb12u1) to 2.46.3-1~deb12u1
+  libjavascriptcoregtk-4.1-0 (2.44.2-1~deb12u1) to 2.46.3-1~deb12u1
+  libnghttp2-14 (1.52.0-1+deb12u1) to 1.52.0-1+deb12u2
+  libwebkit2gtk-4.0-37 (2.44.2-1~deb12u1) to 2.46.3-1~deb12u1
+  libwebkit2gtk-4.1-0 (2.44.2-1~deb12u1) to 2.46.3-1~deb12u1
+  
+  Installed the following packages:
+  gir1.2-adw-1 (1.2.2-1)
+  gir1.2-javascriptcoregtk-4.0 (2.46.3-1~deb12u1)
+  gir1.2-javascriptcoregtk-4.1 (2.46.3-1~deb12u1)
+  gir1.2-soup-2.4 (2.74.3-1)
+  gir1.2-soup-3.0 (3.2.2-2)
+  gir1.2-webkit2-4.0 (2.46.3-1~deb12u1)
+  gir1.2-webkit2-4.1 (2.46.3-1~deb12u1)
+  libadwaita-1-0 (1.2.2-1)
+  libadwaita-1-dev (1.2.2-1)
+  libjavascriptcoregtk-4.0-dev (2.46.3-1~deb12u1)
+  libjavascriptcoregtk-4.1-dev (2.46.3-1~deb12u1)
+  libjson-glib-dev (1.6.6-1)
+  libnghttp2-dev (1.52.0-1+deb12u2)
+  libpolkit-gobject-1-dev (122-3)
+  libpsl-dev (0.21.2-1)
+  libsoup-3.0-dev (3.2.2-2)
+  libsoup-gnome2.4-1 (2.74.3-1)
+  libsoup2.4-dev (2.74.3-1)
+  libsysprof-4 (3.46.0-4)
+  libsysprof-4-dev (3.46.0-4)
+  libsysprof-ui-5 (3.46.0-4)
+  => libwebkit2gtk-4.0-dev (2.46.3-1~deb12u1)
+  => libwebkit2gtk-4.1-dev (2.46.3-1~deb12u1)
+  
+  => libcmark-gfm-dev (0.29.0.gfm.6-6)
+  libcmark-gfm-extensions-dev (0.29.0.gfm.6-6)
+  libcmark-gfm-extensions0.29.0.gfm.6 (0.29.0.gfm.6-6)
+  libcmark-gfm0.29.0.gfm.6 (0.29.0.gfm.6-6)
+  libghc-cmark-gfm-dev (0.2.5+ds1-1+b1)
+  
+  ghc (9.0.2-4)
+  libbsd-dev (0.11.7-2)
+  => libcmark-dev (0.30.2-6)
+  libghc-cmark-dev (0.6+ds1-4+b2)
+  libmd-dev (1.0.4-2)
+  libncurses-dev (6.4-4)
+
 - [ ] Hidden gem in Openbox: window selector Win+Tab and Shift+click brings a window from another desktop into the current desktop. Ctrl+click moves to desktop/window but keep the window selector opened.
 - [ ] Remove the QT QPA.
 - [ ] Adding backports into apt sources and install fasttrack.
