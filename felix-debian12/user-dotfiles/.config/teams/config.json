@@ -1,3 +1,20 @@
 {
-	"appIcon": "~/.local/share/icons/teams.png"
+	"appIcon": "/home/njames/.config/teams-for-linux/teams.png",
+	"isCustomBackgroundEnabled": "true",
+	"customBGServiceBaseUrl": "http://localhost:15915",
+	"customBGServiceConfigFetchInterval": "10",
+	"customBGServiceIgnoreMSDefaults": "true",
+	"logConfig": {
+		"transports": {
+			"file": {
+				"maxSize": 100000,
+				"format": "{processType} [{h}:{i}:{s}.{ms}] {text}",
+				"level": "debug"
+			},
+			"console": {
+				"format": "[{h}:{i}:{s}.{ms}] {text}",
+				"level": "debug"
+			}
+		}
+	}
 }

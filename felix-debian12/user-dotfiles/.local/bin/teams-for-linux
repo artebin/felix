@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+TEAMS_CUSTOM_BACKGROUNDS_DIRECTORY="${HOME}/.config/teams-for-linux/CustomBackgrounds"
+HTTP_SERVER_CUSTOM_BACKGROUNDS_SCRIPT_NAME="python3-http-server-cors.py"
+HTTP_SERVER_CUSTOM_BACKGROUNDS_PORT_NUMBER="15915"
+HTTP_SERVER_CUSTOM_BACKGROUNDS_PID_FILE="/run/user/${UID}/teams-for-linux-http-server-custom-backgrounds.pid"
+
+function kill_existing_http_server_custom_backgrounds() {
+	if [[ -f "${HTTP_SERVER_CUSTOM_BACKGROUNDS_PID_FILE}" ]]; then
+		HTTP_SERVER_CUSTOM_BACKGROUNDS_PID=$(cat "${HTTP_SERVER_CUSTOM_BACKGROUNDS_PID_FILE}")
+		if [[ ! -z "${HTTP_SERVER_CUSTOM_BACKGROUNDS_PID}" ]]; then
+			kill -s 9 ${HTTP_SERVER_CUSTOM_BACKGROUNDS_PID} 2>&1 2>/dev/null
+		fi
+	fi
+}
+
+trap kill_existing_http_server_custom_backgrounds 1 2 3 6 EXIT
+
+kill_existing_http_server_custom_backgrounds
+
+if [[ -f "${TEAMS_CUSTOM_BACKGROUNDS_DIRECTORY}/${HTTP_SERVER_CUSTOM_BACKGROUNDS_SCRIPT_NAME}" ]]; then
+	cd "${TEAMS_CUSTOM_BACKGROUNDS_DIRECTORY}"
+	coproc ( ./"${HTTP_SERVER_CUSTOM_BACKGROUNDS_SCRIPT_NAME}" "${HTTP_SERVER_CUSTOM_BACKGROUNDS_PORT_NUMBER}" )
+	HTTP_SERVER_CUSTOM_BACKGROUNDS_PID="${!}"
+	printf "HTTP server for custom backgrounds running with PID[%s]\n" "${HTTP_SERVER_CUSTOM_BACKGROUNDS_PID}"
+	printf "%s" "${HTTP_SERVER_CUSTOM_BACKGROUNDS_PID}" >"${HTTP_SERVER_CUSTOM_BACKGROUNDS_PID_FILE}"
+fi
+
+/usr/bin/teams-for-linux
