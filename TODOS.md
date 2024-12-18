@@ -1,5 +1,8 @@
 # TODOS
 
+- [ ] Install simplescreenrecorder.
+- [ ] Force NTP server `/etc/systemd/timesyncd.conf` ?
+- [ ] Edit bashrc and open bashrc.d in openbox menu.
 - [ ] rofi-annuaire should show airport coordinates in DMS too (not only in DD Decimal Degrees).
 - [ ] Can we disable font smoothing in effin GNOME? <https://askubuntu.com/questions/1199155/how-do-i-disable-font-antialiasing-in-some-apps-e-g-vlc-telegram-viber>.
 
