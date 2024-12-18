@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+function list_v4l2_devices(){
+	if type "v4l2-ctl" >/dev/null 2>&1; then
+		v4l2-ctl --list-devices
+	else
+		printf "!ERROR! v4l2-ctl is not installed\n"
+	fi
+}
+
+if [[ "${#}" -ne 1 ]]; then
+	printf "!ERROR! Video device is expected in argument\n\n"
+	list_v4l2_devices
+	exit 1
+fi
+
+VIDEO_DEVICE="${1}"
+mplayer -vo gl2 tv:// -tv driver=v4l2:width=640:height=480:device="${VIDEO_DEVICE}"
