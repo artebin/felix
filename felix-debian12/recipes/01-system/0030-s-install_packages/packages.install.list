@@ -293,6 +293,7 @@ espeak
 # Chat and webcam
 ###################
 hexchat
+v4l-conf v4l-utils
 
 ################
 # Office suite
