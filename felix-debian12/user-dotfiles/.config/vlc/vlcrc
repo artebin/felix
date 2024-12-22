@@ -9,3 +9,6 @@ one-instance=0
 
 # Use only one instance when started from file manager (boolean)
 one-instance-when-started-from-file=0
+
+# Control interfaces (string)
+control=notify
