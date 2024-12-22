@@ -1,5 +1,6 @@
 # TODOS
 
+- [ ] Readd mugshot and gftp (instead of bareftp not in debian12).
 - [ ] Install simplescreenrecorder.
 - [ ] Force NTP server `/etc/systemd/timesyncd.conf` ?
 - [ ] Edit bashrc and open bashrc.d in openbox menu.

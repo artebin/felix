@@ -23,13 +23,13 @@ configure_alternatives(){
 	printf "\n"
 	
 	printf "Setting firefox as x-www-browser...\n"
-	update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/firefox-esr 900
-	update-alternatives --set x-www-browser /usr/bin/firefox-esr
+	update-alternatives --install /usr/bin/x-www-browser x-www-browser /usr/bin/firefox 900
+	update-alternatives --set x-www-browser /usr/bin/firefox
 	printf "\n"
 	
 	printf "Setting firefox as gnome-www-browser...\n"
-	update-alternatives --install /usr/bin/gnome-www-browser gnome-www-browser /usr/bin/firefox-esr 900
-	update-alternatives --set gnome-www-browser /usr/bin/firefox-esr
+	update-alternatives --install /usr/bin/gnome-www-browser gnome-www-browser /usr/bin/firefox 900
+	update-alternatives --set gnome-www-browser /usr/bin/firefox
 	printf "\n"
 }
 
