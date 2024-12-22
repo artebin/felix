@@ -1,0 +1,39 @@
+#!/usr/bin/env sh
+
+export PATH="${HOME}/.local/bin:${PATH}"
+
+export JDK_HOME=""
+export JRE_HOME=""
+if [ ! -z "${JDK_HOME}" ]; then
+	export PATH="${JDK_HOME}/bin:${PATH}"
+fi
+
+export ANT_HOME=""
+if [ ! -z "${ANT_HOME}" ]; then
+	export PATH="${ANT_HOME}/bin:${PATH}"
+fi
+
+export MVN_HOME=""
+if [ ! -z "${MVN_HOME}" ]; then
+	export PATH="${MVN_HOME}/bin:${PATH}"
+fi
+
+export GPODDER_HOME=""
+export GPODDER_DOWNLOAD_DIR=""
+
+# Force loading of libgtk3-nocsd
+export LD_PRELOAD="libgtk3-nocsd.so.0${LD_PRELOAD:+:$LD_PRELOAD}"
+
+# Use qt5ct for theming Qt applications
+#export QT_QPA_PLATFORMTHEME=qt5ct
+
+# SSH agent
+if [ -d "${HOME}/.ssh" ]; then
+	HOME_LINK_SSH_AUTH_SOCK="${HOME}/.ssh/ssh_auth_sock"
+	if [ ! -S "${HOME_LINK_SSH_AUTH_SOCK}" ]; then
+		eval `ssh-agent`
+		ln -sf "${SSH_AUTH_SOCK}" "${HOME_LINK_SSH_AUTH_SOCK}"
+	fi
+	export SSH_AUTH_SOCK="${HOME_LINK_SSH_AUTH_SOCK}"
+	ssh-add -l > /dev/null || ssh-add
+fi
