@@ -62,16 +62,16 @@ XF86KbdBrightnessUp
 	flock -n "/dev/shm/${USER}.brillo.keyboard.notification_id" bash "${HOME}/scripts/brillo_keyboard_notify.sh" -i
 
 XF86AudioMute
-	pulseaudio-ctl mute
+	pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 XF86AudioLowerVolume
-	pulseaudio-ctl down
+	pactl set-sink-volume @DEFAULT_SINK@ -5%
 
 XF86AudioRaiseVolume
-	pulseaudio-ctl up
+	pactl set-sink-volume @DEFAULT_SINK@ +5%
 
 XF86AudioMicMute
-	pulseaudio-ctl mute-input
+	pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 XF86Search
 	caja --no-desktop
