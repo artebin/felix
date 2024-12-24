@@ -18,6 +18,8 @@ if [ ! -z "${MVN_HOME}" ]; then
 	export PATH="${MVN_HOME}/bin:${PATH}"
 fi
 
+export TIME_STYLE=long-iso
+
 export GPODDER_HOME=""
 export GPODDER_DOWNLOAD_DIR=""
 

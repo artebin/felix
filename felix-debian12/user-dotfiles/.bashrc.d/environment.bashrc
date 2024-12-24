@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-export TIME_STYLE=long-iso
-
 # Make df human readable
-alias df="df -h"
+alias df='df -h'
 
 # Add standard math library to bc
 alias bc='bc -l'
@@ -71,11 +69,6 @@ function set_terminal_title() {
 	PS1=${ORIG}${TITLE}
 }
 alias set_terminal_title=set_terminal_title
-
-function m3u8_to_mp4(){
-	ffmpeg -i "${1}" -bsf:a aac_adtstoasc -vcodec copy -c copy -crf 50 "${2}"
-}
-alias m3u8_to_mp4=m3u8_to_mp4
 
 function remove_ssh_key_for_host(){
 	HOST_ADDRESS="${1}"
