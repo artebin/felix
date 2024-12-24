@@ -23,7 +23,7 @@ function install_geany(){
 function install_geany_from_sources(){
 	printf "Install required dependencies to build Geany...\n"
 	DEPENDENCIES=(  "intltool"
-			"libwebkit2gtk-4.0-dev"
+			"libwebkit2gtk-4.1-dev "
 			"libvte-2.91-dev"
 			"libgtkspell3-3-dev"
 			"libgit2-dev"
