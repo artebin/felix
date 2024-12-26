@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+
+source "$(dirname ${BASH_SOURCE})/common.sh"
+
+function print_usage(){
+	printf "Usage: %s <RECIPE_NAME>\n" "$(basename "${BASH_SOURCE}")"
+}
+
+if [[ "${#}" -ne 1 ]]; then
+	print_usage
+	exit 1
+fi
+
+RECIPE_NAME="${1}"
+RECIPE_CLEANED_NAME="$(echo "${RECIPE_NAME}" | sed "s/[^[:alnum:]]/_/g" | tr '[:upper:]' '[:lower:]')"
+
+if [[ "${RECIPE_NAME}" != "${RECIPE_CLEANED_NAME}" ]]; then
+	USER_ANSWER=$(yes_no_dialog "Recipe name will be: ${RECIPE_CLEANED_NAME}\nContinue?")
+	if [[ "${USER_ANSWER}" != "yes" ]]; then
+		exit 0
+	fi
+fi
+
+RECIPE_ID="xxxx-y-${RECIPE_NAME}"
+RECIPE_SCRIPT_FILE_NAME="${RECIPE_NAME}.sh"
+RECIPE_SCRIPT_FILE_PATH="./${RECIPE_ID}/${RECIPE_SCRIPT_FILE_NAME}"
+
+if [[ -d "${RECIPE_ID}" ]]; then
+	printf "!ERROR! Directory RECIPE_ID[%s] already exists in current directory\n" "${RECIPE_ID}"
+	exit 1
+fi
+
+mkdir "${RECIPE_ID}"
+
+cat << 'EOF' >"${RECIPE_SCRIPT_FILE_PATH}"
+#!/usr/bin/env bash
+
+function print_markdown_documentation(){
+}
+
+function initialize(){
+	RECIPE_DIRECTORY="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+	FELIX_SH="$(eval find ./$(printf "{$(echo %{1..10}q,)}" | sed 's/ /\.\.\//g')/ -maxdepth 1 -name felix.sh)"
+	if [[ ! -f "${FELIX_SH}" ]]; then
+		printf "Cannot find felix.sh\n"
+		exit 1
+	fi
+	FELIX_SH="$(readlink -f "${FELIX_SH}")"
+	FELIX_ROOT="$(dirname "${FELIX_SH}")"
+	source "${FELIX_SH}"
+	initialize_recipe "${RECIPE_DIRECTORY}"
+}
+
+function precheck(){
+	#exit_if_not_bash
+	#exit_if_has_not_root_privileges
+	#exit_if_has_root_privileges
+}
+
+function myrecipe(){
+}
+
+function execute_recipe(){
+	myrecipe 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+	EXIT_CODE="${PIPESTATUS[0]}"
+	if [[ "${EXIT_CODE}" -ne 0 ]]; then
+		exit "${EXIT_CODE}"
+	fi
+}
+EOF
