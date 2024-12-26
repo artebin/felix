@@ -25,12 +25,12 @@ configure_php_in_userdir(){
 	
 	printf "Edit PHP configuration files...\n"
 	cd "${RECIPE_DIRECTORY}"
-	if [[ ! -f /etc/apache2/mods-available/php7.4.conf ]]; then
-		printf "Cannot find PHP configuration file: /etc/apache2/mods-available/php7.4.conf\n"
+	if [[ ! -f /etc/apache2/mods-available/php8.2.conf ]]; then
+		printf "Cannot find PHP configuration file: /etc/apache2/mods-available/php8.2.conf\n"
 		return 1
 	fi
-	backup_file rename /etc/apache2/mods-available/php7.4.conf
-	cp apache2-php7.4.conf /etc/apache2/mods-available/php7.4.conf
+	backup_file rename /etc/apache2/mods-available/php8.2.conf
+	cp apache2-php8.2.conf /etc/apache2/mods-available/php8.2.conf
 	
 	printf "Restarting apache2...\n"
 	systemctl restart apache2
