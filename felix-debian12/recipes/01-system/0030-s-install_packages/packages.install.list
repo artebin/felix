@@ -172,9 +172,7 @@ mugshot
 ###################
 # Desktop theming
 ###################
-blackbird-gtk-theme
-bluebird-gtk-theme
-greybird-gtk-theme
+dmz-cursor-theme
 
 #########
 # Fonts
