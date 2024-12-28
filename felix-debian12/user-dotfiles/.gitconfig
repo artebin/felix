@@ -9,3 +9,12 @@
 	pretty = format:%Cred%h%Creset %Cblue<%an>%Creset %Cgreen%ci%Creset %s
 [pull]
 	ff = only
+[cola]
+	spellcheck = false
+	fontdiff = Monospace,8,-1,5,50,0,0,0,0,0
+	theme = default
+	icontheme = default
+	startupmode = list
+	boldheaders = true
+	statusshowtotals = true
+	statusindent = true
