@@ -15,12 +15,13 @@ RECIPE_NAME="${1}"
 RECIPE_CLEANED_NAME="$(echo "${RECIPE_NAME}" | sed "s/[^[:alnum:]]/_/g" | tr '[:upper:]' '[:lower:]')"
 
 if [[ "${RECIPE_NAME}" != "${RECIPE_CLEANED_NAME}" ]]; then
-	USER_ANSWER=$(yes_no_dialog "Recipe name will be: ${RECIPE_CLEANED_NAME}\nContinue?")
+	dialog_yes_no "Recipe name will be: ${RECIPE_CLEANED_NAME}\nContinue?" USER_ANSWER
 	if [[ "${USER_ANSWER}" != "yes" ]]; then
 		exit 0
 	fi
 fi
 
+RECIPE_NAME="${RECIPE_CLEANED_NAME}"
 RECIPE_ID="xxxx-y-${RECIPE_NAME}"
 RECIPE_SCRIPT_FILE_NAME="${RECIPE_NAME}.sh"
 RECIPE_SCRIPT_FILE_PATH="./${RECIPE_ID}/${RECIPE_SCRIPT_FILE_NAME}"
@@ -52,7 +53,7 @@ function initialize(){
 }
 
 function precheck(){
-	#exit_if_not_bash
+	exit_if_not_bash
 	#exit_if_has_not_root_privileges
 	#exit_if_has_root_privileges
 }
@@ -68,3 +69,5 @@ function execute_recipe(){
 	fi
 }
 EOF
+
+touch "${RECIPE_ID}/FELIX_RECIPE"

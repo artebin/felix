@@ -80,28 +80,35 @@ add_or_update_keyvalue(){
 	fi
 }
 
-yes_no_dialog(){
-	if [ "$#" -ne 1 ]; then
-		printf "Function yes_no_dialog() expects one argument\n"
+function dialog_yes_no(){
+	if [ "$#" -ne 2 ]; then
+		printf "!ERROR! Function yes_no_dialog() expects one argument\n"
 		exit 1
 	fi
 	DIALOG_TEXT="${1}"
+	VALUE_VARNAME="${2}"
+	if [[ -z "${VALUE_VARNAME}" ]]; then
+		printf "!ERROR! VALUE_VARNAME should not be empty\n"
+		return
+	fi
 	while true; do
-		read -p "${DIALOG_TEXT} [y/n] " USER_ANSWER
+		printf "${DIALOG_TEXT} [y/n] "
+		read USER_ANSWER
 		case "${USER_ANSWER}" in
 			[Yy]* )
-				printf "yes"
+				USER_ANSWER="yes"
 				break
 				;;
 			[Nn]* )
-				printf "no"
+				USER_ANSWER="no"
 				break
 				;;
 			* )
-				printf "Please answer yes or no\n\n" > /dev/stderr
+				printf "Please answer by yes or no\n\n" > /dev/stderr
 				;;
 		esac
 	done
+	export "${VALUE_VARNAME}"="${USER_ANSWER}"
 }
 
 print_section_heading(){
