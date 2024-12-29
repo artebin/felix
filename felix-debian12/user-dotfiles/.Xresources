@@ -1,3 +1,9 @@
 Xft.dpi: 99
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
 !Xcursor.theme: cursor-theme
 !Xcursor.size: 16
