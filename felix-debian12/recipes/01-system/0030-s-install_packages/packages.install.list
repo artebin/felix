@@ -144,6 +144,7 @@ xorg-dev xtrlock xprintidle # Dependencies for xlockscreen
 ##################################
 # Window manager & desktop tools
 ##################################
+xsettingsd
 mate-polkit mate-polkit-bin
 #openbox obconf are installed by a recipe and optionally from sources
 devilspie2
