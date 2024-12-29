@@ -14,22 +14,22 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_root_privileges
 
-configure_dejavu_as_default_monospace_font(){
-	printf "Configuring dejavu as default monospace font ...\n"
+function configure_dejavu_as_default_fonts(){
+	printf "Configuring dejavu as default fonts ...\n"
 	
 	cd "${RECIPE_DIRECTORY}"
-	if [[ ! -d "${HOME}/.config/fontconfig" ]]; then
-		mkdir -p "${HOME}/.config/fontconfig"
+	if [[ ! -d "${HOME}/.config/fontconfig/conf.d" ]]; then
+		mkdir -p "${HOME}/.config/fontconfig/conf.d"
 	fi
-	if [[ ! -f "${HOME}/.config/fontconfig/fonts.conf" ]]; then
-		backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/fontconfig/fonts.conf" "fonts.conf"
+	if [[ ! -f "${HOME}/.config/fontconfig/conf.d/01-dejavu-as-default-fonts.conf" ]]; then
+		backup_by_rename_if_exists_and_copy_replacement "${HOME}/.config/fontconfig/conf.d/01-dejavu-as-default-fonts.conf" "01-dejavu-as-default-fonts.conf"
 	fi
 	fc-cache -r
 	
 	printf "\n"
 }
 
-configure_dejavu_as_default_monospace_font 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+configure_dejavu_as_default_fonts 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
