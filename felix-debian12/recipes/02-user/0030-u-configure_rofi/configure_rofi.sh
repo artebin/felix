@@ -14,7 +14,7 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_root_privileges
 
-install_rofi_menus(){
+function install_rofi_menus(){
 	printf "Installing rofi-menus from <https://github.com/adi1090x/rofi> under ${HOME}/config/rofi/rofi-menus ...\n"
 	
 	cd "${RECIPE_DIRECTORY}"
@@ -50,7 +50,7 @@ install_rofi_menus(){
 	printf "\n"
 }
 
-install_rififi(){
+function install_rififi(){
 	printf "Configuring rififi ...\n"
 	
 	cd "${RECIPE_DIRECTORY}"
@@ -65,22 +65,6 @@ install_rififi(){
 	printf "\n"
 }
 
-install_rofimoji(){
-	printf "Installing rofimoji ...\n"
-	
-	# Install dependencies
-	cd "${RECIPE_DIRECTORY}"
-	install_package_if_not_installed "python3-configargparse"
-	
-	# Install rofimoji
-	git clone https://github.com/fdw/rofimoji
-	cd rofimoji
-	
-	
-	# Cleaning
-	
-}
-
 #install_rofi_menus 2>&1 | tee -a "${RECIPE_LOG_FILE}"
 #EXIT_CODE="${PIPESTATUS[0]}"
 #if [[ "${EXIT_CODE}" -ne 0 ]]; then
@@ -92,10 +76,3 @@ EXIT_CODE="${PIPESTATUS[0]}"
 if [[ "${EXIT_CODE}" -ne 0 ]]; then
 	exit "${EXIT_CODE}"
 fi
-
-# TODO: delete the function below as we have another recipe installing rofimoji.
-#install_rofimoji 2>&1 | tee -a "${RECIPE_LOG_FILE}"
-#EXIT_CODE="${PIPESTATUS[0]}"
-#if [[ "${EXIT_CODE}" -ne 0 ]]; then
-#	exit "${EXIT_CODE}"
-#fi
