@@ -192,7 +192,7 @@ fonts-noto-unhinted
 fonts-font-awesome
 
 freetype2-demos
-fontforge
+font-manager
 
 #############################
 # Virtual Terminal Emulator
