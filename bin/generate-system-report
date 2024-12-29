@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [[ ! -f common.sh ]]; then
-	printf "Cannot find common.sh\n"
+	printf "!ERROR! Cannot find common.sh\n"
 	exit 1
 fi
 source common.sh
@@ -82,6 +82,12 @@ print_temperature_sensors(){
 	print_section_ending
 }
 
+print_font_config(){
+	print_section_heading "Font configuration"
+	fc-match --verbose
+	print_section_ending
+}
+
 print_gtk_version(){
 	print_section_heading "GTK+ version (dpkg -l libgtk2.0-0 libgtk-3-0)"
 	dpkg -l libgtk2.0-0 libgtk-3-0
@@ -115,6 +121,7 @@ print_all(){
 	print_free_memory
 	print_swap_information
 	print_temperature_sensors
+	print_font_config
 	print_gtk_version
 	print_key_codes
 }
