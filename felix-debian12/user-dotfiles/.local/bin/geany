@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+# This script checks on the current desktop and ensures at least one 
+# geany process per desktop. It is intended to be located in 
+# `~/.local/bin`.
+
+DISPLAY_ID="${DISPLAY:1}"
+if [[ -z "${DISPLAY_ID}" ]]; then
+	DISPLAY_ID="nodisplay"
+fi
+
+DESKTOP_ID="$(xprop -root _NET_CURRENT_DESKTOP)"
+DESKTOP_ID="${DESKTOP_ID##* }"
+
+if [[ ! -z "${DESKTOP_ID}" ]]; then
+	GEANY_SOCKET_FILE="geany-socket-${USER}-${DISPLAY_ID}-${DESKTOP_ID}"
+	coproc (/usr/bin/geany --socket-file "/tmp/${GEANY_SOCKET_FILE}" "$@")
+else
+	coproc (/usr/bin/geany "$@")
+fi
