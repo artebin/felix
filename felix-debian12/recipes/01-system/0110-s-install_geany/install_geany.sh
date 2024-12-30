@@ -30,9 +30,20 @@ function install_geany_from_sources(){
 			"docbook-utils" )
 	install_package_if_not_installed "${DEPENDENCIES[@]}"
 	
-	printf "Build and install Geany from <https://git.geany.org/git/geany>...\n"
+	printf "Git clone geany from <https://git.geany.org/git/geany>...\n"
 	cd "${RECIPE_DIRECTORY}"
 	git clone https://git.geany.org/git/geany
+	
+	printf "Apply patch for font rendering issue with pango below v1.51.1 <https://github.com/geany/geany/issues/3750>...\n"
+	cd "${RECIPE_DIRECTORY}"
+	INSTALLED_PANGO_VERSION="$(pkg-config --modversion pango)"
+	printf "INSTALLED_PANGO_VERSION[%s]\n" "${INSTALLED_PANGO_VERSION}"
+	if dpkg --compare-versions "${INSTALLED_PANGO_VERSION}" "le" "1.51.1"; then
+		patch -u geany/scintilla/gtk/PlatGTK.cxx -i fix_font_rendering_with_libpango.patch
+		exit 1
+	fi
+	
+	printf "Build and install geany...\n"
 	cd geany
 	./autogen.sh
 	./configure

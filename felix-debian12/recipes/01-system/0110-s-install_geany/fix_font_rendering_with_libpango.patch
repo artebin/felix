@@ -1,0 +1,11 @@
+--- old/geany/scintilla/gtk/PlatGTK.cxx	2024-12-30 16:12:20.484143560 +0100
++++ new/geany/scintilla/gtk/PlatGTK.cxx	2024-12-30 16:14:40.094845369 +0100
+@@ -76,7 +76,7 @@
+ 
+ void SetFractionalPositions([[maybe_unused]] PangoContext *pcontext) noexcept {
+ #if PANGO_VERSION_CHECK(1,44,3)
+-	pango_context_set_round_glyph_positions(pcontext, FALSE);
++	pango_context_set_round_glyph_positions(pcontext, TRUE);
+ #endif
+ }
+ 
