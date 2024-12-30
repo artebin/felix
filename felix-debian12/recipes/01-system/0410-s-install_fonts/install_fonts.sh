@@ -14,18 +14,18 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-install_fonts(){
-	# Install font JetBrainsMono
+function install_fonts(){
+	# Install font Droid
 	printf "%-30s : %s\n" "Installing font" "Droid"
 	cd "${RECIPE_DIRECTORY}"
 	cp fonts/Droid/* /usr/local/share/fonts/
 	
-	# Install font JetBrainsMono
+	# Install font Montserrat
 	printf "%-30s : %s\n" "Installing font" "Montserrat"
 	cd "${RECIPE_DIRECTORY}"
 	cp fonts/Montserrat/* /usr/local/share/fonts/
 	
-	# Install font JetBrainsMono
+	# Install font Roboto
 	printf "%-30s : %s\n" "Installing font" "Roboto"
 	cd "${RECIPE_DIRECTORY}"
 	cp fonts/Roboto/* /usr/local/share/fonts/
@@ -44,6 +44,9 @@ install_fonts(){
 	# Clean
 	cd "${RECIPE_DIRECTORY}"
 	rm -fr JetBrainsMono
+	
+	# Fix blurry text on dark background
+	cp 99fix-blurry-text-on-dark-background.conf /etc/environment.d
 	
 	printf "\n"
 }
