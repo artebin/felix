@@ -14,17 +14,30 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-configure_gtk2(){
-	printf "Configuring GTK+ 2 ...\n"
+function configure_gtk2(){
+	printf "Configuring GTK2 ...\n"
 	if [[ -f /etc/gtk-2.0/gtkrc ]]; then
 		backup_file rename /etc/gtk-2.0/gtkrc
 	fi
+	
 	cp "${FELIX_ROOT}/user-dotfiles/.gtkrc-2.0" /etc/gtk-2.0/gtkrc
 	chmod 755 /etc/gtk-2.0/gtkrc
 	
+	if [[ -z "${GTK_CURSOR_THEME_NAME}" ]]; then
+		GTK_CURSOR_THEME_NAME="Adwaita"
+	fi
+	printf "Setting gtk-cursor-theme-name: ${GTK_CURSOR_THEME_NAME} ...\n"
+	sed -i "/^gtk-cursor-theme-name/s/.*/gtk-cursor-theme-name=\"${GTK_CURSOR_THEME_NAME}\"/" /etc/gtk-2.0/gtkrc
+	
+	if [[ -z "${GTK_THEME_NAME}" ]]; then
+		GTK_THEME_NAME="Adwaita"
+	fi
 	printf "Setting gtk-theme-name: ${GTK_THEME_NAME} ...\n"
 	sed -i "/^gtk-theme-name/s/.*/gtk-theme-name=\"${GTK_THEME_NAME}\"/" /etc/gtk-2.0/gtkrc
 	
+	if [[ -z "${GTK_ICON_THEME_NAME}" ]]; then
+		GTK_ICON_THEME_NAME="GTK_ICON_THEME_NAME"
+	fi
 	printf "Setting gtk-icon-theme-name: ${GTK_ICON_THEME_NAME} ...\n"
 	sed -i "/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=\"${GTK_ICON_THEME_NAME}\"/" /etc/gtk-2.0/gtkrc
 	
@@ -34,17 +47,31 @@ configure_gtk2(){
 	printf "\n"
 }
 
-configure_gtk3(){
-	printf "Configuring GTK+ 3 ...\n"
+function configure_gtk3(){
+	printf "Configuring GTK3 ...\n"
+	
 	if [[ -f /etc/gtk-3.0/settings.ini ]]; then
 		backup_file rename /etc/gtk-3.0/settings.ini
 	fi
+	
 	cp "${FELIX_ROOT}/user-dotfiles/.config/gtk-3.0/settings.ini" /etc/gtk-3.0/settings.ini
 	chmod 755 /etc/gtk-3.0/settings.ini
 	
+	if [[ -z "${GTK_CURSOR_THEME_NAME}" ]]; then
+		GTK_CURSOR_THEME_NAME="Adwaita"
+	fi
+	printf "Setting gtk-cursor-theme-name: ${GTK_CURSOR_THEME_NAME} ...\n"
+	sed -i "/^gtk-cursor-theme-name/s/.*/gtk-cursor-theme-name=${GTK_CURSOR_THEME_NAME}/" /etc/gtk-3.0/settings.ini
+	
+	if [[ -z "${GTK_THEME_NAME}" ]]; then
+		GTK_THEME_NAME="Adwaita"
+	fi
 	printf "Setting gtk-theme-name: ${GTK_THEME_NAME} ...\n"
 	sed -i "/^gtk-theme-name/s/.*/gtk-theme-name=${GTK_THEME_NAME}/" /etc/gtk-3.0/settings.ini
 	
+	if [[ -z "${GTK_ICON_THEME_NAME}" ]]; then
+		GTK_ICON_THEME_NAME="Adwaita"
+	fi
 	printf "Setting gtk-icon-theme-name: ${GTK_ICON_THEME_NAME} ...\n"
 	sed -i "/^gtk-icon-theme-name/s/.*/gtk-icon-theme-name=${GTK_ICON_THEME_NAME}/" /etc/gtk-3.0/settings.ini
 	
@@ -55,19 +82,12 @@ configure_gtk3(){
 	mkdir -p /root/.config/gtk-3.0
 	cp "${FELIX_ROOT}/user-dotfiles/.config/gtk-3.0/gtk.css" /root/.config/gtk-3.0/gtk.css
 	
-	printf "Forcing GTK+ to use GDK backend x11 ...\n"
-	echo "GDK_BACKEND=x11" >>/etc/environment
-	
-	printf "Disabling the default use of client-side decorations (CSD) on GTK+ windows ...\n"
-	echo "GTK_CSD=0" >>/etc/environment
-	
-	printf "Disabling the scrollbar overlay introduced in GTK+ 3.16 ...\n"
-	# It is used for scrollbar undershoot/overshoot and line marker indicating scrollbar value is not 0 or 1 (dashed line)
-	# Can not find a property in gtkrc-3.0 for that...
-	echo "GTK_OVERLAY_SCROLLING=0" >>/etc/environment
-	
-	printf "Configuring GTK3 in SWT ...\n"
-	echo "SWT_GTK3=1" >>/etc/environment
+	printf 'Adding environment variables for configuring GTK ...\n'
+	printf '  - Forcing GTK to use GDK backend x11\n'
+	printf "  - Disabling the default use of client-side decorations (CSD) on GTK windows\n"
+	printf "  - Disabling the scrollbar overlays introduced in GTK 3.16\n"
+	printf "  - Configuring GTK3 in SWT\n"
+	cp 99gtk.conf /etc/environment.d
 	
 	printf "\n"
 }
