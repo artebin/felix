@@ -20,7 +20,7 @@ super + k
 	onboard
 
 super + j
-	rofimoji
+	rofimoji_run.sh
 
 super + f
 	caja --no-desktop
