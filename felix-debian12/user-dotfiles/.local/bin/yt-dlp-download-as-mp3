@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+if [[ "${#}" -ne 1 ]]; then
+	printf "Usage: $(basename ${BASH_SOURCE}) <YOUTUBE_URL>\n"
+	exit 1
+fi
+
+YOUTUBE_URL="${1}"
+
+LATEST_YT_DLP_RELEASE_URL="https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp"
+if [[ ! -f ~/.local/bin/yt-dlp ]]; then
+	( cd ~/.local/bin && curl -O "${LATEST_YT_DLP_RELEASE_URL}" && chmod +x yt-dlp)
+fi
+
+yt-dlp --extract-audio --audio-format mp3 "${YOUTUBE_URL}"
