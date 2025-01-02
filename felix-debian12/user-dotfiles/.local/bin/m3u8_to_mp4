@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [[ "${#}" -ne 2 ]]; then
+	printf "Usage: $(basename "${BASH_SOURCE}") <INPUT_FILE> <OUTPUT_FILE>\n"
+	exit 1
+fi
+
+INPUT_FILE="${1}"
+OUTPUT_FILE="${2}"
+ffmpeg -i "${INPUT_FILE}" -bsf:a aac_adtstoasc -vcodec copy -c copy -crf 50 "${OUTPUT_FILE}"
