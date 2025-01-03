@@ -1,0 +1,56 @@
+#!/usr/bin/env bash
+
+function print_usage() {
+	cat <<'EOF'
+Usage: download-artifact-from-mvn-central <PKG_MAVEN>
+       download-artifact-from-mvn-central <GROUP_ID> <RTIFACT_ID> <VERSION>
+EOF
+}
+
+if [[ -z "${IVY_HOME}" ]]; then
+	printf "!ERROR! Cannot find IVY_HOME[%s]\n" "${IVY_HOME}"
+	exit 1
+fi
+
+if [[ ! -d "${IVY_HOME}" ]]; then
+	printf "!ERROR! Cannot find IVY_HOME[%s]\n" "${IVY_HOME}"
+	exit 1
+fi
+
+IVY_JAR="${IVY_HOME}/$(find "${IVY_HOME}" -name "ivy*.jar" -type f -printf "%f\n" | head -n 1)"
+
+if [[ ! -f "${IVY_JAR}" ]]; then
+	printf "!ERROR! Cannot find IVY_JAR[%s]\n" "${IVY_JAR}"
+	exit 1
+fi
+
+MVN_PKG_REGEX="pkg:maven/(.*)/(.*)@(.*)"
+MVN_GROUP_ID=""
+MVN_ARTIFACT_ID=""
+MVN_VERSION=""
+
+if [[ "${#}" -eq 1 ]]; then
+	MVN_PKG="${1}"
+	if [[ "${MVN_PKG}" =~ ${MVN_PKG_REGEX} ]]; then
+		MVN_GROUP_ID="${BASH_REMATCH[1]}"
+		MVN_ARTIFACT_ID="${BASH_REMATCH[2]}"
+		MVN_VERSION="${BASH_REMATCH[3]}"
+	else
+		print_usage
+		exit 1
+	fi
+elif [[ "${#}" -eq 3 ]]; then
+	MVN_GROUP_ID="${1}"
+	MVN_ARTIFACT_ID="${2}"
+	MVN_VERSION="${3}"
+else
+	print_usage
+	exit 1
+fi
+
+if [[ -z "${MVN_GROUP_ID}" ]] || [[ -z "${MVN_ARTIFACT_ID}" ]] || [[ -z "${MVN_VERSION}" ]]; then
+	print_usage
+	exit 1
+fi
+
+java -jar "${IVY_JAR}" -dependency "${MVN_GROUP_ID}" "${MVN_ARTIFACT_ID}" "${MVN_VERSION}" -retrieve "[artifact]-[revision](-[classifier]).[ext]"
