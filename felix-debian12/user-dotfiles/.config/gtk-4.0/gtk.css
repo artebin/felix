@@ -7,6 +7,11 @@
 }
 
 /*
+ * Fix the 1px border in geany making the scrollbars looking weird.
+ */
+#GeanyMainWindow > box > paned > paned > notebook:last-child { border-right: 0; }
+
+/*
  * Do not paint (over|under)shoot indicator neither the "not the top/not the bottom" line indicator.
  */
 scrolledwindow overshoot {
