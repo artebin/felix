@@ -1,20 +1,32 @@
 #!/usr/bin/env bash
 
-RECIPE_DIRECTORY="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_SH="$(eval find ./$(printf "{$(echo %{1..10}q,)}" | sed 's/ /\.\.\//g')/ -maxdepth 1 -name felix.sh)"
-if [[ ! -f "${FELIX_SH}" ]]; then
-	printf "Cannot find felix.sh\n"
-	exit 1
-fi
-FELIX_SH="$(readlink -f "${FELIX_SH}")"
-FELIX_ROOT="$(dirname "${FELIX_SH}")"
-source "${FELIX_SH}"
-initialize_recipe "${RECIPE_DIRECTORY}"
+function print_markdown_documentation(){
+	cat << 'EOF'
+  - add polkit authority for upower and logind.
+  - set `HibernateDelaySec=300` in `/etc/systemd/sleep.conf`
+  - set `HandleLidSwitch=suspend-then-hibernate` in `/etc/systemd/logind.conf`
+EOF
+}
 
-exit_if_not_bash
-exit_if_has_not_root_privileges
+function initialize(){
+	RECIPE_DIRECTORY="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
+	FELIX_SH="$(eval find ./$(printf "{$(echo %{1..10}q,)}" | sed 's/ /\.\.\//g')/ -maxdepth 1 -name felix.sh)"
+	if [[ ! -f "${FELIX_SH}" ]]; then
+		printf "Cannot find felix.sh\n"
+		exit 1
+	fi
+	FELIX_SH="$(readlink -f "${FELIX_SH}")"
+	FELIX_ROOT="$(dirname "${FELIX_SH}")"
+	source "${FELIX_SH}"
+	initialize_recipe "${RECIPE_DIRECTORY}"
+}
 
-enable_hibernation(){
+function precheck(){
+	exit_if_not_bash
+	exit_if_has_not_root_privileges
+}
+
+function enable_hibernation(){
 	printf "Enable hibernation...\n"
 	
 	# Add polkit authority for upower and logind
@@ -24,7 +36,7 @@ enable_hibernation(){
 	printf "\n"
 }
 
-configure_suspend_then_hibernation(){
+function configure_suspend_then_hibernation(){
 	printf "Configuring suspend-then-hibernation...\n"
 	
 	# Add or create file /etc/systemd/sleep.conf
@@ -44,14 +56,19 @@ configure_suspend_then_hibernation(){
 	printf "\n"
 }
 
-enable_hibernation 2>&1 | tee -a "${RECIPE_LOG_FILE}"
-EXIT_CODE="${PIPESTATUS[0]}"
-if [[ "${EXIT_CODE}" -ne 0 ]]; then
-	exit "${EXIT_CODE}"
-fi
-
-configure_suspend_then_hibernation 2>&1 | tee -a "${RECIPE_LOG_FILE}"
-EXIT_CODE="${PIPESTATUS[0]}"
-if [[ "${EXIT_CODE}" -ne 0 ]]; then
-	exit "${EXIT_CODE}"
-fi
+function execute_recipe(){
+	initialize
+	precheck
+	
+	enable_hibernation 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+	EXIT_CODE="${PIPESTATUS[0]}"
+	if [[ "${EXIT_CODE}" -ne 0 ]]; then
+		exit "${EXIT_CODE}"
+	fi
+	
+	configure_suspend_then_hibernation 2>&1 | tee -a "${RECIPE_LOG_FILE}"
+	EXIT_CODE="${PIPESTATUS[0]}"
+	if [[ "${EXIT_CODE}" -ne 0 ]]; then
+		exit "${EXIT_CODE}"
+	fi
+}
