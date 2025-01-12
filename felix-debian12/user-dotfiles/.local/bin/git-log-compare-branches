@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+function print_usage(){
+	printf "Usage: %s SOURCE_BRANCH TARGET_BRANCH\n" "$(basename "${BASH_SOURCE}")"
+}
+
+if [[ "${#}" -ne 2 ]]; then
+	print_usage
+	exit 1
+fi
+
+SOURCE_BRANCH="${1}"
+TARGET_BRANCH="${2}"
+git log "${SOURCE_BRANCH}".."${TARGET_BRANCH}" --no-merges --pretty=format:"%C(yellow)%h %Cblue%ad %Cgreen%<(7)%aN%Cred%d %Creset%s" --date=iso8601

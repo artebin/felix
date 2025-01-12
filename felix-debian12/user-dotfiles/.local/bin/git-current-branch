@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-# --show-current has been added in Git v2.22
-# We can use `git rev-parse --abbrev-ref HEAD` or `git symbolic-ref --short HEAD`
-
-git branch --show-current
