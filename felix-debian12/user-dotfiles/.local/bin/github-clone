@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+function print_usage(){
+	printf "Usage: %s PROTOCOL GITHUB_USER GITHUB_REPOSITORY\n" "$(basename "${BASH_SOURCE}")"
+}
+
+if [[ "${#}" -ne 3 ]]; then
+	print_usage
+	exit 1
+fi
+
+PROTOCOL="${1}"
+PROTOCOL_HTTPS="https"
+PROTOCOL_SSH="ssh"
+
+if [[ "${PROTOCOL}" != "${PROTOCOL_HTTPS}" ]] && [[ "${PROTOCOL}" != "${PROTOCOL_SSH}" ]]; then
+	print_usage
+	exit 1
+fi
+
+GITHUB_USER="${2}"
+GITHUB_REPOSITORY="${3}"
+
+if [[ -z "${GITHUB_USER}" ]] || [[ -z "${GITHUB_REPOSITORY}" ]]; then
+	print_usage
+	exit 1
+fi
+
+if [[ "${PROTOCOL}" == "${PROTOCOL_HTTPS}" ]]; then
+	git clone "https://github.com/${GITHUB_USER}/${GITHUB_REPOSITORY}"
+else
+	git clone "ssh://git@github.com/${GITHUB_USER}/${GITHUB_REPOSITORY}.git"
+fi

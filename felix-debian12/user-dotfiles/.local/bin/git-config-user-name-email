@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+function print_usage(){
+	printf "Usage: %s NAME EMAIL\n" "$(basename "${BASH_SOURCE}")"
+}
+
+if [[ "${#}" -ne 2 ]]; then
+	print_usage
+	exit 1
+fi
+
+NAME="${1}"
+EMAIL="${2}"
+
+if [[ -z "${NAME}" ]] || [[ -z "${EMAIL}" ]]; then
+	print_usage
+	exit 1
+fi
+
+git config user.name "${NAME}"
+git config user.email "${EMAIL}"
