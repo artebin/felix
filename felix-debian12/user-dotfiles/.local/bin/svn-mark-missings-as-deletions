@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+if [[ ! -z "$(svn st | grep ^! | awk '{print " --force "$2}')" ]]; then
+	svn st | grep ^! | awk '{print " --force "$2}' | xargs svn rm
+fi

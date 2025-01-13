@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+function print_usage(){
+	printf "Usage: %s BRANCH\n" "$(basename "${BASH_SOURCE}")"
+}
+
+if [[ "${#}" -ne 1 ]]; then
+	print_usage
+	exit 1
+fi
+
+BRANCH="${1}"
+
+if [[ -z "${BRANCH}" ]]; then
+	print_usage
+	exit 1
+fi
+
+git log "${BRANCH}" --not $(git for-each-ref --format='%(refname)' refs/heads/ | grep -v "refs/heads/${BRANCH}")
