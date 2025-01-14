@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# wttr.in guesses the location from the request originator if no indicated location
+curl "wttr.in/${1}"

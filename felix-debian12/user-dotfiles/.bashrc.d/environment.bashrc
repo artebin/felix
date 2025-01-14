@@ -12,17 +12,6 @@ alias lsblk='lsblk -o name,mountpoint,label,size,uuid'
 # Always colorize grep output
 alias grep='grep --color=always'
 
-function public_ip(){
-	curl ipinfo.io/ip
-}
-alias public_ip=public_ip
-
-function weather(){
-	# wttr.in guesses the location from the request originator if no indicated location
-	curl "wttr.in/${1}"
-}
-alias weather=weather
-
 function backup_file(){
 	BACKUP_MODE="${1}"
 	FILE="${2}"
