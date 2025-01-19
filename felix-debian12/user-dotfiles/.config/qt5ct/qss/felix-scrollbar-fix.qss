@@ -3,14 +3,14 @@ QScrollBar{
   background: palette(alternate-base);
 }
 QScrollBar:horizontal{
-  margin: 0px 0px 0px 0px;
+  margin: 3px 0px 3px 0px;
 }
 QScrollBar:vertical{
   margin: 0px 3px 0px 3px;
 }
 QScrollBar::handle{
   background: gray;
-  border: 2px solid transparent;
+  border: 3px solid transparent;
   border-radius: 1px;
 }
 QScrollBar::handle:hover, QScrollBar::add-line:hover, QScrollBar::sub-line:hover{
@@ -20,10 +20,10 @@ QScrollBar::add-line{
 subcontrol-origin: none;
 }
 QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical{
-height: 0px;
+height: 1px;
 }
 QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal{
-width: 0px;
+width: 1px;
 }
 QScrollBar::sub-line{
 subcontrol-origin: none;
