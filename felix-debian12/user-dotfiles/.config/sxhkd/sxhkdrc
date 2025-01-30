@@ -34,6 +34,9 @@ super + z
 super + t
 	x-terminal-emulator
 
+super + shift + t
+	bash -c 'cd "$(xcwd)";x-terminal-emulator'
+
 super + w
 	x-www-browser
 

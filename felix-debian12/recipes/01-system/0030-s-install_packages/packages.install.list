@@ -33,6 +33,7 @@ accountsservice
 #################################
 # Terminal & command line tools
 #################################
+ssh-askpass
 parallel
 colortest
 tree
@@ -138,7 +139,7 @@ xtrlock xprintidle
 trash-cli
 hsetroot nitrogen
 parcellite
-ssh-askpass
+xcwd
 xorg-dev xtrlock xprintidle # Dependencies for xlockscreen
 
 ##################################
