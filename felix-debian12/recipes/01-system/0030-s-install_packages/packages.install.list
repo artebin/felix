@@ -259,7 +259,7 @@ gpick
 ###############
 # Web browser
 ###############
-firefox-esr
+#firefox-esr # It will be installed via a recipe and the Mozilla repository
 chromium
 
 ##############
