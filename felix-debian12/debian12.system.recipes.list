@@ -7,6 +7,7 @@ recipes/01-system/0010-s-generate_and_set_locales
 recipes/01-system/0020-s-upgrade_system
 recipes/01-system/0030-s-install_packages
 recipes/01-system/0040-s-install_openbox
+recipes/01-system/0045-s-install_firefox
 recipes/01-system/0060-s-install_google_chrome
 recipes/01-system/0070-s-install_caja
 recipes/01-system/0080-s-install_engrampa
@@ -48,7 +49,6 @@ recipes/01-system/0440-s-configure_xdg_user_dirs_and_autostart
 recipes/01-system/0450-s-nfs_samba_shares
 recipes/01-system/0460-s-configure_keyboard
 recipes/01-system/0470-s-configure_xorg
-recipes/01-system/0480-s-force_geany_to_reuse_same_instance_per_workspace
 recipes/01-system/0490-s-enable_exit_dialog_at_power_button_pressed
 recipes/01-system/0500-s-configure_acpi_wakeup
 recipes/01-system/0510-s-configure_avahi_daemon

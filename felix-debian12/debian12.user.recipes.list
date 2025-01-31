@@ -17,6 +17,7 @@ recipes/02-user/0110-u-start_vnc_server_at_login
 recipes/02-user/0120-u-install_felix_themes
 recipes/02-user/0130-u-configure_xdg_autostart
 recipes/02-user/0140-u-install_rofimoji
-recipes/02-user/0150-u-configure_dejavu_as_default_monospace_font
+recipes/02-user/0150-u-configure_dejavu_as_default_fonts
 recipes/02-user/0160-u-install_git_cola
+recipes/02-user/0170-u-install_herbe
 recipes/02-user/9999-u-configure_default_applications
