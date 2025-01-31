@@ -141,6 +141,8 @@ hsetroot nitrogen
 parcellite
 xcwd
 xorg-dev xtrlock xprintidle # Dependencies for xlockscreen
+vainfo # Used to check if hardware AV1 decoding is supported
+inter-gpu-tools # Used to check is hardware video acceleration is working 
 
 ##################################
 # Window manager & desktop tools

@@ -6,7 +6,7 @@ if [[ ! -f common.sh ]]; then
 fi
 source common.sh
 
-print_dmi_info_bios(){
+function print_dmi_info_bios(){
 	print_section_heading "DMI information BIOS (dmidecode)"
 	echo "bios-vendor: $(sudo dmidecode -s bios-vendor)"
 	echo "bios-version: $(sudo dmidecode -s bios-version)"
@@ -14,7 +14,7 @@ print_dmi_info_bios(){
 	print_section_ending
 }
 
-print_dmi_info_system(){
+function print_dmi_info_system(){
 	print_section_heading "DMI information System (dmidecode)"
 	echo "system-manufacturer: $(sudo dmidecode -s system-manufacturer)"
 	echo "system-product-name: $(sudo dmidecode -s system-product-name)"
@@ -22,85 +22,98 @@ print_dmi_info_system(){
 	print_section_ending
 }
 
-print_dmi_info_memory(){
+function print_dmi_info_memory(){
 	print_section_heading "DMI table decoder (dmidecode)"
 	sudo dmidecode
 	print_section_ending
 }
 
-print_hardware_info_inxi(){
+function print_hardware_info_inxi(){
 	print_section_heading "Hardware information (inxi -Fxz)"
 	inxi -Fxz
 	print_section_ending
 }
 
-print_display_info_xrandr(){
+function print_display_info_xrandr(){
 	print_section_heading "Display information (xrandr --current)"
 	xrandr --current
 	print_section_ending
 }
 
-print_lsb_release(){
+function print_lsb_release(){
 	print_section_heading "LSB release (lsb_release -a)"
 	lsb_release -a
 	print_section_ending
 }
 
-print_video_card_model_and_driver(){
+function print_video_card_model_and_driver(){
 	print_section_heading "Video card model and driver"
 	lspci -k | grep -EA3 'VGA|3D|Display' 
 	print_section_ending
 }
 
-print_linux_kernel_version(){
+function print_linux_kernel_version(){
 	print_section_heading "Linux Kernel Version"
 	cat /proc/version
 	print_section_ending
 }
 
-print_memory_info(){
+function print_memory_info(){
 	print_section_heading "Memory info (cat /proc/meminfo)"
 	cat /proc/meminfo
 	print_section_ending
 }
 
-print_free_memory(){
+function print_free_memory(){
 	print_section_heading "Free memory (free -m)"
 	free -m
 	print_section_ending
 }
 
-print_swap_information(){
+function print_swap_information(){
 	print_section_heading "Swap information (cat /proc/swaps)"
 	cat /proc/swaps
 	print_section_ending
 }
 
-print_temperature_sensors(){
+function print_temperature_sensors(){
 	print_section_heading "Temperature sensors (sensors)"
 	sensors
 	print_section_ending
 }
 
-print_font_config(){
+function print_font_config(){
 	print_section_heading "Font configuration"
 	fc-match --verbose
 	print_section_ending
 }
 
-print_gtk_version(){
+function print_gtk_version(){
 	print_section_heading "GTK+ version (dpkg -l libgtk2.0-0 libgtk-3-0)"
 	dpkg -l libgtk2.0-0 libgtk-3-0
 	print_section_ending
 }
 
-print_key_codes(){
+function print_key_codes(){
 	print_section_heading "Key codes (xmodmap -pke)"
 	xmodmap -pke
 	print_section_ending
 }
 
-extract_installed_packages_list(){
+function print_video_acceleration(){
+	print_section_heading "Hardware video acceleration"
+	sudo intel_gpu_top -L
+	printf "\n\n=> Use intel_gpu_top to check if hardware video acceleration is working\n"
+	print_section_ending
+	
+	print_section_heading "Hardware AV1 decoding"
+	vainfo
+	printf "\n\n=> If AV1 is not listed then disable AV1 in your browser to save on battery power.\n"
+	printf "Firefox does it with 'media.av1.enabled=false'\n"
+	print_section_ending
+}
+
+function extract_installed_packages_list(){
 	OUTPUT_DIRECTORY="${1}"
 	
 	INSTALLED_PACKAGE_LIST=$(dpkg -l)
@@ -110,7 +123,7 @@ extract_installed_packages_list(){
 	printf "%s\n" "${INSTALLED_PACKAGE_LIST}" >"${OUTPUT_DIRECTORY}/dpkglogs.list"
 }
 
-print_all(){
+function print_all(){
 	print_dmi_info_bios
 	print_dmi_info_system
 	print_hardware_info_inxi
@@ -124,6 +137,7 @@ print_all(){
 	print_font_config
 	print_gtk_version
 	print_key_codes
+	print_video_acceleration
 }
 
 REPORT_NAME="system_report_${HOSTNAME}_$(date -u +'%y%m%d-%H%M%S')"
