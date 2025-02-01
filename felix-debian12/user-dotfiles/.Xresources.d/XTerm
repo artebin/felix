@@ -7,10 +7,10 @@ xterm*bellIsUrgent: true
 xterm*metaSendsEscape: true
 
 ! Styling
-xterm*faceName: Sans Mono
+xterm*faceName: DejaVu Sans Mono
 xterm*boldMode: false
 xterm*faceSize: 10
-xterm*internalBorder: 4
+xterm*internalBorder: 2
 xterm*borderWidth: 0
 
 xterm*translations: #override \n\
