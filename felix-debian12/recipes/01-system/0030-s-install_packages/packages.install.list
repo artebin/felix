@@ -37,6 +37,7 @@ ssh-askpass
 parallel
 colortest
 tree
+pv
 vim
 ncdu
 cryptsetup
