@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if [[ "${#}" -ne 1 ]]; then
+	printf "Usage: gitk-common-ancestor-with-branch BRANCH\n\n"
+	exit 1
+fi
+
+BRANCH="${1}"
+gitk --all --select-commit="$(git merge-base HEAD "${BRANCH}")"
