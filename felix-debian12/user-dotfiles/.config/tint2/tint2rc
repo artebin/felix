@@ -68,8 +68,8 @@ border_color = #6a5acd 100
 # ID 12 - tooltip
 rounded = 0
 border_width = 0
-background_color = #222222 90
-border_color = #222222 90
+background_color = #222222 100
+border_color = #222222 100
 
 # Panel
 panel_monitor = all
