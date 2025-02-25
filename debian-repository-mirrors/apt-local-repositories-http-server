@@ -55,6 +55,7 @@ if [[ -z "${ADDRESS}" ]]; then
 			ALL_ADDRESSES_ARRAY["${ADDRESS_CHOICE}"]="${ADDRESS}"
 		fi
 	done <<< "${ALL_ADDRESSES}"
+	COLUMNS=1
 	select SELECTED_ADDRESS in "${!ALL_ADDRESSES_ARRAY[@]}" exit; do
 		if [[ "${SELECTED_ADDRESS}" == "exit" ]]; then
 			exit 0
