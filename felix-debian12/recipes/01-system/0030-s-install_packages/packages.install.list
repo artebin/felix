@@ -127,7 +127,6 @@ light-locker
 # Xorg tools
 ##############
 picom
-#gtk3-nocsd is now installed by a recipe so we can easily skip it
 mesa-utils mesa-utils-extra
 xinput xinput-calibrator
 x11-apps
