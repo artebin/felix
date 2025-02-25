@@ -55,12 +55,12 @@ function process_package_install_list(){
 		exit 1
 	fi
 	
-	# Proceed install with --force-confnew
+	# Proceed to install with --force-confnew
 	# Always install the new version of the configuration file, the current version is kept in a file with the .dpkg-old suffix
-	# DEBIAN_FRONTEND_TO_USE can be valued `noninteractive` or `readline`, it should probably be configured through felix.conf.
-	DEBIAN_FRONTEND_TO_USE="DEBIAN_FRONTEND=noninteractive"
+	# DEBIAN_FRONTEND_TO_USE is supposed to be set in felix.conf, it can be valued `noninteractive` or `readline`.
+	: "${DEBIAN_FRONTEND_TO_USE:=readline}"
 	for APT_PACKAGE_FILE_LIST in "${APT_PACKAGE_LIST_FILE_NAME_PREFIX}"*; do
-		${DEBIAN_FRONTEND_TO_USE} xargs apt-get -o Dpkg::Options::=--force-confnew -y install <"${APT_PACKAGE_FILE_LIST}"
+		DEBIAN_FRONTEND=${DEBIAN_FRONTEND_TO_USE} xargs apt-get -o Dpkg::Options::=--force-confnew -y install <"${APT_PACKAGE_FILE_LIST}"
 	done
 	
 	# Cleanup
