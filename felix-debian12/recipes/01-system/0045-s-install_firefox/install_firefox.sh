@@ -24,7 +24,7 @@ Pin: origin packages.mozilla.org
 Pin-Priority: 1000
 EOF
 	apt-get update
-	#apt-get install firefox
+	apt-get install -y firefox
 	printf "\n"
 }
 
