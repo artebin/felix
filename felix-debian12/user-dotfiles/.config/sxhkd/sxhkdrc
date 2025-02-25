@@ -2,7 +2,7 @@
 # Application hotkeys
 #######################
 super + e
-	geany_one_instance_per_workspace
+	geany
 
 Print
 	xfce4-screenshooter
