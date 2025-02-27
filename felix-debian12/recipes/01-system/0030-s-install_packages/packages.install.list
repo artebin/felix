@@ -121,7 +121,7 @@ apt-rdepends
 # Display Manager
 ###################
 lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
-black-bird-gtk-theme bluebird-gtk-theme greybird-gtk-theme # Good themes for lightdm (nicer than adwaita)
+blackbird-gtk-theme bluebird-gtk-theme greybird-gtk-theme # Good themes for lightdm (nicer than adwaita)
 light-locker
 
 ##############
