@@ -121,6 +121,7 @@ apt-rdepends
 # Display Manager
 ###################
 lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
+black-bird-gtk-theme bluebird-gtk-theme greybird-gtk-theme # Good themes for lightdm (nicer than adwaita)
 light-locker
 
 ##############
@@ -152,7 +153,8 @@ mate-polkit mate-polkit-bin
 #openbox obconf are installed by a recipe and optionally from sources
 devilspie2
 lxappearance lxappearance-obconf
-qt5ct qt5-gtk2-platformtheme
+qt5-base-dev qt5ct qt5-gtk2-platformtheme
+qt6-base-dev qt6ct qt6-gtk2-platformtheme
 dconf-cli
 dconf-editor
 gconf-service
