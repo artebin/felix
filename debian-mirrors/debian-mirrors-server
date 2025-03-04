@@ -83,16 +83,16 @@ if [[ ! "${PORT_NUMBER}" =~ ^[0-9]+$ ]]; then
 fi
 
 # Create local and remote apt_sources.list files for all mirrors found in the working directory
-readarray -t MIRROR_LIST_FILE_ARRAY < <(find ./ -maxdepth 2 -type f -name "*.mirror.list" -exec readlink -f {} \;|sort)
+readarray -t MIRROR_LIST_FILE_ARRAY < <(find ./ -maxdepth 2 -type f -name "*.apt-mirror.list" -exec readlink -f {} \;|sort)
 for MIRROR_LIST_FILE in "${MIRROR_LIST_FILE_ARRAY[@]}"; do
 	MIRROR_NAME=$(dirname "${MIRROR_LIST_FILE}" | xargs basename)
 	
-	LOCAL_APT_SOURCES_FILE="${MIRROR_NAME}.local.apt_sources.list"
+	LOCAL_APT_SOURCES_FILE="${MIRROR_NAME}-mirror.list"
 	cat "${MIRROR_LIST_FILE}" | sed -n '/^# SOURCES START #/,/^# SOURCES END #/p;/^#SOURCES END#/q' > "${LOCAL_APT_SOURCES_FILE}"
 	sed -i "s|deb |deb [arch=amd64] |g" "${LOCAL_APT_SOURCES_FILE}"
 	sed -i "s|http://|http://${ADDRESS}:${PORT_NUMBER}/${MIRROR_NAME}/mirror/|g" "${LOCAL_APT_SOURCES_FILE}"
 	
-	REMOTE_APT_SOURCES_FILE="${MIRROR_NAME}.remote.apt_sources.list"
+	REMOTE_APT_SOURCES_FILE="${MIRROR_NAME}.list"
 	cat "${MIRROR_LIST_FILE}" | sed -n '/^# SOURCES START #/,/^# SOURCES END #/p;/^#SOURCES END#/q' > "${REMOTE_APT_SOURCES_FILE}"
 	sed -i "s|deb |deb [arch=amd64] |g" "${REMOTE_APT_SOURCES_FILE}"
 done
