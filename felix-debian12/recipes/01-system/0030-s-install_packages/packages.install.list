@@ -253,6 +253,7 @@ unp
 # Image viewer, browser, manipulation
 #######################################
 webp webp-pixbuf-loader
+kolourpaint # Handy for annotating screenshots
 libimage-exiftool-perl # Provides exiftool
 imagemagick
 #eom # EOM is installed by a recipe and optionally installed from sources
