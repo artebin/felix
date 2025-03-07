@@ -154,8 +154,11 @@ mate-polkit mate-polkit-bin
 #openbox obconf are installed by a recipe and optionally from sources
 devilspie2
 lxappearance lxappearance-obconf
+
 qtbase5-dev qt5ct qt5-gtk-platformtheme
 qt6-base-dev qt6ct qt6-gtk-platformtheme
+breeze-icon-theme
+
 dconf-cli
 dconf-editor
 gconf-service
