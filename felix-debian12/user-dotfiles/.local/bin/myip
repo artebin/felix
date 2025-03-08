@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
 ip -4 -br addr
+printf "\n"
+printf "Public IP: %s\n" "$(curl -s ipinfo.io/ip)"
