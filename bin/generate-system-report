@@ -1,116 +1,235 @@
 #!/usr/bin/env bash
 
-if [[ ! -f common.sh ]]; then
-	printf "!ERROR! Cannot find common.sh\n"
-	exit 1
-fi
-source common.sh
-
-function print_dmi_info_bios(){
-	print_section_heading "DMI information BIOS (dmidecode)"
-	echo "bios-vendor: $(sudo dmidecode -s bios-vendor)"
-	echo "bios-version: $(sudo dmidecode -s bios-version)"
-	echo "bios-release-date: $(sudo dmidecode -s bios-release-date)"
-	print_section_ending
+function trace_fail(){
+	if [[ $# -lt 1 ]]; then return; fi
+	FAIL_MESSAGE="${1}"
+	printf "[ERROR] ${1}\n" "${@:2}" 2>&1
+}
+function trace_info(){
+	if [[ $# -lt 1 ]]; then return; fi
+	INFO_MESSAGE="${1}"
+	printf "[INFO ] ${1}\n" "${@:2}"
+}
+function trace_debug(){
+	if [[ $# -lt 1 ]]; then return; fi
+	DEBUG_MESSAGE="${1}"
+	printf "[DEBUG] ${1}\n" "${@:2}"
 }
 
-function print_dmi_info_system(){
-	print_section_heading "DMI information System (dmidecode)"
-	echo "system-manufacturer: $(sudo dmidecode -s system-manufacturer)"
-	echo "system-product-name: $(sudo dmidecode -s system-product-name)"
-	echo "system-version: $(sudo dmidecode -s system-version)"
-	print_section_ending
-}
+REPORT_NAME="felix-system-report_${HOSTNAME}_$(date -u +'%y%m%d-%H%M%S')"
+mkdir -p "${REPORT_NAME}"
+REPORT_MAIN_FILE="${REPORT_NAME}/${REPORT_NAME}.md"
 
-function print_dmi_info_memory(){
-	print_section_heading "DMI table decoder (dmidecode)"
-	sudo dmidecode
-	print_section_ending
-}
+cat <<EOF >"${REPORT_MAIN_FILE}"
+# Felix System Report
 
-function print_hardware_info_inxi(){
-	print_section_heading "Hardware information (inxi -Fxz)"
-	inxi -Fxz
-	print_section_ending
-}
+<table>
+<tr><td> <b>Date</b> </td><td> $(date -u +'%Y-%m-%d %H:%M:%SZ')  </td></tr>
+<tr><td> <b>Hostname</b> </td><td> ${HOSTNAME}  </td></tr>
+</table>
 
-function print_display_info_xrandr(){
-	print_section_heading "Display information (xrandr --current)"
-	xrandr --current
-	print_section_ending
-}
+EOF
 
-function print_lsb_release(){
-	print_section_heading "LSB release (lsb_release -a)"
-	lsb_release -a
-	print_section_ending
-}
+function print_linux_distribution(){
+	cat <<EOF >>"${REPORT_MAIN_FILE}"
+## Linux distribution
+<pre>
+<b>\$cat /etc/issue</b>
+$(cat /etc/issue)
+</pre>
 
-function print_video_card_model_and_driver(){
-	print_section_heading "Video card model and driver"
-	lspci -k | grep -EA3 'VGA|3D|Display' 
-	print_section_ending
+<pre>
+<b>\$cat /proc/version</b>
+$(cat /proc/version)
+</pre>
+
+<pre>
+<b>\$lsb_release -a</b>
+$(lsb_release -a)
+</pre>
+
+EOF
 }
 
 function print_linux_kernel_version(){
-	print_section_heading "Linux Kernel Version"
-	cat /proc/version
-	print_section_ending
+	cat <<EOF >>"${REPORT_MAIN_FILE}"
+## Linux kernel
+<pre>
+<b>\$/proc/version</b>
+$(cat /proc/version)
+</pre>
+
+EOF
 }
 
-function print_memory_info(){
-	print_section_heading "Memory info (cat /proc/meminfo)"
-	cat /proc/meminfo
-	print_section_ending
+function print_dmi_info_system(){
+	cat <<EOF >>"${REPORT_MAIN_FILE}"
+## Computer
+<pre>
+<b>\$dmidecode -s system-manufacturer</b>
+$(sudo dmidecode -s system-manufacturer)
+</pre>
+
+<pre>
+<b>\$dmidecode -s system-product-name</b>
+$(sudo dmidecode -s system-product-name)
+</pre>
+
+<pre>
+<b>\$dmidecode -s system-version</b>
+$(sudo dmidecode -s system-version)
+</pre>
+EOF
 }
 
-function print_free_memory(){
-	print_section_heading "Free memory (free -m)"
-	free -m
-	print_section_ending
+function print_dmi_info_bios(){
+	cat <<EOF >>"${REPORT_MAIN_FILE}"
+## BIOS
+
+<pre>
+<b>\$dmidecode -s bios-vendor</b>
+$(sudo dmidecode -s bios-vendor)
+</pre>
+
+<pre>
+<b>\$dmidecode -s bios-version</b>
+$(sudo dmidecode -s bios-version)
+</pre>
+
+<pre>
+<b>\$dmidecode -s bios-release-date</b>
+$(sudo dmidecode -s bios-release-date)
+</pre>
+
+EOF
 }
 
-function print_swap_information(){
-	print_section_heading "Swap information (cat /proc/swaps)"
-	cat /proc/swaps
-	print_section_ending
+function print_hardware_info_inxi(){
+	cat <<EOF >>"${REPORT_MAIN_FILE}"
+## Computer
+<pre>
+<b>\$inxi -Fxz</b>
+$(inxi -Fxz | sed 's/$/  /g')
+</pre>
+
+EOF
 }
 
-function print_temperature_sensors(){
-	print_section_heading "Temperature sensors (sensors)"
-	sensors
-	print_section_ending
-}
+function print_video_card_model_and_driver(){
+	cat <<EOF >>"${REPORT_MAIN_FILE}"
+## Video card: model and driver
+<pre>
+<b>\$lspci -k | grep -EA3 'VGA|3D|Display'</b>
+$(lspci -k | grep -EA3 'VGA|3D|Display')
+</pre>
 
-function print_font_config(){
-	print_section_heading "Font configuration"
-	fc-match --verbose
-	print_section_ending
-}
-
-function print_gtk_version(){
-	print_section_heading "GTK+ version (dpkg -l libgtk2.0-0 libgtk-3-0)"
-	dpkg -l libgtk2.0-0 libgtk-3-0
-	print_section_ending
-}
-
-function print_key_codes(){
-	print_section_heading "Key codes (xmodmap -pke)"
-	xmodmap -pke
-	print_section_ending
+EOF
 }
 
 function print_video_acceleration(){
-	print_section_heading "Hardware video acceleration"
-	sudo intel_gpu_top -L
-	printf "\n\n=> Use intel_gpu_top to check if hardware video acceleration is working\n"
-	print_section_ending
-	
-	print_section_heading "Hardware AV1 decoding"
-	vainfo
-	printf "\n\n=> If AV1 is not listed then disable AV1 in your browser to save on battery power.\n"
-	printf "Firefox does it with 'media.av1.enabled=false'\n"
-	print_section_ending
+	cat <<EOF >>"${REPORT_MAIN_FILE}"
+## Hardware video acceleration
+
+Use <code>intel_gpu_top</code> to check if hardware video acceleration is working.
+
+<pre>
+<b>\$intel_gpu_top -L</b>
+$(sudo intel_gpu_top -L)
+</pre>
+
+## Hardware AV1 decoding
+
+If AV1 is not listed below then it is preferable to disable AV1 decoding to save on battery power.  
+In Firefox it can be done with the configuration parameter <code>media.av1.enabled=false</code>.
+
+<pre>
+<b>\$vainfo</b>
+$(vainfo 2>/dev/null)
+</pre>
+
+EOF
+}
+
+function print_display_info(){
+	cat <<EOF >>"${REPORT_MAIN_FILE}"
+## Displays
+<pre>
+<b>\$xrandr --current</b>
+$(xrandr --current)
+</pre>
+
+EOF
+}
+
+function print_memory_info(){
+	cat <<EOF >>"${REPORT_MAIN_FILE}"
+## Memory
+<pre>
+<b>\$cat /proc/meminfo</b>
+$(cat /proc/meminfo)
+</pre>
+
+<pre>
+<b>\$free -hl</b>
+$(free -hl)
+</pre>
+
+EOF
+}
+
+function print_swap_information(){
+	cat <<EOF >>"${REPORT_MAIN_FILE}"
+## Swap
+<pre>
+<b>\$cat /proc/swaps</b>
+$(cat /proc/swaps)
+</pre>
+
+EOF
+}
+
+function print_temperature_sensors(){
+	cat <<EOF >>"${REPORT_MAIN_FILE}"
+## Temperature sensors
+<pre>
+<b>\$sensors</b>
+$(sensors)
+</pre>
+
+EOF
+}
+
+function print_font_config(){
+	cat <<EOF >>"${REPORT_MAIN_FILE}"
+## Font configuration
+<pre>
+<b>\$fc-match --verbose</b>
+$(fc-match --verbose)
+</pre>
+
+EOF
+}
+
+function print_gtk_version(){
+	cat <<EOF >>"${REPORT_MAIN_FILE}"
+## GTK version
+<pre>
+<b>\$dpkg -l libgtk2* libgtk-*</b>
+$(dpkg -l libgtk2* libgtk-*)
+</pre>
+
+EOF
+}
+
+function print_key_codes(){
+	cat <<EOF >>"${REPORT_MAIN_FILE}"
+## Keymaps
+<pre>
+<b>\$xmodmap -pke</b>
+$(xmodmap -pke)
+</pre>
+
+EOF
 }
 
 function extract_installed_packages_list(){
@@ -123,28 +242,29 @@ function extract_installed_packages_list(){
 	printf "%s\n" "${INSTALLED_PACKAGE_LIST}" >"${OUTPUT_DIRECTORY}/dpkglogs.list"
 }
 
-function print_all(){
-	print_dmi_info_bios
-	print_dmi_info_system
-	print_hardware_info_inxi
-	print_display_info_xrandr
-	print_lsb_release
+function compose_markdown_file(){
+	print_linux_distribution
 	print_linux_kernel_version
+	print_dmi_info_system
+	print_dmi_info_bios
+	print_hardware_info_inxi
+	print_video_card_model_and_driver
+	print_video_acceleration
+	print_display_info
 	print_memory_info
-	print_free_memory
 	print_swap_information
 	print_temperature_sensors
 	print_font_config
 	print_gtk_version
 	print_key_codes
-	print_video_acceleration
 }
 
-REPORT_NAME="system_report_${HOSTNAME}_$(date -u +'%y%m%d-%H%M%S')"
-mkdir "${REPORT_NAME}"
-print_all 2>&1|remove_terminal_control_sequences >"${REPORT_NAME}/${REPORT_NAME}"
+printf "Compiling report as ${REPORT_NAME}... "
+compose_markdown_file
+./markdown-to-html "${REPORT_MAIN_FILE}"
+pandoc "${REPORT_MAIN_FILE%.md}.html" -f html -t gfm -o "${REPORT_MAIN_FILE}"
+printf " DONE.\n"
+
+printf "Listing installed packages..."
 extract_installed_packages_list "${REPORT_NAME}"
-
-chown -R "${SUDO_USER}:${SUDO_GROUP}" "${REPORT_NAME}"
-
-printf "Report written in directory: ${REPORT_NAME}\n"
+printf " DONE.\n"
