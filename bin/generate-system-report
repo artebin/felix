@@ -21,7 +21,8 @@ mkdir -p "${REPORT_NAME}"
 REPORT_MAIN_FILE="${REPORT_NAME}/${REPORT_NAME}.md"
 
 cat <<EOF >"${REPORT_MAIN_FILE}"
-# Felix System Report
+Felix System Report
+===================
 
 <table>
 <tr><td> <b>Date</b> </td><td> $(date -u +'%Y-%m-%d %H:%M:%SZ')  </td></tr>
@@ -32,7 +33,7 @@ EOF
 
 function print_linux_distribution(){
 	cat <<EOF >>"${REPORT_MAIN_FILE}"
-## Linux distribution
+# Linux distribution
 <pre>
 <b>\$cat /etc/issue</b>
 $(cat /etc/issue)
@@ -53,7 +54,7 @@ EOF
 
 function print_linux_kernel_version(){
 	cat <<EOF >>"${REPORT_MAIN_FILE}"
-## Linux kernel
+# Linux kernel
 <pre>
 <b>\$/proc/version</b>
 $(cat /proc/version)
@@ -64,7 +65,7 @@ EOF
 
 function print_dmi_info_system(){
 	cat <<EOF >>"${REPORT_MAIN_FILE}"
-## Computer
+# Computer
 <pre>
 <b>\$dmidecode -s system-manufacturer</b>
 $(sudo dmidecode -s system-manufacturer)
@@ -84,7 +85,7 @@ EOF
 
 function print_dmi_info_bios(){
 	cat <<EOF >>"${REPORT_MAIN_FILE}"
-## BIOS
+# BIOS
 
 <pre>
 <b>\$dmidecode -s bios-vendor</b>
@@ -106,7 +107,7 @@ EOF
 
 function print_hardware_info_inxi(){
 	cat <<EOF >>"${REPORT_MAIN_FILE}"
-## Computer
+# Computer
 <pre>
 <b>\$inxi -Fxz</b>
 $(inxi -Fxz | sed 's/$/  /g')
@@ -115,20 +116,17 @@ $(inxi -Fxz | sed 's/$/  /g')
 EOF
 }
 
-function print_video_card_model_and_driver(){
+function print_video_card_info(){
 	cat <<EOF >>"${REPORT_MAIN_FILE}"
-## Video card: model and driver
+# Video card
+
+## Model and driver
 <pre>
 <b>\$lspci -k | grep -EA3 'VGA|3D|Display'</b>
 $(lspci -k | grep -EA3 'VGA|3D|Display')
 </pre>
 
-EOF
-}
-
-function print_video_acceleration(){
-	cat <<EOF >>"${REPORT_MAIN_FILE}"
-## Hardware video acceleration
+## Hardware acceleration
 
 Use <code>intel_gpu_top</code> to check if hardware video acceleration is working.
 
@@ -152,7 +150,7 @@ EOF
 
 function print_display_info(){
 	cat <<EOF >>"${REPORT_MAIN_FILE}"
-## Displays
+# Displays
 <pre>
 <b>\$xrandr --current</b>
 $(xrandr --current)
@@ -163,7 +161,7 @@ EOF
 
 function print_memory_info(){
 	cat <<EOF >>"${REPORT_MAIN_FILE}"
-## Memory
+# Memory
 <pre>
 <b>\$cat /proc/meminfo</b>
 $(cat /proc/meminfo)
@@ -179,7 +177,7 @@ EOF
 
 function print_swap_information(){
 	cat <<EOF >>"${REPORT_MAIN_FILE}"
-## Swap
+# Swap
 <pre>
 <b>\$cat /proc/swaps</b>
 $(cat /proc/swaps)
@@ -190,7 +188,7 @@ EOF
 
 function print_temperature_sensors(){
 	cat <<EOF >>"${REPORT_MAIN_FILE}"
-## Temperature sensors
+# Temperature sensors
 <pre>
 <b>\$sensors</b>
 $(sensors)
@@ -201,7 +199,7 @@ EOF
 
 function print_font_config(){
 	cat <<EOF >>"${REPORT_MAIN_FILE}"
-## Font configuration
+# Font configuration
 <pre>
 <b>\$fc-match --verbose</b>
 $(fc-match --verbose)
@@ -212,7 +210,7 @@ EOF
 
 function print_gtk_version(){
 	cat <<EOF >>"${REPORT_MAIN_FILE}"
-## GTK version
+# GTK version
 <pre>
 <b>\$dpkg -l libgtk2* libgtk-*</b>
 $(dpkg -l libgtk2* libgtk-*)
@@ -223,7 +221,7 @@ EOF
 
 function print_key_codes(){
 	cat <<EOF >>"${REPORT_MAIN_FILE}"
-## Keymaps
+# Keymaps
 <pre>
 <b>\$xmodmap -pke</b>
 $(xmodmap -pke)
@@ -248,8 +246,7 @@ function compose_markdown_file(){
 	print_dmi_info_system
 	print_dmi_info_bios
 	print_hardware_info_inxi
-	print_video_card_model_and_driver
-	print_video_acceleration
+	print_video_card_info
 	print_display_info
 	print_memory_info
 	print_swap_information
@@ -259,11 +256,19 @@ function compose_markdown_file(){
 	print_key_codes
 }
 
+SHOW_STD_ERR="true"
+
 printf "Compiling report as ${REPORT_NAME}... "
 compose_markdown_file
-./markdown-to-html "${REPORT_MAIN_FILE}"
-pandoc "${REPORT_MAIN_FILE%.md}.html" -f html -t gfm -o "${REPORT_MAIN_FILE}"
+STD_ERR_MARKDOWN_TO_HTML="$(./markdown-to-html "${REPORT_MAIN_FILE}" 2>&1)"
+STD_ERR_HTML_TO_MARKDOWN="$(pandoc "${REPORT_MAIN_FILE%.md}.html" -f html -t markdown -o "${REPORT_MAIN_FILE}" 2>&1)"
 printf " DONE.\n"
+
+if ${SHOW_STD_ERR}; then
+	if [[ ! -z "${STD_ERR_MARKDOWN_TO_HTML}" ]]; then printf "\n%s\n" "${STD_ERR_MARKDOWN_TO_HTML}"; fi
+	if [[ ! -z "${STD_ERR_HTML_TO_MARKDOWN}" ]]; then printf "%s\n" "${STD_ERR_HTML_TO_MARKDOWN}"; fi
+	if [[ ! -z "${STD_ERR_MARKDOWN_TO_HTML}" ]] || [[ ! -z "${STD_ERR_HTML_TO_MARKDOWN}" ]]; then printf "\n"; fi
+fi
 
 printf "Listing installed packages..."
 extract_installed_packages_list "${REPORT_NAME}"
