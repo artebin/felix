@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# TODO: do not use jquery AutoContents but instead use pandoc --toc.
+# TODO: better use of the pandoc template, see <https://github.com/jgm/pandoc/wiki/Pandoc-Tricks#using-markdown-templates>.
+
 function trace_fail(){
 	if [[ $# -lt 1 ]]; then return; fi
 	FAIL_MESSAGE="${1}"
@@ -15,10 +18,6 @@ function trace_debug(){
 	DEBUG_MESSAGE="${1}"
 	printf "[DEBUG] ${1}\n" "${@:2}"
 }
-
-# TODO: should keep sudo permission.
-# TODO: do not use jquery AutoContents but instead use pandoc --toc.
-# TODO: better use of the pandoc template, see <https://github.com/jgm/pandoc/wiki/Pandoc-Tricks#using-markdown-templates>.
 
 if [[ "${#}" -eq 0 ]]; then
 	printf "Usage: $(basename ${BASH_SOURCE}) MARKDOWN_FILE...\n"

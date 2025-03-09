@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: should keep sudo permission.
+
 function trace_fail(){
 	if [[ $# -lt 1 ]]; then return; fi
 	FAIL_MESSAGE="${1}"
