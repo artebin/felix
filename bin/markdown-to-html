@@ -17,6 +17,8 @@ function trace_debug(){
 }
 
 # TODO: should keep sudo permission.
+# TODO: do not use jquery AutoContents but instead use pandoc --toc.
+# TODO: better use of the pandoc template, see <https://github.com/jgm/pandoc/wiki/Pandoc-Tricks#using-markdown-templates>.
 
 if [[ "${#}" -eq 0 ]]; then
 	printf "Usage: $(basename ${BASH_SOURCE}) MARKDOWN_FILE...\n"
