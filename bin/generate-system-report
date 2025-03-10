@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# TODO: should keep sudo permission.
-
 function trace_fail(){
 	if [[ $# -lt 1 ]]; then return; fi
 	FAIL_MESSAGE="${1}"
@@ -18,20 +16,26 @@ function trace_debug(){
 	printf "[DEBUG] ${1}\n" "${@:2}"
 }
 
-REPORT_NAME="felix-system-report_${HOSTNAME}_$(date -u +'%y%m%d-%H%M%S')"
-mkdir -p "${REPORT_NAME}"
-REPORT_MAIN_FILE="${REPORT_NAME}/${REPORT_NAME}.md"
+SUDO_LOOP_PID=""
+function sudo_loop(){
+	SUDO_LOOP_DURATION_IN_SECONDS=60
+	while true; do
+		sudo --non-interactive --validate || exit "${?}"
+		sleep "${SUDO_LOOP_DURATION_IN_SECONDS}"
+	done
+}
 
-cat <<EOF >"${REPORT_MAIN_FILE}"
-Felix System Report
-===================
+function start_sudo_loop(){
+	coproc (sudo_loop)
+	SUDO_LOOP_PID="${COPROC_PID}"
+}
 
-<table>
-<tr><td> <b>Date</b> </td><td> $(date -u +'%Y-%m-%d %H:%M:%SZ')  </td></tr>
-<tr><td> <b>Hostname</b> </td><td> ${HOSTNAME}  </td></tr>
-</table>
-
-EOF
+trap cleanup EXIT
+function cleanup(){
+	if [[ ! -z "${SUDO_LOOP_PID}" ]]; then
+		kill -s 9 "${SUDO_LOOP_PID}"
+	fi
+}
 
 function print_linux_distribution(){
 	cat <<EOF >>"${REPORT_MAIN_FILE}"
@@ -232,16 +236,6 @@ $(xmodmap -pke)
 EOF
 }
 
-function extract_installed_packages_list(){
-	OUTPUT_DIRECTORY="${1}"
-	
-	INSTALLED_PACKAGE_LIST=$(dpkg -l)
-	printf "%s\n" "${INSTALLED_PACKAGE_LIST}" >"${OUTPUT_DIRECTORY}/dpkg.installed.packages.list"
-	
-	INSTALLED_PACKAGE_LIST=$(find /var/log -mindepth 1 -maxdepth 1 -name dpkg.log*|sort|xargs zgrep -E '( installed | remove )'|uniq)
-	printf "%s\n" "${INSTALLED_PACKAGE_LIST}" >"${OUTPUT_DIRECTORY}/dpkglogs.list"
-}
-
 function compose_markdown_file(){
 	print_linux_distribution
 	print_linux_kernel_version
@@ -258,14 +252,30 @@ function compose_markdown_file(){
 	print_key_codes
 }
 
-SHOW_STD_ERR="true"
+sudo --validate || exit "${?}"
+start_sudo_loop
 
+REPORT_NAME="felix-system-report_${HOSTNAME}_$(date -u +'%y%m%d-%H%M%S')"
+mkdir -p "${REPORT_NAME}"
+REPORT_MAIN_FILE="${REPORT_NAME}/${REPORT_NAME}.md"
+
+cat <<EOF >"${REPORT_MAIN_FILE}"
+Felix System Report
+===================
+
+<table>
+<tr><td> <b>Date</b> </td><td> $(date -u +'%Y-%m-%d %H:%M:%SZ')  </td></tr>
+<tr><td> <b>Hostname</b> </td><td> ${HOSTNAME}  </td></tr>
+</table>
+
+EOF
+
+SHOW_STD_ERR="true"
 printf "Compiling report as ${REPORT_NAME}... "
 compose_markdown_file
 STD_ERR_MARKDOWN_TO_HTML="$(./markdown-to-html "${REPORT_MAIN_FILE}" 2>&1)"
 STD_ERR_HTML_TO_MARKDOWN="$(pandoc "${REPORT_MAIN_FILE%.md}.html" -f html -t markdown -o "${REPORT_MAIN_FILE}" 2>&1)"
 printf " DONE.\n"
-
 if ${SHOW_STD_ERR}; then
 	if [[ ! -z "${STD_ERR_MARKDOWN_TO_HTML}" ]]; then printf "\n%s\n" "${STD_ERR_MARKDOWN_TO_HTML}"; fi
 	if [[ ! -z "${STD_ERR_HTML_TO_MARKDOWN}" ]]; then printf "%s\n" "${STD_ERR_HTML_TO_MARKDOWN}"; fi
@@ -273,5 +283,8 @@ if ${SHOW_STD_ERR}; then
 fi
 
 printf "Listing installed packages..."
-extract_installed_packages_list "${REPORT_NAME}"
+INSTALLED_PACKAGE_LIST=$(dpkg -l)
+printf "%s\n" "${INSTALLED_PACKAGE_LIST}" >"${REPORT_NAME}/dpkg.installed.packages.list"
+INSTALLED_PACKAGE_LIST=$(find /var/log -mindepth 1 -maxdepth 1 -name dpkg.log* | sort | xargs zgrep -E '( installed | remove )' | uniq)
+printf "%s\n" "${INSTALLED_PACKAGE_LIST}" >"${REPORT_NAME}/dpkglogs.list"
 printf " DONE.\n"
