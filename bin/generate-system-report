@@ -270,21 +270,20 @@ Felix System Report
 
 EOF
 
-SHOW_STD_ERR="true"
-printf "Compiling report as ${REPORT_NAME}... "
+SHOW_STD_ERR="false"
+printf "Creating system report ${REPORT_NAME}...\n"
 compose_markdown_file
 STD_ERR_MARKDOWN_TO_HTML="$(./markdown-to-html "${REPORT_MAIN_FILE}" 2>&1)"
 STD_ERR_HTML_TO_MARKDOWN="$(pandoc "${REPORT_MAIN_FILE%.md}.html" -f html -t markdown -o "${REPORT_MAIN_FILE}" 2>&1)"
-printf " DONE.\n"
 if ${SHOW_STD_ERR}; then
 	if [[ ! -z "${STD_ERR_MARKDOWN_TO_HTML}" ]]; then printf "\n%s\n" "${STD_ERR_MARKDOWN_TO_HTML}"; fi
 	if [[ ! -z "${STD_ERR_HTML_TO_MARKDOWN}" ]]; then printf "%s\n" "${STD_ERR_HTML_TO_MARKDOWN}"; fi
 	if [[ ! -z "${STD_ERR_MARKDOWN_TO_HTML}" ]] || [[ ! -z "${STD_ERR_HTML_TO_MARKDOWN}" ]]; then printf "\n"; fi
 fi
 
-printf "Listing installed packages..."
+printf "Listing installed packages...\n"
 INSTALLED_PACKAGE_LIST=$(dpkg -l)
 printf "%s\n" "${INSTALLED_PACKAGE_LIST}" >"${REPORT_NAME}/dpkg.installed.packages.list"
 INSTALLED_PACKAGE_LIST=$(find /var/log -mindepth 1 -maxdepth 1 -name dpkg.log* | sort | xargs zgrep -E '( installed | remove )' | uniq)
 printf "%s\n" "${INSTALLED_PACKAGE_LIST}" >"${REPORT_NAME}/dpkglogs.list"
-printf " DONE.\n"
+printf "DONE.\n"
