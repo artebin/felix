@@ -270,7 +270,7 @@ Felix System Report
 
 EOF
 
-SHOW_STD_ERR="false"
+SHOW_STD_ERR="true"
 printf "Creating system report ${REPORT_NAME}...\n"
 compose_markdown_file
 STD_ERR_MARKDOWN_TO_HTML="$(./markdown-to-html "${REPORT_MAIN_FILE}" 2>&1)"
