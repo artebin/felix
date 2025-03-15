@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+function trace_fail(){
+	if [[ $# -lt 1 ]]; then return; fi
+	FAIL_MESSAGE="${1}"
+	printf "[ERROR] ${1}\n" "${@:2}" 2>&1
+}
+function trace_info(){
+	if [[ $# -lt 1 ]]; then return; fi
+	INFO_MESSAGE="${1}"
+	printf "[INFO ] ${1}\n" "${@:2}"
+}
+function trace_debug(){
+	if [[ $# -lt 1 ]]; then return; fi
+	DEBUG_MESSAGE="${1}"
+	printf "[DEBUG] ${1}\n" "${@:2}"
+}
+
+if [[ "${#}" -ne 1 ]]; then
+	trace_fail "Usage: $(basename "${BASH_SOURCE}") LENGTH"
+	exit 1
+fi
+
+STRING_LENGTH="${1}"
+
+if ! [[ "${STRING_LENGTH}" -eq "${STRING_LENGTH}" ]] ; then
+	trace_fail "Usage: $(basename "${BASH_SOURCE}") LENGTH"
+	exit 1
+fi
+
+tr -dc A-Za-z0-9 </dev/urandom | head -c "${STRING_LENGTH}"
