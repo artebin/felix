@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-source "felix.sh"
+source "felix-common.sh"
 
 BASEDIR="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
 INSTALL_LOG_FILE="$(retrieve_log_file_name ${BASH_SOURCE}|xargs readlink -f)"

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 RECIPE_DIRECTORY="$(dirname ${BASH_SOURCE}|xargs readlink -f)"
-FELIX_SH="$(eval find ./$(printf "{$(echo %{1..10}q,)}" | sed 's/ /\.\.\//g')/ -maxdepth 1 -name felix.sh)"
+FELIX_SH="$(eval find ./$(printf "{$(echo %{1..10}q,)}" | sed 's/ /\.\.\//g')/ -maxdepth 1 -name felix-common.sh)"
 if [[ ! -f "${FELIX_SH}" ]]; then
-	printf "Cannot find felix.sh\n"
+	printf "Cannot find felix-common.sh\n"
 	exit 1
 fi
 FELIX_SH="$(readlink -f "${FELIX_SH}")"
