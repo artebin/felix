@@ -34,7 +34,7 @@ accountsservice
 # Terminal & command line tools
 #################################
 ssh-askpass
-pinentry-tty pinentry-gtk # For GnuPG
+pinentry-tty pinentry-gtk2 # For GnuPG
 parallel
 colortest
 tree
