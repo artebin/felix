@@ -3,7 +3,7 @@
 function print_usage() {
 	cat <<'EOF'
 Usage: download-artifact-from-mvn-central <PKG_MAVEN>
-       download-artifact-from-mvn-central <GROUP_ID> <RTIFACT_ID> <VERSION>
+       download-artifact-from-mvn-central <GROUP_ID> <ARTIFACT_ID> <VERSION>
 EOF
 }
 
@@ -53,4 +53,7 @@ if [[ -z "${MVN_GROUP_ID}" ]] || [[ -z "${MVN_ARTIFACT_ID}" ]] || [[ -z "${MVN_V
 	exit 1
 fi
 
-java -jar "${IVY_JAR}" -dependency "${MVN_GROUP_ID}" "${MVN_ARTIFACT_ID}" "${MVN_VERSION}" -retrieve "[artifact]-[revision](-[classifier]).[ext]"
+MVN_DOWNLOAD_FOLDER="mvnrepository:${MVN_GROUP_ID}:${MVN_ARTIFACT_ID}:${MVN_VERSION}"
+mkdir "${MVN_DOWNLOAD_FOLDER}"
+bash -c "cd '${MVN_DOWNLOAD_FOLDER}'; java -jar '${IVY_JAR}' -dependency '${MVN_GROUP_ID}' '${MVN_ARTIFACT_ID}' '${MVN_VERSION}' -retrieve '[artifact]-[revision](-[classifier]).[ext]'"
+
