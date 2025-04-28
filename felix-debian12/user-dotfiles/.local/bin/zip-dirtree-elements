@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+
+function trace_fail(){
+	if [[ $# -lt 1 ]]; then return; fi
+	FAIL_MESSAGE="${1}"
+	printf "[FAIL] ${1}\n" "${@:2}" 2>&1
+}
+function trace_info(){
+	if [[ $# -lt 1 ]]; then return; fi
+	INFO_MESSAGE="${1}"
+	printf "[INFO] ${1}\n" "${@:2}"
+}
+function trace_debug(){
+	if [[ $# -lt 1 ]]; then return; fi
+	DEBUG_MESSAGE="${1}"
+	printf "[DEBUG] ${1}\n" "${@:2}"
+}
+
+function print_usage(){
+	cat << EOF
+Usage: $(basename ${BASH_SOURCE}) DEPTH
+EOF
+}
+
+if [[ "${#}" != 1 ]] || ! [[ "${1}" =~ ${INTEGER_VALUE_REGEX} ]] || [[ "${1}" == 0 ]]; then
+	print_usage
+	exit 1
+fi
+
+ELEMENT_TO_ZIP_DEPTH="${1}"
+ELEMENT_TO_ZIP_LIST="$(find . -mindepth "${ELEMENT_TO_ZIP_DEPTH}" -type d 2>/dev/null)"
+ELEMENT_TO_ZIP_COUNT="$(printf "${ELEMENT_TO_ZIP_LIST}" | wc -l)"
+
+if [[ "${ELEMENT_TO_ZIP_COUNT}" == 0 ]]; then
+	trace_info "Cannot find ${ELEMENT_TO_ZIP_DEPTH}-level directories"
+	exit 0
+fi
+
+echo "${ELEMENT_TO_ZIP_LIST}"
+
+CONTINUE="false"
+while true; do
+	read -p "Continue? [y/n] " USER_ANSWER
+	case "${USER_ANSWER}" in
+		[Yy]* )
+			CONTINUE="true"
+			break
+			;;
+		[Nn]* )
+			break
+			;;
+		* )
+			printf "Please answer yes or no\n\n" > /dev/stderr
+			;;
+	esac
+done
+if ! ${CONTINUE}; then exit 1; fi
+
+find . -mindepth "${ELEMENT_TO_ZIP_DEPTH}" -type d -exec bash -c 'F=$(echo {}|tr / -|cut -c 3-);printf "zip %s\n" "${F}.zip {}"' \; | parallel -vt --jobs 4
