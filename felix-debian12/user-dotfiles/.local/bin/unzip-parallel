@@ -15,11 +15,9 @@ function print_debug(){
 
 function print_usage(){
 	cat << EOF
-Usage: $(basename ${BASH_SOURCE}) [OPTIONS] DEPTH
-Create zip archive for each directory at DEPTH from current working 
-directory. The archive names are made of the sub-path from current 
-working directory (excluded) to the zipped directory with dash 
-character as path separator. The default number of jobs is 4.
+Usage: $(basename ${BASH_SOURCE}) [OPTIONS]
+Unzip archives found in the current working directory in parallel.
+The default number of jobs is 4.
 
 Options:
   -h	Help
@@ -52,21 +50,15 @@ while getopts ":hj:" ARG; do
 done
 shift $((OPTIND-1))
 
-if [[ "${#}" != 1 ]] || ! [[ "${1}" =~ ${INTEGER_VALUE_REGEX} ]] || [[ "${1}" == 0 ]]; then
-	print_usage
-	exit 1
-fi
+ZIP_FILE_LIST="$(find -mindepth 1 -maxdepth 1 -name '*.zip' -type f 2>/dev/null)"
+ZIP_FILE_COUNT="$(printf "${ZIP_FILE_LIST}" | wc -l)"
 
-ELEMENT_TO_ZIP_DEPTH="${1}"
-ELEMENT_TO_ZIP_LIST="$(find . -mindepth "${ELEMENT_TO_ZIP_DEPTH}" -maxdepth "${ELEMENT_TO_ZIP_DEPTH}" -type d 2>/dev/null)"
-ELEMENT_TO_ZIP_COUNT="$(printf "${ELEMENT_TO_ZIP_LIST}" | wc -l)"
-
-if [[ "${ELEMENT_TO_ZIP_COUNT}" == 0 ]]; then
-	trace_info "Cannot find ${ELEMENT_TO_ZIP_DEPTH}-depth directories"
+if [[ "${ZIP_FILE_COUNT}" == 0 ]]; then
+	trace_info "Cannot find zip files"
 	exit 0
 fi
 
-printf "${ELEMENT_TO_ZIP_LIST}\n"
+printf "${ZIP_FILE_LIST}\n"
 CONTINUE="false"
 while true; do
 	read -p "Continue? [y/n] " USER_ANSWER
@@ -85,4 +77,4 @@ while true; do
 done
 if ! ${CONTINUE}; then exit 1; fi
 
-find . -mindepth "${ELEMENT_TO_ZIP_DEPTH}" -maxdepth "${ELEMENT_TO_ZIP_DEPTH}" -type d -exec bash -c 'F=$(echo {}|tr / -|cut -c 3-);printf "zip -r \"${F}\" \"{}\"\n"' \; | parallel -vt --jobs "${PARALLEL_JOBS}"
+find . -mindepth 1 -maxdepth 1 -name '*.zip' -type f -exec bash -c 'printf "unzip \"{}\"\n"' \; | parallel -vt --jobs "${PARALLEL_JOBS}"
