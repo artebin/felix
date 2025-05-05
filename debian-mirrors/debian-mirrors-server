@@ -1,29 +1,26 @@
 #!/usr/bin/env bash
 
-function trace_fail(){
+function print_error(){
 	if [[ $# -lt 1 ]]; then return; fi
-	FAIL_MESSAGE="${1}"
 	printf "[ERROR] ${1}\n" "${@:2}" 2>&1
 }
-function trace_info(){
+function print_info(){
 	if [[ $# -lt 1 ]]; then return; fi
-	INFO_MESSAGE="${1}"
-	printf "[INFO ] ${1}\n" "${@:2}"
+	printf "[INFO] ${1}\n" "${@:2}"
 }
-function trace_debug(){
+function print_debug(){
 	if [[ $# -lt 1 ]]; then return; fi
-	DEBUG_MESSAGE="${1}"
 	printf "[DEBUG] ${1}\n" "${@:2}"
 }
 
 function print_usage(){
-	printf "Usage: $(basename ${BASH_SOURCE}) [-a ADDRESS] [-p PORT_NUMBER]\n"
+	printf "Usage: $(basename ${BASH_SOURCE}) [-a ADDRESS | -z] [-p PORT_NUMBER]\n"
 }
 
 ADDRESS=""
 PORT_NUMBER="13111"
-
-while getopts ":a:p:" ARG; do
+USE_ZEROCONF="false"
+while getopts ":a:p:z" ARG; do
 	case "${ARG}" in
 		a)
 			ADDRESS="${OPTARG}"
@@ -31,19 +28,33 @@ while getopts ":a:p:" ARG; do
 		p)
 			PORT_NUMBER="${OPTARG}"
 			;;
+		z)
+			USE_ZEROCONF="true"
+			;;
 		*)
-			trace_fail "Unknown option: -%s" "${OPTARG}"
+			print_error "Unknown option: -%s" "${OPTARG}"
 			print_usage
 			exit 1
 			;;
 	esac
 done
 
+# Options -a and -z are mutually exclusive
+if [[ ! -z "${ADDRESS}" ]] && [[ "${USE_ZEROCONF}" == "true" ]]; then
+	print_error "Option -a and -z are mutually exclusive"
+	print_usage
+	exit 1
+fi
+
+if [[ "${USE_ZEROCONF}" == "true" ]]; then
+	ADDRESS="${HOSTNAME}.local"
+fi
+
 # Show menu for ADDRESS if not given in parameters
 if [[ -z "${ADDRESS}" ]]; then
 	declare -A ALL_ADDRESSES_ARRAY
 	ALL_ADDRESSES="$(ip -4 -br addr 2>/dev/null)"
-	if [[ "${?}" != 0 ]]; then trace_fail "Cannot retrieve list of network interfaces and IP addresses"; exit 1; fi
+	if [[ "${?}" != 0 ]]; then print_error "Cannot retrieve list of network interfaces and IP addresses"; exit 1; fi
 	REGEX_IP_BR_ADDR="([^[:space:]]+)[[:space:]]+([^[:space:]]+)[[:space:]]+([[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+).*"
 	printf "Select server address:\n"
 	while IFS= read -r LINE; do
@@ -72,13 +83,13 @@ fi
 # Check host with ADDRESS is reachable
 HOST_AVAILABLE="$(ping -c 1 "${ADDRESS}" >/dev/null 2>&1;echo "${?}")"
 if [[ "${HOST_AVAILABLE}" -ne 0 ]]; then
-	trace_fail "Host at ADDRESS[%s] is unreachable" "${ADDRESS}"
+	print_error "Host at ADDRESS[%s] is unreachable" "${ADDRESS}"
 	exit 1
 fi
 
 # Check PORT_NUMBER
 if [[ ! "${PORT_NUMBER}" =~ ^[0-9]+$ ]]; then
-	trace_fail "PORT_NUMBER[%s] is not a valid port number" "${PORT_NUMBER}"
+	print_error "PORT_NUMBER[%s] is not a valid port number" "${PORT_NUMBER}"
 	exit 1
 fi
 
