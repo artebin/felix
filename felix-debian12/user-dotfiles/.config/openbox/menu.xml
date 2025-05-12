@@ -3,7 +3,7 @@
 	<menu id="root-menu" label="Openbox 3.5">
 		<item label="Terminal"><action name="Execute"><command>x-terminal-emulator</command></action></item>
 		<item label="File Manager"><action name="Execute"><command>caja --no-desktop</command></action></item>
-		<item label="Text Editor"><action name="Execute"><command>geany_one_instance_per_workspace</command></action></item>
+		<item label="Text Editor"><action name="Execute"><command>geany</command></action></item>
 		<item label="Web Browser"><action name="Execute"><command>x-www-browser</command></action></item>
 		<item label="Web Browser &#xE245; "><action name="Execute"><command>x-www-browser --private-window</command></action></item>
 		<item label="Mail Client"><action name="Execute"><command>claws-mail</command></action></item>
