@@ -24,7 +24,7 @@ EOF
 }
 
 function fix_primary_monitor_in_tint2_conf(){
-	PRIMARY_MONITOR_ID="$(xrandr | grep ' connected ' | grep -n ' primary ' | cut -d: -f1)"
+	PRIMARY_MONITOR_ID="$(bash -c "TERM=vanilla; xrandr | grep -E '\sconnected\s' | grep -En '\sprimary\s' | cut -d: -f1")"
 	if [[ "${?}" != 0 ]]; then
 		trace_fail "Cannot retrieve primary monitor with xrandr"
 	else
