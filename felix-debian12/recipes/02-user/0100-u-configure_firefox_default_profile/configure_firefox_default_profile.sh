@@ -106,6 +106,60 @@ configure_firefox_default_profile(){
 	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", 2);"
 	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
 	
+	printf "=> Disable all tabs hover preview ...\n"
+	FIREFOX_PREF_KEY="browser.tabs.hoverPreview.enabled"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", false);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
+	
+	printf "=> Disable \"Sign in\" in Firefox account ...\n"
+	FIREFOX_PREF_KEY="identity.fxaccounts.enabled"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", false);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
+	
+	printf "=> Disable automatic popup for translation ...\n"
+	FIREFOX_PREF_KEY="browser.translations.automaticallyPopup"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", false);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
+	
+	printf "=> Use system scrollbars ...\n"
+	FIREFOX_PREF_KEY="widget.non-native-theme.scrollbar.style"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", 1);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
+	
+	printf "=> Disable dark scrollbars ...\n"
+	FIREFOX_PREF_KEY="widget.disable-dark-scrollbar"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", true);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
+	
+	printf "=> Disable link prefetching ...\n"
+	FIREFOX_PREF_KEY="network.prefetch-next"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", false);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
+	
+	printf "=> Disable DNS prefetching ...\n"
+	FIREFOX_PREF_KEY="network.dns.disablePrefetch"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", true);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
+	
+	printf "=> Disable DNS prefetching from HTTPS ...\n"
+	FIREFOX_PREF_KEY="network.dns.disablePrefetchFromHTTPS"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", true);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
+	
+	printf "=> Disable speculative pre-connections ...\n"
+	FIREFOX_PREF_KEY="network.http.speculative-parallel-limit"
+	PREFIX_TO_SEARCH_REGEX="user_pref\(\"${FIREFOX_PREF_KEY}\""
+	LINE_REPLACEMENT_VALUE="user_pref(\"${FIREFOX_PREF_KEY}\", 0);"
+	add_or_update_line_based_on_prefix "${PREFIX_TO_SEARCH_REGEX}" "${LINE_REPLACEMENT_VALUE}" "${FIREFOX_PREFS_JS_FILE}"
+	
 	pre_install_extensions_in_firefox_profile "${FIREFOX_DEFAULT_PROFILE_PATH}"
 	
 	# Since Firefox ESR 60 it is mandatory to force the profile at the first execution of firefox
