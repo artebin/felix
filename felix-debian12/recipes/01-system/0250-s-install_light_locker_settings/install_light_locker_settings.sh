@@ -16,6 +16,10 @@ exit_if_has_not_root_privileges
 
 function install_light_locker_settings_from_sources(){
 	printf "Build and install Light Locker Settings from <https://github.com/artebin/light-locker-settings>...\n"
+	
+	DEPENDENCIES=( "intltool" )
+	install_package_if_not_installed "${DEPENDENCIES[@]}"
+	
 	cd "${RECIPE_DIRECTORY}"
 	git clone https://github.com/artebin/light-locker-settings
 	cd light-locker-settings
