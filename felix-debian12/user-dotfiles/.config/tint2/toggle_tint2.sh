@@ -24,7 +24,10 @@ EOF
 }
 
 function fix_primary_monitor_in_tint2_conf(){
-	PRIMARY_MONITOR_ID="$(bash -c "TERM=vanilla; xrandr | grep -E '\sconnected\s' | grep -En '\sprimary\s' | cut -d: -f1")"
+	# NJ:2025-06-09: must use `--current` in the command below 
+	# because polling the hardware changes (see xrandr man page) can 
+	# take time depending on the video driver.
+	PRIMARY_MONITOR_ID="$(bash -c "TERM=vanilla; xrandr --current | grep -E '\sconnected\s' | grep -En '\sprimary\s' | cut -d: -f1")"
 	if [[ "${?}" != 0 ]]; then
 		trace_fail "Cannot retrieve primary monitor with xrandr"
 	else
