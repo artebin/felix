@@ -131,7 +131,7 @@ light-locker
 picom
 mesa-utils mesa-utils-extra
 xinput xinput-calibrator
-x11-apps
+x11-apps x11-utils
 xsel xclip xdo xtitle
 wmctrl xdotool libwnck-3-dev xautomation
 libnotify-dev libnotify-doc # libnotify-bin is installed by a recipe and optionally from sources
@@ -164,7 +164,8 @@ dconf-editor
 gconf-service
 #gconf-editor # Not available in Debian11
 mate-utils mate-system-monitor
-xfce4-settings xfce4-notifyd xfce4-screenshooter xfce4-dict xfburn
+@--no-install-recommends@ xfce4-settings
+xfce4-notifyd xfce4-screenshooter xfce4-dict xfburn
 lxinput
 suckless-tools
 galternatives
