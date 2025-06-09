@@ -165,7 +165,7 @@ gconf-service
 #gconf-editor # Not available in Debian11
 mate-utils mate-system-monitor
 @--no-install-recommends@ xfce4-settings
-xfce4-notifyd xfce4-screenshooter xfce4-dict xfburn
+xfce4-notifyd xfce4-screenshooter xfce4-dict
 lxinput
 suckless-tools
 galternatives
