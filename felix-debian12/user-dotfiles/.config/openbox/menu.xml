@@ -44,7 +44,6 @@
 				<item label="Chromium"><action name="Execute"><execute>chromium</execute></action></item>
 				<item label="Google Chrome"><action name="Execute"><execute>google-chrome</execute></action></item>
 			</menu>
-			<item label="Mail Client (claws-mail)"><action name="Execute"><execute>claws-mail</execute></action></item>
 			<item label="IRC Client (hexchat)"><action name="Execute"><command>hexchat</command></action></item>
 			<item label="Remote Filesystems (gigolo)"><action name="Execute"><command>gigolo</command></action></item>
 			<item label="FTP Client (bareftp)"><action name="Execute"><command>bareftp</command></action></item>
