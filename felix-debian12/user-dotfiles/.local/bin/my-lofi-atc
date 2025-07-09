@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+AUDIO_STREAM_URL_MUSIC="http://ice1.somafm.com/deepspaceone-128-aac"
+AUDIO_STREAM_URL_LIVE_ATC="http://d.liveatc.net/lbsf1"
+
+ffmpeg -i "${AUDIO_STREAM_URL_LIVE_ATC}" -i "${AUDIO_STREAM_URL_MUSIC}" -filter_complex "[0:a]volume=1.0[A];[1:a]volume=.25[B];[A][B]amerge=inputs=2" -ac 2 -f wav - | aplay -r 44100 -c 2 -f S16_LE
