@@ -22,14 +22,19 @@ function install_openbox(){
 
 function install_openbox_3_6_1_from_sources(){
 	printf "Retrieve sources for openbox package and install build dependencies...\n"
+	
+	if [[ -d debian-openbox ]]; then
+		rm -fr debian-openbox
+	fi
+	
 	mkdir debian-openbox
 	cd "${RECIPE_DIRECTORY}"/debian-openbox
-	apt-get source openbox/stable
+	apt-get source openbox/bookworm
 	if [[ ! -d "openbox-3.6.1" ]]; then
 		printf "!ERROR! Cannot find openbox-3.6.1 directory\n"
 		exit 1
 	fi
-	apt-get build-dep -y openbox/stable
+	apt-get build-dep -y openbox/bookworm
 	install_package_if_not_installed "devscripts"
 	
 	printf "Apply patch for claiming the support of GTK_FRAME_EXTENTS from <https://github.com/jalopezg-git/openbox>...\n"
