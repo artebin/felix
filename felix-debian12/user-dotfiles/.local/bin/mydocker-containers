@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Improved `docker ps` with absolute times
+docker ps -a --format 'table {{.ID}}\t{{.Image}}\t{{.Command}}\t{{.CreatedAt}}\t{{.Status}}\t{{.Ports}}\t{{.Names}}'
