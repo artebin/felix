@@ -2,6 +2,14 @@
 
 export PATH="${HOME}/.local/bin:${PATH}"
 
+export TIME_STYLE=long-iso
+
+# SSH agent
+restart-ssh-agent
+
+# Use qt5ct for theming Qt applications
+#export QT_QPA_PLATFORMTHEME=qt5ct
+
 export JDK_HOME=""
 export JRE_HOME=""
 if [ ! -z "${JDK_HOME}" ]; then
@@ -18,21 +26,5 @@ if [ ! -z "${MVN_HOME}" ]; then
 	export PATH="${MVN_HOME}/bin:${PATH}"
 fi
 
-export TIME_STYLE=long-iso
-
 export GPODDER_HOME=""
 export GPODDER_DOWNLOAD_DIR=""
-
-# Use qt5ct for theming Qt applications
-#export QT_QPA_PLATFORMTHEME=qt5ct
-
-# SSH agent
-if [ -d "${HOME}/.ssh" ]; then
-	HOME_LINK_SSH_AUTH_SOCK="${HOME}/.ssh/ssh_auth_sock"
-	if [ ! -S "${HOME_LINK_SSH_AUTH_SOCK}" ]; then
-		eval `ssh-agent`
-		ln -sf "${SSH_AUTH_SOCK}" "${HOME_LINK_SSH_AUTH_SOCK}"
-	fi
-	export SSH_AUTH_SOCK="${HOME_LINK_SSH_AUTH_SOCK}"
-	ssh-add -l > /dev/null || ssh-add
-fi
