@@ -1,25 +1,27 @@
 #!/usr/bin/env bash
 
-function print_error(){
-	if [[ $# -lt 1 ]]; then return; fi
-	printf "[ERROR] ${1}\n" "${@:2}" 2>&1
-}
 function print_info(){
-	if [[ $# -lt 1 ]]; then return; fi
+	if [[ $# -eq 0 ]]; then return; fi
 	printf "[INFO] ${1}\n" "${@:2}"
 }
 function print_debug(){
-	if [[ $# -lt 1 ]]; then return; fi
+	if [[ $# -eq 0 ]]; then return; fi
 	printf "[DEBUG] ${1}\n" "${@:2}"
 }
+function print_error(){
+	if [[ $# -eq 0 ]]; then return; fi
+	printf "[ERROR] ${1}\n" "${@:2}" 2>&1
+}
+ARROW_RIGHT_POINTING=$(echo $'\U1F81E')
 
 function print_usage(){
 	cat << EOF
-Usage: $(basename ${BASH_SOURCE}) [OPTIONS] DEPTH
-Create zip archive for each directory at DEPTH from current working 
-directory. The archive names are made of the sub-path from current 
-working directory (excluded) to the zipped directory with dash 
-character as path separator. The default number of jobs is 4.
+Usage: $(basename ${BASH_SOURCE}) [OPTIONS] ROOT_DIRECTORY DEPTH
+
+Create a zip archive for each directory at DEPTH from ROOT_DIRECTORY. 
+The archive names are made of the sub-paths from ROOT_DIRECTORY to the 
+zipped directory with dash character as path separator. The default 
+number of parallel jobs is 4.
 
 Options:
   -h	Help
@@ -52,37 +54,79 @@ while getopts ":hj:" ARG; do
 done
 shift $((OPTIND-1))
 
-if [[ "${#}" != 1 ]] || ! [[ "${1}" =~ ${INTEGER_VALUE_REGEX} ]] || [[ "${1}" == 0 ]]; then
+if [[ "${#}" != 2 ]]; then
 	print_usage
 	exit 1
 fi
 
-ELEMENT_TO_ZIP_DEPTH="${1}"
-ELEMENT_TO_ZIP_LIST="$(find . -mindepth "${ELEMENT_TO_ZIP_DEPTH}" -maxdepth "${ELEMENT_TO_ZIP_DEPTH}" -type d 2>/dev/null)"
-ELEMENT_TO_ZIP_COUNT="$(printf "${ELEMENT_TO_ZIP_LIST}" | wc -l)"
+# By default the shell follows the logical chain of directory when 
+# performing commands which change the current directory like `cd`.
+#
+# For example `pwd` inside a symlink returns the physical path, but 
+# `cd ..` would exit the symlink.
+#
+# There is a shell-wide option for not resolving the symlinks:
+# `$set -P`
+#
+# <https://www.gnu.org/software/bash/manual/bash.html#The-Set-Builtin>
 
-if [[ "${ELEMENT_TO_ZIP_COUNT}" == 0 ]]; then
-	trace_info "Cannot find ${ELEMENT_TO_ZIP_DEPTH}-depth directories"
+ROOT_DIRECTORY="$(cd "${1}";pwd)"
+if [[ ! -d "${ROOT_DIRECTORY}" ]]; then
+	print_error "Cannot find ROOT_DIRECTORY[%s]\n" "${ROOT_DIRECTORY}"
+	exit 1
+fi
+
+DEPTH="${2}"
+if ! [[ "${DEPTH}" =~ ${INTEGER_VALUE_REGEX} ]]; then
+	print_error "DEPTH[%s] must be an integer value\n" "${DEPTH}"
+	exit 1
+fi
+
+declare -a DIRECTORY_TO_ZIP_ARRAY
+readarray -d '' DIRECTORY_TO_ZIP_ARRAY < <(find "${ROOT_DIRECTORY}" -mindepth "${DEPTH}" -maxdepth "${DEPTH}" -type d -print0 2>/dev/null)
+
+if [[ "${#DIRECTORY_TO_ZIP_ARRAY[@]}" == 0 ]]; then
+	print_info "Cannot find directories to zip at DEPTH[%s]\n" "${DEPTH}"
 	exit 0
 fi
 
-printf "${ELEMENT_TO_ZIP_LIST}\n"
-CONTINUE="false"
+# Retrieve absolute path for all directories to zip
+for DIRECTORY_TO_ZIP_INDEX in "${!DIRECTORY_TO_ZIP_ARRAY[@]}"; do
+	DIRECTORY_TO_ZIP="${DIRECTORY_TO_ZIP_ARRAY[${DIRECTORY_TO_ZIP_INDEX}]}"
+	DIRECTORY_TO_ZIP_ARRAY[${DIRECTORY_TO_ZIP_INDEX}]="$(realpath ${DIRECTORY_TO_ZIP})"
+done
+
+# Compute zip file names
+declare -A ZIP_FILE_NAME_ARRAY
+ROOT_DIRECTORY_NAME="$(basename "${ROOT_DIRECTORY}")"
+for DIRECTORY_TO_ZIP in "${DIRECTORY_TO_ZIP_ARRAY[@]}"; do
+	DIRECTORY_TO_ZIP_RELPATH_TO_ROOT_DIRECTORY="$(realpath --relative-to "${ROOT_DIRECTORY}" "${DIRECTORY_TO_ZIP}")"
+	ZIP_FILE_NAME="${ROOT_DIRECTORY_NAME}-${DIRECTORY_TO_ZIP_RELPATH_TO_ROOT_DIRECTORY}"
+	ZIP_FILE_NAME="$(echo "${ZIP_FILE_NAME}"|tr / -).zip"
+	ZIP_FILE_NAME_ARRAY["${DIRECTORY_TO_ZIP}"]="${ZIP_FILE_NAME}"
+done
+
+# Ask use to continue
+for DIRECTORY_TO_ZIP in "${DIRECTORY_TO_ZIP_ARRAY[@]}"; do
+	printf "%s %s %s\n" "${DIRECTORY_TO_ZIP}" "${ARROW_RIGHT_POINTING}" "${ZIP_FILE_NAME_ARRAY[${DIRECTORY_TO_ZIP}]}"
+done
 while true; do
 	read -p "Continue? [y/n] " USER_ANSWER
 	case "${USER_ANSWER}" in
 		[Yy]* )
-			CONTINUE="true"
 			break
 			;;
 		[Nn]* )
-			break
+			printf "\n"
+			exit 1
 			;;
 		* )
 			printf "Please answer yes or no\n\n" > /dev/stderr
 			;;
 	esac
 done
-if ! ${CONTINUE}; then exit 1; fi
 
-find . -mindepth "${ELEMENT_TO_ZIP_DEPTH}" -maxdepth "${ELEMENT_TO_ZIP_DEPTH}" -type d -exec bash -c 'F=$(echo {}|tr / -|cut -c 3-);printf "zip -r \"${F}\" \"{}\"\n"' \; | parallel -vt --jobs "${PARALLEL_JOBS}"
+for DIRECTORY_TO_ZIP in "${DIRECTORY_TO_ZIP_ARRAY[@]}"; do
+	DIRECTORY_TO_ZIP_RELPATH_TO_ROOT_DIRECTORY="$(realpath --relative-to "${ROOT_DIRECTORY}/.." "${DIRECTORY_TO_ZIP}")"
+	printf "bash -c 'cd \"%s\";zip -r \"%s\" \"%s\"'\n" "${ROOT_DIRECTORY}/.." "${ZIP_FILE_NAME_ARRAY[${DIRECTORY_TO_ZIP}]}" "${DIRECTORY_TO_ZIP_RELPATH_TO_ROOT_DIRECTORY}"
+done | parallel -vt --jobs "${PARALLEL_JOBS}"
