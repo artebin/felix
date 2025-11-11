@@ -12,6 +12,15 @@ alias lsblk='lsblk -o name,mountpoint,label,size,uuid'
 # Always colorize grep output
 alias grep='grep --color=always'
 
+# VT100 escape code for resetting the terminal, see <https://askubuntu.com/a/684887>.
+alias cls='printf "\033c"'
+
+# cheat.sh
+function cheat() {
+	curl cheat.sh/${1}
+}
+alias cheat="cheat"
+
 function backup_file(){
 	BACKUP_MODE="${1}"
 	FILE="${2}"
