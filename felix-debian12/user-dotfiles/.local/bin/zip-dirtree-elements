@@ -70,9 +70,11 @@ fi
 #
 # <https://www.gnu.org/software/bash/manual/bash.html#The-Set-Builtin>
 
-ROOT_DIRECTORY="$(cd "${1}";pwd)"
+if cd "${1}" >/dev/null 2>&1; then
+	ROOT_DIRECTORY="$(cd "${1}";pwd)"
+fi
 if [[ ! -d "${ROOT_DIRECTORY}" ]]; then
-	print_error "Cannot find ROOT_DIRECTORY[%s]\n" "${ROOT_DIRECTORY}"
+	print_error "Cannot find ROOT_DIRECTORY[%s]\n" "${1}"
 	exit 1
 fi
 
