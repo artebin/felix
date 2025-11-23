@@ -14,8 +14,8 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-setup_monitors_via_lightdm_conf(){
-	printf "Setup monitors setup via lightdm configuration ...\n"
+function setup_monitors_via_lightdm_conf(){
+	printf "Setup monitors via lightdm configuration ...\n"
 	
 	if [[ -f /etc/lightdm/lightdm.conf.d/10-monitors_setup.sh ]]; then
 		echo "lightdm configuration file /etc/lightdm/lightdm.conf.d/10-monitors_setup.sh already exists!"

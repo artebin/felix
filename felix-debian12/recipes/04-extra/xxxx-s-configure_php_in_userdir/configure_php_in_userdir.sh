@@ -14,7 +14,7 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-configure_php_in_userdir(){
+function configure_php_in_userdir(){
 	printf "Allowing PHP in userdir...\n"
 	
 	printf "Installing apache2 and php...\n"

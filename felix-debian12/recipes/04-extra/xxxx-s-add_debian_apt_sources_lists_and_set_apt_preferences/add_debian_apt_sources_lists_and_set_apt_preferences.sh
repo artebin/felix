@@ -14,7 +14,7 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 exit_if_not_bash
 exit_if_has_not_root_privileges
 
-add_debian_apt_sources_lists_and_set_apt_preferences(){
+function add_debian_apt_sources_lists_and_set_apt_preferences(){
 	printf "Adding APT preferences ...\n"
 	
 	cd "${RECIPE_DIRECTORY}"

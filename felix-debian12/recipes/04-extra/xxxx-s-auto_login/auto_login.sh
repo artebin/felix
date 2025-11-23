@@ -16,7 +16,7 @@ exit_if_has_not_root_privileges
 
 AUTO_LOGIN_USER_NAME=''
 
-configure_auto_login(){
+function configure_auto_login(){
 	echo "Configuring auto login ..."
 	
 	if [[ -z "${AUTO_LOGIN_USER_NAME}" ]]; then

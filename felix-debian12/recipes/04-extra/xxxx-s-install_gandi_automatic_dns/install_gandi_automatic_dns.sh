@@ -21,7 +21,7 @@ exit_if_has_not_root_privileges
 GANDI_DNS_CONFIGURATION_FILE="config"
 GANDI_AUTOMATIC_DNS_RUN_PERIOD="*/30 * * * *"
 
-install_gandi_automatic_dns(){
+function install_gandi_automatic_dns(){
 	printf "Installing gandi_automatic_dns (gad) ...\n"
 	
 	# Clone git repository <https://github.com/brianpcurran/gandi-automatic-dns>

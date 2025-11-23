@@ -13,7 +13,7 @@ initialize_recipe "${RECIPE_DIRECTORY}"
 
 exit_if_not_bash
 
-install_dokuwiki_in_userdir(){
+function install_dokuwiki_in_userdir(){
 	printf "Installing DokuWiki in apache2 userdir ...\n"
 	
 	APACHE2_USERDIR="${HOME}/public_html"

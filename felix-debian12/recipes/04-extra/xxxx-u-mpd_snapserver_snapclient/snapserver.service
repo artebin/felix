@@ -1,0 +1,9 @@
+# .config/systemd/user/snapserver.service
+[Unit]
+Description=Snapcast server
+Documentation=man:snapserver(1)
+After=network-online.target time-sync.target
+
+[Service]
+ExecStart=/usr/bin/snapserver --config %h/.config/snapserver/snapserver.conf
+Restart=on-failure
