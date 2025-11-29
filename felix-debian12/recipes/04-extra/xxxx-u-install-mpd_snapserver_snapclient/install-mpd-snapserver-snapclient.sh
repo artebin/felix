@@ -16,13 +16,15 @@ exit_if_not_bash
 function install_mpd(){
 	printf "Installing MPD... \n"
 	
-	sudo apt-get mpd
+	sudo apt-get install mpd
 	sudo systemctl stop mpd
 	sudo systemctl disable mpd
 	mkdir -p "${HOME}/.config/mpd"
-	backup_file rename "${HOME}/.config/mpd/mpd.conf"
-	gunzip -c /usr/share/doc/mpd/mpdconf.example.gz "${HOME}/.config/mpd"
-	sed -i "s|~/.mpd/|~/.config/mpd/|g"
+	if [[ -f "${HOME}/.config/mpd/mpd.conf" ]]; then
+		backup_file rename "${HOME}/.config/mpd/mpd.conf"
+	fi
+	gunzip -c /usr/share/doc/mpd/mpdconf.example.gz >"${HOME}/.config/mpd/mpd.conf"
+	sed -i "s|~/.mpd/|~/.config/mpd/|g" "${HOME}/.config/mpd/mpd.conf"
 	
 	cat << EOF
 Add the audio output below to mpd.conf as input for Snapcast:
@@ -37,7 +39,7 @@ audio_output {
 }
 EOF
 	
-	mkdir -p "${HOME}/.config/systemd/user"
+	mkdir -p "${HOME}/.config/mpd/playlists"
 	
 	cat << EOF
 Enable and start the MPD service:
@@ -54,12 +56,14 @@ function install_mpd_scribble(){
 	sudo apt-get install mpdscribble
 	
 	mkdir -p "${HOME}/.config/mpd"
-	backup_file rename "${HOME}/.config/mpd/mpdscribble.conf"
-	sudo cp /etc/mpdscribbler.conf "${HOME}/.config/mpd/mpdscribller.conf"
-	sudo chown "${USER}":"${USER}" "${HOME}/.config/mpd/mpdscribller.conf"
+	if [[ -f "${HOME}/.config/mpd/mpdscribble.conf" ]]; then
+		backup_file rename "${HOME}/.config/mpd/mpdscribble.conf"
+	fi
+	sudo cp /etc/mpdscribble.conf "${HOME}/.config/mpd/mpdscribble.conf"
+	sudo chown "${USER}":"${USER}" "${HOME}/.config/mpd/mpdscribble.conf"
 	
 	mkdir -p "${HOME}/.config/systemd/user"
-	cp mpdscribble.service "${HOME}/.config/systemd/user"
+	cp mpdscribble.service "${HOME}/.config/systemd/user/mpdscribble.service"
 	
 	cat << EOF
 Enable and start the MPD Scribble service:
@@ -75,7 +79,10 @@ function install_snapserver(){
 	
 	sudo apt-get install snapserver
 	mkdir -p "${HOME}/.config/snapserver"
-	cp /etc/snapserver.conf "${HOME}/.config/snapserver"
+	if [[ -f "${HOME}/.config/snapserver" ]]; then
+		backup_file rename "${HOME}/.config/snapserver/snapserver.conf"
+	fi
+	cp /etc/snapserver.conf "${HOME}/.config/snapserver/snapserver.conf"
 	
 	cat << EOF
 Enable the TCP RPC in snapserver.conf and add the MPD source below:
@@ -83,7 +90,10 @@ source = pipe:///tmp/snapfifo?name=mpdapollo&sampleformat=44100:16:2&codec=flac
 EOF
 	
 	mkdir -p "${HOME}/.config/systemd/user"
-	cp snapserver.service "${HOME}/.config/systemd/user"
+	if [[ -f "${HOME}/.config/systemd/user/snapserver.service" ]]; then
+		backup_file rename "${HOME}/.config/systemd/user/snapserver.service"
+	fi
+	cp snapserver.service "${HOME}/.config/systemd/user/snapserver.service"
 	
 	cat << EOF
 Enable and start the snapserver service:
@@ -100,7 +110,10 @@ function install_snapclient(){
 	sudo apt-get install snapclient
 	
 	mkdir -p "${HOME}/.config/systemd/user"
-	cp snapclient.service "${HOME}/.config/systemd/user"
+	if [[ -f "${HOME}/.config/systemd/user/snapclient.service" ]]; then
+		backup_file rename "${HOME}/.config/systemd/user/snapclient.service"
+	fi
+	cp snapclient.service "${HOME}/.config/systemd/user/snapclient.service"
 	
 	cat << EOF
 Enable and start the snapclient service:
