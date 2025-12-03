@@ -17,11 +17,12 @@ exit_if_has_not_root_privileges
 fix_debian_user_path(){
 	printf "Fix user path ...\n"
 	
-	sed -i 's|PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games|PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games|g' /etc/login.defs
+	sed -Ei 's|ENV_SUPATH[[:space:]]+PATH=.*|ENV_SUPATH  PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games:${HOME}/.local/bin|g' /etc/login.defs
+	sed -Ei 's|ENV_PATH[[:space:]]+PATH=.*|ENV_PATH    PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games:${HOME}/.local/bin|g' /etc/login.defs
 	
-	sed -i 's|PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games"|PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games"|g' /etc/profile
+	sed -Ei 's|[[:space:]]*PATH=.*|PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games:${HOME}/.local/bin"|g' /etc/profile
 	
-	add_or_update_line_based_on_prefix "PATH=" "PATH=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games\"" /etc/environment
+	add_or_update_line_based_on_prefix 'PATH=' 'PATH=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games:${HOME}/.local/bin\"' /etc/environment
 	
 	printf "\n"
 }
