@@ -1,3 +1,5 @@
+# ${HOME}/.config/systemd/user/snapclient.service
+
 [Unit]
 Description=Snapcast client
 Documentation=man:snapclient(1)
@@ -6,3 +8,6 @@ After=network-online.target time-sync.target sound.target
 [Service]
 ExecStart=/usr/bin/snapclient -h $$SERVER$$.local
 Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

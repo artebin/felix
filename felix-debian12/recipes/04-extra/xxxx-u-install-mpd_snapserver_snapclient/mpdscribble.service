@@ -1,3 +1,5 @@
+# ${HOME}/.config/systemd/user/mpdscribble.service
+
 [Unit]
 Description=AudioScrobbler for MPD
 Documentation=man:mpdscribble(1)
