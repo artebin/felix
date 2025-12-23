@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [[ -d "${HOME}/.bash_completion.d/" ]]; then
+	for FILE in "${HOME}/.bash_completion.d"/* ; do
+		. "${FILE}"
+	done
+fi
