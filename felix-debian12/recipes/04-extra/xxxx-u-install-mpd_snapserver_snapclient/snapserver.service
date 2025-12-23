@@ -10,4 +10,4 @@ ExecStart=/usr/bin/snapserver --config %h/.config/snapserver/snapserver.conf
 Restart=on-failure
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
