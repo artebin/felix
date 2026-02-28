@@ -77,4 +77,4 @@ while true; do
 done
 if ! ${CONTINUE}; then exit 1; fi
 
-find . -mindepth 1 -maxdepth 1 -name '*.zip' -type f -exec bash -c 'printf "unzip \"{}\"\n"' \; | parallel -vt --jobs "${PARALLEL_JOBS}"
+find . -mindepth 1 -maxdepth 1 -name '*.zip' -type f -exec bash -c 'printf "unzip \"{}\"\n"' \; | parallel -v --jobs "${PARALLEL_JOBS}"

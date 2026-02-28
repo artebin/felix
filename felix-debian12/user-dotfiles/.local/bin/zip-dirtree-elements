@@ -131,4 +131,4 @@ done
 for DIRECTORY_TO_ZIP in "${DIRECTORY_TO_ZIP_ARRAY[@]}"; do
 	DIRECTORY_TO_ZIP_RELPATH_TO_ROOT_DIRECTORY="$(realpath --relative-to "${ROOT_DIRECTORY}/.." "${DIRECTORY_TO_ZIP}")"
 	printf "bash -c 'cd \"%s\";zip -r \"%s\" \"%s\"'\n" "${ROOT_DIRECTORY}/.." "${ZIP_FILE_NAME_ARRAY[${DIRECTORY_TO_ZIP}]}" "${DIRECTORY_TO_ZIP_RELPATH_TO_ROOT_DIRECTORY}"
-done | parallel -vt --jobs "${PARALLEL_JOBS}"
+done | parallel -v --jobs "${PARALLEL_JOBS}"
