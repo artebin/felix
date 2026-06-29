@@ -1,18 +1,66 @@
 #!/usr/bin/env bash
 
-function list_v4l2_devices(){
-	if type "v4l2-ctl" >/dev/null 2>&1; then
-		v4l2-ctl --list-devices
-	else
-		printf "!ERROR! v4l2-ctl is not installed\n"
-	fi
+function print_info(){
+	if [[ $# -eq 0 ]]; then return; fi
+	printf "[INFO] ${1}\n" "${@:2}"
+}
+function print_debug(){
+	if [[ $# -eq 0 ]]; then return; fi
+	printf "[DEBUG] ${1}\n" "${@:2}"
+}
+function print_error(){
+	if [[ $# -eq 0 ]]; then return; fi
+	printf "[ERROR] ${1}\n" "${@:2}" 2>&1
 }
 
-if [[ "${#}" -ne 1 ]]; then
-	printf "!ERROR! Video device is expected in argument\n\n"
-	list_v4l2_devices
+# Retrieve list of video devices
+declare -A VIDEO_DEVICE_ARRAY
+for DEVICE in /dev/video*; do
+	UDEVADM_INFO_FOR_DEVICE="$( udevadm info "${DEVICE}" )"
+	DEVICE_CAPABILITIES="$( echo "${UDEVADM_INFO_FOR_DEVICE}" | grep -oP '(?<=ID_V4L_CAPABILITIES=).*$' )"
+	if [[ "${DEVICE_CAPABILITIES}" =~ .*:capture:.* ]]; then
+		VIDEO_DEVICE_NAME="$( echo "${UDEVADM_INFO_FOR_DEVICE}" | grep -oP '(?<=ID_MODEL=).*$' )"
+		VIDEO_DEVICE_ARRAY["${DEVICE}"]="${VIDEO_DEVICE_NAME}"
+	fi
+done
+
+# Ask which devide to use if there is more than one
+SELECTED_VIDEO_DEVICE=""
+if [[ "${#VIDEO_DEVICE_ARRAY[@]}" -eq 0 ]]; then
+		print_error "Cannot find any webcam!"
+	exit 1
+elif [[ "${#VIDEO_DEVICE_ARRAY[@]}" -eq 1 ]]; then
+	SELECTED_VIDEO_DEVICE="${!VIDEO_DEVICE_ARRAY[@]}"
+else
+	# Sort devices lexicographically
+	mapfile -d '' VIDEO_DEVICE_SORTED_LIST < <(printf '%s\0' "${!VIDEO_DEVICE_ARRAY[@]}" | sort -z)
+	
+	# Create an array of choice texts for interactive selection
+	VIDEO_DEVICE_CHOICE_TEXT_LIST=()
+	for VIDEO_DEVICE in "${VIDEO_DEVICE_SORTED_LIST[@]}"; do
+		printf -v VIDEO_DEVICE_CHOICE_TEXT -- "%s (%s)" "${VIDEO_DEVICE_ARRAY[${VIDEO_DEVICE}]}" "${VIDEO_DEVICE}"
+		VIDEO_DEVICE_CHOICE_TEXT_LIST+=( "${VIDEO_DEVICE_CHOICE_TEXT}" )
+	done
+	
+	printf "Please select a webcam:\n"
+	export COLUMNS=1
+	select VIDEO_DEVICE_CHOICE_TEXT in "${VIDEO_DEVICE_CHOICE_TEXT_LIST[@]}" exit; do
+		if [[ "${VIDEO_DEVICE_CHOICE_TEXT}" == "exit" ]]; then
+			exit 0
+		fi
+		if [[ -z "${VIDEO_DEVICE_CHOICE_TEXT}" ]]; then
+			printf "Please enter a number!\n"
+			continue
+		fi
+		SELECTED_VIDEO_DEVICE_INDEX=$((REPLY - 1))
+		SELECTED_VIDEO_DEVICE="${VIDEO_DEVICE_SORTED_LIST[${SELECTED_VIDEO_DEVICE_INDEX}]}"
+		break;
+	done
+fi
+
+if [[ -z "${SELECTED_VIDEO_DEVICE}" ]]; then
+	print_error "Cannot find any webcam!"
 	exit 1
 fi
 
-VIDEO_DEVICE="${1}"
-mplayer -vo gl2 tv:// -tv driver=v4l2:width=640:height=480:device="${VIDEO_DEVICE}"
+mplayer -vf eq=brightness=25:contrast=10 -vo gl2 tv:// -tv driver=v4l2:width=640:height=480:device="${SELECTED_VIDEO_DEVICE}"
