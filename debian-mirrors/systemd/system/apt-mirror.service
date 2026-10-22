@@ -1,0 +1,10 @@
+[Unit]
+Description=Run apt-mirror
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=$$USER$$
+Group=$$GROUP$$
+ExecStart=/usr/bin/apt-mirror

@@ -1,0 +1,14 @@
+[Unit]
+Description=Debian mirrors server
+After=network.target
+
+[Service]
+Type=simple
+User=$$USER$$
+Group=$$GROUP$$
+WorkingDirectory=$$WORKING_DIRECTORY$$
+ExecStart=bash -c './debian-mirrors-server -z'
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

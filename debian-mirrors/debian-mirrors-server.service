@@ -1,9 +1,0 @@
-[Unit]
-Description=Debian mirrors server
-
-[Service]
-WorkingDirectory=%h/debian-mirrors
-ExecStart=bash -c './debian-mirrors-server -z'
-
-[Install]
-WantedBy=default.target
