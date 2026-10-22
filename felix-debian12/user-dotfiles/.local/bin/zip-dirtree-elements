@@ -12,7 +12,7 @@ function print_error(){
 	if [[ $# -eq 0 ]]; then return; fi
 	printf "[ERROR] ${1}\n" "${@:2}" 2>&1
 }
-ARROW_RIGHT_POINTING=$(echo $'\U1F81E')
+SYMBOL_ARROW_POINTING_RIGHT=$(echo $'\U1F81E')
 
 function print_usage(){
 	cat << EOF
@@ -24,18 +24,36 @@ zipped directory with dash character as path separator. The default
 number of parallel jobs is 4.
 
 Options:
-  -h	Help
-  -j	Number of parallel zip jobs
+  -h    Help
+  -pP   No user prompt (p) or with user prompt (P)
+  -o    Output directory
+  -j    Number of parallel zip jobs
 EOF
 }
 
+USER_PROMPT="true"
+OUTPUT_DIRECTORY=""
 INTEGER_VALUE_REGEX="^[0-9]+$"
 PARALLEL_JOBS=4
-while getopts ":hj:" ARG; do
+while getopts ":hpPo:j:" ARG; do
 	case "${ARG}" in
 		h)
 			print_usage
 			exit 0
+			;;
+		p)
+			USER_PROMPT="false"
+			;;
+		P)
+			USER_PROMPT="true"
+			;;
+		o)
+			OUTPUT_DIRECTORY="${OPTARG}"
+			if [[ ! -d "${OUTPUT_DIRECTORY}" ]]; then
+				print_error "Cannot find OUTPUT_DIRECTORY[%s]" "${OUTPUT_DIRECTORY}"
+				exit 1
+			fi
+			OUTPUT_DIRECTORY="$(realpath "${OUTPUT_DIRECTORY}")"
 			;;
 		j)
 			if ! [[ "${OPTARG}" =~ ${INTEGER_VALUE_REGEX} ]]; then
@@ -59,28 +77,20 @@ if [[ "${#}" != 2 ]]; then
 	exit 1
 fi
 
-# By default the shell follows the logical chain of directory when 
-# performing commands which change the current directory like `cd`.
-#
-# For example `pwd` inside a symlink returns the physical path, but 
-# `cd ..` would exit the symlink.
-#
-# There is a shell-wide option for not resolving the symlinks:
-# `$set -P`
-#
-# <https://www.gnu.org/software/bash/manual/bash.html#The-Set-Builtin>
-
-if cd "${1}" >/dev/null 2>&1; then
-	ROOT_DIRECTORY="$(cd "${1}";pwd)"
-fi
+ROOT_DIRECTORY="${1}"
 if [[ ! -d "${ROOT_DIRECTORY}" ]]; then
-	print_error "Cannot find ROOT_DIRECTORY[%s]\n" "${1}"
+	print_error "Cannot find ROOT_DIRECTORY[%s]" "${1}"
 	exit 1
+fi
+ROOT_DIRECTORY="$(realpath "${ROOT_DIRECTORY}")"
+
+if [[ -z "${OUTPUT_DIRECTORY}" ]]; then
+	OUTPUT_DIRECTORY="$(dirname "${ROOT_DIRECTORY}")"
 fi
 
 DEPTH="${2}"
 if ! [[ "${DEPTH}" =~ ${INTEGER_VALUE_REGEX} ]]; then
-	print_error "DEPTH[%s] must be an integer value\n" "${DEPTH}"
+	print_error "DEPTH[%s] must be an integer value" "${DEPTH}"
 	exit 1
 fi
 
@@ -88,7 +98,7 @@ declare -a DIRECTORY_TO_ZIP_ARRAY
 readarray -d '' DIRECTORY_TO_ZIP_ARRAY < <(find "${ROOT_DIRECTORY}" -mindepth "${DEPTH}" -maxdepth "${DEPTH}" -type d -print0 2>/dev/null)
 
 if [[ "${#DIRECTORY_TO_ZIP_ARRAY[@]}" == 0 ]]; then
-	print_info "Cannot find directories to zip at DEPTH[%s]\n" "${DEPTH}"
+	print_info "Cannot find directories to zip at DEPTH[%s]" "${DEPTH}"
 	exit 0
 fi
 
@@ -98,7 +108,7 @@ for DIRECTORY_TO_ZIP_INDEX in "${!DIRECTORY_TO_ZIP_ARRAY[@]}"; do
 	DIRECTORY_TO_ZIP_ARRAY[${DIRECTORY_TO_ZIP_INDEX}]="$(realpath ${DIRECTORY_TO_ZIP})"
 done
 
-# Compute zip file names
+# Compute zip file names based on path from ROOT_DIRECTORY...DIRECTORY_TO_ZIP
 declare -A ZIP_FILE_NAME_ARRAY
 ROOT_DIRECTORY_NAME="$(basename "${ROOT_DIRECTORY}")"
 for DIRECTORY_TO_ZIP in "${DIRECTORY_TO_ZIP_ARRAY[@]}"; do
@@ -109,26 +119,37 @@ for DIRECTORY_TO_ZIP in "${DIRECTORY_TO_ZIP_ARRAY[@]}"; do
 done
 
 # Ask use to continue
-for DIRECTORY_TO_ZIP in "${DIRECTORY_TO_ZIP_ARRAY[@]}"; do
-	printf "%s %s %s\n" "${DIRECTORY_TO_ZIP}" "${ARROW_RIGHT_POINTING}" "${ZIP_FILE_NAME_ARRAY[${DIRECTORY_TO_ZIP}]}"
-done
-while true; do
-	read -p "Continue? [y/n] " USER_ANSWER
-	case "${USER_ANSWER}" in
-		[Yy]* )
-			break
-			;;
-		[Nn]* )
-			printf "\n"
-			exit 1
-			;;
-		* )
-			printf "Please answer yes or no\n\n" > /dev/stderr
-			;;
-	esac
-done
+if ${USER_PROMPT}; then
+	for DIRECTORY_TO_ZIP in "${DIRECTORY_TO_ZIP_ARRAY[@]}"; do
+		printf "%s %s %s\n" "${DIRECTORY_TO_ZIP}" "${SYMBOL_ARROW_POINTING_RIGHT}" "${ZIP_FILE_NAME_ARRAY[${DIRECTORY_TO_ZIP}]}"
+	done
+	while true; do
+		read -p "Continue? [y/n] " USER_ANSWER
+		case "${USER_ANSWER}" in
+			[Yy]* )
+				break
+				;;
+			[Nn]* )
+				printf "\n"
+				exit 1
+				;;
+			* )
+				printf "Please answer yes or no\n\n" > /dev/stderr
+				;;
+		esac
+	done
+fi
 
+# Build the command to parallelize and run GNU parallel
+declare -a COMMAND_ARRAY
 for DIRECTORY_TO_ZIP in "${DIRECTORY_TO_ZIP_ARRAY[@]}"; do
 	DIRECTORY_TO_ZIP_RELPATH_TO_ROOT_DIRECTORY="$(realpath --relative-to "${ROOT_DIRECTORY}/.." "${DIRECTORY_TO_ZIP}")"
-	printf "bash -c 'cd \"%s\";zip -r \"%s\" \"%s\"'\n" "${ROOT_DIRECTORY}/.." "${ZIP_FILE_NAME_ARRAY[${DIRECTORY_TO_ZIP}]}" "${DIRECTORY_TO_ZIP_RELPATH_TO_ROOT_DIRECTORY}"
-done | parallel -v --jobs "${PARALLEL_JOBS}"
+	ZIP_FILE_NAME="${ZIP_FILE_NAME_ARRAY[${DIRECTORY_TO_ZIP}]}"
+	read -r -d '' COMMAND << EOF
+printf "Zipping %s...\n" "${DIRECTORY_TO_ZIP}"; \
+cd "${OUTPUT_DIRECTORY}"; \
+zip -qr "${ZIP_FILE_NAME}" "${DIRECTORY_TO_ZIP_RELPATH_TO_ROOT_DIRECTORY}";
+EOF
+	COMMAND_ARRAY+=( "${COMMAND}" )
+done
+parallel --keep-order --line-buffer ::: "${COMMAND_ARRAY[@]}"
