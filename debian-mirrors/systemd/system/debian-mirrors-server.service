@@ -1,6 +1,7 @@
 [Unit]
 Description=Debian mirrors server
 After=network.target
+Wants=network-online.target
 
 [Service]
 Type=simple

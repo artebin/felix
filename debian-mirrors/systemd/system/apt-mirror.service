@@ -7,4 +7,9 @@ Wants=network-online.target
 Type=oneshot
 User=$$USER$$
 Group=$$GROUP$$
+ExecStartPre=bash -c 'echo "$(date -Iseconds): apt-mirror starting" >> $$DEBIAN_MIRRORS_DIRECTORY$$/apt-mirror.log'
 ExecStart=/usr/bin/apt-mirror
+ExecStopPost=/bin/sh -c 'echo "$(date -Iseconds): apt-mirror ended" >> $$DEBIAN_MIRRORS_DIRECTORY$$/apt-mirror.log'
+
+[Install]
+WantedBy=multi-user.target
