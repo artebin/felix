@@ -21,12 +21,11 @@ function install_herbe(){
 	git clone https://github.com/dudik/herbe
 	cd herbe
 	
-	# Download and apply patch for using Xresources
-	curl -O https://patch-diff.githubusercontent.com/raw/dudik/herbe/pull/11.diff
-	patch <11.diff
-	
-	# Apply patch for center position
-	patch -p1 <../add-pos-center.diff
+	# Apply patch herbe-xrandr-all-monitors.diff which adds:
+	#   - https://patch-diff.githubusercontent.com/raw/dudik/herbe/pull/11.diff for using Xresources
+	#   - location CENTER
+	#   - show the notification in all monitors Xrandr
+	patch -p1 <../herbe-xrandr-all-monitors.diff
 	
 	# Compile and add herbe to ${HOME}/.local/bin
 	make

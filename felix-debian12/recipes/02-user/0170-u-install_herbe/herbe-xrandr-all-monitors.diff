@@ -1,0 +1,228 @@
+diff --git a/Makefile b/Makefile
+index 3225e36..8fa7cba 100644
+--- a/Makefile
++++ b/Makefile
+@@ -1,4 +1,4 @@
+-CFLAGS = -Wall -Wextra -pedantic -lX11 -lXft -I/usr/include/freetype2 -pthread
++CFLAGS = -Wall -Wextra -pedantic -lX11 -lXft -lXrandr -I/usr/include/freetype2 -pthread
+ 
+ PREFIX ?= /usr/local
+ CC ?= cc
+diff --git a/config.def.h b/config.def.h
+index 86b7e76..c2dd97e 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -2,18 +2,18 @@ static const char *background_color = "#3e3e3e";
+ static const char *border_color = "#ececec";
+ static const char *font_color = "#ececec";
+ static const char *font_pattern = "monospace:size=10";
+-static const unsigned line_spacing = 5;
+-static const unsigned int padding = 15;
++static unsigned line_spacing = 5;
++static unsigned int padding = 15;
+ 
+-static const unsigned int width = 450;
+-static const unsigned int border_size = 2;
+-static const unsigned int pos_x = 30;
+-static const unsigned int pos_y = 60;
++static unsigned int width = 450;
++static unsigned int border_size = 2;
++static unsigned int pos_x = 30;
++static unsigned int pos_y = 60;
+ 
+-enum corners { TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT };
++enum corners { TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT, CENTER };
+ enum corners corner = TOP_RIGHT;
+ 
+-static const unsigned int duration = 5; /* in seconds */
++static unsigned int duration = 5; /* in seconds */
+ 
+ #define DISMISS_BUTTON Button1
+ #define ACTION_BUTTON Button3
+diff --git a/herbe.c b/herbe.c
+index 51d3990..6d0efcf 100644
+--- a/herbe.c
++++ b/herbe.c
+@@ -1,5 +1,7 @@
+ #include <X11/Xlib.h>
+ #include <X11/Xft/Xft.h>
++#include <X11/extensions/Xrandr.h>
++#include <X11/Xresource.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <signal.h>
+@@ -15,8 +17,16 @@
+ #define EXIT_FAIL 1
+ #define EXIT_DISMISS 2
+ 
++#define XRES_STR(name)                                        \
++	if (XrmGetResource(db, "herbe." #name, "*", &type, &val)) \
++	name = val.addr
++#define XRES_INT(name)                                        \
++	if (XrmGetResource(db, "herbe." #name, "*", &type, &val)) \
++	name = strtoul(val.addr, 0, 10)
++
+ Display *display;
+-Window window;
++Window *windows;
++int num_monitors = 0;
+ int exit_code = EXIT_DISMISS;
+ 
+ static void die(const char *format, ...)
+@@ -75,7 +85,8 @@ void expire(int sig)
+ 	XEvent event;
+ 	event.type = ButtonPress;
+ 	event.xbutton.button = (sig == SIGUSR2) ? (ACTION_BUTTON) : (DISMISS_BUTTON);
+-	XSendEvent(display, window, 0, 0, &event);
++	if (windows && num_monitors > 0)
++		XSendEvent(display, windows[0], 0, 0, &event);
+ 	XFlush(display);
+ }
+ 
+@@ -107,13 +118,32 @@ int main(int argc, char *argv[])
+ 	if (!(display = XOpenDisplay(0)))
+ 		die("Cannot open display");
+ 
++	XrmInitialize();
++
++	char *res_man = XResourceManagerString(display);
++	XrmDatabase db = XrmGetStringDatabase(res_man);
++
++	char *type;
++	XrmValue val;
++
++	XRES_STR(background_color);
++	XRES_STR(border_color);
++	XRES_STR(font_color);
++	XRES_STR(font_pattern);
++
++	XRES_INT(line_spacing);
++	XRES_INT(padding);
++	XRES_INT(width);
++	XRES_INT(border_size);
++	XRES_INT(pos_x);
++	XRES_INT(pos_y);
++	XRES_INT(corner);
++	XRES_INT(duration);
++
+ 	int screen = DefaultScreen(display);
+ 	Visual *visual = DefaultVisual(display, screen);
+ 	Colormap colormap = DefaultColormap(display, screen);
+ 
+-	int screen_width = DisplayWidth(display, screen);
+-	int screen_height = DisplayHeight(display, screen);
+-
+ 	XSetWindowAttributes attributes;
+ 	attributes.override_redirect = True;
+ 	XftColor color;
+@@ -151,25 +181,54 @@ int main(int argc, char *argv[])
+ 		}
+ 	}
+ 
+-	unsigned int x = pos_x;
+-	unsigned int y = pos_y;
+ 	unsigned int text_height = font->ascent - font->descent;
+ 	unsigned int height = (num_of_lines - 1) * line_spacing + num_of_lines * text_height + 2 * padding;
+ 
+-	if (corner == TOP_RIGHT || corner == BOTTOM_RIGHT)
+-		x = screen_width - width - border_size * 2 - pos_x;
+-
+-	if (corner == BOTTOM_LEFT || corner == BOTTOM_RIGHT)
+-		y = screen_height - height - border_size * 2 - pos_y;
++	XRRMonitorInfo *monitors = XRRGetMonitors(display, RootWindow(display, screen), True, &num_monitors);
++	int fallback = 0;
++	if (!monitors || num_monitors <= 0)
++	{
++		num_monitors = 1;
++		fallback = 1;
++	}
+ 
+-	window = XCreateWindow(display, RootWindow(display, screen), x, y, width, height, border_size, DefaultDepth(display, screen),
+-						   CopyFromParent, visual, CWOverrideRedirect | CWBackPixel | CWBorderPixel, &attributes);
++	windows = malloc(num_monitors * sizeof(Window));
++	XftDraw **draws = malloc(num_monitors * sizeof(XftDraw *));
++	if (!windows || !draws)
++		die("malloc failed");
+ 
+-	XftDraw *draw = XftDrawCreate(display, window, visual, colormap);
+ 	XftColorAllocName(display, visual, colormap, font_color, &color);
+ 
+-	XSelectInput(display, window, ExposureMask | ButtonPress);
+-	XMapWindow(display, window);
++	for (int m = 0; m < num_monitors; m++)
++	{
++		int mon_x = fallback ? 0 : monitors[m].x;
++		int mon_y = fallback ? 0 : monitors[m].y;
++		int mon_w = fallback ? DisplayWidth(display, screen) : monitors[m].width;
++		int mon_h = fallback ? DisplayHeight(display, screen) : monitors[m].height;
++
++		int x = mon_x + pos_x;
++		int y = mon_y + pos_y;
++
++		if (corner == TOP_RIGHT || corner == BOTTOM_RIGHT)
++			x = mon_x + mon_w - width - border_size * 2 - pos_x;
++		else if (corner == CENTER)
++			x = mon_x + (mon_w - (int)width - (int)border_size * 2) / 2 - (int)pos_x;
++
++		if (corner == BOTTOM_LEFT || corner == BOTTOM_RIGHT)
++			y = mon_y + mon_h - height - border_size * 2 - pos_y;
++		else if (corner == CENTER)
++			y = mon_y + (mon_h - (int)height - (int)border_size * 2) / 2 - (int)pos_y;
++
++		windows[m] = XCreateWindow(display, RootWindow(display, screen), x, y, width, height, border_size, DefaultDepth(display, screen),
++								   CopyFromParent, visual, CWOverrideRedirect | CWBackPixel | CWBorderPixel, &attributes);
++
++		draws[m] = XftDrawCreate(display, windows[m], visual, colormap);
++		XSelectInput(display, windows[m], ExposureMask | ButtonPressMask);
++		XMapWindow(display, windows[m]);
++	}
++
++	if (monitors)
++		XRRFreeMonitors(monitors);
+ 
+ 	sem_t *mutex = sem_open("/herbe", O_CREAT, 0644, 1);
+ 	sem_wait(mutex);
+@@ -187,10 +246,17 @@ int main(int argc, char *argv[])
+ 
+ 		if (event.type == Expose)
+ 		{
+-			XClearWindow(display, window);
+-			for (int i = 0; i < num_of_lines; i++)
+-				XftDrawStringUtf8(draw, &color, font, padding, line_spacing * i + text_height * (i + 1) + padding,
+-								  (FcChar8 *)lines[i], strlen(lines[i]));
++			for (int m = 0; m < num_monitors; m++)
++			{
++				if (event.xexpose.window == windows[m])
++				{
++					XClearWindow(display, windows[m]);
++					for (int i = 0; i < num_of_lines; i++)
++						XftDrawStringUtf8(draws[m], &color, font, padding, line_spacing * i + text_height * (i + 1) + padding,
++										  (FcChar8 *)lines[i], strlen(lines[i]));
++					break;
++				}
++			}
+ 		}
+ 		else if (event.type == ButtonPress)
+ 		{
+@@ -211,10 +277,18 @@ int main(int argc, char *argv[])
+ 		free(lines[i]);
+ 
+ 	free(lines);
+-	XftDrawDestroy(draw);
++	for (int m = 0; m < num_monitors; m++)
++	{
++		XftDrawDestroy(draws[m]);
++		XDestroyWindow(display, windows[m]);
++	}
++	free(draws);
++	free(windows);
++
+ 	XftColorFree(display, visual, colormap, &color);
+ 	XftFontClose(display, font);
++	XrmDestroyDatabase(db);
+ 	XCloseDisplay(display);
+ 
+ 	return exit_code;
+-}
+\ No newline at end of file
++}
